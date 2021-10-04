@@ -3,6 +3,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=vim,lua
 
 ### Lua ###
+
 # Compiled Lua sources
 luac.out
 
@@ -46,6 +47,7 @@ luac.out
 
 
 ### Vim ###
+
 # Swap
 [._]*.s[a-v][a-z]
 !*.svg  # comment out if you don't need vector files
@@ -61,14 +63,20 @@ Sessionx.vim
 # Temporary
 .netrwhist
 *~
+
 # Auto-generated tag files
 tags
+
 # Persistent undo
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/vim,lua
 
+# The previous section was auto-genrated,
+# From here you can put your custom ignore definitions!
+
 ### Project ###
 
-# Plugin directories
-autoload/plugged
+# Installed plugin directories
+autoload/plugged/
+plugged/

@@ -1,0 +1,211 @@
+{
+  // General
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.snippetStatusText": "Ⓢ ",
+  "coc.preferences.useQuickfixForLocations": false,
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "go",
+    "graphql",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "powershell",
+    "python",
+    "yaml"
+  ],
+  "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json"],
+
+  // Suggestion
+  "suggest.enablePreview": true,
+  "suggest.minTriggerInputLength": 3,
+  "suggest.snippetIndicator": "[+] ",
+  "suggest.timeout": 5000,
+  "suggest.removeDuplicateItems": true,
+
+  // Diagnostics
+  "diagnostic.enable": true,
+  "diagnostic.enableSign": true,
+  "diagnostic.autoRefresh": true,
+  "diagnostic.format": "%message [%source]",
+  "diagnostic.checkCurrentLine": false,
+  "diagnostic.enableMessage": "always",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextLineSeparator": " \\ ",
+  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.showDeprecated": true,
+  "diagnostic.errorSign": "\uf467",
+  "diagnostic.warningSign": "\uf071",
+  "diagnostic.infoSign": "\uf129",
+  "diagnostic.hintSign": "\uf864",
+
+  // Lua
+  "lua.enable": true,
+  "Lua.telemetry.enable": false,
+  "Lua.completion.enable": true,
+  "Lua.diagnostics.enable": true,
+  "Lua.diagnostics.globals": ["vim"],
+
+  // Python
+  "python.pythonPath": "python",
+  "python.condaPath": "conda",
+  "python.sortImports.path": "isort",
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length=102"],
+  "python.envFile": "${workspaceFolder}/.venv",
+  "python.jediEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Path": "flake8",
+  "python.linting.flake8Args": ["--max-line-length=102"],
+
+  // Powershell
+  "powershell.enableProfileLoading": true,
+  "powershell.integratedConsole.showOnStartup": false,
+  "powershell.powerShellDefaultVersion": "PowerShell Core 6 (x64)",
+  "powershell.helpCompletion": "BlockComment",
+  "powershell.codeFormatting.whitespaceInsideBrace": true,
+  "powershell.codeFormatting.alignPropertyValuePairs": true,
+  "powershell.codeFormatting.autoCorrectAliases": true,
+  "powershell.codeFormatting.whitespaceAfterSeparator": true,
+  "powershell.codeFormatting.useConstantStrings": false,
+
+  // Markdown
+  "markdownlint.config": {
+    "MD013": false,
+    "MD041": false
+  },
+
+  // Vimscript
+  "vimlsp.diagnostic.enable": true,
+  "vimlsp.suggest.fromVimruntime": true,
+  "vimlsp.suggest.fromRuntimepath": true,
+  "vimlsp.indexes.count": 1,
+  "vimlsp.indexes.runtimepath": true,
+  "vimlsp.indexes.projectRootPatterns": [".git", "autoload", "plugin"],
+  "vimlsp.filetypes": ["vim"],
+
+  // Json
+  "json.format.enable": true,
+
+  // Yaml
+  "yaml.format.enable": true,
+
+  // Code Lense
+  "codeLens.enable": true,
+
+  // Prettier
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 102,
+  "prettier.eslintIntegration": true,
+  "prettier.formatterPriority": 1,
+  "prettier.useTabs": false,
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": false,
+  "prettier.disableLanguages": [],
+
+  // Suggestions
+
+  // Snippets
+  "snippets.ultisnips.directories": [
+    "Ultisnips",
+    "snippets",
+    "~/.config/nvim/Ultisnips",
+    "~/.config/nvim/snippets",
+    "~/.config/vim/Ultisnips",
+    "~/.config/vim/snippets"
+  ],
+
+  // Explorer
+  "explorer.toggle": true,
+  "explorer.focus": true,
+  "explorer.file.reveal.auto": false,
+  "explorer.file.showHiddenFiles": false,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.buffer.tabOnly": true,
+  "explorer.quitOnOpen": true,
+  "explorer.position": "right",
+  "explorer.previewAction.onHover": false,
+  "explorer.width": 40,
+  "explorer.buffer.root.template": "[icon & 1] BUFFERS",
+  "explorer.file.reveal.whenOpen": true,
+  "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
+  "explorer.file.child.template": "[git | 1] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]",
+  "explorer.keyMappings.global": {
+    //"i": false, // cancel default mapkey
+    "<c-o>": "noop",
+    "v": "open:vsplit",
+    "*": "toggleSelection",
+    // "<tab>": "actionMenu",
+    "gk": ["wait", "expandablePrev"],
+    "gj": ["wait", "expandableNext"],
+    "h": ["wait", "collapse"],
+    "<Left>": ["wait", "collapse"],
+    "l": ["wait", "expandable?", "expand", "open"],
+    "<Right>": ["wait", "expandable?", "expand", "open"],
+    "J": ["wait", "toggleSelection", "normal:j"],
+    "K": ["wait", "toggleSelection", "normal:k"],
+    "gl": ["wait", "expand:recursive"],
+    "gh": ["wait", "collapse:recursive"],
+    "<2-LeftMouse>": [
+      "expandable?",
+      ["expanded?", "collapse", "expand"],
+      "open"
+    ],
+    "o": ["wait", "expanded?", "collapse", "expand"],
+    "<cr>": ["wait", "expandable?", "cd", "open"],
+    // "<cr>": ["expandable?", "expand", "open"],
+    "e": "open",
+    "s": "open:split",
+    "E": "open:vsplit",
+    "t": "open:tab",
+    "<bs>": ["wait", "gotoParent"],
+    "gs": ["wait", "reveal:select"],
+    "il": "preview:labeling",
+    "ic": "preview:content",
+    "Il": "previewOnHover:toggle:labeling",
+    "Ic": "previewOnHover:toggle:content",
+    "II": "previewOnHover:disable",
+    "yp": "copyFilepath",
+    "yn": "copyFilename",
+    "yy": "copyFile",
+    "dd": "cutFile",
+    "p": "pasteFile",
+    "df": "delete",
+    "dF": "deleteForever",
+    "a": "addFile",
+    "A": "addDirectory",
+    "r": "rename",
+    "g<dot>": "toggleHidden",
+    "R": "refresh",
+    "?": "help",
+    "q": "quit",
+    "<esc>": "esc",
+    "X": "systemExecute",
+    "gd": "listDrive",
+    "f": "search",
+    "F": "searchRecursive",
+    "gf": "gotoSource:file",
+    "gb": "gotoSource:buffer",
+    "[[": ["wait", "sourcePrev"],
+    "]]": ["wait", "sourceNext"],
+    "[i": ["wait", "indentPrev"],
+    "]i": ["wait", "indentNext"],
+    "[m": ["wait", "markPrev:modified"],
+    "]m": ["wait", "markNext:modified"],
+    "[d": ["wait", "markPrev:diagnosticError:diagnosticWarning"],
+    "]d": ["wait", "markNext:diagnosticError:diagnosticWarning"],
+    "[D": ["wait", "markPrev:diagnosticError"],
+    "]D": ["wait", "markNext:diagnosticError"],
+    "[c": ["wait", "markPrev:git"],
+    "]c": ["wait", "markNext:git"],
+    "<<": "gitStage",
+    ">>": "gitUnstage"
+  }
+}

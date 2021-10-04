@@ -4,6 +4,13 @@
   "coc.preferences.snippetStatusText": "Ⓢ ",
   "coc.preferences.useQuickfixForLocations": false,
   "coc.preferences.formatOnType": true,
+  "coc.preferences.rootPatterns": [
+    ".git",
+    ".hg",
+    ".projections.json",
+    ".venv",
+    ".vscode"
+  ],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "go",
@@ -17,7 +24,6 @@
     "python",
     "yaml"
   ],
-  "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json"],
 
   // Suggestion
   "suggest.enablePreview": true,

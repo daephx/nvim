@@ -77,6 +77,10 @@ tags
 
 ### Project ###
 
+# Temporary locations
+.[Tt]emp/
+[Tt]emp/
+
 # Installed plugin directories
 autoload/plugged/
 plugged/

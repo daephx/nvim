@@ -1,0 +1,21 @@
+snippet start "Starting code"
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	fmt.Println("hello")
+}
+endsnippet
+
+snippet fori "For loop i"
+for i := 0; i < n; i++ {
+	${1://TODO}
+}
+endsnippet
+
+snippet st "Println"
+fmt.Println(${1})${0}
+endsnippet

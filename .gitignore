@@ -92,3 +92,6 @@ spell/*.spl
 
 # Packer compile
 plugin/packer_compiled.lua
+
+# Language server directory
+/ls

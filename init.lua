@@ -38,6 +38,9 @@ g.colors_name = 'tokyonight'
 -- Lua modules containing configuration definitions
 -- The order of these does matter!
 
+require('settings') -- General NeoVim Settings
+
+
 --- Helpers ---
 
 -- Useful functions and auto-commands!

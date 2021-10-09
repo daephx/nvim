@@ -19,14 +19,24 @@ local cmd, env = vim.cmd, vim.env
 local fn, g = vim.fn, vim.g
 
 -- Environement variable for config directory
--- This is just nice to have for opening files.
+-- This is just nice to have for opening files
+-- from other locations '$MYRUNTIME/init.lua'
 env.MYRUNTIME = fn.stdpath('config')
 
 
 --- Settings ---
 
+-- General settings, these are defined upfront
+-- for easy of access and will be handled by modules
+-- TODO: This should better handle other themes,
+-- including non-existant ones, fallback to a default scheme
 g.colors_name = 'tokyonight'
 
+
+--- Modules ---
+
+-- Lua modules containing configuration definitions
+-- The order of these does matter!
 
 --- Helpers ---
 

@@ -9,7 +9,7 @@ let s:statusline = 'lualine'
 
 if s:statusline == 'lualine'
 
-  source $MYRUNTIME/lua/plugin/lualine.lua " lualine, status line
+  source $MYRUNTIME/lua/plugins/lualine.lua " lualine, status line
   set noshowmode " Don't show `--insert--` below statusline
   redraw | echom "Loaded: Lualine configuration"
 

@@ -81,7 +81,9 @@ tags
 .[Tt]emp/
 [Tt]emp/
 
-# Installed plugin directories
+# Vimplug files can be easily regenerated,
+# so committing is not necessary
+autoload/plug.vim
 autoload/plugged/
 plugged/
 

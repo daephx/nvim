@@ -84,3 +84,6 @@ tags
 # Installed plugin directories
 autoload/plugged/
 plugged/
+
+# Spellcheck cache
+spell/*.spl

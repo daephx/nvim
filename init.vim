@@ -45,10 +45,23 @@ let g:localleader = "\\"
 " Disable Ex mode
 nnoremap <silent>Q <nop>
 
+" TODO: Has some issue with immutable buffers and quickfix,
+" perhaps check if the buffer is writable/has a path
+
+" Write/Close buffer, keep window
+" nnoremap <leader>q :up\|b#\|bd#<CR>
+
+" Update file only if changes
+nnoremap <leader>w :up<CR>
+
 " Better <tab> indentation
 inoremap <silent> <S-Tab> <C-d>
 vnoremap <silent> <Tab>   >gv
 vnoremap <silent> <S-Tab> <gv
+
+" Substitute selection
+" Overwrite text with last yanked
+" vnoremap S "_d"0P
 
 " Black-hole <Delete> key
 " Makes the delete key never yank
@@ -59,6 +72,10 @@ vnoremap <Del> "_x
 " Paste before/after cursor respectively
 nmap <localleader>p "0p
 nmap <localleader>P "0P
+
+" This can be a little annoying in select circumstances
+" Abbrev :w to :up and avoid unnecessary writes
+" cnoreabbrev <expr> w getcmdtype() == ':' && getcmdline() == 'w' ? 'up' : 'w'
 
 " Easy edit / source VIMRC
 nnoremap <silent> <leader>ve :e  $MYVIMRC<CR>

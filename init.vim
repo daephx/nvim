@@ -31,6 +31,8 @@ let g:experimental_on = 0
 " Here I am just sourcing the file containing
 " my vim-plug configurations.
 
+source $MYRUNTIME/plugin/pluglist.vim " Initialize vim-plug
+
 
 " --- Mappings ---
 

@@ -41,4 +41,4 @@ nmap <Leader>sl :<C-u>SessionLoad<CR>
 
 hi DashboardHeader ctermfg=Cyan
 
-source $MYRUNTIME/lua/plugin/dashboard.lua
+source $MYRUNTIME/lua/plugins/dashboard.lua

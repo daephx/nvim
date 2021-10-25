@@ -5,15 +5,17 @@
 
 augroup logfile_au
   autocmd!
+
   " Match general logfiles with '.log' extension
   autocmd BufNewFile,BufRead *.log setlocal filetype=log
+
   " Match files named 'log' that have NO extension
   autocmd BufNewFile,BufRead ^(log[^.]+)$ setlocal filetype=log
 
   autocmd FileType log
-        \ setlocal readonly
-        \ setlocal noedcompatible
-        \ setlocal colorcolumn=0
-        \ setlocal norelativenumber
+    \ set readonly
+    \ set noedcompatible
+    \ set colorcolumn=
+    \ set norelativenumber
 
 augroup END

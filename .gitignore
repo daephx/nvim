@@ -87,6 +87,9 @@ autoload/plug.vim
 autoload/plugged/
 plugged/
 
+# Session files
+sessions/
+
 # Spellcheck cache
 spell/*.spl
 

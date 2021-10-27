@@ -1,88 +1,16 @@
-local g = vim.g -- vim Global scope
+local cmd = vim.cmd
+local fn = vim.fn
+local g = vim.g
 
--- g.dashboard_session_directory = '~/.config/nvim/.sessions'
-g.dashboard_session_directory = os.getenv("MYRUNTIME") .. "/sessions"
-g.dashboard_default_executive = 'fzf'
+-- Load utils module
+local utils = require('utils')
 
-local header_theme_cacodaemon = {
-  "            :h-                                  Nhy`               ",
-  "           -mh.                           h.    `Ndho               ",
-  "           hmh+                          oNm.   oNdhh               ",
-  "          `Nmhd`                        /NNmd  /NNhhd               ",
-  "          -NNhhy                      `hMNmmm`+NNdhhh               ",
-  "          .NNmhhs              ```....`..-:/./mNdhhh+               ",
-  "           mNNdhhh-     `.-::///+++////++//:--.`-/sd`               ",
-  "           oNNNdhhdo..://++//++++++/+++//++///++/-.`                ",
-  "      y.   `mNNNmhhhdy+/++++//+/////++//+++///++////-` `/oos:       ",
-  " .    Nmy:  :NNNNmhhhhdy+/++/+++///:.....--:////+++///:.`:s+        ",
-  " h-   dNmNmy oNNNNNdhhhhy:/+/+++/-         ---:/+++//++//.`         ",
-  " hd+` -NNNy`./dNNNNNhhhh+-://///    -+oo:`  ::-:+////++///:`        ",
-  " /Nmhs+oss-:++/dNNNmhho:--::///    /mmmmmo  ../-///++///////.       ",
-  "  oNNdhhhhhhhs//osso/:---:::///    /yyyyso  ..o+-//////////:/.      ",
-  "   /mNNNmdhhhh/://+///::://////     -:::- ..+sy+:////////::/:/.     ",
-  "     /hNNNdhhs--:/+++////++/////.      ..-/yhhs-/////////::/::/`    ",
-  "       .ooo+/-::::/+///////++++//-/ossyyhhhhs/:///////:::/::::/:    ",
-  "       -///:::::::////++///+++/////:/+ooo+/::///////.::://::---+`   ",
-  "       /////+//++++/////+////-..//////////::-:::--`.:///:---:::/:   ",
-  "       //+++//++++++////+++///::--                 .::::-------::   ",
-  "       :/++++///////////++++//////.                -:/:----::../-   ",
-  "       -/++++//++///+//////////////               .::::---:::-.+`   ",
-  "       `////////////////////////////:.            --::-----...-/    ",
-  "        -///://////////////////////::::-..      :-:-:-..-::.`.+`    ",
-  "         :/://///:///::://::://::::::/:::::::-:---::-.-....``/- -   ",
-  "           ::::://::://::::::::::::::----------..-:....`.../- -+oo/ ",
-  "            -/:::-:::::---://:-::-::::----::---.-.......`-/.      ``",
-  "           s-`::--:::------:////----:---.-:::...-.....`./:          ",
-  "          yMNy.`::-.--::..-dmmhhhs-..-.-.......`.....-/:`           ",
-  "         oMNNNh. `-::--...:NNNdhhh/.--.`..``.......:/-              ",
-  "        :dy+:`      .-::-..NNNhhd+``..`...````.-::-`                ",
-  "                        .-:mNdhh:.......--::::-`                    ",
-  "                           yNh/..------..`                          ",
-  "                                                                    ",
-  "                              N E O V I M                           ",
-  }
-
-local header_theme_anime_uwu = {
-  "⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕",
-  "⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕",
-  "⢕⢕⢕⢕⢕⠅⢗⢕⠕⣠⠄⣗⢕⢕⠕⢕⢕⢕⠕⢠⣿⠐⢕⢕⢕⠑⢕⢕⠵⢕",
-  "⢕⢕⢕⢕⠁⢜⠕⢁⣴⣿⡇⢓⢕⢵⢐⢕⢕⠕⢁⣾⢿⣧⠑⢕⢕⠄⢑⢕⠅⢕",
-  "⢕⢕⠵⢁⠔⢁⣤⣤⣶⣶⣶⡐⣕⢽⠐⢕⠕⣡⣾⣶⣶⣶⣤⡁⢓⢕⠄⢑⢅⢑",
-  "⠍⣧⠄⣶⣾⣿⣿⣿⣿⣿⣿⣷⣔⢕⢄⢡⣾⣿⣿⣿⣿⣿⣿⣿⣦⡑⢕⢤⠱⢐",
-  "⢠⢕⠅⣾⣿⠋⢿⣿⣿⣿⠉⣿⣿⣷⣦⣶⣽⣿⣿⠈⣿⣿⣿⣿⠏⢹⣷⣷⡅⢐",
-  "⣔⢕⢥⢻⣿⡀⠈⠛⠛⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠈⠛⠛⠁⠄⣼⣿⣿⡇⢔",
-  "⢕⢕⢽⢸⢟⢟⢖⢖⢤⣶⡟⢻⣿⡿⠻⣿⣿⡟⢀⣿⣦⢤⢤⢔⢞⢿⢿⣿⠁⢕",
-  "⢕⢕⠅⣐⢕⢕⢕⢕⢕⣿⣿⡄⠛⢀⣦⠈⠛⢁⣼⣿⢗⢕⢕⢕⢕⢕⢕⡏⣘⢕",
-  "⢕⢕⠅⢓⣕⣕⣕⣕⣵⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣷⣕⢕⢕⢕⢕⡵⢀⢕⢕",
-  "⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕",
-  "⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁",
-  "⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿",
-  "                              ",
-  "         И Ǝ O V I M          ",
-}
-
-local header_theme_super_meatboy = {
-  "                              ",
-  "    ⣀⣀⣤⣤⣦⣶⢶⣶⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⡄       ",
-  "    ⣿⣿⣿⠿⣿⣿⣾⣿⣿⣿⣿⣿⣿⠟⠛⠛⢿⣿⡇       ",
-  "    ⣿⡟⠡⠂ ⢹⣿⣿⣿⣿⣿⣿⡇⠘⠁  ⣿⡇ ⢠⣄    ",
-  "    ⢸⣗⢴⣶⣷⣷⣿⣿⣿⣿⣿⣿⣷⣤⣤⣤⣴⣿⣗⣄⣼⣷⣶⡄  ",
-  "   ⢀⣾⣿⡅⠐⣶⣦⣶ ⢰⣶⣴⣦⣦⣶⠴ ⢠⣿⣿⣿⣿⣼⣿⡇  ",
-  "  ⢀⣾⣿⣿⣷⣬⡛⠷⣿⣿⣿⣿⣿⣿⣿⠿⠿⣠⣿⣿⣿⣿⣿⠿⠛⠃  ",
-  "  ⢸⣿⣿⣿⣿⣿⣿⣿⣶⣦⣭⣭⣥⣭⣵⣶⣿⣿⣿⣿⣟⠉      ",
-  "   ⠙⠇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟       ",
-  "     ⣿⣿⣿⣿⣿⣛⠛⠛⠛⠛⠛⢛⣿⣿⣿⣿⣿⡇       ",
-  "     ⠿⣿⣿⣿⠿⠿     ⠸⣿⣿⣿⣿⠿⠇       ",
-  "                              ",
-  "                              ",
-  "         И Ǝ 0 V I M          ",
-}
-
--- Choose the name of your theme here:
-g.dashboard_custom_header = header_theme_super_meatboy
-
--- Get Leaderkey name
--- local leader = (g.mapleader == " ") and "<Space>" or g.mapleader
+-- Set header theme from static directory
+-- Files are located in the 'nvim/static/' directory
+-- Set your ascii artwork as a '.txt' file and call it by name!
+local headerTheme = 'super_meatboy'
+local _static = fn.stdpath('config') .. '/static/'
+g.dashboard_custom_header = utils.fileToArray(_static..headerTheme..'.txt')
 
 -- Define quick command section
 g.dashboard_custom_section = {
@@ -98,6 +26,10 @@ g.dashboard_custom_section = {
 }
 
 g.dashboard_custom_footer = {'type  :help<Enter>  or  <F1>  for on-line help'}
+
+-- g.dashboard_session_directory = '~/.config/nvim/.sessions'
+g.dashboard_session_directory = os.getenv("MYRUNTIME") .. "/sessions"
+g.dashboard_default_executive = 'fzf'
 
 vim.cmd[[
 augroup dashboard_au

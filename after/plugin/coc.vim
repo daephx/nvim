@@ -6,10 +6,11 @@
 
 " --- Conquer of Completion ---
 
-" Prevent config loading w/o plugin
-if &rtp !~ 'coc.nvim'
+" Prevent loading if not applicable
+if empty('g:coc_enabled')
   finish
 endif
+
 
 " --- Extensions ---
 
@@ -17,14 +18,14 @@ let g:coc_global_extensions = [
 	\ 'coc-pairs',
 	\ 'coc-vimtex',
   \ 'coc-css',
-  \ 'coc-explorer',
   \ 'coc-git',
   \ 'coc-html',
   \ 'coc-json',
   \ 'coc-marketplace',
   \ 'coc-powershell',
   \ 'coc-prettier',
-  \ 'coc-python',
+  \ 'coc-pyright',
+  \ 'coc-sh',
   \ 'coc-snippets',
   \ 'coc-tsserver',
   \ 'coc-yaml'
@@ -40,13 +41,9 @@ set hidden
 set nobackup
 set nowritebackup
 
-" Give more space for displaying messages.
-set cmdheight=1
-
-" Recommened by coc
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
+" Having longer updatetime (default is 4000 ms = 4 s)
+" could lead to noticeable delays and poor user experience.
+if &updatetime <= 0 | let &updatetime=300 | endif
 
 " Don't pass messages to ins-completion-menu
 set shortmess+=c
@@ -94,20 +91,12 @@ nmap <expr> <silent> <C-d> <SID>select_current_word()
 map <expr> <silent> <C-d> <SID>select_current_word()
 
 
+" Check if extension exists
+function Coc_has_extension(ext) abort
+  return len(filter(CocAction('extensionStats'), {key, val -> val.id == a:ext}))
+endfunction
+
 " --- Coc-Explorer ---
-
-nmap <silent> <leader>e :CocCommand explorer<CR>
-nmap <silent> <leader>f :CocCommand explorer --preset floating<CR>
-
-" autocmd! BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-autocmd! FileType 'coc-explorer' setlocal winfixwidth
-autocmd! FileType,BufLeave
-
-" Change color of coc-explorer floating window
-autocmd! ColorScheme *
-  \   hi CocExplorerNormalFloatBorder guifg=grey guibg=grey
-  \ | hi CocExplorerNormalFloat guibg=none
-  \ | hi CocExplorerSelectUI guibg=blue
 
 " Global Presets
 let g:coc_explorer_global_presets = {
@@ -143,3 +132,22 @@ let g:coc_explorer_global_presets = {
   \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
   \   }
   \ }
+
+" Mappings
+nmap <silent> <leader>e :CocCommand explorer<CR>
+nmap <silent> <leader>f :CocCommand explorer --preset floating<CR>
+
+" Autocmds
+augroup cocexplorer_au
+  autocmd!
+
+  " autocmd! BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+  autocmd FileType 'coc-explorer' setlocal winfixwidth
+
+  " Change color of coc-explorer floating window
+  autocmd ColorScheme *
+    \   hi CocExplorerNormalFloatBorder guibg=none
+    \ | hi CocExplorerNormalFloat       guibg=none
+    \ | hi CocExplorerSelectUI          guibg=blue
+
+augroup END

@@ -1,0 +1,2 @@
+# Ignore host packer compiled definitions
+plugin/packer_compiled.lua

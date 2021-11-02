@@ -1,13 +1,30 @@
---- Plugins
+--     ____  __            _
+--    / __ \/ /_  ______ _(_)___  _____
+--   / /_/ / / / / / __ `/ / __ \/ ___/
+--  / ____/ / /_/ / /_/ / / / / (__  )
+-- /_/   /_/\__,_/\__, /_/_/ /_/____/
+--               /____/
+-- Module: plugins
+-- Description: plugins definitions and settings
 
-local execute = vim.api.nvim_command
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '.. install_path)
+local cmd = vim.cmd
+local fn = vim.fn
+
+local ok, packer = pcall(require, "packer")
+if not ok then
+  require("plugins.packer").bootstrap()
+  packer = require('packer')
 end
 
--- Load Plugins
-require('packer').startup(function()
+
+--- Plugins ---
+
+-- Initalize packer/plugin list
+return packer.startup(function(use)
+
+  use { -- Packer can manage itself
+    'wbthomason/packer.nvim',
+  }
 
   -- ======================================
   -- * Place your plugin definitions here *
@@ -47,4 +64,27 @@ require('packer').startup(function()
   -- use 'hrsh7th/vim-vsnip'
   -- use 'hrsh7th/vim-vsnip-integ'
   -- use 'rafamadriz/friendly-snippets'
+
+  -- ======================================
+  -- *       END OF PLUGIN SECTION       *
+  -- ======================================
+
+  --- Update/Sync ---
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if Packer_bootstrap then
+    packer.sync()
+  end
+
+  --- Recompiler ---
+  -- Recompile packer definitions when this file is modifed
+  -- This allows your plugins and configurations to be kept fast
+
+  cmd [[
+  augroup packer_au
+    autocmd!
+    autocmd BufWritePost lua/plugins/init.lua source <afile> | PackerCompile
+  augroup END
+  ]]
+
 end)

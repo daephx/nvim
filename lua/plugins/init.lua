@@ -33,19 +33,17 @@ return packer.startup(function(use)
   -- * Place your plugin definitions here *
   -- ======================================
 
-  -- use "wbthomason/packer.nvim"
-  -- use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
-  -- use 'romgrk/barbar.nvim'
-  -- use 'kyazdani42/nvim-tree.lua'
-  -- use 'glepnir/dashboard-nvim'
+  --- Stylization ---
 
-  -- use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
-  -- use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim'}
+  use { -- Dark+ theme written in lua
+    'Mofiqul/vscode.nvim',
+    -- config = function() require('colors').setup('vscode') end
+  }
 
-  -- use 'kdav5758/TrueZen.nvim'
-  -- use 'junegunn/limelight.vim'
-  -- use 'yamatsum/nvim-cursorline'
-  -- use 'norcalli/nvim-colorizer.lua'
+  use { -- TokyoNight ColorScheme
+    'folke/tokyonight.nvim',
+    -- config = function() require('colors').setup('tokyonight') end
+  }
 
   -- use 'shaunsingh/moonlight.nvim'
   -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

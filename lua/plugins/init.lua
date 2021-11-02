@@ -10,6 +10,9 @@
 local cmd = vim.cmd
 local fn = vim.fn
 
+-- Control vim builtin plugins
+require('plugins.builtins')
+
 local ok, packer = pcall(require, "packer")
 if not ok then
   require("plugins.packer").bootstrap()

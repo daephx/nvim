@@ -37,12 +37,12 @@ return packer.startup(function(use)
 
   use { -- Dark+ theme written in lua
     'Mofiqul/vscode.nvim',
-    -- config = function() require('colors').setup('vscode') end
+    config = function() require('colors').setup('vscode') end
   }
 
   use { -- TokyoNight ColorScheme
     'folke/tokyonight.nvim',
-    -- config = function() require('colors').setup('tokyonight') end
+    config = function() require('colors').setup('tokyonight') end
   }
 
   -- use 'shaunsingh/moonlight.nvim'

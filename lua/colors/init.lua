@@ -16,8 +16,9 @@ local g = vim.g
 local M = {}
 
 function M.setup(name)
+  -- Check for colorscheme definitions
   local ok, colorscheme = pcall(require, "colors."..name)
-  if not ok or name ~= g.colors_name then
+  if name ~= g.colors_name then
     return
   end
 
@@ -25,15 +26,22 @@ function M.setup(name)
   cmd('colorscheme ' .. name)
 
   -- Load colorscheme specific overrides
-  colorscheme.overrides()
+  if ok and colorscheme.overrides then
+    colorscheme.overrides()
+  end
 
   -- All highlight overrides MUST be executed after colorscheme Initialization
   local overrides = require('colors.overrides')
   overrides.GeneralOverrides() -- Unstructed highlight tweaks
   overrides.TransparentBackground() -- Disable 'Normal' higroup
 
-  api.nvim_echo(
-    {{'Loaded Colorscheme: ', 'debug'}, {name, 'None'}}, true, {}
+    }
+  }
+
+  api.nvim_echo({
+    {'Loaded Colorscheme: ', 'constant'},
+    {name, 'None'}},
+    true, {}
   )
 
   -- Define colorscheme autogroup

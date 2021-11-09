@@ -38,6 +38,20 @@ function M.setup(table)
     ]]
   end
 
+  -- Bufferline highlights
+  -- cmd [[highlight BufferLineSeparator]]
+  -- Highlight ListChars, including EOL
+  cmd [[
+  highlight! link EndOfBuffer NonText
+  highlight       NonText gui=nocombine
+  ]]
+
+  -- Fix highlights for cursorline
+  cmd [[
+  highlight link CursorLine LineNr
+  highlight      CursorLine guifg=none
+  ]]
+
   -- GitSigns parital overrides
   cmd [[
   " This fixes background colors for vcs signs in the gutter

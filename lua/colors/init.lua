@@ -26,21 +26,34 @@ function M.setup(name)
   cmd('colorscheme ' .. name)
 
   -- Load colorscheme specific overrides
-  if ok and colorscheme.overrides then
-    colorscheme.overrides()
+  if ok and colorscheme.highlights then
+    colorscheme.highlights()
   end
 
-  -- All highlight overrides MUST be executed after colorscheme Initialization
-  local overrides = require('colors.overrides')
-  overrides.GeneralOverrides() -- Unstructed highlight tweaks
-  overrides.TransparentBackground() -- Disable 'Normal' higroup
+  -- General highlight overrides
+  require('colors.overrides').setup({
+    transparent_background = true,
+    highlights = {
+      Comment = {ui = 'NONE'},
+      NonText = {bg = 'NONE'},
+      Question = {bg = 'NONE'},
+      -- CursorLine = {link = 'LineNr'}, -- Needs partial, no foreground
+      CursorLineNr = { link = 'number' },
+      Directory = {bg = 'NONE'},
 
+      SignColumn = {bg = 'NONE'},
+
+      -- Gitsigns Link Colors
+      GitSignsAdd = {link = 'DiffAdd'},
+      GitSignsChange ={link = 'DiffChange'},
+      GitSignsDelete = {link = 'DiffDelete'},
     }
-  }
+  })
 
+  -- Completion Message
   api.nvim_echo({
-    {'Loaded Colorscheme: ', 'constant'},
-    {name, 'None'}},
+    {'Loaded colorscheme: ', 'Special'},
+    {name, 'none'}},
     true, {}
   )
 

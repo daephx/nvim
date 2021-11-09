@@ -40,6 +40,13 @@ function M.setup(table)
 
   -- Bufferline highlights
   -- cmd [[highlight BufferLineSeparator]]
+
+  -- Remove TODO highlight
+  cmd [[
+  highlight clear Todo
+  highlight clear TroubleIndent
+  ]]
+
   -- Highlight ListChars, including EOL
   cmd [[
   highlight! link EndOfBuffer NonText

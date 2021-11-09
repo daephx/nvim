@@ -38,4 +38,27 @@ function M.setup(table)
     ]]
   end
 
+  -- Coc.vim diagnostic partial overrides
+  cmd [[
+  " This fixes background colors for diagnostic signs in the gutter
+  " effective if you don't have the background colors disabled
+  if !empty('g:coc_enabled')
+    " CocWarningSign -- Refers to gutter
+    " CocWarningVirtualText -- Links to gutter
+    " The above need to be linked enough so that the sign fg colors
+    " are perserved, but they should have diffrent bg colors
+
+    " The gutter entry also should reference the LineNr guibg highlight
+    " This could possible be set to 'NONE' but for some themes I leave it alone.
+
+    for label in ['Hint', 'Info', 'Warn', 'Error']
+      exec 'hi link ' . 'Coc' . label . 'Sign ' . 'DiagnosticSign' . label
+      exec 'hi DiagnosticSign' . label .
+      \' guibg=' . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'gui') .
+      \' ctermbg=' . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'cterm')
+    endfor
+  endif
+  ]]
+end
+
 return M

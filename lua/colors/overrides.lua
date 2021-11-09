@@ -38,6 +38,17 @@ function M.setup(table)
     ]]
   end
 
+  -- GitSigns parital overrides
+  cmd [[
+  " This fixes background colors for vcs signs in the gutter
+  " effective if you don't have the background colors disabled
+  for highlightGroup in ['GitSignsAdd', 'GitSignsChange', 'GitSignsDelete']
+    execute 'highlight ' . highlightGroup .
+    \' guibg='   . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'gui') .
+    \' ctermbg=' . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'cterm')
+  endfor
+  ]]
+
   -- Coc.vim diagnostic partial overrides
   cmd [[
   " This fixes background colors for diagnostic signs in the gutter

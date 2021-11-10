@@ -17,15 +17,15 @@ end)()
 
 -- Define quick command section
 g.dashboard_custom_section = {
-  a = {description = {"  Find File             leader f f"}, command = "Files"},
-  b = {description = {"  Recents               leader f h"}, command = "History"},
-  c = {description = {"  Find Word             leader f g"}, command = "Telescope live_grep"},
-  d = {description = {"  New File              leader e n"}, command = "DashboardNewFile"},
-  e = {description = {"  Bookmarks             leader m  "}, command = "Marks"},
-  f = {description = {"  Load Last Session     leader l  "}, command = "SessionLoad"},
-  g = {description = {"  Update Plugins        leader u  "}, command = "PlugUpdate"},
-  h = {description = {"  Settings              leader v e"}, command = "edit $MYVIMRC"},
-  i = {description = {"  Exit                  leader q  "}, command = "exit"}
+  a = {description = {'  New File              SPC e n'}, command = 'DashboardNewFile'},
+  b = {description = {'  Recents               SPC f r'}, command = 'Telescope oldfiles'},
+  c = {description = {'  Bookmarks             SPC f m'}, command = 'Telescope marks'},
+  d = {description = {'  Find File             SPC f f'}, command = 'Telescope find_files'},
+  e = {description = {'  Find Word             SPC f g'}, command = 'Telescope live_grep'},
+  f = {description = {'  Load Last Session     SPC s l'}, command = 'SessionLoad'},
+  g = {description = {'  Update Plugins        SPC p u'}, command = 'PackerUpdate'},
+  h = {description = {'  Settings              SPC f v'}, command = 'lua require("plugins.telescope").search_vimfiles()'},
+  i = {description = {'  Exit                  SPC q q'}, command = 'exit'},
 }
 
 g.dashboard_custom_footer = {'type  :help<Enter>  or  <F1>  for on-line help'}
@@ -38,9 +38,9 @@ augroup dashboard_au
   autocmd User dashboardReady highlight DashboardHeader guifg=#569cd6
   autocmd User dashboardReady setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
-  autocmd User dashboardReady nnoremap <buffer> <leader>q <cmd>exit<CR>
-  autocmd User dashboardReady nnoremap <buffer> <leader>u <cmd>PackerUpdate<CR>
-  autocmd User dashboardReady nnoremap <buffer> <leader>l <cmd>SessionLoad<CR>
+  " Set Dashboard command remaps
+  autocmd FileType dashboard nnoremap <buffer> <leader>qq <cmd>exit<CR>
+  autocmd FileType dashboard nnoremap <buffer> <leader>sl <cmd>SessionLoad<CR>
 
   autocmd User dashboardReady setlocal scrolloff=999
   autocmd FileType dashboard autocmd BufLeave <buffer> setlocal scrolloff=0

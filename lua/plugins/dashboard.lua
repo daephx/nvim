@@ -49,20 +49,3 @@ augroup dashboard_au
 
 augroup END
 ]]
-
-
-
--- Disable statusline - But, I like the line!
--- vim.g.dashboard_disable_statusline = 1
-
--- HACK(daephx): Fix bug where statusline reappears
--- https://github.com/glepnir/dashboard-nvim/issues/87
--- vim.cmd[[autocmd Filetype dashboard set laststatus=0]]
--- NOTE: this doesn't seem to work...
-
--- Disable mouse on dashboard
--- Works when mouse is disabled on it's own,
--- but now when using an autocmd
--- https://github.com/glepnir/dashboard-nvim/issues/95
--- vim.cmd[[autocmd FileType dashboard set mouse=]]
--- NOTE: this also doesn't work...

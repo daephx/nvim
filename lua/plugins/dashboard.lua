@@ -4,6 +4,7 @@ local g = vim.g
 
 g.dashboard_disable_at_vimenter = 0
 g.dashboard_disable_statusline = 0
+g.dashboard_default_executive = 'telescope'
 
 -- Read text files from path 'nvim/static/*.txt'
 -- use the filename for your ascii artwork for 'fname'
@@ -30,7 +31,6 @@ g.dashboard_custom_footer = {'type  :help<Enter>  or  <F1>  for on-line help'}
 
 -- g.dashboard_session_directory = '~/.config/nvim/.sessions'
 g.dashboard_session_directory = os.getenv("MYRUNTIME") .. "/sessions"
-g.dashboard_default_executive = 'fzf'
 
 vim.cmd[[
 augroup dashboard_au

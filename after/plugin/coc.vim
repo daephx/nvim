@@ -133,10 +133,6 @@ let g:coc_explorer_global_presets = {
   \   }
   \ }
 
-" Mappings
-nmap <silent> <leader>e :CocCommand explorer<CR>
-nmap <silent> <leader>f :CocCommand explorer --preset floating<CR>
-
 " Autocmds
 augroup cocexplorer_au
   autocmd!

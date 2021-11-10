@@ -2,15 +2,14 @@ local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 
--- Load utils module
-local utils = require('utils')
 
--- Set header theme from static directory
--- Files are located in the 'nvim/static/' directory
--- Set your ascii artwork as a '.txt' file and call it by name!
-local headerTheme = 'super_meatboy'
-local _static = fn.stdpath('config') .. '/static/'
-g.dashboard_custom_header = utils.fileToArray(_static..headerTheme..'.txt')
+-- Read text files from path 'nvim/static/*.txt'
+-- use the filename for your ascii artwork for 'fname'
+g.dashboard_custom_header = (function()
+  local fname = 'super_meatboy'
+  local spath = fn.stdpath('config') .. '/static/'
+  return require('utils').fileToArray(spath..fname..'.txt')
+end)()
 
 -- Define quick command section
 g.dashboard_custom_section = {

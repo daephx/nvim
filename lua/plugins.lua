@@ -149,6 +149,11 @@ return packer.startup({function(use)
   }
   use {'p00f/nvim-ts-rainbow', after = 'nvim-treesitter'}
 
+  use { -- load extensions like VSCode and host language servers
+    'neoclide/coc.nvim', branch = 'release',
+    disable = true,
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

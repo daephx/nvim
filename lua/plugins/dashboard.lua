@@ -2,6 +2,7 @@ local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 
+g.dashboard_disable_at_vimenter = 0
 g.dashboard_disable_statusline = 0
 
 -- Read text files from path 'nvim/static/*.txt'

@@ -51,10 +51,10 @@ return packer.startup({function(use)
     config = function() require('colors').setup('gruvbox') end
   }
 
-  -- use 'shaunsingh/moonlight.nvim'
-  -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  -- use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
-  -- use 'lewis6991/spellsitter.nvim'
+  use { -- Dashboard / Startscreen
+    'glepnir/dashboard-nvim',
+    config = function() require('plugins.dashboard') end
+  }
 
   -- use 'mg979/vim-visual-multi'
   -- use 'phaazon/hop.nvim'

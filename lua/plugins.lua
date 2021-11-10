@@ -106,6 +106,11 @@ return packer.startup({function(use)
     config = function() require('plugins.fzf') end
   }
 
+  use { -- Lua implimentation of vim-which-key
+    'folke/which-key.nvim',
+    config = function() require('plugins.whichkey') end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

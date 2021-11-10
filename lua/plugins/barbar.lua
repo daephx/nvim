@@ -1,5 +1,9 @@
+local api = vim.api
+local cmd = vim.cmd
+local g = vim.g
+
 -- Set barbar's options
-vim.g.bufferline = {
+g.bufferline = {
   -- Enable/disable animations
   animation = true,
 
@@ -18,7 +22,7 @@ vim.g.bufferline = {
   clickable = true,
 
   -- Excludes buffers from the tabline
-  exclude_ft = {'dos', 'fugitive'},
+  exclude_ft = {'dos', 'fugitive', 'neoterm'},
   -- exclude_name = {},
 
   -- Enable/disable icons
@@ -47,7 +51,7 @@ vim.g.bufferline = {
   maximum_padding = 1,
 
   -- Sets the maximum buffer name length.
-  maximum_length = 20,
+  maximum_length = 24,
 
   -- If set, the letters for each buffer in buffer-pick mode will be
   -- assigned based on their name. Otherwise or in case all letters are
@@ -65,9 +69,18 @@ vim.g.bufferline = {
   no_name_title = nil,
 }
 
+-- Highlights
 
+cmd [[
+  " hi BufferCurrent guifg=#4083BD
+  hi BufferTabpageFill guifg=#2E5E88
+  hi BufferVisable guifg=#4083BD
+  hi link BufferCurrentSign Type
+  hi link BufferInactiveSign Tabline
+  hi BufferInactive guifg=#787878
+]]
 
-local map = vim.api.nvim_set_keymap
+local map = api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
@@ -98,9 +111,9 @@ map('n', '<A-c>', ':BufferClose<CR>', opts)
 -- Magic buffer-picking mode
 map('n', '<C-p>', ':BufferPick<CR>', opts)
 -- Sort automatically by...
-map('n', '<Space>bb', ':BufferOrderByBufferNumber<CR>', opts)
-map('n', '<Space>bd', ':BufferOrderByDirectory<CR>', opts)
-map('n', '<Space>bl', ':BufferOrderByLanguage<CR>', opts)
+map('n', '<leader>bb', ':BufferOrderByBufferNumber<CR>', opts)
+map('n', '<leader>bd', ':BufferOrderByDirectory<CR>', opts)
+map('n', '<leader>bl', ':BufferOrderByLanguage<CR>', opts)
 
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)

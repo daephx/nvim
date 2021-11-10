@@ -56,6 +56,12 @@ return packer.startup({function(use)
     config = function() require('plugins.dashboard') end
   }
 
+  use { -- Buffer / Tab list for file navigation
+    'romgrk/barbar.nvim',
+    disable = true,
+    config = function() require('plugins.barbar') end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

@@ -39,10 +39,17 @@ return packer.startup(function(use)
     'Mofiqul/vscode.nvim',
     config = function() require('colors').setup('vscode') end
   }
-
   use { -- TokyoNight ColorScheme
     'folke/tokyonight.nvim',
     config = function() require('colors').setup('tokyonight') end
+  }
+  use {
+    'numtostr/sakura.nvim',
+    config = function() require('colors').setup('sakura') end
+  }
+  use {
+    'morhetz/gruvbox',
+    config = function() require('colors').setup('gruvbox') end
   }
 
   -- use 'shaunsingh/moonlight.nvim'

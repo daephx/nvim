@@ -3,7 +3,7 @@
 --   / /_/ / / / / / __ `/ / __ \/ ___/
 --  / ____/ / /_/ / /_/ / / / / (__  )
 -- /_/   /_/\__,_/\__, /_/_/ /_/____/
---               /____/
+-- ==============/____/================
 -- Module: plugins
 -- Description: plugins definitions and settings
 
@@ -22,7 +22,7 @@ end
 --- Plugins ---
 
 -- Initalize packer/plugin list
-return packer.startup(function(use)
+return packer.startup({function(use)
 
   use { -- Packer can manage itself
     'wbthomason/packer.nvim',
@@ -86,12 +86,13 @@ return packer.startup(function(use)
   --- Recompiler ---
   -- Recompile packer definitions when this file is modifed
   -- This allows your plugins and configurations to be kept fast
-
   cmd [[
-  augroup packer_au
+  augroup plugins_au
     autocmd!
-    autocmd BufWritePost lua/plugins/init.lua source <afile> | PackerCompile
+    autocmd BufWritePost lua/plugins.lua source <afile> | PackerCompile
   augroup END
   ]]
 
-end)
+end,
+  config = require('plugins.packer').config
+})

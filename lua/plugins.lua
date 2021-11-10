@@ -154,6 +154,15 @@ return packer.startup({function(use)
     disable = true,
   }
 
+  use { -- Native language server protocol
+    'williamboman/nvim-lsp-installer',
+    requires = {
+      'neovim/nvim-lspconfig',
+      'hrsh7th/nvim-cmp'
+    },
+    config = function() require('lsp') end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

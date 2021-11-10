@@ -111,6 +111,36 @@ return packer.startup({function(use)
     config = function() require('plugins.whichkey') end
   }
 
+
+  -- Git integrations
+
+  use { -- A Git wrapper so awesome, it should be illegal
+    'tpope/vim-fugitive',
+    disable = false
+  }
+
+  use { -- Magit for Neovim
+    'TimUntersberger/neogit',
+    disable = false,
+    requires = {
+      'nvim-lua/plenary.nvim',
+      {
+        'sindrets/diffview.nvim',
+        config = function() require('plugins.diffview') end
+      }
+    },
+    config = function() require('plugins.neogit') end
+  }
+
+  use { -- Git signs written in pure lua
+    'lewis6991/gitsigns.nvim',
+    -- tag = 'release', -- To use the latest release
+    event = { 'BufWinEnter', 'BufNewFile' },
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function() require('plugins.gitsigns') end
+  }
+
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

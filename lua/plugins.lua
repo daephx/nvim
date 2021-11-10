@@ -75,6 +75,37 @@ return packer.startup({function(use)
     config = function() require('plugins.lualine') end
   }
 
+  use { -- Render blanklines
+    'lukas-reineke/indent-blankline.nvim',
+    event = { 'BufWinEnter' },
+    config = function() require('plugins.indent-blankline') end
+  }
+
+
+  --- Utilities ---
+
+  use { -- Highly extendable fuzzy finder
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-lua/popup.nvim'},
+      {'nvim-lua/plenary.nvim'},
+      { -- FZF sorter for telescope written in c
+        'nvim-telescope/telescope-fzf-native.nvim', run = 'make',
+        disable = true
+      },
+    },
+    config = function() require('plugins.telescope').config() end
+  }
+
+  use {'nvim-telescope/telescope-project.nvim'}
+
+  use { -- FZF - Commandline fuzzy-finder
+    'junegunn/fzf.vim',
+    disable = true,
+    requires = {'junegunn/fzf', dir = '~/.fzf', run = './install --all' },
+    config = function() require('plugins.fzf') end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

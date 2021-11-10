@@ -16,10 +16,12 @@ function M.bootstrap()
 end
 
 
+local util = require('packer.util')
+
 M.config = {
   ensure_dependencies = true, -- Should packer install plugin dependencies?
-  package_root = require('packer.util').join_paths(vim.fn.stdpath('data'), 'site', 'pack'),
-  compile_path = require('packer.util').join_paths(vim.fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
+  package_root = util.join_paths(fn.stdpath('data'), 'site', 'pack'),
+  compile_path = util.join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
   plugin_package = 'packer', -- The default package for plugins
   max_jobs = nil, -- Limit the number of simultaneous jobs. nil means no limit
   auto_clean = true, -- During sync(), remove unused plugins
@@ -51,7 +53,7 @@ M.config = {
   display = {
     non_interactive = false, -- If true, disable display windows for all operations
     -- open_cmd = 'botright 20new \\[packer\\]', -- An optional command to open a window for packer's display
-    open_fn = function() return require('packer.util').float({ border = 'single' }) end, -- An optional function to open a window for packer's display
+    open_fn = function() return util.float({ border = 'single' }) end, -- An optional function to open a window for packer's display
     working_sym = '⟳', -- The symbol for a plugin being installed/updated
     error_sym = '✗', -- The symbol for a plugin with an error in installation/updating
     done_sym = '✓', -- The symbol for a plugin which has completed installation/updating

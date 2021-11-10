@@ -141,6 +141,14 @@ return packer.startup({function(use)
   }
 
 
+  -- Language Tools
+
+  use {
+    'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
+    config = function() require('plugins.treesitter') end
+  }
+  use {'p00f/nvim-ts-rainbow', after = 'nvim-treesitter'}
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

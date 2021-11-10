@@ -2,6 +2,7 @@
   // General
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.snippetStatusText": "Ⓢ ",
+  "coc.preferences.enableMarkdown": true,
   "coc.preferences.useQuickfixForLocations": false,
   "coc.preferences.formatOnType": true,
   "coc.preferences.rootPatterns": [
@@ -25,6 +26,10 @@
     "yaml"
   ],
 
+  // Git
+  "git.signPriority": 1,
+  "git.changedSign.hlGroup": "DiffChange",
+
   // Suggestion
   "suggest.enablePreview": true,
   "suggest.minTriggerInputLength": 3,
@@ -40,15 +45,15 @@
   "diagnostic.checkCurrentLine": false,
   "diagnostic.enableMessage": "always",
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextLineSeparator": " \\ ",
-  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.virtualTextLineSeparator": " | ",
+  "diagnostic.virtualTextPrefix": " ● ",
   "diagnostic.refreshOnInsertMode": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.showDeprecated": true,
-  "diagnostic.errorSign": "",
-  "diagnostic.warningSign": "",
-  "diagnostic.infoSign": "",
-  "diagnostic.hintSign": "",
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
 
   // Lua
   "lua.enable": true,
@@ -58,13 +63,12 @@
   "Lua.diagnostics.globals": ["vim"],
 
   // Python
+  "pyright.enable": true,
   "python.pythonPath": "python",
-  "python.condaPath": "conda",
-  "python.sortImports.path": "isort",
+  "pyright.organizeimports.provider": "pyright",
+  // "python.sortImports.path": "isort",
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length=102"],
-  "python.envFile": "${workspaceFolder}/.venv",
-  "python.jediEnabled": false,
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
@@ -159,11 +163,7 @@
     "K": ["wait", "toggleSelection", "normal:k"],
     "gl": ["wait", "expand:recursive"],
     "gh": ["wait", "collapse:recursive"],
-    "<2-LeftMouse>": [
-      "expandable?",
-      ["expanded?", "collapse", "expand"],
-      "open"
-    ],
+    "<2-LeftMouse>": ["expandable?", ["expanded?", "collapse", "expand"], "open"],
     "o": ["wait", "expanded?", "collapse", "expand"],
     "<cr>": ["wait", "expandable?", "cd", "open"],
     // "<cr>": ["expandable?", "expand", "open"],

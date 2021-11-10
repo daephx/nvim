@@ -34,9 +34,15 @@ g.dashboard_custom_footer = {'type  :help<Enter>  or  <F1>  for on-line help'}
 vim.cmd[[
 augroup dashboard_au
   autocmd! * <buffer>
+
+  " Set statusline for dashboard
   autocmd User dashboardReady let &l:stl = 'Dashboard'
+
+  " Set dashboard header color
   autocmd User dashboardReady highlight DashboardHeader guifg=#569cd6
-  autocmd User dashboardReady setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
+
+  " Disable fill characters on dashboard
+  autocmd FileType dashboard setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
   " Disable Page scrolling keys on dashboard
   autocmd FileType dashboard nnoremap <buffer> <PageUp>   <Nop>

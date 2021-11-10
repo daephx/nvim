@@ -8,7 +8,6 @@
 -- Description: plugins definitions and settings
 
 local cmd = vim.cmd
-local fn = vim.fn
 
 -- Control vim builtin plugins
 require('plugins.builtins')

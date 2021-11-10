@@ -15,7 +15,8 @@ function M.bootstrap()
   end
 end
 
-function M.config() return {
+
+M.config = {
   ensure_dependencies = true, -- Should packer install plugin dependencies?
   package_root = require('packer.util').join_paths(vim.fn.stdpath('data'), 'site', 'pack'),
   compile_path = require('packer.util').join_paths(vim.fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
@@ -75,6 +76,5 @@ function M.config() return {
     threshold = 1, -- integer in milliseconds, plugins which load faster than this won't be shown in profile output
   }
 }
-end
 
 return M

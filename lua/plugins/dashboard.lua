@@ -38,6 +38,10 @@ augroup dashboard_au
   autocmd User dashboardReady highlight DashboardHeader guifg=#569cd6
   autocmd User dashboardReady setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
+  " Disable Page scrolling keys on dashboard
+  autocmd FileType dashboard nnoremap <buffer> <PageUp>   <Nop>
+  autocmd FileType dashboard nnoremap <buffer> <PageDown> <Nop>
+
   " Set Dashboard command remaps
   autocmd FileType dashboard nnoremap <buffer> <leader>qq <cmd>exit<CR>
   autocmd FileType dashboard nnoremap <buffer> <leader>sl <cmd>SessionLoad<CR>

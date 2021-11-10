@@ -56,22 +56,6 @@ return packer.startup({function(use)
     config = function() require('plugins.dashboard') end
   }
 
-  -- use 'mg979/vim-visual-multi'
-  -- use 'phaazon/hop.nvim'
-  -- use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}}
-
-  -- use 'hrsh7th/nvim-compe'
-  -- use 'onsails/lspkind-nvim'
-  -- use 'neovim/nvim-lspconfig'
-  -- use 'folke/lsp-trouble.nvim'
-  -- use 'glepnir/lspsaga.nvim'
-  -- use 'kabouzeid/nvim-lspinstall'
-  -- use 'ray-x/lsp_signature.nvim'
-
-  -- use 'hrsh7th/vim-vsnip'
-  -- use 'hrsh7th/vim-vsnip-integ'
-  -- use 'rafamadriz/friendly-snippets'
-
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

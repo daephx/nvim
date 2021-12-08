@@ -97,7 +97,10 @@ return packer.startup({function(use)
     config = function() require('plugins.telescope').config() end
   }
 
-  use {'nvim-telescope/telescope-project.nvim'}
+  use { -- superior project management for neovim.
+    "ahmedkhalf/project.nvim",
+    config = function() require("plugins.project") end,
+  }
 
   use { -- FZF - Commandline fuzzy-finder
     'junegunn/fzf.vim',

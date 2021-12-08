@@ -16,11 +16,14 @@ end
 local indent_blankline = require('indent_blankline')
 
 indent_blankline.setup {
+  enabled = true,
+  -- char = "| ",
   buftype_exclude = {'help', 'nofile', 'terminal'},
   filetype_exclude = {'dashboard', 'packer', 'help'},
   char_highlight = 'LineNr',
   show_end_of_line = false,
-  space_char_blankline = '⋅',
+  show_first_indent_level = false,
+  space_char_blankline = ' ',
   show_trailing_blankline_indent = false,
   show_current_context = true,
   show_current_context_start = false,

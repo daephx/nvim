@@ -166,6 +166,30 @@ return packer.startup({function(use)
     config = function() require('lsp') end
   }
 
+  -- Completion
+
+  use {'L3MON4D3/LuaSnip'}
+  use {'onsails/lspkind-nvim'}
+  use {
+    'hrsh7th/nvim-cmp',
+    disable = false,
+    -- event = { 'InsertEnter' },
+    config = function() require('plugins.cmp') end,
+    requires = {
+      "f3fora/cmp-spell",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-calc",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-emoji",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      'dmitmel/cmp-cmdline-history',
+      'hrsh7th/cmp-nvim-lua',
+      'onsails/lspkind-nvim',
+      'saadparwaiz1/cmp_luasnip',
+    },
+  }
+
   use { -- superior project management for neovim.
     "ahmedkhalf/project.nvim",
     config = function() require("plugins.project") end,

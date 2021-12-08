@@ -163,6 +163,11 @@ return packer.startup({function(use)
     config = function() require('lsp') end
   }
 
+  use { -- superior project management for neovim.
+    "ahmedkhalf/project.nvim",
+    config = function() require("plugins.project") end,
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

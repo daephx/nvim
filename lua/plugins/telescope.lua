@@ -62,7 +62,7 @@ M.config = function()
 
       mappings = { -- Custom mappings for telescope prompt
         i = {
-          ['<esc>'] = actions.close,
+          ['q'] = actions.close,
           ['<C-u>'] = false,
           ['<C-d>'] = false,
           ['<C-h>'] = 'which_key',
@@ -154,8 +154,7 @@ M.config = function()
   -- telescope.load_extension('coc')
   -- telescope.load_extension('fzf')
   -- telescope.load_extension('gh')
-  -- telescope.load_extension('project')
-
+    require('telescope').load_extension('projects')
 
   -- Highlights
 

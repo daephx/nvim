@@ -164,26 +164,7 @@ M.config = function()
 end
 
 
--- Extended module functions
-
-
--- Themes
-
--- Minimalist square box
--- https://github.com/nvim-telescope/telescope.nvim/wiki/Gallery#minimalist-square-box
-local no_preview = function()
-  return themes.get_dropdown({
-    borderchars = {
-      { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-      prompt = {'─', '│', ' ', '│', '┌', '┐', '│', '│'},
-      results = {'─', '│', '─', '│', '├', '┤', '┘', '└'},
-      preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
-    },
-    width = 0.8,
-    previewer = false,
-    prompt_title = false
-  })
-end
+--- Extensions ---
 
 
 -- Pickers

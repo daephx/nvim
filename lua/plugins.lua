@@ -290,6 +290,12 @@ return packer.startup({function(use)
     config = function() require('plugins.trouble') end
   }
 
+  use { -- Orgmode for Neovim, Life Organization Tool Written in Lua
+    "nvim-neorg/neorg", ft = "norg", -- Lazyload
+    config = function() require('plugins.neorg') end,
+    requires = "nvim-lua/plenary.nvim"
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

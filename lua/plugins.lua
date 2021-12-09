@@ -296,6 +296,31 @@ return packer.startup({function(use)
     requires = "nvim-lua/plenary.nvim"
   }
 
+  use {
+    'vimwiki/vimwiki',
+    config = function()
+      vim.g.vimwiki_list = {
+        {
+          path = '~/Documents/wiki',
+          path_html = '~/Documents/wiki/_build/',
+          links_space_char = ' ',
+          syntax = 'markdown',
+          ext = '.md',
+        }
+      }
+    end
+  }
+
+  use {'SidOfc/mkdx'}
+  use { -- Preview Markdown in the browser
+    'iamcco/markdown-preview.nvim',
+    ft = "markdown",
+    run = 'call mkdp#util#install()',
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

@@ -253,6 +253,13 @@ return packer.startup({function(use)
     config = function() require('plugins.toggleterm') end
   }
 
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('plugins.autopairs')
+    end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

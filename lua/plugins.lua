@@ -267,6 +267,17 @@ return packer.startup({function(use)
     end
   }
 
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function() require'colorizer'.setup({
+      '*'; -- Highlight all files, you can still customize others!
+      -- '!vim'; -- Exclude vim from highlighting.
+      css = { mode = 'background'; };
+      html = { mode = 'background'; };
+      packer = { RGB = false; }
+    }, { mode = 'foreground'; }) end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

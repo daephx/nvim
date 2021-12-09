@@ -189,6 +189,18 @@ return packer.startup({function(use)
     config = function() require('lsp') end
   }
 
+  use { -- Debug adapter protocol client
+    'mfussenegger/nvim-dap',
+    requires = {{'rcarriga/nvim-dap-ui', opt = true}, {'nvim-dap-python', opt = true}},
+    config = function() require('plugins.dap').load_modules() end
+  }
+
+  use {
+    'nvim-telescope/telescope-dap.nvim',
+    after = { 'telescope.nvim', 'nvim-dap' },
+    config = function() require('telescope').load_extension('dap') end
+  }
+
 
   -- Completion
 

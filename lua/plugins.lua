@@ -248,6 +248,11 @@ return packer.startup({function(use)
     config = function() require('plugins.nvimtree') end
   }
 
+  use { -- easily manage multiple terminal windows
+    "akinsho/toggleterm.nvim",
+    config = function() require('plugins.toggleterm') end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

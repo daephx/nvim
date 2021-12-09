@@ -56,18 +56,27 @@ return packer.startup({function(use)
     config = function() require('plugins.dashboard') end
   }
 
-  use { -- Buffer / Tab list for file navigation
+  --[[ use { -- Buffer / Tab list for file navigation
     'romgrk/barbar.nvim',
     disable = true,
     config = function() require('plugins.barbar') end
-  }
+  } ]]
 
-  use { -- Buffer / Tab list for file navigation
+  --[[ use { -- Buffer / Tab list for file navigation
     'akinsho/bufferline.nvim',
-    disable = false,
+    disable = true,
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = function() require('plugins.bufferline') end
+  } ]]
+
+  use {
+    'kdheepak/tabline.nvim',
+    requires = {
+      { 'hoob3rt/lualine.nvim', opt = true },
+    },
+    config = function() require('plugins.tabline') end
   }
+
 
   use { -- Blazing fast statusline
     'nvim-lualine/lualine.nvim',

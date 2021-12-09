@@ -70,14 +70,6 @@ lsp_installer.on_server_ready(function(server)
   cmd('do User LspAttachBuffers')
 end)
 
-
--- Change diagnostic symbols in the sign column (gutter)
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
-for type, icon in pairs(signs) do
-  local hl = "LspDiagnosticsSign" .. type
-  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
   signs = true,
   underline = false,
@@ -86,6 +78,14 @@ lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_pub
     prefix = '✗', -- Could be '●', '▎', '✗'
   }
 })
+
+
+-- Change diagnostic symbols in the sign column (gutter)
+local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 -- Close lspinfo window using 'q'
 cmd [[ autocmd! FileType lspinfo nnoremap <silent> <buffer> q :q<CR> ]]

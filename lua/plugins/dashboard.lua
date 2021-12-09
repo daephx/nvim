@@ -5,7 +5,7 @@ local g = vim.g
 g.dashboard_disable_at_vimenter = 0
 g.dashboard_disable_statusline = 0
 g.dashboard_default_executive = 'telescope'
-g.dashboard_session_directory = fn.stdpath('cache') .. '/sessions'
+g.dashboard_session_directory = fn.stdpath('data') .. '/sessions'
 
 -- Read text files from path 'nvim/static/*.txt'
 -- use the filename for your ascii artwork for 'fname'

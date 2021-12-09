@@ -278,6 +278,12 @@ return packer.startup({function(use)
     }, { mode = 'foreground'; }) end
   }
 
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function() require("plugins.todo-comments") end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

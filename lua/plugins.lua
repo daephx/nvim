@@ -84,6 +84,13 @@ return packer.startup({function(use)
 
   --- Utilities ---
 
+  use { -- FZF - Commandline fuzzy-finder
+    'junegunn/fzf.vim',
+    disable = true,
+    requires = {'junegunn/fzf', dir = '~/.fzf', run = './install --all' },
+    config = function() require('plugins.fzf') end
+  }
+
   use { -- Highly extendable fuzzy finder
     'nvim-telescope/telescope.nvim',
     requires = {

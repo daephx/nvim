@@ -284,6 +284,12 @@ return packer.startup({function(use)
     config = function() require("plugins.todo-comments") end
   }
 
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function() require('plugins.trouble') end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

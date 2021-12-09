@@ -24,7 +24,7 @@ M.config = function()
       scroll_strategy = 'limit',
       selection_strategy = 'row',
       sorting_strategy = 'ascending',
-      winblend = 15,
+      winblend = 5,
 
       -- file_sorter = sorters.get_fzy_sorter,
       file_sorter = sorters.get_fuzzy_file,

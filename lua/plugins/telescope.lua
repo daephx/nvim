@@ -62,7 +62,7 @@ M.config = function()
 
       mappings = { -- Custom mappings for telescope prompt
         i = {
-          ['q'] = actions.close,
+          ['qq'] = actions.close,
           ['<C-u>'] = false,
           ['<C-d>'] = false,
           ['<C-h>'] = 'which_key',

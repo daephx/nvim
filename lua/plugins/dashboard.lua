@@ -22,7 +22,7 @@ g.dashboard_custom_section = {
   c = {description = {'  Bookmarks             SPC f m'}, command = 'Telescope marks'},
   d = {description = {'  Find File             SPC f f'}, command = 'Telescope find_files'},
   e = {description = {'  Find Word             SPC f g'}, command = 'Telescope live_grep'},
-  f = {description = {'  Load Last Session     SPC s l'}, command = 'SessionLoad'},
+  f = {description = {'  Load Last Session     SPC s l'}, command = 'Telescope session-lens'},
   g = {description = {'  Update Plugins        SPC p u'}, command = 'PackerUpdate'},
   h = {description = {'  Settings              SPC f v'}, command = 'lua require("plugins.telescope").search_vimfiles()'},
   i = {description = {'  Exit                  SPC q q'}, command = 'exit'},

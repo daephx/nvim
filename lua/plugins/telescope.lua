@@ -102,12 +102,12 @@ M.config = function()
       },
     },
     pickers = { -- Default configuration for builtin pickers goes here:
+
       -- Now the picker_config_key will be applied every time you call this
       buffers = {
         sort_mru = true,
-        theme = 'dropdown',
+        theme = 'ivy',
         selection_strategy = 'closest',
-        previewer = false,
         mappings = {
           i = {
             -- ['<c-w>'] =

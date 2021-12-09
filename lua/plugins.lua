@@ -102,11 +102,34 @@ return packer.startup({function(use)
     config = function() require("plugins.project") end,
   }
 
-  use { -- FZF - Commandline fuzzy-finder
-    'junegunn/fzf.vim',
-    disable = true,
-    requires = {'junegunn/fzf', dir = '~/.fzf', run = './install --all' },
-    config = function() require('plugins.fzf') end
+  -- use { -- A simple wrapper around :mksession
+  --   "Shatur/neovim-session-manager",
+  --   requires = { 'nvim-telescope/telescope.nvim' },
+  --   config = function() require("plugins.session-manager") end
+  -- }
+
+  use { -- A small automated session manager for neovim
+    'rmagatti/auto-session',
+    config = function()
+      require('auto-session').setup {
+        log_level = 'info',
+        auto_session_enable_last_session = false,
+        -- auto_restore_enabled = false,
+        auto_session_suppress_dirs = {'~/', '~/Projects'}
+      }
+    end
+  }
+
+  use { -- A session-switcher extension for rmagatti/auto-session using Telescope.nvim
+    'rmagatti/session-lens',
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    config = function()
+      require('session-lens').setup({
+        path_display = {'shorten'},
+        theme_conf = { border = true },
+        previewer = false
+      })
+    end
   }
 
   use { -- Lua implimentation of vim-which-key
@@ -165,6 +188,7 @@ return packer.startup({function(use)
     },
     config = function() require('lsp') end
   }
+
 
   -- Completion
 

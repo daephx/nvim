@@ -123,6 +123,7 @@ M.config = function()
       lsp_code_actions = { theme = 'dropdown' },
       current_buffer_fuzzy_find = { theme = 'dropdown', previewer = false },
       colorscheme = { theme = 'dropdown', previewer = false },
+      file_browser = { theme = 'ivy' },
     },
     extensions = { -- Your extension configuration goes here:
       -- please take a look at the readme of the extension you want to configure

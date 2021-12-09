@@ -139,23 +139,9 @@ M.config = function()
         filetypes = {'png', 'webp', 'jpg', 'jpeg'},
         find_cmd  = 'rg' -- find command (defaults to `fd`)
       },
-      --[[
-        project = {
-        hidden_files = true, -- default: false
-        base_dirs = {
-          {'~/Documents/Docker', max_depth = 2},
-          {'~/Documents/Projects'},
-          {'~/Documents/wiki'},
-        },
-      },
-      ]]
     }
   }
-  -- Load telescope extensions after setup function
-  -- telescope.load_extension('coc')
-  -- telescope.load_extension('fzf')
-  -- telescope.load_extension('gh')
-    require('telescope').load_extension('projects')
+
 
   -- Highlights
 

@@ -260,6 +260,13 @@ return packer.startup({function(use)
     end
   }
 
+  use {
+    'b3nj5m1n/kommentary',
+    config = function()
+      require('plugins.kommentary')
+    end
+  }
+
   -- ======================================
   -- *       END OF PLUGIN SECTION       *
   -- ======================================

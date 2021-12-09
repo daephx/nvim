@@ -207,8 +207,10 @@ return packer.startup({function(use)
 
   use { -- Debug adapter protocol client
     'mfussenegger/nvim-dap',
-    requires = {{'rcarriga/nvim-dap-ui', opt = true}, {'nvim-dap-python', opt = true}},
-    config = function() require('plugins.dap').load_modules() end
+    requires = {
+      {'rcarriga/nvim-dap-ui', opt = true},
+      {'nvim-dap-python', opt = true}},
+    config = function() require('dap').load_modules() end
   }
 
   use {

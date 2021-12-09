@@ -9,7 +9,7 @@ local sorters = require('telescope.sorters')
 local themes = require('telescope.themes')
 
 local state = require('telescope.state')
-local action_set = require 'telescope.actions.set'
+local action_set = require('telescope.actions.set')
 
 local M = {}
 

@@ -99,7 +99,7 @@ return packer.startup({function(use)
 
   use { -- superior project management for neovim.
     "ahmedkhalf/project.nvim",
-    config = function() require("plugins.project") end,
+    config = function() require("plugins.project") end
   }
 
   -- use { -- A simple wrapper around :mksession
@@ -224,11 +224,6 @@ return packer.startup({function(use)
       'onsails/lspkind-nvim',
       'saadparwaiz1/cmp_luasnip',
     },
-  }
-
-  use { -- superior project management for neovim.
-    "ahmedkhalf/project.nvim",
-    config = function() require("plugins.project") end,
   }
 
   -- ======================================

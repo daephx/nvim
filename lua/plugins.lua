@@ -100,6 +100,11 @@ return packer.startup({function(use)
     config = function() require('plugins.fzf') end
   }
 
+  use { -- superior project management for neovim.
+    "ahmedkhalf/project.nvim",
+    config = function() require("plugins.project") end
+  }
+
   use { -- Highly extendable fuzzy finder
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -111,11 +116,6 @@ return packer.startup({function(use)
       },
     },
     config = function() require('plugins.telescope').config() end
-  }
-
-  use { -- superior project management for neovim.
-    "ahmedkhalf/project.nvim",
-    config = function() require("plugins.project") end
   }
 
   -- use { -- A simple wrapper around :mksession
@@ -216,7 +216,6 @@ return packer.startup({function(use)
   use {
     'nvim-telescope/telescope-dap.nvim',
     after = { 'telescope.nvim', 'nvim-dap' },
-    config = function() require('telescope').load_extension('dap') end
   }
 
 

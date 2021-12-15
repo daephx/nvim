@@ -10,6 +10,9 @@ local api = vim.api
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
+-- Make Y act like other capitals
+map('n', 'Y', 'y$')
+
 -- Blackhole Registers
 -- Breaks default functionality
 map('v', '<del>', '"_d') -- Prevent <Delete> from yanking

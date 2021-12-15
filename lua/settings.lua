@@ -104,11 +104,12 @@ opt.writebackup = false                        -- backup before overwriting a fi
 opt.undofile = true                            -- Persistant undo
 opt.undolevels = 1000                          -- Maximum number of undoable changes
 opt.undoreload = 10000                         -- Save the whole buffer for undo
-opt.wildmenu = true
-
-opt.completeopt = 'menuone,noinsert,noselect'  -- Insert mode completion
+opt.wildmenu = true                           -- Command-line completion
+opt.wildignorecase = true                     -- Case insenesitive command-line completion
 
 opt.formatoptions:append('tcrqnj')                  -- describes how auto-format is handled
+opt.completeopt = 'menuone,noinsert,noselect'  -- Insert mode completion
+
 opt.diffopt:append({'vertical'})                    -- Start diff mode in vertical split
 opt.shortmess:append('cfI')                         -- Avoid 'hit-enter' prompts
 opt.whichwrap:append('<,>,[,],h,l')

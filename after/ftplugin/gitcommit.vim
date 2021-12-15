@@ -1,6 +1,6 @@
 setlocal norelativenumber
 setlocal nonumber
-setlocal signcolumn=no
+setlocal signcolumn=
 
 " Line length
 setlocal textwidth=72

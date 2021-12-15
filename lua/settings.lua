@@ -70,6 +70,7 @@ opt.cindent = true
 opt.wrap = false                               -- Wrap text when line is too long
 opt.hidden = true                              -- Hide modified buffers instead of unloading them
 opt.cursorline = true                          -- Highlight the text line of the cursor
+opt.cursorlineopt='number'                    -- settings for how 'cursorline' is displayed.
 opt.incsearch = true                           -- Enable incrimental search
 opt.hlsearch = true                            -- Highlight search
 opt.laststatus = 2                             -- Always show statusline

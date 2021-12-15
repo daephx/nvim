@@ -151,8 +151,9 @@ if fn.has('win32') == 1 then
   cmd [[
   " Set default shell to powershell
   let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
-  set shellquote= shellpipe=\| shellxquote=
   set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
   set shellredir=\|\ Out-File\ -Encoding\ UTF8
+  set shellquote=\"
+  set shellxquote=
   ]]
 end

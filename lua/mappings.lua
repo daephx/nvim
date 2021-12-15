@@ -19,3 +19,9 @@ map('n', '<c-l>', '<cmd>wincmd l<CR>')
 -- Visual indentation
 map('v', '<', '<gv')
 map('v', '>', '>gv')
+
+-- Quickfix
+map('n', '<c-q>', '<cmd>call ToggleQFList(1)<CR>')
+map('n', '<localleader>q', '<cmd>call ToggleQFList(1)<CR>')
+map('n', '<c-k>', '<cmd>cprev<CR>zz')
+map('n', '<c-j>', '<cmd>cnext<CR>zz')

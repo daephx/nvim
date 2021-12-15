@@ -10,6 +10,10 @@ local api = vim.api
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
+-- Blackhole Registers
+-- Breaks default functionality
+map('v', '<del>', '"_d') -- Prevent <Delete> from yanking
+
 -- Ctrl - hjkl to navigate splits
 map('n', '<c-h>', '<cmd>wincmd h<CR>')
 map('n', '<c-j>', '<cmd>wincmd j<CR>')

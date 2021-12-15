@@ -1,11 +1,9 @@
 " File: quickfix.vim
 " Description: Configurations for quickfix menus
 
-setlocal cursorline
+" Settings
 setlocal colorcolumn=
+setlocal cursorline
+setlocal cursorlineopt=both
 setlocal norelativenumber
-
-" augroup quickfix_au
-"   autocmd!
-"   autocmd BufEnter
-" augroup END
+setlocal signcolumn=

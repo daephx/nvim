@@ -1,5 +1,6 @@
-setlocal norelativenumber
+" Settings
 setlocal nonumber
+setlocal norelativenumber
 setlocal signcolumn=
 
 " Line length

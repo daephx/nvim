@@ -107,7 +107,7 @@ opt.undoreload = 10000                         -- Save the whole buffer for undo
 opt.wildmenu = true                           -- Command-line completion
 opt.wildignorecase = true                     -- Case insenesitive command-line completion
 
-opt.formatoptions:append('tcrqnj')                  -- describes how auto-format is handled
+opt.formatoptions = 'tqnj'                    -- describes how auto-format is handled
 opt.completeopt = 'menuone,noinsert,noselect'  -- Insert mode completion
 
 opt.diffopt:append({'vertical'})                    -- Start diff mode in vertical split

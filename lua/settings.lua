@@ -110,6 +110,9 @@ opt.wildignorecase = true                     -- Case insenesitive command-line 
 opt.formatoptions = 'tqnj'                    -- describes how auto-format is handled
 opt.completeopt = 'menuone,noinsert,noselect'  -- Insert mode completion
 
+-- Set what should be inluded in session files
+opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+
 opt.diffopt:append({'vertical'})                    -- Start diff mode in vertical split
 opt.shortmess:append('cfI')                         -- Avoid 'hit-enter' prompts
 opt.whichwrap:append('<,>,[,],h,l')

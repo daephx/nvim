@@ -126,17 +126,15 @@ opt.wildignore:append({
 -- ListChars
 
 opt.list = true
-opt.listchars = {}
--- opt.listchars:append('eol:¬')
--- opt.listchars:append('tab:░\\')
-opt.listchars:append('extends:»')
-opt.listchars:append('nbsp:⣿')
-opt.listchars:append('precedes:«')
-opt.listchars:append('trail:·')
-
-
--- Fonts
-opt.guifont:append('CaskaydiaCove\\ Nerd\\ Font:h16') -- Prefered fonts
+opt.listchars = {
+  -- eol = '↴',
+  -- space = '·',
+  -- tab = '»',
+  extends = '»',
+  multispace = '·',
+  precedes = '«',
+  trail = '·',
+}
 
 
 --- Windows ---

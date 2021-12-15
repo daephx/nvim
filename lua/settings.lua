@@ -113,10 +113,9 @@ opt.completeopt = 'menuone,noinsert,noselect'  -- Insert mode completion
 -- Set what should be inluded in session files
 opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
+opt.diffopt:append({'vertical'})              -- Start diff mode in vertical split
 opt.guifont:append('CaskaydiaCove\\ Nerd\\ Font:h16') -- Prefered fonts
-
-opt.diffopt:append({'vertical'})                    -- Start diff mode in vertical split
-opt.shortmess:append('cfI')                         -- Avoid 'hit-enter' prompts
+opt.shortmess:append('cfI')                   -- Avoid 'hit-enter' prompts
 opt.whichwrap:append('<,>,[,],h,l')
 opt.wildmode:append('full:lastused')                -- Command-line completion mode
 opt.wildignore:append({                       -- Path patterns wildmenu should ignore

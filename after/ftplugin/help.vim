@@ -1,6 +1,5 @@
-setlocal signcolumn=no
-
+" Settings
+setlocal signcolumn=
 setlocal textwidth=80
-
-" Autoformatting
+setlocal colorcolumn=
 setlocal formatoptions-=c

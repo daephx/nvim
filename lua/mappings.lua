@@ -58,3 +58,8 @@ function _G.set_terminal_keymaps()
   api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
 end
 -- cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+
+-- Diffsplit
+-- map('n', 'q', "&diff ? '<cmd>tabclose<CR>' : 'q'")
+vim.cmd [[ nnoremap <expr> q &diff ? '<cmd>tabclose<CR>' : 'q' ]]

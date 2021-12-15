@@ -9,4 +9,5 @@ setlocal colorcolumn=73,51
 setlocal formatoptions-=c
 
 setlocal spell
+setlocal spellcapcheck=
 setlocal iskeyword+=-

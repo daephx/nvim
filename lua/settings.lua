@@ -3,11 +3,9 @@
 --   \__ \/ _ \/ __/ __/ / __ \/ __ `/ ___/
 --  ___/ /  __/ /_/ /_/ / / / / /_/ (__  )
 -- /____/\___/\__/\__/_/_/ /_/\__, /____/
---                           /____/
+-- ==========================/____/========
 -- Module: settings
 -- Description: settings / options for NeoVim
-
---- Initialization ---
 
 local cmd = vim.cmd
 local fn = vim.fn
@@ -35,6 +33,10 @@ if g.is_neovide == 1 then
   g.neovide_cursor_vfx_mode = 'pixiedust'
 end
 
+
+--- Settings ---
+
+-- General settings for Vim/Neovim
 
 -- Set reusable values
 local encode = 'utf-8'                         -- Default File encoding

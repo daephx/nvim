@@ -1,4 +1,4 @@
 augroup detectDockerfileFiletype
-    autocmd!
-    autocmd BufRead,BufNewFile Dockerfile* setfiletype dockerfile
+  autocmd!
+  autocmd BufRead,BufNewFile Dockerfile* setfiletype dockerfile
 augroup END

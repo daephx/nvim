@@ -20,6 +20,10 @@ map('n', '<c-l>', '<cmd>wincmd l<CR>')
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
+-- Formatting
+-- TODO: Better formatting, check if lsp attachedm else rely on cmd / formatter.nvim
+map('n', 'ff', '<cmd>lua vim.lsp.buf.formatting()<CR>') -- Activate LSP buffer formatter
+
 -- Quickfix
 map('n', '<c-q>', '<cmd>call ToggleQFList(1)<CR>')
 map('n', '<localleader>q', '<cmd>call ToggleQFList(1)<CR>')

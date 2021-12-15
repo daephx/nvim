@@ -1,22 +1,14 @@
-" Allow diff to be open in a new tab
-command! GdiffsplitTab call GdiffsplitTab(expand("%"))
-function! GdiffsplitTab(filename)
-    exe 'tabedit ' . a:filename
-    Gdiffsplit
-endfunction
+" Settings
+setlocal colorcolumn=
+setlocal cursorline
+setlocal cursorlineopt=both
+setlocal foldmethod=syntax
+setlocal nonumber
+setlocal norelativenumber
 
-" Settings to apply to local buffer
-function! s:fugitive_settings()
-  setlocal nonumber
-  setlocal norelativenumber
-  setlocal colorcolumn=0
-  setlocal foldmethod=syntax
-endfunction
-
-
+" Autocmds
 augroup fugitive_au
-  au!
-  au FileType fugitive call s:fugitive_settings()
-  au User FugitiveIndex nmap <buffer> dt :Gtabedit <Plug><cfile><Bar>Gdiffsplit<CR>
-  au User FugitiveIndex nmap <buffer> <tab> =
+  autocmd!
+  autocmd User FugitiveIndex nmap <buffer> dt :Gtabedit <Plug><cfile><Bar>Gdiffsplit<CR>
+  autocmd User FugitiveIndex nmap <buffer> <tab> =
 augroup END

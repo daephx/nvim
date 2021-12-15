@@ -14,6 +14,28 @@ local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
 
+
+--- VSCode ---
+
+-- These settings are specific to running NeoVim
+-- with the embedded vscode compatability extension
+
+if g.is_vscode == 1 then
+  return
+end
+
+--- NeoVide ---
+
+-- Neovide is a graphical neovim client written in rust
+-- These variables are set when launching the application
+-- and allows us to add some extra settings.
+
+if g.is_neovide == 1 then
+  g.neovide_fullscreen = true
+  g.neovide_cursor_vfx_mode = 'pixiedust'
+end
+
+
 -- Set reusable values
 local encode = 'utf-8'                         -- Default File encoding
 local indent = 2                               -- Default indentation
@@ -126,16 +148,4 @@ if fn.has('win32') == 1 then
     set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
     set shellredir=\|\ Out-File\ -Encoding\ UTF8
   ]])
-end
-
-
---- NeoVide ---
-
--- Neovide is a graphical neovim client written in rust
--- These variables are set when launching the application
--- and allows us to add some extra settings.
-
-if g.is_neovide == 1 then
-  g.neovide_fullscreen = true
-  g.neovide_cursor_vfx_mode = 'pixiedust'
 end

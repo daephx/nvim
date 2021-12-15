@@ -112,14 +112,14 @@ opt.diffopt:append({'vertical'})                    -- Start diff mode in vertic
 opt.shortmess:append('cfI')                         -- Avoid 'hit-enter' prompts
 opt.whichwrap:append('<,>,[,],h,l')
 opt.wildmode:append('full:lastused')                -- Command-line completion mode
-opt.wildignore:append({
-  '**/.git/*',          -- Git Version control
+opt.wildignore:append({                       -- Path patterns wildmenu should ignore
+  '**/.git/*',         -- Git Version control
   '**/android/*',
-  '**/build/*',         -- Common build directory
+  '**/build/*',        -- Common build directory
   '**/coverage/*',
   '**/ios/*',
-  '**/node_modules/*',  -- Node module environment
-  '*.pyc',              -- Python cache'
+  '**/node_modules/*', -- Node module environment
+  '*.pyc',             -- Python cached
   '*_build/*'
 })
 

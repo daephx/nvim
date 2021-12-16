@@ -24,6 +24,11 @@ env.MYRUNTIME = fn.stdpath('config')
 
 -- Set colorscheme
 g.colors_name = 'tokyonight'
+
+-- Enable personal experimentals.
+-- Sometimes this only contains one or two remaps
+g.experiemental_on = 0
+
 -- Set leaders
 g.mapleader = ' '
 g.localleader = '\\'

@@ -3,18 +3,13 @@
 --   /  |/ / _ \/ __ \ | / / / __ `__ \
 --  / /|  /  __/ /_/ / |/ / / / / / / /
 -- /_/ |_/\___/\____/|___/_/_/ /_/ /_/
---
+-- =====================================
 -- File: init.lua
 -- Description: Personal configuration files for NeoVim!
 -- These settings are designed to fit my preferences/workflow,
 -- feel free to take what you like from them, no worries.
 -- Just don't copy them wholesale, figure out what works for you!
---
--- NOTE: Currently a work-in-progress, Use at your own risk...
 
---- Initialization ---
-
--- Abbreviations
 local cmd, env = vim.cmd, vim.env
 local fn, g = vim.fn, vim.g
 
@@ -24,12 +19,9 @@ local fn, g = vim.fn, vim.g
 env.MYRUNTIME = fn.stdpath('config')
 
 
---- Settings ---
+--- Globals ---
 
--- General settings, these are defined upfront
--- for easy of access and will be handled by modules
--- TODO: This should better handle other themes,
--- including non-existant ones, fallback to a default scheme
+-- Set colorscheme
 g.colors_name = 'tokyonight'
 
 

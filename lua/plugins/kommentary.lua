@@ -9,7 +9,7 @@ local kommentary = require('kommentary.config')
 
 -- Default
 kommentary.configure_language("default", {
-  prefer_single_line_comments = false,
+  prefer_single_line_comments = true,
   ignore_whitespace  = true,
 })
 

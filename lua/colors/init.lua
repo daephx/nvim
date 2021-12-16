@@ -18,7 +18,6 @@
 -- where you can define custom highlights to be applied afterward.
 
 local api = vim.api
-local cmd = vim.cmd
 local g = vim.g
 
 local M = {}
@@ -33,7 +32,7 @@ function M.setup(name)
   end
 
   -- Load colorscheme
-  cmd('colorscheme ' .. name)
+  vim.cmd('colorscheme ' .. name)
 
   -- Load colorscheme specific overrides
   if ok and colorscheme.highlights then
@@ -70,13 +69,13 @@ function M.setup(name)
   -- Define colorscheme autogroup
   -- Reload this function when colorscheme is updated
 
-  cmd [[
+  vim.cmd([[
   augroup colorscheme_au
     autocmd!
     autocmd ColorScheme *
       \ lua require('colors').setup(vim.g.colors_name)
   augroup end
-  ]]
+  ]])
 
 end
 

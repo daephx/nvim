@@ -1,5 +1,4 @@
 local api = vim.api
-local cmd = vim.cmd
 local g = vim.g
 
 g.fzf_colors = {
@@ -18,7 +17,7 @@ g.fzf_colors = {
   header  = { 'fg', 'Comment' }
 }
 
-cmd [[
+vim.cmd([[
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,flow-typed}" -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -28,7 +27,7 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-]]
+]])
 
 
 --- Mappings ---

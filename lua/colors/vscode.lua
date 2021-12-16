@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local g = vim.g
 
 --- Globals ---
@@ -12,24 +11,27 @@ local M = {}
 
 function M.highlights()
 
-  -- Disable italic comments]]
-  cmd [[highlight Comment gui=none ctermfg=gray guifg=#626262]]
+  vim.cmd([[
 
-  -- cmd [[highlight LineNr guibg=none]]
-  cmd [[highlight String guifg=#CBAA73]]
+  " Disable italic comments
+  highlight Comment gui=none ctermfg=gray guifg=#626262
 
-  -- Git status
-  cmd [[
-    " highlight DiffAdd guibg=green
-    highlight DiffChange guibg=#464C18
-    " highlight DiffDelete guibg=red
-  ]]
+  " highlight LineNr guibg=none
+  highlight String guifg=#CBAA73
 
-  -- Special strings
-  cmd [[highlight SpecialChar guifg=#56B1BB]]
+  " Git status
+  " highlight DiffAdd guibg=green
+  highlight DiffChange guibg=#464C18
+  " highlight DiffDelete guibg=red
 
-  -- Floating Windows
-  cmd [[highlight FloatBorder guifg=#5A5A5A guibg=none]]
+  " Special strings
+  highlight SpecialChar guifg=#56B1BB
+
+  " Floating Windows
+  highlight FloatBorder guifg=#5A5A5A guibg=none
+
+  ]])
+
 end
 
 return M

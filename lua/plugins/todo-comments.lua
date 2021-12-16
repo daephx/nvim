@@ -58,7 +58,7 @@ todo_comments.setup {
   },
 }
 
-vim.cmd [[
+vim.cmd([[
 
   " Highlights
 
@@ -85,4 +85,4 @@ vim.cmd [[
   " Commands
   command! Todo TodoTrouble
 
-]]
+]])

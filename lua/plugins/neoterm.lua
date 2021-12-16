@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 local map = vim.api.nvim_set_keymap
@@ -47,7 +46,7 @@ map('t', '<F12>', '<C-\\><C-n><cmd>Ttoggle<CR>', opts)
 map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
 
 
-cmd [[
+vim.cmd([[
 augroup neoterm_au
   autocmd!
   " Hide terminal from buffer list
@@ -58,4 +57,4 @@ augroup neoterm_au
   autocmd BufLeave term://* stopinsert
   " autocmd TermOpen * tnoremap <buffer> <esc> <c-\><c-n>
 augroup END
-]]
+]])

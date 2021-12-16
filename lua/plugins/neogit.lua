@@ -56,7 +56,7 @@ neogit.setup {
 }
 
 
-vim.cmd [[
+vim.cmd([[
 " Highlights
 highlight! link NeogitDiffContextHighlight StatusLineNC
 highlight NeogitCommitViewHeader guibg=none guifg=lightblue
@@ -71,4 +71,4 @@ augroup neogit_au
   autocmd FileType NeogitCommitView setlocal nonumber | setlocal cursorline
 
 augroup END
-]]
+]])

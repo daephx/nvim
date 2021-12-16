@@ -23,7 +23,7 @@ env.MYRUNTIME = fn.stdpath('config')
 --- Globals ---
 
 -- Set colorscheme
-g.colors_name = 'tokyonight'
+g.colors_name = 'vscode'
 
 -- Enable personal experimentals.
 -- Sometimes this only contains one or two remaps

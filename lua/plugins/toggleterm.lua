@@ -1,5 +1,3 @@
-local cmd = vim.cmd
-
 -- Prevent loading if not applicable
 local ok, toggleterm = pcall(require, 'toggleterm')
 if not ok then
@@ -94,11 +92,16 @@ M.lazydocker = Terminal:new({
   float_opts = float_opts,
 })
 
-cmd [[
-command! -nargs=0 Lazygit lua require('plugins.toggleterm').lazygit:toggle()
-command! -nargs=0 Lazydocker lua require('plugins.toggleterm').lazydocker:toggle()
+_G.toggle_terminal = function(name)
+  M[name]:toggle()
+end
 
-au! FileType toggleterm set signcolumn=no
+
+vim.cmd [[
+command! -nargs=0 Lazygit lua toggle_terminal('lazygit')<cr>
+command! -nargs=0 Lazydocker lua toggle_terminal('lazydocker')<cr>
+
+autocmd! FileType toggleterm setlocal signcolumn=
 ]]
 
 return M

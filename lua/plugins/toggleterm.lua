@@ -48,7 +48,25 @@ local float_opts = {
 
 --- Terminals ---
 
+-- Export custom terminal settings for diffrent usecases
+
 local M = {}
+
+M.default = Terminal:new({
+  cmd = vim.o.shell,
+  direction = "horizontal",
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>",
+      { noremap = true, silent = true }
+    )
+    vim.api.nvim_buf_set_keymap(
+      term.bufnr,
+      "t", "<F12>", [[<C-\><C-n><cmd>lua toggle_terminal('default')<cr>]],
+      { noremap = true, silent = true }
+    )
+  end,
+})
 
 M.lazygit = Terminal:new({
   cmd = "lazygit",

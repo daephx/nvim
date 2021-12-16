@@ -89,3 +89,6 @@ plugged/
 
 # Spellcheck cache
 spell/*.spl
+
+# Packer compile
+plugin/packer_compiled.lua

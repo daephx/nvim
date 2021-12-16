@@ -64,12 +64,5 @@ augroup DaephxSolutions
   autocmd CursorHold,CursorHoldI * silent! update
   autocmd FocusLost * silent! wall " Write all on focus loss
 
-  " Disable relative numbers in insert mode
-  autocmd InsertEnter * :set norelativenumber
-  autocmd InsertLeave * :set relativenumber
-
-  " Clear the search highlight after 'updatetime'
-  autocmd CursorHold,CursorHoldI * let @/ = ''
-
 augroup END
 ]])

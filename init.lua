@@ -24,6 +24,9 @@ env.MYRUNTIME = fn.stdpath('config')
 
 -- Set colorscheme
 g.colors_name = 'tokyonight'
+-- Set leaders
+g.mapleader = ' '
+g.localleader = '\\'
 
 
 --- Modules ---

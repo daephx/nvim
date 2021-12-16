@@ -6,6 +6,8 @@ if not ok then
   return
 end
 
+local Terminal  = require('toggleterm.terminal').Terminal
+
 toggleterm.setup {
   -- size can be a number or function which is passed the current terminal
   size = function(term)
@@ -48,7 +50,6 @@ local float_opts = {
   }
 }
 
-local Terminal  = require('toggleterm.terminal').Terminal
 
 M.lazygit = Terminal:new({
   cmd = "lazygit",

@@ -70,7 +70,7 @@ lualine.setup {
         'diagnostics',
         update_in_insert = false, -- Update diagnostics in insert mode
         -- table of diagnostic sources, available sources:
-        sources = {'nvim_lsp', 'coc', 'ale'},
+        sources = {'nvim_diagnostic', 'coc', 'ale'},
         -- displays diagnostics from defined severity
         -- sections = {'hint', 'info', 'warn', 'error'},
         symbols = {

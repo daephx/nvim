@@ -40,6 +40,10 @@ g.localleader = '\\'
 -- The order of these does matter!
 
 require('settings') -- General NeoVim Settings
+require('utils') -- General utility functions
+require('plugins') -- Plugin definitions
+require('commands') -- Command abbreviations
+require('mappings') -- Hotkey remaps
 
 
 --- Helpers ---

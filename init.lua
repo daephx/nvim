@@ -53,7 +53,7 @@ augroup DaephxSolutions
   autocmd!
 
   " Auto-sourcing Configurations
-  autocmd BufWritePost,SourcePost $MYVIMRC :so $MYVIMRC
+  autocmd BufWritePost $MYVIMRC :so $MYVIMRC
     \ | redraw | echom 'Sourcing $MYVIMRC: ' . $MYVIMRC
 
   " File cleaning operations | ORDER MATTERS

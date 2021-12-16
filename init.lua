@@ -44,11 +44,10 @@ require('settings') -- General NeoVim Settings
 
 --- Helpers ---
 
--- Useful functions and auto-commands!
--- These are must haves, other settings and plugins
--- will likely exist in external locations.
+-- Useful auto-commands that make life easier
+-- These should always be available!
 
-cmd([[
+vim.cmd([[
 augroup vimrc_au
   autocmd!
 

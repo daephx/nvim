@@ -37,11 +37,6 @@ toggleterm.setup {
   }
 }
 
-
---- Terminals ---
-
-local M = {}
-
 local float_opts = {
   winblender = 0,
   highlights = {
@@ -50,6 +45,10 @@ local float_opts = {
   }
 }
 
+
+--- Terminals ---
+
+local M = {}
 
 M.lazygit = Terminal:new({
   cmd = "lazygit",

@@ -10,8 +10,9 @@
 -- feel free to take what you like from them, no worries.
 -- Just don't copy them wholesale, figure out what works for you!
 
-local cmd, env = vim.cmd, vim.env
-local fn, g = vim.fn, vim.g
+local env = vim.env
+local fn = vim.fn
+local g = vim.g
 
 -- Environement variable for config directory
 -- This is just nice to have for opening files

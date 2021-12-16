@@ -49,7 +49,7 @@ require('settings') -- General NeoVim Settings
 -- will likely exist in external locations.
 
 cmd([[
-augroup DaephxSolutions
+augroup vimrc_au
   autocmd!
 
   " Auto-sourcing Configurations

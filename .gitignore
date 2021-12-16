@@ -75,7 +75,14 @@ tags
 # The previous section was auto-genrated,
 # From here you can put your custom ignore definitions!
 
+
 ### Project ###
+
+# Placeholder files
+.gitkeep
+.keep
+.place
+.placeholder
 
 # Temporary locations
 .[Tt]emp/

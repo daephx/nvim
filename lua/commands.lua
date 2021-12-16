@@ -1,8 +1,24 @@
-local cmd = vim.cmd
-
 -- Mistypes
-cmd [[cnoreabbrev W   w]]
-cmd [[cnoreabbrev Wq wq]]
-cmd [[cnoreabbrev Xa xa]]
-cmd [[cnoreabbrev xA xa]]
-cmd [[cnoreabbrev XA xa]]
+vim.cmd([[
+cnoreabbrev W   w
+cnoreabbrev Wq wq
+cnoreabbrev Xa xa
+cnoreabbrev xA xa
+cnoreabbrev XA xa
+
+cnoreabbrev qq 1,$bd!
+
+" Better bufdelete
+cnoreabbrev bd bn\|bd#
+
+" Minimal BufDel
+" Prevent windows from being removed when deleteing buffers
+function! BufferDelete()
+  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    \ && &ft != 'dashboard'
+      Dashboard | bd#
+  else | bn | bd#
+  endif
+endfunction
+cnoreabbrev <silent> bd call BufferDelete()
+]])

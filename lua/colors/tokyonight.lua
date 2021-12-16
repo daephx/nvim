@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local g = vim.g
 
 
@@ -32,19 +31,17 @@ local M = {}
 
 function M.highlights()
 
-  cmd [[highlight String guifg=#CBAA73]]
-  cmd [[highlight Comment ctermfg=gray guifg=#626262]]
+  vim.cmd([[
 
-  -- cmd [[highlight DiffAdd guifg=]]
-  cmd [[highlight DiffChange guifg=#dea311 guibg=#463C18]]
-  -- cmd [[highlight DiffDelete guifg=]]
+  highlight String guifg=#CBAA73
+  highlight Comment ctermfg=gray guifg=#626262
 
-  -- Fix which-key.nvim background
-  --[[ if packer_plugins["which-key.nvim"] then
-    if g.tokyonight_dark_float == true then
-      cmd('highlight! link WhichKeyFloat StatusLineNC')
-    end
-  end ]]
+  " Git diffs
+  " highlight DiffAdd guifg=
+  highlight DiffChange guifg=#dea311 guibg=#463C18
+  " highlight DiffDelete guifg=
+
+  ]])
 
 end
 

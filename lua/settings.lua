@@ -7,7 +7,6 @@
 -- Module: settings
 -- Description: settings / options for NeoVim
 
-local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
@@ -148,12 +147,12 @@ opt.listchars = {
 -- These settings apply only to nt/windows
 
 if fn.has('win32') == 1 then
-  cmd [[
+  vim.cmd([[
   " Set default shell to powershell
   let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
   set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
   set shellredir=\|\ Out-File\ -Encoding\ UTF8
   set shellquote=\"
   set shellxquote=
-  ]]
+]])
 end

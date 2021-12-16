@@ -1,10 +1,6 @@
-local cmd = vim.cmd
-local g = vim.g
-
 local utils = require('colors.utils')
 
 local M = {}
-
 
 --@param table : table = {opt = bool, highlights = {}}
 function M.setup(table)
@@ -38,29 +34,24 @@ function M.setup(table)
     ]]
   end
 
-  -- Bufferline highlights
-  -- cmd [[highlight BufferLineSeparator]]
+  vim.cmd([[
 
-  -- Remove TODO highlight
-  cmd [[
+  " Bufferline highlights
+  " highlight BufferLineSeparator
+
+  " Remove TODO highlight
   highlight clear Todo
   highlight clear TroubleIndent
-  ]]
 
-  -- Highlight ListChars, including EOL
-  cmd [[
+  " Highlight ListChars, including EOL
   highlight! link EndOfBuffer NonText
   highlight       NonText gui=nocombine
-  ]]
 
-  -- Fix highlights for cursorline
-  cmd [[
+  " Fix highlights for cursorline
   highlight link CursorLine LineNr
   highlight      CursorLine guifg=none
-  ]]
 
-  -- GitSigns parital overrides
-  cmd [[
+  " GitSigns parital overrides
   " This fixes background colors for vcs signs in the gutter
   " effective if you don't have the background colors disabled
   for highlightGroup in ['GitSignsAdd', 'GitSignsChange', 'GitSignsDelete']
@@ -68,10 +59,8 @@ function M.setup(table)
     \' guibg='   . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'gui') .
     \' ctermbg=' . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'cterm')
   endfor
-  ]]
 
-  -- Coc.vim diagnostic partial overrides
-  cmd [[
+  " Coc.vim diagnostic partial overrides
   " This fixes background colors for diagnostic signs in the gutter
   " effective if you don't have the background colors disabled
   if !empty('g:coc_enabled')
@@ -90,7 +79,8 @@ function M.setup(table)
       \' ctermbg=' . synIDattr(synIDtrans(hlID('SignColumn')), 'bg', 'cterm')
     endfor
   endif
-  ]]
+  ]])
+
 end
 
 return M

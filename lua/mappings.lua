@@ -62,7 +62,7 @@ end
 
 -- Diffsplit
 -- map('n', 'q', "&diff ? '<cmd>tabclose<CR>' : 'q'")
-vim.cmd [[ nnoremap <expr> q &diff ? '<cmd>tabclose<CR>' : 'q' ]]
+vim.cmd([[ nnoremap <expr> q &diff ? '<cmd>tabclose<CR>' : 'q' ]])
 
 
 --- Whichkey ---

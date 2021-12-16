@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 
@@ -32,7 +31,7 @@ local plugin_count = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/p
 g.dashboard_custom_footer = {'Started with ' .. plugin_count .. ' detected plugins'}
 
 
-cmd([[
+vim.cmd([[
 augroup dashboard_au
   autocmd! * <buffer>
 

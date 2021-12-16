@@ -7,8 +7,6 @@
 -- Module: plugins
 -- Description: plugins definitions and settings
 
-local cmd = vim.cmd
-
 -- Control vim builtin plugins
 require('plugins.builtins')
 
@@ -336,7 +334,7 @@ return packer.startup({function(use)
   --- Recompiler ---
   -- Recompile packer definitions when this file is modifed
   -- This allows your plugins and configurations to be kept fast
-  cmd [[
+  vim.cmd [[
   augroup plugins_au
     autocmd!
     autocmd BufWritePost lua/plugins.lua source <afile> | PackerCompile

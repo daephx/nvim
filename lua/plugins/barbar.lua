@@ -1,5 +1,4 @@
 local api = vim.api
-local cmd = vim.cmd
 local g = vim.g
 
 -- Set barbar's options
@@ -71,7 +70,7 @@ g.bufferline = {
 
 -- Highlights
 
-cmd [[
+vim.cmd [[
   " hi BufferCurrent guifg=#4083BD
   hi BufferTabpageFill guifg=#2E5E88
   hi BufferVisable guifg=#4083BD

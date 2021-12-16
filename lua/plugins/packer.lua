@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local fn = vim.fn
 
 
@@ -11,7 +10,7 @@ function M.bootstrap()
     Packer_bootstrap = fn.system({
       'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path
     })
-    cmd('packadd packer.nvim')
+    vim.cmd('packadd packer.nvim')
   end
 end
 

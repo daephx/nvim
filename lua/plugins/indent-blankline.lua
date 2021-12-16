@@ -17,9 +17,6 @@ local indent_blankline = require('indent_blankline')
 
 indent_blankline.setup {
   enabled = true,
-  -- char = "| ",
-  buftype_exclude = {'help', 'nofile', 'terminal'},
-  filetype_exclude = {'dashboard', 'packer', 'help'},
   char_highlight = 'LineNr',
   show_end_of_line = false,
   show_first_indent_level = false,
@@ -28,6 +25,32 @@ indent_blankline.setup {
   show_current_context = true,
   show_current_context_start = false,
   use_treesitter = true,
+  -- char = "| ",
+
+  buftype_exclude = {
+    'help',
+    'nofile',
+    'terminal'
+  },
+  filetype_exclude = {
+    "",
+    "LuaTree",
+    "NvimTree",
+    "UltestOutput",
+    "UltestSummary",
+    "dapui_breakpoints",
+    "dapui_hover",
+    "dapui_scopes",
+    "dapui_stacks",
+    "dapui_watches",
+    "dashboard",
+    "dbui",
+    "fugitive",
+    "fugitiveblame",
+    "help",
+    "packer",
+    "term",
+  },
 
   char_highlight_list = {
     'IndentBlanklineIndent1',

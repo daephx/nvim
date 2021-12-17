@@ -4,6 +4,10 @@
 " Nodejs extension host for vim & neovim,
 " load extensions like VSCode and host language servers.
 
+" FIXME: Currently completely disabled in favor of native_lsp
+" Likely could toggle between them though
+finish
+
 " --- Conquer of Completion ---
 
 " Prevent config loading w/o plugin

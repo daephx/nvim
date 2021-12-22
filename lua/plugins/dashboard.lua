@@ -27,7 +27,7 @@ g.dashboard_custom_section = {
   i = {description = {'  Exit                  SPC q q'}, command = 'exit'},
 }
 
-local plugin_count = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
+local plugin_count = fn.len(fn.globpath(fn.stdpath('data')..'/site/pack/packer/start', '*', 0, 1))
 g.dashboard_custom_footer = {'Started with ' .. plugin_count .. ' detected plugins'}
 
 

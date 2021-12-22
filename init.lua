@@ -22,16 +22,34 @@ env.MYRUNTIME = fn.stdpath('config')
 
 --- Globals ---
 
+-- VSCode
+-- These settings are specific to running NeoVim
+-- with the embedded vscode compatability extension
+if g.is_vscode == 1 then
+  -- Disable plugins for external editor 'VSCode'
+  vim.cmd('filetype indent plugin off')
+  return
+end
+
+-- NeoVide
+-- Neovide is a graphical neovim client written in rust
+-- These variables are set when launching the application
+-- and allows us to add some extra settings.
+if g.is_neovide == 1 then
+  g.neovide_fullscreen = true
+  g.neovide_cursor_vfx_mode = 'pixiedust'
+end
+
 -- Set colorscheme
 g.colors_name = 'vscode'
+
+-- Set leader keys
+g.mapleader = ' '
+g.localleader = '\\'
 
 -- Enable personal experimentals.
 -- Sometimes this only contains one or two remaps
 g.experiemental_on = 0
-
--- Set leaders
-g.mapleader = ' '
-g.localleader = '\\'
 
 
 --- Modules ---

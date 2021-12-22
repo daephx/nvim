@@ -25,7 +25,16 @@ indent_blankline.setup {
   show_current_context = true,
   show_current_context_start = false,
   use_treesitter = true,
+
   -- char = "| ",
+  -- char_highlight_list = {
+  --   'IndentBlanklineIndent1',
+  --   'IndentBlanklineIndent2',
+  --   'IndentBlanklineIndent3',
+  --   'IndentBlanklineIndent4',
+  --   'IndentBlanklineIndent5',
+  --   'IndentBlanklineIndent6',
+  -- },
 
   buftype_exclude = {
     'help',
@@ -50,14 +59,5 @@ indent_blankline.setup {
     "help",
     "packer",
     "term",
-  },
-
-  char_highlight_list = {
-    'IndentBlanklineIndent1',
-    'IndentBlanklineIndent2',
-    'IndentBlanklineIndent3',
-    'IndentBlanklineIndent4',
-    'IndentBlanklineIndent5',
-    'IndentBlanklineIndent6',
   },
 }

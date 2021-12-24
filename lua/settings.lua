@@ -112,8 +112,8 @@ opt.wildignore:append({                       -- Path patterns wildmenu should i
 opt.list = true
 opt.listchars = {
   -- eol = '↴',
-  -- space = '·',
-  -- tab = '»',
+  space = ' ',
+  tab = '  ',
   extends = '»',
   multispace = '·',
   precedes = '«',

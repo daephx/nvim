@@ -5,7 +5,7 @@ vim.fn.sign_define('DapStopped', { text = '◯', texthl = 'Number' })
 
 local M = {}
 
-M.load_modules = function()
+M.config = function()
   -- require('dap.python')
 end
 

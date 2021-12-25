@@ -205,7 +205,7 @@ return packer.startup({function(use)
 
   use { -- Debug adapter protocol client
     'mfussenegger/nvim-dap',
-    config = function() require('plugins.dap').load_modules() end
+    config = function() require('plugins.dap').config() end
   }
 
   use { -- Debugging interface for nvim-dap

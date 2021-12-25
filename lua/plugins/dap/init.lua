@@ -11,6 +11,16 @@ vim.fn.sign_define('DapLogPoint', {text=' ', texthl='debugBreakpoint'})
 vim.fn.sign_define('DapStopped', {text='●', texthl='DiagnosticsHint'})
 
 
+local dap = require('dap')
+
+dap.listeners.after['event_initialized']['dapui'] = function()
+  require('dapui').open()
+end
+dap.listeners.after['event_terminated']['dapui'] = function()
+  require('dapui').close()
+end
+
+
 -- Languages defined here will be looked for in the plugin.dap module,
 -- Any lua script with the coorisponding name will be loaded if found.
 -- i.e. lua/plugins/dap/python.lua

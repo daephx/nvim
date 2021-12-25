@@ -10,6 +10,7 @@
 -- Control vim builtin plugins
 require('plugins.builtins')
 
+-- Initalize packer plugin
 local ok, packer = pcall(require, "packer")
 if not ok then
   require("plugins.packer").bootstrap()
@@ -19,7 +20,7 @@ end
 
 --- Plugins ---
 
--- Initalize packer/plugin list
+-- Initalize plugin list
 return packer.startup({function(use)
 
   use { -- Packer can manage itself
@@ -36,15 +37,18 @@ return packer.startup({function(use)
     'Mofiqul/vscode.nvim',
     config = function() require('colors').setup('vscode') end
   }
+
   use { -- TokyoNight ColorScheme
     'folke/tokyonight.nvim',
     config = function() require('colors').setup('tokyonight') end
   }
-  use {
+
+  use { -- Nice pink neovim color scheme
     'numtostr/sakura.nvim',
     config = function() require('colors').setup('sakura') end
   }
-  use {
+
+  use { -- Retro groove color scheme for Vim
     'morhetz/gruvbox',
     config = function() require('colors').setup('gruvbox') end
   }
@@ -54,14 +58,13 @@ return packer.startup({function(use)
     config = function() require('plugins.dashboard') end
   }
 
-  use {
+  use { -- A "buffer and tab" tabline for neovim
     'kdheepak/tabline.nvim',
     requires = {
       { 'hoob3rt/lualine.nvim', opt = true },
     },
     config = function() require('plugins.tabline') end
   }
-
 
   use { -- Blazing fast statusline
     'nvim-lualine/lualine.nvim',
@@ -162,9 +165,9 @@ return packer.startup({function(use)
   }
 
 
-  -- Language Tools
+  -- Language Utilities
 
-  use {
+  use { -- Advnaced language parsing for neovim
     'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
     config = function() require('plugins.treesitter') end
   }
@@ -199,7 +202,7 @@ return packer.startup({function(use)
     }) end
   }
 
-  use {
+  use { -- Integration for nvim-dap with telescope.nvim
     'nvim-telescope/telescope-dap.nvim',
     after = { 'telescope.nvim', 'nvim-dap' },
   }
@@ -207,9 +210,15 @@ return packer.startup({function(use)
 
   -- Completion
 
-  use {'L3MON4D3/LuaSnip'}
-  use {'onsails/lspkind-nvim'}
-  use {
+  use { -- Snippet Engine for Neovim
+    'L3MON4D3/LuaSnip'
+  }
+
+  use { -- vscode-like pictograms for neovim
+    'onsails/lspkind-nvim'
+  }
+
+  use { -- A completion plugin for neovim
     'hrsh7th/nvim-cmp',
     disable = false,
     -- event = { 'InsertEnter' },
@@ -240,21 +249,21 @@ return packer.startup({function(use)
     config = function() require('plugins.toggleterm') end
   }
 
-  use {
+  use { -- autopairs for neovim written in lua
     'windwp/nvim-autopairs',
     config = function()
       require('plugins.autopairs')
     end
   }
 
-  use {
+  use { -- Neovim commenting plugin, written in lua
     'b3nj5m1n/kommentary',
     config = function()
       require('plugins.kommentary')
     end
   }
 
-  use {
+  use { -- A high-performance color highlighter
     'norcalli/nvim-colorizer.lua',
     config = function() require'colorizer'.setup({
       '*'; -- Highlight all files, you can still customize others!
@@ -265,13 +274,13 @@ return packer.startup({function(use)
     }, { mode = 'foreground'; }) end
   }
 
-  use {
+  use { -- Highlight, list and search todo comments
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
     config = function() require("plugins.todo-comments") end
   }
 
-  use {
+  use {  -- A pretty list for showing diagnostics, qf/loc lists
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function() require('plugins.trouble') end
@@ -283,7 +292,10 @@ return packer.startup({function(use)
     requires = "nvim-lua/plenary.nvim"
   }
 
-  use {
+
+  --- Documentaiton / Markdown
+
+  use { -- Personal Wiki for Vim
     'vimwiki/vimwiki',
     config = function()
       vim.g.vimwiki_list = {
@@ -315,6 +327,7 @@ return packer.startup({function(use)
   --- Update/Sync ---
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+
   if Packer_bootstrap then
     packer.sync()
   end
@@ -322,6 +335,7 @@ return packer.startup({function(use)
   --- Recompiler ---
   -- Recompile packer definitions when this file is modifed
   -- This allows your plugins and configurations to be kept fast
+
   vim.cmd([[
   augroup plugins_au
     autocmd!

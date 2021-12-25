@@ -8,7 +8,6 @@
 -- Description: settings / options for NeoVim
 
 local fn = vim.fn
-local g = vim.g
 local opt = vim.opt
 
 

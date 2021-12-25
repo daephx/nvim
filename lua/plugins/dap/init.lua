@@ -65,7 +65,7 @@ local languages = {
   -- "go",
   -- "ruby",
   -- "lua",
-  -- "python",
+  "python",
   -- "rust",
   -- "javascript",
 }

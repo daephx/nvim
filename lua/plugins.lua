@@ -205,8 +205,17 @@ return packer.startup({function(use)
 
   use { -- Debug adapter protocol client
     'mfussenegger/nvim-dap',
-    requires = {'rcarriga/nvim-dap-ui', opt = true},
     config = function() require('plugins.dap').load_modules() end
+  }
+
+  use { -- Debugging interface for nvim-dap
+    "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"},
+    config = function() require("dapui").setup({
+      mappings = {
+        expand = { "<CR>", "<2-LeftMouse>", "<Tab>" },
+      },
+      sidebar = {position = 'right'}
+    }) end
   }
 
   use {

@@ -49,6 +49,23 @@ dap.configurations.python = {
     program = "${file}"; -- This configuration will launch the current file if used.
     pythonPath = get_python_path(),
   },
+  {
+    type = "python",
+    request = "attach",
+    name = "Attach remote",
+    justMyCode = false,
+    pythonPath = get_python_path(),
+    host = function()
+      local value = vim.fn.input("Host [127.0.0.1]: ")
+      if value ~= "" then
+        return value
+      end
+      return "127.0.0.1"
+    end,
+    port = function()
+      return tonumber(vim.fn.input("Port [5678]: ")) or 5678
+    end,
+  },
 }
 
 

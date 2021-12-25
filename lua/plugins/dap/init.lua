@@ -1,7 +1,14 @@
+-- DAP | Debug Adapter Protocol
 
--- Set signs
-vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticError' })
-vim.fn.sign_define('DapStopped', { text = '◯', texthl = 'Number' })
+-- Define Debugging highlights
+vim.cmd('highlight link debugBreakpoint DiagnosticsHint')
+
+-- Define Debugging signs
+vim.fn.sign_define('DapBreakpoint', {text=' ', texthl='debugBreakpoint'})
+vim.fn.sign_define('DapBreakpointCondition', {text=' ', texthl='DiagnosticWarn'})
+vim.fn.sign_define('DapBreakpointRejected', {text=' ', texthl='DiagnosticError'})
+vim.fn.sign_define('DapLogPoint', {text=' ', texthl='debugBreakpoint'})
+vim.fn.sign_define('DapStopped', {text='●', texthl='DiagnosticsHint'})
 
 
 -- Languages defined here will be looked for in the plugin.dap module,

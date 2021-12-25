@@ -4,6 +4,11 @@
 -- path/to/virtualenvs/debugpy/bin/python -m pip install debugpy
 
 local dap = require('dap')
+local ok, dap_python = pcall(require, 'dap-python')
+if ok then
+  dap_python.test_runner = "pytest"
+end
+
 
 -- You can then either use nvim-dap-python - it comes with adapter and configurations definitions
 dap.adapters.python = {

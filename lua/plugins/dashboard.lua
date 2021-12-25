@@ -41,31 +41,15 @@ augroup dashboard_au
   " Set dashboard header color
   autocmd User dashboardReady highlight DashboardHeader guifg=#569cd6
 
-  " Disable fill characters on dashboard
-  autocmd FileType dashboard setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
-
-  " Set scroll offset for dashboard, restore previous on BufLeave
-  autocmd FileType dashboard let prev_scrolloff = &scrolloff | setlocal scrolloff=999
-  autocmd FileType dashboard autocmd BufLeave <buffer> let &scrolloff = prev_scrolloff
-
   " Disable mouse on dashboard
   autocmd User dashboardReady autocmd FileType dashboard setlocal mouse=
-  " autocmd FileType dashboard let s:prev_mouse=&mouse | setlocal mouse=
-  " autocmd FileType dashboard autocmd BufLeave <buffer> let &mouse = prev_mouse
+
+  " Disable fill characters on dashboard
+  autocmd FileType dashboard setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
   " Disable Page scrolling keys on dashboard
   autocmd FileType dashboard nnoremap <buffer> <PageUp>   <Nop>
   autocmd FileType dashboard nnoremap <buffer> <PageDown> <Nop>
-
-  " Set Dashboard command remaps
-  autocmd FileType dashboard nnoremap <buffer> <leader>qq <cmd>exit<CR>
-  autocmd FileType dashboard nnoremap <buffer> <leader>sl <cmd>SessionLoad<CR>
-
-" Reopen dashboard when closing last buffer
-  autocmd BufDelete *
-    \ if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 && &ft != 'dashboard'
-    \ | Dashboard
-    \ | endif
 
 augroup END
 ]])

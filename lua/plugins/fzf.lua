@@ -1,4 +1,3 @@
-local api = vim.api
 local g = vim.g
 
 g.fzf_colors = {
@@ -32,12 +31,9 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 --- Mappings ---
 
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = false }
-
-map('n', '<Leader>fh', ':History<CR>', opts)
-map('n', '<Leader>fb', ':Buffers<CR>', opts)
-map('n', '<Leader>ft', ':Files<CR>', opts)
-map('n', '<Leader>rg', '<ESC>:RG<Space>', opts)
-map('n', '<Leader>rw', '<ESC>:RG <C-R><C-W>', opts)
-map('n', '<Leader>rh', '<ESC>:RG<UP><CR>', opts)
+map('n', '<Leader>fh', '<cmd>History<CR>')
+map('n', '<Leader>fb', '<cmd>Buffers<CR>')
+map('n', '<Leader>ft', '<cmd>Files<CR>')
+map('n', '<Leader>rg', '<ESC><cmd>RG<Space>')
+map('n', '<Leader>rw', '<ESC><cmd>RG <C-R><C-W>')
+map('n', '<Leader>rh', '<ESC><cmd>RG<UP><CR>')

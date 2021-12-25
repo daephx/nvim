@@ -65,6 +65,4 @@ bufferline.setup {
 vim.cmd([[
   highlight! link BufferlineNvimTree TabLine
   highlight       BufferlineNvimTree guifg=#e1e1e1
-" highlight! link BufferLineSeparator Constant
-" highlight! link BufferLineSeparatorVisible Constant
 ]])

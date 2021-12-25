@@ -208,7 +208,7 @@ return packer.startup({function(use)
     requires = {
       {'rcarriga/nvim-dap-ui', opt = true},
       {'nvim-dap-python', opt = true}},
-    config = function() require('dap').load_modules() end
+    config = function() require('plugins.dap').load_modules() end
   }
 
   use {

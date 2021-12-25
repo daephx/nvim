@@ -116,12 +116,6 @@ return packer.startup({function(use)
     config = function() require('plugins.telescope').config() end
   }
 
-  -- use { -- A simple wrapper around :mksession
-  --   "Shatur/neovim-session-manager",
-  --   requires = { 'nvim-telescope/telescope.nvim' },
-  --   config = function() require("plugins.session-manager") end
-  -- }
-
   use { -- A small automated session manager for neovim
     'rmagatti/auto-session',
     config = function()

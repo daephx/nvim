@@ -1,0 +1,46 @@
+# File: sh.snippets
+# Description: Shell script snippets
+
+snippet if
+	f [[ ${1:condition} ]]; then
+		${0:${VISUAL}}
+	fi
+
+snippet elif
+	elif [[ ${1:condition} ]]; then
+		${0:${VISUAL}}
+
+snippet for "Numerical for loop"
+	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
+		${0:${VISUAL}}
+	done
+
+snippet fori "Haystack for loop"
+	for ${1:needle} in ${2:haystack} ; do
+		${0:${VISUAL}}
+
+snippet while
+	while [[ ${1:condition} ]]; do
+		${0:${VISUAL}}
+	done
+
+snippet until
+	until [[ ${1:condition} ]]; do
+		${0:${VISUAL}}
+	done
+
+snippet case
+	case ${1:word} in
+		${2:pattern})
+			${0};;
+	esac
+
+snippet fun-sh "POSIX function"
+	${1:function_name}() {
+		${0:#function_body}
+	}
+
+snippet fun "Bash function"
+	function ${1:function_name}() {
+		${0:#function_body}
+	}

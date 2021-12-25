@@ -64,16 +64,16 @@ imap <C-v> <C-r><C-o>+
 
 fun! UpdateTermCursor()
 
-	" Cursor in terminal:
-	" Link: https://vim.fandom.com/wiki/Configuring_the_cursor
-	" 0 -> blinking block not working in wsl
-	" 1 -> blinking block
-	" 2 -> solid block
-	" 3 -> blinking underscore
-	" 4 -> solid underscore
-	" Recent versions of xterm (282 or above) also support
-	" 5 -> blinking vertical bar
-	" 6 -> solid vertical bar
+  " Cursor in terminal:
+  " Link: https://vim.fandom.com/wiki/Configuring_the_cursor
+  " 0 -> blinking block not working in wsl
+  " 1 -> blinking block
+  " 2 -> solid block
+  " 3 -> blinking underscore
+  " 4 -> solid underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
 
   if &term =~ "xterm\\|rxvt"
     fun! s:cologet(gr)

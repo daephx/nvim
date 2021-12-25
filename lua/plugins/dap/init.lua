@@ -21,6 +21,22 @@ dap.listeners.after['event_terminated']['dapui'] = function()
 end
 
 
+vim.cmd([[
+function! SetupREPL()
+  lua require("dap.ext.autocompl").attach()
+  setlocal nobuflisted
+  setlocal nonumber
+  setlocal norelativenumber
+  setlocal signcolumn=
+endfunction
+
+augroup dapui_au
+  autocmd!
+  autocmd FileType dap-repl call SetupREPL()
+augroup END
+]])
+
+
 -- Languages defined here will be looked for in the plugin.dap module,
 -- Any lua script with the coorisponding name will be loaded if found.
 -- i.e. lua/plugins/dap/python.lua

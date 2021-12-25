@@ -85,5 +85,8 @@ augroup vimrc_au
   autocmd CursorHold,CursorHoldI * silent! update
   autocmd FocusLost * silent! wall " Write all on focus loss
 
+  " Display highlight for a short moment when yanking text
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+
 augroup END
 ]])

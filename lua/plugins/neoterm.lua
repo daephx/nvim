@@ -1,7 +1,5 @@
 local fn = vim.fn
 local g = vim.g
-local map = vim.api.nvim_set_keymap
-local opts = {noremap = true, silent = true}
 
 vim.api.nvim_echo({'Pre globals', 'WarningMsg'}, true, {})
 
@@ -34,16 +32,15 @@ end
 
 vim.api.nvim_echo({'After win32', 'WarningMsg'}, true, {})
 
--- Mappings
+
+--- Mappings ---
 
 -- Spawn/Toggle Terminal
--- map('n', '<leader>`', '<cmd>Ttoggle<CR>', opts)
--- map('t', '<leader>`', '<C-\\><C-n>Ttoggle<CR>', opts)
-map('n', '<F12>', '<cmd>Ttoggle<CR>', opts)
-map('t', '<F12>', '<C-\\><C-n><cmd>Ttoggle<CR>', opts)
+map('n', '<F12>', '<cmd>Ttoggle<CR>')
+map('t', '<F12>', '<C-\\><C-n><cmd>Ttoggle<CR>')
 
 -- Allow Ctrl+W to switch window in terminal
-map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
+map('t', '<C-w>', '<C-\\><C-n><C-w>')
 
 
 --- Autocmds ---

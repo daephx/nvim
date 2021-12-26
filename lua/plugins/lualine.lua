@@ -14,15 +14,6 @@ local function diff_source()
   end
 end
 
--- Conditional buftype/filetype
--- local function exclude_bt(list)
---   for _, v in pairs(list) do
---     if list[v] == '1' then print('ree')
---     end
---   end
--- end
-
-
 
 -- Custom Themes
 local custom_codedark = require'lualine.themes.codedark'

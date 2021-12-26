@@ -50,12 +50,6 @@ lualine.setup {
       {'branch', icon = ''},
       {'diff', source = diff_source},
     },
-    -- lualine_c = {{'filename', fmt = function(str)
-    --      local buf_bt = vim.api.nvim_buf_get_option(0, 'buftype')
-    --      if buf_bt ~= 'terminal' then return str end
-    -- end}},
-    -- lualine_d = {
-    -- },
     lualine_c = {
       {
         'diagnostics',

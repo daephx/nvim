@@ -52,4 +52,4 @@ augroup dashboard_au
   autocmd FileType dashboard nnoremap <buffer> <PageDown> <Nop>
 
 augroup END
-]]
+]])

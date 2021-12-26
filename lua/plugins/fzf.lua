@@ -1,24 +1,22 @@
-local api = vim.api
-local cmd = vim.cmd
 local g = vim.g
 
 g.fzf_colors = {
-  fg      = { 'fg', 'Normal' },
-  bg      = { 'bg', 'Normal' },
-  hl      = { 'fg', 'Comment' },
-  ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
   ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
+  ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
   ['hl+'] = { 'fg', 'Statement' },
-  info    = { 'fg', 'PreProc' },
+  bg      = { 'bg', 'Normal' },
+  fg      = { 'fg', 'Normal' },
+  hl      = { 'fg', 'Comment' },
   border  = { 'fg', 'Ignore' },
-  prompt  = { 'fg', 'Conditional' },
-  pointer = { 'fg', 'Exception' },
+  header  = { 'fg', 'Comment' },
+  info    = { 'fg', 'PreProc' },
   marker  = { 'fg', 'Keyword' },
+  pointer = { 'fg', 'Exception' },
+  prompt  = { 'fg', 'Conditional' },
   spinner = { 'fg', 'Label' },
-  header  = { 'fg', 'Comment' }
 }
 
-cmd [[
+vim.cmd([[
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --hidden --column --line-number --no-heading --color=always --smart-case --glob "!{.git,node_modules,flow-typed}" -- %s || true'
   let initial_command = printf(command_fmt, shellescape(a:query))
@@ -28,17 +26,14 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
-]]
+]])
 
 
 --- Mappings ---
 
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = false }
-
-map('n', '<Leader>fh', ':History<CR>', opts)
-map('n', '<Leader>fb', ':Buffers<CR>', opts)
-map('n', '<Leader>ft', ':Files<CR>', opts)
-map('n', '<Leader>rg', '<ESC>:RG<Space>', opts)
-map('n', '<Leader>rw', '<ESC>:RG <C-R><C-W>', opts)
-map('n', '<Leader>rh', '<ESC>:RG<UP><CR>', opts)
+map('n', '<Leader>fh', '<cmd>History<CR>')
+map('n', '<Leader>fb', '<cmd>Buffers<CR>')
+map('n', '<Leader>ft', '<cmd>Files<CR>')
+map('n', '<Leader>rg', '<ESC><cmd>RG<Space>')
+map('n', '<Leader>rw', '<ESC><cmd>RG <C-R><C-W>')
+map('n', '<Leader>rh', '<ESC><cmd>RG<UP><CR>')

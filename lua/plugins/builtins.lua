@@ -6,16 +6,11 @@
 --
 -- Module: plugins.builtins
 -- Description: Configurations on how to handled builtin plugins
---
--- NOTE: Perhaps we could check that a replacement exists before dumping
--- plugins like netrw, which can be useful for navigation without having
--- to relaunch neovim.
-
---- Initialization ---
 
 local g = vim.g
 
--- Module extensions
+
+--- Builtins ---
 
 -- For now, you can just comment the items in this list
 -- They will be disable if they are NOT commented.
@@ -46,6 +41,7 @@ local disabled_plugins = {
 for _, plugin in pairs(disabled_plugins) do
   g["loaded_" .. plugin] = 1
 end
+
 
 --- Settings ---
 

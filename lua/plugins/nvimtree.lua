@@ -106,7 +106,7 @@ nvimtree.setup {
   }
 }
 
-vim.cmd [[
+vim.cmd([[
   highlight NvimTreeNormal guibg=none
 
   function! DisableST()
@@ -114,4 +114,4 @@ vim.cmd [[
   endfunction
   au! BufEnter NvimTree setlocal statusline=%!DisableST()
   \ | setlocal cursorline
-]]
+]])

@@ -4,6 +4,34 @@
 -- path/to/virtualenvs/debugpy/bin/python -m pip install debugpy
 
 local dap = require('dap')
+local ok, dap_python = pcall(require, 'dap-python')
+if ok then
+  dap_python.test_runner = "pytest"
+end
+
+
+local get_python_path = function(workspace)
+  -- Use activated virtualenv.
+  local util = require("lspconfig.util")
+
+  local path = util.path
+  if vim.env.VIRTUAL_ENV then
+    return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+  end
+
+  -- Find and use virtualenv in workspace directory.
+  for _, pattern in ipairs({ "*", ".*" }) do
+    local match = vim.fn.glob(path.join(workspace or vim.fn.getcwd(), pattern, "pyvenv.cfg"))
+    if match ~= "" then
+      return path.join(path.dirname(match), "bin", "python")
+    end
+  end
+
+  -- Fallback to system Python.
+  return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+end
+
+
 
 -- You can then either use nvim-dap-python - it comes with adapter and configurations definitions
 dap.adapters.python = {
@@ -18,23 +46,25 @@ dap.configurations.python = {
     type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
     request = 'launch';
     name = "Launch file";
-
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
     program = "${file}"; -- This configuration will launch the current file if used.
-    pythonPath = function()
-      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-      local cwd = vim.fn.getcwd()
-      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-        return cwd .. '/venv/bin/python'
-      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-        return cwd .. '/.venv/bin/python'
-      else
-        return '/usr/bin/python'
+    pythonPath = get_python_path(),
+  },
+  {
+    type = "python",
+    request = "attach",
+    name = "Attach remote",
+    justMyCode = false,
+    pythonPath = get_python_path(),
+    host = function()
+      local value = vim.fn.input("Host [127.0.0.1]: ")
+      if value ~= "" then
+        return value
       end
-    end;
+      return "127.0.0.1"
+    end,
+    port = function()
+      return tonumber(vim.fn.input("Port [5678]: ")) or 5678
+    end,
   },
 }
 

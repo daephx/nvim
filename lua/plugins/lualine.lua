@@ -14,18 +14,9 @@ local function diff_source()
   end
 end
 
--- Conditional buftype/filetype
--- local function exclude_bt(list)
---   for _, v in pairs(list) do
---     if list[v] == '1' then print('ree')
---     end
---   end
--- end
-
-
 
 -- Custom Themes
-local custom_codedark = require'lualine.themes.codedark'
+local custom_codedark = require('lualine.themes.codedark')
 -- Change the background of lualine_c section for normal mode
 custom_codedark.normal.terminal = {
     bg = "#ffaf00",
@@ -59,12 +50,6 @@ lualine.setup {
       {'branch', icon = ''},
       {'diff', source = diff_source},
     },
-    -- lualine_c = {{'filename', fmt = function(str)
-    --      local buf_bt = vim.api.nvim_buf_get_option(0, 'buftype')
-    --      if buf_bt ~= 'terminal' then return str end
-    -- end}},
-    -- lualine_d = {
-    -- },
     lualine_c = {
       {
         'diagnostics',

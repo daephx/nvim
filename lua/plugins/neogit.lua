@@ -65,10 +65,16 @@ highlight NeogitObjectId guibg=none guifg=#A056BB
 augroup neogit_au
   autocmd!
 
+  function! NeogitSettings()
+    setlocal colorcolumn=
+    setlocal cursorline
+    setlocal nonumber
+  endfunction
+
   " Disable number column for most window views
-  autocmd FileType NeogitStatus setlocal nonumber | setlocal cursorline
-  autocmd FileType NeogitLogView setlocal nonumber | setlocal cursorline | colorcolumn=
-  autocmd FileType NeogitCommitView setlocal nonumber | setlocal cursorline
+  autocmd FileType NeogitStatus call NeogitSettings()
+  autocmd FileType NeogitLogView call NeogitSettings()
+  autocmd FileType NeogitCommitView call NeogitSettings()
 
 augroup END
 ]])

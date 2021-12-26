@@ -16,7 +16,7 @@ end
 
 
 -- Custom Themes
-local custom_codedark = require'lualine.themes.codedark'
+local custom_codedark = require('lualine.themes.codedark')
 -- Change the background of lualine_c section for normal mode
 custom_codedark.normal.terminal = {
     bg = "#ffaf00",

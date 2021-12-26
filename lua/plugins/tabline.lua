@@ -1,4 +1,6 @@
-require('tabline').setup {
+local tabline = require('tabline')
+
+tabline.setup {
   -- Defaults configuration options
   enable = true,
   options = {

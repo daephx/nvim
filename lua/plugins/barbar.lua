@@ -70,14 +70,14 @@ g.bufferline = {
 
 -- Highlights
 
-vim.cmd [[
-  " hi BufferCurrent guifg=#4083BD
-  hi BufferTabpageFill guifg=#2E5E88
-  hi BufferVisable guifg=#4083BD
-  hi link BufferCurrentSign Type
-  hi link BufferInactiveSign Tabline
-  hi BufferInactive guifg=#787878
-]]
+vim.cmd([[
+  " highlight BufferCurrent guifg=#4083BD
+  highlight BufferTabpageFill guifg=#2E5E88
+  highlight BufferVisable guifg=#4083BD
+  highlight link BufferCurrentSign Type
+  highlight link BufferInactiveSign Tabline
+  highlight BufferInactive guifg=#787878
+]])
 
 local map = api.nvim_set_keymap
 local opts = { noremap = true, silent = true }

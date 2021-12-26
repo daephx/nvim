@@ -9,15 +9,19 @@ local M = {}
 
 function M.highlights()
 
-  -- Disable italic comments
-  cmd [[highlight Comment gui=none]]
+  vim.cmd([[
 
-  -- Cusror Number
-  -- cmd [[highlight CursorLineNr guibg=none]]
+  " Disable italic comments
+  highlight Comment gui=none
 
-  -- Special strings
-  cmd [[highlight String guifg=#CBAA73]]
-  cmd [[highlight SpecialChar guifg=#56B1BB]]
+  " Cusror Number
+  " highlight CursorLineNr guibg=none
+
+  " Special strings
+  highlight String guifg=#CBAA73
+  highlight SpecialChar guifg=#56B1BB
+
+  ]])
 
 end
 

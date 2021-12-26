@@ -1,5 +1,3 @@
-local cmd = vim.cmd
-
 local trouble = require("trouble")
 
 trouble.setup {
@@ -51,7 +49,7 @@ trouble.setup {
 }
 
 
-cmd [[
+vim.cmd([[
 highlight TroubleIndent guibg=none
 highlight TroubleSignWarning guibg=none
 
@@ -63,4 +61,4 @@ endfunction
 
 autocmd! FileType Trouble call s:trouble_buffer()
 " autocmd! BufEnter,BufWinEnter if &ft == 'Trouble' | call s:trouble_buffer() | endif
-]]
+]])

@@ -3,42 +3,42 @@ local cmp = require('cmp')
 local lspkind = require('lspkind')
 
 lspkind.init {
-    symbol_map = {
-        Class = "ﴯ",
-        Color = "",
-        Constant = "",
-        Constructor = "",
-        Enum = "",
-        EnumMember = "",
-        Event = "",
-        Field = "ﰠ",
-        File = "",
-        Folder = "",
-        Function = "",
-        Interface = "",
-        Keyword = "",
-        Method = "",
-        Module = "",
-        Operator = "",
-        Property = "ﰠ",
-        Reference = "",
-        Snippet = "",
-        Struct = "פּ",
-        Text = "",
-        TypeParameter = "",
-        Unit = "塞",
-        Value = "",
-        Variable = "",
-    }
+  symbol_map = {
+    Class = "ﴯ",
+    Color = "",
+    Constant = "",
+    Constructor = "",
+    Enum = "",
+    EnumMember = "",
+    Event = "",
+    Field = "ﰠ",
+    File = "",
+    Folder = "",
+    Function = "",
+    Interface = "",
+    Keyword = "",
+    Method = "",
+    Module = "",
+    Operator = "",
+    Property = "ﰠ",
+    Reference = "",
+    Snippet = "",
+    Struct = "פּ",
+    Text = "",
+    TypeParameter = "",
+    Unit = "塞",
+    Value = "",
+    Variable = "",
+  }
 }
 
 cmp.setup {
   snippet = {
     expand = function(args)
-    -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-    -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
     end,
 
   },
@@ -123,15 +123,6 @@ cmp.setup {
 
     ['<C-Space>'] = cmp.mapping.complete(),
 
-    --[[ ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    }, ]]
-    --[[ ['<S-CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }, ]]
-
     -- HACK: This is attempt to make completion work similar to visual studio
     -- It has an issue where tab context is finicky, it will wait for timeoutlen
     -- before single tab or attmpet a completeion where it's not needed.
@@ -140,9 +131,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
-
-    --[[ ["Up"] = "<Nop>",
-    ["Down"] = "<Nop>", ]]
 
     -- Right is for ghost_text to behave like terminal
     -- NOTE: Cool! but I only want it to confirm if the completion menu has an active selection.
@@ -174,18 +162,6 @@ cmp.setup {
   },
 }
 
--- Use buffer source for `/`.
--- cmp.setup.cmdline("/", {sources = {{name = "buffer"}}})
-
--- Use cmdline & path source for ':'.
--- cmp.setup.cmdline(":", {
---   sources = cmp.config.sources(
---     {{name = "path", keyword_length = 4}},
---     {{name = "cmdline", keyword_length = 4}}
---   )
--- })
-
-
 -- @dmitmel | https://github.com/dmitmel/cmp-cmdline-history
 -- this will also setup the history completion for all command-line modes
 -- This at the moment doesn't fully work in the same way that vim's cmd history list
@@ -197,13 +173,3 @@ cmp.setup {
 --     },
 --   })
 -- end
-
-
---[[
-" ! Spotted in TJ's video, not implimented but references seperate buffer overrides
-" Set cmp additional buffer settings for vim-dadbod-sql
-augroup sql_compe_au
-au!
-autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-cmp' } } }
-augroup END
-]]

@@ -151,7 +151,7 @@ M.config = function()
 
   -- Highlights
 
-  vim.cmd [[highlight TelescopeNormal guibg=none]]
+  vim.cmd([[highlight TelescopeNormal guibg=none]])
 
 end
 

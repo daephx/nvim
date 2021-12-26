@@ -12,26 +12,26 @@ let s:enabled = 1
 
 " Disable plugin on certain file/buffer types
 let s:exclude_filetypes = [
-  \ 'NeogitCommitMessage',
-  \ 'NeogitStatus',
-  \ 'TelescopePrompt',
-  \ 'dashboard',
-  \ 'fugitive',
-  \ 'gitcommit',
-  \ 'help',
-  \ 'log',
-  \ 'packer',
-  \]
+      \ 'NeogitCommitMessage',
+      \ 'NeogitStatus',
+      \ 'TelescopePrompt',
+      \ 'dashboard',
+      \ 'fugitive',
+      \ 'gitcommit',
+      \ 'help',
+      \ 'log',
+      \ 'packer',
+      \]
 let s:exclude_bufftypes = ['terminal', 'vim']
 
 function! NoNuRelativeNormal(
-  \ exclude_filetypes,
-  \ exclude_bufftypes)
+      \ exclude_filetypes,
+      \ exclude_bufftypes)
 
   " Avoid blacklist items
   if ( s:enabled == 0 ||
-    \ index(a:exclude_filetypes, &ft) >= 0 ||
-    \ index(a:exclude_bufftypes, &bt) >= 0)
+        \ index(a:exclude_filetypes, &ft) >= 0 ||
+        \ index(a:exclude_bufftypes, &bt) >= 0)
     return
   endif
 
@@ -47,5 +47,5 @@ endfunction
 augroup NoNuRelativeInsert_au
   autocmd!
   autocmd InsertEnter,InsertLeavePre *
-    \ call NoNuRelativeNormal(s:exclude_filetypes, s:exclude_bufftypes)
+        \ call NoNuRelativeNormal(s:exclude_filetypes, s:exclude_bufftypes)
 augroup END

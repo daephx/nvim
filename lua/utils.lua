@@ -49,7 +49,7 @@ end
 local M = {}
 
 -- Generate array from file lines
-function M.fileToArray( fpath )
+function M.fileToArray(fpath)
   local file = io.open(fpath, 'r');
   local  arr = {}
   for line in file:lines() do

@@ -97,11 +97,11 @@ _G.toggle_terminal = function(name)
 end
 
 
-vim.cmd [[
+vim.cmd([[
 command! -nargs=0 Lazygit lua toggle_terminal('lazygit')<cr>
 command! -nargs=0 Lazydocker lua toggle_terminal('lazydocker')<cr>
 
 autocmd! FileType toggleterm setlocal signcolumn=
-]]
+]])
 
 return M

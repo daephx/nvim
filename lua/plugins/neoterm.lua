@@ -1,7 +1,6 @@
 local fn = vim.fn
 local g = vim.g
 
-vim.api.nvim_echo({'Pre globals', 'WarningMsg'}, true, {})
 
 -- Neoterm Options
 
@@ -20,7 +19,6 @@ local function ternary(t, f, cond)
   if cond then return t else return f end
 end
 
-vim.api.nvim_echo({'After ternary', 'WarningMsg'}, true, {})
 
 if fn.has('win32') then
   -- Use pwsh if available, else use windows powershell
@@ -29,8 +27,6 @@ if fn.has('win32') then
 else -- Use whatever shell you prefer, default to bash
   g.neoterm_shell = ternary('zsh', 'bash', fn.executable('zsh'))
 end
-
-vim.api.nvim_echo({'After win32', 'WarningMsg'}, true, {})
 
 
 --- Mappings ---

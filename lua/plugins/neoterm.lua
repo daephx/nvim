@@ -1,8 +1,13 @@
 local fn = vim.fn
 local g = vim.g
 
+-- Helper function: ternary condition
+local function ternary(t, f, cond)
+  if cond then return t else return f end
+end
 
--- Neoterm Options
+
+--- Globals ---
 
 g.neoterm_default_mod = 'botright'
 g.neoterm_size = 25
@@ -11,15 +16,7 @@ g.neoterm_keep_term_open = 1
 g.neoterm_autoinsert = 1
 g.neoterm_fixedsize = 0
 
-
--- Shell preference
-
--- Helper ternary function
-local function ternary(t, f, cond)
-  if cond then return t else return f end
-end
-
-
+-- Shell perferences
 if fn.has('win32') then
   -- Use pwsh if available, else use windows powershell
   g.neoterm_shell = ternary('pwsh', 'powershell', fn.executable('pwsh'))

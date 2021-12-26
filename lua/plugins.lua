@@ -60,9 +60,7 @@ return packer.startup({function(use)
 
   use { -- A "buffer and tab" tabline for neovim
     'kdheepak/tabline.nvim',
-    requires = {
-      { 'hoob3rt/lualine.nvim', opt = true },
-    },
+    requires = {'nvim-lualine/lualine.nvim', opt = true},
     config = function() require('plugins.tabline') end
   }
 

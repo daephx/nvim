@@ -1,19 +1,19 @@
 local g = vim.g
 
 g.fzf_colors = {
-  fg      = { 'fg', 'Normal' },
-  bg      = { 'bg', 'Normal' },
-  hl      = { 'fg', 'Comment' },
-  ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
   ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
+  ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
   ['hl+'] = { 'fg', 'Statement' },
-  info    = { 'fg', 'PreProc' },
+  bg      = { 'bg', 'Normal' },
+  fg      = { 'fg', 'Normal' },
+  hl      = { 'fg', 'Comment' },
   border  = { 'fg', 'Ignore' },
-  prompt  = { 'fg', 'Conditional' },
-  pointer = { 'fg', 'Exception' },
+  header  = { 'fg', 'Comment' },
+  info    = { 'fg', 'PreProc' },
   marker  = { 'fg', 'Keyword' },
+  pointer = { 'fg', 'Exception' },
+  prompt  = { 'fg', 'Conditional' },
   spinner = { 'fg', 'Label' },
-  header  = { 'fg', 'Comment' }
 }
 
 vim.cmd([[

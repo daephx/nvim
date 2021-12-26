@@ -46,15 +46,18 @@ map('t', '<F12>', '<C-\\><C-n><cmd>Ttoggle<CR>', opts)
 map('t', '<C-w>', '<C-\\><C-n><C-w>', opts)
 
 
+--- Autocmds ---
+
 vim.cmd([[
 augroup neoterm_au
   autocmd!
+
   " Hide terminal from buffer list
   autocmd TermOpen,TermEnter * setlocal nobuflisted
+
   " Auto enter insert mode for terminal buffers
-  " autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
-  " autocmd TermOpen * tnoremap <buffer> <esc> <c-\><c-n>
+
 augroup END
 ]])

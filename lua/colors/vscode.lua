@@ -16,7 +16,8 @@ function M.highlights()
   " Disable italic comments
   highlight Comment gui=none ctermfg=gray guifg=#626262
 
-  " highlight LineNr guibg=none
+  " Disable LineNr background
+  highlight LineNr guibg=none
   highlight String guifg=#CBAA73
 
   " Git status

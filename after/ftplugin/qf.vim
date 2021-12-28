@@ -2,11 +2,11 @@
 " Description: Configurations for quickfix menus
 
 " Settings
-setlocal colorcolumn=
+setlocal colorcolumn=-1
 setlocal cursorline
 setlocal cursorlineopt=both
 setlocal norelativenumber
-setlocal signcolumn=
+setlocal signcolumn=no
 
 
 " Mappings

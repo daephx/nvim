@@ -45,7 +45,7 @@ function! SetupREPL()
   setlocal nobuflisted
   setlocal nonumber
   setlocal norelativenumber
-  setlocal signcolumn=
+  setlocal signcolumn=no
 endfunction
 
 augroup dapui_au

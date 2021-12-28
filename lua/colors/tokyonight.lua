@@ -19,8 +19,7 @@ g.tokyonight_sidebars = {
 }
 
 g.tokyonight_colors = {
-  hint = 'orange',
-  error = '#ff0000',
+  hint = "orange",
 }
 
 --- Locals ---

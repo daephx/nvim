@@ -1,13 +1,21 @@
-" Settings
-setlocal nobuflisted
-setlocal nonumber
-setlocal norelativenumber
-setlocal signcolumn=
-setlocal nowinfixheight
+" Terminal.vim
+" Apply settings for terminal buffers
+
+function! TerminalSettings()
+  setlocal nobuflisted
+  setlocal nonumber
+  setlocal norelativenumber
+  setlocal signcolumn=no
+  setlocal nowinfixheight
+  setlocal nospell
+endfunction
 
 " Autocmds
 augroup terminal_au
   autocmd!
+
+  " Apply local buffer settings
+  autocmd! TermOpen * call TerminalSettings()
 
   " Auto enter insert mode for terminal buffers
   " autocmd BufWinEnter,WinEnter term://* startinsert

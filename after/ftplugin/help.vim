@@ -1,7 +1,7 @@
 " Settings
-setlocal signcolumn=
+setlocal signcolumn=no
 setlocal textwidth=80
-setlocal colorcolumn=
+setlocal colorcolumn=-1
 setlocal formatoptions-=c
 
 

@@ -46,7 +46,8 @@ function M.setup(name)
       Question = { bg = 'NONE' },
       -- CursorLine = {link = 'LineNr'}, -- Needs partial, no foreground
       CursorLineNr = { link = 'number' },
-      Directory = { bg = 'NONE' },
+      Directory = {bg = 'NONE'},
+      VertSplit = {bg = 'NONE'},
 
       SignColumn = { bg = 'NONE' },
 

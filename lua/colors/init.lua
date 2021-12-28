@@ -52,10 +52,16 @@ function M.setup(name)
       SignColumn = { bg = 'NONE' },
 
       -- Gitsigns Link Colors
-      GitSignsAdd = { link = 'DiffAdd' },
-      GitSignsChange = { link = 'DiffChange' },
-      GitSignsDelete = { link = 'DiffDelete' },
-    },
+      GitSignsAdd = {link = 'DiffAdd'},
+      GitSignsChange ={link = 'DiffChange'},
+      GitSignsDelete = {link = 'DiffDelete'},
+
+      -- Remove background from VirtualText
+      DiagnosticVirtualTextHint = {bg = 'NONE'},
+      DiagnosticVirtualTextInfo = {bg = 'NONE'},
+      DiagnosticVirtualTextWarn = {bg = 'NONE'},
+      DiagnosticVirtualTextError = {bg = 'NONE'},
+    }
   })
 
   -- Completion Message

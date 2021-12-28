@@ -57,6 +57,12 @@ function M.setup(name)
       GitSignsAdd = {link = 'DiffAdd'},
       GitSignsChange ={link = 'DiffChange'},
       GitSignsDelete = {link = 'DiffDelete'},
+
+      -- Remove background from VirtualText
+      DiagnosticVirtualTextHint = {bg = 'NONE'},
+      DiagnosticVirtualTextInfo = {bg = 'NONE'},
+      DiagnosticVirtualTextWarn = {bg = 'NONE'},
+      DiagnosticVirtualTextError = {bg = 'NONE'},
     }
   })
 

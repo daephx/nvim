@@ -49,6 +49,7 @@ function M.setup(name)
       -- CursorLine = {link = 'LineNr'}, -- Needs partial, no foreground
       CursorLineNr = { link = 'number' },
       Directory = {bg = 'NONE'},
+      VertSplit = {bg = 'NONE'},
 
       SignColumn = {bg = 'NONE'},
 

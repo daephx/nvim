@@ -101,7 +101,8 @@ vim.cmd([[
 command! -nargs=0 Lazygit lua toggle_terminal('lazygit')<cr>
 command! -nargs=0 Lazydocker lua toggle_terminal('lazydocker')<cr>
 
-autocmd! FileType toggleterm setlocal signcolumn=
+" Explicitly disable signcolumn in toggleterm buffer
+autocmd! FileType toggleterm setlocal signcolumn=no
 ]])
 
 return M

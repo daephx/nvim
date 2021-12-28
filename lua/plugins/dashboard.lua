@@ -41,9 +41,6 @@ augroup dashboard_au
   " Set dashboard header color
   autocmd User dashboardReady highlight DashboardHeader guifg=#569cd6
 
-  " Disable mouse on dashboard
-  autocmd User dashboardReady autocmd FileType dashboard setlocal mouse=
-
   " Disable fill characters on dashboard
   autocmd FileType dashboard setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 

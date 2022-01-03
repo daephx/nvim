@@ -1,26 +1,14 @@
-local cmd = vim.cmd
-local g = vim.g
+-- Sakura
 
---- Globals ---
 
---- Locals ---
+--- Highlights ---
 
 local M = {}
 
-function M.highlights()
-  vim.cmd([[
-
-  " Disable italic comments
-  highlight Comment gui=none
-
-  " Cusror Number
-  " highlight CursorLineNr guibg=none
-
-  " Special strings
-  highlight String guifg=#CBAA73
-  highlight SpecialChar guifg=#56B1BB
-
-  ]])
-end
+M.highlights = {
+  String = {fg = '#cbaa73'},
+  CursorLineNr = {bg = 'NONE'},
+  SpecialChar = {fg = '#56b1bb'},
+}
 
 return M

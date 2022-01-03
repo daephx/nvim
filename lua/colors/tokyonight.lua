@@ -22,22 +22,19 @@ g.tokyonight_colors = {
   hint = "orange",
 }
 
---- Locals ---
+
+--- Highlights ---
 
 local M = {}
 
-function M.highlights()
-  vim.cmd([[
+M.highlights = {
+  String = {fg = '#cbaa73'},
+  FoldColumn = {bg = 'none'},
 
-  highlight String guifg=#CBAA73
-  highlight Comment ctermfg=gray guifg=#626262
-
-  " Git diffs
-  " highlight DiffAdd guifg=
-  highlight DiffChange guifg=#dea311 guibg=#463C18
-  " highlight DiffDelete guifg=
-
-  ]])
-end
+  -- Disable background for Treesitter warnings
+  TSNote = {clear = true},
+  TSWarning = {clear = true},
+  TSDanger = {clear = true},
+}
 
 return M

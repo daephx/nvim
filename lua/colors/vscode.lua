@@ -4,32 +4,37 @@ local g = vim.g
 
 g.vscode_style = 'dark'
 
---- Locals ---
+
+--- Highlights ---
 
 local M = {}
 
-function M.highlights()
-  vim.cmd([[
+M.highlights = {
 
-  " Disable italic comments
-  highlight Comment gui=none ctermfg=gray guifg=#626262
+  Comment = {fg = '#626262', ui = 'none'},
+  String = {fg = '#CBAA73'},
+  SpecialChar = {fg = '#56B1BB'},
+  LineNr = {bg = 'none'},
+  Visual = {bg = '#0C243C', fg = 'none'},
+  EndOfBuffer = {fg = '#222222'},
 
-  " Disable LineNr background
-  highlight LineNr guibg=none
-  highlight String guifg=#CBAA73
+  -- Git status
+  DiffAdd = {bg = '#212D19', fg = 'none'},
+  DiffChange = {bg = '#3B3814', fg = 'none'},
+  DiffDelete = {bg = 'none', fg = 'indianred'},
 
-  " Git status
-  " highlight DiffAdd guibg=green
-  highlight DiffChange guibg=#464C18
-  " highlight DiffDelete guibg=red
+  -- Floating Windows
+  FloatNormal = {bg = 'none'},
+  FloatBorder = {fg = '#5A5A5A', bg = 'none'},
+  LspFloatWinNormal = {link = 'NormalFloat'},
+  NormalFloat = {link = 'Pmenu'},
 
-  " Special strings
-  highlight SpecialChar guifg=#56B1BB
+  -- NvimTree
+  NvimTreeNormal = {bg = 'none'},
 
-  " Floating Windows
-  highlight FloatBorder guifg=#5A5A5A guibg=none
+  -- Lualine | Might want to add to custom theme
+  lualine_a_inactive = {bg = '#1e1e2e'},
 
-  ]])
-end
+}
 
 return M

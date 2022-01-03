@@ -1,5 +1,5 @@
-local cmd = vim.cmd
 local fn = vim.fn
+
 
 local M = {}
 
@@ -12,8 +12,10 @@ end
 
 
 function M.getHighlightTable(group)
+
   local output = fn.execute('hi ' .. group)
   local list = fn.split(output, '\\s\\+')
+
   local dict = {}
   for _, item in pairs(list) do
     if fn.match(item, '=') > 0 then
@@ -35,13 +37,29 @@ function M.setHighlight(group, colors)
   local sp = colors.sp and 'guisp=' .. colors.sp or ''
   local ui = colors.ui and 'gui='   .. colors.ui or ''
 
-  local hl = 'highlight '..group..' '..ui..' '..fg..' '..bg..' '..sp
+  local hl = 'silent highlight ' .. table.concat({group, bg, fg, sp, ui}, " ")
 
+  if colors.clear == true then
+    vim.cmd('highlight clear ' .. group)
+    return
+  end
   if colors.link then
-    cmd('highlight! link '..group..' '..colors.link)
-  else
-    cmd(hl)
+    link = table.concat({'link', group, colors.link}, ' ')
+    vim.cmd('highlight! ' .. link)
+  end
+  vim.cmd(hl)
+end
+
+
+function M.setup(opts)
+  local next = next
+  opts = type(opts) == 'function' and opts() or opts
+  for group, colors in pairs(opts) do
+    if next(colors) ~= nil then
+      M.setHighlight(group, colors)
+    end
   end
 end
+
 
 return M

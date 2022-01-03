@@ -11,13 +11,11 @@
 -- You should set your colorscheme prior to sourcing this module
 -- either with `colorscheme <name>` or `vim.g.colors_name = <name>`
 
--- You can also call this function when loading plugins
--- with the name of a theme that matches a file in `lua/colors/<name>.lua`
--- This file will be loaded with your theme settings.
--- it will also attempt to execute a module function called `override`
--- where you can define custom highlights to be applied afterward.
-
 local g = vim.g
+
+local global = require('colors.global')
+local utils = require('colors.utils')
+
 
 local M = {}
 
@@ -35,37 +33,13 @@ function M.setup(name)
 
   -- Load colorscheme specific overrides
   if ok and colorscheme.highlights then
-    colorscheme.highlights()
+    utils.setup(colorscheme.highlights)
   end
 
-  -- General highlight overrides
-  require('colors.overrides').setup({
-    transparent_background = true,
-    highlights = {
-      Comment = {ui = 'NONE'},
-      NonText = {bg = 'NONE'},
-      Question = {bg = 'NONE'},
-      -- CursorLine = {link = 'LineNr'}, -- Needs partial, no foreground
-      CursorLineNr = { link = 'number' },
-      Directory = {bg = 'NONE'},
-      VertSplit = {bg = 'NONE'},
+  -- Apply global overrides
+  utils.setup(global.highlights)
 
-      SignColumn = {bg = 'NONE'},
-
-      -- Gitsigns Link Colors
-      GitSignsAdd = {link = 'DiffAdd'},
-      GitSignsChange ={link = 'DiffChange'},
-      GitSignsDelete = {link = 'DiffDelete'},
-
-      -- Remove background from VirtualText
-      DiagnosticVirtualTextHint = {bg = 'NONE'},
-      DiagnosticVirtualTextInfo = {bg = 'NONE'},
-      DiagnosticVirtualTextWarn = {bg = 'NONE'},
-      DiagnosticVirtualTextError = {bg = 'NONE'},
-    }
-  })
-
-  -- Define colorscheme autogroup
+  -- Update Colorscheme
   -- Reload this function when colorscheme is updated
 
   vim.cmd([[

@@ -1,8 +1,12 @@
+-- VSCode | Colorscheme settings
+
 local g = vim.g
+
 
 --- Globals ---
 
 g.vscode_style = 'dark'
+g.vscode_transparent = 1
 
 
 --- Highlights ---

@@ -9,17 +9,22 @@ g.tokyonight_transparent = true
 g.tokyonight_transparent_sidebar = true
 g.tokyonight_italic_comments = false
 g.tokyonight_italic_keywords = false
+g.tokyonight_lualine_bold = true
 
 g.tokyonight_sidebars = {
-  'qf',
-  'Touble',
-  'vista_kind',
-  'terminal',
-  'packer',
+  "Touble",
+  "packer",
+  "qf",
+  "terminal",
+  "vista_kind",
 }
 
 g.tokyonight_colors = {
+  bg_float = 'none',
   hint = "orange",
+  gitSigns = {
+      change = '#7F6526',
+    }
 }
 
 

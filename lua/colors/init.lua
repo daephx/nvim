@@ -17,7 +17,6 @@
 -- it will also attempt to execute a module function called `override`
 -- where you can define custom highlights to be applied afterward.
 
-local api = vim.api
 local g = vim.g
 
 local M = {}
@@ -65,13 +64,6 @@ function M.setup(name)
       DiagnosticVirtualTextError = {bg = 'NONE'},
     }
   })
-
-  -- Completion Message
-  api.nvim_echo({
-    {'Loaded colorscheme: ', 'Special'},
-    {name, 'none'}},
-    true, {}
-  )
 
   -- Define colorscheme autogroup
   -- Reload this function when colorscheme is updated

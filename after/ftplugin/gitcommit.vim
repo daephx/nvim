@@ -1,7 +1,7 @@
 " Settings
 setlocal nonumber
 setlocal norelativenumber
-setlocal signcolumn=no
+setlocal signcolumn=yes
 
 setlocal textwidth=72
 setlocal colorcolumn=73 ",51

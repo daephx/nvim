@@ -53,7 +53,7 @@ return packer.startup({function(use)
     config = function() require('colors').setup('gruvbox') end
   }
 
-  use { -- Dashboard / Startscreen
+  use { -- Dashboard / Start screen
     'glepnir/dashboard-nvim',
     config = function() require('plugins.dashboard') end
   }
@@ -70,7 +70,7 @@ return packer.startup({function(use)
     config = function() require('plugins.tabline') end
   }
 
-  use { -- Render blanklines
+  use { -- Render blank lines
     'lukas-reineke/indent-blankline.nvim',
     event = { 'BufWinEnter' },
     config = function() require('plugins.indent-blankline') end
@@ -236,7 +236,7 @@ return packer.startup({function(use)
     },
   }
 
-  use { -- Alternative FileTree
+  use { -- Alternative File Tree
     'kyazdani42/nvim-tree.lua',
     requires = {'kyazdani42/nvim-web-devicons', opts = true},
     config = function() require('plugins.nvimtree') end
@@ -331,7 +331,7 @@ return packer.startup({function(use)
   end
 
   --- Recompiler ---
-  -- Recompile packer definitions when this file is modifed
+  -- Recompile packer definitions when this file is modified
   -- This allows your plugins and configurations to be kept fast
 
   vim.cmd([[

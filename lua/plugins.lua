@@ -58,16 +58,16 @@ return packer.startup({function(use)
     config = function() require('plugins.dashboard') end
   }
 
-  use { -- A "buffer and tab" tabline for neovim
-    'kdheepak/tabline.nvim',
-    requires = {'nvim-lualine/lualine.nvim', opt = true},
-    config = function() require('plugins.tabline') end
-  }
-
   use { -- Blazing fast statusline
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true},
     config = function() require('plugins.lualine') end
+  }
+
+  use {
+    'kdheepak/tabline.nvim',
+    requires = {'hoob3rt/lualine.nvim', opt = true },
+    config = function() require('plugins.tabline') end
   }
 
   use { -- Render blanklines

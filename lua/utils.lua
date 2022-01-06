@@ -1,7 +1,6 @@
 -- Module: utils
 -- Description: Utility module
 
-
 --- Globals ---
 
 -- Esier Inspect lua objects
@@ -39,10 +38,11 @@ end
 -- Easier mapping function
 function _G.map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
-  if opts then options = vim.tbl_extend('force', options, opts) end
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
-
 
 --- Module ---
 
@@ -50,10 +50,10 @@ local M = {}
 
 -- Generate array from file lines
 function M.fileToArray(fpath)
-  local file = io.open(fpath, 'r');
-  local  arr = {}
+  local file = io.open(fpath, 'r')
+  local arr = {}
   for line in file:lines() do
-    table.insert(arr, line);
+    table.insert(arr, line)
   end
   return arr
 end
@@ -63,7 +63,7 @@ end
 function M.is_prime(n)
   local max_divider_checked = math.sqrt(n) + 1
   for i = 2, max_divider_checked do
-    if(n % i == 0) then
+    if n % i == 0 then
       return false
     end
   end

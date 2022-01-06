@@ -1,5 +1,5 @@
 local function short_mode(str)
-  return str:sub(1,1)
+  return str:sub(1, 1)
 end
 
 local get_mode = require('lualine.components.mode').get_mode

@@ -1,6 +1,5 @@
 local g = vim.g
 
-
 --- Globals ---
 
 g.tokyonight_style = 'night'

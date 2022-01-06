@@ -2,37 +2,37 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
-lspkind.init {
+lspkind.init({
   symbol_map = {
-    Class = "ﴯ",
-    Color = "",
-    Constant = "",
-    Constructor = "",
-    Enum = "",
-    EnumMember = "",
-    Event = "",
-    Field = "ﰠ",
-    File = "",
-    Folder = "",
-    Function = "",
-    Interface = "",
-    Keyword = "",
-    Method = "",
-    Module = "",
-    Operator = "",
-    Property = "ﰠ",
-    Reference = "",
-    Snippet = "",
-    Struct = "פּ",
-    Text = "",
-    TypeParameter = "",
-    Unit = "塞",
-    Value = "",
-    Variable = "",
-  }
-}
+    Class = 'ﴯ',
+    Color = '',
+    Constant = '',
+    Constructor = '',
+    Enum = '',
+    EnumMember = '',
+    Event = '',
+    Field = 'ﰠ',
+    File = '',
+    Folder = '',
+    Function = '',
+    Interface = '',
+    Keyword = '',
+    Method = '',
+    Module = '',
+    Operator = '',
+    Property = 'ﰠ',
+    Reference = '',
+    Snippet = '',
+    Struct = 'פּ',
+    Text = '',
+    TypeParameter = '',
+    Unit = '塞',
+    Value = '',
+    Variable = '',
+  },
+})
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
@@ -40,7 +40,6 @@ cmp.setup {
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
     end,
-
   },
   experimental = {
     native_menu = false, -- I like the new menu better! Nice work hrsh7th
@@ -54,8 +53,8 @@ cmp.setup {
 
       -- copied from cmp-under, but I don't think I need the plugin for this.
       function(entry1, entry2)
-        local _, entry1_under = entry1.completion_item.label:find "^_+"
-        local _, entry2_under = entry2.completion_item.label:find "^_+"
+        local _, entry1_under = entry1.completion_item.label:find('^_+')
+        local _, entry2_under = entry2.completion_item.label:find('^_+')
         entry1_under = entry1_under or 0
         entry2_under = entry2_under or 0
         if entry1_under > entry2_under then
@@ -72,15 +71,15 @@ cmp.setup {
     },
   },
   sources = {
-    {name = "nvim_lsp"},
-    {name = 'nvim_lua'},
-    {name = "treesitter" },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'treesitter' },
     -- { name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     {
-      name = "buffer",
+      name = 'buffer',
       -- keyword_length = 4,
       options = {
         get_bufnrs = function()
@@ -88,28 +87,28 @@ cmp.setup {
         end,
       },
     },
-    {name = "calc"},
-    {name = "emoji"},
-    {name = "spell"},
-    {name = "path"},
-    {name = 'gh_issues'},
+    { name = 'calc' },
+    { name = 'emoji' },
+    { name = 'spell' },
+    { name = 'path' },
+    { name = 'gh_issues' },
   },
   formatting = {
     --   with_text = false,
     format = function(entry, vim_item)
-      vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
+      vim_item.kind = string.format('%s %s', lspkind.presets.default[vim_item.kind], vim_item.kind)
       -- vim_item.with_text = false
       vim_item.max_width = 50
       vim_item.menu = ({
-        nvim_lsp = "ﲳ",
-        nvim_lua = "",
-        treesitter = "",
-        path = "ﱮ",
-        buffer = "﬘",
-        zsh = "",
-        vsnip = "",
-        luasnip = "",
-        spell = "暈",
+        nvim_lsp = 'ﲳ',
+        nvim_lua = '',
+        treesitter = '',
+        path = 'ﱮ',
+        buffer = '﬘',
+        zsh = '',
+        vsnip = '',
+        luasnip = '',
+        spell = '暈',
       })[entry.source.name]
       return vim_item
     end,
@@ -127,10 +126,10 @@ cmp.setup {
     -- It has an issue where tab context is finicky, it will wait for timeoutlen
     -- before single tab or attmpet a completeion where it's not needed.
     -- It would be better if it checked for pummenu and if the cursor was before/after whitespace
-    ["<Tab><Tab>"] = cmp.mapping.confirm {
+    ['<Tab><Tab>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
-    },
+    }),
 
     -- Right is for ghost_text to behave like terminal
     -- NOTE: Cool! but I only want it to confirm if the completion menu has an active selection.
@@ -160,7 +159,7 @@ cmp.setup {
     --   end
     -- end,
   },
-}
+})
 
 -- @dmitmel | https://github.com/dmitmel/cmp-cmdline-history
 -- this will also setup the history completion for all command-line modes

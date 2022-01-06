@@ -9,39 +9,37 @@
 
 local g = vim.g
 
-
 --- Builtins ---
 
 -- For now, you can just comment the items in this list
 -- They will be disable if they are NOT commented.
 local disabled_plugins = {
-  "2html_plugin",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logiPat",
-  "matchit",
-  "matchparen",
+  '2html_plugin',
+  'getscript',
+  'getscriptPlugin',
+  'gzip',
+  'logiPat',
+  'matchit',
+  'matchparen',
   -- "netrw",
   -- "netrwFileHandlers",
   -- "netrwPlugin",
   -- "netrwSettings",
-  "rrhelper",
+  'rrhelper',
   -- "spellfile_plugin",
-  "tar",
-  "tarPlugin",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
+  'tar',
+  'tarPlugin',
+  'vimball',
+  'vimballPlugin',
+  'zip',
+  'zipPlugin',
 }
 
 -- Set variable that tricks vim into thinking
 -- the plugin has already been loaded
 for _, plugin in pairs(disabled_plugins) do
-  g["loaded_" .. plugin] = 1
+  g['loaded_' .. plugin] = 1
 end
-
 
 --- Settings ---
 
@@ -54,5 +52,5 @@ if g.loaded_netrwPlugin then
   g.netrw_banner = 0
   g.netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
   g.netrw_liststyle = 3 -- Default to treeview
-  g.netrw_localrmdir='rm -r'
+  g.netrw_localrmdir = 'rm -r'
 end

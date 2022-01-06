@@ -10,7 +10,7 @@
 local M = {}
 
 M.config = {
-  filetypes = {"sh", "zsh", "bash"}
+  filetypes = { 'sh', 'zsh', 'bash' },
 }
 
 return M

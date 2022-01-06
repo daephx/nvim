@@ -1,14 +1,14 @@
 local bufferline = require('bufferline')
 
-bufferline.setup {
+bufferline.setup({
   options = {
     -- numbers = 'none' | 'ordinal' | 'buffer_id' | 'both' | function({ ordinal, id, lower, raise }): string,
     --- deprecated, please specify numbers as a function to customize the styling
     -- number_style = 'superscript' | 'subscript' | '' | { 'none', 'subscript' }, -- buffer_id at index 1, ordinal at index 2
-    close_command = 'bdelete! %d',       -- can be a string | function, see 'Mouse actions'
+    close_command = 'bdelete! %d', -- can be a string | function, see 'Mouse actions'
     right_mouse_command = nil, -- can be a string | function, see 'Mouse actions'
-    left_mouse_command = 'buffer %d',    -- can be a string | function, see 'Mouse actions'
-    middle_mouse_command = nil,          -- can be a string | function, see 'Mouse actions'
+    left_mouse_command = 'buffer %d', -- can be a string | function, see 'Mouse actions'
+    middle_mouse_command = nil, -- can be a string | function, see 'Mouse actions'
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
     -- as an escape hatch for people who cannot bear it for whatever reason
@@ -22,7 +22,7 @@ bufferline.setup {
     --- Please note some names can/will break the
     --- bufferline so use this at your discretion knowing that it has
     --- some limitations that will *NOT* be fixed.
-    name_formatter = function(buf)  -- buf contains a 'name', 'path' and 'bufnr'
+    name_formatter = function(buf) -- buf contains a 'name', 'path' and 'bufnr'
       -- remove extension from markdown files for example
       if buf.name:match('%.md') then
         return vim.fn.fnamemodify(buf.name, ':t:r')
@@ -33,13 +33,15 @@ bufferline.setup {
     tab_size = 18,
     diagnostics = false,
     custom_areas = {},
-    offsets = {{
-      filetype = 'NvimTree',
-      text = 'File Explorer',
-      highlight = 'BufferlineNvimTree',
-      -- highlight = 'Directory',
-      text_align = 'center',
-    }},
+    offsets = {
+      {
+        filetype = 'NvimTree',
+        text = 'File Explorer',
+        highlight = 'BufferlineNvimTree',
+        -- highlight = 'Directory',
+        text_align = 'center',
+      },
+    },
     show_buffer_icons = true, -- disable filetype icons for buffers
     show_buffer_close_icons = true,
     show_close_icon = false,
@@ -55,12 +57,12 @@ bufferline.setup {
   highlights = {
     fill = {
       guibg = {
-        attribute = "bg",
-        highlight = "Pmenu"
-      }
+        attribute = 'bg',
+        highlight = 'Pmenu',
+      },
     },
-  }
-}
+  },
+})
 
 vim.cmd([[
   highlight! link BufferlineNvimTree TabLine

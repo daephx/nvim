@@ -14,9 +14,9 @@ local action_set = require('telescope.actions.set')
 local M = {}
 
 M.config = function()
-  telescope.setup {
+  telescope.setup({
     defaults = { -- Default configuration for telescope goes here:
-      prompt_prefix='> ',
+      prompt_prefix = '> ',
       color_devicons = true,
       dynamic_preview_title = true,
       -- layout_strategy= 'flex',
@@ -38,12 +38,12 @@ M.config = function()
         '--with-filename',
         '--line-number',
         '--column',
-        '--smart-case'
+        '--smart-case',
       },
 
       -- Set character list for prompt borders
       border = {},
-      borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'}, -- Rounded corners
+      borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }, -- Rounded corners
       -- borderchars = {'─', '│', '─', '│', '┌', '┐', '┘', '└'}, -- Square Corners
 
       layout_config = { -- Default settings for layout themes
@@ -51,12 +51,12 @@ M.config = function()
         horizontal = {
           width = 0.9,
           height = 0.95,
-          preview_width = 0.55
+          preview_width = 0.55,
         },
         vertical = {
           width_padding = 0.05,
           height_padding = 1,
-          preview_height = 0.5
+          preview_height = 0.5,
         },
       },
 
@@ -73,12 +73,12 @@ M.config = function()
           ['<PageUp>'] = function(prompt_bufnr)
             local results_win = state.get_status(prompt_bufnr).results_win
             local height = vim.api.nvim_win_get_height(results_win)
-            action_set.shift_selection(prompt_bufnr, -math.floor(height/2))
+            action_set.shift_selection(prompt_bufnr, -math.floor(height / 2))
           end,
           ['<PageDown>'] = function(prompt_bufnr)
             local results_win = state.get_status(prompt_bufnr).results_win
             local height = vim.api.nvim_win_get_height(results_win)
-            action_set.shift_selection(prompt_bufnr, math.floor(height/2))
+            action_set.shift_selection(prompt_bufnr, math.floor(height / 2))
           end,
         },
         n = {
@@ -86,7 +86,7 @@ M.config = function()
           ['<C-j>'] = actions.move_selection_next,
           ['<C-k>'] = actions.move_selection_previous,
           ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
-        }
+        },
       },
 
       file_ignore_patterns = { -- File patterns to exclude from fuzzy resaults
@@ -113,7 +113,7 @@ M.config = function()
             -- ['<c-w>'] =
             ['<c-d>'] = actions.delete_buffer,
           },
-        }
+        },
       },
       man_pages = { sections = { '2', '3' } },
       lsp_code_actions = { theme = 'ivy' },
@@ -127,37 +127,34 @@ M.config = function()
     extensions = { -- Your extension configuration goes here:
       -- please take a look at the readme of the extension you want to configure
       fzf = {
-        fuzzy = true,                    -- false will only do exact matching
-        override_generic_sorter = true,  -- override the generic sorter
-        override_file_sorter = true,     -- override the file sorter
-        case_mode = 'smart_case',        -- or 'ignore_case' or 'respect_case'
+        fuzzy = true, -- false will only do exact matching
+        override_generic_sorter = true, -- override the generic sorter
+        override_file_sorter = true, -- override the file sorter
+        case_mode = 'smart_case', -- or 'ignore_case' or 'respect_case'
         -- the default case_mode is 'smart_case'
       },
       media_files = {
         -- filetypes whitelist
         -- defaults to {'png', 'jpg', 'mp4', 'webm', 'pdf'}
-        filetypes = {'png', 'webp', 'jpg', 'jpeg'},
-        find_cmd  = 'rg' -- find command (defaults to `fd`)
+        filetypes = { 'png', 'webp', 'jpg', 'jpeg' },
+        find_cmd = 'rg', -- find command (defaults to `fd`)
       },
-    }
-  }
+    },
+  })
 
   -- require('telescope').load_extension('fzf')
   -- require('telescope').load_extension('gh')
   require('telescope').load_extension('projects')
   -- require('telescope').load_extension('repo')
-  require("telescope").load_extension("session-lens")
+  require('telescope').load_extension('session-lens')
   require('telescope').load_extension('dap')
 
   -- Highlights
 
   vim.cmd([[highlight TelescopeNormal guibg=none]])
-
 end
 
-
 --- Extensions ---
-
 
 -- Pickers
 
@@ -169,9 +166,9 @@ M.search_dotfiles = function()
     cwd = vim.env.DOTFILES,
     hidden = true,
     file_ignore_patterns = {
-      "meta/dotbot/.*",
-      "meta/dotbot/plugins/.*",
-    }
+      'meta/dotbot/.*',
+      'meta/dotbot/plugins/.*',
+    },
   })
 end
 
@@ -199,7 +196,9 @@ end
 M.project_files = function()
   local opts = {} -- define here if you want to define something
   local ok = pcall(builtin.git_files, opts)
-  if not ok then builtin.find_files(opts) end
+  if not ok then
+    builtin.find_files(opts)
+  end
 end
 
 M.todo_comments = function()
@@ -222,9 +221,9 @@ end
 
 -- Language server diagnostics
 M.lsp_workspace_diagnostics = function()
-  builtin.lsp_workspace_diagnostics {
+  builtin.lsp_workspace_diagnostics({
     layout_strategy = 'vertical',
-  }
+  })
 end
 
 return M

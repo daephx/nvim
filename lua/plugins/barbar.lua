@@ -21,7 +21,7 @@ g.bufferline = {
   clickable = true,
 
   -- Excludes buffers from the tabline
-  exclude_ft = {'dos', 'fugitive', 'neoterm'},
+  exclude_ft = { 'dos', 'fugitive', 'neoterm' },
   -- exclude_name = {},
 
   -- Enable/disable icons

@@ -4,15 +4,15 @@ g.fzf_colors = {
   ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
   ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
   ['hl+'] = { 'fg', 'Statement' },
-  bg      = { 'bg', 'Normal' },
-  fg      = { 'fg', 'Normal' },
-  hl      = { 'fg', 'Comment' },
-  border  = { 'fg', 'Ignore' },
-  header  = { 'fg', 'Comment' },
-  info    = { 'fg', 'PreProc' },
-  marker  = { 'fg', 'Keyword' },
+  bg = { 'bg', 'Normal' },
+  fg = { 'fg', 'Normal' },
+  hl = { 'fg', 'Comment' },
+  border = { 'fg', 'Ignore' },
+  header = { 'fg', 'Comment' },
+  info = { 'fg', 'PreProc' },
+  marker = { 'fg', 'Keyword' },
   pointer = { 'fg', 'Exception' },
-  prompt  = { 'fg', 'Conditional' },
+  prompt = { 'fg', 'Conditional' },
   spinner = { 'fg', 'Label' },
 }
 
@@ -27,7 +27,6 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 ]])
-
 
 --- Mappings ---
 

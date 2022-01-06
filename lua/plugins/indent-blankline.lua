@@ -8,14 +8,13 @@ if not fn.exists('g:loaded_indent_blankline') then
   return
 end
 
-
 --- Settings ---
 
 -- Ensure terminal colors is enabled for blankline context
 
 local indent_blankline = require('indent_blankline')
 
-indent_blankline.setup {
+indent_blankline.setup({
   enabled = true,
   char_highlight = 'LineNr',
   show_end_of_line = false,
@@ -39,25 +38,25 @@ indent_blankline.setup {
   buftype_exclude = {
     'help',
     'nofile',
-    'terminal'
+    'terminal',
   },
   filetype_exclude = {
-    "",
-    "LuaTree",
-    "NvimTree",
-    "UltestOutput",
-    "UltestSummary",
-    "dapui_breakpoints",
-    "dapui_hover",
-    "dapui_scopes",
-    "dapui_stacks",
-    "dapui_watches",
-    "dashboard",
-    "dbui",
-    "fugitive",
-    "fugitiveblame",
-    "help",
-    "packer",
-    "term",
+    '',
+    'LuaTree',
+    'NvimTree',
+    'UltestOutput',
+    'UltestSummary',
+    'dapui_breakpoints',
+    'dapui_hover',
+    'dapui_scopes',
+    'dapui_stacks',
+    'dapui_watches',
+    'dashboard',
+    'dbui',
+    'fugitive',
+    'fugitiveblame',
+    'help',
+    'packer',
+    'term',
   },
-}
+})

@@ -4,12 +4,11 @@
 vim.cmd('highlight link debugBreakpoint DiagnosticsHint')
 
 -- Define Debugging signs
-vim.fn.sign_define('DapBreakpoint', {text=' ', texthl='debugBreakpoint'})
-vim.fn.sign_define('DapBreakpointCondition', {text=' ', texthl='DiagnosticWarn'})
-vim.fn.sign_define('DapBreakpointRejected', {text=' ', texthl='DiagnosticError'})
-vim.fn.sign_define('DapLogPoint', {text=' ', texthl='debugBreakpoint'})
-vim.fn.sign_define('DapStopped', {text='●', texthl='DiagnosticsHint'})
-
+vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = 'debugBreakpoint' })
+vim.fn.sign_define('DapBreakpointCondition', { text = ' ', texthl = 'DiagnosticWarn' })
+vim.fn.sign_define('DapBreakpointRejected', { text = ' ', texthl = 'DiagnosticError' })
+vim.fn.sign_define('DapLogPoint', { text = ' ', texthl = 'debugBreakpoint' })
+vim.fn.sign_define('DapStopped', { text = '●', texthl = 'DiagnosticsHint' })
 
 local dap = require('dap')
 
@@ -23,7 +22,11 @@ end
 local mappings = function()
   map('n', '<leader>dC', '<cmd>lua require("dap").continue()<CR>')
   map('n', '<leader>db', '<cmd>lua require("dap").toggle_breakpoint()<CR>')
-  map('n', '<leader>dB', '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>')
+  map(
+    'n',
+    '<leader>dB',
+    '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>'
+  )
   map('n', '<leader>do', '<cmd>lua require("dap").step_over()<CR>')
   map('n', '<leader>dO', '<cmd>lua require("dap").step_out()<CR>')
   map('n', '<leader>dn', '<cmd>lua require("dap").step_into()<CR>')
@@ -54,7 +57,6 @@ augroup dapui_au
 augroup END
 ]])
 
-
 -- Languages defined here will be looked for in the plugin.dap module,
 -- Any lua script with the coorisponding name will be loaded if found.
 -- i.e. lua/plugins/dap/python.lua
@@ -65,7 +67,7 @@ local languages = {
   -- "go",
   -- "ruby",
   -- "lua",
-  "python",
+  'python',
   -- "rust",
   -- "javascript",
 }
@@ -77,7 +79,7 @@ M.config = function()
   -- initialize adapters/configs for languages
   for _, lang in pairs(languages) do
     if not pcall(require, 'plugins.dap.' .. lang) then
-      error("DAP: Config for " .. lang .. " is not defined!")
+      error('DAP: Config for ' .. lang .. ' is not defined!')
       return
     end
   end

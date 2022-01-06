@@ -8,7 +8,6 @@ local g = vim.g
 local M = {}
 
 function M.highlights()
-
   vim.cmd([[
 
   " Disable italic comments
@@ -22,7 +21,6 @@ function M.highlights()
   highlight SpecialChar guifg=#56B1BB
 
   ]])
-
 end
 
 return M

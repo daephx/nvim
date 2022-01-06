@@ -22,11 +22,9 @@ local g = vim.g
 
 local M = {}
 
-
 function M.setup(name)
-
   -- Check for colorscheme definition module
-  local ok, colorscheme = pcall(require, "colors." .. name)
+  local ok, colorscheme = pcall(require, 'colors.' .. name)
   if name ~= g.colors_name then
     return
   end
@@ -43,28 +41,27 @@ function M.setup(name)
   require('colors.overrides').setup({
     transparent_background = true,
     highlights = {
-      Comment = {ui = 'NONE'},
-      NonText = {bg = 'NONE'},
-      Question = {bg = 'NONE'},
+      Comment = { ui = 'NONE' },
+      NonText = { bg = 'NONE' },
+      Question = { bg = 'NONE' },
       -- CursorLine = {link = 'LineNr'}, -- Needs partial, no foreground
       CursorLineNr = { link = 'number' },
-      Directory = {bg = 'NONE'},
+      Directory = { bg = 'NONE' },
 
-      SignColumn = {bg = 'NONE'},
+      SignColumn = { bg = 'NONE' },
 
       -- Gitsigns Link Colors
-      GitSignsAdd = {link = 'DiffAdd'},
-      GitSignsChange ={link = 'DiffChange'},
-      GitSignsDelete = {link = 'DiffDelete'},
-    }
+      GitSignsAdd = { link = 'DiffAdd' },
+      GitSignsChange = { link = 'DiffChange' },
+      GitSignsDelete = { link = 'DiffDelete' },
+    },
   })
 
   -- Completion Message
   api.nvim_echo({
-    {'Loaded colorscheme: ', 'Special'},
-    {name, 'none'}},
-    true, {}
-  )
+    { 'Loaded colorscheme: ', 'Special' },
+    { name, 'none' },
+  }, true, {})
 
   -- Define colorscheme autogroup
   -- Reload this function when colorscheme is updated
@@ -76,7 +73,6 @@ function M.setup(name)
       \ lua require('colors').setup(vim.g.colors_name)
   augroup end
   ]])
-
 end
 
 return M

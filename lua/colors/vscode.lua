@@ -4,13 +4,11 @@ local g = vim.g
 
 g.vscode_style = 'dark'
 
-
 --- Locals ---
 
 local M = {}
 
 function M.highlights()
-
   vim.cmd([[
 
   " Disable italic comments
@@ -31,7 +29,6 @@ function M.highlights()
   highlight FloatBorder guifg=#5A5A5A guibg=none
 
   ]])
-
 end
 
 return M

@@ -1,6 +1,5 @@
 local g = vim.g
 
-
 --- Globals ---
 
 g.tokyonight_style = 'night'
@@ -12,25 +11,23 @@ g.tokyonight_italic_comments = false
 g.tokyonight_italic_keywords = false
 
 g.tokyonight_sidebars = {
-  "qf",
-  "Touble",
-  "vista_kind",
-  "terminal",
-  "packer",
+  'qf',
+  'Touble',
+  'vista_kind',
+  'terminal',
+  'packer',
 }
 
 g.tokyonight_colors = {
-  hint = "orange",
-  error = "#ff0000",
+  hint = 'orange',
+  error = '#ff0000',
 }
-
 
 --- Locals ---
 
 local M = {}
 
 function M.highlights()
-
   vim.cmd([[
 
   highlight String guifg=#CBAA73
@@ -42,7 +39,6 @@ function M.highlights()
   " highlight DiffDelete guifg=
 
   ]])
-
 end
 
 return M

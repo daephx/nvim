@@ -10,7 +10,6 @@ function M.getHighlight(group, term)
   return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), unpack(term))
 end
 
-
 function M.getHighlightTable(group)
   local output = fn.execute('hi ' .. group)
   local list = fn.split(output, '\\s\\+')
@@ -24,21 +23,19 @@ function M.getHighlightTable(group)
   return dict
 end
 
-
 -- TODO: Allow extraction of linked values and overwriting, aka partialLinks
 --@param group  : string = 'DiffAdd'
 --@param colors : table  = {fg = '#10e010'}
 function M.setHighlight(group, colors)
-
   local bg = colors.bg and 'guibg=' .. colors.bg or ''
   local fg = colors.fg and 'guifg=' .. colors.fg or ''
   local sp = colors.sp and 'guisp=' .. colors.sp or ''
-  local ui = colors.ui and 'gui='   .. colors.ui or ''
+  local ui = colors.ui and 'gui=' .. colors.ui or ''
 
-  local hl = 'highlight '..group..' '..ui..' '..fg..' '..bg..' '..sp
+  local hl = 'highlight ' .. group .. ' ' .. ui .. ' ' .. fg .. ' ' .. bg .. ' ' .. sp
 
   if colors.link then
-    cmd('highlight! link '..group..' '..colors.link)
+    cmd('highlight! link ' .. group .. ' ' .. colors.link)
   else
     cmd(hl)
   end

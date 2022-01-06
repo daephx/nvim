@@ -1,12 +1,12 @@
 -- Neogit | magit for NeoVim
 
 -- Prevent loading if not applicable
-local ok, neogit = pcall(require, "neogit")
+local ok, neogit = pcall(require, 'neogit')
 if not ok then
   return
 end
 
-neogit.setup {
+neogit.setup({
   kind = { 'tab' },
   auto_refresh = true,
   disable_signs = false,
@@ -18,7 +18,7 @@ neogit.setup {
   integrations = {
     -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `sindrets/diffview.nvim`.
     -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
-    diffview = true -- Requires you to have `sindrets/diffview.nvim` installed.
+    diffview = true, -- Requires you to have `sindrets/diffview.nvim` installed.
   },
   mappings = { -- override/add mappings
     status = { -- modify status buffer mappings
@@ -27,34 +27,33 @@ neogit.setup {
       ['q'] = 'Close',
       -- ['s'] = 'Stage',
       -- ['S'] = '', -- Disable Stage all
-    }
+    },
   },
   -- Setting any section to `false` will make the section not render at all
   sections = {
     untracked = {
-      folded = true
+      folded = true,
     },
     unstaged = {
-      folded = true
+      folded = true,
     },
     staged = {
-      folded = false
+      folded = false,
     },
     stashes = {
-      folded = true
+      folded = true,
     },
     unpulled = {
-      folded = true
+      folded = true,
     },
     unmerged = {
-      folded = false
+      folded = false,
     },
     recent = {
-      folded = false
+      folded = false,
     },
   },
-}
-
+})
 
 vim.cmd([[
 " Highlights

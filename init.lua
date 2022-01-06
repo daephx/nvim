@@ -19,7 +19,6 @@ local g = vim.g
 -- from other locations '$MYRUNTIME/init.lua'
 env.MYRUNTIME = fn.stdpath('config')
 
-
 --- Globals ---
 
 -- VSCode
@@ -51,7 +50,6 @@ g.localleader = '\\'
 -- Sometimes this only contains one or two remaps
 g.experiemental_on = 0
 
-
 --- Modules ---
 
 -- Lua modules containing configuration definitions
@@ -62,7 +60,6 @@ require('utils') -- General utility functions
 require('plugins') -- Plugin definitions
 require('commands') -- Command abbreviations
 require('mappings') -- Hotkey remaps
-
 
 --- Helpers ---
 

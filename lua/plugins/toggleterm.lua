@@ -4,9 +4,9 @@ if not ok then
   return
 end
 
-local Terminal  = require('toggleterm.terminal').Terminal
+local Terminal = require('toggleterm.terminal').Terminal
 
-toggleterm.setup {
+toggleterm.setup({
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == 'horizontal' then
@@ -31,18 +31,17 @@ toggleterm.setup {
     highlights = {
       border = 'single',
       background = 'Normal',
-    }
-  }
-}
+    },
+  },
+})
 
 local float_opts = {
   winblender = 0,
   highlights = {
     background = 'Normal',
-    border = 'FloatBorder'
-  }
+    border = 'FloatBorder',
+  },
 }
-
 
 --- Terminals ---
 
@@ -52,27 +51,33 @@ local M = {}
 
 M.default = Terminal:new({
   cmd = vim.o.shell,
-  direction = "horizontal",
+  direction = 'horizontal',
   on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>",
+    vim.cmd('startinsert!')
+    vim.api.nvim_buf_set_keymap(
+      term.bufnr,
+      'n',
+      'q',
+      '<cmd>close<CR>',
       { noremap = true, silent = true }
     )
     vim.api.nvim_buf_set_keymap(
       term.bufnr,
-      "t", "<F12>", [[<C-\><C-n><cmd>lua toggle_terminal('default')<cr>]],
+      't',
+      '<F12>',
+      [[<C-\><C-n><cmd>lua toggle_terminal('default')<cr>]],
       { noremap = true, silent = true }
     )
   end,
 })
 
 M.lazygit = Terminal:new({
-  cmd = "lazygit",
+  cmd = 'lazygit',
   dir = vim.fn.getcwd(),
   hidden = false,
   on_open = function(term)
-    if vim.fn.mapcheck("<esc>", "t") ~= "" then
-      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
+    if vim.fn.mapcheck('<esc>', 't') ~= '' then
+      vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
     end
   end,
   direction = 'float',
@@ -80,12 +85,12 @@ M.lazygit = Terminal:new({
 })
 
 M.lazydocker = Terminal:new({
-  cmd = "lazydocker",
+  cmd = 'lazydocker',
   dir = vim.fn.getcwd(),
   hidden = false,
   on_open = function(term)
-    if vim.fn.mapcheck("<esc>", "t") ~= "" then
-      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<C-\\><C-N>")
+    if vim.fn.mapcheck('<esc>', 't') ~= '' then
+      vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-\\><C-N>')
     end
   end,
   direction = 'float',
@@ -95,7 +100,6 @@ M.lazydocker = Terminal:new({
 _G.toggle_terminal = function(name)
   M[name]:toggle()
 end
-
 
 vim.cmd([[
 command! -nargs=0 Lazygit lua toggle_terminal('lazygit')<cr>

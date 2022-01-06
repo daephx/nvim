@@ -9,26 +9,24 @@ local function diff_source()
     return {
       added = gitsigns.added,
       modified = gitsigns.changed,
-      removed = gitsigns.removed
+      removed = gitsigns.removed,
     }
   end
 end
-
 
 -- Custom Themes
 local custom_codedark = require('lualine.themes.codedark')
 -- Change the background of lualine_c section for normal mode
 custom_codedark.normal.terminal = {
-    bg = "#ffaf00",
-    fg = "#262626",
-    gui = "bold"
+  bg = '#ffaf00',
+  fg = '#262626',
+  gui = 'bold',
 }
-
 
 local lualine = require('lualine')
 
 -- Lualine setup configs
-lualine.setup {
+lualine.setup({
   options = {
     theme = 'auto',
     padding = 1, -- adds padding to the left and right of components
@@ -45,40 +43,44 @@ lualine.setup {
     },
   },
   sections = {
-    lualine_a = {{'mode', upper = true}},
+    lualine_a = { { 'mode', upper = true } },
     lualine_b = {
-      {'branch', icon = ''},
-      {'diff', source = diff_source},
+      { 'branch', icon = '' },
+      { 'diff', source = diff_source },
     },
     lualine_c = {
       {
         'diagnostics',
         update_in_insert = false, -- Update diagnostics in insert mode
         -- table of diagnostic sources, available sources:
-        sources = {'nvim_diagnostic', 'coc', 'ale'},
+        sources = { 'nvim_diagnostic', 'coc', 'ale' },
         -- displays diagnostics from defined severity
         -- sections = {'hint', 'info', 'warn', 'error'},
         symbols = {
-          hint = "",
-          info = "",
-          warn = "",
-          error = "",
+          hint = '',
+          info = '',
+          warn = '',
+          error = '',
         },
       },
     },
-    lualine_d = {{function() return '%=' end}},
-    lualine_e = {'location'},
-    lualine_x = {'filetype', 'encoding', 'fileformat'},
+    lualine_d = { {
+      function()
+        return '%='
+      end,
+    } },
+    lualine_e = { 'location' },
+    lualine_x = { 'filetype', 'encoding', 'fileformat' },
     lualine_y = {},
-    lualine_z = {'progress', 'location'},
+    lualine_z = { 'progress', 'location' },
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_c = { 'filename' },
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
   -- tabline = {
   --   lualine_a = {'buffers'},
@@ -95,5 +97,5 @@ lualine.setup {
     -- 'nvim-tree',
     'quickfix',
     'trouble',
-  }
-}
+  },
+})

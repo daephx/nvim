@@ -1,20 +1,12 @@
-# NeoVim Configurations
+<div align=center>
+    <h1>Neovim</h1>
+    <p>Personal Neovim configurations written in lua</p>
+</div>
 
-At a certain point of playing around with both these configuration, I ended up breaking things quite
-often.
-So, now I aim to make this it's own repository until the time comes where I am satisfied and decided
-to merge it with my main [dotfiles](https://github.com/daephx/dotfiles) -- Currently Private.
+![screenshot](https://user-images.githubusercontent.com/36192863/148428419-2af178b1-1a85-4206-8d7e-22b3f5c11d38.png)
 
-One of the issues I have run into was making things cross-platform,
-My main machine runs Windows 10 with WSL in the background, while I primarily use Ubuntu on my laptop.
-The issue was simply that I did not understand VimL at all what-so-ever; so passing around variables
-instead of hard coding paths was a bit troublesome.
-> However, further testing is still needed
+## Dependencies
 
-The next issue I foresee, is that much the of the NeoVim community is heavily adopting lua script for
-their configuration language. Great, another language to learn...
-I have somewhat used lua for ConEmu and ComputerCraft and but I'm not well-versed in it's syntax.
-
-Next and following the previous point on lua, am interested in this distinction between the languages
-for configuration; so I wonder if it would be possible to have a minimal `init.vim` for compatibility
-between legacy Vim and Vi, while also applying the bulk of my configuration for NeoVim in lua?
+- fd
+- git
+- ripgrep

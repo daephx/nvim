@@ -2,6 +2,7 @@
 -- Description: Configurations for Language Servers
 
 local api = vim.api
+local cmd = vim.cmd
 local fn = vim.fn
 local lsp = vim.lsp
 
@@ -66,7 +67,7 @@ lsp_installer.on_server_ready(function(server)
     on_attach = on_attach,
     capabilities = capabilities
   })
-  vim.cmd('do User LspAttachBuffers')
+  cmd('do User LspAttachBuffers')
 end)
 
 lsp.handlers["textDocument/publishDiagnostics"] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
@@ -87,4 +88,4 @@ for type, icon in pairs(signs) do
 end
 
 -- Close lspinfo window using 'q'
-vim.cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> q :q<CR> ]])
+cmd [[ autocmd! FileType lspinfo nnoremap <silent> <buffer> q :q<CR> ]]

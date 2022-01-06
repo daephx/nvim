@@ -1,6 +1,5 @@
 local fn = vim.fn
 
-
 local M = {}
 
 --@param  group  : string = 'DiffAdd'
@@ -11,7 +10,6 @@ function M.getHighlight(group, term)
 end
 
 function M.getHighlightTable(group)
-
   local output = fn.execute('hi ' .. group)
   local list = fn.split(output, '\\s\\+')
 
@@ -34,19 +32,18 @@ function M.setHighlight(group, colors)
   local sp = colors.sp and 'guisp=' .. colors.sp or ''
   local ui = colors.ui and 'gui=' .. colors.ui or ''
 
-  local hl = 'silent highlight ' .. table.concat({group, bg, fg, sp, ui}, " ")
+  local hl = 'silent highlight ' .. table.concat({ group, bg, fg, sp, ui }, ' ')
 
   if colors.clear == true then
     vim.cmd('highlight clear ' .. group)
     return
   end
   if colors.link then
-    link = table.concat({'link', group, colors.link}, ' ')
+    link = table.concat({ 'link', group, colors.link }, ' ')
     vim.cmd('highlight! ' .. link)
   end
   vim.cmd(hl)
 end
-
 
 function M.setup(opts)
   local next = next
@@ -57,6 +54,5 @@ function M.setup(opts)
     end
   end
 end
-
 
 return M

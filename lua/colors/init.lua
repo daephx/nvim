@@ -16,7 +16,6 @@ local g = vim.g
 local global = require('colors.global')
 local utils = require('colors.utils')
 
-
 local M = {}
 
 function M.setup(name)

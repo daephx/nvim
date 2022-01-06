@@ -11,25 +11,27 @@ g.dashboard_session_directory = fn.stdpath('data') .. '/sessions'
 g.dashboard_custom_header = (function()
   local fname = 'super_meatboy'
   local spath = fn.stdpath('config') .. '/static/'
-  return require('utils').fileToArray(spath..fname..'.txt')
+  return require('utils').fileToArray(spath .. fname .. '.txt')
 end)()
 
 -- Define quick command section
 g.dashboard_custom_section = {
-  a = {description = {'  New File              SPC e n'}, command = 'DashboardNewFile'},
-  b = {description = {'  Recents               SPC f r'}, command = 'Telescope oldfiles'},
-  c = {description = {'  Bookmarks             SPC f m'}, command = 'Telescope marks'},
-  d = {description = {'  Find File             SPC f f'}, command = 'Telescope find_files'},
-  e = {description = {'  Find Word             SPC f g'}, command = 'Telescope live_grep'},
-  f = {description = {'  Load Last Session     SPC s l'}, command = 'Telescope session-lens'},
-  g = {description = {'  Update Plugins        SPC p u'}, command = 'PackerUpdate'},
-  h = {description = {'  Settings              SPC f v'}, command = 'lua require("plugins.telescope").search_vimfiles()'},
-  i = {description = {'  Exit                  SPC q q'}, command = 'exit'},
+  a = { description = { '  New File              SPC e n' }, command = 'DashboardNewFile' },
+  b = { description = { '  Recents               SPC f r' }, command = 'Telescope oldfiles' },
+  c = { description = { '  Bookmarks             SPC f m' }, command = 'Telescope marks' },
+  d = { description = { '  Find File             SPC f f' }, command = 'Telescope find_files' },
+  e = { description = { '  Find Word             SPC f g' }, command = 'Telescope live_grep' },
+  f = { description = { '  Load Last Session     SPC s l' }, command = 'Telescope session-lens' },
+  g = { description = { '  Update Plugins        SPC p u' }, command = 'PackerUpdate' },
+  h = {
+    description = { '  Settings              SPC f v' },
+    command = 'lua require("plugins.telescope").search_vimfiles()',
+  },
+  i = { description = { '  Exit                  SPC q q' }, command = 'exit' },
 }
 
-local plugin_count = fn.len(fn.globpath(fn.stdpath('data')..'/site/pack/packer/start', '*', 0, 1))
-g.dashboard_custom_footer = {'Started with ' .. plugin_count .. ' detected plugins'}
-
+local plugin_count = fn.len(fn.globpath(fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1))
+g.dashboard_custom_footer = { 'Started with ' .. plugin_count .. ' detected plugins' }
 
 vim.cmd([[
 augroup dashboard_au

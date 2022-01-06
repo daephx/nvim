@@ -3,9 +3,12 @@ local g = vim.g
 
 -- Helper function: ternary condition
 local function ternary(t, f, cond)
-  if cond then return t else return f end
+  if cond then
+    return t
+  else
+    return f
+  end
 end
-
 
 --- Globals ---
 
@@ -25,7 +28,6 @@ else -- Use whatever shell you prefer, default to bash
   g.neoterm_shell = ternary('zsh', 'bash', fn.executable('zsh'))
 end
 
-
 --- Mappings ---
 
 -- Spawn/Toggle Terminal
@@ -34,7 +36,6 @@ map('t', '<F12>', '<C-\\><C-n><cmd>Ttoggle<CR>')
 
 -- Allow Ctrl+W to switch window in terminal
 map('t', '<C-w>', '<C-\\><C-n><C-w>')
-
 
 --- Autocmds ---
 

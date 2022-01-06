@@ -11,7 +11,7 @@ local M = {}
 M.sections = {
   lualine_a = { trouble_statusline },
   -- lualine_b = { trouble_itemcount },
-  lualine_z = { trouble_itemcount, 'location' }
+  lualine_z = { trouble_itemcount, 'location' },
 }
 
 M.inactive_sections = {}

@@ -1,4 +1,4 @@
-local lsp_client ={
+local lsp_client = {
   -- Lsp server name .
   function()
     local msg = 'No Active Lsp'
@@ -22,7 +22,7 @@ local lsp_client ={
 local M = {}
 
 M.sections = {
-  lualine_e = { lsp_client }
+  lualine_e = { lsp_client },
 }
 
 return M

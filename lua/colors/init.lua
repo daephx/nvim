@@ -16,13 +16,11 @@ local g = vim.g
 local global = require('colors.global')
 local utils = require('colors.utils')
 
-
 local M = {}
 
 function M.setup(name)
-
   -- Check for colorscheme definition module
-  local ok, colorscheme = pcall(require, "colors." .. name)
+  local ok, colorscheme = pcall(require, 'colors.' .. name)
   if name ~= g.colors_name then
     return
   end
@@ -48,7 +46,6 @@ function M.setup(name)
       \ lua require('colors').setup(vim.g.colors_name)
   augroup end
   ]])
-
 end
 
 return M

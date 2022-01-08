@@ -7,10 +7,6 @@
 -- init module for loading colorschemes
 -- and overrides for common highlight groups
 
--- This module manages colorscheme settings via globals and higroups
--- You should set your colorscheme prior to sourcing this module
--- either with `colorscheme <name>` or `vim.g.colors_name = <name>`
-
 local g = vim.g
 
 local M = {}
@@ -65,7 +61,6 @@ function M.getHighlightTable(group)
   return dict
 end
 
--- TODO: Allow extraction of linked values and overwriting, aka partialLinks
 --@param group  : string = 'DiffAdd'
 --@param colors : table  = {fg = '#10e010'}
 function M.setHighlight(group, colors)
@@ -100,36 +95,31 @@ end
 
 --- Initialization ---
 
-function M.setup(name)
+function M.setup()
+  local name = g.colors_name
 
-  -- Check for colorscheme definition module
-  local ok, colorscheme = pcall(require, "colors." .. name)
-  if name ~= g.colors_name then
-    return
-  end
-
-  -- Load colorscheme
-  vim.cmd('colorscheme ' .. name)
-
-  -- Load colorscheme specific overrides
-  if ok and colorscheme.highlights then
-    M.applyHighlights(colorscheme.highlights)
+  -- Safety check for theme highlight table
+  local ok, theme = pcall(require, 'colors.' .. name)
+  if ok and theme.highlights then
+    M.applyHighlights(theme.highlights)
   end
 
   -- Apply global overrides
   M.applyHighlights(M.highlights)
-
-  -- Update Colorscheme
-  -- Reload this function when colorscheme is updated
-
-  vim.cmd([[
-  augroup colorscheme_au
-    autocmd!
-    autocmd ColorScheme *
-      \ lua require('colors').setup(vim.g.colors_name)
-  augroup end
-  ]])
-
 end
+
+-- Update Colorscheme
+-- Reload this function when colorscheme is updated
+-- Run setup function when sourced / required
+
+M.setup()
+
+vim.cmd([[
+augroup colorscheme_au
+  autocmd!
+  autocmd ColorScheme *
+    \ lua require('colors').setup()
+augroup END
+]])
 
 return M

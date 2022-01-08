@@ -7,11 +7,11 @@ local g = vim.g
 g.vscode_style = 'dark'
 g.vscode_transparent = 1
 
---- Highlights ---
-
 local M = {}
 
 M.highlights = {
+
+  --- Highlights ---
 
   Comment = { fg = '#626262', ui = 'none' },
   String = { fg = '#CBAA73' },

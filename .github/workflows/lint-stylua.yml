@@ -5,6 +5,7 @@ on: [push, pull_request]
 jobs:
 
   luacheck:
+    if: ${{ false }} # disable for now
     name: Luacheck
     runs-on: ubuntu-20.04
     steps:

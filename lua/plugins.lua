@@ -42,18 +42,22 @@ return packer.startup({
 
     use({ -- Dark+ theme written in lua
       'Mofiqul/vscode.nvim',
+      config = get_setup('colors.vscode'),
     })
 
     use({ -- TokyoNight ColorScheme
       'folke/tokyonight.nvim',
+      config = get_setup('colors.tokyonight'),
     })
 
     use({ -- Nice pink neovim color scheme
       'numtostr/sakura.nvim',
+      config = get_setup('colors.vscode'),
     })
 
     use({ -- Retro groove color scheme for Vim
       'morhetz/gruvbox',
+      config = get_setup('colors.gruvbox'),
     })
 
     use({ -- Dashboard / Startscreen

@@ -13,9 +13,34 @@
 
 local g = vim.g
 
-local global = require('colors.global')
-
 local M = {}
+
+--- Highlights ---
+
+M.highlights = {
+  -- Always disable background color
+  Normal = { bg = 'NONE' },
+
+  Comment = { ui = 'NONE' },
+  NonText = { bg = 'NONE', fg = '#2a2a2a', ui = 'nocombine' },
+  Question = { bg = 'NONE' },
+  CursorLine = { link = 'LineNr', fg = 'NONE' },
+  CursorLineNr = { link = 'Number' },
+  Directory = { bg = 'NONE' },
+  VertSplit = { bg = 'NONE' },
+  FloatBorder = { bg = 'NONE' },
+
+  Todo = { clear = true },
+  TroubleIndent = { clear = true },
+
+  SignColumn = { bg = 'NONE' },
+  WhichKeyFloat = { link = 'StatusLineNC' },
+
+  QuickFixLine = { link = 'Visual' },
+
+  -- DAP Debugging
+  DebugBreakpoint = { fg = '#ff0000', bg = 'NONE' },
+}
 
 --- Utilities ---
 
@@ -91,7 +116,7 @@ function M.setup(name)
   end
 
   -- Apply global overrides
-  M.applyHighlights(global.highlights)
+  M.applyHighlights(M.highlights)
 
   -- Update Colorscheme
   -- Reload this function when colorscheme is updated

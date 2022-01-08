@@ -18,7 +18,7 @@ function M.bootstrap()
   end
 end
 
-M.config = function()
+M.setup = function()
   local util = require('packer.util')
 
   return {

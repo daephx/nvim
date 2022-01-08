@@ -320,5 +320,5 @@ return packer.startup({
   end,
 
   -- Load and evaluate packer config table
-  config = (require('plugins.packer').setup)(),
+  config = (require('plugins.packer').setup()),
 })

@@ -88,6 +88,11 @@ tags
 .[Tt]emp/
 [Tt]emp/
 
+# Local XDG
+.cache/
+.config/
+.local/
+
 # Vimplug files can be easily regenerated,
 # so committing is not necessary
 autoload/plug.vim
@@ -105,3 +110,4 @@ plugin/packer_compiled.lua
 
 # Language server directory
 /ls
+

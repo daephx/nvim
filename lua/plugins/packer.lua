@@ -14,10 +14,8 @@ function M.bootstrap()
   end
 end
 
-
-M.config = function()
-
-  local util = require("packer.util")
+M.setup = function()
+  local util = require('packer.util')
 
   return {
     ensure_dependencies = true, -- Should packer install plugin dependencies?

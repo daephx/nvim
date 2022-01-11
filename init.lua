@@ -57,9 +57,10 @@ g.experiemental_on = 0
 -- Lua modules containing configuration definitions
 -- The order of these does matter!
 
+require('plugins') -- Plugin definitions
+require('colors') -- Pretty rainbows!!
 require('settings') -- General NeoVim Settings
 require('utils') -- General utility functions
-require('plugins') -- Plugin definitions
 require('commands') -- Command abbreviations
 require('mappings') -- Hotkey remaps
 

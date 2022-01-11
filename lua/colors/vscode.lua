@@ -1,37 +1,41 @@
+-- VSCode | Colorscheme settings
+
 local g = vim.g
 
 --- Globals ---
 
 g.vscode_style = 'dark'
+g.vscode_transparent = 1
 
-
---- Locals ---
+--- Highlights ---
 
 local M = {}
 
-function M.highlights()
+M.highlights = {
 
-  vim.cmd([[
+  Comment = { fg = '#626262', ui = 'none' },
+  String = { fg = '#CBAA73' },
+  SpecialChar = { fg = '#56B1BB' },
+  LineNr = { bg = 'none' },
+  Visual = { bg = '#0C243C', fg = 'none' },
+  EndOfBuffer = { fg = '#222222' },
 
-  " Disable italic comments
-  highlight Comment gui=none ctermfg=gray guifg=#626262
+  -- Git status
+  DiffAdd = { bg = '#212D19', fg = 'none' },
+  DiffChange = { bg = '#3B3814', fg = 'none' },
+  DiffDelete = { bg = 'none', fg = 'indianred' },
 
-  " highlight LineNr guibg=none
-  highlight String guifg=#CBAA73
+  -- Floating Windows
+  FloatNormal = { bg = 'none' },
+  FloatBorder = { fg = '#5A5A5A', bg = 'none' },
+  LspFloatWinNormal = { link = 'NormalFloat' },
+  NormalFloat = { link = 'Pmenu' },
 
-  " Git status
-  " highlight DiffAdd guibg=green
-  highlight DiffChange guibg=#464C18
-  " highlight DiffDelete guibg=red
+  -- NvimTree
+  NvimTreeNormal = { bg = 'none' },
 
-  " Special strings
-  highlight SpecialChar guifg=#56B1BB
-
-  " Floating Windows
-  highlight FloatBorder guifg=#5A5A5A guibg=none
-
-  ]])
-
-end
+  -- Lualine | Might want to add to custom theme
+  lualine_a_inactive = { bg = '#1e1e2e' },
+}
 
 return M

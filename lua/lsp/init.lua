@@ -97,9 +97,12 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
+--- Lsp-Installer ---
 
+-- Initialize module
+local lsp_installer = require('nvim-lsp-installer')
+
+-- Apply settings
 lsp_installer.settings({
   -- The directory in which to install all servers.
   -- install_root_dir = path.concat { fn.stdpath("data"), "lsp_servers" },
@@ -112,11 +115,37 @@ lsp_installer.settings({
   },
 })
 
+-- Auto-install LSP servers
+-- Include the servers you want to have installed by default below
+local default_servers = {
+  'bashls',
+  'jsonls',
+  'pyright',
+  'sumneko_lua',
+  'vimls',
+  'yamlls',
+}
+-- Loop default list
+for _, name in pairs(default_servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found then
+    if not server:is_installed() then
+      print('Installing ' .. name)
+      server:install()
+    end
+  end
+end
+
+-- Server activation callback
 lsp_installer.on_server_ready(function(server)
-  local _, mod = pcall(require, 'lsp.' .. server.name)
-  server:setup(mod.config or {
-    on_attach = on_attach,
+  local options = {
     capabilities = capabilities,
-  })
+    on_attach = on_attach,
+  }
+  local ok, mod = pcall(require, 'lsp.' .. server.name)
+  if ok then
+    options = vim.tbl_extend('force', options, mod.setup)
+  end
+  server:setup(options)
   vim.cmd('do User LspAttachBuffers')
 end)

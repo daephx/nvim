@@ -9,7 +9,7 @@
 
 local M = {}
 
-M.config = {
+M.setup = {
   filetypes = { 'sh', 'zsh', 'bash' },
 }
 

@@ -9,6 +9,6 @@
 
 local M = {}
 
-M.config = {}
+M.setup = {}
 
 return M

@@ -1,5 +1,9 @@
--- Module: plugins.lsp
--- Description: Configurations for Language Servers
+-- Native LSP Configurations (Language Server Protocol)
+
+-- Prevent loading if coc is enabled
+if vim.g.coc_enabled then
+  return
+end
 
 local api = vim.api
 local cmd = vim.cmd

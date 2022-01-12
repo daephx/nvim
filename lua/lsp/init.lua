@@ -6,13 +6,55 @@ if vim.g.coc_enabled then
 end
 
 local api = vim.api
-local cmd = vim.cmd
-local fn = vim.fn
 local lsp = vim.lsp
 
-local lspconfig = require('lspconfig')
-local lsp_installer = require('nvim-lsp-installer')
+-- Diagnostic Settings
+vim.diagnostic.config({
+
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+
+  float = {
+    source = 'always',
+    show_header = true,
+    -- prefix = "✗",
+    -- border = 'rounded',
+    focusable = false,
+  },
+  virtual_text = false,
+  -- {
+  --   source = "always",
+  --   prefix = "✗", -- Could be '●', '▎', '✗'
+  -- },
+})
+
+-- Apply diagnostic symbols in the sign column
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.cmd('highlight! link ' .. hl .. ' Diagnostic' .. type)
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = 'none' })
+end
+
+-- Close LspInfo window using 'q'
+vim.cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> qq :q<CR> ]])
+
+-- Reference dependency modules
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'additionalTextEdits',
+    'detail',
+    'documentation',
+  },
+}
+
+-- Overriding the default LSP server options
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -55,8 +97,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities())
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 
@@ -78,24 +118,5 @@ lsp_installer.on_server_ready(function(server)
     on_attach = on_attach,
     capabilities = capabilities,
   })
-  cmd('do User LspAttachBuffers')
+  vim.cmd('do User LspAttachBuffers')
 end)
-
-lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
-  signs = true,
-  underline = false,
-  update_in_insert = false,
-  virtual_text = {
-    prefix = '✗', -- Could be '●', '▎', '✗'
-  },
-})
-
--- Change diagnostic symbols in the sign column (gutter)
-local signs = { Error = ' ', Warning = ' ', Hint = ' ', Information = ' ' }
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
--- Close lspinfo window using 'q'
-cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> q :q<CR> ]])

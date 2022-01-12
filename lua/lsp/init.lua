@@ -1,18 +1,67 @@
--- Module: plugins.lsp
--- Description: Configurations for Language Servers
+-- Native LSP Configurations (Language Server Protocol)
+
+-- Prevent loading if coc is enabled
+if vim.g.coc_enabled then
+  return
+end
 
 local api = vim.api
-local cmd = vim.cmd
-local fn = vim.fn
 local lsp = vim.lsp
 
-local lspconfig = require('lspconfig')
-local lsp_installer = require('nvim-lsp-installer')
+-- Diagnostic Settings
+vim.diagnostic.config({
+
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+
+  float = {
+    source = 'always',
+    show_header = true,
+    -- prefix = "✗",
+    -- border = 'rounded',
+    focusable = false,
+  },
+  virtual_text = false,
+  -- {
+  --   source = "always",
+  --   prefix = "✗", -- Could be '●', '▎', '✗'
+  -- },
+})
+
+-- Apply diagnostic symbols in the sign column
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.cmd('highlight! link ' .. hl .. ' Diagnostic' .. type)
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = 'none' })
+end
+
+-- Close LspInfo window using 'q'
+vim.cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> qq :q<CR> ]])
+
+-- Reference dependency modules
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'additionalTextEdits',
+    'detail',
+    'documentation',
+  },
+}
+
+-- Overriding the default LSP server options
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- Prompt when attached
+  api.nvim_echo({ { 'LSP Attached: ', 'String' }, { client.name } }, true, {})
+
   local function buf_set_keymap(...)
     api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -32,30 +81,59 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap(
     'n',
-    '<space>wl',
+    '<leader>wl',
     '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
     opts
   )
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap(
+    'n',
+    '<leader>ca',
+    '<cmd>lua require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor())<CR>',
+    opts
+  )
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('v', 'gf', "<cmd>'<,'>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  buf_set_keymap('n', '<leader>de', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+
+  -- Show line diagnostics on cursor position in hover window
+  vim.cmd(
+    [[ autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"}) ]]
+  )
+
+  -- Apply Auto-formatting on save
+  -- vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 100) ]])
+  vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync({}, 500) ]])
+
+  -- Manual :Format command
+  -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+  vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(lsp.protocol.make_client_capabilities())
+--- Null-LS ---
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
+-- Safely load module
+local ok, null_ls = pcall(require, 'lsp.null-ls')
+if ok then
+  null_ls.setup()
+end
 
+--- Lsp-Installer ---
+
+-- Initialize module
+local lsp_installer = require('nvim-lsp-installer')
+
+-- Apply settings
 lsp_installer.settings({
   -- The directory in which to install all servers.
   -- install_root_dir = path.concat { fn.stdpath("data"), "lsp_servers" },
@@ -68,30 +146,37 @@ lsp_installer.settings({
   },
 })
 
-lsp_installer.on_server_ready(function(server)
-  local _, mod = pcall(require, 'lsp.' .. server.name)
-  server:setup(mod.config or {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
-  cmd('do User LspAttachBuffers')
-end)
-
-lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
-  signs = true,
-  underline = false,
-  update_in_insert = false,
-  virtual_text = {
-    prefix = '✗', -- Could be '●', '▎', '✗'
-  },
-})
-
--- Change diagnostic symbols in the sign column (gutter)
-local signs = { Error = ' ', Warning = ' ', Hint = ' ', Information = ' ' }
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- Auto-install LSP servers
+-- Include the servers you want to have installed by default below
+local default_servers = {
+  'bashls',
+  'jsonls',
+  'pyright',
+  'sumneko_lua',
+  'vimls',
+  'yamlls',
+}
+-- Loop default list
+for _, name in pairs(default_servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found then
+    if not server:is_installed() then
+      print('Installing ' .. name)
+      server:install()
+    end
+  end
 end
 
--- Close lspinfo window using 'q'
-cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> q :q<CR> ]])
+-- Server activation callback
+lsp_installer.on_server_ready(function(server)
+  local options = {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+  local ok, mod = pcall(require, 'lsp.' .. server.name)
+  if ok then
+    options = vim.tbl_extend('force', options, mod.setup)
+  end
+  server:setup(options)
+  vim.cmd('do User LspAttachBuffers')
+end)

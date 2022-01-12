@@ -97,6 +97,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+--- Null-LS ---
+
+-- Safely load module
+local ok, null_ls = pcall(require, 'lsp.null-ls')
+if ok then
+  null_ls.setup()
+end
+
 --- Lsp-Installer ---
 
 -- Initialize module

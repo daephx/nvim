@@ -58,5 +58,6 @@ indent_blankline.setup({
     'help',
     'packer',
     'term',
+    'text',
   },
 })

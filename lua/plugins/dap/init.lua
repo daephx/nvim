@@ -74,7 +74,7 @@ local languages = {
 
 local M = {}
 
-M.config = function()
+M.setup = function()
   mappings() -- initialize Debugger keymaps
   -- initialize adapters/configs for languages
   for _, lang in pairs(languages) do

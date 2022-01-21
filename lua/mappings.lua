@@ -82,39 +82,35 @@ whichkey_map = {
   q = { 'LSP Set Location List' },
 }
 
-if pcall(require, 'dap') then
-  -- Debug Protocol
-  whichkey_map.d = {
-    name = '+Debug',
-    b = { '<cmd>lua require("dap").toggle_breakpoint()<CR>', 'Set Breakpoint' },
-    d = { '<cmd>lua require("dap.python").attach_python_debugger()<CR>', 'Start Debugging' },
-    n = { '<cmd>lua require("dap").continue()<CR>', 'Continue debugging' },
-  }
-end
+-- Debug Protocol
+whichkey_map.d = {
+  name = '+Debug',
+  b = { '<cmd>lua require("dap").toggle_breakpoint()<CR>', 'Set Breakpoint' },
+  d = { '<cmd>lua require("dap.python").attach_python_debugger()<CR>', 'Start Debugging' },
+  n = { '<cmd>lua require("dap").continue()<CR>', 'Continue debugging' },
+}
 
-if pcall(require, 'telescope') then
-  -- Telescope Find
-  whichkey_map.f = {
-    name = '+Files',
-    ['.'] = { '<cmd>lua require("plugins.telescope").search_dotfiles()<CR>', 'Dotfiles' },
-    ['<S-c>'] = { '<cmd>Telescope commands<CR>', 'Commands' },
-    ['<S-f>'] = { '<cmd>Telescope treesitter<CR>', 'Treesitter' },
-    b = { '<cmd>Telescope current_buffer_fuzzy_find<CR>', 'Grep Buffer' },
-    c = { '<cmd>Telescope colorscheme<CR>', 'ColorSchemes' },
-    d = { '<cmd>Telescope lsp_document_diagnostics<CR>', 'LSP Diagnostics' },
-    e = { '<cmd>Telescope file_browser<CR>', 'File Explorer' },
-    f = { '<cmd>Telescope find_files<CR>', 'Current Files' },
-    h = { '<cmd>Telescope highlights<CR>', 'Highlight Groups' },
-    l = { '<cmd>Telescope live_grep<CR>', 'Live Grep' },
-    m = { '<cmd>Telescope marks<CR>', 'Bookmarks' },
-    p = { '<cmd>Telescope projects<CR>', 'Project list' },
-    r = { '<cmd>Telescope oldfiles<CR>', 'Recent Files' },
-    s = { '<cmd>Telescope grep_string<CR>', 'Grep String' },
-    t = { '<cmd>TodoTelescope<CR>', 'Search Todo comments' },
-    v = { '<cmd>lua require("plugins.telescope").search_vimfiles()<CR>', 'VimRC' },
-    w = { '<cmd>lua require("plugins.telescope").search_wikifiles()<CR>', 'Wiki' },
-  }
-end
+-- Telescope Find
+whichkey_map.f = {
+  name = '+Files',
+  ['.'] = { '<cmd>lua require("plugins.telescope").search_dotfiles()<CR>', 'Dotfiles' },
+  ['<S-c>'] = { '<cmd>Telescope commands<CR>', 'Commands' },
+  ['<S-f>'] = { '<cmd>Telescope treesitter<CR>', 'Treesitter' },
+  b = { '<cmd>Telescope current_buffer_fuzzy_find<CR>', 'Grep Buffer' },
+  c = { '<cmd>Telescope colorscheme<CR>', 'ColorSchemes' },
+  d = { '<cmd>Telescope lsp_document_diagnostics<CR>', 'LSP Diagnostics' },
+  e = { '<cmd>Telescope file_browser<CR>', 'File Explorer' },
+  f = { '<cmd>Telescope find_files<CR>', 'Current Files' },
+  h = { '<cmd>Telescope highlights<CR>', 'Highlight Groups' },
+  l = { '<cmd>Telescope live_grep<CR>', 'Live Grep' },
+  m = { '<cmd>Telescope marks<CR>', 'Bookmarks' },
+  p = { '<cmd>Telescope projects<CR>', 'Project list' },
+  r = { '<cmd>Telescope oldfiles<CR>', 'Recent Files' },
+  s = { '<cmd>Telescope grep_string<CR>', 'Grep String' },
+  t = { '<cmd>TodoTelescope<CR>', 'Search Todo comments' },
+  v = { '<cmd>lua require("plugins.telescope").search_vimfiles()<CR>', 'VimRC' },
+  w = { '<cmd>lua require("plugins.telescope").search_wikifiles()<CR>', 'Wiki' },
+}
 
 -- Plugins
 whichkey_map.p = {

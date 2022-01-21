@@ -111,5 +111,5 @@ vim.cmd([[
     return " "
   endfunction
   au! BufEnter NvimTree setlocal statusline=%!DisableST()
-  \ | setlocal cursorline
+  \| setlocal cursorline cursorlineopt=both
 ]])

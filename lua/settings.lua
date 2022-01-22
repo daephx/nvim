@@ -49,6 +49,7 @@ opt.cursorline = true -- Highlight the text line of the cursor
 opt.cursorlineopt = 'number' -- settings for how 'cursorline' is displayed.
 opt.incsearch = true -- Enable incrimental search
 opt.hlsearch = true -- Highlight search
+opt.spell = true -- Control vim Spell checking
 opt.laststatus = 2 -- Always show statusline
 opt.lazyredraw = true -- Execute macros faster
 opt.mouse = 'a' -- Enable mouse support

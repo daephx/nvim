@@ -59,9 +59,6 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Prompt when attached
-  api.nvim_echo({ { 'LSP Attached: ', 'String' }, { client.name } }, true, {})
-
   local function buf_set_keymap(...)
     api.nvim_buf_set_keymap(bufnr, ...)
   end

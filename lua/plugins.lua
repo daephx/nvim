@@ -119,11 +119,8 @@ return packer.startup({
       },
     })
 
-    -- HACK: Using whichkey fork with patch branch due to breaking commit
-    --       https://github.com/folke/which-key.nvim/issues/226
     use({ -- Lua implimentation of vim-which-key
-      'zeertzjq/which-key.nvim',
-      branch = 'patch-1',
+      'folke/which-key.nvim',
       config = get_setup('plugins.whichkey'),
     })
 

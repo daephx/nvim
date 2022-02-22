@@ -64,6 +64,24 @@ require('mappings') -- Hotkey remaps
 
 --- Helpers ---
 
+-- Auto-Toggle tmux status line
+-- Check if the TMUX environemnt variable exists
+
+vim.cmd([[
+  " Set to 0 to disable
+  let g:tmux_toggle_statusbar = 1
+  function! TmuxToggleStatusbar(toggle)
+    if !exists('g:tmux_toggle_statusbar') | return | endif
+    silent exe '!tmux set -g status ' . a:toggle
+  endfunction
+
+  augroup tmux_statusbar
+    autocmd!
+    autocmd VimEnter * call TmuxToggleStatusbar('off')
+    autocmd VimLeave * call TmuxToggleStatusbar('on')
+  augroup END
+]])
+
 -- Useful auto-commands that make life easier
 -- These should always be available!
 

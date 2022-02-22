@@ -8,6 +8,7 @@ autopep8
 backticks
 barbar
 bashrc
+batcat
 bd
 bg
 bmp
@@ -74,11 +75,11 @@ efm
 efm_binary
 eg
 emacs
-enhanced_diff_hl
 entrypoint
 env
 eof
 eslint
+exa
 favour
 feat
 fg
@@ -97,6 +98,7 @@ frontend
 frontends
 ftplugin
 fzf
+gfm
 gif
 gists
 gitconfig
@@ -153,6 +155,7 @@ listchars
 ln
 loadbalancer
 localhost
+lsd
 lsp
 lspconfig
 lspinfo
@@ -187,6 +190,7 @@ netrw
 nnn
 nocombine
 nodejs
+noreply
 nvim
 nvimtree
 oauth
@@ -212,6 +216,7 @@ prefs
 printf
 projectroot
 prometheus
+protocol
 ps1
 pwsh
 pytest
@@ -245,10 +250,12 @@ statusline
 statuslinenc
 stdpath
 stripprefix
+stty
 stylua
 submodule
 submodules
 sudo
+sudoer
 tabclose
 tabline
 tabpage
@@ -259,9 +266,12 @@ termopen
 tga
 tgz
 tif
+tmux
+toc
 todo
 toggleterm
 tokyonight
+topbar
 touchd
 traefik
 treesitter

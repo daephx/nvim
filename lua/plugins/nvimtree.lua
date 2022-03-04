@@ -10,7 +10,6 @@ end
 
 --- Globals ---
 
-g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened.
 g.nvim_tree_indent_markers = 1 -- This option shows indent markers when folders are open.
 g.nvim_tree_git_hl = 1 -- Will enable file highlight for git attributes (can be used without the icons).
 g.nvim_tree_highlight_opened_files = 1 -- Will enable folder and file icon highlight for opened files/directories.
@@ -101,6 +100,17 @@ nvimtree.setup({
   trash = {
     cmd = 'trash',
     require_confirm = true,
+  },
+  actions = {
+    change_dir = {
+      enable = true,
+      global = false,
+    },
+    open_file = {
+      -- closes tree when file's opened.
+      quit_on_open = false,
+      resize_window = false,
+    },
   },
 })
 

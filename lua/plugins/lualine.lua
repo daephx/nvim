@@ -62,14 +62,14 @@ lualine.setup({
       { 'branch', icon = '' },
       { 'diff', source = diff_source },
     },
-    lualine_c = {
+    lualine_c = {},
+    lualine_x = {
       {
         'diagnostics',
         update_in_insert = false, -- Update diagnostics in insert mode
         -- table of diagnostic sources, available sources:
         sources = { 'nvim_diagnostic', 'coc', 'ale' },
         -- displays diagnostics from defined severity
-        -- sections = {'hint', 'info', 'warn', 'error'},
         symbols = {
           hint = '',
           info = '',
@@ -78,15 +78,12 @@ lualine.setup({
         },
       },
     },
-    lualine_d = { {
-      function()
-        return '%='
-      end,
-    } },
-    lualine_e = { 'location' },
-    lualine_x = { 'filetype', 'encoding', 'fileformat' },
-    lualine_y = {},
-    lualine_z = { 'progress', 'location' },
+    lualine_y = {
+      { 'filetype', icon_only = false },
+      { 'encoding' },
+      { 'fileformat' },
+    },
+    lualine_z = { 'location' },
   },
   inactive_sections = {
     lualine_a = {},

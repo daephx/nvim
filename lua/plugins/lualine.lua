@@ -1,9 +1,11 @@
--- Module: plugins.lualine
--- Description: Blazing fast statusline for neovim, written in pure lua
+-- Lualine | Blazing fast statusline for neovim, written in pure lua
 
--- Functions
+local lualine = require('lualine')
+
+--- Functions ---
+
 -- Version control diff values
-local function diff_source()
+local diff_source = function()
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
     return {
@@ -14,48 +16,52 @@ local function diff_source()
   end
 end
 
--- Custom Themes
-local custom_codedark = require('lualine.themes.codedark')
--- Change the background of lualine_c section for normal mode
-custom_codedark.normal.terminal = {
-  bg = '#ffaf00',
-  fg = '#262626',
-  gui = 'bold',
-}
+--- Themes ---
 
-local lualine = require('lualine')
+-- ...
 
--- Lualine setup configs
+--- Settings  ---
+
 lualine.setup({
   options = {
     theme = 'auto',
     padding = 1, -- adds padding to the left and right of components
     icons_enabled = true, -- displays icons in alongside component
     always_divide_middle = false,
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+
     disabled_filetypes = {
       'CHADtree',
+      'DiffViewFiles',
+      'NvimTree',
       'Outline',
       'alpha',
-      'NvimTree',
       'coc-explorer',
     },
   },
   sections = {
-    lualine_a = { { 'mode', upper = true } },
+    lualine_a = {
+      {
+        'mode',
+        fmt = function(str)
+          return str:sub(1, 1)
+        end,
+      },
+    },
     lualine_b = {
       { 'branch', icon = '' },
       { 'diff', source = diff_source },
     },
-    lualine_c = {
+    lualine_c = {},
+    lualine_x = {
       {
         'diagnostics',
-        update_in_insert = false, -- Update diagnostics in insert mode
+        -- Update diagnostics in insert mode
+        update_in_insert = false,
         -- table of diagnostic sources, available sources:
         sources = { 'nvim_diagnostic', 'coc', 'ale' },
         -- displays diagnostics from defined severity
-        -- sections = {'hint', 'info', 'warn', 'error'},
         symbols = {
           hint = '',
           info = '',
@@ -64,38 +70,32 @@ lualine.setup({
         },
       },
     },
-    lualine_d = { {
-      function()
-        return '%='
-      end,
-    } },
-    lualine_e = { 'location' },
-    lualine_x = { 'filetype', 'encoding', 'fileformat' },
-    lualine_y = {},
-    lualine_z = { 'progress', 'location' },
+    lualine_y = {
+      { 'filetype', icon_only = false },
+      { 'encoding' },
+      { 'fileformat' },
+    },
+    lualine_z = { 'location' },
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { 'filename' },
+    lualine_c = { { 'filename', path = 1 } },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
   },
-  -- tabline = {
-  --   lualine_a = {'buffers'},
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = {},
-  --   lualine_y = {},
-  --   lualine_z = {'tabs'}
-  -- },
   extensions = {
     'fugitive',
     'neoterm',
-    -- 'toggleterm', -- Default looks terrible
-    -- 'nvim-tree',
     'quickfix',
     'trouble',
   },
 })
+
+vim.cmd([[
+augroup reload_statusline
+  autocmd!
+  autocmd ColorScheme * lua require('plugins.lualine')
+augroup END
+]])

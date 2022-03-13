@@ -22,7 +22,7 @@ kommentary.configure_language('rust', {
 -- the first argument will be the line that is being operated on.
 function M.insert_comment_below(...)
   local args = { ... }
-  -- This includes the commentstring
+  -- This includes the comment string
   local configuration = kommentary.get_config(0)
   local line_number = args[1]
   -- Get the current content of the line
@@ -65,7 +65,7 @@ map('v', '<c-_>', '<Plug>kommentary_visual_default', {})
 map('n', '<m-s-a>', '<plug>kommentary_line_default', {})
 map('v', '<m-s-a>', '<plug>kommentary_visual_default', {})
 
--- Set up a regular keymapping to the new <Plug> mapping
+-- Set up a regular key mapping to the new <Plug> mapping
 map('n', '<leader>co', '<Plug>kommentary_insert_below', { silent = true })
 
 return M

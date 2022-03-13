@@ -12,7 +12,7 @@ cnoreabbrev qq 1,$bd!
 cnoreabbrev bd bn\|bd#
 
 " Minimal BufDel
-" Prevent windows from being removed when deleteing buffers
+" Prevent windows from being removed when deleting buffers
 function! BufferDelete()
   if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
     \ && &ft != 'dashboard'

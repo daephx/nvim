@@ -45,7 +45,7 @@ local float_opts = {
 
 --- Terminals ---
 
--- Export custom terminal settings for diffrent usecases
+-- Export custom terminal settings for different use cases
 
 local M = {}
 

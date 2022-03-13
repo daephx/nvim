@@ -7,7 +7,7 @@ g.dashboard_default_executive = 'telescope'
 g.dashboard_session_directory = fn.stdpath('data') .. '/sessions'
 
 -- Read text files from path 'nvim/static/*.txt'
--- use the filename for your ascii artwork for 'fname'
+-- use the filename for your ASCII artwork for 'fname'
 g.dashboard_custom_header = (function()
   local fname = 'super_meatboy'
   local spath = fn.stdpath('config') .. '/static/'

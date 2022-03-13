@@ -5,7 +5,7 @@
 -- /____/\___/\__/\__/_/_/ /_/\__, /____/
 -- ==========================/____/========
 -- Module: settings
--- Description: settings / options for NeoVim
+-- Description: settings / options for Neovim
 
 local fn = vim.fn
 local opt = vim.opt
@@ -26,18 +26,18 @@ opt.autochdir = false -- Disable auto cd to open file
 opt.smartindent = false -- Insert indents automatically
 opt.autoindent = false -- Auto apply indentation
 opt.expandtab = true -- Use spaces instead of tabs
-opt.shiftround = true -- Round indent to shiftwidth
+opt.shiftround = true -- Round indent to shift width
 opt.tabstop = indent -- Number of spaces for tab count
 opt.softtabstop = indent
 opt.shiftwidth = indent -- Size of an indent
 opt.encoding = encode -- Explicitly set file encoding
 opt.fileencoding = encode
 opt.textwidth = linelimit -- Limit length of characters in a line
-opt.linebreak = true -- Split on linebreak
+opt.linebreak = true -- Split on line break
 opt.colorcolumn = '-1' -- Visually display character line limit
 opt.background = 'dark'
 opt.clipboard = 'unnamed,unnamedplus' -- Use system clipboard
-opt.cmdheight = 1 -- Commandline character height
+opt.cmdheight = 1 -- Command line character height
 opt.conceallevel = 0
 opt.foldmethod = 'indent' -- Fold by method (indent & syntax are both good
 opt.foldlevelstart = 9 -- We want all fold to be expand at start
@@ -47,16 +47,16 @@ opt.wrap = false -- Wrap text when line is too long
 opt.hidden = true -- Hide modified buffers instead of unloading them
 opt.cursorline = true -- Highlight the text line of the cursor
 opt.cursorlineopt = 'number' -- settings for how 'cursorline' is displayed.
-opt.incsearch = true -- Enable incrimental search
+opt.incsearch = true -- Enable incremental search
 opt.hlsearch = true -- Highlight search
 opt.spell = true -- Control vim Spell checking
 opt.laststatus = 2 -- Always show statusline
 opt.lazyredraw = true -- Execute macros faster
 opt.mouse = 'a' -- Enable mouse support
-opt.showmode = false -- No eol message
-opt.pumblend = 24 -- Popup menu transparency
-opt.pumheight = 12 -- Popup menu height
-opt.pumwidth = 16 -- Popup menu thickness
+opt.showmode = false -- No EOL message
+opt.pumblend = 24 -- Pop-up menu transparency
+opt.pumheight = 12 -- Pop-up menu height
+opt.pumwidth = 16 -- Pop-up menu thickness
 opt.ruler = true -- Always Show cursor position
 opt.scrolloff = 8 -- Keep cursor closer to center
 opt.showtabline = 2 -- Always show tabline
@@ -78,24 +78,24 @@ opt.relativenumber = true -- Print relative line numbers
 opt.swapfile = false -- Disable swap files
 opt.backup = false -- Make a backup before overwriting a file
 opt.writebackup = false -- backup before overwriting a file
-opt.undofile = true -- Persistant undo
+opt.undofile = true -- Persistent undo
 opt.undolevels = 1000 -- Maximum number of undoable changes
 opt.undoreload = 10000 -- Save the whole buffer for undo
 opt.wildmenu = true -- Command-line completion
-opt.wildignorecase = true -- Case insenesitive command-line completion
+opt.wildignorecase = true -- Case insensitive command-line completion
 
 opt.formatoptions = 'tqnj' -- describes how auto-format is handled
 opt.completeopt = 'menuone,noinsert,noselect' -- Insert mode completion
 
--- Set what should be inluded in session files
+-- Set what should be included in session files
 opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
 
 opt.diffopt:append({ 'vertical' }) -- Start diff mode in vertical split
-opt.guifont:append('CaskaydiaCove\\ Nerd\\ Font:h16') -- Prefered fonts
+opt.guifont:append('CaskaydiaCove\\ Nerd\\ Font:h16') -- Preferred fonts
 opt.shortmess:append('cfI') -- Avoid 'hit-enter' prompts
 opt.whichwrap:append('<,>,[,],h,l')
 opt.wildmode:append('full:lastused') -- Command-line completion mode
-opt.wildignore:append({ -- Path patterns wildmenu should ignore
+opt.wildignore:append({ -- Path patterns wild menu should ignore
   '**/.git/*', -- Git Version control
   '**/android/*',
   '**/build/*', -- Common build directory
@@ -106,7 +106,7 @@ opt.wildignore:append({ -- Path patterns wildmenu should ignore
   '*_build/*',
 })
 
--- ListChars
+-- Virtual Characters ---
 
 opt.list = true
 opt.listchars = {

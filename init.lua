@@ -5,7 +5,7 @@
 -- /_/ |_/\___/\____/|___/_/_/ /_/ /_/
 -- =====================================
 -- File: init.lua
--- Description: Personal configuration files for NeoVim!
+-- Description: Personal configuration files for Neovim!
 -- These settings are designed to fit my preferences/workflow,
 -- feel free to take what you like from them, no worries.
 -- Just don't copy them wholesale, figure out what works for you!
@@ -14,7 +14,7 @@ local env = vim.env
 local fn = vim.fn
 local g = vim.g
 
--- Environement variable for config directory
+-- Environment variable for config directory
 -- This is just nice to have for opening files
 -- from other locations '$MYRUNTIME/init.lua'
 env.MYRUNTIME = fn.stdpath('config')
@@ -22,15 +22,15 @@ env.MYRUNTIME = fn.stdpath('config')
 --- Globals ---
 
 -- VSCode
--- These settings are specific to running NeoVim
--- with the embedded vscode compatability extension
+-- These settings are specific to running Neovim
+-- with the embedded vscode compatibility extension
 if g.is_vscode == 1 then
   -- Disable plugins for external editor 'VSCode'
   vim.cmd('filetype indent plugin off')
   return
 end
 
--- NeoVide
+-- Neovide
 -- Neovide is a graphical neovim client written in rust
 -- These variables are set when launching the application
 -- and allows us to add some extra settings.
@@ -46,9 +46,9 @@ g.colors_name = 'vscode'
 g.mapleader = ' '
 g.localleader = '\\'
 
--- Enable personal experimentals.
+-- Enable personal experimental.
 -- Sometimes this only contains one or two remaps
-g.experiemental_on = 0
+-- g.experimental = 0
 
 --- Modules ---
 
@@ -57,7 +57,7 @@ g.experiemental_on = 0
 
 require('plugins') -- Plugin definitions
 require('colors') -- Pretty rainbows!!
-require('settings') -- General NeoVim Settings
+require('settings') -- General Neovim Settings
 require('utils') -- General utility functions
 require('commands') -- Command abbreviations
 require('mappings') -- Hotkey remaps
@@ -65,7 +65,7 @@ require('mappings') -- Hotkey remaps
 --- Helpers ---
 
 -- Auto-Toggle tmux status line
--- Check if the TMUX environemnt variable exists
+-- Check if the TMUX environment variable exists
 
 vim.cmd([[
   " Set to 0 to disable

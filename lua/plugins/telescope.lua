@@ -89,7 +89,7 @@ M.config = function()
         },
       },
 
-      file_ignore_patterns = { -- File patterns to exclude from fuzzy resaults
+      file_ignore_patterns = { -- File patterns to exclude from fuzzy results
         '*.pyc', -- Python cache
         '*.git/.*', -- Git version control directory
         '.pytest_cache/.*', -- Pytest unittest cache files

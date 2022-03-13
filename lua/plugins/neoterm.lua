@@ -19,7 +19,7 @@ g.neoterm_keep_term_open = 1
 g.neoterm_autoinsert = 1
 g.neoterm_fixedsize = 0
 
--- Shell perferences
+-- Shell preferences
 if fn.has('win32') then
   -- Use pwsh if available, else use windows powershell
   g.neoterm_shell = ternary('pwsh', 'powershell', fn.executable('pwsh'))

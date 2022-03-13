@@ -1,4 +1,4 @@
--- Neogit | magit for NeoVim
+-- Neogit | magit for Neovim
 
 -- Prevent loading if not applicable
 local ok, neogit = pcall(require, 'neogit')

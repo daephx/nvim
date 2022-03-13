@@ -1,16 +1,16 @@
 " File: experimental.vim
-" Description: Load experiemental configurations
-" These can often be unstable and are purly for testing
+" Description: Load experimental configurations
+" These can often be unstable and are purely for testing
 " new mappings/settings while keeping the base initrc clean.
 "
-" Enable experiemental mode by setting the global variable:
+" Enable experimental mode by setting the global variable:
 "
-"   let g:experiemental_on = 1
+"   let g:experimental_on = 1
 
-" --- Initalization ---
+" --- Initialization ---
 
-if exists('g:experiemental_on')
-      \ && g:experiemental_on == 1
+if exists('g:experimental_on')
+      \ && g:experimental_on == 1
   finish
 endif
 
@@ -56,7 +56,7 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <C-r><C-o>+
 
-" Alternativly, set 'mswin' runtime
+" Alternatively, set 'mswin' runtime
 " source $VIMRUNTIME/mswin.vim
 " behave mswin
 
@@ -116,7 +116,7 @@ endfun
 if &term =~ '^xterm'
   " enter vim
   autocmd VimEnter * silent !echo -ne "\e[3 q"
-  " oherwise
+  " otherwise
   let &t_EI .= "\<Esc>[3 q"
   " insert mode
   let &t_SI .= "\<Esc>[5 q"
@@ -161,7 +161,7 @@ endif
 " Restore cursor when leaving vim -- Windows Powershell
 autocmd VimLeave * silent !echo -ne "\e[5 q"
 
-" Command for writting file and then source it
+" Command for writing file and then source it
 cnoreabbrev ws :w \| so %           " Write to file and source it
 nnoremap \n :echom 'Hardy Harr'<CR> " Testing the above mapping
 
@@ -180,7 +180,7 @@ nnoremap <Leader><Tab> :bu<CR>
 
 
 
-" Command abreviations
+" Command abbreviations
 function! SetupCommandAbbrs(from, to)
   exec 'cnoreabbrev <expr> '.a:from
         \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'

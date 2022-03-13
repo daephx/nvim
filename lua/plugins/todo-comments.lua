@@ -27,9 +27,9 @@ todo_comments.setup({
     before = '', -- "fg" or "bg" or empty
     keyword = 'fg', -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
     after = '', -- "fg" or "bg" or empty
-    -- pattern = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlightng (vim regex)
-    pattern = [[.*<(KEYWORDS)(\(.*\))?:]], -- pattern used for highlightng (vim regex)
-    comments_only = true, -- this applies the pattern only inside comments using `commentstring` option
+    -- pattern = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlighting (vim regex)
+    pattern = [[.*<(KEYWORDS)(\(.*\))?:]], -- pattern used for highlighting (vim regex)
+    comments_only = true, -- this applies the pattern only inside comments using `comment string` option
     exclude = { 'log', 'help' }, -- list of file types to exclude highlighting
   },
   -- list of named colors where we try to extract the guifg from the
@@ -53,7 +53,7 @@ todo_comments.setup({
     -- regex that will be used to match keywords.
     -- don't replace the (KEYWORDS) placeholder
     -- pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-    pattern = [[\b(KEYWORDS)(\(.*\))?:]], -- Match to colon ':', optional parens | KEYWORD(AUTHOR):
+    pattern = [[\b(KEYWORDS)(\(.*\))?:]], -- Match to colon ':', optional parenthesis | KEYWORD(AUTHOR):
     -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
   },
 })
@@ -73,7 +73,7 @@ vim.cmd([[
   highlight TodoBgPERF guibg=none
   highlight TodoBgWARN guibg=none
 
-  " Alternativly link to diagnostics
+  " Alternatively link to diagnostics
   " highlight link TodoBgTODO DiagnosticsHint
   " highlight link TodoBgFIX DiagnosticsWarn
   " highlight link TodoBgHACK DiagnosticsError

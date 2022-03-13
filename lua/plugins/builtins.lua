@@ -51,6 +51,6 @@ end
 if g.loaded_netrwPlugin then
   g.netrw_banner = 0
   g.netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-  g.netrw_liststyle = 3 -- Default to treeview
+  g.netrw_liststyle = 3 -- Default to tree view
   g.netrw_localrmdir = 'rm -r'
 end

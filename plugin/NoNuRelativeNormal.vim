@@ -7,7 +7,7 @@ if (empty('&number') || empty('&relativenumber'))
   finish
 endif
 
-" Variaable to check if the plugin is enabled by the user
+" Variable to check if the plugin is enabled by the user
 let s:enabled = 1
 
 " Disable plugin on certain file/buffer types

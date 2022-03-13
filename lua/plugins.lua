@@ -10,7 +10,7 @@
 -- Control vim builtin plugins
 require('plugins.builtins')
 
--- Initalize packer plugin
+-- Initialize packer plugin
 local ok, packer = pcall(require, 'packer')
 if not ok then
   require('plugins.packer').bootstrap()
@@ -27,7 +27,7 @@ end
 
 --- Plugins ---
 
--- Initalize plugin list
+-- Initialize plugin list
 return packer.startup({
   function(use)
     use({ -- Packer can manage itself
@@ -58,7 +58,7 @@ return packer.startup({
       config = get_setup('colors.gruvbox'),
     })
 
-    use({ -- Dashboard / Startscreen
+    use({ -- Dashboard / Start screen
       'glepnir/dashboard-nvim',
       config = get_setup('plugins.dashboard'),
     })
@@ -75,7 +75,7 @@ return packer.startup({
       config = get_setup('plugins.lualine'),
     })
 
-    use({ -- Render blanklines
+    use({ -- Render blank lines
       'lukas-reineke/indent-blankline.nvim',
       event = { 'BufWinEnter' },
       config = get_setup('plugins.indent-blankline'),
@@ -83,7 +83,7 @@ return packer.startup({
 
     --- Utilities ---
 
-    use({ -- FZF - Commandline fuzzy-finder
+    use({ -- FZF - Command line fuzzy-finder
       'junegunn/fzf.vim',
       disable = true,
       requires = { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' },
@@ -119,7 +119,7 @@ return packer.startup({
       },
     })
 
-    use({ -- Lua implimentation of vim-which-key
+    use({ -- Lua implementation of vim-which-key
       'folke/which-key.nvim',
       config = get_setup('plugins.whichkey'),
     })
@@ -172,7 +172,7 @@ return packer.startup({
 
     --- Language ---
 
-    use({ -- Advnaced language parsing for neovim
+    use({ -- Advanced language parsing for neovim
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
       config = get_setup('plugins.treesitter'),
@@ -254,7 +254,7 @@ return packer.startup({
       },
     })
 
-    use({ -- Alternative FileTree
+    use({ -- Alternative File Tree
       'kyazdani42/nvim-tree.lua',
       requires = { 'kyazdani42/nvim-web-devicons', opts = true },
       config = get_setup('plugins.nvimtree'),
@@ -270,7 +270,7 @@ return packer.startup({
       config = get_setup('plugins.autopairs'),
     })
 
-    --- Documentaiton ---
+    --- Documentation ---
 
     use({ -- Neovim commenting plugin, written in lua
       'b3nj5m1n/kommentary',

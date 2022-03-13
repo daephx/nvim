@@ -37,7 +37,7 @@ let g:coc_global_extensions = [
 
 " --- Settings ---
 
-" TextEdit might fail if hidden is not set.
+" Text edit might fail if hidden is not set.
 set hidden
 
 " Some servers have issues with backup files, see #649.
@@ -47,8 +47,8 @@ set nowritebackup
 " Give more space for displaying messages.
 set cmdheight=1
 
-" Recommened by coc
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" Recommended by coc
+" Having longer update-time (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
 

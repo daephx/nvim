@@ -10,7 +10,7 @@ project.setup({
   -- Methods of detecting the root directory. **"lsp"** uses the native neovim
   -- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
   -- order matters: if one is not detected, the other is used as fallback. You
-  -- can also delete or rearangne the detection methods.
+  -- can also delete or rearrange the detection methods.
   detection_methods = { 'lsp', 'pattern' },
 
   -- Table of lsp clients to ignore by name

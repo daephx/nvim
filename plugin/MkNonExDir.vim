@@ -1,6 +1,6 @@
 " File: MkNonExDir.vim
 " Description:
-" When writting a new file,
+" When writing a new file,
 " create the directory path if it doesn't exists
 
 " TODO(daephx): Query user to confirm creation of new paths

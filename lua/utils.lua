@@ -3,7 +3,7 @@
 
 --- Globals ---
 
--- Esier Inspect lua objects
+-- Easier Inspect lua objects
 function _G.inspect(args)
   print(vim.inspect(args))
 end

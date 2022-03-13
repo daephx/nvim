@@ -164,7 +164,7 @@ cmp.setup({
 -- @dmitmel | https://github.com/dmitmel/cmp-cmdline-history
 -- this will also setup the history completion for all command-line modes
 -- This at the moment doesn't fully work in the same way that vim's cmd history list
--- is displayed and causes some friction in my workflow. it will be disabled for now.
+-- is displayed and causes some friction in my workflow. It will be disabled for now.
 -- for _, cmd_type in ipairs({':', '/', '?', '@', '='}) do
 --   cmp.setup.cmdline(cmd_type, {
 --     sources = {

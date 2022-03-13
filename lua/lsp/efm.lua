@@ -1,5 +1,5 @@
 -- EFM | General purpose language server
--- Throw an error if dependencies not avalibile
+-- Throw an error if dependencies not available
 if not vim.fn.executable('go') then
   error('Go binary cannot be located in PATH: Is it installed?')
   return

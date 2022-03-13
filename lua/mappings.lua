@@ -12,7 +12,7 @@ map('v', 'K', ":m '<-2<CR>gv=gv")
 -- Make Y act like other capitals
 map('n', 'Y', 'y$')
 
--- Blackhole Registers
+-- Black hole Registers
 -- Breaks default functionality
 map('v', '<del>', '"_d') -- Prevent <Delete> from yanking
 

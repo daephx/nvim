@@ -197,6 +197,11 @@ return packer.startup({
       requires = 'neovim/nvim-lspconfig',
     })
 
+    use({ -- Standalone UI for nvim-lsp progress
+      'j-hui/fidget.nvim',
+      config = get_setup('plugins.fidget'),
+    })
+
     use({ -- Debug adapter protocol client
       'mfussenegger/nvim-dap',
       config = get_setup('plugins.dap'),

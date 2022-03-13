@@ -32,8 +32,15 @@ lualine.setup({
     padding = 1, -- adds padding to the left and right of components
     icons_enabled = true, -- displays icons in alongside component
     always_divide_middle = false,
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+
+    -- Powerline variant
+    -- component_separators = { left = '', right = '' },
+    -- section_separators = { left = '', right = '' },
+
+    -- Slanted variant
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+
     disabled_filetypes = {
       'CHADtree',
       'Outline',

@@ -201,12 +201,14 @@ return packer.startup({
     use({ -- Native language server protocol
       'williamboman/nvim-lsp-installer',
       config = get_setup('lsp'),
-      requires = 'neovim/nvim-lspconfig',
+      requires = { 'neovim/nvim-lspconfig' },
     })
+    use({ 'arkav/lualine-lsp-progress' })
 
     use({ -- Standalone UI for nvim-lsp progress
       'j-hui/fidget.nvim',
       config = get_setup('plugins.fidget'),
+      disable = true,
     })
 
     use({ -- Debug adapter protocol client

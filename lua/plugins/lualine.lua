@@ -56,6 +56,25 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {
       {
+        -- Applicable if lsp_progress is installed
+        'lsp_progress',
+        display_components = { { 'title', 'percentage' }, 'lsp_client_name', 'spinner' },
+        -- display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
+        colors = { spinner = colors.yellow },
+        spinner_symbols = {
+          '⠋',
+          '⠙',
+          '⠹',
+          '⠸',
+          '⠼',
+          '⠴',
+          '⠦',
+          '⠧',
+          '⠇',
+          '⠏',
+        },
+      },
+      {
         'diagnostics',
         -- Update diagnostics in insert mode
         update_in_insert = false,

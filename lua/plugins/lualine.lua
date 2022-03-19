@@ -60,7 +60,7 @@ lualine.setup({
         'lsp_progress',
         display_components = { { 'title', 'percentage' }, 'lsp_client_name', 'spinner' },
         -- display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
-        colors = { spinner = colors.yellow },
+        -- colors = { spinner = colors.yellow },
         spinner_symbols = {
           '⠋',
           '⠙',

@@ -37,7 +37,7 @@ M.setup = function()
 
       -- Python
       diagnostics.flake8,
-      formatting.black,
+      formatting.black.with({ extra_args = { '--fast' } }),
       formatting.isort,
 
       -- Golang

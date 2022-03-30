@@ -165,14 +165,14 @@ end
 
 -- Server activation callback
 lsp_installer.on_server_ready(function(server)
-  local options = {
+  local opts = {
     capabilities = capabilities,
     on_attach = on_attach,
   }
-  local ok, mod = pcall(require, 'lsp.' .. server.name)
+  ok, mod = pcall(require, 'lsp.' .. server.name)
   if ok then
-    options = vim.tbl_extend('force', options, mod.setup)
+    opts = vim.tbl_extend('force', opts, mod.setup)
   end
-  server:setup(options)
+  server:setup(opts)
   vim.cmd('do User LspAttachBuffers')
 end)

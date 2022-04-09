@@ -128,7 +128,7 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 --- Modules ---
 
-require("lsp.null-ls")
-require("lsp.installer")
+require('lsp.null-ls')
+require('lsp.installer')
 
 return M

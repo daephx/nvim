@@ -42,20 +42,6 @@ end
 -- Close LspInfo window using 'q'
 vim.cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> qq :q<CR> ]])
 
--- Reference dependency modules
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'additionalTextEdits',
-    'detail',
-    'documentation',
-  },
-}
-
 -- Overriding the default LSP server options
 
 -- Use an on_attach function to only map the following keys
@@ -118,6 +104,23 @@ M.on_attach = function(client, bufnr)
   -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
   vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
 end
+
+--- Capabilities ---
+
+-- Define lsp default capabilities
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if ok then
+  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+end
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'additionalTextEdits',
+    'detail',
+    'documentation',
+  },
+}
 
 --- Modules ---
 

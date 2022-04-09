@@ -169,7 +169,7 @@ lsp_installer.on_server_ready(function(server)
     capabilities = capabilities,
     on_attach = on_attach,
   }
-  ok, mod = pcall(require, 'lsp.servers' .. server.name)
+  local ok, mod = pcall(require, 'lsp.servers' .. server.name)
   if ok then
     opts = vim.tbl_extend('force', opts, mod.setup)
   end

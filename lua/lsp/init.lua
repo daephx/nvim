@@ -119,14 +119,9 @@ M.on_attach = function(client, bufnr)
   vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
 end
 
---- Null-LS ---
+--- Modules ---
 
--- Safely load module
-local ok, null_ls = pcall(require, 'lsp.null-ls')
-if ok then
-  null_ls.setup()
-end
-
+require("lsp.null-ls")
 require("lsp.installer")
 
 return M

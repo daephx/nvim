@@ -8,6 +8,8 @@ end
 local api = vim.api
 local lsp = vim.lsp
 
+local M = {}
+
 -- Diagnostic Settings
 vim.diagnostic.config({
 
@@ -43,8 +45,8 @@ vim.cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> qq :q<CR> ]])
 -- Reference dependency modules
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -58,7 +60,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+M.on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -126,3 +128,5 @@ if ok then
 end
 
 require("lsp.installer")
+
+return M

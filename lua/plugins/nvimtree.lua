@@ -130,12 +130,20 @@ nvimtree.setup({
   },
 })
 
-vim.cmd([[
-  highlight NvimTreeNormal guibg=none
-
-  function! DisableST()
-    return " "
-  endfunction
-  au! BufEnter NvimTree setlocal statusline=%!DisableST()
-  \| setlocal cursorline cursorlineopt=both
-]])
+vim.api.nvim_create_augroup('NvimTreeOpts', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Apply local settings to NvimTree buffer',
+  group = 'NvimTreeOpts',
+  pattern = 'NvimTree',
+  callback = function()
+    -- Highlights
+    vim.api.nvim_set_hl(0, 'NvimTreeNormal', { link = 'Normal' })
+    -- Settings
+    vim.opt_local.cursorlineopt = 'both'
+    vim.opt_local.cursorline = true
+    vim.opt_local.statusline = ' '
+    -- Keymaps
+    local opts = { buffer = 0, silent = true, noremap = true }
+    vim.keymap.set('n', '<esc>', '<cmd>q<cr>', opts)
+  end,
+})

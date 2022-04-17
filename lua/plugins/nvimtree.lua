@@ -2,11 +2,7 @@
 
 local g = vim.g
 
--- Prevent loading if not applicable
-local ok, nvimtree = pcall(require, 'nvim-tree')
-if not ok then
-  return
-end
+nvimtree = require('nvim-tree')
 
 --- Globals ---
 

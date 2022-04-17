@@ -10,7 +10,6 @@ end
 
 --- Globals ---
 
-g.nvim_tree_indent_markers = 1 -- This option shows indent markers when folders are open.
 g.nvim_tree_git_hl = 1 -- Will enable file highlight for git attributes (can be used without the icons).
 g.nvim_tree_highlight_opened_files = 1 -- Will enable folder and file icon highlight for opened files/directories.
 g.nvim_tree_add_trailing = 0 -- Append a trailing slash to folder names. ]]
@@ -96,6 +95,17 @@ nvimtree.setup({
     },
     number = false,
     relativenumber = false,
+  },
+  renderer = {
+    -- This option shows indent markers when folders are open.
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = '└ ',
+        edge = '│ ',
+        none = '  ',
+      },
+    },
   },
   trash = {
     cmd = 'trash',

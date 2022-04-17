@@ -25,6 +25,15 @@ indent_blankline.setup({
   show_current_context_start = false,
   use_treesitter = false,
 
+  context_highlight_list = {
+    'IndentBlanklineIndent1',
+    'IndentBlanklineIndent2',
+    'IndentBlanklineIndent3',
+    'IndentBlanklineIndent4',
+    'IndentBlanklineIndent5',
+    'IndentBlanklineIndent6',
+  },
+
   buftype_exclude = {
     'help',
     'nofile',

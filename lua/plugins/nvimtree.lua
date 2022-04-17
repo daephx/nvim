@@ -47,10 +47,10 @@ nvimtree.setup({
   diagnostics = {
     enable = true,
     icons = {
-      hint = '',
-      info = '',
-      warning = '',
-      error = '',
+      hint = ' ',
+      info = ' ',
+      warning = ' ',
+      error = ' ',
     },
   },
   -- update the focused file on `BufEnter`,

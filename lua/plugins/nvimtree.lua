@@ -10,9 +10,12 @@ end
 
 --- Globals ---
 
-g.nvim_tree_git_hl = 1 -- Will enable file highlight for git attributes (can be used without the icons).
-g.nvim_tree_highlight_opened_files = 1 -- Will enable folder and file icon highlight for opened files/directories.
-g.nvim_tree_add_trailing = 0 -- Append a trailing slash to folder names. ]]
+-- Will enable file highlight for git attributes (can be used without the icons)
+g.nvim_tree_git_hl = 1
+-- Will enable folder and file icon highlight for opened files/directories
+g.nvim_tree_highlight_opened_files = 1
+-- Append a trailing slash to folder names
+g.nvim_tree_add_trailing = 0
 
 --- Setup ---
 
@@ -50,15 +53,11 @@ nvimtree.setup({
       error = '',
     },
   },
-  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+  -- update the focused file on `BufEnter`,
+  -- un-collapses the folders recursively until it finds the file
   update_focused_file = {
-    -- enables the feature
     enable = true,
-    -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
-    -- only relevant when `update_focused_file.enable` is true
     update_cwd = true,
-    -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
-    -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
     ignore_list = {},
   },
   -- configuration options for the system open command (`s` in the tree by default)
@@ -78,9 +77,11 @@ nvimtree.setup({
     timeout = 500,
   },
   view = {
-    -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
+    -- width of the window, can be either a number (columns)
+    -- or a string in `%`, for left or right side placement
     width = 40,
-    -- height of the window, can be either a number (columns) or a string in `%`, for top or bottom side placement
+    -- height of the window, can be either a number (columns)
+    -- or a string in `%`, for top or bottom side placement
     height = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'right',

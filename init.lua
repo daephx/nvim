@@ -93,10 +93,6 @@ augroup vimrc_au
   autocmd BufWritePost $MYVIMRC :so $MYVIMRC
     \ | redraw | echom 'Sourcing $MYVIMRC: ' . $MYVIMRC
 
-  " File cleaning operations | ORDER MATTERS
-  autocmd BufWritePre * %s/\s\+$//e   " Remove trailing whitespace
-  autocmd BufWritePre * %s/\n\+\%$//e " Remove trailing newlines
-
   " Minimal autosave implementation
   autocmd CursorHold,CursorHoldI * silent! update
   autocmd FocusLost * silent! wall " Write all on focus loss

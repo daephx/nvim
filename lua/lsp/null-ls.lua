@@ -56,6 +56,20 @@ null_ls.setup({
 
     -- Linter for Ansible playbooks, roles and collections.
     diagnostics.ansiblelint,
+
+    -- Trim whitespace
+    formatting.trim_newlines.with({
+      disabled_filetypes = {
+        'rust', -- use rustfmt
+      },
+    }),
+
+    formatting.trim_whitespace.with({
+      disabled_filetypes = {
+        'markdown',
+        'rust', -- use rustfmt
+      },
+    }),
   },
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then

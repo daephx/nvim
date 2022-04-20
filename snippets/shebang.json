@@ -1,0 +1,38 @@
+{
+    "sh": {
+        "prefix": ["sh", "#!", "shebang"],
+        "body": "#!/bin/sh\n",
+        "description": "POSIX sh shebang"
+    },
+    "bash": {
+        "prefix": ["bash", "#!", "shebang"],
+        "body": "#!/usr/bin/env bash\n",
+        "description": "Bash shebang"
+    },
+    "zsh": {
+        "prefix": ["zsh", "#!", "shebang"],
+        "body": "#!/usr/bin/env zsh\n",
+        "description": "Zsh shebang"
+    },
+    "ruby": {
+        "prefix": ["ruby", "#!", "shebang"],
+        "body": "#!/usr/bin/env ruby\n",
+        "description": "Ruby shebang"
+    },
+    "perl": {
+        "prefix": ["perl", "#!", "shebang"],
+        "body": "#!/usr/bin/env perl\n",
+        "description": "Perl shebang"
+    },
+    "python": {
+        "prefix": ["python", "#!", "shebang"],
+        "body": "#!/usr/bin/env python\n",
+        "description": "Python shebang"
+    },
+
+    "python3": {
+        "prefix": ["python3", "#!", "shebang"],
+        "body": "#!/usr/bin/env python3\n",
+        "description": "Explicit python3 shebang"
+    }
+}

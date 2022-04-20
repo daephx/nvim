@@ -1,0 +1,91 @@
+{
+    "name": "nvim-snippets",
+    "author": "daephx",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": [
+                    "",
+                    "global",
+                    "html",
+                    "markdown",
+                    "plaintext",
+                    "tex"
+                ],
+                "path": "./global.json"
+            },
+            {
+                "language": [
+                    "markdown"
+                ],
+                "path": "./markdown.json"
+            },
+            {
+                "language": [
+                    "gitcommit",
+                    "NeogitCommitMessage"
+                ],
+                "path": "./gitcommit.json"
+            },
+            {
+                "language": "html",
+                "path": "./html.json"
+            },
+            {
+                "language": "json",
+                "path": "./json.json"
+            },
+            {
+                "language": "c",
+                "path": "./c.json"
+            },
+            {
+                "language": "cpp",
+                "path": "./cpp.json"
+            },
+            {
+                "language": [
+                    "cs",
+                    "csharp"
+                ],
+                "path": "./csharp.json"
+            },
+            {
+                "language": "lua",
+                "path": "./lua.json"
+            },
+            {
+                "language": "go",
+                "path": "./go.json"
+            },
+            {
+                "language": "sql",
+                "path": "./sql.json"
+            },
+            {
+                "language": [
+                    "",
+                    "global",
+                    "sh",
+                    "shell",
+                    "shellscript",
+                    "zsh"
+                ],
+                "path": "./shebang.json"
+            },
+            {
+                "language": [
+                    "global",
+                    "sh",
+                    "shell",
+                    "shellscript",
+                    "zsh"
+                ],
+                "path": "./shell.json"
+            }
+        ]
+    }
+}

@@ -12,23 +12,26 @@ local M = {}
 
 -- Diagnostic Settings
 vim.diagnostic.config({
-
   signs = true,
   underline = true,
   update_in_insert = false,
-
+  severity_sort = true,
   float = {
-    source = 'always',
-    show_header = true,
-    -- prefix = "✗",
-    -- border = 'rounded',
+    border = 'rounded',
     focusable = false,
+    header = { 'Diagnostics:', 'Normal' },
+    prefix = '✗ ',
+    show_header = true,
+    source = 'always',
   },
-  virtual_text = false,
-  -- {
-  --   source = "always",
-  --   prefix = "✗", -- Could be '●', '▎', '✗'
-  -- },
+  virtual_text = {
+    prefix = '✗ ',
+    source = 'always',
+    spacing = 4,
+    severity = {
+      min = vim.diagnostic.severity.WARN,
+    },
+  },
 })
 
 -- Apply diagnostic symbols in the sign column

@@ -1,7 +1,17 @@
 -- Lsp-Installer
 
-local capabilities = require('lsp').capabilities
-local on_attach = require('lsp').on_attach
+local M = {}
+
+-- Auto-install LSP servers
+-- Include the servers you want to have installed by default below
+local default_servers = {
+  'bashls',
+  'jsonls',
+  'pyright',
+  'sumneko_lua',
+  'vimls',
+  'yamlls',
+}
 
 local lsp_installer = require('nvim-lsp-installer')
 
@@ -18,37 +28,27 @@ lsp_installer.settings({
   },
 })
 
--- Auto-install LSP servers
--- Include the servers you want to have installed by default below
-local default_servers = {
-  'bashls',
-  'jsonls',
-  'pyright',
-  'sumneko_lua',
-  'vimls',
-  'yamlls',
-}
+M.setup = function(opts)
+  -- Server activation callback
+  lsp_installer.on_server_ready(function(server)
+    opts = { capabilities = opts.capabilities, on_attach = opts.on_attach }
+    local ok, mod = pcall(require, 'lsp.servers.' .. server.name)
+    if ok then
+      opts = vim.tbl_extend('force', opts, mod.setup)
+    end
+    server:setup(opts)
+    vim.cmd('do User LspAttachBuffers')
+  end)
 
--- Install from list of default_servers
-for _, name in pairs(default_servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      server:install()
+  -- Install from list of default_servers
+  for _, name in pairs(default_servers) do
+    local server_is_found, server = lsp_installer.get_server(name)
+    if server_is_found then
+      if not server:is_installed() then
+        server:install()
+      end
     end
   end
 end
 
--- Server activation callback
-lsp_installer.on_server_ready(function(server)
-  local opts = {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
-  local ok, mod = pcall(require, 'lsp.servers' .. server.name)
-  if ok then
-    opts = vim.tbl_extend('force', opts, mod.setup)
-  end
-  server:setup(opts)
-  vim.cmd('do User LspAttachBuffers')
-end)
+return M

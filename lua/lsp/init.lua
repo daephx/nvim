@@ -43,7 +43,7 @@ end
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
-M.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -71,13 +71,13 @@ end
 --- Capabilities ---
 
 -- Define lsp default capabilities
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if ok then
-  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+  capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 end
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities.textDocument.completion.completionItem.resolveSupport = {
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     'additionalTextEdits',
     'detail',
@@ -88,6 +88,10 @@ M.capabilities.textDocument.completion.completionItem.resolveSupport = {
 --- Modules ---
 
 require('lsp.null-ls')
-require('lsp.installer')
+require('lsp.installer').setup({
+  capabilities = capabilities,
+  language_servers = language_servers,
+  on_attach = on_attach,
+})
 
 return M

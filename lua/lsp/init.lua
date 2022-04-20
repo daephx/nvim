@@ -5,9 +5,6 @@ if vim.g.coc_enabled then
   return
 end
 
-local api = vim.api
-local lsp = vim.lsp
-
 local mappings = require('lsp.mappings')
 
 local M = {}
@@ -48,7 +45,7 @@ end
 -- when the language server attaches to the current buffer
 M.on_attach = function(client, bufnr)
   local function buf_set_option(...)
-    api.nvim_buf_set_option(bufnr, ...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
   end
 
   -- Enable completion triggered by <c-x><c-o>

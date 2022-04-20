@@ -232,10 +232,6 @@ return packer.startup({
       'L3MON4D3/LuaSnip',
     })
 
-    use({ -- vscode-like pictograms for neovim
-      'onsails/lspkind-nvim',
-    })
-
     use({ -- A completion plugin for neovim
       'hrsh7th/nvim-cmp',
       disable = false,
@@ -251,7 +247,6 @@ return packer.startup({
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
-        'onsails/lspkind-nvim',
         'saadparwaiz1/cmp_luasnip',
       },
     })

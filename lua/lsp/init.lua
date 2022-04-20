@@ -68,6 +68,11 @@ local on_attach = function(client, bufnr)
   vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
 end
 
+--- Handlers ---
+
+local lsp_utils = require('lsp.utils')
+vim.lsp.handlers['textDocument/definition'] = lsp_utils.goto_definition('vsplit')
+
 --- Capabilities ---
 
 -- Define lsp default capabilities

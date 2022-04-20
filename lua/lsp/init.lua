@@ -5,6 +5,18 @@ if vim.g.coc_enabled then
   return
 end
 
+local language_servers = {
+  ['bashls'] = { auto_install = true, disable_formatting = false },
+  ['clangd'] = { auto_install = false, disable_formatting = false },
+  ['html'] = { auto_install = true, disable_formatting = true },
+  ['jsonls'] = { auto_install = true, disable_formatting = true },
+  ['pyright'] = { auto_install = true, disable_formatting = true },
+  ['sumneko_lua'] = { auto_install = true, disable_formatting = true },
+  ['tsserver'] = { auto_install = false, disable_formatting = true },
+  ['vimls'] = { auto_install = true, disable_formatting = false },
+  ['yamlls'] = { auto_install = true, disable_formatting = true },
+}
+
 local mappings = require('lsp.mappings')
 
 local M = {}

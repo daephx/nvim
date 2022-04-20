@@ -2,17 +2,6 @@
 
 local M = {}
 
--- Auto-install LSP servers
--- Include the servers you want to have installed by default below
-local default_servers = {
-  'bashls',
-  'jsonls',
-  'pyright',
-  'sumneko_lua',
-  'vimls',
-  'yamlls',
-}
-
 local lsp_installer = require('nvim-lsp-installer')
 
 -- Apply settings
@@ -41,9 +30,9 @@ M.setup = function(opts)
   end)
 
   -- Install from list of default_servers
-  for _, name in pairs(default_servers) do
+  for name, config in pairs(opts.language_servers) do
     local server_is_found, server = lsp_installer.get_server(name)
-    if server_is_found then
+    if server_is_found and config.auto_install then
       if not server:is_installed() then
         server:install()
       end

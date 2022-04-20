@@ -1,0 +1,12 @@
+{
+  "mid": {
+    "prefix": "mid",
+    "body": ["\\mid ${1} \\mid ${0}"],
+    "description": "mid"
+  },
+  "srt": {
+    "prefix": "sqrt",
+    "body": ["\\sqrt{${1}} ${0}"],
+    "description": "Square root"
+  }
+}

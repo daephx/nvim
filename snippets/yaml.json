@@ -1,0 +1,18 @@
+{
+  "docker-compose": {
+    "prefix": "compose",
+    "body": [
+      "version: '$1'",
+      "services:",
+      "${2:nginx}:",
+      "image: ${2:nginx}:latest",
+      "volumes:",
+      "- $HOME/Documents/Docker/${2:nginx}/config:/etc/${2:nginx}",
+      "ports:",
+      "- ${3:80:80}",
+      "- ${4:443:443}",
+      ""
+    ],
+    "description": "quick-start for docker-compose file"
+  }
+}

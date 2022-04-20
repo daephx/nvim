@@ -1,0 +1,34 @@
+{
+  "print": {
+    "prefix": "print",
+    "body": ["print(${0})"],
+    "description": "Print String"
+  }
+  "main: function": {
+    "prefix": "main: function",
+    "body": ["def main():\n\t${0:pass}\n\n", "if __name__ == \"__main__\":\n\tmain()"],
+    "description": "main function"
+  },
+  "main: context": {
+    "prefix": ["if __name__", "main: context"],
+    "body": ["if __name__ == \"__main__\":\n\t${0:main()}"],
+    "description": "__main__ context"
+  },
+  "print": {
+    "prefix": "print",
+    "body": ["print(${0})"],
+    "description": "Print string to console"
+  },
+  "decorator: function wrapper": {
+    "prefix": "decorator",
+    "body": [
+      "def ${1:my_decorator}(func):",
+      "\t\"\"\"${2:docstring}\"\"\"",
+      "\tdef wrapper(*args, **kwargs):",
+      "\t\t${0:pass}",
+      "\t\treturn func(*args, **kwargs)",
+      "\treturn wrapper"
+    ],
+    "description": "Python Decorator snippet"
+  }
+}

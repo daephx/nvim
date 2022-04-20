@@ -1,0 +1,18 @@
+{
+  "console log": {
+    "prefix": ["print", "log"],
+    "body": ["console.log(${0});"],
+    "description": ""
+  },
+
+  "Try Catch": {
+    "prefix": "try catch",
+    "body": ["try {\t\n} catch (e) {\n\tconsole.error(e);\n}"],
+    "description": ""
+  },
+  "Comment Block": {
+    "prefix": "",
+    "body": ["/*\n * ${0}\n */"],
+    "description": ""
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "[.NET Framework] Collections.Generic.List::New": {
+    "prefix": ["List::New", "generic-list"],
+    "body": ["$${List} = [Collections.Generic.List[${String}]]::new()", "{}"],
+    "description": "Generic lists are more performant than fixed arrays '@('Item')'"
+  }
+}

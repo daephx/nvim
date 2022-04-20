@@ -1,0 +1,49 @@
+{
+  "Shebang: sh": {
+    "prefix": "!sh",
+    "body": "#!/usr/bin/env sh\n",
+    "description": "Sh shebang"
+  },
+  "Shebang: bash": {
+    "prefix": "!bash",
+    "body": "#!/usr/bin/env bash\n",
+    "description": "Bash shebang"
+  },
+  "Shebang: fish": {
+    "prefix": "!fish",
+    "body": "#!/usr/bin/env fish\n",
+    "description": "Fish shebang"
+  },
+  "Shebang: zsh": {
+    "prefix": "!zsh",
+    "body": "#!/usr/bin/env zsh\n",
+    "description": "Zsh shebang"
+  },
+  "Shebang: ruby": {
+    "prefix": "!ruby",
+    "body": "#!/usr/bin/env ruby\n",
+    "description": "Ruby shebang"
+  },
+  "Shebang: perl": {
+    "prefix": "!perl",
+    "body": "#!/usr/bin/env perl\n",
+    "description": "Perl shebang"
+  },
+  "Shebang: python": {
+    "prefix": "!python",
+    "body": "#!/usr/bin/env python\n",
+    "description": "Python shebang"
+  },
+  "Shebang: python3": {
+    "prefix": "!python3",
+    "body": "#!/usr/bin/env python3\n",
+    "description": "Explicit python3 shebang"
+  },
+  "Copyright date": {
+    "prefix": "copyright",
+    "body": [
+      "Copyright \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\" ${1:$USER}. All Rights Reserved.${0}"
+    ],
+    "description": "(c) Dated copyright statement"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "skeleton": {
+    "prefix": ["main", "skel"],
+    "body": [
+      "#include <iostream>",
+      "using namespace std;",
+      "\n",
+      "int main() {",
+      "\t\t${0}}",
+      "\t\trn 0;"
+    ],
+    "description": ""
+  }
+}

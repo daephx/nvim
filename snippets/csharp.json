@@ -1,0 +1,33 @@
+{
+  "Creates a Hello World sample": {
+    "prefix": "#helloworld",
+    "body": [
+      "using System;",
+      "",
+      "namespace ConsoleApp",
+      "{",
+      "\tpublic class Program",
+      "\t{",
+      "\t\tpublic static void Main(string[] args)",
+      "\t\t{",
+      "\t\t\tConsole.WriteLine(\"Hello World!\");",
+      "\t\t}",
+      "\t}",
+      "}"
+    ],
+    "description": "Creates a 'Hello World' sample"
+  },
+  "Console.WriteLine": {
+    "prefix": ["print", "writeln"],
+    "body": ["System.Console.WriteLine(${0});"],
+    "description": "Console.Writeline"
+  },
+  "Public main class": {
+    "prefix": "main",
+    "body": [
+      "public static void Main()\n{",
+      "\tSystem.Console.WriteLine(\"Hello\");\n}"
+    ],
+    "description": "Public main class"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "Comment Section": {
+    "prefix": ["cm", "comment"],
+    "body": "/* ${0} */",
+    "description": "Create a multi line comment"
+  },
+  "printf": {
+    "prefix": "print",
+    "body": ["printf(${0});"],
+    "description": "Create printf statement"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "template: AutoHotkey script": {
+    "prefix": "template: AutoHotkey script",
+    "body": [
+      "/*",
+      " *  Starting Script:",
+      " *  This is just a jumping off point I like to have automatically created!",
+      " *  Uncomment the functionality you desire or remove the rest.",
+      " *  For more information see the Documentation: https://www.autohotkey.com/docs/AutoHotkey.html",
+      "**/",
+      "; #KeyHistory, 0 ; To disable key history, specify the following line anywhere in the script.",
+      "; #MaxThreadsPerHotkey, 1 ; no re-entrant hotkey handling",
+      "; #NoTrayIcon ; Disables the showing of a tray icon.",
+      "#SingleInstance, Force ; Determines whether a script is allowed to run again when it is already running.",
+      "; DetectHiddenWindows, On ; Determines whether invisible windows are \"seen\" by the script.",
+      "ListLines, Off ; Displays the script lines most recently executed.",
+      "SendMode Input ; Forces Send and SendRaw to use SendInput buffering for speed.",
+      "; SetBatchLines, -1 ; 10ms default || -1 to never sleep (i.e. maximum speed).",
+      "; SetKeyDelay, -1, -1 ; Remove short delay done automatically after every keystroke sent by Send or ControlSend",
+      "; SetMouseDelay, -1 ; Remove short delay done automatically after Click and MouseMove/Click/Drag",
+      "SetTitleMatchMode, 3 ; A window's title must exactly match WinTitle to be a match.",
+      "; SetWinDelay, -1 ; Remove short delay done automatically after every windowing command except IfWinActive and IfWinExist",
+      "SetWorkingDir, % A_ScriptDir ; Changes the script's current working directory.",
+      "SplitPath, A_ScriptName,,,, A_AppName ; Get the current script name without it's extension.",
+      ""
+    ],
+    "description": "Quickly create a new AutoHotkey script from this template. Contains a few toggle-able optimization features!"
+  }
+}

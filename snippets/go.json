@@ -1,0 +1,23 @@
+{
+  "Skeleton Template": {
+    "prefix": ["main", "skel"],
+    "body": [
+      "package main",
+      "import (\n\t\"fmt\"\n)\n",
+      "func main() {",
+      "\tfmt.Println(\"hello\")",
+      "}"
+    ],
+    "description": ""
+  },
+  "For loop i": {
+    "prefix": "fori",
+    "body": ["for i := ${1}; i < n; i++ {", "\t${0}\n}"],
+    "description": ""
+  },
+  "Println": {
+    "prefix": "println",
+    "body": ["fmt.Println(${1})${0}"],
+    "description": "Fmt.PrintLn"
+  }
+}

@@ -36,12 +36,10 @@ vim.diagnostic.config({
     source = 'always',
   },
   virtual_text = {
-    prefix = '✗ ',
-    source = 'always',
+    prefix = '✗',
     spacing = 4,
-    severity = {
-      min = vim.diagnostic.severity.WARN,
-    },
+    severity = vim.diagnostic.severity.ERROR,
+    source = 'if_many',
   },
 })
 

@@ -1,5 +1,6 @@
 <div align="center">
   <h1>Neovim Configuration</h1>
+  <sup>• Tested against Nvim Unstable. No backward compatibility is guaranteed! •</sup>
   <p>
     <a href="https://github.com/daephx/nvim/commits">
       <img alt="Last Commit date"
@@ -39,7 +40,6 @@
     <br />
   </p>
   <p>My Personal Neovim configuration</p>
-  <sub>• Tested against Nvim Unstable. No backward compatibility is guaranteed! •</sub>
 </div>
 
 ![image](https://user-images.githubusercontent.com/36192863/158046653-9f8520a3-e651-441c-a143-8a1d59c29ce8.png)

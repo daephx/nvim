@@ -200,7 +200,7 @@ return packer.startup({
 
     use({ -- Native language server protocol
       'williamboman/nvim-lsp-installer',
-      config = get_setup('lsp'),
+      config = get_setup('config.lsp'),
       requires = { 'neovim/nvim-lspconfig' },
     })
     use({ 'arkav/lualine-lsp-progress' })

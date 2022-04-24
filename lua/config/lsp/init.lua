@@ -120,7 +120,7 @@ end
 --- Null-LS ---
 
 -- Safely load module
-local ok, null_ls = pcall(require, 'lsp.null-ls')
+local ok, null_ls = pcall(require, 'config.lsp.null-ls')
 if ok then
   null_ls.setup()
 end
@@ -169,7 +169,7 @@ lsp_installer.on_server_ready(function(server)
     capabilities = capabilities,
     on_attach = on_attach,
   }
-  local ok, mod = pcall(require, 'lsp.' .. server.name)
+  local ok, mod = pcall(require, 'config.lsp.' .. server.name)
   if ok then
     options = vim.tbl_extend('force', options, mod.setup)
   end

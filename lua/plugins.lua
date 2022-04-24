@@ -4,16 +4,16 @@
 --  / ____/ / /_/ / /_/ / / / / (__  )
 -- /_/   /_/\__,_/\__, /_/_/ /_/____/
 -- ==============/____/================
--- Module: plugins
 -- Description: plugins definitions and settings
+-- Module: plugins
 
 -- Control vim builtin plugins
-require('plugins.builtins')
+require('config.builtins')
 
 -- Initialize packer plugin
 local ok, packer = pcall(require, 'packer')
 if not ok then
-  require('plugins.packer').bootstrap()
+  require('config.packer').bootstrap()
   packer = require('packer')
 end
 
@@ -60,25 +60,25 @@ return packer.startup({
 
     use({ -- Dashboard / Start screen
       'glepnir/dashboard-nvim',
-      config = get_setup('plugins.dashboard'),
+      config = get_setup('config.dashboard'),
     })
 
     use({ -- A "buffer and tab" tabline for neovim
       'kdheepak/tabline.nvim',
       requires = { 'nvim-lualine/lualine.nvim', opt = true },
-      config = get_setup('plugins.tabline'),
+      config = get_setup('config.tabline'),
     })
 
     use({ -- Blazing fast statusline
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-      config = get_setup('plugins.lualine'),
+      config = get_setup('config.lualine'),
     })
 
     use({ -- Render blank lines
       'lukas-reineke/indent-blankline.nvim',
       event = { 'BufWinEnter' },
-      config = get_setup('plugins.indent-blankline'),
+      config = get_setup('config.indent-blankline'),
     })
 
     --- Utilities ---
@@ -87,17 +87,17 @@ return packer.startup({
       'junegunn/fzf.vim',
       disable = true,
       requires = { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' },
-      config = get_setup('plugins.fzf'),
+      config = get_setup('config.fzf'),
     })
 
     use({ -- superior project management for neovim.
       'ahmedkhalf/project.nvim',
-      config = get_setup('plugins.project'),
+      config = get_setup('config.project'),
     })
 
     use({ -- Highly extendable fuzzy finder
       'nvim-telescope/telescope.nvim',
-      config = get_setup('plugins.telescope'),
+      config = get_setup('config.telescope'),
       requires = {
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
@@ -111,7 +111,7 @@ return packer.startup({
 
     use({ -- A small automated session manager for neovim
       'rmagatti/auto-session',
-      config = get_setup('plugins.auto-session'),
+      config = get_setup('config.auto-session'),
       requires = {
         'rmagatti/session-lens',
         'rmagatti/auto-session',
@@ -121,7 +121,7 @@ return packer.startup({
 
     use({ -- Lua implementation of vim-which-key
       'folke/which-key.nvim',
-      config = get_setup('plugins.whichkey'),
+      config = get_setup('config.whichkey'),
     })
 
     --- Git: Version Control ---
@@ -155,10 +155,10 @@ return packer.startup({
     use({ -- Magit for Neovim
       'TimUntersberger/neogit',
       disable = false,
-      config = get_setup('plugins.neogit'),
+      config = get_setup('config.neogit'),
       requires = {
         { 'nvim-lua/plenary.nvim' },
-        { 'sindrets/diffview.nvim', config = get_setup('plugins.diffview') },
+        { 'sindrets/diffview.nvim', config = get_setup('config.diffview') },
       },
     })
 
@@ -167,7 +167,7 @@ return packer.startup({
       -- tag = 'release', -- To use the latest release
       event = { 'BufWinEnter', 'BufNewFile' },
       requires = { 'nvim-lua/plenary.nvim' },
-      config = get_setup('plugins.gitsigns'),
+      config = get_setup('config.gitsigns'),
     })
 
     --- Language ---
@@ -175,7 +175,7 @@ return packer.startup({
     use({ -- Advanced language parsing for neovim
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      config = get_setup('plugins.treesitter'),
+      config = get_setup('config.treesitter'),
     })
     use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
     use({
@@ -207,13 +207,13 @@ return packer.startup({
 
     use({ -- Standalone UI for nvim-lsp progress
       'j-hui/fidget.nvim',
-      config = get_setup('plugins.fidget'),
+      config = get_setup('config.fidget'),
       disable = true,
     })
 
     use({ -- Debug adapter protocol client
       'mfussenegger/nvim-dap',
-      config = get_setup('plugins.dap'),
+      config = get_setup('config.dap'),
     })
 
     use({ -- Debugging interface for nvim-dap
@@ -240,7 +240,7 @@ return packer.startup({
       'hrsh7th/nvim-cmp',
       disable = false,
       -- event = { 'InsertEnter' },
-      config = get_setup('plugins.cmp'),
+      config = get_setup('config.cmp'),
       requires = {
         'dmitmel/cmp-cmdline-history',
         'f3fora/cmp-spell',
@@ -259,47 +259,47 @@ return packer.startup({
     use({ -- Alternative File Tree
       'kyazdani42/nvim-tree.lua',
       requires = { 'kyazdani42/nvim-web-devicons', opts = true },
-      config = get_setup('plugins.nvimtree'),
+      config = get_setup('config.nvimtree'),
     })
 
     use({ -- easily manage multiple terminal windows
       'akinsho/toggleterm.nvim',
-      config = get_setup('plugins.toggleterm'),
+      config = get_setup('config.toggleterm'),
     })
 
     use({ -- autopairs for neovim written in lua
       'windwp/nvim-autopairs',
-      config = get_setup('plugins.autopairs'),
+      config = get_setup('config.autopairs'),
     })
 
     --- Documentation ---
 
     use({ -- Neovim commenting plugin, written in lua
       'b3nj5m1n/kommentary',
-      config = get_setup('plugins.kommentary'),
+      config = get_setup('config.kommentary'),
     })
 
     use({ -- A high-performance color highlighter
       'norcalli/nvim-colorizer.lua',
-      config = get_setup('plugins.colorizer'),
+      config = get_setup('config.colorizer'),
     })
 
     use({ -- Highlight, list and search todo comments
       'folke/todo-comments.nvim',
-      config = get_setup('plugins.todo-comments'),
+      config = get_setup('config.todo-comments'),
       requires = 'nvim-lua/plenary.nvim',
     })
 
     use({ -- A pretty list for showing diagnostics, qf/loc lists
       'folke/trouble.nvim',
-      config = get_setup('plugins.neorg'),
+      config = get_setup('config.neorg'),
       requires = 'kyazdani42/nvim-web-devicons',
     })
 
     use({ -- Orgmode for Neovim, Life Organization Tool Written in Lua
       'nvim-neorg/neorg',
       ft = 'norg', -- Lazyload
-      config = get_setup('plugins.neorg'),
+      config = get_setup('config.neorg'),
       requires = 'nvim-lua/plenary.nvim',
     })
 
@@ -349,5 +349,5 @@ return packer.startup({
   end,
 
   -- Load and evaluate packer config table
-  config = (require('plugins.packer').setup)(),
+  config = (require('config.packer').setup)(),
 })

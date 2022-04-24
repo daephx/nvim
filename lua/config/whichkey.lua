@@ -1,5 +1,5 @@
--- Module: plugins.whichkey
 -- Description: Configurations for plugin WhichKey.nvim
+-- Module: config.whichkey
 
 local wk = require('which-key')
 

@@ -1,5 +1,5 @@
--- Module: mappings
 -- Description: Define key mappings for lua config
+-- Module: mappings
 
 local api = vim.api
 
@@ -93,7 +93,7 @@ whichkey_map.d = {
 -- Telescope Find
 whichkey_map.f = {
   name = '+Files',
-  ['.'] = { '<cmd>lua require("plugins.telescope").search_dotfiles()<CR>', 'Dotfiles' },
+  ['.'] = { '<cmd>lua require("config.telescope").search_dotfiles()<CR>', 'Dotfiles' },
   ['<S-c>'] = { '<cmd>Telescope commands<CR>', 'Commands' },
   ['<S-f>'] = { '<cmd>Telescope treesitter<CR>', 'Treesitter' },
   b = { '<cmd>Telescope current_buffer_fuzzy_find<CR>', 'Grep Buffer' },
@@ -108,8 +108,8 @@ whichkey_map.f = {
   r = { '<cmd>Telescope oldfiles<CR>', 'Recent Files' },
   s = { '<cmd>Telescope grep_string<CR>', 'Grep String' },
   t = { '<cmd>TodoTelescope<CR>', 'Search Todo comments' },
-  v = { '<cmd>lua require("plugins.telescope").search_vimfiles()<CR>', 'VimRC' },
-  w = { '<cmd>lua require("plugins.telescope").search_wikifiles()<CR>', 'Wiki' },
+  v = { '<cmd>lua require("config.telescope").search_vimfiles()<CR>', 'VimRC' },
+  w = { '<cmd>lua require("config.telescope").search_wikifiles()<CR>', 'Wiki' },
 }
 
 -- Plugins
@@ -124,12 +124,12 @@ whichkey_map.p = {
 whichkey_map.g = {
   name = '+Git',
   G = { '<cmd>lua require("neogit").open()<CR>', 'Git Status (Neogit)' },
-  b = { '<cmd>lua require("plugins.telescope").git_branches()<CR>', 'Git branches' },
+  b = { '<cmd>lua require("config.telescope").git_branches()<CR>', 'Git branches' },
   d = { '<cmd>Gdiffsplit<CR>', 'Diff current buffer' },
   f = { '<cmd>Telescope git_files<CR>', 'Git files' },
   g = { '<cmd>Gtabedit :<CR>', 'Git Status (Fugitive)' },
   l = { '<cmd>GclogTab<CR>', 'Git Log' },
-  z = { '<cmd>lua require("plugins.toggleterm").lazygit:toggle()<CR>', 'Lazygit' },
+  z = { '<cmd>lua require("config.toggleterm").lazygit:toggle()<CR>', 'Lazygit' },
 }
 
 -- New
@@ -151,8 +151,8 @@ whichkey_map.s = {
 whichkey_map.t = {
   name = '+Terminal',
   t = { '<cmd>ToggleTerm direction=tab<CR>', 'Terminal Tab' },
-  d = { '<cmd>lua require("plugins.toggleterm").lazydocker:toggle()<CR>', 'Lazydocker' },
-  g = { '<cmd>lua require("plugins.toggleterm").lazygit:toggle()<CR>', 'Lazygit' },
+  d = { '<cmd>lua require("config.toggleterm").lazydocker:toggle()<CR>', 'Lazydocker' },
+  g = { '<cmd>lua require("config.toggleterm").lazygit:toggle()<CR>', 'Lazygit' },
 }
 
 -- Register Keymap

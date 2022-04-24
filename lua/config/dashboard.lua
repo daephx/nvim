@@ -25,7 +25,7 @@ g.dashboard_custom_section = {
   g = { description = { '  Update Plugins        SPC p u' }, command = 'PackerUpdate' },
   h = {
     description = { '  Settings              SPC f v' },
-    command = 'lua require("plugins.telescope").search_vimfiles()',
+    command = 'lua require("config.telescope").search_vimfiles()',
   },
   i = { description = { '  Exit                  SPC q q' }, command = 'exit' },
 }

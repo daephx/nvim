@@ -1,4 +1,4 @@
--- Native LSP Configurations (Language Server Protocol)
+-- Description: Native LSP Configurations (Language Server Protocol)
 
 -- Prevent loading if coc is enabled
 if vim.g.coc_enabled then

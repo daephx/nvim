@@ -1,5 +1,5 @@
--- Module: plugins.indent-blankline
 -- Description: Plugin configuration for indentation guides
+-- Module: config.indent-blankline
 
 local fn = vim.fn
 

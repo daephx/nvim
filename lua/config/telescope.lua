@@ -1,5 +1,5 @@
--- Module: plugins.telescope
 -- Description: configurations for telescope fuzzy-finder
+-- Module: config.telescope
 
 local telescope = require('telescope')
 local actions = require('telescope.actions')

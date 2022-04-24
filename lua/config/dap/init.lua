@@ -57,9 +57,9 @@ augroup dapui_au
 augroup END
 ]])
 
--- Languages defined here will be looked for in the plugin.dap module,
+-- Languages defined here will be looked for in the config.dap module,
 -- Any lua script with the coorisponding name will be loaded if found.
--- i.e. lua/plugins/dap/python.lua
+-- i.e. lua/config/dap/python.lua
 
 local languages = {
   -- "cpp",
@@ -78,7 +78,7 @@ M.setup = function()
   mappings() -- initialize Debugger keymaps
   -- initialize adapters/configs for languages
   for _, lang in pairs(languages) do
-    if not pcall(require, 'plugins.dap.' .. lang) then
+    if not pcall(require, 'config.dap.' .. lang) then
       error('DAP: Config for ' .. lang .. ' is not defined!')
       return
     end

@@ -3,9 +3,9 @@
 --   / __  / / / / / / __/ / __ \/ ___/
 --  / /_/ / /_/ / / / /_/ / / / (__  )
 -- /_____/\__,_/_/_/\__/_/_/ /_/____/
---
--- Module: plugins.builtins
+-- ====================================
 -- Description: Configurations on how to handled builtin plugins
+-- Module: config.builtins
 
 local g = vim.g
 

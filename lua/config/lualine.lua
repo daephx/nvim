@@ -116,6 +116,6 @@ lualine.setup({
 vim.cmd([[
 augroup reload_statusline
   autocmd!
-  autocmd ColorScheme * lua require('plugins.lualine')
+  autocmd ColorScheme * lua require('config.lualine')
 augroup END
 ]])

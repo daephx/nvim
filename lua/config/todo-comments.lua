@@ -1,4 +1,4 @@
--- Module: plugins.todo-comments
+-- Module: config.todo-comments
 -- Description: configurations for plugin 'todo-comments'
 
 local todo_comments = require('todo-comments')

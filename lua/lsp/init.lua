@@ -101,13 +101,14 @@ local on_attach = function(client, bufnr)
   )
 
   if client.resolved_capabilities.document_formatting then
-    -- Apply Auto-formatting on save
-    -- vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 100) ]])
-    vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync({}, 500) ]])
-
-    -- Manual :Format command
-    -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-    vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
+    vim.api.nvim_create_user_command('Format', function()
+      vim.lsp.buf.range_formatting()
+    end, {})
+    vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+      desc = 'Apply Auto-formatting for to document on save',
+      buffer = 0,
+      callback = vim.lsp.buf.formatting_sync,
+    })
   end
 end
 

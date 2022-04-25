@@ -61,6 +61,26 @@ vim.diagnostic.config({
   },
 })
 
+-- Override global float preview function
+local _open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or 'rounded'
+  opts.focusable = opts.focusable or false
+  return _open_floating_preview(contents, syntax, opts, ...)
+end
+
+-- Override lspconfig ui options
+local windows = require('lspconfig.ui.windows')
+local _default_opts = windows.default_opts
+windows.default_opts = function(options)
+  local opts = _default_opts(options)
+  opts.border = 'rounded'
+  return opts
+end
+
+--- Attach ---
+
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
 local on_attach = function(client, bufnr)

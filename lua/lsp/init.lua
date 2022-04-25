@@ -23,8 +23,6 @@ local language_servers = {
 
 local mappings = require('lsp.mappings')
 
-local M = {}
-
 -- Apply diagnostic symbols in the sign column
 local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
 for type, icon in pairs(signs) do
@@ -112,5 +110,3 @@ require('lsp.installer').setup({
   language_servers = language_servers,
   on_attach = on_attach,
 })
-
-return M

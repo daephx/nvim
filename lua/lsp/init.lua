@@ -5,6 +5,10 @@ if vim.g.coc_enabled then
   return
 end
 
+-- Enable/Disable Null-LS
+vim.g.null_ls_disable = false
+
+-- Define settings for lsp servers
 local language_servers = {
   ['bashls'] = { auto_install = true, disable_formatting = false },
   ['clangd'] = { auto_install = false, disable_formatting = false },

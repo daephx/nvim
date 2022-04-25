@@ -94,18 +94,21 @@ local on_attach = function(client, bufnr)
   -- Enable LSP Mappings
   mappings.set_lsp_keymaps(bufnr)
 
+
   -- Show line diagnostics on cursor position in hover window
   vim.cmd(
     [[ autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"}) ]]
   )
 
-  -- Apply Auto-formatting on save
-  -- vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 100) ]])
-  vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync({}, 500) ]])
+  if client.resolved_capabilities.document_formatting then
+    -- Apply Auto-formatting on save
+    -- vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync(nil, 100) ]])
+    vim.cmd([[ autocmd BufWritePre * lua vim.lsp.buf.formatting_sync({}, 500) ]])
 
-  -- Manual :Format command
-  -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-  vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
+    -- Manual :Format command
+    -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+    vim.cmd([[ command! -range Format '<,'>lua vim.lsp.buf.range_formatting() ]])
+  end
 end
 
 --- Handlers ---

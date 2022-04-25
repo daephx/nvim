@@ -25,6 +25,14 @@ local mappings = require('lsp.mappings')
 
 local M = {}
 
+-- Apply diagnostic symbols in the sign column
+local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.cmd('highlight! link ' .. hl .. ' Diagnostic' .. type)
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = 'none' })
+end
+
 -- Diagnostic Settings
 vim.diagnostic.config({
   signs = true,
@@ -46,14 +54,6 @@ vim.diagnostic.config({
     source = 'if_many',
   },
 })
-
--- Apply diagnostic symbols in the sign column
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.cmd('highlight! link ' .. hl .. ' Diagnostic' .. type)
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = 'none' })
-end
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer

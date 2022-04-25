@@ -96,9 +96,13 @@ local on_attach = function(client, bufnr)
 
 
   -- Show line diagnostics on cursor position in hover window
-  vim.cmd(
-    [[ autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"}) ]]
-  )
+  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    desc = 'Show line diagnostics on cursor position in hover window',
+    buffer = 0,
+    callback = function()
+      vim.diagnostic.open_float(nil, { scope = 'cursor' })
+    end,
+  })
 
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_create_user_command('Format', function()

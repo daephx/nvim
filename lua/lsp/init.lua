@@ -19,6 +19,7 @@ local language_servers = {
   ['tsserver'] = { auto_install = false, disable_formatting = true },
   ['vimls'] = { auto_install = true, disable_formatting = false },
   ['yamlls'] = { auto_install = true, disable_formatting = true },
+  ['zk'] = { auto_install = true, disable_formatting = false },
 }
 
 local mappings = require('lsp.mappings')

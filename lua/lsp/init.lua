@@ -23,12 +23,17 @@ local language_servers = {
 
 local mappings = require('lsp.mappings')
 
+local diagnostic_icons = {
+  [vim.diagnostic.severity.ERROR] = { ' ', 'DiagnosticSignError' },
+  [vim.diagnostic.severity.WARN] = { ' ', 'DiagnosticSignWarn' },
+  [vim.diagnostic.severity.INFO] = { ' ', 'DiagnosticSignInfo' },
+  [vim.diagnostic.severity.HINT] = { ' ', 'DiagnosticSignHint' },
+}
+
 -- Apply diagnostic symbols in the sign column
-local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.cmd('highlight! link ' .. hl .. ' Diagnostic' .. type)
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = 'none' })
+for _, tbl in pairs(diagnostic_icons) do
+  local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
+  vim.fn.sign_define(tbl[2], opts)
 end
 
 -- Diagnostic Settings

@@ -45,15 +45,18 @@ vim.diagnostic.config({
   float = {
     border = 'rounded',
     focusable = false,
-    header = { 'Diagnostics:', 'Normal' },
-    prefix = '✗ ',
+    header = { ' Diagnostics:', 'Normal' },
     show_header = true,
     source = 'always',
+    prefix = function(diagnostic)
+      local res = diagnostic_icons[diagnostic.severity]
+      return string.format(' %s', res[1]), res[2]
+    end,
   },
   virtual_text = {
     prefix = '✗',
     spacing = 4,
-    severity = vim.diagnostic.severity.ERROR,
+    severity = vim.diagnostic.severity.WARN,
     source = 'if_many',
   },
 })

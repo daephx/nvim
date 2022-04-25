@@ -94,6 +94,14 @@ local on_attach = function(client, bufnr)
   -- Enable LSP Mappings
   mappings.set_lsp_keymaps(bufnr)
 
+  -- Prevent built in formatting for specific language servers
+  -- effective when using external formatters with null-ls
+  for server, opts in pairs(language_servers) do
+    if client.name == server and opts.disable_formatting then
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+    end
+  end
 
   -- Show line diagnostics on cursor position in hover window
   vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {

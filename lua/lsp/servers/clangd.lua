@@ -1,5 +1,5 @@
 local clangd_binary
-local clangd_root_path = vim.fn.stdpath('data') .. '/lsp_servers/clangd/clangd_13.0.0'
+local clangd_root_path = vim.fn.stdpath('data') .. '/lsp_servers/clangd/clangd'
 if vim.fn.has('mac') == 1 then
   clangd_binary = clangd_root_path .. '/bin/clangd'
 elseif vim.fn.has('unix') == 1 then

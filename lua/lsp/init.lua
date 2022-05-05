@@ -7,9 +7,6 @@ end
 
 local lsp_utils = require('lsp.utils')
 
--- Enable/Disable Null-LS
-vim.g.null_ls_disable = false
-
 local diagnostic_icons = require('lsp.icons').diagnostic_icons
 
 -- Apply diagnostic symbols in the sign column

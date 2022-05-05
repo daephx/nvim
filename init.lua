@@ -46,10 +46,6 @@ g.colors_name = 'vscode'
 g.mapleader = ' '
 g.localleader = '\\'
 
--- Enable personal experimental.
--- Sometimes this only contains one or two remaps
--- g.experimental = 0
-
 --- Modules ---
 
 -- Lua modules containing configuration definitions

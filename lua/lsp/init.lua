@@ -43,24 +43,6 @@ vim.diagnostic.config({
   },
 })
 
--- Override global float preview function
-local _open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or 'rounded'
-  opts.focusable = opts.focusable or false
-  return _open_floating_preview(contents, syntax, opts, ...)
-end
-
--- Override lspconfig ui options
-local windows = require('lspconfig.ui.windows')
-local _default_opts = windows.default_opts
-windows.default_opts = function(options)
-  local opts = _default_opts(options)
-  opts.border = 'rounded'
-  return opts
-end
-
 --- Attach ---
 
 -- Use an on_attach function to set LSP related actions for
@@ -126,6 +108,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     'documentation',
   },
 }
+
+-- Override diagnostic hover window
+lsp_utils.override_diagnostic_float()
 
 --- Modules ---
 

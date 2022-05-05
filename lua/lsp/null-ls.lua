@@ -1,8 +1,8 @@
 -- Null-ls | Neovim language server
 -- url: https://github.com/jose-elias-alvarez/null-ls.nvim
 
-local ok, null_ls = pcall(require, 'null-ls')
-if not ok then
+local null_ok, null_ls = pcall(require, 'null-ls')
+if not null_ok then
   return
 end
 

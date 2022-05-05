@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+M.completeion_icons = {
   Class = 'ﴯ',
   Color = '',
   Constant = '',
@@ -25,3 +27,5 @@ return {
   Value = '',
   Variable = '',
 }
+
+return M

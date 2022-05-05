@@ -1,7 +1,7 @@
 -- nvim-cmp setup
 local cmp = require('cmp')
 
-local icons = require('lsp.icons')
+local icons = require('lsp.icons').completeion_icons
 
 cmp.setup({
   snippet = {

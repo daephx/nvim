@@ -8,28 +8,7 @@ end
 -- Enable/Disable Null-LS
 vim.g.null_ls_disable = false
 
--- Define settings for lsp servers
-local language_servers = {
-  ['bashls'] = { auto_install = true, disable_formatting = false },
-  ['clangd'] = { auto_install = false, disable_formatting = false },
-  ['html'] = { auto_install = true, disable_formatting = true },
-  ['jsonls'] = { auto_install = true, disable_formatting = true },
-  ['pyright'] = { auto_install = true, disable_formatting = true },
-  ['sumneko_lua'] = { auto_install = true, disable_formatting = true },
-  ['tsserver'] = { auto_install = false, disable_formatting = true },
-  ['vimls'] = { auto_install = true, disable_formatting = false },
-  ['yamlls'] = { auto_install = true, disable_formatting = true },
-  ['zk'] = { auto_install = true, disable_formatting = false },
-}
-
-local mappings = require('lsp.mappings')
-
-local diagnostic_icons = {
-  [vim.diagnostic.severity.ERROR] = { ' ', 'DiagnosticSignError' },
-  [vim.diagnostic.severity.WARN] = { ' ', 'DiagnosticSignWarn' },
-  [vim.diagnostic.severity.INFO] = { ' ', 'DiagnosticSignInfo' },
-  [vim.diagnostic.severity.HINT] = { ' ', 'DiagnosticSignHint' },
-}
+local diagnostic_icons = require('lsp.icons').diagnostic_icons
 
 -- Apply diagnostic symbols in the sign column
 for _, tbl in pairs(diagnostic_icons) do

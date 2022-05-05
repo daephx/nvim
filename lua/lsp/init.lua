@@ -89,23 +89,6 @@ end
 
 vim.lsp.handlers['textDocument/definition'] = lsp_utils.goto_definition('vsplit')
 
---- Capabilities ---
-
--- Define lsp default capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-if ok then
-  capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-end
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'additionalTextEdits',
-    'detail',
-    'documentation',
-  },
-}
-
 -- Override diagnostic hover window
 lsp_utils.override_diagnostic_float()
 
@@ -113,7 +96,7 @@ lsp_utils.override_diagnostic_float()
 
 require('lsp.null-ls')
 require('lsp.installer').setup({
-  capabilities = capabilities,
+  capabilities = lsp_utils.initialize_capabilities(),
   language_servers = language_servers,
   on_attach = on_attach,
 })

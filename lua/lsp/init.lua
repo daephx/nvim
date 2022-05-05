@@ -62,8 +62,8 @@ local on_attach = function(client, bufnr)
   -- effective when using external formatters with null-ls
   for server, opts in pairs(language_servers) do
     if client.name == server and opts.disable_formatting then
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
+      client.server_capabilities.document_formatting = false
+      client.server_capabilities.document_range_formatting = false
     end
   end
 
@@ -76,7 +76,7 @@ local on_attach = function(client, bufnr)
     end,
   })
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.api.nvim_create_user_command('Format', function()
       vim.lsp.buf.range_formatting()
     end, {})

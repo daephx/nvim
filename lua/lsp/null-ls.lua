@@ -72,7 +72,7 @@ null_ls.setup({
     }),
   },
   on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
       vim.api.nvim_create_user_command('Format', vim.lsp.buf.range_formatting, {})
       vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
         desc = 'Apply Auto-formatting for to document on save',

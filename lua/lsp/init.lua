@@ -43,24 +43,6 @@ vim.diagnostic.config({
   },
 })
 
--- Override global float preview function
-local _open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = opts.border or 'rounded'
-  opts.focusable = opts.focusable or false
-  return _open_floating_preview(contents, syntax, opts, ...)
-end
-
--- Override lspconfig ui options
-local windows = require('lspconfig.ui.windows')
-local _default_opts = windows.default_opts
-windows.default_opts = function(options)
-  local opts = _default_opts(options)
-  opts.border = 'rounded'
-  return opts
-end
-
 --- Attach ---
 
 -- Use an on_attach function to set LSP related actions for
@@ -80,8 +62,8 @@ local on_attach = function(client, bufnr)
   -- effective when using external formatters with null-ls
   for server, opts in pairs(language_servers) do
     if client.name == server and opts.disable_formatting then
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
+      client.server_capabilities.document_formatting = false
+      client.server_capabilities.document_range_formatting = false
     end
   end
 
@@ -94,7 +76,7 @@ local on_attach = function(client, bufnr)
     end,
   })
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.api.nvim_create_user_command('Format', function()
       vim.lsp.buf.range_formatting()
     end, {})
@@ -126,6 +108,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     'documentation',
   },
 }
+
+-- Override diagnostic hover window
+lsp_utils.override_diagnostic_float()
 
 --- Modules ---
 

@@ -2,6 +2,26 @@
 
 local M = {}
 
+M.override_diagnostic_float = function()
+  -- Override global float preview function
+  local _open_floating_preview = vim.lsp.util.open_floating_preview
+  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = opts.border or 'rounded'
+    opts.focusable = opts.focusable or false
+    return _open_floating_preview(contents, syntax, opts, ...)
+  end
+
+  -- Override lspconfig ui options
+  local windows = require('lspconfig.ui.windows')
+  local _default_opts = windows.default_opts
+  windows.default_opts = function(options)
+    local opts = _default_opts(options)
+    opts.border = 'rounded'
+    return opts
+  end
+end
+
 -- Go-to definition in a split window
 M.goto_definition = function(split_cmd)
   local util = vim.lsp.util

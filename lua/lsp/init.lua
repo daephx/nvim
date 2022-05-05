@@ -5,6 +5,8 @@ if vim.g.coc_enabled then
   return
 end
 
+local lsp_utils = require('lsp.utils')
+
 -- Enable/Disable Null-LS
 vim.g.null_ls_disable = false
 
@@ -106,7 +108,6 @@ end
 
 --- Handlers ---
 
-local lsp_utils = require('lsp.utils')
 vim.lsp.handlers['textDocument/definition'] = lsp_utils.goto_definition('vsplit')
 
 --- Capabilities ---

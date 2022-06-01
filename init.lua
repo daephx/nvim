@@ -54,6 +54,7 @@ g.localleader = '\\'
 require('plugins') -- Plugin definitions
 require('colors') -- Pretty rainbows!!
 require('settings') -- General Neovim Settings
+require('filetypes') -- Filetype associations
 require('utils') -- General utility functions
 require('commands') -- Command abbreviations
 require('mappings') -- Hotkey remaps

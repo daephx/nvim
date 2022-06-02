@@ -7,6 +7,15 @@ api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
   command = 'nohlsearch',
 })
 
+api.nvim_create_augroup('YankHighlight', { clear = true })
+api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight the region on yank',
+  group = 'YankHighlight',
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 500 })
+  end,
+})
+
 api.nvim_create_augroup('SmartHybridNumbers', { clear = true })
 api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
   desc = 'Intelligent Relative Numbers | Enable',

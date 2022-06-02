@@ -16,6 +16,9 @@ map('n', 'Y', 'y$')
 -- Breaks default functionality
 map('v', '<del>', '"_d') -- Prevent <Delete> from yanking
 
+-- Remove highlight after search with ESCAPE
+map('n', '<esc>', ':nohlsearch<cr><esc>')
+
 -- Ctrl - hjkl to navigate splits
 map('n', '<c-h>', '<cmd>wincmd h<CR>')
 map('n', '<c-j>', '<cmd>wincmd j<CR>')

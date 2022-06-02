@@ -58,6 +58,7 @@ require('filetypes') -- Filetype associations
 require('utils') -- General utility functions
 require('commands') -- Command abbreviations
 require('mappings') -- Hotkey remaps
+require('autocmds') -- Auto commands
 
 --- Helpers ---
 

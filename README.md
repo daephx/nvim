@@ -2,7 +2,7 @@
 
 # Neovim Configuration
 
-<sup>• Tested against Nvim Unstable. No backward compatibility is guaranteed! •</sup><br />
+<sup>• Tested against Neovim Nightly. No backward compatibility is guaranteed! •</sup><br />
 <a href="https://github.com/daephx/nvim/commits">
 <img alt="Last Commit date" src="https://img.shields.io/github/last-commit/daephx/nvim?style=flat-square&labelColor=000000" /></a>
 <a href="https://github.com/daephx/nvim/actions">
@@ -11,7 +11,7 @@
 <img alt="Latest release" src="https://img.shields.io/github/release/daephx/nvim?style=flat-square&labelColor=000000" />
 </a>
 <a href="https://github.com/neovim/neovim/releases/tag/nightly">
-<img alt="Neovim minimum version" src="https://img.shields.io/badge/Neovim-0.8.0--dev-blueviolet.svg?style=flat-square&logo=Neovim&labelColor=000000&logoColor=green" />
+<img alt="Neovim minimum version" src="https://img.shields.io/badge/Neovim-nightly-blueviolet.svg?style=flat-square&logo=Neovim&labelColor=000000&logoColor=green" />
 </a>
 <a href="https://github.com/daephx/nvim/search?l=lua">
 <img alt="Top languages" src="https://img.shields.io/github/languages/top/daephx/nvim?style=flat-square&labelColor=000000&logo=lua&logoColor=blue" />

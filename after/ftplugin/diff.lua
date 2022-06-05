@@ -1,6 +1,6 @@
--- ftplugin: diff
+-- after/ftplugin: diff
 
--- Settings
+-- Options
 vim.opt_local.colorcolumn = '0'
 vim.opt_local.conceallevel = 0
 vim.opt_local.cursorcolumn = false

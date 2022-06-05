@@ -1,4 +1,4 @@
--- ftplugin: neorg (Neovim Orgmode)
+-- after/ftplugin: neorg (Neovim Orgmode)
 
--- Settings
+-- Options
 vim.opt_local.list = false

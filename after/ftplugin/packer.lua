@@ -1,4 +1,4 @@
--- ftplugin: packer
+-- after/ftplugin: packer
 
--- Settings
+-- Options
 vim.opt_local.colorcolumn = '0'

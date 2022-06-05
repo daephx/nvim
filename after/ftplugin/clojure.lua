@@ -1,1 +1,1 @@
--- ftplugin: clojure
+-- after/ftplugin: clojure

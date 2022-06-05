@@ -1,5 +1,5 @@
--- ftplugin: scheme
+-- after/ftplugin: scheme
 
--- Settings
+-- Options
 vim.opt_local.expandtab = true
 vim.opt_local.shiftwidth = 2

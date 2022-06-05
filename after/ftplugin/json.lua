@@ -1,6 +1,6 @@
--- ftplugin: json
+-- after/ftplugin: json
 
--- Settings
+-- Options
 vim.opt_local.expandtab = true
 vim.opt_local.shiftwidth = 2
 vim.opt_local.softtabstop = 2

@@ -1,6 +1,6 @@
--- ftplugin: help.txt files
+-- after/ftplugin: help.txt files
 
--- Settings
+-- Options
 vim.opt_local.expandtab = true
 vim.opt_local.textwidth = 78
 vim.opt_local.tabstop = 4

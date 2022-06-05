@@ -59,3 +59,43 @@ api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, 
   group = 'SmartHybridNumbers',
   command = 'if &nu | set nornu | endif',
 })
+
+api.nvim_create_augroup('TerminalBuffers', {})
+api.nvim_create_autocmd('TermOpen', {
+  desc = '',
+  group = 'TerminalBuffers',
+  pattern = 'term://*',
+  callback = function()
+    vim.opt_local.buflisted = true
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = 'no'
+    vim.opt_local.spell = false
+    vim.opt_local.scrolloff = 0
+    vim.opt_local.winfixheight = true
+  end,
+})
+
+api.nvim_create_autocmd('TermClose', {
+  desc = 'Skip prompt, Automatically close exited terminal buffer processes',
+  group = 'TerminalBuffers',
+  pattern = 'term://*',
+  callback = function()
+    vim.fn.feedkeys('i')
+    vim.api.nvim_input('<esc>')
+  end,
+})
+
+api.nvim_create_autocmd({ 'TermOpen', 'BufEnter' }, {
+  desc = 'Automatically enter insert mode when focusing a terminal buffer',
+  group = 'TerminalBuffers',
+  pattern = 'term://*',
+  command = 'startinsert',
+})
+
+api.nvim_create_autocmd({ 'TermClose', 'BufLeave' }, {
+  desc = 'Disable insert mode when leaving a terminal buffer',
+  group = 'TerminalBuffers',
+  pattern = 'term://*',
+  command = 'stopinsert',
+})

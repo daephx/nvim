@@ -1,6 +1,7 @@
 -- after/ftplugin: git
 
--- Options
+--- Options ---
+
 vim.opt_local.list = false
 vim.opt_local.cursorcolumn = false
 vim.opt_local.cursorline = false

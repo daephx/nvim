@@ -1,6 +1,7 @@
 -- after/ftplugin: quickfix
 
--- Options
+--- Options ---
+
 vim.opt_local.colorcolumn = '0'
 vim.opt_local.cursorline = true
 vim.opt_local.cursorlineopt = 'both'

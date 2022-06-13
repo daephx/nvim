@@ -1,6 +1,7 @@
 -- after/ftplugin: help.txt files
 
--- Options
+--- Options ---
+
 vim.opt_local.expandtab = true
 vim.opt_local.textwidth = 78
 vim.opt_local.tabstop = 4
@@ -13,7 +14,8 @@ vim.opt_local.cursorline = false
 vim.opt_local.formatoptions = { c = false }
 vim.opt_local.iskeyword = ',:,#,-'
 
--- Mappings
+--- Keymaps ---
+
 local opts = { buffer = true, remap = false, silent = true }
 
 -- Quickly close help window

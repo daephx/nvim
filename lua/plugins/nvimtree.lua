@@ -95,7 +95,7 @@ nvimtree.setup({
     -- Will enable file highlight for git attributes (can be used without the icons)
     highlight_git = true,
     -- Will enable folder and file icon highlight for opened files/directories
-    highlight_opened_files = 2,
+    highlight_opened_files = '2',
     -- This option shows indent markers when folders are open.
     indent_markers = {
       enable = true,

@@ -1,17 +1,10 @@
 -- nvim-tree | file browser for neovim
+-- URL: https://github.com/kyazdani42/nvim-tree.lua
 
-local g = vim.g
-
-nvimtree = require('nvim-tree')
-
---- Globals ---
-
--- Will enable file highlight for git attributes (can be used without the icons)
-g.nvim_tree_git_hl = 1
--- Will enable folder and file icon highlight for opened files/directories
-g.nvim_tree_highlight_opened_files = 1
--- Append a trailing slash to folder names
-g.nvim_tree_add_trailing = 0
+local nvimtree_ok, nvimtree = pcall(require, 'nvim-tree')
+if not nvimtree_ok then
+  return
+end
 
 --- Setup ---
 
@@ -24,8 +17,6 @@ nvimtree.setup({
   open_on_setup = false,
   -- will not open on setup if the filetype is in this list
   ignore_ft_on_setup = {},
-  -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close = false,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab = false,
   -- hijack the cursor in the tree to put it at the start of the filename
@@ -99,6 +90,12 @@ nvimtree.setup({
     relativenumber = false,
   },
   renderer = {
+    -- Append a trailing slash to folder names
+    add_trailing = false,
+    -- Will enable file highlight for git attributes (can be used without the icons)
+    highlight_git = true,
+    -- Will enable folder and file icon highlight for opened files/directories
+    highlight_opened_files = 2,
     -- This option shows indent markers when folders are open.
     indent_markers = {
       enable = true,

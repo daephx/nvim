@@ -11,7 +11,7 @@ vim.opt_local.signcolumn = 'yes:1'
 vim.opt_local.colorcolumn = '0'
 vim.opt_local.cursorline = false
 vim.opt_local.formatoptions = { c = false }
-vim.opt_local.iskeyword:append(',:,#,-')
+vim.opt_local.iskeyword = ',:,#,-'
 
 -- Mappings
 local opts = { buffer = true, remap = false, silent = true }

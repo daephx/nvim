@@ -57,5 +57,5 @@ require('options') -- General Neovim Settings
 require('filetypes') -- Filetype associations
 require('utils') -- General utility functions
 require('commands') -- Command abbreviations
-require('mappings') -- Hotkey remaps
+require('keymaps') -- Remapped hotkeys
 require('autocmds') -- Auto commands

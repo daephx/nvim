@@ -20,6 +20,31 @@ M.initialize_capabilities = function()
   return capabilities
 end
 
+M.initialize_servers = function(opts)
+  -- Get local config files from opts.config_path
+  local get_server_files = function(config_path)
+    return vim.tbl_map(function(fpath)
+      return fpath:match('.+/(.*)%.')
+    end, vim.split(vim.fn.globpath(config_path, '*.lua'), '\n'))
+  end
+
+  opts.servers = vim.tbl_extend('force', opts.servers, get_server_files(opts.config_path))
+  for _, server in pairs(opts.servers) do
+    local namespace = table.concat({ opts.config_path:match('/(.*)$'), server }, '/')
+    local _, module = pcall(require, namespace)
+    local config = {}
+    if type(module) == 'table' then
+      if type(module.setup) == 'function' then
+        config = module.setup(opts.capabilities, opts.on_attach)
+      end
+
+      if server ~= 'null-ls' then
+        lspconfig[server].setup(config)
+      end
+    end
+  end
+end
+
 M.override_diagnostic_float = function()
   -- Override global float preview function
   local _open_floating_preview = vim.lsp.util.open_floating_preview

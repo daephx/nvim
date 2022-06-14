@@ -1,5 +1,3 @@
--- docker-language-server
-
 local M = {}
 
 M.setup = function(capabilities, on_attach)

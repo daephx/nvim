@@ -9,6 +9,7 @@ if not pcall(require, 'lspconfig') then
 end
 
 local lsp_handlers = require('lsp.handlers')
+local lsp_installer = require('lsp.installer')
 local lsp_utils = require('lsp.utils')
 
 local diagnostic_icons = require('lsp.icons').diagnostic_icons
@@ -44,18 +45,17 @@ vim.diagnostic.config({
   },
 })
 
--- Initialize LSP handlers
-lsp_handlers.initialize_handlers()
-
 -- Override diagnostic hover window
 lsp_utils.override_diagnostic_float()
 
---- Modules ---
+-- Initialize LSP handlers
+lsp_handlers.initialize_handlers()
 
-require('lsp.null-ls')
-require('lsp.installer').setup({
+-- Initialize language servers
+lsp_utils.initialize_servers({
   capabilities = lsp_utils.initialize_capabilities(),
   on_attach = lsp_handlers.default_attach,
+  config_path = 'lua/lsp/servers',
   servers = {
     'bashls',
     'clangd',

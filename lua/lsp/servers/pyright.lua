@@ -1,17 +1,11 @@
--- Module: lsp.python
--- Description: Language-server configuration
---
--- Language-server binaries are required for this to work
--- Some are easily to install than others.
---
+-- Pyright: Python Language-server configuration
 -- For more information on setting up language-servers, See:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 
-local util = require('lspconfig.util')
+local M = {}
 
-local g = vim.g
-local path = util.path
 local exepath = vim.fn.exepath
+local path = require('lspconfig.util').path
 
 local function get_python_path(workspace)
   -- Use activated virtualenv.
@@ -31,24 +25,26 @@ local function get_python_path(workspace)
   return exepath('python3') or exepath('python') or 'python'
 end
 
--- use the VIRTUAL_ENV path if it exists
--- else just use the system default
-g.python3_host_prog = get_python_path()
+-- use the VIRTUAL_ENV path if it exists else just use the system default
+vim.g.python3_host_prog = get_python_path()
 
--- Export Settings
-
-local M = {}
-
-M.setup = {
-  on_init = function(client)
-    client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
-  end,
-  analysis = {
-    -- search subdirectories like src; defaults to true
-    autoSearchPaths = true,
-    -- make completion a lot faster, especially when large libraries are imported; auto-import suffers though generally good improvement as completion is not cached like as opposed to vscode defaults to true
-    useLibraryCodeForTypes = false,
-  },
-}
+M.setup = function(capabilities, on_attach)
+  return {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    -- cmd = { pyright_binary, '--stdio' },
+    on_init = function(client)
+      client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
+    end,
+    analysis = {
+      -- search subdirectories like src; defaults to true
+      autoSearchPaths = true,
+      -- make completion a lot faster,
+      -- especially when large libraries are imported; auto-import suffers though generally good
+      -- improvement as completion is not cached like as opposed to vscode defaults to true
+      useLibraryCodeForTypes = false,
+    },
+  }
+end
 
 return M

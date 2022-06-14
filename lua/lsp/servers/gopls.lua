@@ -1,4 +1,4 @@
--- docker-language-server
+-- gopls language server configuration
 
 local M = {}
 

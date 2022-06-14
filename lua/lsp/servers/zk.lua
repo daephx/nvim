@@ -1,5 +1,11 @@
-local zk = require('zk')
+-- Zk: Markdown language server configuration
 
-zk.setup({
-  picker = 'telescope',
-})
+local M = {}
+
+M.setup = function()
+  return {
+    picker = 'telescope',
+  }
+end
+
+return M

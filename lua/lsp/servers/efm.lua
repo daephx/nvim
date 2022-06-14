@@ -1,4 +1,8 @@
 -- EFM | General purpose language server
+if vim.g.disable_efm == true then
+  return
+end
+
 -- Throw an error if dependencies not available
 if not vim.fn.executable('go') then
   error('Go binary cannot be located in PATH: Is it installed?')

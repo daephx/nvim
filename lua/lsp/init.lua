@@ -14,6 +14,9 @@ local lsp_utils = require('lsp.utils')
 
 local diagnostic_icons = require('lsp.icons').diagnostic_icons
 
+-- Disable efm in favor of null-ls
+vim.g.disable_efm = true
+
 -- Apply diagnostic symbols in the sign column
 for _, tbl in pairs(diagnostic_icons) do
   local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }

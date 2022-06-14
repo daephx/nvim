@@ -2,43 +2,22 @@
 
 local M = {}
 
-local mappings = require('lsp.mappings')
+local lsp_formatting = require('lsp.handlers.formatting')
+local lsp_keymaps = require('lsp.keymaps')
+local lsp_utils = require('lsp.utils')
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
 M.default_attach = function(client, bufnr)
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
   -- Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  lsp_formatting.enable_auto_formatting(client, bufnr)
+  lsp_utils.enable_document_highlighting(client, bufnr)
+  lsp_utils.enable_hover_diagnostics(bufnr)
 
   -- Enable LSP Mappings
-  mappings.set_lsp_keymaps(bufnr)
-
-  -- Show line diagnostics on cursor position in hover window
-  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-    desc = 'Show line diagnostics on cursor position in hover window',
-    buffer = 0,
-    callback = function()
-      vim.diagnostic.open_float(nil, { scope = 'cursor' })
-    end,
-  })
-
-  if client.server_capabilities.document_formatting then
-    vim.api.nvim_create_user_command('Format', function()
-      vim.lsp.buf.range_formatting()
-    end, {})
-    vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-      desc = 'Apply Auto-formatting for to document on save',
-      buffer = 0,
-      callback = vim.lsp.buf.formatting_sync,
-    })
-  end
+  lsp_keymaps.initialize_keymaps(bufnr)
 end
-
---- Handlers ---
 
 -- Define LSP Handlers
 M.initialize_handlers = function()

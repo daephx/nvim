@@ -4,6 +4,91 @@ local M = {}
 
 local lspconfig = require('lspconfig')
 
+M.rename_diagnostic_source = function(diagnostic)
+  local replacements = { { 'Lua Diagnostics.', 'Sumneko' } }
+  for _, item in pairs(replacements) do
+    if diagnostic.source == item[1] then
+      return item[2]
+    end
+  end
+
+  return diagnostic.source
+end
+
+-- Enable diagnostic hover window at cursor position on CursorHold
+M.enable_hover_diagnostics = function(bufnr)
+  vim.api.nvim_create_autocmd({ 'CursorHold' }, {
+    buffer = bufnr,
+    desc = 'Show line diagnostics on cursor position in hover window',
+    group = vim.api.nvim_create_augroup('LspHoverDiagnostics', {}),
+    callback = function()
+      local opts = {
+        focusable = false,
+        close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
+        border = 'rounded',
+        scope = 'cursor',
+      }
+      vim.diagnostic.open_float(nil, opts)
+    end,
+  })
+end
+
+-- Display signature help
+-- TODO: Causes error prompts in &diff, gitcommit and other unsupported filetypes
+M.enable_signature_help = function(client, bufnr)
+  if client.supports_method('textDocument/signatureHelp') then
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      buffer = bufnr,
+      desc = 'Show signature help on cursor position in hover window',
+      callback = function()
+        vim.lsp.buf.signature_help(nil, { scope = 'cursor' })
+      end,
+    })
+  end
+end
+
+M.enable_code_lens = function(client, bufnr)
+  if client.supports_method('textDocument/codeLens') then
+    local augroup = vim.api.nvim_create_augroup('LspCodeLens', {})
+    vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave', 'BufWritePost', 'CursorHold' }, {
+      buffer = bufnr,
+      desc = '',
+      group = augroup,
+      callback = vim.lsp.codelens.refresh,
+    })
+    vim.schedule(vim.lsp.codelens.refresh)
+  end
+end
+
+-- Highlight references under cursor
+M.enable_document_highlighting = function(client, bufnr)
+  if client.supports_method('textDocument/documentHighlight') then
+    local augroup = vim.api.nvim_create_augroup('LspDocumentHighlight', { clear = true })
+    vim.api.nvim_create_autocmd({ 'VimEnter', 'ColorScheme' }, {
+      desc = 'Link LSP document reference highlighting to IncSearch',
+      group = augroup,
+      callback = function()
+        local opts = { link = 'IncSearch', bold = true }
+        vim.api.nvim_set_hl(0, 'LspReferenceRead', opts)
+        vim.api.nvim_set_hl(0, 'LspReferenceText', opts)
+        vim.api.nvim_set_hl(0, 'LspReferenceWrite', opts)
+      end,
+    })
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      buffer = bufnr,
+      desc = 'Apply LSP documment reference highlighting on CursorHold',
+      group = augroup,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ 'CursorMoved', 'InsertEnter', 'CursorMovedI' }, {
+      buffer = bufnr,
+      desc = 'Disable LSP documment reference highlighting on CursorMoved',
+      group = augroup,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+end
+
 -- Define lsp default capabilities
 M.initialize_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -65,39 +150,6 @@ M.override_diagnostic_float = function()
     opts.border = 'rounded'
     return opts
   end
-end
-
--- Go-to definition in a split window
-M.goto_definition = function(split_cmd)
-  local util = vim.lsp.util
-  local log = require('vim.lsp.log')
-
-  -- note, this handler style is for neovim 0.5.1/0.6, if on 0.5,
-  -- call with function(_, method, result)
-  local handler = function(_, result, ctx)
-    if result == nil or vim.tbl_isempty(result) then
-      local _ = log.info() and log.info(ctx.method, 'No location found')
-      return nil
-    end
-
-    if split_cmd then
-      vim.cmd(split_cmd)
-    end
-
-    if vim.tbl_islist(result) then
-      util.jump_to_location(result[1])
-
-      if #result > 1 then
-        util.set_qflist(util.locations_to_items(result))
-        vim.api.nvim_command('copen')
-        vim.api.nvim_command('wincmd p')
-      end
-    else
-      util.jump_to_location(result)
-    end
-  end
-
-  return handler
 end
 
 return M

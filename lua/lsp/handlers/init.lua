@@ -16,7 +16,7 @@ M.default_attach = function(client, bufnr)
   lsp_utils.enable_hover_diagnostics(bufnr)
 
   -- Enable LSP Mappings
-  lsp_keymaps.initialize_keymaps(bufnr)
+  lsp_keymaps.initialize_keymaps(client, bufnr)
 end
 
 -- Define LSP Handlers

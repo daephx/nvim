@@ -2,7 +2,7 @@ local M = {}
 
 --- Mappings ---
 
-M.initialize_keymaps = function(bufnr)
+M.initialize_keymaps = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end

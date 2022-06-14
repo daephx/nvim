@@ -2,6 +2,8 @@
 
 local M = {}
 
+local lspconfig = require('lspconfig')
+
 -- Define lsp default capabilities
 M.initialize_capabilities = function()
   local capabilities = vim.lsp.protocol.make_client_capabilities()

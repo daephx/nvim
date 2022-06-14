@@ -56,7 +56,7 @@ require('lsp.null-ls')
 require('lsp.installer').setup({
   capabilities = lsp_utils.initialize_capabilities(),
   on_attach = lsp_handlers.default_attach,
-  language_servers = {
+  servers = {
     'bashls',
     'clangd',
     'cssls',

@@ -30,7 +30,7 @@ M.setup = function(opts)
   end)
 
   -- Install from list of default_servers
-  for name, config in pairs(opts.language_servers) do
+  for name, config in pairs(opts.servers) do
     local server_is_found, server = lsp_installer.get_server(name)
     if server_is_found and config.auto_install then
       if not server:is_installed() then

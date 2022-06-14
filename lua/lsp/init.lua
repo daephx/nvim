@@ -56,5 +56,19 @@ require('lsp.null-ls')
 require('lsp.installer').setup({
   capabilities = lsp_utils.initialize_capabilities(),
   on_attach = lsp_handlers.default_attach,
-  language_servers = language_servers,
+  language_servers = {
+    'bashls',
+    'clangd',
+    'cssls',
+    'dockerls',
+    'emmet_ls',
+    'eslint',
+    'html',
+    'jsonls',
+    'ltex',
+    'pyright',
+    'sumneko_lua',
+    'tsserver',
+    'yamlls',
+  },
 })

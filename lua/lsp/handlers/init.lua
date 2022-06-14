@@ -1,8 +1,12 @@
+-- lsp.handlers
+
+local M = {}
+
 local mappings = require('lsp.mappings')
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
-local default_attach = function(client, bufnr)
+M.default_attach = function(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
@@ -46,7 +50,7 @@ end
 --- Handlers ---
 
 -- Define LSP Handlers
-local initialize_handlers = function()
+M.initialize_handlers = function()
   -- vim.lsp.handlers['textDocument/definition'] = lsp_utils.goto_definition('vsplit')
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
@@ -59,7 +63,4 @@ local initialize_handlers = function()
   )
 end
 
-return {
-  default_attach = default_attach,
-  initialize_handlers = initialize_handlers,
-}
+return M

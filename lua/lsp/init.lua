@@ -1,7 +1,10 @@
 -- Native LSP Configurations (Language Server Protocol)
-
--- Prevent loading if coc is enabled
-if vim.g.coc_enabled then
+if not pcall(require, 'lspconfig') then
+  local msg = table.concat({
+    'nvim-lsp failed to initialize',
+    'Unable to locate dependency "lspconfig"',
+  }, '\n')
+  vim.notify(msg, vim.lsp.log_levels.ERROR, { title = 'Plugin Error' })
   return
 end
 

@@ -1,19 +1,10 @@
 -- nvim-tree | file browser for neovim
+-- URL: https://github.com/kyazdani42/nvim-tree.lua
 
-local g = vim.g
-
--- Prevent loading if not applicable
-local ok, nvimtree = pcall(require, 'nvim-tree')
-if not ok then
+local nvimtree_ok, nvimtree = pcall(require, 'nvim-tree')
+if not nvimtree_ok then
   return
 end
-
---- Globals ---
-
-g.nvim_tree_indent_markers = 1 -- This option shows indent markers when folders are open.
-g.nvim_tree_git_hl = 1 -- Will enable file highlight for git attributes (can be used without the icons).
-g.nvim_tree_highlight_opened_files = 1 -- Will enable folder and file icon highlight for opened files/directories.
-g.nvim_tree_add_trailing = 0 -- Append a trailing slash to folder names. ]]
 
 --- Setup ---
 
@@ -26,8 +17,6 @@ nvimtree.setup({
   open_on_setup = false,
   -- will not open on setup if the filetype is in this list
   ignore_ft_on_setup = {},
-  -- closes neovim automatically when the tree is the last **WINDOW** in the view
-  auto_close = false,
   -- opens the tree when changing/opening a new tab if the tree wasn't previously opened
   open_on_tab = false,
   -- hijack the cursor in the tree to put it at the start of the filename
@@ -45,21 +34,17 @@ nvimtree.setup({
   diagnostics = {
     enable = true,
     icons = {
-      hint = '',
-      info = '',
-      warning = '',
-      error = '',
+      hint = ' ',
+      info = ' ',
+      warning = ' ',
+      error = ' ',
     },
   },
-  -- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
+  -- update the focused file on `BufEnter`,
+  -- un-collapses the folders recursively until it finds the file
   update_focused_file = {
-    -- enables the feature
     enable = true,
-    -- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
-    -- only relevant when `update_focused_file.enable` is true
     update_cwd = true,
-    -- list of buffer names / filetypes that will not update the cwd if the file isn't found under the current root directory
-    -- only relevant when `update_focused_file.update_cwd` is true and `update_focused_file.enable` is true
     ignore_list = {},
   },
   -- configuration options for the system open command (`s` in the tree by default)
@@ -71,7 +56,12 @@ nvimtree.setup({
   },
   filters = {
     dotfiles = false,
-    custom = { '.git', 'node_modules', '.cache', '__pycache__' },
+    custom = {
+      '.cache',
+      '.git',
+      '__pycache__',
+      'node_modules',
+    },
   },
   git = {
     enable = true,
@@ -79,9 +69,11 @@ nvimtree.setup({
     timeout = 500,
   },
   view = {
-    -- width of the window, can be either a number (columns) or a string in `%`, for left or right side placement
+    -- width of the window, can be either a number (columns)
+    -- or a string in `%`, for left or right side placement
     width = 40,
-    -- height of the window, can be either a number (columns) or a string in `%`, for top or bottom side placement
+    -- height of the window, can be either a number (columns)
+    -- or a string in `%`, for top or bottom side placement
     height = 30,
     -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'right',
@@ -96,6 +88,23 @@ nvimtree.setup({
     },
     number = false,
     relativenumber = false,
+  },
+  renderer = {
+    -- Append a trailing slash to folder names
+    add_trailing = false,
+    -- Will enable file highlight for git attributes (can be used without the icons)
+    highlight_git = true,
+    -- Will enable folder and file icon highlight for opened files/directories
+    highlight_opened_files = '2',
+    -- This option shows indent markers when folders are open.
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = '└ ',
+        edge = '│ ',
+        none = '  ',
+      },
+    },
   },
   trash = {
     cmd = 'trash',
@@ -114,12 +123,20 @@ nvimtree.setup({
   },
 })
 
-vim.cmd([[
-  highlight NvimTreeNormal guibg=none
-
-  function! DisableST()
-    return " "
-  endfunction
-  au! BufEnter NvimTree setlocal statusline=%!DisableST()
-  \| setlocal cursorline cursorlineopt=both
-]])
+vim.api.nvim_create_augroup('NvimTreeOpts', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Apply local settings to NvimTree buffer',
+  group = 'NvimTreeOpts',
+  pattern = 'NvimTree',
+  callback = function()
+    -- Highlights
+    vim.api.nvim_set_hl(0, 'NvimTreeNormal', { link = 'Normal' })
+    -- Settings
+    vim.opt_local.cursorlineopt = 'both'
+    vim.opt_local.cursorline = true
+    vim.opt_local.statusline = ' '
+    -- Keymaps
+    local opts = { buffer = 0, silent = true, noremap = true }
+    vim.keymap.set('n', '<esc>', '<cmd>q<cr>', opts)
+  end,
+})

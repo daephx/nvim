@@ -27,6 +27,7 @@ lualine.setup({
     theme = 'auto',
     padding = 1, -- adds padding to the left and right of components
     icons_enabled = true, -- displays icons in alongside component
+    globalstatus = true, -- Enable global statusline
     always_divide_middle = false,
     component_separators = { left = '', right = '' },
     section_separators = { left = '', right = '' },

@@ -46,10 +46,6 @@ g.colors_name = 'vscode'
 g.mapleader = ' '
 g.localleader = '\\'
 
--- Enable personal experimental.
--- Sometimes this only contains one or two remaps
--- g.experimental = 0
-
 --- Modules ---
 
 -- Lua modules containing configuration definitions
@@ -57,48 +53,9 @@ g.localleader = '\\'
 
 require('plugins') -- Plugin definitions
 require('colors') -- Pretty rainbows!!
-require('settings') -- General Neovim Settings
+require('options') -- General Neovim Settings
+require('filetypes') -- Filetype associations
 require('utils') -- General utility functions
 require('commands') -- Command abbreviations
-require('mappings') -- Hotkey remaps
-
---- Helpers ---
-
--- Auto-Toggle tmux status line
--- Check if the TMUX environment variable exists
-
-vim.cmd([[
-  " Set to 0 to disable
-  let g:tmux_toggle_statusbar = 1
-  function! TmuxToggleStatusbar(toggle)
-    if !exists('g:tmux_toggle_statusbar') | return | endif
-    silent exe '!tmux set -g status ' . a:toggle
-  endfunction
-
-  augroup tmux_statusbar
-    autocmd!
-    autocmd VimEnter * call TmuxToggleStatusbar('off')
-    autocmd VimLeave * call TmuxToggleStatusbar('on')
-  augroup END
-]])
-
--- Useful auto-commands that make life easier
--- These should always be available!
-
-vim.cmd([[
-augroup vimrc_au
-  autocmd!
-
-  " Auto-sourcing Configurations
-  autocmd BufWritePost $MYVIMRC :so $MYVIMRC
-    \ | redraw | echom 'Sourcing $MYVIMRC: ' . $MYVIMRC
-
-  " Minimal autosave implementation
-  autocmd CursorHold,CursorHoldI * silent! update
-  autocmd FocusLost * silent! wall " Write all on focus loss
-
-  " Display highlight for a short moment when yanking text
-  autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-
-augroup END
-]])
+require('keymaps') -- Remapped hotkeys
+require('autocmds') -- Auto commands

@@ -20,7 +20,6 @@ local indent = 2 -- Default indentation
 local linelimit = 102 -- Default Limit for line length
 
 -- Apply Settings
-opt.exrc = true -- Source init file from project
 opt.autoread = true -- Load changes made outside of Vim
 opt.autochdir = false -- Disable auto cd to open file
 opt.smartindent = false -- Insert indents automatically

@@ -1,37 +1,99 @@
-local fn = vim.fn
-local g = vim.g
+-- Dashboard.nvim | vim dashboard
+-- https://github.com/glepnir/dashboard-nvim
+local db_ok, db = pcall(require, 'dashboard')
+if not db_ok then
+  return
+end
 
-g.dashboard_disable_at_vimenter = 0
-g.dashboard_disable_statusline = 0
-g.dashboard_default_executive = 'telescope'
-g.dashboard_session_directory = fn.stdpath('data') .. '/sessions'
+-- db.preview_file_Path   = 'static/super_meatboy.txt'
+-- db.preview_file_height = 15
+-- db.preview_file_width  = 31
+-- db.preview_command     = 'cat'
+db.hide_statusline = false
+db.hide_tabline = false
 
 -- Read text files from path 'nvim/static/*.txt'
 -- use the filename for your ASCII artwork for 'fname'
-g.dashboard_custom_header = (function()
-  local fname = 'super_meatboy'
-  local spath = fn.stdpath('config') .. '/static/'
-  return require('utils').fileToArray(spath .. fname .. '.txt')
-end)()
+db.custom_header = function()
+  local config = vim.fn.stdpath('config')
+  local utils = require('utils')
+  local fname = 'super_meatboy.txt'
+  local fpath = table.concat({ config, 'static', fname }, '/')
+  return table.insert(utils.fileToArray(fpath), '')
+end
+
+local pad = function(str, count)
+  local padding = string.rep(' ', math.abs(#str - count))
+  return string.format('%s%s', str, padding)
+end
+
+local pad_icon = 4
+local pad_desc = 22
 
 -- Define quick command section
-g.dashboard_custom_section = {
-  a = { description = { '  New File              SPC e n' }, command = 'DashboardNewFile' },
-  b = { description = { '  Recents               SPC f r' }, command = 'Telescope oldfiles' },
-  c = { description = { '  Bookmarks             SPC f m' }, command = 'Telescope marks' },
-  d = { description = { '  Find File             SPC f f' }, command = 'Telescope find_files' },
-  e = { description = { '  Find Word             SPC f g' }, command = 'Telescope live_grep' },
-  f = { description = { '  Load Last Session     SPC s l' }, command = 'Telescope session-lens' },
-  g = { description = { '  Update Plugins        SPC p u' }, command = 'PackerUpdate' },
-  h = {
-    description = { '  Settings              SPC f v' },
-    command = 'lua require("plugins.telescope").search_vimfiles()',
+db.custom_center = {
+  {
+    icon = pad('', pad_icon),
+    desc = pad('New File', pad_desc),
+    shortcut = 'SPC e n',
+    action = 'DashboardNewFile',
   },
-  i = { description = { '  Exit                  SPC q q' }, command = 'exit' },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Recents', pad_desc),
+    shortcut = 'SPC f r',
+    action = 'Telescope oldfiles',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Bookmarks', pad_desc),
+    shortcut = 'SPC f m',
+    action = 'Telescope marks',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Find File', pad_desc),
+    shortcut = 'SPC f f',
+    action = 'Telescope find_files',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Find Word', pad_desc),
+    shortcut = 'SPC f q',
+    action = 'Telescope live_grep',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Load Last Session', pad_desc),
+    shortcut = 'SPC s l',
+    action = 'Telescope session-lens',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Update Plugins', pad_desc),
+    shortcut = 'SPC p u',
+    action = 'PackerUpdate',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Settings', pad_desc),
+    shortcut = 'SPC f v',
+    action = 'lua require("plugins.telescope").search_vimfiles()',
+  },
+  {
+    icon = pad('', pad_icon),
+    desc = pad('Exit', pad_desc),
+    shortcut = 'SPC q q',
+    action = 'exit',
+  },
 }
 
-local plugin_count = fn.len(fn.globpath(fn.stdpath('data') .. '/site/pack/packer/start', '*', 0, 1))
-g.dashboard_custom_footer = { 'Started with ' .. plugin_count .. ' detected plugins' }
+db.custom_footer = function()
+  local plugin_path = vim.fn.stdpath('data') .. '/site/pack/packer/start'
+  local plugin_files = vim.fn.globpath(plugin_path, '*', 0, 1)
+  local plugin_count = vim.fn.len(plugin_files)
+  return { '', string.format('Started with %s detected plugins', plugin_count) }
+end
 
 vim.cmd([[
 augroup dashboard_au

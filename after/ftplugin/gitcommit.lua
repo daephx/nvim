@@ -13,5 +13,5 @@ vim.opt_local.colorcolumn = '73' -- ,51
 vim.opt_local.formatoptions = { c = false }
 
 vim.opt_local.spell = true
-vim.opt_local.spellcapcheck = false
+vim.opt_local.spellcapcheck = ''
 vim.opt_local.iskeyword:append('-')

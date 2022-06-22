@@ -33,7 +33,7 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
   float = vim.tbl_extend('force', border_opts, {
-    header = { ' Diagnostics:', 'Normal' },
+    header = { ' LSP Diagnostics:', 'Special' },
     show_header = true,
     source = 'always',
     prefix = function(diagnostic)

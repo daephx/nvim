@@ -23,15 +23,16 @@ for _, tbl in pairs(diagnostic_icons) do
   vim.fn.sign_define(tbl[2], opts)
 end
 
+-- Floating window border options
+local border_opts = { border = 'rounded', focusable = false, scope = 'line' }
+
 -- Diagnostic Settings
 vim.diagnostic.config({
   signs = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
-  float = {
-    border = 'rounded',
-    focusable = false,
+  float = vim.tbl_extend('force', border_opts, {
     header = { ' Diagnostics:', 'Normal' },
     show_header = true,
     source = 'always',
@@ -39,7 +40,7 @@ vim.diagnostic.config({
       local res = diagnostic_icons[diagnostic.severity]
       return string.format(' %s', res[1]), res[2]
     end,
-  },
+  }),
   virtual_text = {
     prefix = '■',
     spacing = 1,

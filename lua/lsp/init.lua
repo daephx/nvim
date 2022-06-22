@@ -41,8 +41,8 @@ vim.diagnostic.config({
     end,
   },
   virtual_text = {
-    prefix = '✗',
-    spacing = 4,
+    prefix = '■',
+    spacing = 1,
     severity = vim.diagnostic.severity.WARN,
     source = 'if_many',
   },

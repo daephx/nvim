@@ -60,6 +60,14 @@ M.setup = function(capabilities, on_attach)
           maxPreload = 2000,
           preloadFileSize = 50000,
           checkThirdParty = false,
+          library = {
+            -- Add default runtime files to library
+            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+
+            -- Add user config to library
+            [vim.fn.stdpath('config') .. '/lua'] = true,
+          },
         },
         telemetry = {
           enable = false,

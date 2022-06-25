@@ -12,13 +12,13 @@ local lsp_handlers = require('lsp.handlers')
 local lsp_installer = require('lsp.installer')
 local lsp_utils = require('lsp.utils')
 
-local diagnostic_icons = require('lsp.icons').diagnostic_icons
+local icons = require('lsp.icons')
 
 -- Disable efm in favor of null-ls
 vim.g.disable_efm = true
 
 -- Apply diagnostic symbols in the sign column
-for _, tbl in pairs(diagnostic_icons) do
+for _, tbl in pairs(icons.diagnostic_icons) do
   local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
   vim.fn.sign_define(tbl[2], opts)
 end
@@ -36,7 +36,7 @@ vim.diagnostic.config({
     show_header = true,
     source = 'always',
     prefix = function(diagnostic)
-      local res = diagnostic_icons[diagnostic.severity]
+      local res = icons.diagnostic_icons[diagnostic.severity]
       return string.format(' %s', res[1]), res[2]
     end,
   },

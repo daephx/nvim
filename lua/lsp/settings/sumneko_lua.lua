@@ -18,6 +18,9 @@ M.setup = function(capabilities, on_attach)
         },
         diagnostics = {
           enable = true,
+          neededFileStatus = {
+            ['codestyle-check'] = 'Any',
+          },
           globals = {
             'after_each',
             'before_each',

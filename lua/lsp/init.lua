@@ -23,6 +23,11 @@ for _, tbl in pairs(icons.diagnostic_icons) do
   vim.fn.sign_define(tbl[2], opts)
 end
 
+local float_prefix = function(diagnostic)
+  local res = icons.diagnostic_icons[diagnostic.severity]
+  return string.format(' %s', res[1]), res[2]
+end
+
 -- Diagnostic Settings
 vim.diagnostic.config({
   signs = true,
@@ -35,10 +40,7 @@ vim.diagnostic.config({
     header = { ' Diagnostics:', 'Normal' },
     show_header = true,
     source = 'always',
-    prefix = function(diagnostic)
-      local res = icons.diagnostic_icons[diagnostic.severity]
-      return string.format(' %s', res[1]), res[2]
-    end,
+    prefix = float_prefix,
   },
   virtual_text = {
     prefix = '■',

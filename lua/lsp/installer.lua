@@ -1,6 +1,12 @@
 -- Lsp-Installer
+local lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
+if not lsp_installer_ok then
+  local msg = table.concat({ 'nvim-lsp-installer failed to initialize' }, '\n')
+  vim.notify(msg, vim.lsp.log_levels.ERROR, { title = 'Plugin Error' })
+  return
+end
+
 local path = require('lspconfig.util').path
-local lsp_installer = require('nvim-lsp-installer')
 
 -- Apply settings
 lsp_installer.setup({

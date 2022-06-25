@@ -107,16 +107,28 @@ M.initialize_capabilities = function()
   return capabilities
 end
 
-M.initialize_servers = function(opts)
-  -- Get local config files from opts.config_path
-  local get_server_files = function(config_path)
-    return vim.tbl_map(function(fpath)
-      return fpath:match('.+/(.*)%.')
-    end, vim.split(vim.fn.globpath(config_path, '*.lua'), '\n'))
+local get_installed_servers = function(config_path)
+  local lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
+  if not lsp_installer_ok then
+    return
   end
 
-  opts.servers = vim.tbl_extend('force', opts.servers, get_server_files(opts.config_path))
-  for _, server in pairs(opts.servers) do
+  local server_list = vim.tbl_map(function(client)
+    return client.name
+  end, lsp_installer.get_installed_servers())
+
+  local null_ok, _ = pcall(require, 'null-ls')
+  if null_ok then
+    table.insert(server_list, 'null-ls')
+  end
+
+  return server_list
+end
+
+M.initialize_servers = function(opts)
+  local server_list = get_installed_servers(opts.config_path)
+
+  for _, server in pairs(server_list) do
     local namespace = table.concat({ opts.config_path:match('/(.*)$'), server }, '/')
     local _, module = pcall(require, namespace)
     local config = {}
@@ -124,10 +136,10 @@ M.initialize_servers = function(opts)
       if type(module.setup) == 'function' then
         config = module.setup(opts.capabilities, opts.on_attach)
       end
+    end
 
-      if server ~= 'null-ls' then
-        lspconfig[server].setup(config)
-      end
+    if server ~= 'null-ls' then
+      lspconfig[server].setup(config)
     end
   end
 end

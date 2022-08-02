@@ -62,6 +62,8 @@ nvimtree.setup({
     timeout = 500,
   },
   view = {
+    number = false,
+    relativenumber = false,
     width = 40,
     height = 30,
     side = 'right',
@@ -70,8 +72,6 @@ nvimtree.setup({
       custom_only = false,
       list = {},
     },
-    number = false,
-    relativenumber = false,
   },
   renderer = {
     add_trailing = false,

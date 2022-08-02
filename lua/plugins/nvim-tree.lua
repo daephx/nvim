@@ -8,13 +8,13 @@ end
 --- Setup ---
 
 nvimtree.setup({
+  open_on_setup = false,
+  open_on_tab = false,
+  sync_root_with_cwd = true,
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_setup = false,
-  ignore_ft_on_setup = {},
-  open_on_tab = false,
   hijack_cursor = true,
-  sync_root_with_cwd = true,
+  ignore_ft_on_setup = {},
   update_to_buf_dir = {
     enable = true,
     auto_open = true,

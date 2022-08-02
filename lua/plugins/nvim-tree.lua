@@ -19,6 +19,16 @@ nvimtree.setup({
     enable = true,
     auto_open = true,
   },
+  actions = {
+    change_dir = {
+      enable = true,
+      global = false,
+    },
+    open_file = {
+      quit_on_open = false,
+      resize_window = false,
+    },
+  },
   diagnostics = {
     enable = true,
     icons = {
@@ -79,16 +89,6 @@ nvimtree.setup({
   trash = {
     cmd = 'trash',
     require_confirm = true,
-  },
-  actions = {
-    change_dir = {
-      enable = true,
-      global = false,
-    },
-    open_file = {
-      quit_on_open = false,
-      resize_window = false,
-    },
   },
 })
 

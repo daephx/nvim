@@ -1,8 +1,7 @@
 -- nvim-tree | file browser for neovim
 -- URL: https://github.com/kyazdani42/nvim-tree.lua
-
-local nvimtree_ok, nvimtree = pcall(require, 'nvim-tree')
-if not nvimtree_ok then
+local status_ok, nvimtree = pcall(require, 'nvim-tree')
+if not status_ok then
   return
 end
 

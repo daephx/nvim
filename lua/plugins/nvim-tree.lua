@@ -8,6 +8,7 @@ end
 --- Setup ---
 
 nvimtree.setup({
+  sort_by = 'case_sensitive',
   open_on_setup = false,
   open_on_tab = false,
   sync_root_with_cwd = true,

@@ -6,7 +6,7 @@ gitsigns.setup({
       hl = 'GitSignsAdd',
       text = '│',
       numhl = 'GitSignsAddNr',
-      linehl = 'GitSignsAddLn'
+      linehl = 'GitSignsAddLn',
     },
     change = {
       hl = 'GitSignsChange',

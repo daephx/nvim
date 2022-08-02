@@ -122,10 +122,10 @@ nvimtree.setup({
   },
 })
 
-vim.api.nvim_create_augroup('NvimTreeOpts', { clear = true })
+vim.api.nvim_create_augroup('NvimTreeBuffer', { clear = true })
 vim.api.nvim_create_autocmd('FileType', {
   desc = 'Apply local settings to NvimTree buffer',
-  group = 'NvimTreeOpts',
+  group = 'NvimTreeBuffer',
   pattern = 'NvimTree',
   callback = function()
     -- Highlights

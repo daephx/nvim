@@ -259,7 +259,7 @@ return packer.startup({
     use({ -- Alternative File Tree
       'kyazdani42/nvim-tree.lua',
       requires = { 'kyazdani42/nvim-web-devicons', opts = true },
-      config = get_setup('plugins.nvimtree'),
+      config = get_setup('plugins.nvim-tree'),
     })
 
     use({ -- easily manage multiple terminal windows

@@ -15,7 +15,7 @@ nvimtree.setup({
   hijack_netrw = true,
   hijack_cursor = true,
   ignore_ft_on_setup = {},
-  update_to_buf_dir = {
+  hijack_directories = {
     enable = true,
     auto_open = true,
   },

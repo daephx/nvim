@@ -14,7 +14,7 @@ nvimtree.setup({
   ignore_ft_on_setup = {},
   open_on_tab = false,
   hijack_cursor = true,
-  update_cwd = true,
+  sync_root_with_cwd = true,
   update_to_buf_dir = {
     enable = true,
     auto_open = true,

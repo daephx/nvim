@@ -8,14 +8,15 @@ if not pcall(require, 'lspconfig') then
   return
 end
 
+-- Define globals
+vim.g.disable_efm = true
+vim.g.disable_null_ls = false
+
 local lsp_handlers = require('lsp.handlers')
 local lsp_installer = require('lsp.installer')
 local lsp_utils = require('lsp.utils')
 
 local icons = require('lsp.icons')
-
--- Disable efm in favor of null-ls
-vim.g.disable_efm = true
 
 -- Apply diagnostic symbols in the sign column
 for _, tbl in pairs(icons.diagnostic_icons) do

@@ -1,4 +1,4 @@
-name: Linting and formatting
+name: lint
 
 on: [push, pull_request]
 

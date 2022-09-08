@@ -1,3 +1,10 @@
+-- nvim-treesitter | Nvim Treesitter configurations and abstraction layer
+-- https://github.com/nvim-treesitter/nvim-treesitter
+local treesitter_ok, treesitter = require('nvim-treesitter')
+if not treesitter_ok then
+  return
+end
+
 local ts_configs = require('nvim-treesitter.configs')
 local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 

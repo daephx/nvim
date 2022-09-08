@@ -17,7 +17,16 @@ parser_configs.norg = {
 }
 
 ts_configs.setup({
-  ensure_installed = 'all', -- Specify a list of available parsers or "all"
+  -- A list of parser names, or "all"
+  ensure_installed = {
+    'bash',
+    'c',
+    'help',
+    'lua',
+    'markdown',
+    'python',
+    'vim',
+  },
   ignore_install = {}, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension

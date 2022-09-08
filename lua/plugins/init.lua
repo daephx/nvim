@@ -275,8 +275,9 @@ return packer.startup({
     })
 
     use({ -- A high-performance color highlighter
-      'norcalli/nvim-colorizer.lua',
+      'NvChad/nvim-colorizer.lua',
       config = get_setup('plugins.colorizer'),
+      event = { 'BufRead', 'BufWinEnter' },
     })
 
     use({ -- Highlight, list and search todo comments

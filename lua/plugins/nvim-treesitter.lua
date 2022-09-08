@@ -8,6 +8,17 @@ end
 local ts_configs = require('nvim-treesitter.configs')
 local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
 
+-- Include PowerShell parser
+parser_configs.powershell = {
+  install_info = {
+    url = 'https://github.com/jrsconfitto/tree-sitter-powershell',
+    files = { 'src/parser.c' },
+  },
+  filetype = 'ps1',
+  used_by = { 'psm1', 'psd1', 'pssc', 'psxml', 'cdxml' },
+}
+
+-- Include neorg parser
 parser_configs.norg = {
   install_info = {
     url = 'https://github.com/nvim-neorg/tree-sitter-norg',

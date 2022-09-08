@@ -175,7 +175,7 @@ return packer.startup({
     use({ -- Advanced language parsing for neovim
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      config = get_setup('plugins.treesitter'),
+      config = get_setup('plugins.nvim-treesitter'),
     })
     use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
     use({

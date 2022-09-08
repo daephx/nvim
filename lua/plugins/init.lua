@@ -178,14 +178,6 @@ return packer.startup({
       config = get_setup('plugins.nvim-treesitter'),
     })
     use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
-    use({
-      'lewis6991/spellsitter.nvim',
-      config = function()
-        local spellsitter = require('spellsitter')
-        spellsitter.setup({ enable = true })
-      end,
-      after = 'nvim-treesitter',
-    })
 
     use({ -- Use Neovim as a language server
       'jose-elias-alvarez/null-ls.nvim',

@@ -28,6 +28,7 @@ ts_configs.setup({
     'vim',
   },
   ignore_install = {}, -- List of parsers to ignore installing
+  auto_install = true, -- Automatically install missing parsers when entering buffer
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {}, -- list of language that will be disabled

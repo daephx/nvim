@@ -107,25 +107,18 @@ db.custom_footer = function()
   return { '', string.format('Started with %s detected plugins', plugin_count) }
 end
 
-vim.cmd([[
-augroup dashboard_au
-  autocmd! * <buffer>
+--- Autocmds ---
 
-  " Set statusline for dashboard
-  autocmd User dashboardReady let &l:stl = 'Dashboard'
-
-  " Set dashboard header color
-  autocmd User dashboardReady highlight DashboardHeader guifg=#569cd6
-
-  " Disable mouse on dashboard
-  autocmd User dashboardReady autocmd FileType dashboard setlocal mouse=
-
-  " Disable fill characters on dashboard
-  autocmd FileType dashboard setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
-
-  " Disable Page scrolling keys on dashboard
-  autocmd FileType dashboard nnoremap <buffer> <PageUp>   <Nop>
-  autocmd FileType dashboard nnoremap <buffer> <PageDown> <Nop>
-
-augroup END
-]])
+vim.api.nvim_create_augroup('Dashboard', {})
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Apply local settings to Dashboard buffer',
+  pattern = 'dashboard',
+  callback = function()
+    vim.opt_local.fillchars = { eob = ' ' } -- Suppress '~' at EndOfBuffer
+    -- Apply keymap settings for dashboard
+    local opts = { buffer = 0, remap = false, silent = true }
+    vim.keymap.set('n', '<PageDown>', '<Nop>', opts)
+    vim.keymap.set('n', '<PageUp>', '<Nop>', opts)
+    vim.keymap.set('n', '<Space>qq', 'quit', opts)
+  end,
+})

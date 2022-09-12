@@ -84,7 +84,7 @@ db.custom_center = {
     icon = padding('', pad_icon),
     desc = padding('Update Plugins', pad_desc),
     shortcut = 'SPC p u',
-    action = 'PackerUpdate',
+    action = 'PackerSync',
   },
   {
     icon = padding('', pad_icon),

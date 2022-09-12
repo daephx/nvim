@@ -76,9 +76,9 @@ db.custom_center = {
   },
   {
     icon = padding('', pad_icon),
-    desc = padding('Load Last Session', pad_desc),
+    desc = padding('Sessions', pad_desc),
     shortcut = 'SPC s l',
-    action = 'Telescope session-lens',
+    action = 'Telescope session-lens search_session',
   },
   {
     icon = padding('', pad_icon),

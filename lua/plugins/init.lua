@@ -131,6 +131,11 @@ return packer.startup({
       disable = false,
     })
 
+    use({ -- Git signs written in pure lua
+      'lewis6991/gitsigns.nvim',
+      config = get_setup('plugins.gitsigns'),
+    })
+
     use({ -- Weapon to fight against conflicts in Vim.
       'rhysd/conflict-marker.vim',
       config = function()
@@ -160,14 +165,6 @@ return packer.startup({
         { 'nvim-lua/plenary.nvim' },
         { 'sindrets/diffview.nvim', config = get_setup('plugins.diffview') },
       },
-    })
-
-    use({ -- Git signs written in pure lua
-      'lewis6991/gitsigns.nvim',
-      -- tag = 'release', -- To use the latest release
-      event = { 'BufWinEnter', 'BufNewFile' },
-      requires = { 'nvim-lua/plenary.nvim' },
-      config = get_setup('plugins.gitsigns'),
     })
 
     --- Language ---

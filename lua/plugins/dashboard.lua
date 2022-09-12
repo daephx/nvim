@@ -12,15 +12,27 @@ end
 db.hide_statusline = false
 db.hide_tabline = false
 
--- Read text files from path 'nvim/static/*.txt'
--- use the filename for your ASCII artwork for 'fname'
-db.custom_header = function()
-  local config = vim.fn.stdpath('config')
-  local utils = require('utils')
-  local fname = 'super_meatboy.txt'
-  local fpath = table.concat({ config, 'static', fname }, '/')
-  return table.insert(utils.fileToArray(fpath), '')
-end
+local default_header = {
+  '',
+  '',
+  '███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+  '████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+  '██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+  '██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+  '██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+  '╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+  '',
+  string.format(
+    '               [   %s.%s.%s %s   ]                ',
+    vim.version().major,
+    vim.version().minor,
+    vim.version().patch,
+    vim.version().prerelease == true and 'nightly' or 'stable'
+  ),
+  '',
+}
+
+db.custom_header = default_header
 
 local pad = function(str, count)
   local padding = string.rep(' ', math.abs(#str - count))

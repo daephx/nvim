@@ -34,67 +34,67 @@ local default_header = {
 
 db.custom_header = default_header
 
-local pad = function(str, count)
-  local padding = string.rep(' ', math.abs(#str - count))
-  return string.format('%s%s', str, padding)
-end
-
+-- helpers for formatting dashboard commands
 local pad_icon = 4
 local pad_desc = 22
+local padding = function(str, count)
+  local whitespace = string.rep(' ', math.abs(#str - count))
+  return string.format('%s%s', str, whitespace)
+end
 
 -- Define quick command section
 db.custom_center = {
   {
-    icon = pad('', pad_icon),
-    desc = pad('New File', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('New File', pad_desc),
     shortcut = 'SPC e n',
     action = 'DashboardNewFile',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Recents', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Recents', pad_desc),
     shortcut = 'SPC f r',
     action = 'Telescope oldfiles',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Bookmarks', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Bookmarks', pad_desc),
     shortcut = 'SPC f m',
     action = 'Telescope marks',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Find File', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Find File', pad_desc),
     shortcut = 'SPC f f',
     action = 'Telescope find_files',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Find Word', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Find Word', pad_desc),
     shortcut = 'SPC f q',
     action = 'Telescope live_grep',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Load Last Session', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Load Last Session', pad_desc),
     shortcut = 'SPC s l',
     action = 'Telescope session-lens',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Update Plugins', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Update Plugins', pad_desc),
     shortcut = 'SPC p u',
     action = 'PackerUpdate',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Settings', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Settings', pad_desc),
     shortcut = 'SPC f v',
     action = 'lua require("plugins.telescope").search_vimfiles()',
   },
   {
-    icon = pad('', pad_icon),
-    desc = pad('Exit', pad_desc),
+    icon = padding('', pad_icon),
+    desc = padding('Exit', pad_desc),
     shortcut = 'SPC q q',
     action = 'exit',
   },

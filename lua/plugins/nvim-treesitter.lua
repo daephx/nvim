@@ -58,6 +58,16 @@ ts_configs.setup({
       node_decremental = 'grm',
     },
   },
+  indent = {
+    enable = true,
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with ore than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  },
   textobjects = {
     select = {
       enable = true,
@@ -70,35 +80,25 @@ ts_configs.setup({
         ['ic'] = '@class.inner',
       },
     },
-  },
-  indent = {
-    enable = true,
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with ore than n lines, int
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
-  },
-  move = {
-    enable = true,
-    set_jumps = true, -- whether to set jumps in the jumplist
-    goto_next_start = {
-      [']m'] = '@function.outer',
-      [']]'] = '@class.outer',
-    },
-    goto_next_end = {
-      [']M'] = '@function.outer',
-      [']['] = '@class.outer',
-    },
-    goto_previous_start = {
-      ['[m'] = '@function.outer',
-      ['[['] = '@class.outer',
-    },
-    goto_previous_end = {
-      ['[M'] = '@function.outer',
-      ['[]'] = '@class.outer',
+    move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
+      },
+      goto_next_end = {
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
+      },
+      goto_previous_start = {
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
+      },
+      goto_previous_end = {
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
+      },
     },
   },
 })

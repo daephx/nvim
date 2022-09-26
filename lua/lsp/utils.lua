@@ -4,17 +4,6 @@ local M = {}
 
 local lspconfig = require('lspconfig')
 
-M.rename_diagnostic_source = function(diagnostic)
-  local replacements = { { 'Lua Diagnostics.', 'Sumneko' } }
-  for _, item in pairs(replacements) do
-    if diagnostic.source == item[1] then
-      return item[2]
-    end
-  end
-
-  return diagnostic.source
-end
-
 -- Enable diagnostic hover window at cursor position on CursorHold
 M.enable_hover_diagnostics = function(bufnr)
   vim.api.nvim_create_autocmd({ 'CursorHold' }, {

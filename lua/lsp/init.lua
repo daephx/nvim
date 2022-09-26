@@ -61,7 +61,7 @@ M.setup = function()
   lsp_utils.initialize_servers({
     capabilities = lsp_utils.initialize_capabilities(),
     on_attach = lsp_handlers.default_attach,
-    config_path = 'lua/lsp/settings',
+    config_path = 'lua/lsp/servers',
   })
 end
 

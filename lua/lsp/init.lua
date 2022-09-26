@@ -51,15 +51,21 @@ vim.diagnostic.config({
   },
 })
 
--- Override diagnostic hover window
-lsp_utils.override_diagnostic_float()
+local M = {}
 
--- Initialize LSP handlers
-lsp_handlers.initialize_handlers()
+M.setup = function()
+  -- Override diagnostic hover window
+  lsp_utils.override_diagnostic_float()
 
--- Initialize language servers
-lsp_utils.initialize_servers({
-  capabilities = lsp_utils.initialize_capabilities(),
-  on_attach = lsp_handlers.default_attach,
-  config_path = 'lua/lsp/settings',
-})
+  -- Initialize LSP handlers
+  lsp_handlers.initialize_handlers()
+
+  -- Initialize language servers
+  lsp_utils.initialize_servers({
+    capabilities = lsp_utils.initialize_capabilities(),
+    on_attach = lsp_handlers.default_attach,
+    config_path = 'lua/lsp/settings',
+  })
+end
+
+return M

@@ -78,18 +78,15 @@ M.enable_document_highlighting = function(client, bufnr)
   end
 end
 
-local get_installed_servers = function(config_path)
-  local lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
-  if not lsp_installer_ok then
-    return
-  end
-
+local get_installed_servers = function()
+  local lsp_installer = require('nvim-lsp-installer')
+  -- Get configured servers from lsp-installer
   local server_list = vim.tbl_map(function(client)
     return client.name
   end, lsp_installer.get_installed_servers())
 
-  local null_ok, _ = pcall(require, 'null-ls')
-  if null_ok then
+  -- insert null-ls if available
+  if pcall(require, 'null-ls') then
     table.insert(server_list, 'null-ls')
   end
 
@@ -97,11 +94,13 @@ local get_installed_servers = function(config_path)
 end
 
 M.initialize_servers = function(opts)
-  local server_list = get_installed_servers(opts.config_path)
+  local server_list = get_installed_servers()
 
+  -- Loop server list for local config
   for _, server in pairs(server_list) do
-    local namespace = table.concat({ opts.config_path:match('/(.*)$'), server }, '/')
+    local namespace = table.concat({ opts.config_path, server }, '/')
     local _, module = pcall(require, namespace)
+
     local config = {}
     if type(module) == 'table' then
       if type(module.setup) == 'function' then
@@ -109,6 +108,8 @@ M.initialize_servers = function(opts)
       end
     end
 
+    -- Set lspconfig from module files
+    -- Exclude null-ls as it shouldn't be enabled via lspconfig
     if server ~= 'null-ls' then
       lspconfig[server].setup(config)
     end

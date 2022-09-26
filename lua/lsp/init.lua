@@ -12,12 +12,11 @@ end
 vim.g.disable_efm = true
 vim.g.disable_null_ls = false
 
-local lsp_capabilities = require('lsp.capabilities')
-local lsp_handlers = require('lsp.handlers')
-local lsp_installer = require('lsp.installer')
-local lsp_utils = require('lsp.utils')
-
+local capabilities = require('lsp.capabilities')
+local handlers = require('lsp.handlers')
 local icons = require('lsp.icons')
+local installer = require('lsp.installer')
+local utils = require('lsp.utils')
 
 local float_prefix = function(diagnostic)
   local res = icons.diagnostic_icons[diagnostic.severity]
@@ -53,15 +52,15 @@ M.setup = function()
   icons.initialize_icons()
 
   -- Override diagnostic hover window
-  lsp_utils.override_diagnostic_float()
+  utils.override_diagnostic_float()
 
   -- Initialize LSP handlers
-  lsp_handlers.initialize_handlers()
+  handlers.initialize_handlers()
 
   -- Initialize language servers
-  lsp_utils.initialize_servers({
-    capabilities = lsp_capabilities.initialize_capabilities(),
-    on_attach = lsp_handlers.default_attach,
+  utils.initialize_servers({
+    capabilities = capabilities.initialize_capabilities(),
+    on_attach = handlers.default_attach,
     config_path = 'lua/lsp/servers',
   })
 end

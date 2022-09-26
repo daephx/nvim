@@ -18,12 +18,6 @@ local lsp_utils = require('lsp.utils')
 
 local icons = require('lsp.icons')
 
--- Apply diagnostic symbols in the sign column
-for _, tbl in pairs(icons.diagnostic_icons) do
-  local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
-  vim.fn.sign_define(tbl[2], opts)
-end
-
 local float_prefix = function(diagnostic)
   local res = icons.diagnostic_icons[diagnostic.severity]
   return string.format(' %s', res[1]), res[2]
@@ -54,6 +48,9 @@ vim.diagnostic.config({
 local M = {}
 
 M.setup = function()
+  -- Initialize diagnostic icons
+  icons.initialize_icons()
+
   -- Override diagnostic hover window
   lsp_utils.override_diagnostic_float()
 

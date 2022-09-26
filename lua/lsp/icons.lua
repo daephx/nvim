@@ -35,4 +35,12 @@ M.completeion_icons = {
   Variable = '',
 }
 
+M.initialize_icons = function()
+  -- Apply diagnostic symbols in the sign column
+  for _, tbl in pairs(M.diagnostic_icons) do
+    local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
+    vim.fn.sign_define(tbl[2], opts)
+  end
+end
+
 return M

@@ -42,16 +42,21 @@ local defaults = {
   float = {
     border = 'rounded',
     focusable = false,
-    header = { ' Diagnostics:', 'Normal' },
-    show_header = true,
-    source = 'always',
+    format = format,
+    header = { ' ﴫ Diagnostics:', 'Define' },
     prefix = float_prefix,
+    scope = 'line',
+    show_header = true,
+    source = false,
   },
   virtual_text = {
     prefix = '■',
     spacing = 1,
-    severity = vim.diagnostic.severity.WARN,
-    source = 'if_many',
+    source = false,
+    format = format,
+    severity = {
+      min = vim.diagnostic.severity.WARN,
+    },
   },
 }
 

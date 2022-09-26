@@ -1,7 +1,7 @@
 -- nvim-cmp setup
 local cmp = require('cmp')
 
-local icons = require('lsp.icons').completeion_icons
+local kinds = require('lsp.icons').completion_kinds
 
 cmp.setup({
   snippet = {
@@ -67,7 +67,7 @@ cmp.setup({
   formatting = {
     --   with_text = false,
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
+      vim_item.kind = string.format('%s %s', kinds[vim_item.kind], vim_item.kind)
       vim_item.max_width = 50
       vim_item.menu = ({
         buffer = '[Buffer]',

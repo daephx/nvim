@@ -7,7 +7,7 @@ M.diagnostic_icons = {
   [vim.diagnostic.severity.HINT] = { ' ', 'DiagnosticSignHint' },
 }
 
-M.completeion_icons = {
+M.completion_kinds = {
   Class = 'ﴯ',
   Color = '',
   Constant = '',
@@ -40,6 +40,12 @@ M.initialize_icons = function()
   for _, tbl in pairs(M.diagnostic_icons) do
     local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
     vim.fn.sign_define(tbl[2], opts)
+  end
+
+  -- Apply completion kinds
+  local kinds = vim.lsp.protocol.CompletionItemKind
+  for i, kind in ipairs(M.completion_kinds) do
+    kinds[i] = M.diagnostic_icons[kind] or kind
   end
 end
 

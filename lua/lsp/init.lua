@@ -12,6 +12,7 @@ end
 vim.g.disable_efm = true
 vim.g.disable_null_ls = false
 
+local lsp_capabilities = require('lsp.capabilities')
 local lsp_handlers = require('lsp.handlers')
 local lsp_installer = require('lsp.installer')
 local lsp_utils = require('lsp.utils')
@@ -59,7 +60,7 @@ M.setup = function()
 
   -- Initialize language servers
   lsp_utils.initialize_servers({
-    capabilities = lsp_utils.initialize_capabilities(),
+    capabilities = lsp_capabilities.initialize_capabilities(),
     on_attach = lsp_handlers.default_attach,
     config_path = 'lua/lsp/servers',
   })

@@ -89,24 +89,6 @@ M.enable_document_highlighting = function(client, bufnr)
   end
 end
 
--- Define lsp default capabilities
-M.initialize_capabilities = function()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  local cmp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-  if cmp_ok then
-    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-  end
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      'additionalTextEdits',
-      'detail',
-      'documentation',
-    },
-  }
-  return capabilities
-end
-
 local get_installed_servers = function(config_path)
   local lsp_installer_ok, lsp_installer = pcall(require, 'nvim-lsp-installer')
   if not lsp_installer_ok then

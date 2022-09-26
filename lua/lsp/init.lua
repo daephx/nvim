@@ -14,22 +14,24 @@ local M = {}
 vim.g.disable_efm = true
 vim.g.disable_null_ls = false
 
+-- Import Locals
 local capabilities = require('lsp.capabilities')
 local diagnostics = require('lsp.diagnostics')
 local handlers = require('lsp.handlers')
 local icons = require('lsp.icons')
-local installer = require('lsp.installer')
 local utils = require('lsp.utils')
 
-M.setup = function()
-  icons.initialize_icons()
+-- Initialize local settings
+M.setup = function(opts)
   diagnostics.initialize_diagnostics()
-  utils.override_diagnostic_float()
   handlers.initialize_handlers()
+  icons.initialize_icons()
+  utils.override_diagnostic_float()
+  utils.override_installer_float()
   utils.initialize_servers({
     capabilities = capabilities.initialize_capabilities(),
     on_attach = handlers.default_attach,
-    config_path = 'lua/lsp/servers',
+    config_path = opts.config_path,
   })
 end
 

@@ -189,9 +189,20 @@ return packer.startup({
 
     use({ -- Native language server protocol
       'williamboman/nvim-lsp-installer',
-      config = get_setup('lsp'),
       requires = { 'neovim/nvim-lspconfig' },
+      config = function()
+        local path = require('lspconfig.util').path
+        require('nvim-lsp-installer').setup({
+          automatic_installation = true,
+          ensure_installed = { 'sumneko_lua', 'bashls' },
+          install_root_dir = path.join({ vim.fn.stdpath('data'), 'servers' }),
+        })
+        require('lsp').setup({
+          config_path = 'lua/lsp/servers',
+        })
+      end,
     })
+
     use({ 'arkav/lualine-lsp-progress' })
 
     use({ -- Standalone UI for nvim-lsp progress

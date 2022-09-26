@@ -136,4 +136,15 @@ M.override_diagnostic_float = function()
   end
 end
 
+M.override_installer_float = function()
+  vim.api.nvim_create_autocmd('FileType', {
+    desc = 'Set floating buffer options for "lsp-installer"',
+    group = vim.api.nvim_create_augroup('LspInstallerUI', {}),
+    pattern = 'lsp-installer',
+    callback = function()
+      vim.api.nvim_win_set_config(0, { border = 'rounded' })
+    end,
+  })
+end
+
 return M

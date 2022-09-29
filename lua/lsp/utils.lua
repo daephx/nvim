@@ -4,19 +4,6 @@ local M = {}
 
 local lspconfig = require('lspconfig')
 
-M.enable_code_lens = function(client, bufnr)
-  if client.supports_method('textDocument/codeLens') then
-    local augroup = vim.api.nvim_create_augroup('LspCodeLens', {})
-    vim.api.nvim_create_autocmd({ 'BufEnter', 'InsertLeave', 'BufWritePost', 'CursorHold' }, {
-      buffer = bufnr,
-      desc = '',
-      group = augroup,
-      callback = vim.lsp.codelens.refresh,
-    })
-    vim.schedule(vim.lsp.codelens.refresh)
-  end
-end
-
 -- Highlight references under cursor
 M.enable_document_highlighting = function(client, bufnr)
   if client.supports_method('textDocument/documentHighlight') then

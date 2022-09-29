@@ -2,6 +2,7 @@
 
 local M = {}
 
+local codelens = require('lsp.handlers.codelens')
 local formatting = require('lsp.handlers.formatting')
 local hover = require('lsp.handlers.hover')
 local keymaps = require('lsp.keymaps')
@@ -13,6 +14,7 @@ local signature = require('lsp.handlers.signature')
 M.default_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  codelens.enable_code_lens(client, bufnr)
   formatting.enable_auto_formatting(client, bufnr)
   utils.enable_document_highlighting(client, bufnr)
   hover.enable_hover_diagnostics(bufnr)

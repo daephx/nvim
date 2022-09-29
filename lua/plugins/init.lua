@@ -191,12 +191,6 @@ return packer.startup({
       'williamboman/nvim-lsp-installer',
       requires = { 'neovim/nvim-lspconfig' },
       config = function()
-        local path = require('lspconfig.util').path
-        require('nvim-lsp-installer').setup({
-          automatic_installation = true,
-          ensure_installed = { 'sumneko_lua', 'bashls' },
-          install_root_dir = path.join({ vim.fn.stdpath('data'), 'servers' }),
-        })
         require('lsp').setup({
           config_path = 'lua/lsp/servers',
         })

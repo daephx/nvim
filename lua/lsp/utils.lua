@@ -22,20 +22,6 @@ M.enable_hover_diagnostics = function(bufnr)
   })
 end
 
--- Display signature help
--- TODO: Causes error prompts in &diff, gitcommit and other unsupported filetypes
-M.enable_signature_help = function(client, bufnr)
-  if client.supports_method('textDocument/signatureHelp') then
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-      buffer = bufnr,
-      desc = 'Show signature help on cursor position in hover window',
-      callback = function()
-        vim.lsp.buf.signature_help(nil, { scope = 'cursor' })
-      end,
-    })
-  end
-end
-
 M.enable_code_lens = function(client, bufnr)
   if client.supports_method('textDocument/codeLens') then
     local augroup = vim.api.nvim_create_augroup('LspCodeLens', {})

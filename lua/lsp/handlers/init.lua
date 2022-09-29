@@ -5,6 +5,7 @@ local M = {}
 local formatting = require('lsp.handlers.formatting')
 local keymaps = require('lsp.keymaps')
 local utils = require('lsp.utils')
+local signature = require('lsp.handlers.signature')
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
@@ -17,6 +18,7 @@ M.default_attach = function(client, bufnr)
 
   -- Enable LSP Mappings
   keymaps.initialize_keymaps(client, bufnr)
+  -- signature.enable_signature_help(client, bufnr)
 end
 
 -- Define LSP Handlers
@@ -24,11 +26,6 @@ M.initialize_handlers = function()
   -- vim.lsp.handlers['textDocument/definition'] = utils.goto_definition('vsplit')
   vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
     vim.lsp.handlers.hover,
-    { border = 'rounded' }
-  )
-
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
     { border = 'rounded' }
   )
 end

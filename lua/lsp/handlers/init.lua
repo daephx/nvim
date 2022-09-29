@@ -3,6 +3,7 @@
 local M = {}
 
 local formatting = require('lsp.handlers.formatting')
+local hover = require('lsp.handlers.hover')
 local keymaps = require('lsp.keymaps')
 local utils = require('lsp.utils')
 local signature = require('lsp.handlers.signature')
@@ -14,7 +15,7 @@ M.default_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   formatting.enable_auto_formatting(client, bufnr)
   utils.enable_document_highlighting(client, bufnr)
-  utils.enable_hover_diagnostics(bufnr)
+  hover.enable_hover_diagnostics(bufnr)
 
   -- Enable LSP Mappings
   keymaps.initialize_keymaps(client, bufnr)
@@ -24,10 +25,6 @@ end
 -- Define LSP Handlers
 M.initialize_handlers = function()
   -- vim.lsp.handlers['textDocument/definition'] = utils.goto_definition('vsplit')
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    { border = 'rounded' }
-  )
 end
 
 return M

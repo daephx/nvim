@@ -4,24 +4,6 @@ local M = {}
 
 local lspconfig = require('lspconfig')
 
--- Enable diagnostic hover window at cursor position on CursorHold
-M.enable_hover_diagnostics = function(bufnr)
-  vim.api.nvim_create_autocmd({ 'CursorHold' }, {
-    buffer = bufnr,
-    desc = 'Show line diagnostics on cursor position in hover window',
-    group = vim.api.nvim_create_augroup('LspHoverDiagnostics', {}),
-    callback = function()
-      local opts = {
-        focusable = false,
-        close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-        border = 'rounded',
-        scope = 'cursor',
-      }
-      vim.diagnostic.open_float(nil, opts)
-    end,
-  })
-end
-
 M.enable_code_lens = function(client, bufnr)
   if client.supports_method('textDocument/codeLens') then
     local augroup = vim.api.nvim_create_augroup('LspCodeLens', {})

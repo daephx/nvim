@@ -57,7 +57,7 @@ M.initialize_keymaps = function(_, bufnr)
   map('n', ']d', vim.diagnostic.goto_next, {
     desc = 'Next diagnostic',
   })
-  map('n', '<leader>q', vim.diagnostic.setloclist, {
+  map('n', '<leader>dq', vim.diagnostic.setloclist, {
     desc = 'Diagnostic loclist',
   })
 end

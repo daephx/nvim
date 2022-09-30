@@ -3,15 +3,8 @@ local M = {}
 M.format_document = function(bufnr)
   vim.lsp.buf.format({
     bufnr = bufnr,
-    filter = function(clients)
-      -- Filter out clients that you don't want to use
-      -- Iterate activate clients
-      local buf_clients = vim.tbl_map(function(client)
-        return client.name
-      end, vim.lsp.buf_get_clients())
-      return vim.tbl_filter(function(client)
-        return client.name ~= 'null-ls'
-      end, clients)
+    filter = function(client)
+      return client.name == 'null-ls'
     end,
   })
 end

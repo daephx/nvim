@@ -40,7 +40,4 @@ M.initialize_keymaps = function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
--- Close LspInfo window using 'q'
-vim.cmd([[ autocmd! FileType lspinfo nnoremap <silent> <buffer> qq :q<CR> ]])
-
 return M

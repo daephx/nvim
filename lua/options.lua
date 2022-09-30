@@ -61,7 +61,7 @@ opt.scrolloff = 8 -- Keep cursor closer to center
 opt.showtabline = 2 -- Always show tabline
 opt.sidescrolloff = 8 -- Columns of context
 opt.sidescroll = 1 -- Smoother horizontal scrolling
-opt.signcolumn = 'yes:1' -- Sign gutter options: yes|no : int = size
+opt.signcolumn = 'yes:2' -- Sign gutter options: yes|no : int = size
 opt.ignorecase = true -- Case insensitive search
 opt.smartcase = true -- Don't ignore case with capitals
 opt.splitbelow = true -- Put new windows below current

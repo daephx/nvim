@@ -1,36 +1,7 @@
 -- nvim-cmp setup
 local cmp = require('cmp')
-local lspkind = require('lspkind')
 
-lspkind.init({
-  symbol_map = {
-    Class = 'ﴯ',
-    Color = '',
-    Constant = '',
-    Constructor = '',
-    Enum = '',
-    EnumMember = '',
-    Event = '',
-    Field = 'ﰠ',
-    File = '',
-    Folder = '',
-    Function = '',
-    Interface = '',
-    Keyword = '',
-    Method = '',
-    Module = '',
-    Operator = '',
-    Property = 'ﰠ',
-    Reference = '',
-    Snippet = '',
-    Struct = 'פּ',
-    Text = '',
-    TypeParameter = '',
-    Unit = '塞',
-    Value = '',
-    Variable = '',
-  },
-})
+local kinds = require('lsp.icons').completion_kinds
 
 cmp.setup({
   snippet = {
@@ -96,19 +67,21 @@ cmp.setup({
   formatting = {
     --   with_text = false,
     format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', lspkind.presets.default[vim_item.kind], vim_item.kind)
-      -- vim_item.with_text = false
+      vim_item.kind = string.format('%s %s', kinds[vim_item.kind], vim_item.kind)
       vim_item.max_width = 50
       vim_item.menu = ({
-        nvim_lsp = 'ﲳ',
-        nvim_lua = '',
-        treesitter = '',
-        path = 'ﱮ',
-        buffer = '﬘',
-        zsh = '',
-        vsnip = '',
-        luasnip = '',
-        spell = '暈',
+        buffer = '[Buffer]',
+        cmp_tabnine = '[TabNine]',
+        crates = '[Crates]',
+        latex_symbols = '[Latex]',
+        luasnip = '[LuaSnip]',
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        path = '[Path]',
+        spell = '[Spell]',
+        ultisnips = '[Ultisnips]',
+        vsnip = '[VSnip]',
+        zsh = '[Shell]',
       })[entry.source.name]
       return vim_item
     end,

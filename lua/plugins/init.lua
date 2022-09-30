@@ -189,9 +189,14 @@ return packer.startup({
 
     use({ -- Native language server protocol
       'williamboman/nvim-lsp-installer',
-      config = get_setup('lsp'),
       requires = { 'neovim/nvim-lspconfig' },
+      config = function()
+        require('lsp').setup({
+          config_path = 'lua/lsp/servers',
+        })
+      end,
     })
+
     use({ 'arkav/lualine-lsp-progress' })
 
     use({ -- Standalone UI for nvim-lsp progress
@@ -221,10 +226,6 @@ return packer.startup({
       'L3MON4D3/LuaSnip',
     })
 
-    use({ -- vscode-like pictograms for neovim
-      'onsails/lspkind-nvim',
-    })
-
     use({ -- A completion plugin for neovim
       'hrsh7th/nvim-cmp',
       disable = false,
@@ -240,7 +241,6 @@ return packer.startup({
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
-        'onsails/lspkind-nvim',
         'saadparwaiz1/cmp_luasnip',
       },
     })

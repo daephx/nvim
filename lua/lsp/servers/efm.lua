@@ -1,4 +1,8 @@
 -- EFM | General purpose language server
+if vim.g.disable_efm == true then
+  return
+end
+
 -- Throw an error if dependencies not available
 if not vim.fn.executable('go') then
   error('Go binary cannot be located in PATH: Is it installed?')
@@ -86,44 +90,42 @@ local eslint = {
 
 --- EFM ---
 
-local languages = {
-  lua = { luafmt },
-  go = { gofmt },
-  rust = { rustfmt },
-  python = { black, isort },
-  typescript = { prettier, eslint },
-  javascript = { prettier, eslint },
-  typescriptreact = { prettier, eslint },
-  javascriptreact = { prettier, eslint },
-  yaml = { prettier },
-  json = { prettier },
-  html = { prettier },
-  scss = { prettier },
-  css = { prettier },
-  markdown = { prettier },
-}
-
-local efm_binary = vim.fn.stdpath('data') .. '/lsp_servers/efm/efm-langserver'
--- local efm_binary = vim.env.GOPATH..'/bin/efm-langserver'
-
 local M = {}
 
-M.setup = {
-  cmd = { efm_binary },
-  init_options = { documentFormatting = true },
-  filetypes = { 'python', 'cpp', 'lua', 'go' },
-  languages = languages,
-  settings = {
-    rootMarkers = {
-      '.git/',
-      '.venv/',
-      'Gem.lock',
-      'README.md',
-      'lerna.json',
-      'requirements.txt',
-      'yarn.lock',
+M.setup = function(capabilities, on_attach)
+  return {
+    capabilities = capabilities,
+    on_attach = on_attach,
+    init_options = { documentFormatting = true },
+    filetypes = { 'python', 'cpp', 'lua', 'go' },
+    languages = {
+      lua = { luafmt },
+      go = { gofmt },
+      rust = { rustfmt },
+      python = { black, isort, flake8 },
+      typescript = { prettier, eslint },
+      javascript = { prettier, eslint },
+      typescriptreact = { prettier, eslint },
+      javascriptreact = { prettier, eslint },
+      yaml = { prettier },
+      json = { prettier },
+      html = { prettier },
+      scss = { prettier },
+      css = { prettier },
+      markdown = { prettier },
     },
-  },
-}
+    settings = {
+      rootMarkers = {
+        '.git/',
+        '.venv/',
+        'Gem.lock',
+        'README.md',
+        'lerna.json',
+        'requirements.txt',
+        'yarn.lock',
+      },
+    },
+  }
+end
 
 return M

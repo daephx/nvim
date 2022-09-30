@@ -1,7 +1,9 @@
 -- Null-ls | Neovim language server
--- url: https://github.com/jose-elias-alvarez/null-ls.nvim
-
-local null_ls = require('null-ls')
+-- URL: https://github.com/jose-elias-alvarez/null-ls.nvim
+local null_ok, null_ls = pcall(require, 'null-ls')
+if not null_ok then
+  return
+end
 
 local code_actions = null_ls.builtins.code_actions
 local completion = null_ls.builtins.completion
@@ -10,11 +12,12 @@ local formatting = null_ls.builtins.formatting
 
 local M = {}
 
-M.setup = function()
+M.setup = function(_, on_attach)
   null_ls.setup({
-    debug = false,
+    debug = true,
+    on_attach = on_attach,
     sources = {
-      completion.spell,
+      -- completion.spell, -- NOTE: REMOVE ME, this little fucker is what is mucking up cmp
       completion.luasnip,
 
       -- Git - Version Control

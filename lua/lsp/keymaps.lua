@@ -1,5 +1,7 @@
 local M = {}
 
+-- Initialize and attach Language Server keymaps to the active buffer
+---@param bufnr integer
 M.initialize_keymaps = function(_, bufnr)
   local defaults = { buffer = bufnr, remap = false, silent = true }
   local function map(mode, k, cb, opts)

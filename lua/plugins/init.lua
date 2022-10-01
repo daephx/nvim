@@ -181,12 +181,6 @@ return packer.startup({
       requires = { 'nvim-lua/plenary.nvim' },
     })
 
-    use({ -- load extensions like VSCode and host language servers
-      'neoclide/coc.nvim',
-      branch = 'release',
-      disable = true,
-    })
-
     use({ -- Native language server protocol
       'williamboman/nvim-lsp-installer',
       requires = { 'neovim/nvim-lspconfig' },

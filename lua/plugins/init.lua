@@ -293,19 +293,9 @@ return packer.startup({
       requires = 'nvim-lua/plenary.nvim',
     })
 
-    use({ -- Personal Wiki for Vim
-      'vimwiki/vimwiki',
-      config = function()
-        vim.g.vimwiki_list = {
-          {
-            path = '~/Documents/wiki',
-            path_html = '~/Documents/wiki/_build/',
-            links_space_char = ' ',
-            syntax = 'markdown',
-            ext = '.md',
-          },
-        }
-      end,
+    use({ -- Neovim extension for zk
+      'mickael-menu/zk-nvim',
+      config = get_setup('plugins.zk'),
     })
 
     use({ 'SidOfc/mkdx' })

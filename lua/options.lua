@@ -26,7 +26,7 @@ vim.opt.fileencoding = encode -- Set File-content encoding for the current buffe
 vim.opt.linebreak = true -- Split on line break
 vim.opt.colorcolumn = '+1' -- Visually display character line limit
 vim.opt.background = 'dark' -- Adjusts the default color groups for background type
-vim.opt.clipboard = 'unnamed,unnamedplus' -- Configure system clipboard support
+vim.opt.clipboard = { 'unnamed', 'unnamedplus' } -- Configure system clipboard support
 vim.opt.cmdheight = 1 -- Command line character height
 vim.opt.conceallevel = 0 -- Determine how text with the "conceal" syntax is handled
 vim.opt.foldmethod = 'indent' -- Fold by method (indent & syntax are both good
@@ -75,19 +75,45 @@ vim.opt.undoreload = 10000 -- Save the whole buffer for undo
 vim.opt.wildmenu = true -- Command-line completion
 vim.opt.wildignorecase = true -- Case insensitive command-line completion
 
+-- Insert mode completion
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
 -- Describes how auto-format is handled
-vim.opt.formatoptions = 'tqnj'
-vim.opt.completeopt = 'menuone,noinsert,noselect' -- Insert mode completion
+vim.opt.formatoptions = {
+  j = true,
+  n = true,
+  q = true,
+  t = true,
+}
 
 -- Set what should be included in session files
-vim.opt.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+vim.opt.sessionoptions = {
+  'blank', -- Blank Buffers
+  'buffers', -- Open Buffers
+  'curdir', -- Current Directory
+  'folds', -- Fold locations
+  'globals', -- global variables
+  'help', -- Help pages
+  'tabpages', -- Open Tab pages
+  'terminal', -- Open Terminal
+  'winpos', -- Window Positions
+  'winsize', -- Window sizes
+}
 
-vim.opt.diffopt:append({ 'vertical' }) -- Start diff mode in vertical split
-vim.opt.guifont:append('CaskaydiaCove\\ Nerd\\ Font:h16') -- Preferred fonts
-vim.opt.shortmess:append('cfI') -- Avoid 'hit-enter' prompts
-vim.opt.whichwrap:append('<,>,[,],h,l')
-vim.opt.wildmode:append('full:lastused') -- Command-line completion mode
-vim.opt.wildignore:append({ -- Path patterns wild menu should ignore
+-- Start diff mode in vertical split
+vim.opt.diffopt = {
+  'closeoff',
+  'filler',
+  'internal',
+  'vertical',
+}
+
+vim.opt.guifont = { 'CaskaydiaCove\\ Nerd\\ Font:h16' } -- Preferred fonts
+vim.opt.shortmess = 'cfI' -- Avoid 'hit-enter' prompts
+vim.opt.whichwrap = '<,>,[,],h,l'
+vim.opt.wildmode = 'full:lastused' -- Command-line completion mode
+-- Path patterns wild menu should ignore
+vim.opt.wildignore = {
   '**/.git/*', -- Git Version control
   '**/android/*', -- Google Android build
   '**/build/*', -- Generic build artifacts
@@ -96,7 +122,7 @@ vim.opt.wildignore:append({ -- Path patterns wild menu should ignore
   '**/node_modules/*', -- Node module environment
   '*.pyc', -- Python byte code
   '*_build/*', -- Private build artifacts
-})
+}
 
 -- Virtual Characters ---
 

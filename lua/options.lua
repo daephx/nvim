@@ -9,9 +9,9 @@
 -- Set reusable values
 local encode = 'utf-8' -- File encoding
 local indent = 2 -- Indentation size
-local linelimit = 102 -- Limit for line length
 
 -- General options
+vim.opt.textwidth = 102 -- Limit length of characters per line
 vim.opt.autoread = true -- Load changes made outside of Vim
 vim.opt.autochdir = false -- Change working directory to active buffer
 vim.opt.smartindent = false -- Insert indents automatically
@@ -23,7 +23,6 @@ vim.opt.softtabstop = indent -- Spaces a <Tab> counts during edit operations
 vim.opt.shiftwidth = indent -- Number of spaces for indents
 vim.opt.encoding = encode -- Explicitly set file encoding
 vim.opt.fileencoding = encode -- Set File-content encoding for the current buffer
-vim.opt.textwidth = linelimit -- Limit length of characters per line
 vim.opt.linebreak = true -- Split on line break
 vim.opt.colorcolumn = '+1' -- Visually display character line limit
 vim.opt.background = 'dark' -- Adjusts the default color groups for background type

@@ -39,7 +39,6 @@ vim.opt.cursorline = true -- Highlight the text line of the cursor
 vim.opt.cursorlineopt = 'number' -- Control how 'cursorline' is displayed
 vim.opt.incsearch = true -- Enable incremental search
 vim.opt.hlsearch = true -- Enable search highlighting
-vim.opt.spell = true -- Control vim Spell checking
 vim.opt.laststatus = 3 -- Apply statusline options
 vim.opt.lazyredraw = true -- Execute macros faster
 vim.opt.mouse = 'a' -- Enable mouse support
@@ -74,6 +73,11 @@ vim.opt.undolevels = 1000 -- Maximum number of undoable changes
 vim.opt.undoreload = 10000 -- Save the whole buffer for undo
 vim.opt.wildmenu = true -- Command-line completion
 vim.opt.wildignorecase = true -- Case insensitive command-line completion
+
+-- Control vim Spell checking
+vim.opt.spell = true
+vim.opt.spelllang = { 'en' }
+vim.opt.spelloptions = { 'camel', 'noplainbuffer' }
 
 -- Insert mode completion
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

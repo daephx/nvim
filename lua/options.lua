@@ -29,9 +29,6 @@ vim.opt.background = 'dark' -- Adjusts the default color groups for background t
 vim.opt.clipboard = { 'unnamed', 'unnamedplus' } -- Configure system clipboard support
 vim.opt.cmdheight = 1 -- Command line character height
 vim.opt.conceallevel = 0 -- Determine how text with the "conceal" syntax is handled
-vim.opt.foldmethod = 'indent' -- Fold by method (indent & syntax are both good
-vim.opt.foldlevelstart = 9 -- We want all fold to be expand at start
-vim.opt.foldnestmax = 9 -- Max fold nest levels
 vim.opt.cindent = false -- Indent using C indenting rules
 vim.opt.wrap = false -- Wrap text when line is too long
 vim.opt.hidden = true -- Hide modified buffers instead of unloading them
@@ -113,6 +110,32 @@ vim.opt.diffopt = {
 vim.opt.guifont = { 'CaskaydiaCove\\ Nerd\\ Font:h16' } -- Preferred fonts
 vim.opt.shortmess = 'cfI' -- Avoid 'hit-enter' prompts
 vim.opt.whichwrap = '<,>,[,],h,l'
+
+--- Folding ---
+
+-- Define how folded lines should be displayed
+---@return string
+function _G._foldtext()
+  local foldstart = vim.fn.getline(vim.v.foldstart)
+  local foldend = vim.fn.getline(vim.v.foldend)
+  local linecount = vim.v.foldend - vim.v.foldstart + 1
+  local tabwidth = string.rep(' ', vim.bo.tabstop)
+  return table.concat({
+    vim.fn.substitute(foldstart, '\t', tabwidth, 'g'),
+    '...',
+    vim.fn.trim(foldend),
+    string.format('[%s lines]', linecount),
+  }, ' ')
+end
+
+-- Apply buffer folding options
+vim.opt.foldnestmax = 8 -- Max fold nest levels
+vim.opt.foldminlines = 1 -- Minimum lines per fold
+vim.opt.foldlevelstart = 9 -- We want all fold to be expand at start
+vim.opt.foldlevel = 99 -- Set nested fold depth level
+vim.opt.foldmethod = 'expr' -- use treesitter for folding
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldtext = 'v:lua._foldtext()'
 
 --- Wildmenu ---
 

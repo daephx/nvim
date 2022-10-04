@@ -9,8 +9,6 @@ end
 
 nvimtree.setup({
   sort_by = 'case_sensitive',
-  open_on_setup = false,
-  open_on_tab = false,
   sync_root_with_cwd = true,
   disable_netrw = true,
   hijack_netrw = true,
@@ -20,33 +18,13 @@ nvimtree.setup({
     enable = true,
     auto_open = true,
   },
-  actions = {
-    change_dir = {
-      enable = true,
-      global = false,
-    },
-    open_file = {
-      quit_on_open = false,
-      resize_window = false,
-    },
-  },
   diagnostics = {
     enable = true,
-    icons = {
-      hint = ' ',
-      info = ' ',
-      warning = ' ',
-      error = ' ',
-    },
   },
   update_focused_file = {
     enable = true,
     update_root = true,
     ignore_list = {},
-  },
-  system_open = {
-    cmd = nil,
-    args = {},
   },
   filters = {
     dotfiles = false,
@@ -57,14 +35,7 @@ nvimtree.setup({
       'node_modules',
     },
   },
-  git = {
-    enable = true,
-    ignore = true,
-    timeout = 500,
-  },
   view = {
-    number = false,
-    relativenumber = false,
     width = 40,
     height = 30,
     side = 'right',
@@ -74,22 +45,12 @@ nvimtree.setup({
     },
   },
   renderer = {
-    add_trailing = false,
+    group_empty = true,
     highlight_git = true,
     highlight_opened_files = '2',
-    group_empty = true,
     indent_markers = {
       enable = true,
-      icons = {
-        corner = '└ ',
-        edge = '│ ',
-        none = '  ',
-      },
     },
-  },
-  trash = {
-    cmd = 'trash',
-    require_confirm = true,
   },
 })
 

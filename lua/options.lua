@@ -157,6 +157,7 @@ vim.opt.wildignore = {
 -- Virtual Characters ---
 
 vim.opt.list = true
+vim.opt.showbreak = '↳'
 vim.opt.listchars = {
   eol = ' ', -- End of line ↴
   extends = '»', -- Horizontal overflow

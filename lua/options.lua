@@ -156,6 +156,7 @@ vim.opt.wildignore = {
 
 -- Virtual Characters ---
 
+-- Virtual strings to use in 'list' mode
 vim.opt.list = true
 vim.opt.showbreak = '↳'
 vim.opt.listchars = {
@@ -166,6 +167,18 @@ vim.opt.listchars = {
   space = ' ', -- Standard Whitespace
   tab = '  ', -- Tab indentation
   trail = '·', -- Trailing whitespace
+}
+
+-- Virtual fill strings for UI elements
+vim.opt.fillchars = {
+  diff = '┈', -- Diff Removed
+  eob = '~', -- End of Buffer
+  fold = ' ', -- Fold region
+  foldclose = '▸', -- Fold closed
+  foldopen = '▾', -- Fold open
+  foldsep = '│', -- Fold operator
+  msgsep = '─', -- Message separator
+  vert = '▕', -- Vertical separator
 }
 
 --- Windows ---

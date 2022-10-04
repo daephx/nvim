@@ -29,10 +29,10 @@ nvimtree.setup({
   filters = {
     dotfiles = false,
     custom = {
-      '.cache',
-      '.git',
-      '__pycache__',
-      'node_modules',
+      '.cache', -- General cache directory
+      '.git', -- Git repository directory
+      '__pycache__', -- Python cache directory
+      'node_modules', -- Node module directory
     },
   },
   view = {

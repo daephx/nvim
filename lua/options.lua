@@ -148,12 +148,10 @@ vim.opt.listchars = {
 
 -- Options that only apply to nt/windows
 if vim.fn.has('win32') == 1 then
-  vim.cmd([[
-  " Set default shell to powershell
-  let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
-  set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command
-  set shellredir=\|\ Out-File\ -Encoding\ UTF8
-  set shellquote=\"
-  set shellxquote=
-]])
+  -- Set default shell to PowerShell
+  vim.opt.shell = vim.fn.executable('pwsh') and 'pwsh' or 'powershell'
+  vim.opt.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command'
+  vim.opt.shellredir = '| Out-File -Encoding UTF8'
+  vim.opt.shellquote = '"'
+  vim.opt.shellxquote = ''
 end

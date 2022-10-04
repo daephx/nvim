@@ -62,14 +62,7 @@ vim.api.nvim_create_autocmd('FileType', {
   group = 'NvimTreeBuffer',
   pattern = 'NvimTree',
   callback = function()
-    -- Highlights
+    -- Link NvimTree normal to higroup Normal
     vim.api.nvim_set_hl(0, 'NvimTreeNormal', { link = 'Normal' })
-    -- Settings
-    vim.opt_local.cursorlineopt = 'both'
-    vim.opt_local.cursorline = true
-    vim.opt_local.statusline = ' '
-    -- Keymaps
-    local opts = { buffer = 0, silent = true, noremap = true }
-    vim.keymap.set('n', '<esc>', '<cmd>q<cr>', opts)
   end,
 })

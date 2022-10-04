@@ -71,8 +71,6 @@ vim.opt.writebackup = false -- backup before overwriting a file
 vim.opt.undofile = true -- Persistent undo
 vim.opt.undolevels = 1000 -- Maximum number of undoable changes
 vim.opt.undoreload = 10000 -- Save the whole buffer for undo
-vim.opt.wildmenu = true -- Command-line completion
-vim.opt.wildignorecase = true -- Case insensitive command-line completion
 
 -- Control vim Spell checking
 vim.opt.spell = true
@@ -115,6 +113,11 @@ vim.opt.diffopt = {
 vim.opt.guifont = { 'CaskaydiaCove\\ Nerd\\ Font:h16' } -- Preferred fonts
 vim.opt.shortmess = 'cfI' -- Avoid 'hit-enter' prompts
 vim.opt.whichwrap = '<,>,[,],h,l'
+
+--- Wildmenu ---
+
+vim.opt.wildmenu = true -- Command-line completion
+vim.opt.wildignorecase = true -- Case insensitive command-line completion
 vim.opt.wildmode = 'full:lastused' -- Command-line completion mode
 -- Path patterns wild menu should ignore
 vim.opt.wildignore = {

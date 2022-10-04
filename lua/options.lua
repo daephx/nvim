@@ -7,8 +7,6 @@
 -- Module: settings
 -- Description: settings / options for Neovim
 
-local fn = vim.fn
-
 --- Settings ---
 
 -- General settings for Vim/Neovim
@@ -121,7 +119,7 @@ vim.opt.listchars = {
 
 -- These settings apply only to nt/windows
 
-if fn.has('win32') == 1 then
+if vim.fn.has('win32') == 1 then
   vim.cmd([[
   " Set default shell to powershell
   let &shell = executable('pwsh') ? 'pwsh' : 'powershell'

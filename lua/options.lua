@@ -50,7 +50,7 @@ vim.opt.pumwidth = 16 -- Pop-up menu thickness
 vim.opt.ruler = true -- Always show cursor position
 vim.opt.scrolloff = 8 -- Keep cursor closer to center vertically
 vim.opt.showtabline = 2 -- Always show tabline
-vim.opt.sidescrolloff = 8 -- Keep cursor closer to center horizontally
+vim.opt.sidescrolloff = 2 -- Keep cursor closer to center horizontally
 vim.opt.sidescroll = 1 -- Smoother horizontal scrolling
 vim.opt.signcolumn = 'yes:2' -- Sign gutter options: yes|no : int = size
 vim.opt.ignorecase = true -- Case insensitive search

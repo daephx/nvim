@@ -112,9 +112,13 @@ vim.opt.diffopt = {
   'vertical',
 }
 
-vim.opt.guifont = { 'CaskaydiaCove\\ Nerd\\ Font:h16' } -- Preferred fonts
-vim.opt.shortmess = 'cfI' -- Avoid 'hit-enter' prompts
-vim.opt.whichwrap = '<,>,[,],h,l'
+-- Define preferred font family for GUI clients
+vim.opt.guifont = {
+  'FiraCode NFM Retina:h12',
+  'FiraCode NFM:h12',
+  'CaskaydiaCove Nerd Font:h12',
+  'CaskaydiaCove NF:h12',
+}
 
 --- Folding ---
 

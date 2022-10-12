@@ -166,15 +166,16 @@ vim.opt.wildignore = {
 -- Virtual Characters ---
 
 -- Virtual strings to use in 'list' mode
-vim.opt.list = true
-vim.opt.showbreak = '↳'
+vim.opt.list = true -- Enable listchars
+vim.opt.showbreak = '↳' -- Display line wrap indicator
 vim.opt.listchars = {
   eol = ' ', -- End of line ↴
-  extends = '»', -- Horizontal overflow
+  extends = '❯', -- Horizontal overflow
   multispace = ' ', -- Consecutive whitespace
-  precedes = '«', -- Horizontal underflow
+  nbsp = '␣', -- Non-breakable space
+  precedes = '❮', -- Horizontal underflow
   space = ' ', -- Standard Whitespace
-  tab = '  ', -- Tab indentation
+  tab = '  »', -- Tab indentation
   trail = '·', -- Trailing whitespace
 }
 

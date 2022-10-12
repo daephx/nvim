@@ -78,11 +78,16 @@ vim.opt.spelloptions = { 'camel', 'noplainbuffer' }
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 -- Describes how auto-format is handled
+-- See `:h fo-table` for details and more options
 vim.opt.formatoptions = {
-  j = true,
-  n = true,
-  q = true,
-  t = true,
+  c = false, -- Auto-wrap comments using 'textwidth'
+  j = true, -- Remove comment leader when joining lines
+  l = true, -- Long lines are not broken in insert mode
+  n = true, -- Recognize numbered lists
+  o = false, -- Insert comment leader after hitting 'o'
+  q = true, -- Allow formatting of comments with "gq"
+  r = false, -- Insert comment leader after hitting	<Enter>
+  t = true, -- Auto-wrap text using 'textwidth'
 }
 
 -- Set what should be included in session files

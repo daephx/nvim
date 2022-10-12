@@ -46,16 +46,6 @@ g.colors_name = 'vscode'
 g.mapleader = ' '
 g.localleader = '\\'
 
---- Modules ---
-
--- Lua modules containing configuration definitions
--- The order of these does matter!
-
-require('plugins') -- Plugin definitions
-require('colors') -- Pretty rainbows!!
-require('options') -- General Neovim Settings
-require('filetypes') -- Filetype associations
-require('utils') -- General utility functions
-require('commands') -- Command abbreviations
-require('keymaps') -- Remapped hotkeys
-require('autocmds') -- Auto commands
+require('core')
+require('plugins')
+require('colors')

@@ -7,12 +7,8 @@
 -- Module: plugins
 -- Description: plugins definitions and settings
 
--- Initialize packer plugin
-local ok, packer = pcall(require, 'packer')
-if not ok then
-  require('plugins.packer').bootstrap()
-  packer = require('packer')
-end
+-- Load local packer functions
+local packer_bootstrap = require('plugins.packer').ensure_packer()
 
 function get_setup(name)
   return table.concat({
@@ -25,7 +21,7 @@ end
 --- Plugins ---
 
 -- Initialize plugin list
-return packer.startup({
+return require('packer').startup({
   function(use)
     use({ -- Packer can manage itself
       'wbthomason/packer.nvim',
@@ -313,8 +309,8 @@ return packer.startup({
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
 
-    if Packer_bootstrap then
-      packer.sync()
+    if packer_bootstrap then
+      require('packer').sync()
     end
 
     vim.cmd([[

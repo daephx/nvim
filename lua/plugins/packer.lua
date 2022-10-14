@@ -1,12 +1,11 @@
-local fn = vim.fn
-
 local M = {}
 
-function M.bootstrap()
-  -- Bootstrap packer for auto installation
+-- Ensure packer is available for fresh installation
+M.ensure_packer = function()
+  local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({
+    fn.system({
       'git',
       'clone',
       '--depth',
@@ -14,8 +13,11 @@ function M.bootstrap()
       'https://github.com/wbthomason/packer.nvim',
       install_path,
     })
-    vim.cmd('packadd packer.nvim')
+    vim.cmd([[packadd packer.nvim]])
+    return true
   end
+
+  return false
 end
 
 M.setup = function()

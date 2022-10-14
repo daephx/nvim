@@ -1,9 +1,13 @@
+local site_dir = string.format('%s/site', vim.fn.stdpath('data'))
+local packer_dir = string.format('%s/pack/packer', site_dir)
+local packer_compiled = string.format('%s/lua/packer_compiled.lua', site_dir)
+
 local M = {}
 
 -- Ensure packer is available for fresh installation
 M.ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  local install_path = string.format('%s/start/packer.nvim', packer_dir)
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({
       'git',
@@ -43,7 +47,7 @@ end
 ---@return table
 M.setup = function()
   return {
-    compile_path = require('packer.util').join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
+    compile_path = packer_compiled,
     disable_commands = false,
     display = {
       prompt_border = 'single',

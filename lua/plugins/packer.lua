@@ -20,6 +20,25 @@ M.ensure_packer = function()
   return false
 end
 
+-- Generate plugin config string for packer compile
+---@param name string
+---@return string
+M.config = function(name)
+  local str = string.format('require("%s")', name)
+  local module_ok, module = pcall(require, name)
+  if module_ok then
+    if type(module) == 'table' then
+      if type(module['setup']) == 'function' then
+        str = string.format('%s.setup({})', str)
+      end
+    end
+  else
+    str = string.format('%s.setup({})', str)
+  end
+
+  return str
+end
+
 M.setup = function()
   local util = require('packer.util')
 

@@ -36,7 +36,7 @@ return require('packer').startup({
 
     use({ -- Nice pink neovim color scheme
       'numtostr/sakura.nvim',
-      config = config('colors.vscode'),
+      config = config('colors.sakura'),
     })
 
     use({ -- Retro groove color scheme for Vim

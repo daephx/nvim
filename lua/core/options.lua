@@ -69,6 +69,10 @@ vim.opt.undofile = true -- Persistent undo
 vim.opt.undolevels = 1000 -- Maximum number of undoable changes
 vim.opt.undoreload = 10000 -- Save the whole buffer for undo
 
+vim.opt.iskeyword:append('-') -- Keywords used in searching and recognizing with commands
+vim.opt.shortmess:append('cfI') -- Avoid 'hit-enter' prompts
+vim.opt.whichwrap:append('<,>,[,]') -- Allows navigation wrapping to previous/next lines
+
 -- Control vim Spell checking
 vim.opt.spell = true
 vim.opt.spelllang = { 'en' }

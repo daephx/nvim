@@ -4,14 +4,11 @@
 --  / ____/ / /_/ / /_/ / / / / (__  )
 -- /_/   /_/\__,_/\__, /_/_/ /_/____/
 -- ==============/____/================
--- Module: plugins
--- Description: plugins definitions and settings
+-- Packer plugin definitions and config
 
 -- Load local packer functions
 local packer_bootstrap = require('plugins.packer').ensure_packer()
 local config = require('plugins.packer').config
-
---- Plugins ---
 
 -- Initialize plugin list
 return require('packer').startup({
@@ -298,7 +295,6 @@ return require('packer').startup({
     -- *       END OF PLUGIN SECTION       *
     -- ======================================
 
-    --- Update/Sync ---
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
 

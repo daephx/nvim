@@ -7,9 +7,6 @@
 -- Module: plugins
 -- Description: plugins definitions and settings
 
--- Control vim builtin plugins
-require('plugins.builtins')
-
 -- Initialize packer plugin
 local ok, packer = pcall(require, 'packer')
 if not ok then

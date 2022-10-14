@@ -154,11 +154,17 @@ vim.opt.wildmode = 'full:lastused' -- Command-line completion mode
 -- Path patterns wild menu should ignore
 vim.opt.wildignore = {
   '**/.git/*', -- Git Version control
+  '**/.hg/*', -- Mercurial repo
+  '**/.svn/*', -- Subversion repo
   '**/android/*', -- Google Android build
   '**/build/*', -- Generic build artifacts
   '**/coverage/*', -- Test coverage reports
   '**/ios/*', -- Apple iOS build
   '**/node_modules/*', -- Node module environment
+  '**/out/*', -- Output directory
+  '**/target/*', -- Target directory
+  '**/tmp/*', -- Temp directory
+  '*.DS_Store', -- MacOS finder metadata
   '*.pyc', -- Python byte code
   '*_build/*', -- Private build artifacts
 }

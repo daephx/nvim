@@ -4,7 +4,9 @@ local packer_compiled = string.format('%s/lua/packer_compiled.lua', site_dir)
 
 local M = {}
 
--- Ensure packer is available for fresh installation
+-- Ensure packer is available for fresh installation.
+-- Return true/false if packer is properly installed.
+---@return boolean
 M.ensure_packer = function()
   local fn = vim.fn
   local install_path = string.format('%s/start/packer.nvim', packer_dir)

@@ -7,8 +7,7 @@
 -- Neovim general editor options/settings
 
 -- Set reusable values
-local encode = 'utf-8' -- File encoding
-local indent = 2 -- Indentation size
+local indent = 2
 
 -- General options
 vim.opt.textwidth = 102 -- Limit length of characters per line
@@ -21,8 +20,6 @@ vim.opt.shiftround = true -- Round indent to shift width
 vim.opt.tabstop = indent -- Number of spaces for tab count
 vim.opt.softtabstop = indent -- Spaces a <Tab> counts during edit operations
 vim.opt.shiftwidth = indent -- Number of spaces for indents
-vim.opt.encoding = encode -- Explicitly set file encoding
-vim.opt.fileencoding = encode -- Set File-content encoding for the current buffer
 vim.opt.linebreak = true -- Split on line break
 vim.opt.colorcolumn = '+1' -- Visually display character line limit
 vim.opt.background = 'dark' -- Adjusts the default color groups for background type

@@ -306,12 +306,16 @@ return require('packer').startup({
       require('packer').sync()
     end
 
-    vim.cmd([[
-    augroup plugins_au
-      autocmd!
-      autocmd BufWritePost lua/plugins.lua source <afile> | PackerCompile
-    augroup END
-    ]])
+    vim.api.nvim_create_autocmd('BufWritePost', {
+      desc = 'Update plugins and PackerCompile after buffer changes',
+      group = vim.api.nvim_create_augroup('PackerBufWriteCompile', {}),
+      pattern = { 'lua/plugins/init.lua' },
+      callback = function(opts)
+        vim.notify('Packer: Recompiling plugins', vim.log.levels.INFO)
+        dofile(opts.match)
+        require('packer').compile()
+      end,
+    })
   end,
 
   -- Load and evaluate packer config table

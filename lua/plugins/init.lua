@@ -66,13 +66,6 @@ return require('packer').startup({
 
     --- Utilities ---
 
-    use({ -- FZF - Command line fuzzy-finder
-      'junegunn/fzf.vim',
-      disable = true,
-      requires = { 'junegunn/fzf', dir = '~/.fzf', run = './install --all' },
-      config = config('plugins.fzf'),
-    })
-
     use({ -- superior project management for neovim.
       'ahmedkhalf/project.nvim',
       config = config('plugins.project'),

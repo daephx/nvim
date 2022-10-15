@@ -231,9 +231,11 @@ return require('packer').startup({
 
     use({ -- Orgmode for Neovim, Life Organization Tool Written in Lua
       'nvim-neorg/neorg',
-      ft = 'norg', -- Lazyload
+      after = { 'nvim-treesitter', 'telescope.nvim' },
       config = config('plugins.neorg'),
-      requires = 'nvim-lua/plenary.nvim',
+      ft = 'norg',
+      requires = { 'nvim-lua/plenary.nvim' },
+      run = ':Neorg sync-parsers',
     })
 
     use({ -- Neovim extension for zk

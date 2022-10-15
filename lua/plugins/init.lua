@@ -94,8 +94,9 @@ return require('packer').startup({
 
     use({ -- A pretty list for showing diagnostics, qf/loc lists
       'folke/trouble.nvim',
-      config = config('plugins.neorg'),
-      requires = 'kyazdani42/nvim-web-devicons',
+      cmd = { 'Trouble', 'TroubleClose', 'TroubleRefresh', 'TroubleToggle' },
+      config = config('plugins.trouble'),
+      requires = { 'kyazdani42/nvim-web-devicons' },
     })
 
     use({ -- A high-performance color highlighter

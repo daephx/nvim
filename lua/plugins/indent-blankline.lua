@@ -8,6 +8,7 @@ end
 -- Apply plugin settings
 indent_blankline.setup({
   enabled = true,
+  use_treesitter = true,
   char_highlight = 'LineNr',
   show_end_of_line = false,
   show_first_indent_level = true,
@@ -15,7 +16,6 @@ indent_blankline.setup({
   show_trailing_blankline_indent = false,
   show_current_context = true,
   show_current_context_start = false,
-  use_treesitter = false,
   context_highlight_list = {
     'IndentBlanklineIndent1',
     'IndentBlanklineIndent2',

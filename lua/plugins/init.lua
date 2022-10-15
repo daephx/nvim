@@ -164,12 +164,6 @@ return require('packer').startup({
 
     use({ 'arkav/lualine-lsp-progress' })
 
-    use({ -- Standalone UI for nvim-lsp progress
-      'j-hui/fidget.nvim',
-      config = config('plugins.fidget'),
-      disable = true,
-    })
-
     use({ -- Debug adapter protocol client
       'mfussenegger/nvim-dap',
       config = config('plugins.dap'),

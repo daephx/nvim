@@ -99,7 +99,6 @@ return require('packer').startup({
 
     use({ -- A Git wrapper so awesome, it should be illegal
       'tpope/vim-fugitive',
-      disable = false,
     })
 
     use({ -- Git signs written in pure lua

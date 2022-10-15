@@ -264,6 +264,11 @@ return require('packer').startup({
       end,
     })
 
+    use({ -- Distraction-free coding for Neovim
+      'folke/zen-mode.nvim',
+      config = config('plugins.zen-mode'),
+    })
+
     use({ -- Lua implementation of vim-which-key
       'folke/which-key.nvim',
       config = config('plugins.whichkey'),

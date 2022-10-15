@@ -153,7 +153,7 @@ return require('packer').startup({
 
     use({ -- autopairs for neovim written in lua
       'windwp/nvim-autopairs',
-      config = config('plugins.autopairs'),
+      config = config('nvim-autopairs'),
     })
 
     --- Git: Version Control ---

@@ -188,8 +188,12 @@ return require('packer').startup({
 
     use({ -- Advanced language parsing for neovim
       'nvim-treesitter/nvim-treesitter',
-      run = ':TSUpdate',
       config = config('plugins.nvim-treesitter'),
+      -- NOTE: Using `TSUpdate` for packer.run will cause error on a clean install
+      -- https://github.com/rafamadriz/dotfiles/commit/c1268c73bdc7da52af0d57dcbca196ca3cb5ed79
+      run = function()
+        require('nvim-treesitter.install').update({ with_sync = true })
+      end,
     })
 
     use({ -- Rainbow parentheses for neovim using tree-sitter

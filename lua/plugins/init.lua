@@ -84,11 +84,6 @@ return require('packer').startup({
       requires = {
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
-        { -- FZF sorter for telescope written in c
-          'nvim-telescope/telescope-fzf-native.nvim',
-          run = 'make',
-          disable = true,
-        },
       },
     })
 

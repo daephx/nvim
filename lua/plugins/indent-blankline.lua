@@ -1,19 +1,11 @@
--- Module: plugins.indent-blankline
--- Description: Plugin configuration for indentation guides
-
-local fn = vim.fn
-
--- Prevent loading if not applicable
-if not fn.exists('g:loaded_indent_blankline') then
+-- indent-blankline.nvim | Indent guides for Neovim
+-- https://github.com/lukas-reineke/indent-blankline.nvim
+local indent_blankline_ok, indent_blankline = pcall(require, 'indent_blankline')
+if not indent_blankline_ok then
   return
 end
 
---- Settings ---
-
--- Ensure terminal colors is enabled for blankline context
-
-local indent_blankline = require('indent_blankline')
-
+-- Apply plugin settings
 indent_blankline.setup({
   enabled = true,
   char_highlight = 'LineNr',

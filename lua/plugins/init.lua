@@ -239,6 +239,12 @@ return require('packer').startup({
       after = { 'telescope.nvim', 'nvim-dap' },
     })
 
+    use({ -- Smart and powerful comment plugin for neovim
+      'numToStr/Comment.nvim',
+      config = config('plugins.Comment'),
+      -- Event = 'BufRead',
+    })
+
     use({ -- Orgmode for Neovim, Life Organization Tool Written in Lua
       'nvim-neorg/neorg',
       ft = 'norg', -- Lazyload

@@ -276,7 +276,7 @@ return require('packer').startup({
     vim.api.nvim_create_autocmd('BufWritePost', {
       desc = 'Update plugins and PackerCompile after buffer changes',
       group = vim.api.nvim_create_augroup('PackerBufWriteCompile', {}),
-      pattern = { 'lua/plugins/init.lua' },
+      pattern = { string.format('%s/lua/plugins/init.lua', vim.fn.getcwd()) },
       callback = function(opts)
         vim.notify('Packer: Recompiling plugins', vim.log.levels.INFO)
         dofile(opts.match)

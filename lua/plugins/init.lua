@@ -200,6 +200,34 @@ return require('packer').startup({
       'p00f/nvim-ts-rainbow',
     })
 
+    use({ -- Treesitter auto html tags
+      'windwp/nvim-ts-autotag',
+      after = 'nvim-treesitter',
+    })
+
+    use({ -- Treesitter playground integrated into Neovim
+      'nvim-treesitter/playground',
+      cmd = 'TSPlaygroundToggle',
+    })
+
+    use({ -- Syntax aware text-objects, select, move, swap, and peek
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      after = 'nvim-treesitter',
+    })
+
+    use({ -- Alternative to context.vim using nvim-treesitter
+      'nvim-treesitter/nvim-treesitter-context',
+      after = 'nvim-treesitter',
+      config = function()
+        local ts_ctx_ok, ts_ctx = pcall(require, 'treesitter-context')
+        if not ts_ctx_ok then
+          return
+        end
+
+        ts_ctx.setup({ max_lines = 1 })
+      end,
+    })
+
     use({ -- Use Neovim as a language server
       'jose-elias-alvarez/null-ls.nvim',
       requires = { 'nvim-lua/plenary.nvim' },

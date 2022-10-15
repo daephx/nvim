@@ -243,7 +243,11 @@ return require('packer').startup({
       config = config('plugins.zk'),
     })
 
-    use({ 'SidOfc/mkdx' })
+    use({ -- Nice extra's for markdown documents
+      'SidOfc/mkdx',
+      ft = 'markdown',
+    })
+
     use({ -- Preview Markdown in the browser
       'iamcco/markdown-preview.nvim',
       ft = 'markdown',

@@ -184,19 +184,15 @@ return require('packer').startup({
       'L3MON4D3/LuaSnip',
     })
 
-    use({ -- A completion plugin for neovim
+    use({ -- A completion plugin for neovim coded in Lua
       'hrsh7th/nvim-cmp',
-      disable = false,
-      -- event = { 'InsertEnter' },
       config = config('plugins.cmp'),
       requires = {
         'dmitmel/cmp-cmdline-history',
-        'f3fora/cmp-spell',
         'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-calc',
         'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-emoji',
         'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
         'hrsh7th/cmp-nvim-lua',
         'hrsh7th/cmp-path',
         'saadparwaiz1/cmp_luasnip',

@@ -67,9 +67,8 @@ return require('packer').startup({
       },
     })
 
-    use({ -- Render blank lines
+    use({ -- Indent guides for Neovim
       'lukas-reineke/indent-blankline.nvim',
-      event = { 'BufWinEnter' },
       config = config('plugins.indent-blankline'),
     })
 
@@ -192,7 +191,10 @@ return require('packer').startup({
       run = ':TSUpdate',
       config = config('plugins.nvim-treesitter'),
     })
-    use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
+
+    use({ -- Rainbow parentheses for neovim using tree-sitter
+      'p00f/nvim-ts-rainbow',
+    })
 
     use({ -- Use Neovim as a language server
       'jose-elias-alvarez/null-ls.nvim',

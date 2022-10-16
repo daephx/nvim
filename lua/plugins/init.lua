@@ -270,7 +270,6 @@ return require('packer').startup({
       config = config('plugins.neorg'),
       ft = 'norg',
       requires = { 'nvim-lua/plenary.nvim' },
-      run = ':Neorg sync-parsers',
     })
 
     use({ -- Neovim extension for zk

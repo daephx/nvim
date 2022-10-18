@@ -156,7 +156,7 @@ return require('packer').startup({
       config = config('nvim-autopairs'),
     })
 
-    --- Git: Version Control ---
+    --- Git Integration ---
 
     use({ -- A Git wrapper so awesome, it should be illegal
       'tpope/vim-fugitive',

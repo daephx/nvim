@@ -1,27 +1,17 @@
-local tabline = require('tabline')
+-- tabline.nvim | A "buffer and tab" tabline for neovim
+-- https://github.com/kdheepak/tabline.nvim
+local tabline_ok, tabline = pcall(require, 'tabline')
+if not tabline_ok then
+  return
+end
 
 tabline.setup({
-  -- Defaults configuration options
-  enable = true,
   options = {
     -- If lualine is installed tabline will use separators configured in lualine by default.
     -- These options can be used to override those settings.
     component_separators = { '', '' },
     section_separators = { '', '' },
-    -- set to nil by default, and it uses vim.o.columns * 2/3
-    max_bufferline_percent = 66,
-    -- this shows tabs only when there are more than one tab or if the first tab is named
-    show_tabs_always = false,
-    -- this shows devicons in buffer section
-    show_devicons = true,
-    -- this appends [bufnr] to buffer section,
-    show_bufnr = false,
     -- shows base filename only instead of relative path in filename
     show_filename_only = true,
   },
 })
-
-vim.cmd([[
-  set guioptions-=e " Use showtabline in gui vim
-  set sessionoptions+=tabpages,globals " store tabpages and globals in session
-]])

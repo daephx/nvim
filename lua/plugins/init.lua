@@ -48,7 +48,7 @@ return require('packer').startup({
 
     use({ -- A "buffer and tab" tabline for neovim
       'kdheepak/tabline.nvim',
-      requires = { 'nvim-lualine/lualine.nvim', opt = true },
+      requires = { 'nvim-lualine/lualine.nvim' },
       config = config('plugins.tabline'),
     })
 

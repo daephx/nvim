@@ -129,32 +129,6 @@ return require('packer').startup({
       config = config('plugins.project'),
     })
 
-    --- Completion ---
-
-    use({ -- Snippet Engine for Neovim
-      'L3MON4D3/LuaSnip',
-    })
-
-    use({ -- A completion plugin for neovim coded in Lua
-      'hrsh7th/nvim-cmp',
-      config = config('plugins.cmp'),
-      requires = {
-        'dmitmel/cmp-cmdline-history',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-path',
-        'saadparwaiz1/cmp_luasnip',
-      },
-    })
-
-    use({ -- autopairs for neovim written in lua
-      'windwp/nvim-autopairs',
-      config = config('nvim-autopairs'),
-    })
-
     --- Git Integration ---
 
     use({ -- A Git wrapper so awesome, it should be illegal
@@ -182,6 +156,32 @@ return require('packer').startup({
     use({ -- Weapon to fight against conflicts in Vim.
       'akinsho/git-conflict.nvim',
       config = config('plugins.git-conflict'),
+    })
+
+    --- Completion ---
+
+    use({ -- Snippet Engine for Neovim
+      'L3MON4D3/LuaSnip',
+    })
+
+    use({ -- A completion plugin for neovim coded in Lua
+      'hrsh7th/nvim-cmp',
+      config = config('plugins.cmp'),
+      requires = {
+        'dmitmel/cmp-cmdline-history',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-cmdline',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-path',
+        'saadparwaiz1/cmp_luasnip',
+      },
+    })
+
+    use({ -- autopairs for neovim written in lua
+      'windwp/nvim-autopairs',
+      config = config('nvim-autopairs'),
     })
 
     --- Language ---

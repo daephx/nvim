@@ -117,10 +117,9 @@ return require('packer').startup({
     })
 
     use({ -- A small automated session manager for neovim
-      'rmagatti/auto-session',
+      'rmagatti/session-lens',
       config = config('plugins.auto-session'),
       requires = {
-        'rmagatti/session-lens',
         'rmagatti/auto-session',
         'nvim-telescope/telescope.nvim',
       },

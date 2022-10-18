@@ -177,6 +177,7 @@ return require('packer').startup({
     use({ -- Git signs written in pure lua
       'lewis6991/gitsigns.nvim',
       config = config('plugins.gitsigns'),
+      requires = { 'nvim-lua/plenary.nvim' },
     })
 
     use({ -- Weapon to fight against conflicts in Vim.

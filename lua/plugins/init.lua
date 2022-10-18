@@ -336,7 +336,9 @@ return require('packer').startup({
       group = vim.api.nvim_create_augroup('PackerBufWriteCompile', {}),
       pattern = { string.format('%s/lua/plugins/init.lua', vim.fn.getcwd()) },
       callback = function(opts)
-        vim.notify('Packer: Recompiling plugins', vim.log.levels.INFO)
+        vim.schedule(function()
+          vim.notify('[Packer] Recompiling plugins', vim.log.levels.INFO)
+        end)
         dofile(opts.match)
         require('packer').compile()
       end,

@@ -199,6 +199,7 @@ return require('packer').startup({
 
     use({ -- Rainbow parentheses for neovim using tree-sitter
       'p00f/nvim-ts-rainbow',
+      after = 'nvim-treesitter',
     })
 
     use({ -- Treesitter auto html tags

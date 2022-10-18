@@ -264,6 +264,11 @@ return require('packer').startup({
       -- Event = 'BufRead',
     })
 
+    use({ -- Automatic indentation style detection
+      'NMAC427/guess-indent.nvim',
+      config = config('guess-indent'),
+    })
+
     use({ -- Orgmode for Neovim, Life Organization Tool Written in Lua
       'nvim-neorg/neorg',
       after = { 'nvim-treesitter', 'telescope.nvim' },

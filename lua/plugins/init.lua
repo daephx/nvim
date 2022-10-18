@@ -63,7 +63,6 @@ return require('packer').startup({
       after = { 'lualine.nvim' },
       require = {
         'nvim-lualine/lualine.nvim',
-        'neovim/nvim-lspconfig',
       },
     })
 

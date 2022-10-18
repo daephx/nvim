@@ -54,7 +54,7 @@ return require('packer').startup({
 
     use({ -- Blazing fast statusline
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      requires = { 'kyazdani42/nvim-web-devicons' },
       config = config('plugins.lualine'),
     })
 
@@ -75,11 +75,11 @@ return require('packer').startup({
 
     use({ -- Alternative File Tree
       'kyazdani42/nvim-tree.lua',
-      requires = { 'kyazdani42/nvim-web-devicons', opts = true },
+      requires = { 'kyazdani42/nvim-web-devicons' },
       config = config('plugins.nvim-tree'),
     })
 
-    use({ -- easily manage multiple terminal windows
+    use({ -- Easily manage multiple terminal windows
       'akinsho/toggleterm.nvim',
       config = config('plugins.toggleterm'),
     })
@@ -87,7 +87,7 @@ return require('packer').startup({
     use({ -- Highlight, list and search todo comments
       'folke/todo-comments.nvim',
       config = config('plugins.todo-comments'),
-      requires = 'nvim-lua/plenary.nvim',
+      requires = { 'nvim-lua/plenary.nvim' },
     })
 
     use({ -- A pretty list for showing diagnostics, qf/loc lists
@@ -124,7 +124,7 @@ return require('packer').startup({
       },
     })
 
-    use({ -- superior project management for neovim.
+    use({ -- Superior project management for neovim.
       'ahmedkhalf/project.nvim',
       config = config('plugins.project'),
     })
@@ -140,7 +140,7 @@ return require('packer').startup({
       config = config('plugins.neogit'),
       requires = {
         { 'nvim-lua/plenary.nvim' },
-        {
+        { -- Easily cycling through diffs
           'sindrets/diffview.nvim',
           config = config('plugins.diffview'),
         },
@@ -160,7 +160,7 @@ return require('packer').startup({
 
     --- Completion ---
 
-    use({ -- Snippet Engine for Neovim
+    use({ -- Snippet Engine for Neovim written in Lua
       'L3MON4D3/LuaSnip',
     })
 
@@ -179,7 +179,7 @@ return require('packer').startup({
       },
     })
 
-    use({ -- autopairs for neovim written in lua
+    use({ -- Autopairs for neovim written in lua
       'windwp/nvim-autopairs',
       config = config('nvim-autopairs'),
     })

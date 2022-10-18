@@ -112,6 +112,7 @@ return require('packer').startup({
       requires = {
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-lua/popup.nvim' },
+        { 'kyazdani42/nvim-web-devicons' },
       },
     })
 

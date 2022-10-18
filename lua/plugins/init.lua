@@ -269,6 +269,11 @@ return require('packer').startup({
       config = config('guess-indent'),
     })
 
+    use({ -- EditorConfig plugin for Neovim
+      'gpanders/editorconfig.nvim',
+      after = 'guess-indent.nvim',
+    })
+
     use({ -- Orgmode for Neovim, Life Organization Tool Written in Lua
       'nvim-neorg/neorg',
       after = { 'nvim-treesitter', 'telescope.nvim' },

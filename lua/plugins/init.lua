@@ -103,6 +103,12 @@ return require('packer').startup({
       event = { 'BufRead', 'BufWinEnter' },
     })
 
+    use({ -- Neovim easymotions on speed!
+      'phaazon/hop.nvim',
+      branch = 'v2',
+      config = config('plugins.hop'),
+    })
+
     --- Telescope ---
 
     use({ -- Highly extendable fuzzy finder

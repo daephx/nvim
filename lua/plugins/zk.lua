@@ -11,11 +11,12 @@ zk.setup({
   picker = 'telescope',
 })
 
--- Keymap helper function
+--- Keymaps ---
+
 local defaults = { remap = false, silent = true }
 local function map(mode, k, cb, opts)
   local options = vim.tbl_extend('force', defaults, opts)
-  map(mode, k, cb, options)
+  vim.keymap.set(mode, k, cb, options)
 end
 
 -- Define zk keymaps

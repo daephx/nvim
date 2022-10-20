@@ -48,6 +48,9 @@ end
 -- Return packer.setup options
 ---@return table
 M.setup = function()
+  if vim.fn.filereadable(packer_compiled) == 1 then
+    require('packer_compiled')
+  end
   return {
     compile_path = packer_compiled,
     disable_commands = false,

@@ -1,4 +1,9 @@
-local neorg = require('neorg')
+-- neorg | The future of organizing your life in Neovim
+-- https://github.com/nvim-neorg/neorg
+local neorg_ok, neorg = pcall(require, 'neorg')
+if not neorg_ok then
+  return
+end
 
 neorg.setup({
   load = { -- Tell Neorg what modules to load

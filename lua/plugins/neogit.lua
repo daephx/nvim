@@ -1,79 +1,77 @@
 -- Neogit | magit for Neovim
-
--- Prevent loading if not applicable
-local ok, neogit = pcall(require, 'neogit')
-if not ok then
+-- https://github.com/TimUntersberger/neogit
+local neogit_ok, neogit = pcall(require, 'neogit')
+if not neogit_ok then
   return
 end
 
 neogit.setup({
-  kind = { 'tab' },
-  auto_refresh = true,
-  disable_signs = false,
+  kind = 'tab',
   disable_context_highlighting = true,
-  disable_commit_confirmation = false,
-  disable_builtin_notifications = false,
   use_magit_keybindings = true,
-  commit_popup = { kind = 'split' },
   integrations = {
-    -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `sindrets/diffview.nvim`.
-    -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
     diffview = true, -- Requires you to have `sindrets/diffview.nvim` installed.
   },
-  mappings = { -- override/add mappings
-    status = { -- modify status buffer mappings
-      -- Adds a mapping with 'B' as key that does the 'BranchPopup' command
-      ['B'] = 'BranchPopup',
-      ['q'] = 'Close',
-      -- ['s'] = 'Stage',
-      -- ['S'] = '', -- Disable Stage all
-    },
-  },
-  -- Setting any section to `false` will make the section not render at all
   sections = {
-    untracked = {
-      folded = true,
+    staged = {
+      folded = false,
     },
     unstaged = {
       folded = true,
     },
-    staged = {
-      folded = false,
-    },
-    stashes = {
-      folded = true,
-    },
-    unpulled = {
+    untracked = {
       folded = true,
     },
     unmerged = {
       folded = false,
     },
+    unpulled = {
+      folded = true,
+    },
+    stashes = {
+      folded = true,
+    },
     recent = {
       folded = false,
     },
   },
+  mappings = {
+    status = {
+      ['B'] = 'BranchPopup',
+      ['q'] = 'Close',
+    },
+  },
 })
 
-vim.cmd([[
-" Highlights
-highlight! link NeogitDiffContextHighlight StatusLineNC
-highlight NeogitCommitViewHeader guibg=none guifg=lightblue
-highlight NeogitObjectId guibg=none guifg=#A056BB
+--- Highlights ---
 
-augroup neogit_au
-  autocmd!
+local hl = vim.api.nvim_set_hl
 
-  function! NeogitSettings()
-    setlocal colorcolumn=
-    setlocal cursorline
-    setlocal nonumber
-  endfunction
+hl(0, 'NeogitCommitViewHeader', { link = 'Constant' })
+hl(0, 'NeogitDiffContextHighlight', { link = 'ColorColumn' })
+hl(0, 'NeogitHunkHeader', { bg = 'none', fg = '#D670D6' })
+hl(0, 'NeogitObjectId', { bg = 'none', fg = '#A056BB' })
 
-  " Disable number column for most window views
-  autocmd FileType NeogitStatus call NeogitSettings()
-  autocmd FileType NeogitLogView call NeogitSettings()
-  autocmd FileType NeogitCommitView call NeogitSettings()
+--- Autocmds ---
 
-augroup END
-]])
+local group = vim.api.nvim_create_augroup('NeogitHooks', {})
+
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Local options to apply to neogit filetypes',
+  group = group,
+  pattern = 'Neogit*',
+  callback = function()
+    vim.opt_local.spell = false
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.colorcolumn = '0'
+    vim.opt_local.fillchars = { eob = ' ' }
+  end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+  desc = 'Close Neogit after pushing to remote repository',
+  group = group,
+  pattern = 'NeogitPushComplete',
+  callback = neogit.close,
+})

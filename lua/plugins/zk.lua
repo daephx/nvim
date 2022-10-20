@@ -21,6 +21,6 @@ end
 
 -- Define zk keymaps
 map('n', '<leader>zn', "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", { desc = 'new note' })
-map('n', '<leader>Zb', '<Cmd>ZkBacklinks<CR>', { desc = 'show backlinks' })
-map('n', '<leader>Zl', '<Cmd>ZkLinks<CR>', { desc = 'show links' })
-map('n', '<leader>Zf', '<Cmd>ZkNotes<CR>', { desc = 'show notes' })
+map('n', '<leader>zb', '<Cmd>ZkBacklinks<CR>', { desc = 'show backlinks' })
+map('n', '<leader>zl', '<Cmd>ZkLinks<CR>', { desc = 'show links' })
+map('n', '<leader>zf', '<Cmd>ZkNotes<CR>', { desc = 'show notes' })

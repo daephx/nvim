@@ -322,7 +322,7 @@ return require('packer').startup({
 
     use({ -- Lua implementation of vim-which-key
       'folke/which-key.nvim',
-      config = config('plugins.whichkey'),
+      config = config('plugins.which-key'),
     })
 
     -- ======================================

@@ -132,7 +132,7 @@ return require('packer').startup({
 
     use({ -- Superior project management for neovim.
       'ahmedkhalf/project.nvim',
-      config = config('plugins.project'),
+      config = config('plugins.project_nvim'),
     })
 
     --- Git Integration ---

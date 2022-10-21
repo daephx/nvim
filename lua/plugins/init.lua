@@ -68,7 +68,7 @@ return require('packer').startup({
 
     use({ -- Indent guides for Neovim
       'lukas-reineke/indent-blankline.nvim',
-      config = config('plugins.indent-blankline'),
+      config = config('plugins.indent_blankline'),
     })
 
     --- Utilities ---

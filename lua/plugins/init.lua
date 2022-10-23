@@ -111,7 +111,19 @@ return require('packer').startup({
 
     use({ -- A Git wrapper so awesome, it should be illegal
       'tpope/vim-fugitive',
-      disable = false,
+      config = config('plugins.fugitive'),
+    })
+
+    use({ -- Magit for Neovim
+      'TimUntersberger/neogit',
+      config = config('plugins.neogit'),
+      requires = {
+        { 'nvim-lua/plenary.nvim' },
+        { -- Easily cycling through diffs
+          'sindrets/diffview.nvim',
+          config = config('plugins.diffview'),
+        },
+      },
     })
 
     use({ -- Git signs written in pure lua

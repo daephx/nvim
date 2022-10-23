@@ -69,6 +69,31 @@ autocmd({ 'FileType' }, {
   command = 'setlocal formatoptions-=cro',
 })
 
+augroup('MakeParentDirectory', {})
+autocmd('BufWritePre', {
+  desc = 'Create parent directory when writing file if path does not exist',
+  group = 'MakeParentDirectory',
+  callback = function(opts)
+    local buftype = vim.api.nvim_buf_get_option(opts.buf, 'buftype')
+    local buf_empty = vim.fn.empty(buftype) == 1
+    local dir_path = vim.fn.fnamemodify(opts.file, ':p:h')
+    local dir_exists = vim.fn.isdirectory(dir_path) == 1
+    local dir_remote = dir_path:find('%l+://') == 1
+    if buf_empty or dir_exists or dir_remote then
+      return
+    end
+    local msg = 'Parent path doesn\'t exist: "%s"\r\nCreate file path? [y/N]: '
+    local prompt = string.format(msg, opts.file)
+    vim.ui.input({
+      prompt = prompt,
+    }, function(input)
+      if input == 'y' then
+        vim.fn.mkdir(dir_path, 'p')
+      end
+    end)
+  end,
+})
+
 augroup('TerminalBuffers', {})
 autocmd('TermOpen', {
   desc = '',

@@ -39,3 +39,14 @@ if cmp_ok then
     })
   )
 end
+
+--- Rules ---
+
+local Rule = require('nvim-autopairs.rule')
+
+-- Javascript arrow function
+autopairs.add_rule(Rule('%(.*%)%s*%=>$', ' {}', {
+  'javascript',
+  'typescript',
+  'typescriptreact',
+}):use_regex(true):set_end_pair_length(1))

@@ -15,3 +15,27 @@ autopairs.setup({
     javascript = { 'string', 'template_string' },
   },
 })
+
+-- Enable cmp compatibility
+local cmp_ok, cmp = pcall(require, 'cmp')
+if cmp_ok then
+  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+  local handlers = require('nvim-autopairs.completion.handlers')
+  -- Complete parens after select function or method item
+  cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done({
+      filetypes = {
+        ['*'] = { -- "*" alias to all filetypes
+          ['('] = {
+            kind = {
+              cmp.lsp.CompletionItemKind.Function,
+              cmp.lsp.CompletionItemKind.Method,
+            },
+            handler = handlers['*'],
+          },
+        },
+      },
+    })
+  )
+end

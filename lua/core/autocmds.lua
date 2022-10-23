@@ -61,6 +61,14 @@ autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
   command = 'if &nu | set nornu | endif',
 })
 
+augroup('NoAutoComment', {})
+autocmd({ 'FileType' }, {
+  desc = 'Prevent auto-insert comment leader on all filetypes',
+  group = 'NoAutoComment',
+  pattern = '*',
+  command = 'setlocal formatoptions-=cro',
+})
+
 augroup('TerminalBuffers', {})
 autocmd('TermOpen', {
   desc = '',

@@ -88,7 +88,7 @@ vim.opt.formatoptions = {
   o = false, -- Insert comment leader after hitting 'o'
   q = true, -- Allow formatting of comments with "gq"
   r = false, -- Insert comment leader after hitting	<Enter>
-  t = true, -- Auto-wrap text using 'textwidth'
+  t = false, -- Auto-wrap text using 'textwidth'
 }
 
 -- Set what should be included in session files

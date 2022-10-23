@@ -5,4 +5,13 @@ if not autopairs_ok then
   return
 end
 
-autopairs.setup({})
+-- Initialize plugin settings
+autopairs.setup({
+  check_ts = true,
+  disable_filetype = { 'TelescopePrompt', 'vim' },
+  fast_wrap = {},
+  ts_config = {
+    lua = { 'string', 'source' },
+    javascript = { 'string', 'template_string' },
+  },
+})

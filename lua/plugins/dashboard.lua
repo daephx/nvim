@@ -5,15 +5,9 @@ if not db_ok then
   return
 end
 
--- db.preview_file_Path   = 'static/super_meatboy.txt'
--- db.preview_file_height = 15
--- db.preview_file_width  = 31
--- db.preview_command     = 'cat'
 db.hide_statusline = false
 db.hide_tabline = false
-
-local default_header = {
-  '',
+db.custom_header = {
   '',
   '███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
   '████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
@@ -23,16 +17,14 @@ local default_header = {
   '╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
   '',
   string.format(
-    '               [   %s.%s.%s %s   ]                ',
+    '--- [   %s.%s.%s%s   ] ---',
     vim.version().major,
     vim.version().minor,
     vim.version().patch,
-    vim.version().prerelease == true and 'nightly' or 'stable'
+    vim.version().prerelease == true and '-dev' or ''
   ),
   '',
 }
-
-db.custom_header = default_header
 
 -- helpers for formatting dashboard commands
 local pad_icon = 4
@@ -113,12 +105,13 @@ vim.api.nvim_create_augroup('Dashboard', {})
 vim.api.nvim_create_autocmd('FileType', {
   desc = 'Apply local settings to Dashboard buffer',
   pattern = 'dashboard',
-  callback = function()
-    vim.opt_local.fillchars = { eob = ' ' } -- Suppress '~' at EndOfBuffer
+  callback = function(opts)
+    vim.opt_local.buflisted = false
+    vim.opt_local.fillchars = { eob = ' ' }
     -- Apply keymap settings for dashboard
-    local opts = { buffer = 0, remap = false, silent = true }
+    local opts = { buffer = opts.buf, remap = false, silent = true }
     vim.keymap.set('n', '<PageDown>', '<Nop>', opts)
     vim.keymap.set('n', '<PageUp>', '<Nop>', opts)
-    vim.keymap.set('n', '<Space>qq', 'quit', opts)
+    vim.keymap.set('n', '<leader>qq', '<cmd>quit<cr>', opts)
   end,
 })

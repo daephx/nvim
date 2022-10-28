@@ -5,6 +5,8 @@ if not todo_ok then
   return
 end
 
+--- Setup ---
+
 todo.setup({
   signs = true, -- show icons in the signs column
   sign_priority = 8,
@@ -46,9 +48,10 @@ vim.keymap.set('n', '[t', todo.jump_prev, { desc = 'Previous todo comment' })
 
 --- Autocmds ---
 
+local group = vim.api.nvim_create_augroup('TodoCommentHooks', {})
 vim.api.nvim_create_autocmd({ 'ColorScheme', 'VimEnter' }, {
   desc = 'Remove default todo higroup',
-  group = vim.api.nvim_create_augroup('TodoComment', {}),
+  group = group,
   callback = function()
     vim.api.nvim_set_hl(0, 'Todo', {})
   end,

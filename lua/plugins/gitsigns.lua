@@ -46,6 +46,10 @@ gitsigns.setup({
     follow_files = true,
   },
   sign_priority = 6,
+  current_line_blame = true,
+  current_line_blame_formatter_opts = {
+    relative_time = false,
+  },
   on_attach = function(bufnr)
     local function map(mode, l, r, opts)
       opts = opts or {}

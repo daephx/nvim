@@ -188,7 +188,7 @@ vim.opt.listchars = {
 
 -- Virtual fill strings for UI elements
 vim.opt.fillchars = {
-  diff = '┈', -- Diff Removed
+  diff = '', -- Diff Removed
   eob = '~', -- End of Buffer
   fold = ' ', -- Fold region
   foldclose = '▸', -- Fold closed

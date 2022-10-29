@@ -36,14 +36,12 @@ M.format_document = function(bufnr)
       -- Filter user disable clients
       local disabled_g = disabled_formatters.global or {}
       if vim.tbl_contains(disabled_g, client.name) then
-        print('user global: false')
         return false
       end
 
       -- Match disabled clients by filetype
       local disabled_ft = disabled_formatters.filetypes[ft] or {}
       if vim.tbl_contains(disabled_ft, client.name) then
-        print('user filetype: false')
         return false
       end
 

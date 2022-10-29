@@ -57,9 +57,12 @@ M.format_document = function(bufnr)
         end
       end
 
-      -- Finally, send true for unfiltered client
-      local msg = table.concat({ '[LSP] Format Document:', client.name }, ' ')
-      vim.notify(msg, vim.lsp.log_levels.info, { title = 'LSP Formatting' })
+      -- Finally, echo client and return true for unfiltered client
+      vim.defer_fn(function()
+        local msg = table.concat({ '[LSP] Formatting Document:', client.name }, ' ')
+        vim.api.nvim_echo({ { msg, 'Normal' } }, false, {})
+      end, 200)
+
       return true
     end,
   })

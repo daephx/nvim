@@ -253,7 +253,7 @@ return require('packer').startup({
         'neovim/nvim-lspconfig',
         config = function()
           require('lsp').setup({
-            config_path = 'lua/lsp/servers',
+            config_path = 'lua/lsp/providers',
           })
         end,
       },

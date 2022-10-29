@@ -241,14 +241,22 @@ return require('packer').startup({
       requires = { 'nvim-lua/plenary.nvim' },
     })
 
-    use({ -- Native language server protocol
-      'williamboman/nvim-lsp-installer',
-      requires = { 'neovim/nvim-lspconfig' },
-      config = function()
-        require('lsp').setup({
-          config_path = 'lua/lsp/servers',
-        })
-      end,
+    use({ -- Initialize language server configuration
+      {
+        'williamboman/mason-lspconfig.nvim',
+        config = function()
+          require('lsp.mason')
+        end,
+        requires = { 'williamboman/mason.nvim' },
+      },
+      {
+        'neovim/nvim-lspconfig',
+        config = function()
+          require('lsp').setup({
+            config_path = 'lua/lsp/servers',
+          })
+        end,
+      },
     })
 
     use({ -- Debug adapter protocol client

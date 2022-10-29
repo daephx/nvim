@@ -1,12 +1,11 @@
-#amnit
-#evops
-#icrosoft
 1280x720
 1920x1080
 AppData
 AutoCmd
 AutoCommands
 AutoHotkey
+Autocmd
+Autorun
 BufEnter
 BufHidden
 BufNewFile
@@ -18,6 +17,7 @@ BufWipeout
 BufWrite
 BufWritePost
 BufWritePre
+Bufferline
 BusyBox
 CSharp
 CSharp/!
@@ -27,6 +27,8 @@ CurrentVersion
 CursorHold
 CursorHoldI
 DNSmasq
+Devicon
+Devops/!
 DiffView
 DockerHub
 EndOfBuffer
@@ -36,6 +38,10 @@ FFmpeg
 FileType
 FugitiveIndex
 GBrowse
+GIFs
+Gamesave
+Gamesaves
+Git
 HKEY_CURRENT_USER
 IPython
 ImageMagick
@@ -95,12 +101,14 @@ ToggleTerm
 TokyoNight
 TypeScript
 UIEnter
+UTF8
 UltiSnips
 VBScript
 VSCode
 VimEnter
 VimLeave
 VirtualBox
+WIP
 WebAPI
 Win32
 WinEnter
@@ -265,7 +273,6 @@ ctrl
 ctx
 cuda
 currentversion
-cursorcolumn
 cursorhold
 cursorholdi
 cursorline
@@ -302,7 +309,6 @@ devicon
 devicons
 devops
 devopsheaven
-df
 dhcp
 diagnosticserror
 diagnosticshint
@@ -382,7 +388,6 @@ eventlog
 exa
 exe
 execute
-executionpolicy
 expandtab
 export
 expr
@@ -432,14 +437,8 @@ fullscreen
 func
 fzf
 fzfterm
-gamesave
-gamesaves
-gbrowse
 gcc
 gdb
-gdc
-gdiffsplit
-gdiffsplittab
 gdscript
 gentoo
 getcwd
@@ -661,6 +660,7 @@ middleware/!
 middlewares
 minLine
 minecraft
+minimumres
 mk
 mkdir
 mkdocs
@@ -819,7 +819,6 @@ ps
 ps1
 psd1
 psm1
-psquire
 psxml
 psytrance
 pumvisible
@@ -901,8 +900,6 @@ scala
 scaleability
 scanf
 scm
-scrapy
-scrcpy
 screenrc
 scrolloff
 scss
@@ -1126,7 +1123,6 @@ vterm
 vue
 vuejs
 wav
-wc
 webapi
 webm
 webp

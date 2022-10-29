@@ -1,88 +1,58 @@
--- Module: plugins.todo-comments
--- Description: configurations for plugin 'todo-comments'
+-- todo-comments.nvim | Highlight, list and search todo comments in your projects
+-- https://github.com/folke/todo-comments.nvim
+local todo_ok, todo = pcall(require, 'todo-comments')
+if not todo_ok then
+  return
+end
 
-local todo_comments = require('todo-comments')
+--- Setup ---
 
-todo_comments.setup({
+todo.setup({
   signs = true, -- show icons in the signs column
-  -- keywords recognized as todo comments
+  sign_priority = 8,
   keywords = {
     FIX = {
-      icon = ' ', -- icon used for the sign, and in search results
-      color = 'error', -- can be a hex color, or a named color (see below)
-      alt = { 'FIXME', 'BUG', 'FIXIT', 'FIX', 'ISSUE' }, -- a set of other keywords that all map to this FIX keywords
-      -- signs = false, -- configure signs for some keywords individually
+      icon = ' ',
+      color = 'error',
+      alt = { 'FIXME', 'BUG', 'FIXIT', 'FIX', 'ISSUE' },
     },
-    TODO = { icon = ' ', color = 'info' },
+    TODO = { icon = ' ', color = 'info', alt = { 'WIP' } },
     HACK = { icon = ' ', color = 'warning' },
     WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'XXX' } },
     PERF = { icon = ' ', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
     NOTE = { icon = ' ', color = 'hint', alt = { 'INFO' } },
   },
-  -- highlighting of the line containing the todo comment
-  -- * before: highlights before the keyword (typically comment characters)
-  -- * keyword: highlights of the keyword
-  -- * after: highlights after the keyword (todo text)
   highlight = {
-    before = '', -- "fg" or "bg" or empty
-    keyword = 'fg', -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
-    after = '', -- "fg" or "bg" or empty
-    -- pattern = [[.*<(KEYWORDS)\s*:]], -- pattern used for highlighting (vim regex)
-    pattern = [[.*<(KEYWORDS)(\(.*\))?:]], -- pattern used for highlighting (vim regex)
-    comments_only = true, -- this applies the pattern only inside comments using `comment string` option
-    exclude = { 'log', 'help' }, -- list of file types to exclude highlighting
-  },
-  -- list of named colors where we try to extract the guifg from the
-  -- list of hilight groups or use the hex color if hl not found as a fallback
-  colors = {
-    default = { 'Identifier', '#7C3AED' },
-    hint = { 'LspDiagnosticsDefaultHint', '#10B981' },
-    info = { 'LspDiagnosticsDefaultInformation', '#2563EB' },
-    warning = { 'LspDiagnosticsDefaultWarning', 'WarningMsg', '#FBBF24' },
-    error = { 'LspDiagnosticsDefaultError', 'ErrorMsg', '#DC2626' },
+    keyword = 'wide', -- "fg", "bg", "wide" or empty.
+    after = 'fg', -- "fg" or "bg" or empty
+    pattern = [[.*<(KEYWORDS)(\(.*\))?:]],
+    comments_only = true,
+    exclude = { -- list of file types to exclude highlighting
+      'help',
+      'log',
+      'vim',
+    },
   },
   search = {
-    command = 'rg',
-    args = {
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-    },
     -- regex that will be used to match keywords.
-    -- don't replace the (KEYWORDS) placeholder
-    -- pattern = [[\b(KEYWORDS):]], -- ripgrep regex
-    pattern = [[\b(KEYWORDS)(\(.*\))?:]], -- Match to colon ':', optional parenthesis | KEYWORD(AUTHOR):
-    -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+    -- don't replace the (KEYWORDS) placeholder!
+    -- Match to colon ':', optional parenthesis | KEYWORD(AUTHOR):
+    pattern = [[\b(KEYWORDS)(\(.*\))?:]],
   },
 })
 
-vim.cmd([[
+--- Keymaps ---
 
-  " Highlights
+vim.keymap.set('n', ']t', todo.jump_next, { desc = 'Next todo comment' })
+vim.keymap.set('n', '[t', todo.jump_prev, { desc = 'Previous todo comment' })
 
-  " Builtin todo highlight
-  highlight Todo guibg=none
+--- Autocmds ---
 
-  " Todo-comment overrides
-  highlight TodoBgTODO guibg=none
-  highlight TodoBgFIX guibg=none
-  highlight TodoBgHACK guibg=none
-  highlight TodoBgNOTE guibg=none
-  highlight TodoBgPERF guibg=none
-  highlight TodoBgWARN guibg=none
-
-  " Alternatively link to diagnostics
-  " highlight link TodoBgTODO DiagnosticsHint
-  " highlight link TodoBgFIX DiagnosticsWarn
-  " highlight link TodoBgHACK DiagnosticsError
-  " highlight link TodoBgNOTE DiagnosticsInfo
-  " highlight link TodoBgPERF DiagnosticsInfo
-  " highlight link TodoBgWARN DiagnosticsWarn
-
-
-  " Commands
-  command! Todo TodoTrouble
-
-]])
+local group = vim.api.nvim_create_augroup('TodoCommentHooks', {})
+vim.api.nvim_create_autocmd({ 'ColorScheme', 'VimEnter' }, {
+  desc = 'Remove default todo higroup',
+  group = group,
+  callback = function()
+    vim.api.nvim_set_hl(0, 'Todo', {})
+  end,
+})

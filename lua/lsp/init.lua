@@ -12,25 +12,6 @@ end
 -- Override lspconfig border options
 require('lspconfig.ui.windows').default_options.border = 'single'
 
-local installer_ok, installer = pcall(require, 'nvim-lsp-installer')
-if not installer_ok then
-  local msg = table.concat({
-    'nvim-lsp failed to initialize',
-    'Unable to locate dependency "nvim-lsp-installer"',
-  }, '\n')
-  vim.notify(msg, vim.lsp.log_levels.ERROR, { title = 'Plugin Error' })
-  return
-end
-
--- Configure nvim-lsp-installer before loading local server settings
-local path = require('lspconfig.util').path
-installer.setup({
-  automatic_installation = true,
-  ensure_installed = { 'sumneko_lua', 'bashls' },
-  install_root_dir = path.join({ vim.fn.stdpath('data'), 'servers' }),
-  ui = { border = 'single' },
-})
-
 local M = {}
 
 -- Initialize local settings
@@ -43,10 +24,9 @@ M.setup = function(opts)
   local capabilities = require('lsp.capabilities').initialize_capabilities()
   local on_attach = handlers.default_attach
 
-  -- Get configured servers from lsp-installer
-  local server_list = vim.tbl_map(function(client)
-    return client.name
-  end, installer.get_installed_servers())
+  -- Get list of available servers
+  local mason_lspconfig = require('mason-lspconfig')
+  local server_list = mason_lspconfig.get_available_servers()
 
   -- Loop server list for local config
   for _, server in pairs(server_list) do

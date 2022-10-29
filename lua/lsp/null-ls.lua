@@ -1,5 +1,5 @@
 -- Null-ls | Neovim language server
--- URL: https://github.com/jose-elias-alvarez/null-ls.nvim
+-- https://github.com/jose-elias-alvarez/null-ls.nvim
 local null_ok, null_ls = pcall(require, 'null-ls')
 if not null_ok then
   return
@@ -14,7 +14,7 @@ local M = {}
 
 M.setup = function(_, on_attach)
   null_ls.setup({
-    debug = true,
+    debug = false,
     on_attach = on_attach,
     sources = {
       -- completion.spell, -- NOTE: REMOVE ME, this little fucker is what is mucking up cmp

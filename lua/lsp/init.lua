@@ -1,5 +1,5 @@
 -- Native LSP Configurations (Language Server Protocol)
-local lspconfig_ok, _ = pcall(require, 'lspconfig')
+local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
 if not lspconfig_ok then
   local msg = table.concat({
     'nvim-lsp failed to initialize',
@@ -31,29 +31,39 @@ installer.setup({
   ui = { border = 'single' },
 })
 
--- Define globals
-vim.g.disable_efm = true
-vim.g.disable_null_ls = false
-
--- Import Locals
-local capabilities = require('lsp.capabilities')
-local diagnostics = require('lsp.diagnostics')
-local handlers = require('lsp.handlers')
-local icons = require('lsp.icons')
-local utils = require('lsp.utils')
-
 local M = {}
 
 -- Initialize local settings
 M.setup = function(opts)
-  diagnostics.initialize_diagnostics()
+  local handlers = require('lsp.handlers')
   handlers.initialize_handlers()
-  icons.initialize_icons()
-  utils.initialize_servers({
-    capabilities = capabilities.initialize_capabilities(),
-    on_attach = handlers.default_attach,
-    config_path = opts.config_path,
-  })
+  require('lsp.diagnostics').initialize_diagnostics()
+  require('lsp.icons').initialize_icons()
+
+  local capabilities = require('lsp.capabilities').initialize_capabilities()
+  local on_attach = handlers.default_attach
+
+  -- Get configured servers from lsp-installer
+  local server_list = vim.tbl_map(function(client)
+    return client.name
+  end, installer.get_installed_servers())
+
+  -- Loop server list for local config
+  for _, server in pairs(server_list) do
+    local namespace = table.concat({ opts.config_path, server }, '/')
+    local module_ok, module = pcall(require, namespace)
+    if module_ok then
+      local server_config = {}
+      if type(module) == 'table' then
+        if type(module.setup) == 'function' then
+          server_config = module.setup(capabilities, on_attach)
+        end
+      end
+
+      -- Initialize configured servers
+      lspconfig[server].setup(server_config)
+    end
+  end
 end
 
 return M

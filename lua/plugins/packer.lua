@@ -1,12 +1,17 @@
-local fn = vim.fn
+local site_dir = string.format('%s/site', vim.fn.stdpath('data'))
+local packer_dir = string.format('%s/pack/packer', site_dir)
+local packer_compiled = string.format('%s/lua/packer_compiled.lua', site_dir)
 
 local M = {}
 
-function M.bootstrap()
-  -- Bootstrap packer for auto installation
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+-- Ensure packer is available for fresh installation.
+-- Return true/false if packer is properly installed.
+---@return boolean
+M.ensure_packer = function()
+  local fn = vim.fn
+  local install_path = string.format('%s/start/packer.nvim', packer_dir)
   if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({
+    fn.system({
       'git',
       'clone',
       '--depth',
@@ -14,74 +19,48 @@ function M.bootstrap()
       'https://github.com/wbthomason/packer.nvim',
       install_path,
     })
-    vim.cmd('packadd packer.nvim')
+    vim.cmd([[packadd packer.nvim]])
+    return true
   end
+
+  return false
 end
 
-M.setup = function()
-  local util = require('packer.util')
+-- Generate plugin config string for packer compile
+---@param name string
+---@return string
+M.config = function(name)
+  local str = string.format('require("%s")', name)
+  local module_ok, module = pcall(require, name)
+  if module_ok then
+    if type(module) == 'table' then
+      if type(module['setup']) == 'function' then
+        str = string.format('%s.setup({})', str)
+      end
+    end
+  else
+    str = string.format('%s.setup({})', str)
+  end
 
+  return str
+end
+
+-- Return packer.setup options
+---@return table
+M.setup = function()
+  if vim.fn.filereadable(packer_compiled) == 1 then
+    require('packer_compiled')
+  end
   return {
-    ensure_dependencies = true, -- Should packer install plugin dependencies?
-    package_root = util.join_paths(fn.stdpath('data'), 'site', 'pack'),
-    compile_path = util.join_paths(fn.stdpath('config'), 'plugin', 'packer_compiled.lua'),
-    plugin_package = 'packer', -- The default package for plugins
-    max_jobs = nil, -- Limit the number of simultaneous jobs. nil means no limit
-    auto_clean = true, -- During sync(), remove unused plugins
-    compile_on_sync = true, -- During sync(), run packer.compile()
-    disable_commands = false, -- Disable creating commands
-    opt_default = false, -- Default to using opt (as opposed to start) plugins
-    transitive_opt = true, -- Make dependencies of opt plugins also opt by default
-    transitive_disable = true, -- Automatically disable dependencies of disabled plugins
-    auto_reload_compiled = true, -- Automatically reload the compiled file after creating it.
-    git = {
-      cmd = 'git', -- The base command for git operations
-      subcommands = { -- Format strings for git subcommands
-        update = 'pull --ff-only --progress --rebase=false',
-        install = 'clone --depth %i --no-single-branch --progress',
-        fetch = 'fetch --depth 999999 --progress',
-        checkout = 'checkout %s --',
-        update_branch = 'merge --ff-only @{u}',
-        current_branch = 'branch --show-current',
-        diff = 'log --color=never --pretty=format:FMT --no-show-signature HEAD@{1}...HEAD',
-        diff_fmt = '%%h %%s (%%cr)',
-        get_rev = 'rev-parse --short HEAD',
-        get_msg = 'log --color=never --pretty=format:FMT --no-show-signature HEAD -n 1',
-        submodules = 'submodule update --init --recursive --progress',
-      },
-      depth = 1, -- Git clone depth
-      clone_timeout = 60, -- Timeout, in seconds, for git clones
-      default_url_format = 'https://github.com/%s', -- Lua format string used for "aaa/bbb" style plugins
-    },
+    compile_path = packer_compiled,
+    disable_commands = false,
     display = {
-      non_interactive = false, -- If true, disable display windows for all operations
-      -- open_cmd = 'botright 20new \\[packer\\]', -- An optional command to open a window for packer's display
+      prompt_border = 'single',
       open_fn = function()
-        return util.float({ border = 'single' })
-      end, -- An optional function to open a window for packer's display
-      working_sym = '⟳', -- The symbol for a plugin being installed/updated
-      error_sym = '✗', -- The symbol for a plugin with an error in installation/updating
-      done_sym = '✓', -- The symbol for a plugin which has completed installation/updating
-      removed_sym = '-', -- The symbol for an unused plugin which was removed
-      moved_sym = '→', -- The symbol for a plugin which was moved (e.g. from opt to start)
-      header_sym = '━', -- The symbol for the header line in packer's display
-      show_all_info = true, -- Should packer show all update details automatically?
-      prompt_border = 'double', -- Border style of prompt popups.
-      keybindings = { -- Keybindings for the display window
-        quit = 'q',
-        toggle_info = '<CR>',
-        diff = 'd',
-        prompt_revert = 'r',
-      },
+        return require('packer.util').float({ border = 'single' })
+      end,
     },
-    luarocks = {
-      python_cmd = 'python3', -- Set the python command to use for running hererocks
-    },
-    log = { level = 'warn' }, -- The default print log level. One of: "trace", "debug", "info", "warn", "error", "fatal".
-    profile = {
-      enable = false,
-      threshold = 1, -- integer in milliseconds, plugins which load faster than this won't be shown in profile output
-    },
+    git = { clone_timeout = 120 },
   }
 end
 

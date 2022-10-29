@@ -18,15 +18,6 @@ parser_configs.powershell = {
   used_by = { 'psm1', 'psd1', 'pssc', 'psxml', 'cdxml' },
 }
 
--- Include neorg parser
-parser_configs.norg = {
-  install_info = {
-    url = 'https://github.com/nvim-neorg/tree-sitter-norg',
-    files = { 'src/parser.c', 'src/scanner.cc' },
-    branch = 'main',
-  },
-}
-
 ts_configs.setup({
   -- A list of parser names, or "all"
   ensure_installed = {

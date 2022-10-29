@@ -1,27 +1,28 @@
-local api = vim.api
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
-api.nvim_create_augroup('FocusIssues', { clear = true })
-api.nvim_create_autocmd({ 'BufEnter', 'WinLeave', 'FocusLost', 'VimSuspend' }, {
+augroup('FocusIssues', {})
+autocmd({ 'BufEnter', 'WinLeave', 'FocusLost', 'VimSuspend' }, {
   desc = 'Leave insert or replace mode on focus loss',
   group = 'FocusIssues',
   pattern = '*',
   command = 'if empty(&buftype) | stopinsert | endif',
 })
 
-api.nvim_create_autocmd({ 'FocusLost' }, {
+autocmd({ 'FocusLost' }, {
   desc = 'Write all buffers on FocusLost',
   group = 'FocusIssues',
   command = 'silent! wall ',
 })
 
-api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+autocmd({ 'CursorHold', 'CursorHoldI' }, {
   desc = 'Update current buffer on CursorHold/I',
   group = 'FocusIssues',
   command = 'silent! update',
 })
 
-api.nvim_create_augroup('ReloadVimRC', { clear = true })
-api.nvim_create_autocmd('BufWritePost', {
+augroup('ReloadVimRC', {})
+autocmd('BufWritePost', {
   desc = 'Auto-sourcing Configurations',
   group = 'ReloadVimRC',
   pattern = vim.env.MYVIMRC,
@@ -31,15 +32,15 @@ api.nvim_create_autocmd('BufWritePost', {
   end,
 })
 
-api.nvim_create_augroup('DisableSearchHighlight', { clear = true })
-api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
+augroup('DisableSearchHighlight', {})
+autocmd({ 'InsertEnter', 'WinLeave' }, {
   desc = 'Disable search highlight when entering insert mode',
   group = 'DisableSearchHighlight',
   command = 'nohlsearch',
 })
 
-api.nvim_create_augroup('YankHighlight', { clear = true })
-api.nvim_create_autocmd('TextYankPost', {
+augroup('YankHighlight', {})
+autocmd('TextYankPost', {
   desc = 'Highlight the region on yank',
   group = 'YankHighlight',
   callback = function()
@@ -47,21 +48,54 @@ api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-api.nvim_create_augroup('SmartHybridNumbers', { clear = true })
-api.nvim_create_autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
+augroup('SmartHybridNumbers', {})
+autocmd({ 'BufEnter', 'FocusGained', 'InsertLeave', 'WinEnter' }, {
   desc = 'Intelligent Relative Numbers | Enable',
   group = 'SmartHybridNumbers',
   command = 'if &nu && mode() != "i" | set rnu | endif',
 })
 
-api.nvim_create_autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
+autocmd({ 'BufLeave', 'FocusLost', 'InsertEnter', 'WinLeave' }, {
   desc = 'Intelligent Relative Numbers | Disable',
   group = 'SmartHybridNumbers',
   command = 'if &nu | set nornu | endif',
 })
 
-api.nvim_create_augroup('TerminalBuffers', {})
-api.nvim_create_autocmd('TermOpen', {
+augroup('NoAutoComment', {})
+autocmd({ 'FileType' }, {
+  desc = 'Prevent auto-insert comment leader on all filetypes',
+  group = 'NoAutoComment',
+  pattern = '*',
+  command = 'setlocal formatoptions-=cro',
+})
+
+augroup('MakeParentDirectory', {})
+autocmd('BufWritePre', {
+  desc = 'Create parent directory when writing file if path does not exist',
+  group = 'MakeParentDirectory',
+  callback = function(opts)
+    local buftype = vim.api.nvim_buf_get_option(opts.buf, 'buftype')
+    local buf_empty = vim.fn.empty(buftype) == 1
+    local dir_path = vim.fn.fnamemodify(opts.file, ':p:h')
+    local dir_exists = vim.fn.isdirectory(dir_path) == 1
+    local dir_remote = dir_path:find('%l+://') == 1
+    if buf_empty or dir_exists or dir_remote then
+      return
+    end
+    local msg = 'Parent path doesn\'t exist: "%s"\r\nCreate file path? [y/N]: '
+    local prompt = string.format(msg, opts.file)
+    vim.ui.input({
+      prompt = prompt,
+    }, function(input)
+      if input == 'y' then
+        vim.fn.mkdir(dir_path, 'p')
+      end
+    end)
+  end,
+})
+
+augroup('TerminalBuffers', {})
+autocmd('TermOpen', {
   desc = '',
   group = 'TerminalBuffers',
   pattern = 'term://*',
@@ -76,7 +110,7 @@ api.nvim_create_autocmd('TermOpen', {
   end,
 })
 
-api.nvim_create_autocmd('TermClose', {
+autocmd('TermClose', {
   desc = 'Skip prompt, Automatically close exited terminal buffer processes',
   group = 'TerminalBuffers',
   pattern = 'term://*',
@@ -86,14 +120,14 @@ api.nvim_create_autocmd('TermClose', {
   end,
 })
 
-api.nvim_create_autocmd({ 'TermOpen', 'BufEnter' }, {
+autocmd({ 'TermOpen', 'BufEnter' }, {
   desc = 'Automatically enter insert mode when focusing a terminal buffer',
   group = 'TerminalBuffers',
   pattern = 'term://*',
   command = 'startinsert',
 })
 
-api.nvim_create_autocmd({ 'TermClose', 'BufLeave' }, {
+autocmd({ 'TermClose', 'BufLeave' }, {
   desc = 'Disable insert mode when leaving a terminal buffer',
   group = 'TerminalBuffers',
   pattern = 'term://*',

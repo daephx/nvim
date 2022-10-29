@@ -1,63 +1,41 @@
-local trouble = require('trouble')
+-- trouble.nvim | pretty diagnostics, references, telescope results
+-- https://github.com/folke/trouble.nvim
+local trouble_ok, trouble = pcall(require, 'trouble')
+if not trouble_ok then
+  return
+end
 
 trouble.setup({
-  position = 'bottom', -- position of the list can be: bottom, top, left, right
-  height = 20, -- height of the trouble list when position is top or bottom
-  width = 50, -- width of the list when position is left or right
-  icons = true, -- use devicons for filenames
-  mode = 'workspace_diagnostics', -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
-  fold_open = '', -- icon used for open folds
-  fold_closed = '', -- icon used for closed folds
-  group = true, -- group results by file
-  padding = true, -- add an extra new line on top of the list
-  action_keys = { -- key mappings for actions in the trouble list
-    -- map to {} to remove a mapping, for example:
-    -- close = {},
-    close = 'q', -- close the list
-    cancel = '<esc>', -- cancel the preview and get back to your last window / buffer / cursor
-    refresh = 'r', -- manually refresh
-    jump = { '<cr>', '<tab>' }, -- jump to the diagnostic or open / close folds
-    open_split = { '<c-x>' }, -- open buffer in new split
-    open_vsplit = { '<c-v>' }, -- open buffer in new vsplit
-    open_tab = { '<c-t>' }, -- open buffer in new tab
-    jump_close = { 'o' }, -- jump to the diagnostic and close the list
-    toggle_mode = 'm', -- toggle between "workspace" and "document" diagnostics mode
-    toggle_preview = 'P', -- toggle auto_preview
-    hover = 'K', -- opens a small popup with the full multi-line message
-    preview = 'p', -- preview the diagnostic location
-    close_folds = { 'zM', 'zm' }, -- close all folds
-    open_folds = { 'zR', 'zr' }, -- open all folds
-    toggle_fold = { 'zA', 'za' }, -- toggle fold of current file
-    previous = 'k', -- preview item
-    next = 'j', -- next item
-  },
-  indent_lines = true, -- add an indent guide below the fold icons
+  padding = false, -- add an extra new line on top of the list
   auto_open = false, -- automatically open the list when you have diagnostics
   auto_close = true, -- automatically close the list when you have no diagnostics
-  auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-  auto_fold = false, -- automatically fold a file trouble list at creation
-  auto_jump = { 'lsp_definitions' }, -- for the given modes, automatically jump if there is only a single result
-  signs = {
-    -- icons / text used for a diagnostic
-    error = '',
-    warning = '',
-    hint = '',
-    information = '',
-    other = '﫠',
-  },
   use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
 })
 
-vim.cmd([[
-highlight TroubleIndent guibg=none
-highlight TroubleSignWarning guibg=none
+local telescope_ok, telescope = pcall(require, 'telescope')
+if telescope_ok then
+  -- local actions = require('telescope.actions')
+  local _trouble = require('trouble.providers.telescope')
+  telescope.setup({
+    defaults = {
+      mappings = {
+        i = { ['<c-t>'] = _trouble.open_with_trouble },
+        n = { ['<c-t>'] = _trouble.open_with_trouble },
+      },
+    },
+  })
+end
 
-function! s:trouble_buffer()
-  setlocal colorcolumn=0
-  setlocal cursorline
-  setlocal nonumber
-endfunction
+--- Autocmds ---
 
-autocmd! FileType Trouble call s:trouble_buffer()
-" autocmd! BufEnter,BufWinEnter if &ft == 'Trouble' | call s:trouble_buffer() | endif
-]])
+vim.api.nvim_create_augroup('TroubleBuffer', {})
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Apply local options to Trouble buffer ',
+  group = 'TroubleBuffer',
+  pattern = 'Trouble',
+  callback = function()
+    vim.opt_local.cursorline = true
+    vim.opt_local.cursorlineopt = 'both'
+    vim.opt_local.colorcolumn = '0'
+  end,
+})

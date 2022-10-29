@@ -24,6 +24,17 @@ local function null_has_formatter(ft)
   return true
 end
 
+-- Get list of language servers attached to the current buffer
+---@param bufnr integer
+---@return table
+local function buf_get_clients(bufnr)
+  local list = {}
+  for _, client in pairs(vim.lsp.buf_get_clients(bufnr)) do
+    table.insert(list, client.name)
+  end
+  return list
+end
+
 -- Activate document formatting filter to select a preferred formatter
 ---@param bufnr integer
 M.format_document = function(bufnr)
@@ -36,32 +47,28 @@ M.format_document = function(bufnr)
       -- Filter user disable clients
       local disabled_g = disabled_formatters.global or {}
       if vim.tbl_contains(disabled_g, client.name) then
-        print('user global: false')
         return false
       end
 
       -- Match disabled clients by filetype
       local disabled_ft = disabled_formatters.filetypes[ft] or {}
       if vim.tbl_contains(disabled_ft, client.name) then
-        print('user filetype: false')
         return false
       end
 
-      -- Get list of buffer client names
-      local buf_clients = vim.tbl_map(function(c)
-        return c.name
-      end, vim.lsp.buf_get_clients(bufnr))
-
       -- Prefer null-ls or EFM if present in client list
-      if vim.tbl_contains(buf_clients, 'null-ls') then
+      if vim.tbl_contains(buf_get_clients(bufnr), 'null-ls') then
         if client.name ~= 'null-ls' and null_has_formatter(ft) then
           return false
         end
       end
 
-      -- Finally, send true for unfiltered client
-      local msg = table.concat({ '[LSP] Format Document:', client.name }, ' ')
-      vim.notify(msg, vim.lsp.log_levels.info, { title = 'LSP Formatting' })
+      -- Finally, echo client and return true for unfiltered client
+      vim.defer_fn(function()
+        local msg = table.concat({ '[LSP] Formatting Document:', client.name }, ' ')
+        vim.api.nvim_echo({ { msg, 'Normal' } }, false, {})
+      end, 200)
+
       return true
     end,
   })

@@ -24,6 +24,9 @@ M.setup = function(opts)
   local capabilities = require('lsp.capabilities').initialize_capabilities()
   local on_attach = handlers.default_attach
 
+  -- Initialize null-ls
+  require('lsp.null-ls').setup(nil, on_attach)
+
   -- Get list of available servers
   local mason_lspconfig = require('mason-lspconfig')
   local server_list = mason_lspconfig.get_available_servers()

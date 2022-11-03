@@ -83,9 +83,9 @@ M.enable_auto_formatting = function(client, bufnr)
     vim.api.nvim_create_user_command('Format', 'do User LspFormatting', {})
     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
     vim.api.nvim_create_autocmd('BufWritePre', {
-      buffer = bufnr,
       desc = 'Apply Auto-formatting for to document on save',
       group = group,
+      pattern = '*',
       callback = function(opts)
         M.format_document(opts.bufnr)
       end,

@@ -14,6 +14,7 @@ vim.opt_local.iskeyword:append('-')
 
 vim.opt_local.formatoptions = {
   c = false, -- Auto-wrap comments using 'textwidth'
-  t = true, -- Auto-wrap text using 'textwidth'
   l = true, -- Long lines are not broken in insert mode
+  q = true, -- Allow formatting of comments with "gq"
+  t = true, -- Auto-wrap text using 'textwidth'
 }

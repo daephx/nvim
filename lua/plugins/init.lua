@@ -244,9 +244,7 @@ return require('packer').startup({
     use({ -- Initialize language server configuration
       {
         'williamboman/mason-lspconfig.nvim',
-        config = function()
-          require('lsp.mason')
-        end,
+        config = config('lsp.mason'),
         requires = { 'williamboman/mason.nvim' },
       },
       {

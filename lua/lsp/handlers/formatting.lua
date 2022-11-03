@@ -5,23 +5,16 @@ local disabled_formatters = {
   filetypes = {},
 }
 
--- Determine if null-ls sources has configured formatter for filetype
----@param ft string
+-- Determine if buffer has configured null-ls formatting generators for filetype
+---@param bufnr integer
 ---@return boolean
-local function null_has_formatter(ft)
-  local sources = require('null-ls.sources')
-  local filter = vim.tbl_map(function(source)
-    -- Map active sources with formatting method
-    if source.methods['NULL_LS_FORMATTING'] then
-      return true
-    end
-  end, sources.get_available(ft))
-  -- If filter table is empty
-  if rawequal(next(filter), nil) then
-    return false
-  end
-
-  return true
+local function null_has_formatter(bufnr)
+  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+  local generators = require('null-ls.generators').get_available(
+    filetype,
+    require('null-ls.methods').internal.FORMATTING
+  )
+  return #generators > 0
 end
 
 -- Get list of language servers attached to the current buffer
@@ -42,7 +35,7 @@ M.format_document = function(bufnr)
   vim.lsp.buf.format({
     bufnr = bufnr,
     filter = function(client)
-      local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+      local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
 
       -- Filter user disable clients
       local disabled_g = disabled_formatters.global or {}
@@ -51,14 +44,14 @@ M.format_document = function(bufnr)
       end
 
       -- Match disabled clients by filetype
-      local disabled_ft = disabled_formatters.filetypes[ft] or {}
+      local disabled_ft = disabled_formatters.filetypes[filetype] or {}
       if vim.tbl_contains(disabled_ft, client.name) then
         return false
       end
 
       -- Prefer null-ls or EFM if present in client list
       if vim.tbl_contains(buf_get_clients(bufnr), 'null-ls') then
-        if client.name ~= 'null-ls' and null_has_formatter(ft) then
+        if client.name ~= 'null-ls' and null_has_formatter(bufnr) then
           return false
         end
       end

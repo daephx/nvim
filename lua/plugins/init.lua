@@ -247,6 +247,7 @@ return require('packer').startup({
         config = config('lsp.mason'),
         requires = { 'williamboman/mason.nvim' },
       },
+      { 'jayp0521/mason-null-ls.nvim' },
       {
         'neovim/nvim-lspconfig',
         config = function()

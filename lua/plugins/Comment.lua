@@ -28,10 +28,6 @@ comment.setup({
   padding = true,
   sticky = true,
   ignore = '^$',
-  toggler = {
-    line = '<c-_>',
-    block = '<a-A>',
-  },
   mappings = {
     basic = true,
     extra = true,
@@ -41,11 +37,36 @@ comment.setup({
 
 --- Keymaps ---
 
+local api = require('Comment.api')
 local map = vim.keymap.set
 
-map('x', '<c-_>', '<Plug>(comment_toggle_linewise_visual)', {
-  desc = 'Comment toggle linewise',
-})
-map('x', '<a-A>', '<Plug>(comment_toggle_blockwise_visual)', {
-  desc = 'Comment toggle blockwise',
-})
+-- Utilizing Comment.nvim extended keymaps
+-- Includes duplicate mappings due to terminal differences
+-- + Kitty Terminal   | <c-/>
+-- + Windows Terminal | <c-_>
+
+-- Insert
+map('i', '<c-/>', api.toggle.linewise.current)
+map('i', '<c-_>', api.toggle.linewise.current)
+
+-- Normal
+map('n', '<c-/>', api.toggle.linewise.current)
+map('n', '<c-_>', api.toggle.linewise.current)
+
+-- Visual
+local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+
+map('x', '<c-_>', function()
+  vim.api.nvim_feedkeys(esc, 'nx', false)
+  api.locked('toggle.linewise')(vim.fn.visualmode())
+end, { desc = 'Comment toggle linewise (visual)' })
+
+map('x', '<c-/>', function()
+  vim.api.nvim_feedkeys(esc, 'nx', false)
+  api.locked('toggle.linewise')(vim.fn.visualmode())
+end, { desc = 'Comment toggle linewise (visual)' })
+
+map('x', '<a-A>', function()
+  vim.api.nvim_feedkeys(esc, 'nx', false)
+  api.locked('toggle.blockwise')(vim.fn.visualmode())
+end, { desc = 'Comment toggle blockwise (visual)' })

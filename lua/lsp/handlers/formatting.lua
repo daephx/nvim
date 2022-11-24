@@ -67,12 +67,6 @@ M.format_document = function(bufnr)
         end
       end
 
-      -- Finally, echo client and return true for unfiltered client
-      vim.defer_fn(function()
-        local msg = table.concat({ '[LSP] Formatting Document:', client.name }, ' ')
-        vim.api.nvim_echo({ { msg, 'Normal' } }, false, {})
-      end, 200)
-
       return true
     end,
   })

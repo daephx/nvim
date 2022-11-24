@@ -28,17 +28,6 @@ local function buf_get_clients(bufnr)
   return list
 end
 
--- Get list of language servers attached to the current buffer
----@param bufnr integer
----@return table
-local function buf_get_clients(bufnr)
-  local list = {}
-  for _, client in pairs(vim.lsp.buf_get_clients(bufnr)) do
-    table.insert(list, client.name)
-  end
-  return list
-end
-
 -- Activate document formatting filter to select a preferred formatter
 ---@param bufnr integer
 M.format_document = function(bufnr)

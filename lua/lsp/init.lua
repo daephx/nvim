@@ -3,6 +3,9 @@
 -- Initialize local lsp modules
 require('lsp.lspconfig')
 
+local capabilities = require('lsp.capabilities')
+local on_attach = require('lsp.attach')
+
 local M = {}
 
 -- Initialize local settings
@@ -11,9 +14,6 @@ M.setup = function(opts)
   handlers.initialize_handlers()
   require('lsp.diagnostics').initialize_diagnostics()
   require('lsp.icons').initialize_icons()
-
-  local capabilities = require('lsp.capabilities')
-  local on_attach = require('lsp.attach')
 
   -- Initialize null-ls
   require('lsp.null-ls').setup(nil, on_attach)

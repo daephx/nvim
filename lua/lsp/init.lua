@@ -1,16 +1,7 @@
--- Native LSP Configurations (Language Server Protocol)
-local lspconfig_ok, lspconfig = pcall(require, 'lspconfig')
-if not lspconfig_ok then
-  local msg = table.concat({
-    'nvim-lsp failed to initialize',
-    'Unable to locate dependency "lspconfig"',
-  }, '\n')
-  vim.notify(msg, vim.lsp.log_levels.ERROR, { title = 'Plugin Error' })
-  return
-end
+-- Neovim LSP Configuration (Language Server Protocol)
 
--- Override lspconfig border options
-require('lspconfig.ui.windows').default_options.border = 'single'
+-- Initialize local lsp modules
+require('lsp.lspconfig')
 
 local M = {}
 
@@ -44,7 +35,7 @@ M.setup = function(opts)
       end
 
       -- Initialize configured servers
-      lspconfig[server].setup(server_config)
+      require('lspconfig')[server].setup(server_config)
     end
   end
 end

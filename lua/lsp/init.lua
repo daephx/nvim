@@ -12,7 +12,7 @@ M.setup = function(opts)
   require('lsp.diagnostics').initialize_diagnostics()
   require('lsp.icons').initialize_icons()
 
-  local capabilities = require('lsp.capabilities').initialize_capabilities()
+  local capabilities = require('lsp.capabilities')
   local on_attach = require('lsp.attach')
 
   -- Initialize null-ls

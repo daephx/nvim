@@ -24,7 +24,7 @@ end
 -- mason-null-ls.nvim | mason-null-ls bridges mason.nvim with the null-ls plugin
 -- https://github.com/jayp0521/mason-null-ls.nvim
 local mason_null_ok, mason_null = pcall(require, 'mason-null-ls')
-if not mason_null_ok then
+if mason_null_ok then
   mason_null.setup({
     automatic_installation = true,
     ensure_installed = { 'stylua', 'jq' },

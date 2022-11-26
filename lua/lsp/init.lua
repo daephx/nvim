@@ -13,7 +13,7 @@ M.setup = function(opts)
   require('lsp.icons').initialize_icons()
 
   local capabilities = require('lsp.capabilities').initialize_capabilities()
-  local on_attach = handlers.default_attach
+  local on_attach = require('lsp.attach')
 
   -- Initialize null-ls
   require('lsp.null-ls').setup(nil, on_attach)

@@ -1,3 +1,5 @@
+-- lsp/icons.lua
+
 local M = {}
 
 M.diagnostic_icons = {
@@ -6,6 +8,12 @@ M.diagnostic_icons = {
   [vim.diagnostic.severity.INFO] = { ' ', 'DiagnosticSignInfo' },
   [vim.diagnostic.severity.HINT] = { ' ', 'DiagnosticSignHint' },
 }
+
+-- Apply diagnostic symbols in the sign column
+for _, tbl in pairs(M.diagnostic_icons) do
+  local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
+  vim.fn.sign_define(tbl[2], opts)
+end
 
 M.completion_kinds = {
   Class = 'ﴯ',
@@ -35,18 +43,10 @@ M.completion_kinds = {
   Variable = '',
 }
 
-M.initialize_icons = function()
-  -- Apply diagnostic symbols in the sign column
-  for _, tbl in pairs(M.diagnostic_icons) do
-    local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
-    vim.fn.sign_define(tbl[2], opts)
-  end
-
-  -- Apply completion kinds
-  local kinds = vim.lsp.protocol.CompletionItemKind
-  for i, kind in ipairs(M.completion_kinds) do
-    kinds[i] = M.diagnostic_icons[kind] or kind
-  end
+-- Apply completion kinds
+local kinds = vim.lsp.protocol.CompletionItemKind
+for i, kind in ipairs(M.completion_kinds) do
+  kinds[i] = M.diagnostic_icons[kind] or kind
 end
 
 return M

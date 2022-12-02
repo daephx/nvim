@@ -195,7 +195,6 @@ vim.opt.fillchars = {
   foldopen = '▾', -- Fold open
   foldsep = '│', -- Fold operator
   msgsep = '─', -- Message separator
-  vert = '▕', -- Vertical separator
 }
 
 --- Windows ---

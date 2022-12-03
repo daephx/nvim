@@ -1,6 +1,7 @@
 -- Neovim LSP Configuration (Language Server Protocol)
 
 -- Initialize local lsp modules
+require('lsp.diagnostics')
 require('lsp.icons')
 require('lsp.lspconfig')
 
@@ -13,7 +14,6 @@ local M = {}
 M.setup = function(opts)
   local handlers = require('lsp.handlers')
   handlers.initialize_handlers()
-  require('lsp.diagnostics').initialize_diagnostics()
 
   -- Initialize null-ls
   require('lsp.null-ls').setup(nil, on_attach)

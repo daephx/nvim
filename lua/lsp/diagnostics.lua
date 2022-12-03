@@ -1,6 +1,4 @@
--- lsp.diagnostics
-
-local M = {}
+-- lsp/handlers/diagnostics.lua
 
 local icons = require('lsp.icons')
 
@@ -34,7 +32,7 @@ local float_prefix = function(diagnostic)
   return string.format(' %s', res[1]), res[2]
 end
 
-local defaults = {
+vim.diagnostic.config({
   signs = true,
   underline = true,
   update_in_insert = false,
@@ -58,10 +56,4 @@ local defaults = {
       min = vim.diagnostic.severity.WARN,
     },
   },
-}
-
-M.initialize_diagnostics = function()
-  vim.diagnostic.config(defaults)
-end
-
-return M
+})

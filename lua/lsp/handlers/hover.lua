@@ -1,10 +1,5 @@
 -- lsp/handlers/hover.lua
 
--- Configure vim.lsp.handler
-vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = 'single',
-})
-
 local M = {}
 
 -- Enable diagnostic hover window at cursor position on CursorHold

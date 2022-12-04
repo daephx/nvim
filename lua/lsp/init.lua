@@ -2,6 +2,7 @@
 
 -- Initialize local lsp modules
 require('lsp.diagnostics')
+require('lsp.handlers')
 require('lsp.icons')
 require('lsp.lspconfig')
 
@@ -12,8 +13,6 @@ local M = {}
 
 -- Initialize local settings
 M.setup = function(opts)
-  local handlers = require('lsp.handlers')
-  handlers.initialize_handlers()
 
   -- Initialize null-ls
   require('lsp.null-ls').setup(nil, on_attach)

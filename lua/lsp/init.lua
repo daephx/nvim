@@ -4,6 +4,7 @@
 require('lsp.diagnostics')
 require('lsp.handlers')
 require('lsp.icons')
+require('lsp.null-ls')
 require('lsp.lspconfig')
 
 local capabilities = require('lsp.capabilities')
@@ -13,10 +14,6 @@ local M = {}
 
 -- Initialize local settings
 M.setup = function(opts)
-
-  -- Initialize null-ls
-  require('lsp.null-ls').setup(nil, on_attach)
-
   -- Get list of available servers
   local mason_lspconfig = require('mason-lspconfig')
   local server_list = mason_lspconfig.get_available_servers()

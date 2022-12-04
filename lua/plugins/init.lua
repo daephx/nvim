@@ -242,19 +242,12 @@ return require('packer').startup({
     })
 
     use({ -- Initialize language server configuration
-      {
-        'williamboman/mason-lspconfig.nvim',
-        config = config('lsp.mason'),
-        requires = { 'williamboman/mason.nvim' },
-      },
-      { 'jayp0521/mason-null-ls.nvim' },
-      {
+      'williamboman/mason-lspconfig.nvim',
+      config = config('lsp'),
+      requires = {
         'neovim/nvim-lspconfig',
-        config = function()
-          require('lsp').setup({
-            config_path = 'lua/lsp/providers',
-          })
-        end,
+        'williamboman/mason.nvim',
+        'jayp0521/mason-null-ls.nvim',
       },
     })
 

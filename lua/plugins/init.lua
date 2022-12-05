@@ -241,6 +241,11 @@ return require('packer').startup({
       requires = { 'nvim-lua/plenary.nvim' },
     })
 
+    use({ -- LSP support in Neovim for eclipse.jdt.ls
+      'mfussenegger/nvim-jdtls',
+      requires = { 'neovim/nvim-lspconfig' },
+    })
+
     use({ -- Tools for better development in rust
       'simrat39/rust-tools.nvim',
       requires = { 'neovim/nvim-lspconfig' },

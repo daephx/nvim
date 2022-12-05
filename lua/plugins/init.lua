@@ -241,6 +241,11 @@ return require('packer').startup({
       requires = { 'nvim-lua/plenary.nvim' },
     })
 
+    use({ -- Tools for better development in rust
+      'simrat39/rust-tools.nvim',
+      requires = { 'neovim/nvim-lspconfig' },
+    })
+
     use({ -- Initialize language server configuration
       'williamboman/mason-lspconfig.nvim',
       config = config('lsp'),

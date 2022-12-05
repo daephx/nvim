@@ -41,7 +41,7 @@ require('mason-lspconfig').setup_handlers({
     require('lsp/servers/jdtls')
   end,
 
-  -- ['zk'] = function()
-  --   require('plugins/zk')
-  -- end,
+  ['zk'] = function()
+    require('lsp/servers/zk')
+  end,
 })

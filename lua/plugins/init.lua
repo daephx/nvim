@@ -251,6 +251,10 @@ return require('packer').startup({
       requires = { 'neovim/nvim-lspconfig' },
     })
 
+    use({ -- Neovim extension for zk
+      'mickael-menu/zk-nvim',
+    })
+
     use({ -- Initialize language server configuration
       'williamboman/mason-lspconfig.nvim',
       config = config('lsp'),
@@ -298,11 +302,6 @@ return require('packer').startup({
       config = config('plugins.neorg'),
       ft = 'norg',
       requires = { 'nvim-lua/plenary.nvim' },
-    })
-
-    use({ -- Neovim extension for zk
-      'mickael-menu/zk-nvim',
-      config = config('plugins.zk'),
     })
 
     use({ -- Nice extra's for markdown documents

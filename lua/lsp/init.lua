@@ -37,9 +37,9 @@ require('mason-lspconfig').setup_handlers({
     require('lsp/servers/rust_analyzer')
   end,
 
-  -- ['jdtls'] = function()
-  --   require('lsp/servers/jdtls')
-  -- end,
+  ['jdtls'] = function()
+    require('lsp/servers/jdtls')
+  end,
 
   -- ['zk'] = function()
   --   require('plugins/zk')

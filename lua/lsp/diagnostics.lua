@@ -18,13 +18,8 @@ local rename_diagnostic_source = function(diagnostic)
 end
 
 local format = function(diagnostic)
-  local message = string.format(
-    '%s, %s: %s ',
-    rename_diagnostic_source(diagnostic),
-    diagnostic.code,
-    diagnostic.message
-  )
-  return message
+  local name = rename_diagnostic_source(diagnostic)
+  return string.format('%s: %s ', name, diagnostic.message)
 end
 
 local float_prefix = function(diagnostic)
@@ -41,7 +36,7 @@ vim.diagnostic.config({
     border = 'rounded',
     focusable = false,
     format = format,
-    header = { ' ﴫ Diagnostics:', 'Define' },
+    header = { 'ﴫ Diagnostics:', 'Define' },
     prefix = float_prefix,
     scope = 'line',
     show_header = true,

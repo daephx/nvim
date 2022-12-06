@@ -21,10 +21,19 @@ null_ls.setup({
     diagnostics.write_good,
     hover.dictionary,
 
-    -- Git - Version Control
-    diagnostics.gitlint,
-    code_actions.gitsigns,
+    -- Git Version Control
+    diagnostics.gitlint.with({
+      condition = function(util)
+        return util.root_has_file({ '.git' })
+      end,
+    }),
+    code_actions.gitsigns.with({
+      condition = function(util)
+        return util.root_has_file({ '.git' })
+      end,
+    }),
 
+    -- Lua
     diagnostics.luacheck.with({
       condition = function(utils)
         return utils.root_has_file({ '.luacheckrc' })

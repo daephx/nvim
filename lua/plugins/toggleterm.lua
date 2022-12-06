@@ -24,7 +24,7 @@ toggleterm.setup({
   dir = vim.fn.getcwd(),
   direction = 'horizontal',
   float_opts = {
-    border = 'curved',
+    border = 'single',
     width = 190,
     height = 50,
     winblend = 8,

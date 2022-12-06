@@ -43,8 +43,8 @@ M.config = function()
 
       -- Set character list for prompt borders
       border = {},
-      borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }, -- Rounded corners
-      -- borderchars = {'─', '│', '─', '│', '┌', '┐', '┘', '└'}, -- Square Corners
+      -- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }, -- Rounded corners
+      borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }, -- Square Corners
 
       layout_config = { -- Default settings for layout themes
         prompt_position = 'top',

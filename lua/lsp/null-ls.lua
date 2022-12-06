@@ -51,12 +51,19 @@ null_ls.setup({
       end,
     }),
 
-    -- Shell scripts
-    -- formatting.shfmt,
+    -- Shellscript
     code_actions.shellcheck,
-    diagnostics.shellcheck.with({
-      -- diagnostics_format = "[#{c}] #{m} (#{s})"
+    diagnostics.shellcheck,
+    formatting.shfmt.with({
+      extra_args = {
+        '--indent ' .. vim.o.shiftwidth,
+        '--switch-case-indent',
+        '--func-next-line',
+      },
     }),
+    diagnostics.zsh,
+    diagnostics.fish,
+    formatting.fish_indent,
 
     -- Python
     diagnostics.flake8,

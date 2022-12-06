@@ -22,7 +22,17 @@ null_ls.setup({
     diagnostics.gitlint,
     code_actions.gitsigns,
 
-    -- formatting.lua_format,
+    diagnostics.luacheck.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.luacheckrc' })
+      end,
+      extra_args = { '--globals', 'vim' },
+    }),
+    formatting.lua_format.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.lua_format' })
+      end,
+    }),
     formatting.stylua.with({
       condition = function(utils)
         return utils.root_has_file({ 'stylua.toml', '.stylua.toml' })

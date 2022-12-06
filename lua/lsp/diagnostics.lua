@@ -28,8 +28,8 @@ local format = function(diagnostic)
 end
 
 local float_prefix = function(diagnostic)
-  local res = icons.diagnostic_icons[diagnostic.severity]
-  return string.format(' %s', res[1]), res[2]
+  local tbl = icons.diagnostics[diagnostic.severity]
+  return string.format('%s ', tbl.sign), tbl.hl
 end
 
 vim.diagnostic.config({

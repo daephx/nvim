@@ -2,17 +2,20 @@
 
 local M = {}
 
-M.diagnostic_icons = {
-  [vim.diagnostic.severity.ERROR] = { ' ', 'DiagnosticSignError' },
-  [vim.diagnostic.severity.WARN] = { ' ', 'DiagnosticSignWarn' },
-  [vim.diagnostic.severity.INFO] = { ' ', 'DiagnosticSignInfo' },
-  [vim.diagnostic.severity.HINT] = { ' ', 'DiagnosticSignHint' },
+M.diagnostics = {
+  [vim.diagnostic.severity.ERROR] = { sign = '', hl = 'DiagnosticSignError' },
+  [vim.diagnostic.severity.WARN] = { sign = '', hl = 'DiagnosticSignWarn' },
+  [vim.diagnostic.severity.INFO] = { sign = '', hl = 'DiagnosticSignInfo' },
+  [vim.diagnostic.severity.HINT] = { sign = '', hl = 'DiagnosticSignHint' },
 }
 
 -- Apply diagnostic symbols in the sign column
-for _, tbl in pairs(M.diagnostic_icons) do
-  local opts = { text = tbl[1], texthl = tbl[2], linehl = 'none', numhl = 'none' }
-  vim.fn.sign_define(tbl[2], opts)
+for _, tbl in pairs(M.diagnostics) do
+  vim.fn.sign_define(tbl.hl, {
+    sign = tbl.sign,
+    signhl = tbl.hl,
+    numhl = 'none',
+  })
 end
 
 M.completion_kinds = {

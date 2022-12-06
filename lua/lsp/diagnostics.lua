@@ -4,6 +4,7 @@ local icons = require('lsp.icons')
 
 local sources = {
   { 'Lua Diagnostics.', 'Sumneko' },
+  { 'Lua Syntax Check.', 'Sumneko' },
 }
 
 -- Allow for replacing diagnostic source from matching name

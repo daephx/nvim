@@ -18,7 +18,7 @@ for _, tbl in pairs(M.diagnostics) do
   })
 end
 
-M.completion_kinds = {
+M.kinds = {
   Class = 'ﴯ',
   Color = '',
   Constant = '',
@@ -48,8 +48,8 @@ M.completion_kinds = {
 
 -- Apply completion kinds
 local kinds = vim.lsp.protocol.CompletionItemKind
-for i, kind in ipairs(M.completion_kinds) do
-  kinds[i] = M.diagnostic_icons[kind] or kind
+for i, kind in ipairs(M.kinds) do
+  kinds[i] = M.kinds[kind] or kind
 end
 
 return M

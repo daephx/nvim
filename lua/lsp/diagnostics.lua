@@ -37,7 +37,7 @@ vim.diagnostic.config({
     border = 'rounded',
     focusable = false,
     format = format,
-    header = { 'ﴫ Diagnostics:', 'Define' },
+    header = { 'ﴫ Diagnostics:', 'Label' },
     prefix = float_prefix,
     scope = 'line',
     show_header = true,

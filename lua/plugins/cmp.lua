@@ -100,10 +100,21 @@ cmp.setup({
     { name = 'luasnip' },
     {
       name = 'buffer',
+      max_item_count = 8,
       keyword_length = 4,
       option = {
+        -- use only buffers from current tabpage, but omit man pages as they can
+        -- slow down neovim by being too large
         get_bufnrs = function()
-          return vim.api.nvim_list_bufs()
+          local ret = {}
+          for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+            local bufnr = vim.api.nvim_win_get_buf(winid)
+            local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+            if ft ~= 'man' then
+              table.insert(ret, bufnr)
+            end
+          end
+          return ret
         end,
       },
     },

@@ -107,7 +107,11 @@ cmp.setup({
         end,
       },
     },
-    { name = 'path' },
+    {
+      name = 'path',
+      keyword_length = 10,
+      max_item_count = 10,
+    },
   }),
   experimental = {
     ghost_text = true, -- Let's play with this for a day or two

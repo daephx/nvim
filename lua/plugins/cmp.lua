@@ -95,7 +95,7 @@ cmp.setup({
       cmp.config.compare.order,
     },
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'treesitter' },
@@ -114,7 +114,7 @@ cmp.setup({
     { name = 'spell' },
     { name = 'path' },
     { name = 'gh_issues' },
-  },
+  }),
   experimental = {
     ghost_text = true, -- Let's play with this for a day or two
     native_menu = false, -- I like the new menu better! Nice work hrsh7th

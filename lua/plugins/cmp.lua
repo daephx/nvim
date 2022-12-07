@@ -7,6 +7,12 @@ end
 
 local kinds = require('plugins.lsp.icons').kinds
 
+-- Detect whitespace before cursor position.
+local check_backspace = function()
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+end
+
 cmp.setup({
   enable = true,
   formatting = {
@@ -35,23 +41,49 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  mapping = {
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+  mapping = cmp.mapping.preset.insert({
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-
-    -- HACK: This is attempt to make completion work similar to visual studio
-    -- It has an issue where tab context is finicky, it will wait for timeoutlen
-    -- before single tab or attmpet a completeion where it's not needed.
-    -- It would be better if it checked for pummenu and if the cursor was before/after whitespace
-    ['<Tab><Tab>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
+    ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
     }),
-  },
+
+    ['<Down>'] = cmp.mapping({
+      n = cmp.mapping.select_next_item(),
+      c = cmp.mapping.select_prev_item(),
+      i = cmp.config.disable,
+    }),
+
+    ['<Up>'] = cmp.mapping({
+      n = cmp.mapping.select_prev_item(),
+      c = cmp.mapping.select_next_item(),
+      i = cmp.config.disable,
+    }),
+
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() and not check_backspace() then
+        cmp.confirm({ select = true })
+      elseif require('luasnip').expand_or_jumpable() then
+        require('luasnip').expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if require('luasnip').jumpable(-1) then
+        require('luasnip').jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
   sorting = {
     comparators = {
       cmp.config.compare.offset,

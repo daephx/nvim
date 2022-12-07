@@ -168,3 +168,48 @@ cmp.setup({
     },
   },
 })
+
+-- Use cmdline & path source for ':'
+-- (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  preselect = cmp.PreselectMode.None,
+  sources = cmp.config.sources({
+    { name = 'cmdline_history' },
+    -- Do not show completion for words starting with '!'
+    { name = 'cmdline', keyword_pattern = '\\!@<!\\w*' },
+  }, {
+    { name = 'path', max_item_count = 15 },
+  }),
+})
+
+-- Use buffer source for `/`, '?'
+-- (if you enabled `native_menu`, this won't work anymore).
+local search_opts = {
+  sources = cmp.config.sources({
+    { name = 'buffer', max_item_count = 20 },
+  }),
+}
+
+cmp.setup.cmdline('/', search_opts)
+cmp.setup.cmdline('?', search_opts)
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git', max_item_count = 10 },
+    { name = 'buffer', max_item_count = 10 },
+  }, {
+    { name = 'spell', max_item_count = 10 },
+  }),
+})
+
+cmp.setup.filetype('markdown', {
+  sources = cmp.config.sources({
+    { name = 'buffer', max_item_count = 10 },
+    { name = 'nvim_lsp', max_item_count = 10 },
+    { name = 'luasnip', max_item_count = 10 },
+    { name = 'path', max_item_count = 10 },
+  }, {
+    { name = 'spell', max_item_count = 10 },
+  }),
+})

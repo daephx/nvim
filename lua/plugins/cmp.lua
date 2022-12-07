@@ -16,10 +16,10 @@ end
 cmp.setup({
   enable = true,
   formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', kinds[vim_item.kind], vim_item.kind)
-      vim_item.max_width = 50
-      vim_item.menu = ({
+    format = function(entry, item)
+      item.kind = string.format('%s %s', kinds[item.kind], item.kind)
+      item.max_width = 50
+      item.menu = ({
         buffer = '[Buffer]',
         cmp_tabnine = '[TabNine]',
         copilot = '[Copilot]',
@@ -35,7 +35,7 @@ cmp.setup({
         vsnip = '[VSnip]',
         zsh = '[Shell]',
       })[entry.source.name]
-      return vim_item
+      return item
     end,
   },
   snippet = {

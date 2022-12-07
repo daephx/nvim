@@ -169,6 +169,7 @@ return require('packer').startup({
 
     use({ -- Snippet Engine for Neovim written in Lua
       'L3MON4D3/LuaSnip',
+      config = config('plugins.luasnip'),
     })
 
     use({ -- A completion plugin for neovim coded in Lua

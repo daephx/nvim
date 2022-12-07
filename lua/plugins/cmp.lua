@@ -134,4 +134,37 @@ cmp.setup({
     ghost_text = true, -- Let's play with this for a day or two
     native_menu = false, -- I like the new menu better! Nice work hrsh7th
   },
+  completion = {
+    completeopt = 'menu,menuone,noselect',
+    keyword_length = 1,
+  },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = true,
+  },
+  window = {
+    completion = {
+      max_width = 80,
+      border = 'single',
+      completeopt = 'menu,menuone,noselect',
+      keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
+      keyword_length = 2,
+      winhighlight = table.concat({
+        'NormalFloat:NormalFloat',
+        'FloatBorder:FloatBorder',
+      }, ','),
+    },
+    documentation = {
+      border = 'single',
+      winhighlight = table.concat({
+        'NormalFloat:NormalFloat',
+        'FloatBorder:FloatBorder',
+      }, ','),
+    },
+  },
+  view = {
+    entries = {
+      name = 'custom',
+    },
+  },
 })

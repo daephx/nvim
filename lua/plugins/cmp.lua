@@ -17,7 +17,7 @@ cmp.setup({
   enable = true,
   formatting = {
     format = function(entry, item)
-      item.kind = string.format('%s %s', kinds[item.kind], item.kind)
+      item.kind = string.format('%s', kinds[item.kind])
       item.max_width = 50
       item.menu = ({
         buffer = '[Buffer]',
@@ -35,6 +35,10 @@ cmp.setup({
         vsnip = '[VSnip]',
         zsh = '[Shell]',
       })[entry.source.name]
+      if entry.source.source.client then
+        item.menu = ('[%s]'):format(entry.source.source.client.name)
+      end
+
       return item
     end,
   },

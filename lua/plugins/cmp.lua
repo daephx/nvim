@@ -1,20 +1,56 @@
--- nvim-cmp setup
-local cmp = require('cmp')
+-- nvim-cmp | A completion plugin for neovim coded in Lua
+-- https://github.com/hrsh7th/nvim-cmp
+local cmp_ok, cmp = pcall(require, 'cmp')
+if not cmp_ok then
+  return
+end
 
 local kinds = require('plugins.lsp.icons').kinds
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
+  enable = true,
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.kind = string.format('%s %s', kinds[vim_item.kind], vim_item.kind)
+      vim_item.max_width = 50
+      vim_item.menu = ({
+        buffer = '[Buffer]',
+        cmp_tabnine = '[TabNine]',
+        crates = '[Crates]',
+        latex_symbols = '[Latex]',
+        luasnip = '[LuaSnip]',
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        path = '[Path]',
+        spell = '[Spell]',
+        ultisnips = '[Ultisnips]',
+        vsnip = '[VSnip]',
+        zsh = '[Shell]',
+      })[entry.source.name]
+      return vim_item
     end,
   },
-  experimental = {
-    native_menu = false, -- I like the new menu better! Nice work hrsh7th
-    ghost_text = true, -- Let's play with this for a day or two
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    end,
+  },
+  mapping = {
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+
+    -- HACK: This is attempt to make completion work similar to visual studio
+    -- It has an issue where tab context is finicky, it will wait for timeoutlen
+    -- before single tab or attmpet a completeion where it's not needed.
+    -- It would be better if it checked for pummenu and if the cursor was before/after whitespace
+    ['<Tab><Tab>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    }),
   },
   sorting = {
     comparators = {
@@ -45,14 +81,11 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'treesitter' },
-    -- { name = 'vsnip' }, -- For vsnip users.
     { name = 'luasnip' }, -- For luasnip users.
-    -- { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
     {
       name = 'buffer',
-      -- keyword_length = 4,
-      options = {
+      keyword_length = 4,
+      option = {
         get_bufnrs = function()
           return vim.api.nvim_list_bufs()
         end,
@@ -64,84 +97,8 @@ cmp.setup({
     { name = 'path' },
     { name = 'gh_issues' },
   },
-  formatting = {
-    --   with_text = false,
-    format = function(entry, vim_item)
-      vim_item.kind = string.format('%s %s', kinds[vim_item.kind], vim_item.kind)
-      vim_item.max_width = 50
-      vim_item.menu = ({
-        buffer = '[Buffer]',
-        cmp_tabnine = '[TabNine]',
-        crates = '[Crates]',
-        latex_symbols = '[Latex]',
-        luasnip = '[LuaSnip]',
-        nvim_lsp = '[LSP]',
-        nvim_lua = '[Lua]',
-        path = '[Path]',
-        spell = '[Spell]',
-        ultisnips = '[Ultisnips]',
-        vsnip = '[VSnip]',
-        zsh = '[Shell]',
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-e>'] = cmp.mapping.close(),
-
-    ['<C-Space>'] = cmp.mapping.complete(),
-
-    -- HACK: This is attempt to make completion work similar to visual studio
-    -- It has an issue where tab context is finicky, it will wait for timeoutlen
-    -- before single tab or attmpet a completeion where it's not needed.
-    -- It would be better if it checked for pummenu and if the cursor was before/after whitespace
-    ['<Tab><Tab>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    }),
-
-    -- Right is for ghost_text to behave like terminal
-    -- NOTE: Cool! but I only want it to confirm if the completion menu has an active selection.
-    -- ["<Right>"] = cmp.mapping.confirm { select = true },
-
-    -- Insert instead of Select so you don't go away at `stopinsert` after `CursorHoldI`
-    -- @TODOUA: I want to be able to `Select` without `stopinsert` killing it (& keep `stopinsert`)
-    -- ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
-    -- ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
-    -- ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
-    -- ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }, { "i", "c" }),
-
-    -- Alternative :h ins-completion
-    -- ['<Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
-    --
-    -- ['<S-Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
+  experimental = {
+    ghost_text = true, -- Let's play with this for a day or two
+    native_menu = false, -- I like the new menu better! Nice work hrsh7th
   },
 })
-
--- @dmitmel | https://github.com/dmitmel/cmp-cmdline-history
--- this will also setup the history completion for all command-line modes
--- This at the moment doesn't fully work in the same way that vim's cmd history list
--- is displayed and causes some friction in my workflow. It will be disabled for now.
--- for _, cmd_type in ipairs({':', '/', '?', '@', '='}) do
---   cmp.setup.cmdline(cmd_type, {
---     sources = {
---       { name = 'cmdline_history', keyword_length = 4 },
---     },
---   })
--- end

@@ -22,14 +22,16 @@ cmp.setup({
       vim_item.menu = ({
         buffer = '[Buffer]',
         cmp_tabnine = '[TabNine]',
+        copilot = '[Copilot]',
         crates = '[Crates]',
+        git = '[Git]',
         latex_symbols = '[Latex]',
         luasnip = '[LuaSnip]',
         nvim_lsp = '[LSP]',
         nvim_lua = '[Lua]',
         path = '[Path]',
         spell = '[Spell]',
-        ultisnips = '[Ultisnips]',
+        ultisnips = '[UltiSnip]',
         vsnip = '[VSnip]',
         zsh = '[Shell]',
       })[entry.source.name]

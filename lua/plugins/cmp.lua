@@ -97,9 +97,7 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'nvim_lua' },
-    { name = 'treesitter' },
-    { name = 'luasnip' }, -- For luasnip users.
+    { name = 'luasnip' },
     {
       name = 'buffer',
       keyword_length = 4,
@@ -109,11 +107,7 @@ cmp.setup({
         end,
       },
     },
-    { name = 'calc' },
-    { name = 'emoji' },
-    { name = 'spell' },
     { name = 'path' },
-    { name = 'gh_issues' },
   }),
   experimental = {
     ghost_text = true, -- Let's play with this for a day or two

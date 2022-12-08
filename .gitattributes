@@ -1,0 +1,3 @@
+# Exclude templates from language statistics
+snippets/** linguist-vendored
+templates/** linguist-vendored

@@ -343,6 +343,14 @@ return require('packer').startup({
       config = config('plugins.which-key'),
     })
 
+    use({ -- spellcheck dictionary for programmers
+      'psliwka/vim-dirtytalk',
+      run = ':DirtytalkUpdate',
+      config = function()
+        vim.opt.spelllang:append('programming')
+      end,
+    })
+
     -- ======================================
     -- *       END OF PLUGIN SECTION       *
     -- ======================================

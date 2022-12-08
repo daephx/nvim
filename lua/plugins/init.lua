@@ -296,7 +296,7 @@ return require('packer').startup({
 
     use({ -- Automatic indentation style detection
       'NMAC427/guess-indent.nvim',
-      config = config('guess-indent'),
+      config = config('plugins.guess-indent'),
     })
 
     use({ -- EditorConfig plugin for Neovim

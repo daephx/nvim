@@ -192,6 +192,13 @@ return require('packer').startup({
       config = config('plugins.nvim-autopairs'),
     })
 
+    use({ -- tab out from parens, quotes, and similar contexts
+      'abecodes/tabout.nvim',
+      config = config('tabout'),
+      wants = { 'nvim-treesitter' },
+      after = { 'nvim-cmp' },
+    })
+
     --- Language ---
 
     use({ -- Advanced language parsing for neovim

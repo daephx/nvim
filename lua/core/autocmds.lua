@@ -133,3 +133,17 @@ autocmd({ 'TermClose', 'BufLeave' }, {
   pattern = 'term://*',
   command = 'stopinsert',
 })
+
+augroup('SkeletonTemplate', {})
+autocmd('BufNewFile', {
+  desc = 'Inject Skeleton template when creating new file',
+  group = 'SkeletonTemplate',
+  pattern = '*',
+  callback = function()
+    vim.cmd(
+      "silent! execute '0r "
+        .. vim.fn.stdpath('config')
+        .. "/templates/skel/skeleton.'.expand('<afile>:e')"
+    )
+  end,
+})

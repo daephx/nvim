@@ -152,6 +152,8 @@ cmp.setup({
       winhighlight = table.concat({
         'NormalFloat:NormalFloat',
         'FloatBorder:FloatBorder',
+        'CursorLine:Visual',
+        'Search:None',
       }, ','),
     },
     documentation = {
@@ -159,6 +161,8 @@ cmp.setup({
       winhighlight = table.concat({
         'NormalFloat:NormalFloat',
         'FloatBorder:FloatBorder',
+        'CursorLine:Visual',
+        'Search:None',
       }, ','),
     },
   },

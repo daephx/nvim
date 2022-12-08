@@ -351,6 +351,11 @@ return require('packer').startup({
       end,
     })
 
+    use({ -- Improve startup time for Neovim
+      'lewis6991/impatient.nvim',
+      config = config('impatient'),
+    })
+
     use({ -- Prevent nested instances of neovim
       'samjwill/nvim-unception',
       config = function()

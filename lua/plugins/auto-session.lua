@@ -15,7 +15,6 @@ auto_session.setup({
   log_level = 'error',
   auto_restore_enabled = true,
   auto_save_enabled = true,
-  auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',
   auto_session_suppress_dirs = { '/', '~/', '~/Documents', '~/Downloads', '~/Projects' },
   bypass_session_save_file_types = false,
 })

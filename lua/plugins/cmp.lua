@@ -169,6 +169,7 @@ cmp.setup({
   view = {
     entries = {
       name = 'custom',
+      selection_order = 'cursor',
     },
   },
 })

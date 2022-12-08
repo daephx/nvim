@@ -12,6 +12,7 @@ if not auto_session_ok then
 end
 
 auto_session.setup({
+  log_level = 'error',
   auto_restore_enabled = true,
   auto_save_enabled = true,
   auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',

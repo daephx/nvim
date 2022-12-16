@@ -10,7 +10,7 @@
 local indent = 2
 
 -- General options
-vim.opt.textwidth = 102 -- Limit length of characters per line
+vim.opt.textwidth = 80 -- Limit length of characters per line
 vim.opt.autoread = true -- Load changes made outside of Vim
 vim.opt.autochdir = false -- Change working directory to active buffer
 vim.opt.smartindent = false -- Insert indents automatically

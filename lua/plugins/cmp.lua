@@ -13,12 +13,16 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
 end
 
+local ELLIPSIS_CHAR = '…'
+local MAX_LABEL_WIDTH = 60
+local MIN_LABEL_WIDTH = 20
+
 cmp.setup({
   enable = true,
   formatting = {
     format = function(entry, item)
       item.kind = string.format('%s', kinds[item.kind])
-      item.max_width = 50
+      item.max_width = 60
       item.menu = ({
         buffer = '[Buffer]',
         cmp_tabnine = '[TabNine]',
@@ -35,10 +39,20 @@ cmp.setup({
         vsnip = '[VSnip]',
         zsh = '[Shell]',
       })[entry.source.name]
+      -- Replace [LSP] with relevant client name
       if entry.source.source.client then
         item.menu = ('[%s]'):format(entry.source.source.client.name)
       end
-
+      -- Truncate completion labels to control width of float
+      -- https://github.com/hrsh7th/nvim-cmp/issues/980#issuecomment-1121773499
+      local label = item.abbr
+      local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+      if truncated_label ~= label then
+        item.abbr = truncated_label .. ELLIPSIS_CHAR
+      elseif string.len(label) < MIN_LABEL_WIDTH then
+        local padding = string.rep(' ', MIN_LABEL_WIDTH - string.len(label))
+        item.abbr = label .. padding
+      end
       return item
     end,
   },

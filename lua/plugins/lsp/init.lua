@@ -2,19 +2,19 @@
 -- Setup native lsp using lspconfig helper plugin
 
 -- Define default variables
-local server_mpath = 'lsp/servers'
+local server_mpath = 'plugins/lsp/servers'
 local default_options = {
-  capabilities = require('lsp.capabilities'),
-  on_attach = require('lsp.attach'),
+  capabilities = require('plugins.lsp.capabilities'),
+  on_attach = require('plugins.lsp.attach'),
 }
 
 -- Initialize local lsp modules
-require('lsp.diagnostics')
-require('lsp.handlers')
-require('lsp.icons')
-require('lsp.null-ls')
-require('lsp.lspconfig')
-require('lsp.mason')
+require('plugins.lsp.diagnostics')
+require('plugins.lsp.handlers')
+require('plugins.lsp.icons')
+require('plugins.lsp.null-ls')
+require('plugins.lsp.lspconfig')
+require('plugins.lsp.mason')
 require('mason-lspconfig').setup_handlers({
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have
@@ -34,14 +34,14 @@ require('mason-lspconfig').setup_handlers({
   end,
 
   ['rust_analyzer'] = function()
-    require('lsp/servers/rust_analyzer')
+    require('plugins/lsp/servers/rust_analyzer')
   end,
 
   ['jdtls'] = function()
-    require('lsp/servers/jdtls')
+    require('plugins/lsp/servers/jdtls')
   end,
 
   ['zk'] = function()
-    require('lsp/servers/zk')
+    require('plugins/lsp/servers/zk')
   end,
 })

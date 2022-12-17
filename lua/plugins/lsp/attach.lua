@@ -1,9 +1,9 @@
-local codelens = require('lsp.handlers.codelens')
-local formatting = require('lsp.handlers.formatting')
-local highlight = require('lsp.handlers.highlight')
-local hover = require('lsp.handlers.hover')
-local keymaps = require('lsp.keymaps')
-local signature = require('lsp.handlers.signature')
+local codelens = require('plugins.lsp.handlers.codelens')
+local formatting = require('plugins.lsp.handlers.formatting')
+local highlight = require('plugins.lsp.handlers.highlight')
+local hover = require('plugins.lsp.handlers.hover')
+local keymaps = require('plugins.lsp.keymaps')
+local signature = require('plugins.lsp.handlers.signature')
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer

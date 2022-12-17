@@ -1,7 +1,5 @@
 local M = {}
 
-local formatting = require('lsp.handlers.formatting')
-
 -- Initialize and attach Language Server keymaps to the active buffer
 ---@param bufnr integer
 M.initialize_keymaps = function(_, bufnr)
@@ -46,7 +44,10 @@ M.initialize_keymaps = function(_, bufnr)
   map('n', 'gr', vim.lsp.buf.references, {
     desc = 'Goto references',
   })
-  map({ 'n', 'v' }, 'gf', formatting.format_document, {
+  map({ 'n', 'v' }, 'gf', function()
+    local formatting = require('plugins.lsp.handlers.formatting')
+    formatting.format_document()
+  end, {
     desc = 'Format document',
   })
   map('n', '<leader>de', vim.diagnostic.open_float, {

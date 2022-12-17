@@ -5,7 +5,7 @@ if not null_ok then
   return
 end
 
-local on_attach = require('lsp.attach')
+local on_attach = require('plugins.lsp.attach')
 
 local code_actions = null_ls.builtins.code_actions
 local completion = null_ls.builtins.completion

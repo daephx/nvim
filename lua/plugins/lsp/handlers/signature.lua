@@ -1,5 +1,3 @@
--- lsp/handlers/signature.lua
-
 local M = {}
 
 -- Show signature help on cursor position in hover window

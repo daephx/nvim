@@ -1,6 +1,6 @@
 -- lsp/handlers/diagnostics.lua
 
-local icons = require('lsp.icons')
+local icons = require('plugins.lsp.icons')
 
 local sources = {
   { 'Lua Diagnostics.', 'Sumneko' },

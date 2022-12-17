@@ -1,7 +1,7 @@
 -- nvim-cmp setup
 local cmp = require('cmp')
 
-local kinds = require('lsp.icons').kinds
+local kinds = require('plugins.lsp.icons').kinds
 
 cmp.setup({
   snippet = {

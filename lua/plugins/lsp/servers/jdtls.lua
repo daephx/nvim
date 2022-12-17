@@ -41,8 +41,8 @@ end
 
 -- local root_dir = { '.gradlew', '.git', 'mvnw', 'build.xml ', 'pom.xml' }
 
-local capabilities = require('lsp.capabilities')
-local default_attach = require('lsp.attach')
+local capabilities = require('plugins.lsp.capabilities')
+local default_attach = require('plugins.lsp.attach')
 
 local default_config = require('lspconfig').jdtls.document_config.default_config
 

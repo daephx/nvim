@@ -1,5 +1,3 @@
--- lsp/handlers/hover.lua
-
 local M = {}
 
 -- Enable diagnostic hover window at cursor position on CursorHold

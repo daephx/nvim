@@ -33,7 +33,7 @@ return {
           indent_style = vim.o.expandtab and 'space' or 'tab',
           indent_size = tostring(vim.o.shiftwidth),
           max_line_length = tostring(vim.o.textwidth),
-          -- quote_style = 'single',
+          quote_style = "double",
           trim_trailing_whitespace = 'true',
           insert_final_newline = 'true',
           keep_line_after_do_statement = 'minLine:1',

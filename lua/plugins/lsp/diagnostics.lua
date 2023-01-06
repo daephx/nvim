@@ -1,10 +1,10 @@
 -- lsp/handlers/diagnostics.lua
 
-local icons = require('plugins.lsp.icons')
+local icons = require("plugins.lsp.icons")
 
 local sources = {
-  { 'Lua Diagnostics.', 'Sumneko' },
-  { 'Lua Syntax Check.', 'Sumneko' },
+  { "Lua Diagnostics.", "Sumneko" },
+  { "Lua Syntax Check.", "Sumneko" },
 }
 
 -- Allow for replacing diagnostic source from matching name
@@ -20,12 +20,12 @@ end
 
 local format = function(diagnostic)
   local name = rename_diagnostic_source(diagnostic)
-  return string.format('%s: %s ', name, diagnostic.message)
+  return string.format("%s: %s ", name, diagnostic.message)
 end
 
 local float_prefix = function(diagnostic)
   local tbl = icons.diagnostics[diagnostic.severity]
-  return string.format('%s ', tbl.text), tbl.hl
+  return string.format("%s ", tbl.text), tbl.hl
 end
 
 vim.diagnostic.config({
@@ -34,17 +34,17 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
   float = {
-    border = 'single',
+    border = "single",
     focusable = false,
     format = format,
-    header = { 'ﴫ Diagnostics:', 'Label' },
+    header = { "ﴫ Diagnostics:", "Label" },
     prefix = float_prefix,
-    scope = 'line',
+    scope = "line",
     show_header = true,
     source = false,
   },
   virtual_text = {
-    prefix = '■',
+    prefix = "■",
     spacing = 1,
     source = false,
     format = format,

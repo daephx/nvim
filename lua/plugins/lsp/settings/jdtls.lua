@@ -1,39 +1,39 @@
 -- jdtls: Java eclipse language server
-local jdtls_ok, jdtls = pcall(require, 'jdtls')
+local jdtls_ok, jdtls = pcall(require, "jdtls")
 if not jdtls_ok then
-  vim.notify('nvim-jdtls: package not found, please install it first', vim.log.levels.ERROR)
+  vim.notify("nvim-jdtls: package not found, please install it first", vim.log.levels.ERROR)
   return
 end
 
 local env = {
   HOME = vim.loop.os_homedir(),
-  XDG_CACHE_HOME = os.getenv('XDG_CACHE_HOME'),
-  JDTLS_JVM_ARGS = os.getenv('JDTLS_JVM_ARGS'),
+  XDG_CACHE_HOME = os.getenv("XDG_CACHE_HOME"),
+  JDTLS_JVM_ARGS = os.getenv("JDTLS_JVM_ARGS"),
 }
 
-local path = require('lspconfig.util').path
+local path = require("lspconfig.util").path
 
 local function get_cache_dir()
-  return env.XDG_CACHE_HOME and env.XDG_CACHE_HOME or path.join(env.HOME, '.cache')
+  return env.XDG_CACHE_HOME and env.XDG_CACHE_HOME or path.join(env.HOME, ".cache")
 end
 
 local function get_jdtls_cache_dir()
-  return path.join(get_cache_dir(), 'jdtls')
+  return path.join(get_cache_dir(), "jdtls")
 end
 
 local function get_jdtls_config_dir()
-  return path.join(get_jdtls_cache_dir(), 'config')
+  return path.join(get_jdtls_cache_dir(), "config")
 end
 
 local function get_jdtls_workspace_dir()
-  local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
-  return path.join(get_jdtls_cache_dir(), 'workspaces', project_name)
+  local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+  return path.join(get_jdtls_cache_dir(), "workspaces", project_name)
 end
 
 local function get_jdtls_jvm_args()
   local args = {}
-  for a in string.gmatch((env.JDTLS_JVM_ARGS or ''), '%S+') do
-    local arg = string.format('--jvm-arg=%s', a)
+  for a in string.gmatch((env.JDTLS_JVM_ARGS or ""), "%S+") do
+    local arg = string.format("--jvm-arg=%s", a)
     table.insert(args, arg)
   end
   return unpack(args)
@@ -41,35 +41,35 @@ end
 
 -- local root_dir = { '.gradlew', '.git', 'mvnw', 'build.xml ', 'pom.xml' }
 
-local capabilities = require('plugins.lsp.capabilities')
-local default_attach = require('plugins.lsp.attach')
+local capabilities = require("plugins.lsp.capabilities")
+local default_attach = require("plugins.lsp.attach")
 
-local default_config = require('lspconfig').jdtls.document_config.default_config
+local default_config = require("lspconfig").jdtls.document_config.default_config
 
 local function on_attach(client, bufnr)
-  require('jdtls.setup').add_commands()
+  require("jdtls.setup").add_commands()
   default_attach(client, bufnr)
-  jdtls.setup_dap({ hotcodereplace = 'auto' })
+  jdtls.setup_dap({ hotcodereplace = "auto" })
   local map = vim.keymap.set
-  map({ 'n' }, '<A-o>', "<Cmd>lua require('jdtls').organize_imports()<CR>", { remap = false })
-  map({ 'n', 'v' }, 'crv', "<Esc><Cmd>lua require('jdtls').extract_variable()<CR>", { remap = false })
-  map({ 'n', 'v' }, 'crc', "<Cmd>lua require('jdtls').extract_constant()<CR>", { remap = false })
-  map({ 'n' }, 'crm', "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { remap = false })
+  map({ "n" }, "<A-o>", "<Cmd>lua require('jdtls').organize_imports()<CR>", { remap = false })
+  map({ "n", "v" }, "crv", "<Esc><Cmd>lua require('jdtls').extract_variable()<CR>", { remap = false })
+  map({ "n", "v" }, "crc", "<Cmd>lua require('jdtls').extract_constant()<CR>", { remap = false })
+  map({ "n" }, "crm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", { remap = false })
 
   -- If using nvim-dap
   -- This requires java-debug and vscode-java-test bundles, see install steps in this README further below.
-  map({ 'n' }, '<leader>df', "<Cmd>lua require('jdtls').test_class()<CR>", { remap = false })
-  map({ 'n' }, '<leader>dn', "<Cmd>lua require('jdtls').test_nearest_method()<CR>", { remap = false })
+  map({ "n" }, "<leader>df", "<Cmd>lua require('jdtls').test_class()<CR>", { remap = false })
+  map({ "n" }, "<leader>dn", "<Cmd>lua require('jdtls').test_nearest_method()<CR>", { remap = false })
 end
 
 local config = {
   capabilities = capabilities,
   on_attach = on_attach,
   cmd = {
-    'jdtls',
-    '-configuration',
+    "jdtls",
+    "-configuration",
     get_jdtls_config_dir(),
-    '-data',
+    "-data",
     get_jdtls_workspace_dir(),
     get_jdtls_jvm_args(),
   },
@@ -87,10 +87,10 @@ local config = {
       completion = {
         favoriteStaticMembers = {},
         importOrder = {
-          'javax',
-          'java',
-          'com',
-          'org',
+          "javax",
+          "java",
+          "com",
+          "org",
         },
       },
       saveActions = {
@@ -108,15 +108,15 @@ local config = {
           enabled = false,
         },
         settings = {
-          profile = 'GoogleStyle',
-          url = 'https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml',
+          profile = "GoogleStyle",
+          url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
         },
       },
       codeGeneration = {
         tostring = {
           listArrayContents = true,
           skipNullValues = true,
-          template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}',
+          template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
         },
         useBlocks = true,
         hashCodeEquals = {
@@ -140,12 +140,12 @@ local config = {
       -- The `name` is NOT arbitrary, but must match one of the elements from `enum ExecutionEnvironment` in the link above
       runtimes = {
         {
-          name = 'JavaSE-11',
-          path = '/usr/lib/jvm/java-11-openjdk-amd64/',
+          name = "JavaSE-11",
+          path = "/usr/lib/jvm/java-11-openjdk-amd64/",
         },
         {
-          name = 'JavaSE-17',
-          path = '/usr/lib/jvm/java-17-openjdk-amd64/',
+          name = "JavaSE-17",
+          path = "/usr/lib/jvm/java-17-openjdk-amd64/",
         },
       },
     },
@@ -156,12 +156,12 @@ local config = {
   },
 }
 
-local group = vim.api.nvim_create_augroup('JdtlsConfiguration', {})
+local group = vim.api.nvim_create_augroup("JdtlsConfiguration", {})
 
-vim.api.nvim_create_autocmd('FileType', {
-  desc = 'Attach jdtls to java filetypes',
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Attach jdtls to java filetypes",
   group = group,
-  pattern = 'java',
+  pattern = "java",
   callback = function()
     jdtls.start_or_attach(config)
   end,

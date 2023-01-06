@@ -1,6 +1,6 @@
 -- Comment.nvim | Smart and powerful comment plugin for neovim
 -- https://github.com/numToStr/Comment.nvim
-local comment_ok, comment = pcall(require, 'Comment')
+local comment_ok, comment = pcall(require, "Comment")
 if not comment_ok then
   return
 end
@@ -27,7 +27,7 @@ end
 comment.setup({
   padding = true,
   sticky = true,
-  ignore = '^$',
+  ignore = "^$",
   mappings = {
     basic = true,
     extra = true,
@@ -37,7 +37,7 @@ comment.setup({
 
 --- Keymaps ---
 
-local api = require('Comment.api')
+local api = require("Comment.api")
 local map = vim.keymap.set
 
 -- Utilizing Comment.nvim extended keymaps
@@ -46,27 +46,27 @@ local map = vim.keymap.set
 -- + Windows Terminal | <c-_>
 
 -- Insert
-map('i', '<c-/>', api.toggle.linewise.current)
-map('i', '<c-_>', api.toggle.linewise.current)
+map("i", "<c-/>", api.toggle.linewise.current)
+map("i", "<c-_>", api.toggle.linewise.current)
 
 -- Normal
-map('n', '<c-/>', api.toggle.linewise.current)
-map('n', '<c-_>', api.toggle.linewise.current)
+map("n", "<c-/>", api.toggle.linewise.current)
+map("n", "<c-_>", api.toggle.linewise.current)
 
 -- Visual
-local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
 
-map('x', '<c-_>', function()
-  vim.api.nvim_feedkeys(esc, 'nx', false)
-  api.locked('toggle.linewise')(vim.fn.visualmode())
-end, { desc = 'Comment toggle linewise (visual)' })
+map("x", "<c-_>", function()
+  vim.api.nvim_feedkeys(esc, "nx", false)
+  api.locked("toggle.linewise")(vim.fn.visualmode())
+end, { desc = "Comment toggle linewise (visual)" })
 
-map('x', '<c-/>', function()
-  vim.api.nvim_feedkeys(esc, 'nx', false)
-  api.locked('toggle.linewise')(vim.fn.visualmode())
-end, { desc = 'Comment toggle linewise (visual)' })
+map("x", "<c-/>", function()
+  vim.api.nvim_feedkeys(esc, "nx", false)
+  api.locked("toggle.linewise")(vim.fn.visualmode())
+end, { desc = "Comment toggle linewise (visual)" })
 
-map('x', '<a-A>', function()
-  vim.api.nvim_feedkeys(esc, 'nx', false)
-  api.locked('toggle.blockwise')(vim.fn.visualmode())
-end, { desc = 'Comment toggle blockwise (visual)' })
+map("x", "<a-A>", function()
+  vim.api.nvim_feedkeys(esc, "nx", false)
+  api.locked("toggle.blockwise")(vim.fn.visualmode())
+end, { desc = "Comment toggle blockwise (visual)" })

@@ -1,33 +1,33 @@
 -- nvim-treesitter | Nvim Treesitter configurations and abstraction layer
 -- https://github.com/nvim-treesitter/nvim-treesitter
-local treesitter_ok, _ = require('nvim-treesitter')
+local treesitter_ok, _ = require("nvim-treesitter")
 if not treesitter_ok then
   return
 end
 
-local ts_configs = require('nvim-treesitter.configs')
-local parser_configs = require('nvim-treesitter.parsers').get_parser_configs()
+local ts_configs = require("nvim-treesitter.configs")
+local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
 -- Include PowerShell parser
 parser_configs.powershell = {
   install_info = {
-    url = 'https://github.com/jrsconfitto/tree-sitter-powershell',
-    files = { 'src/parser.c' },
+    url = "https://github.com/jrsconfitto/tree-sitter-powershell",
+    files = { "src/parser.c" },
   },
-  filetype = 'ps1',
-  used_by = { 'psm1', 'psd1', 'pssc', 'psxml', 'cdxml' },
+  filetype = "ps1",
+  used_by = { "psm1", "psd1", "pssc", "psxml", "cdxml" },
 }
 
 ts_configs.setup({
   -- A list of parser names, or "all"
   ensure_installed = {
-    'bash',
-    'c',
-    'help',
-    'lua',
-    'markdown',
-    'python',
-    'vim',
+    "bash",
+    "c",
+    "help",
+    "lua",
+    "markdown",
+    "python",
+    "vim",
   },
   ignore_install = {}, -- List of parsers to ignore installing
   auto_install = true, -- Automatically install missing parsers when entering buffer
@@ -43,15 +43,15 @@ ts_configs.setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = 'gnn',
-      node_incremental = 'grn',
-      scope_incremental = 'grc',
-      node_decremental = 'grm',
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
     },
   },
   indent = {
     enable = true,
-    disable = { 'python', 'yaml' },
+    disable = { "python", "yaml" },
   },
   rainbow = {
     enable = true,
@@ -71,30 +71,30 @@ ts_configs.setup({
       lookahead = true, -- Automatically jump forward to text object, similar to targets.vim
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
       },
       goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
       },
       goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
       },
       goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
       },
     },
   },

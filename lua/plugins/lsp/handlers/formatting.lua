@@ -1,7 +1,7 @@
 local M = {}
 
 local disabled_formatters = {
-  global = { 'copilot' },
+  global = { "copilot" },
   filetypes = {},
 }
 
@@ -9,10 +9,10 @@ local disabled_formatters = {
 ---@param bufnr integer
 ---@return boolean
 local function null_has_formatter(bufnr)
-  local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-  local generators = require('null-ls.generators').get_available(
+  local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local generators = require("null-ls.generators").get_available(
     filetype,
-    require('null-ls.methods').internal.FORMATTING
+    require("null-ls.methods").internal.FORMATTING
   )
   return #generators > 0
 end
@@ -35,7 +35,7 @@ M.format_document = function(bufnr)
   vim.lsp.buf.format({
     bufnr = bufnr,
     filter = function(client)
-      local filetype = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+      local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 
       -- Filter user disable clients
       local disabled_g = disabled_formatters.global or {}
@@ -50,8 +50,8 @@ M.format_document = function(bufnr)
       end
 
       -- Prefer null-ls or EFM if present in client list
-      if vim.tbl_contains(buf_get_clients(bufnr), 'null-ls') then
-        if client.name ~= 'null-ls' and null_has_formatter(bufnr) then
+      if vim.tbl_contains(buf_get_clients(bufnr), "null-ls") then
+        if client.name ~= "null-ls" and null_has_formatter(bufnr) then
           return false
         end
       end
@@ -65,14 +65,14 @@ end
 ---@param client table
 ---@param bufnr integer
 M.enable_auto_formatting = function(client, bufnr)
-  local group = vim.api.nvim_create_augroup('LspFormatting', {})
-  if client.supports_method('textDocument/formatting') then
-    vim.api.nvim_create_user_command('Format', 'do User LspFormatting', {})
+  local group = vim.api.nvim_create_augroup("LspFormatting", {})
+  if client.supports_method("textDocument/formatting") then
+    vim.api.nvim_create_user_command("Format", "do User LspFormatting", {})
     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      desc = 'Apply Auto-formatting for to document on save',
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      desc = "Apply Auto-formatting for to document on save",
       group = group,
-      pattern = '*',
+      pattern = "*",
       callback = function(opts)
         M.format_document(opts.bufnr)
       end,

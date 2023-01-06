@@ -1,12 +1,12 @@
 -- Diffview.nvim | tabpage interface for easily cycling through diffs
 -- URL: https://github.com/sindrets/diffview.nvim
 
-local diffview_ok, diffview = pcall(require, 'diffview')
+local diffview_ok, diffview = pcall(require, "diffview")
 if not diffview_ok then
   return
 end
 
-local callback = require('diffview.config').diffview_callback
+local callback = require("diffview.config").diffview_callback
 
 diffview.setup({
   -- Show diffs for binaries
@@ -17,34 +17,34 @@ diffview.setup({
   use_icons = true,
   -- Only applies when use_icons is true.
   icons = {
-    folder_closed = '',
-    folder_open = '',
+    folder_closed = "",
+    folder_open = "",
   },
   signs = {
-    fold_closed = '',
-    fold_open = '',
+    fold_closed = "",
+    fold_open = "",
   },
   file_panel = {
     win_config = {
       -- One of 'left', 'right', 'top', 'bottom'
-      position = 'right',
+      position = "right",
       -- Only applies when position is 'left' or 'right'
       width = 35,
       -- Only applies when position is 'top' or 'bottom'
       height = 10,
     },
     -- One of 'list' or 'tree'
-    listing_style = 'tree',
+    listing_style = "tree",
     -- Only applies when listing_style is 'tree'
     tree_options = {
       flatten_dirs = true,
       -- One of 'never', 'only_folded' or 'always'.
-      folder_statuses = 'always',
+      folder_statuses = "always",
     },
   },
   file_history_panel = {
     win_config = {
-      position = 'bottom',
+      position = "bottom",
       width = 35,
       height = 16,
     },
@@ -61,80 +61,80 @@ diffview.setup({
     disable_defaults = false,
     view = {
       -- Open the diff for the next file
-      ['<tab>'] = callback('select_next_entry'),
+      ["<tab>"] = callback("select_next_entry"),
       -- Open the diff for the previous file
-      ['<s-tab>'] = callback('select_prev_entry'),
+      ["<s-tab>"] = callback("select_prev_entry"),
       -- Open the file in a new split in previous tabpage
-      ['gf'] = callback('goto_file'),
+      ["gf"] = callback("goto_file"),
       -- Open the file in a new split
-      ['<C-w><C-f>'] = callback('goto_file_split'),
+      ["<C-w><C-f>"] = callback("goto_file_split"),
       -- Open the file in a new tabpage
-      ['<C-w>gf'] = callback('goto_file_tab'),
+      ["<C-w>gf"] = callback("goto_file_tab"),
       -- Bring focus to the files panel
-      ['<leader>e'] = callback('focus_files'),
+      ["<leader>e"] = callback("focus_files"),
       -- Toggle the files panel.
-      ['<leader>b'] = callback('toggle_files'),
+      ["<leader>b"] = callback("toggle_files"),
     },
     file_panel = {
       -- Bring the cursor to the next file entry
-      ['j'] = callback('next_entry'),
-      ['<down>'] = callback('next_entry'),
+      ["j"] = callback("next_entry"),
+      ["<down>"] = callback("next_entry"),
       -- Bring the cursor to the previous file entry.
-      ['k'] = callback('prev_entry'),
-      ['<up>'] = callback('prev_entry'),
+      ["k"] = callback("prev_entry"),
+      ["<up>"] = callback("prev_entry"),
       -- Open the diff for the selected entry.
-      ['<cr>'] = callback('select_entry'),
-      ['o'] = callback('select_entry'),
-      ['<2-LeftMouse>'] = callback('select_entry'),
+      ["<cr>"] = callback("select_entry"),
+      ["o"] = callback("select_entry"),
+      ["<2-LeftMouse>"] = callback("select_entry"),
       -- Stage / unstage the selected entry.
-      ['-'] = callback('toggle_stage_entry'),
+      ["-"] = callback("toggle_stage_entry"),
       -- Stage all entries.
-      ['S'] = callback('stage_all'),
+      ["S"] = callback("stage_all"),
       -- Unstage all entries.
-      ['U'] = callback('unstage_all'),
+      ["U"] = callback("unstage_all"),
       -- Restore entry to the state on the left side.
-      ['X'] = callback('restore_entry'),
+      ["X"] = callback("restore_entry"),
       -- Update stats and entries in the file list.
-      ['R'] = callback('refresh_files'),
-      ['<tab>'] = callback('select_next_entry'),
-      ['<s-tab>'] = callback('select_prev_entry'),
-      ['gf'] = callback('goto_file'),
-      ['<C-w><C-f>'] = callback('goto_file_split'),
-      ['<C-w>gf'] = callback('goto_file_tab'),
+      ["R"] = callback("refresh_files"),
+      ["<tab>"] = callback("select_next_entry"),
+      ["<s-tab>"] = callback("select_prev_entry"),
+      ["gf"] = callback("goto_file"),
+      ["<C-w><C-f>"] = callback("goto_file_split"),
+      ["<C-w>gf"] = callback("goto_file_tab"),
       -- Toggle between 'list' and 'tree' views
-      ['i'] = callback('listing_style'),
+      ["i"] = callback("listing_style"),
       -- Flatten empty subdirectories in tree listing style.
-      ['f'] = callback('toggle_flatten_dirs'),
-      ['<leader>e'] = callback('focus_files'),
-      ['<leader>b'] = callback('toggle_files'),
+      ["f"] = callback("toggle_flatten_dirs"),
+      ["<leader>e"] = callback("focus_files"),
+      ["<leader>b"] = callback("toggle_files"),
     },
     file_history_panel = {
       -- Open the option panel
-      ['g!'] = callback('options'),
+      ["g!"] = callback("options"),
       -- Open the entry under the cursor in a diffview
-      ['<C-d>'] = callback('open_in_diffview'),
-      ['zR'] = callback('open_all_folds'),
-      ['zM'] = callback('close_all_folds'),
-      ['j'] = callback('next_entry'),
-      ['<down>'] = callback('next_entry'),
-      ['k'] = callback('prev_entry'),
-      ['<up>'] = callback('prev_entry'),
-      ['<cr>'] = callback('select_entry'),
-      ['o'] = callback('select_entry'),
-      ['<2-LeftMouse>'] = callback('select_entry'),
-      ['<tab>'] = callback('select_next_entry'),
-      ['<s-tab>'] = callback('select_prev_entry'),
-      ['gf'] = callback('goto_file'),
-      ['<C-w><C-f>'] = callback('goto_file_split'),
-      ['<C-w>gf'] = callback('goto_file_tab'),
-      ['<leader>e'] = callback('focus_files'),
-      ['<leader>b'] = callback('toggle_files'),
+      ["<C-d>"] = callback("open_in_diffview"),
+      ["zR"] = callback("open_all_folds"),
+      ["zM"] = callback("close_all_folds"),
+      ["j"] = callback("next_entry"),
+      ["<down>"] = callback("next_entry"),
+      ["k"] = callback("prev_entry"),
+      ["<up>"] = callback("prev_entry"),
+      ["<cr>"] = callback("select_entry"),
+      ["o"] = callback("select_entry"),
+      ["<2-LeftMouse>"] = callback("select_entry"),
+      ["<tab>"] = callback("select_next_entry"),
+      ["<s-tab>"] = callback("select_prev_entry"),
+      ["gf"] = callback("goto_file"),
+      ["<C-w><C-f>"] = callback("goto_file_split"),
+      ["<C-w>gf"] = callback("goto_file_tab"),
+      ["<leader>e"] = callback("focus_files"),
+      ["<leader>b"] = callback("toggle_files"),
       -- Copy the commit hash of the entry under the cursor
-      ['y'] = callback('copy_hash'),
+      ["y"] = callback("copy_hash"),
     },
     option_panel = {
-      ['<tab>'] = callback('select'),
-      ['q'] = callback('close'),
+      ["<tab>"] = callback("select"),
+      ["q"] = callback("close"),
     },
   },
 })

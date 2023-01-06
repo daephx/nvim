@@ -56,7 +56,7 @@ end
 
 if not vim.g.loaded_netrwPlugin then
   vim.g.netrw_banner = 0
-  vim.g.netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+  vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
   vim.g.netrw_liststyle = 3 -- Default to tree view
-  vim.g.netrw_localrmdir = 'rm -r'
+  vim.g.netrw_localrmdir = "rm -r"
 end

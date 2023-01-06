@@ -1,6 +1,6 @@
 -- ZenMode | Distraction-free coding for Neovim
 -- https://github.com/folke/zen-mode.nvim
-local zenmode_ok, zenmode = pcall(require, 'zen-mode')
+local zenmode_ok, zenmode = pcall(require, "zen-mode")
 if not zenmode_ok then
   return
 end
@@ -10,7 +10,7 @@ zenmode.setup({
   -- callback where you can add custom code when the Zen window opens
   on_open = function(win)
     local bufnr = vim.api.nvim_win_get_buf(win)
-    if vim.api.nvim_buf_get_option(bufnr, 'buftype') == 'terminal' then
+    if vim.api.nvim_buf_get_option(bufnr, "buftype") == "terminal" then
       vim.api.nvim_win_set_width(win, 1000)
     end
   end,
@@ -18,4 +18,4 @@ zenmode.setup({
 
 --- Keymaps ---
 
-vim.keymap.set('n', '<c-w>z', '<cmd>ZenMode<CR>', { desc = 'Enable ZenMode' })
+vim.keymap.set("n", "<c-w>z", "<cmd>ZenMode<CR>", { desc = "Enable ZenMode" })

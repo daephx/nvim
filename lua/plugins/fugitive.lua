@@ -2,24 +2,24 @@
 -- ...
 
 -- Open Gdiffsplit in new tab
-vim.api.nvim_create_user_command('GdiffsplitTab', function()
+vim.api.nvim_create_user_command("GdiffsplitTab", function()
   local git_dir = vim.fn.FugitiveGitDir()
   if vim.fn.empty(git_dir) == 0 then
-    vim.cmd(string.format("exe 'tabedit %s'", vim.fn.expand('%')))
-    vim.cmd('Gdiffsplit')
+    vim.cmd(string.format("exe 'tabedit %s'", vim.fn.expand("%")))
+    vim.cmd("Gdiffsplit")
     --- Keymaps ---
     local opts = { buffer = 0, remap = true, silent = true }
-    vim.keymap.set('n', 'q', '<cmd>tabclose<cr>', opts)
+    vim.keymap.set("n", "q", "<cmd>tabclose<cr>", opts)
   end
 end, {})
 
 -- Open GcLog in new tab
-vim.api.nvim_create_user_command('GclogTab', function()
+vim.api.nvim_create_user_command("GclogTab", function()
   local git_dir = vim.fn.FugitiveGitDir()
   if vim.fn.empty(git_dir) == 0 then
-    vim.cmd('tabnew | GcLog')
+    vim.cmd("tabnew | GcLog")
     --- Keymaps ---
     local opts = { buffer = 0, remap = true, silent = true }
-    vim.keymap.set('n', 'q', '<cmd>tabclose<cr>', opts)
+    vim.keymap.set("n", "q", "<cmd>tabclose<cr>", opts)
   end
 end, {})

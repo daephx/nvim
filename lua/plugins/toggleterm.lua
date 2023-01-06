@@ -1,17 +1,17 @@
 -- Prevent loading if not applicable
-local ok, toggleterm = pcall(require, 'toggleterm')
+local ok, toggleterm = pcall(require, "toggleterm")
 if not ok then
   return
 end
 
-local Terminal = require('toggleterm.terminal').Terminal
+local Terminal = require("toggleterm.terminal").Terminal
 
 toggleterm.setup({
   -- size can be a number or function which is passed the current terminal
   size = function(term)
-    if term.direction == 'horizontal' then
+    if term.direction == "horizontal" then
       return 20
-    elseif term.direction == 'vertical' then
+    elseif term.direction == "vertical" then
       return vim.o.columns * 0.4
     end
   end,
@@ -22,15 +22,15 @@ toggleterm.setup({
   persist_size = false,
   close_on_exit = true, -- close the terminal window when the process exits
   dir = vim.fn.getcwd(),
-  direction = 'horizontal',
+  direction = "horizontal",
   float_opts = {
-    border = 'single',
+    border = "single",
     width = 190,
     height = 50,
     winblend = 8,
     highlights = {
-      border = 'single',
-      background = 'Normal',
+      border = "single",
+      background = "Normal",
     },
   },
 })
@@ -38,8 +38,8 @@ toggleterm.setup({
 local float_opts = {
   winblender = 0,
   highlights = {
-    background = 'Normal',
-    border = 'FloatBorder',
+    background = "Normal",
+    border = "FloatBorder",
   },
 }
 
@@ -51,20 +51,20 @@ local M = {}
 
 M.default = Terminal:new({
   cmd = vim.o.shell,
-  direction = 'horizontal',
+  direction = "horizontal",
   on_open = function(term)
-    vim.cmd('startinsert!')
+    vim.cmd("startinsert!")
     vim.api.nvim_buf_set_keymap(
       term.bufnr,
-      'n',
-      'q',
-      '<cmd>close<CR>',
+      "n",
+      "q",
+      "<cmd>close<CR>",
       { noremap = true, silent = true }
     )
     vim.api.nvim_buf_set_keymap(
       term.bufnr,
-      't',
-      '<F12>',
+      "t",
+      "<F12>",
       [[<C-\><C-n><cmd>lua toggle_terminal('default')<cr>]],
       { noremap = true, silent = true }
     )
@@ -72,28 +72,28 @@ M.default = Terminal:new({
 })
 
 M.lazygit = Terminal:new({
-  cmd = 'lazygit',
+  cmd = "lazygit",
   dir = vim.fn.getcwd(),
   hidden = false,
   on_open = function(term)
-    if vim.fn.mapcheck('<esc>', 't') ~= '' then
-      vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<esc>')
+    if vim.fn.mapcheck("<esc>", "t") ~= "" then
+      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
     end
   end,
-  direction = 'float',
+  direction = "float",
   float_opts = float_opts,
 })
 
 M.lazydocker = Terminal:new({
-  cmd = 'lazydocker',
+  cmd = "lazydocker",
   dir = vim.fn.getcwd(),
   hidden = false,
   on_open = function(term)
-    if vim.fn.mapcheck('<esc>', 't') ~= '' then
-      vim.api.nvim_buf_del_keymap(term.bufnr, 't', '<C-\\><C-N>')
+    if vim.fn.mapcheck("<esc>", "t") ~= "" then
+      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<C-\\><C-N>")
     end
   end,
-  direction = 'float',
+  direction = "float",
   float_opts = float_opts,
 })
 

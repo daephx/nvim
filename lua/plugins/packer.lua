@@ -1,6 +1,6 @@
-local site_dir = string.format('%s/site', vim.fn.stdpath('data'))
-local packer_dir = string.format('%s/pack/packer', site_dir)
-local packer_compiled = string.format('%s/lua/packer_compiled.lua', site_dir)
+local site_dir = string.format("%s/site", vim.fn.stdpath("data"))
+local packer_dir = string.format("%s/pack/packer", site_dir)
+local packer_compiled = string.format("%s/lua/packer_compiled.lua", site_dir)
 
 local M = {}
 
@@ -9,14 +9,14 @@ local M = {}
 ---@return boolean
 M.ensure_packer = function()
   local fn = vim.fn
-  local install_path = string.format('%s/start/packer.nvim', packer_dir)
+  local install_path = string.format("%s/start/packer.nvim", packer_dir)
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({
-      'git',
-      'clone',
-      '--depth',
-      '1',
-      'https://github.com/wbthomason/packer.nvim',
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/wbthomason/packer.nvim",
       install_path,
     })
     vim.cmd([[packadd packer.nvim]])
@@ -33,13 +33,13 @@ M.config = function(name)
   local str = string.format('require("%s")', name)
   local module_ok, module = pcall(require, name)
   if module_ok then
-    if type(module) == 'table' then
-      if type(module['setup']) == 'function' then
-        str = string.format('%s.setup({})', str)
+    if type(module) == "table" then
+      if type(module["setup"]) == "function" then
+        str = string.format("%s.setup({})", str)
       end
     end
   else
-    str = string.format('%s.setup({})', str)
+    str = string.format("%s.setup({})", str)
   end
 
   return str
@@ -49,15 +49,15 @@ end
 ---@return table
 M.setup = function()
   if vim.fn.filereadable(packer_compiled) == 1 then
-    require('packer_compiled')
+    require("packer_compiled")
   end
   return {
     compile_path = packer_compiled,
     disable_commands = false,
     display = {
-      prompt_border = 'single',
+      prompt_border = "single",
       open_fn = function()
-        return require('packer.util').float({ border = 'single' })
+        return require("packer.util").float({ border = "single" })
       end,
     },
     git = { clone_timeout = 120 },

@@ -3,10 +3,10 @@
 local M = {}
 
 M.sections = {
-  lualine_a = { 'mode' },
-  lualine_z = { 'filetype' },
+  lualine_a = { "mode" },
+  lualine_z = { "filetype" },
 }
 
-M.filetypes = { 'neoterm' }
+M.filetypes = { "neoterm" }
 
 return M

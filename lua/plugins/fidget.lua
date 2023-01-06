@@ -1,19 +1,19 @@
 local M = {}
 
-local fidget = require('fidget')
+local fidget = require("fidget")
 
 fidget.setup({
   text = {
     -- animation shown when tasks are ongoing
-    spinner = 'dots',
+    spinner = "dots",
   },
   window = {
-    relative = 'editor',
+    relative = "editor",
   },
   fmt = {
     -- function to format fidget title
     fidget = function(fidget_name, spinner)
-      return string.format('%s %s', fidget_name, spinner)
+      return string.format("%s %s", fidget_name, spinner)
     end,
   },
 })

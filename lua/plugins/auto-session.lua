@@ -6,16 +6,16 @@
 -- Auto Session takes advantage of Neovim's existing session management
 -- capabilities to provide seamless automatic session management.
 
-local auto_session_ok, auto_session = pcall(require, 'auto-session')
+local auto_session_ok, auto_session = pcall(require, "auto-session")
 if not auto_session_ok then
   return
 end
 
 auto_session.setup({
-  log_level = 'error',
+  log_level = "error",
   auto_restore_enabled = true,
   auto_save_enabled = true,
-  auto_session_suppress_dirs = { '/', '~/', '~/Documents', '~/Downloads', '~/Projects' },
+  auto_session_suppress_dirs = { "/", "~/", "~/Documents", "~/Downloads", "~/Projects" },
   bypass_session_save_file_types = false,
 })
 
@@ -27,19 +27,19 @@ auto_session.setup({
 -- Session Lens is a companion plugin to auto-session built on top of
 -- Telescope.nvim for easy switching between existing sessions.
 
-local telescope_ok, _ = pcall(require, 'telescope')
+local telescope_ok, _ = pcall(require, "telescope")
 if not telescope_ok then
   return
 end
 
-local session_lens_ok, session_lens = pcall(require, 'session-lens')
+local session_lens_ok, session_lens = pcall(require, "session-lens")
 if not session_lens_ok then
   return
 end
 
-local themes = require('telescope.themes')
+local themes = require("telescope.themes")
 session_lens.setup({
-  prompt_title = 'Sessions',
+  prompt_title = "Sessions",
   previewer = false,
   theme_conf = {
     theme = themes.get_ivy(),
@@ -49,6 +49,6 @@ session_lens.setup({
 
 --- Keymaps ---
 
-vim.keymap.set('n', '<leader>sf', function()
+vim.keymap.set("n", "<leader>sf", function()
   session_lens.search_session()
-end, { desc = 'Show Session list' })
+end, { desc = "Show Session list" })

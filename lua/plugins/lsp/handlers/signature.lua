@@ -4,13 +4,13 @@ local M = {}
 ---@param client table
 ---@param bufnr integer
 M.enable_signature_help = function(client, bufnr)
-  if client.supports_method('textDocument/signatureHelp') then
+  if client.supports_method("textDocument/signatureHelp") then
     -- TODO: Causes error prompts in &diff, gitcommit and other unsupported filetypes
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
       buffer = bufnr,
-      desc = 'Show signature help on cursor position in hover window',
+      desc = "Show signature help on cursor position in hover window",
       callback = function()
-        vim.lsp.buf.signature_help(nil, { scope = 'cursor' })
+        vim.lsp.buf.signature_help(nil, { scope = "cursor" })
       end,
     })
   end

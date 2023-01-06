@@ -1,19 +1,19 @@
 local g = vim.g
 
 g.fzf_colors = {
-  ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
-  ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
-  ['hl+'] = { 'fg', 'Statement' },
-  bg = { 'bg', 'Normal' },
-  fg = { 'fg', 'Normal' },
-  hl = { 'fg', 'Comment' },
-  border = { 'fg', 'Ignore' },
-  header = { 'fg', 'Comment' },
-  info = { 'fg', 'PreProc' },
-  marker = { 'fg', 'Keyword' },
-  pointer = { 'fg', 'Exception' },
-  prompt = { 'fg', 'Conditional' },
-  spinner = { 'fg', 'Label' },
+  ["bg+"] = { "bg", "CursorLine", "CursorColumn" },
+  ["fg+"] = { "fg", "CursorLine", "CursorColumn", "Normal" },
+  ["hl+"] = { "fg", "Statement" },
+  bg = { "bg", "Normal" },
+  fg = { "fg", "Normal" },
+  hl = { "fg", "Comment" },
+  border = { "fg", "Ignore" },
+  header = { "fg", "Comment" },
+  info = { "fg", "PreProc" },
+  marker = { "fg", "Keyword" },
+  pointer = { "fg", "Exception" },
+  prompt = { "fg", "Conditional" },
+  spinner = { "fg", "Label" },
 }
 
 vim.cmd([[
@@ -30,9 +30,9 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
 --- Mappings ---
 
-map('n', '<Leader>fh', '<cmd>History<CR>')
-map('n', '<Leader>fb', '<cmd>Buffers<CR>')
-map('n', '<Leader>ft', '<cmd>Files<CR>')
-map('n', '<Leader>rg', '<ESC><cmd>RG<Space>')
-map('n', '<Leader>rw', '<ESC><cmd>RG <C-R><C-W>')
-map('n', '<Leader>rh', '<ESC><cmd>RG<UP><CR>')
+map("n", "<Leader>fh", "<cmd>History<CR>")
+map("n", "<Leader>fb", "<cmd>Buffers<CR>")
+map("n", "<Leader>ft", "<cmd>Files<CR>")
+map("n", "<Leader>rg", "<ESC><cmd>RG<Space>")
+map("n", "<Leader>rw", "<ESC><cmd>RG <C-R><C-W>")
+map("n", "<Leader>rh", "<ESC><cmd>RG<UP><CR>")

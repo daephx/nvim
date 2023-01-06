@@ -6,7 +6,7 @@ return {
       format = {
         templating = true,
         wrapLineLength = 120,
-        wrapAttributes = 'auto',
+        wrapAttributes = "auto",
       },
       hover = {
         documentation = true,

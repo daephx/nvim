@@ -30,8 +30,6 @@ vim.filetype.add({
     Vagrantfile = "ruby",
     [".Rprofile"] = "r",
     [".envrc"] = "bash",
-    [".gitattributes"] = "conf",
-    [".gitignore"] = "conf",
     [".luacheckrc"] = "lua",
     [".stylelintrc"] = "json",
     ["poetry.lock"] = "toml",
@@ -39,7 +37,6 @@ vim.filetype.add({
   },
   pattern = {
     [".*%.env.*"] = "sh",
-    [".*ignore"] = "conf",
     [".*tmux.*conf$"] = "tmux",
     [".aliases"] = "sh",
     ["Dockerfile.*"] = "dockerfile",

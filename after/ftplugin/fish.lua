@@ -1,4 +1,4 @@
--- after/ftplugin/lua
+-- nvim/after/ftplugin/fish
 
 vim.opt_local.expandtab = true
 vim.opt_local.shiftwidth = 2

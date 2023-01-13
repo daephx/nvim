@@ -30,7 +30,7 @@ end
 
 vim.api.nvim_create_augroup("TroubleBuffer", {})
 vim.api.nvim_create_autocmd("FileType", {
-  desc = "Apply local options to Trouble buffer ",
+  desc = "Apply local options to Trouble buffer",
   group = "TroubleBuffer",
   pattern = "Trouble",
   callback = function()

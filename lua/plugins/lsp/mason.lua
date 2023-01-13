@@ -26,11 +26,11 @@ if mason_lspconfig_ok then
       'gopls',
       'html',
       'jdtls',
+      'jsonls',
       'pyright',
       'rust_analyzer',
       'sumneko_lua',
       'yamlls',
-      'jsonls',
       'zk',
     },
   })

@@ -10,4 +10,9 @@ guess_indent.setup({
     "python",
     "make",
   },
+  buftype_exclude = {
+    "terminal",
+    "fugitive",
+    "nowrite",
+  },
 })

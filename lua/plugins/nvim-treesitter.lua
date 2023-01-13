@@ -1,6 +1,6 @@
 -- nvim-treesitter | Nvim Treesitter configurations and abstraction layer
 -- https://github.com/nvim-treesitter/nvim-treesitter
-local treesitter_ok, treesitter = require('nvim-treesitter')
+local treesitter_ok, _ = require('nvim-treesitter')
 if not treesitter_ok then
   return
 end
@@ -51,11 +51,14 @@ ts_configs.setup({
   },
   indent = {
     enable = true,
+    disable = { 'python', 'yaml' },
   },
   rainbow = {
     enable = true,
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with ore than n lines, int
+    -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    extended_mode = true,
+    -- Do not enable for files with ore than n lines, int
+    max_file_lines = 2000,
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },

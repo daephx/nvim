@@ -3,10 +3,13 @@
     "prefix": "print",
     "body": ["print(${0})"],
     "description": "Print String"
-  }
+  },
   "main: function": {
     "prefix": "main: function",
-    "body": ["def main():\n\t${0:pass}\n\n", "if __name__ == \"__main__\":\n\tmain()"],
+    "body": [
+      "def main():\n\t${0:pass}\n\n",
+      "if __name__ == \"__main__\":\n\tmain()"
+    ],
     "description": "main function"
   },
   "main: context": {

@@ -1,5 +1,5 @@
--- fugitive.vim | ...
--- ...
+-- vim-fugitive | A Git wrapper so awesome, it should be illegal
+-- https://github.com/tpope/vim-fugitive
 
 -- Open Gdiffsplit in new tab
 vim.api.nvim_create_user_command("GdiffsplitTab", function()

@@ -16,7 +16,7 @@ M.enable_document_highlighting = function(client, bufnr)
         vim.api.nvim_set_hl(0, 'LspReferenceWrite', opts)
       end,
     })
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    vim.api.nvim_create_autocmd({ 'CursorHold' }, {
       buffer = bufnr,
       desc = 'Apply LSP documment reference highlighting on CursorHold',
       group = augroup,

@@ -8,7 +8,6 @@ end
 local on_attach = require('plugins.lsp.attach')
 
 local code_actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
@@ -17,7 +16,6 @@ null_ls.setup({
   on_attach = on_attach,
   sources = {
     -- General
-    completion.luasnip,
     diagnostics.write_good,
     hover.dictionary,
 

@@ -109,9 +109,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.buflisted = false
     vim.opt_local.fillchars = { eob = " " }
     -- Apply keymap settings for dashboard
-    local opts = { buffer = opts.buf, remap = false, silent = true }
-    vim.keymap.set("n", "<PageDown>", "<Nop>", opts)
-    vim.keymap.set("n", "<PageUp>", "<Nop>", opts)
-    vim.keymap.set("n", "<leader>qq", "<cmd>quit<cr>", opts)
+    local options = { buffer = opts.buf, remap = false, silent = true }
+    vim.keymap.set("n", "<PageDown>", "<Nop>", options)
+    vim.keymap.set("n", "<PageUp>", "<Nop>", options)
+    vim.keymap.set("n", "<leader>qq", "<cmd>quit<cr>", options)
   end,
 })

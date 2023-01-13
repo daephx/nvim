@@ -109,6 +109,10 @@ return require("packer").startup({
       config = config("plugins.hop"),
     })
 
+    use({ -- The undo history visualizer for vim
+      "mbbill/undotree",
+    })
+
     --- Telescope ---
 
     use({ -- Highly extendable fuzzy finder

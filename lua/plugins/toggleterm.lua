@@ -7,6 +7,7 @@ end
 local Terminal = require("toggleterm.terminal").Terminal
 
 toggleterm.setup({
+  open_mapping = "<C-\\>",
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == "horizontal" then
@@ -14,6 +15,10 @@ toggleterm.setup({
     elseif term.direction == "vertical" then
       return vim.o.columns * 0.4
     end
+  end,
+  on_open = function(term)
+    local opts = { buffer = term.bufnr, silent = true }
+    vim.keymap.set({ "n", "t" }, "<esc><esc>", "<C-\\><C-n>", opts)
   end,
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_terminals = false,

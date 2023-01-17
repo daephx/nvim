@@ -120,6 +120,10 @@ lualine.setup({
       { "filename", path = 1 },
     },
   },
+  winbar = {
+    lualine_c = { "navic" },
+  },
+  inactive_winbar = {},
   extensions = {
     "dashboard",
     "fugitive",

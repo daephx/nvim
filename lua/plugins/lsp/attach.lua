@@ -4,6 +4,7 @@ local highlight = require("plugins.lsp.handlers.highlight")
 local hover = require("plugins.lsp.handlers.hover")
 local keymaps = require("plugins.lsp.keymaps")
 local signature = require("plugins.lsp.handlers.signature")
+local symbols = require("plugins.lsp.handlers.symbols")
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
@@ -19,6 +20,7 @@ local on_attach = function(client, bufnr)
   hover.enable_hover_diagnostics(bufnr)
   keymaps.initialize_keymaps(client, bufnr)
   signature.enable_signature_help(client, bufnr)
+  symbols.enable_document_symbols(client, bufnr)
 end
 
 return on_attach

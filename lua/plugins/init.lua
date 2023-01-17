@@ -257,6 +257,13 @@ require("lazy").setup({
       "mickael-menu/zk-nvim",
     },
   },
+  { -- Show winbar/statusline code context
+    "SmiteshP/nvim-navic",
+    config = function()
+      require("plugins.nvim-navic")
+    end,
+    dependencies = { "neovim/nvim-lspconfig" },
+  },
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",
     config = config("plugins.dap"),

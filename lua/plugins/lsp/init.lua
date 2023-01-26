@@ -2,7 +2,7 @@
 -- Setup native lsp using lspconfig helper plugin
 
 -- Define default variables
-local server_mpath = 'plugins/lsp/servers'
+local server_mpath = 'plugins/lsp/settings'
 local default_options = {
   capabilities = require('plugins.lsp.capabilities'),
   on_attach = require('plugins.lsp.attach'),
@@ -34,14 +34,14 @@ require('mason-lspconfig').setup_handlers({
   end,
 
   ['rust_analyzer'] = function()
-    require('plugins/lsp/servers/rust_analyzer')
+    require('plugins/lsp/settings/rust_analyzer')
   end,
 
   ['jdtls'] = function()
-    require('plugins/lsp/servers/jdtls')
+    require('plugins/lsp/settings/jdtls')
   end,
 
   ['zk'] = function()
-    require('plugins/lsp/servers/zk')
+    require('plugins/lsp/settings/zk')
   end,
 })

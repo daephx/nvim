@@ -52,3 +52,12 @@ session_lens.setup({
 vim.keymap.set("n", "<leader>sf", function()
   session_lens.search_session()
 end, { desc = "Show Session list" })
+
+vim.keymap.set("n", "<leader>sd", "<cmd>DeleteSession<CR>", { desc = "Delete current session" })
+vim.keymap.set(
+  "n",
+  "<leader>sl",
+  "<cmd>Telescope session-lens search_session<CR>",
+  { desc = "Load last session" }
+)
+vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save current session" })

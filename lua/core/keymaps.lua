@@ -121,14 +121,6 @@ whichkey_map.n = {
   f = { "<cmd>enew<CR>", "New file" },
 }
 
--- Sessions
-whichkey_map.s = {
-  name = "+Session",
-  d = { "<cmd>DeleteSession<CR>", "Delete current session" },
-  l = { "<cmd>Telescope session-lens search_session<CR>", "Load last session" },
-  s = { "<cmd>SessionSave<CR>", "Save current session" },
-}
-
 -- Terminal
 whichkey_map.t = {
   name = "+Terminal",

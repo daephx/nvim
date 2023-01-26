@@ -142,13 +142,6 @@ M.config = function()
     },
   })
 
-  -- require('telescope').load_extension('fzf')
-  -- require('telescope').load_extension('gh')
-  require("telescope").load_extension("projects")
-  -- require('telescope').load_extension('repo')
-  require("telescope").load_extension("session-lens")
-  require("telescope").load_extension("dap")
-
   -- Highlights
   vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 end

@@ -51,7 +51,7 @@ project_nvim.setup({
 -- Apply telescope extension settings
 local telescope_ok, telescope = pcall(require, "telescope")
 if telescope_ok then
-  -- Call telescope setup with extension configs
+  -- Initialize telescope extension
   telescope.setup({
     extensions = {
       project = {
@@ -65,7 +65,5 @@ if telescope_ok then
       },
     },
   })
-
-  -- Load telescope extension
   telescope.load_extension("projects")
 end

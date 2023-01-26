@@ -290,6 +290,9 @@ return require("packer").startup({
     use({ -- Integration for nvim-dap with telescope.nvim
       "nvim-telescope/telescope-dap.nvim",
       after = { "telescope.nvim", "nvim-dap" },
+      config = function()
+        require("telescope").load_extension("dap")
+      end
     })
 
     use({ -- Smart and powerful comment plugin for neovim

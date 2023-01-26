@@ -27,11 +27,14 @@ auto_session.setup({
 -- Session Lens is a companion plugin to auto-session built on top of
 -- Telescope.nvim for easy switching between existing sessions.
 
-local telescope_ok, _ = pcall(require, "telescope")
+local telescope_ok, telescope = pcall(require, "telescope")
 local session_lens_ok, session_lens = pcall(require, "session-lens")
 if not session_lens_ok or not telescope_ok then
   return
 end
+
+-- Load extension
+telescope.load_extension("session-lens")
 
 local themes = require("telescope.themes")
 session_lens.setup({

@@ -150,8 +150,7 @@ M.config = function()
   require("telescope").load_extension("dap")
 
   -- Highlights
-
-  vim.cmd([[highlight TelescopeNormal guibg=none]])
+  vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 end
 
 --- Extensions ---

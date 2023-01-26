@@ -28,12 +28,8 @@ auto_session.setup({
 -- Telescope.nvim for easy switching between existing sessions.
 
 local telescope_ok, _ = pcall(require, "telescope")
-if not telescope_ok then
-  return
-end
-
 local session_lens_ok, session_lens = pcall(require, "session-lens")
-if not session_lens_ok then
+if not session_lens_ok or not telescope_ok then
   return
 end
 

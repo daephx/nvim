@@ -31,15 +31,7 @@ lualine.setup({
     always_divide_middle = false,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-
-    disabled_filetypes = {
-      "CHADtree",
-      "DiffViewFiles",
-      "NvimTree",
-      "Outline",
-      "alpha",
-      "coc-explorer",
-    },
+    disabled_filetypes = {},
   },
   sections = {
     lualine_a = {

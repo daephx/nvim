@@ -66,6 +66,23 @@ autocmd("FileType", {
   command = "wincmd K",
 })
 
+augroup("QuickClose", {})
+autocmd("FileType", {
+  desc = 'Apply "q" keymap to close local buffers that match criteria',
+  group = "QuickClose",
+  pattern = { "*", "!term://*", "!dap*" },
+  callback = function(opts)
+    local is_eligible = vim.bo.buftype ~= ""
+      or not vim.bo.modifiable
+      or vim.bo.readonly
+      or vim.wo.previewwindow
+    if is_eligible then
+      local options = { buffer = opts.buf, remap = false, silent = true }
+      vim.keymap.set("n", "q", "<cmd>close<CR>", options)
+    end
+  end,
+})
+
 augroup("MakeParentDirectory", {})
 autocmd("BufWritePre", {
   desc = "Create parent directory when writing file if path does not exist",

@@ -13,4 +13,3 @@ vim.opt_local.foldmethod = "syntax"
 local opts = { buffer = true, remap = true, silent = true }
 
 vim.keymap.set("n", "<tab>", "=", opts)
-vim.keymap.set("n", "q", "gq", opts)

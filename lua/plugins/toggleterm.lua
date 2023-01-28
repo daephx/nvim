@@ -1,117 +1,81 @@
--- Prevent loading if not applicable
-local ok, toggleterm = pcall(require, "toggleterm")
-if not ok then
+-- toggleterm.nvim | easily manage multiple terminal windows
+-- https://github.com/akinsho/toggleterm.nvim
+local toggleterm_ok, toggleterm = pcall(require, "toggleterm")
+if not toggleterm_ok then
   return
 end
 
-local Terminal = require("toggleterm.terminal").Terminal
+local function size(term)
+  if term.direction == "horizontal" then
+    return 20
+  elseif term.direction == "vertical" then
+    return vim.o.columns * 0.4
+  end
+end
+
+local function on_open(term)
+  local opts = { buffer = term.bufnr, silent = true }
+  vim.keymap.set({ "n", "t" }, "<esc><esc>", "<C-\\><C-n>", opts)
+end
+
+local function on_close()
+  local wins = vim.api.nvim_list_wins()
+  if wins == 1 then
+    vim.cmd("enew")
+  end
+end
 
 toggleterm.setup({
   open_mapping = "<C-\\>",
-  -- size can be a number or function which is passed the current terminal
-  size = function(term)
-    if term.direction == "horizontal" then
-      return 20
-    elseif term.direction == "vertical" then
-      return vim.o.columns * 0.4
-    end
-  end,
-  on_open = function(term)
-    local opts = { buffer = term.bufnr, silent = true }
-    vim.keymap.set({ "n", "t" }, "<esc><esc>", "<C-\\><C-n>", opts)
-  end,
-  hide_numbers = true, -- hide the number column in toggleterm buffers
-  shade_terminals = false,
-  start_in_insert = true,
-  insert_mappings = true, -- whether or not the open mapping applies in insert mode
-  persist_size = false,
-  close_on_exit = true, -- close the terminal window when the process exits
-  dir = vim.fn.getcwd(),
   direction = "horizontal",
+  shade_terminals = false,
+  size = size,
+  on_open = on_open,
+  on_close = on_close,
+  highlights = {
+    Normal = { link = "Normal" },
+    FloatBorder = { link = "FloatBorder" },
+  },
   float_opts = {
     border = "single",
     width = 190,
     height = 50,
     winblend = 8,
-    highlights = {
-      border = "single",
-      background = "Normal",
-    },
   },
 })
-
-local float_opts = {
-  winblender = 0,
-  highlights = {
-    background = "Normal",
-    border = "FloatBorder",
-  },
-}
 
 --- Terminals ---
 
 -- Export custom terminal settings for different use cases
 
+local Terminal = require("toggleterm.terminal").Terminal
+
 local M = {}
 
-M.default = Terminal:new({
-  cmd = vim.o.shell,
-  direction = "horizontal",
-  on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(
-      term.bufnr,
-      "n",
-      "q",
-      "<cmd>close<CR>",
-      { noremap = true, silent = true }
-    )
-    vim.api.nvim_buf_set_keymap(
-      term.bufnr,
-      "t",
-      "<F12>",
-      [[<C-\><C-n><cmd>lua toggle_terminal('default')<cr>]],
-      { noremap = true, silent = true }
-    )
-  end,
-})
-
 M.lazygit = Terminal:new({
+  direction = "float",
   cmd = "lazygit",
-  dir = vim.fn.getcwd(),
   hidden = false,
   on_open = function(term)
     if vim.fn.mapcheck("<esc>", "t") ~= "" then
       vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
     end
   end,
-  direction = "float",
-  float_opts = float_opts,
 })
 
 M.lazydocker = Terminal:new({
+  direction = "float",
   cmd = "lazydocker",
-  dir = vim.fn.getcwd(),
   hidden = false,
   on_open = function(term)
     if vim.fn.mapcheck("<esc>", "t") ~= "" then
       vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<C-\\><C-N>")
     end
   end,
-  direction = "float",
-  float_opts = float_opts,
 })
 
 _G.toggle_terminal = function(name)
   M[name]:toggle()
 end
-
-vim.cmd([[
-command! -nargs=0 Lazygit lua toggle_terminal('lazygit')<cr>
-command! -nargs=0 Lazydocker lua toggle_terminal('lazydocker')<cr>
-
-" Explicitly disable signcolumn in toggleterm buffer
-autocmd! FileType toggleterm setlocal signcolumn=no
-]])
 
 return M

@@ -8,6 +8,8 @@ end
 colorizer.setup({
   filetypes = {
     "*",
+    "!lazy",
+    "!mason",
     "!packer",
     "!popup",
     "!prompt",

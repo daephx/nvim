@@ -58,6 +58,14 @@ autocmd({ "FileType" }, {
   command = "setlocal formatoptions-=cro",
 })
 
+augroup("HelpPageSplit", {})
+autocmd("FileType", {
+  desc = "Open vim help pages relative to editor instead of window",
+  group = "HelpPageSplit",
+  pattern = { "help", "man" },
+  command = "wincmd K",
+})
+
 augroup("MakeParentDirectory", {})
 autocmd("BufWritePre", {
   desc = "Create parent directory when writing file if path does not exist",

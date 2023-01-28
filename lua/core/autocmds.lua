@@ -21,17 +21,6 @@ autocmd({ "CursorHold", "CursorHoldI" }, {
   command = "silent! update",
 })
 
-augroup("ReloadVimRC", {})
-autocmd("BufWritePost", {
-  desc = "Auto-sourcing Configurations",
-  group = "ReloadVimRC",
-  pattern = vim.env.MYVIMRC,
-  callback = function()
-    vim.notify(string.format("Reloading $MYVIMRC: '%s'", vim.env.MYVIMRC))
-    vim.cmd(vim.env.MYVIMRC)
-  end,
-})
-
 augroup("DisableSearchHighlight", {})
 autocmd({ "InsertEnter", "WinLeave" }, {
   desc = "Disable search highlight when entering insert mode",

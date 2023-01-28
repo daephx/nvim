@@ -6,20 +6,16 @@
 -- ====/_/==============================
 -- Neovim general editor options/settings
 
--- Set reusable values
-local indent = 2
-
--- General options
 vim.opt.textwidth = 80 -- Limit length of characters per line
+vim.opt.tabstop = 4 -- Number of spaces to represent tab characters
+vim.opt.softtabstop = 4 -- Number of spaces for tabs during edit operations
+vim.opt.shiftwidth = 4 -- Number of spaces for expandtab indent
+vim.opt.expandtab = true -- Convert tabs characters to spaces
+vim.opt.shiftround = true -- Round indent to shift width
+vim.opt.autoindent = false -- Auto apply indentation
+vim.opt.smartindent = false -- Insert indents automatically
 vim.opt.autoread = true -- Load changes made outside of Vim
 vim.opt.autochdir = false -- Change working directory to active buffer
-vim.opt.smartindent = false -- Insert indents automatically
-vim.opt.autoindent = false -- Auto apply indentation
-vim.opt.expandtab = true -- Expand tabs characters to spaces
-vim.opt.shiftround = true -- Round indent to shift width
-vim.opt.tabstop = indent -- Number of spaces for tab count
-vim.opt.softtabstop = indent -- Spaces a <Tab> counts during edit operations
-vim.opt.shiftwidth = indent -- Number of spaces for indents
 vim.opt.linebreak = true -- Split on line break
 vim.opt.colorcolumn = "+1" -- Visually display character line limit
 vim.opt.background = "dark" -- Adjusts the default color groups for background type
@@ -194,6 +190,13 @@ vim.opt.fillchars = {
   foldsep = "│", -- Fold operator
   msgsep = "─", -- Message separator
 }
+
+--- Netrw ---
+
+vim.g.netrw_banner = 0
+vim.g.netrw_bufsettings = "noma nomod nu nobl nowrap ro"
+vim.g.netrw_liststyle = 3 -- Default to tree view
+vim.g.netrw_localrmdir = "rm -r"
 
 --- Neovide ---
 

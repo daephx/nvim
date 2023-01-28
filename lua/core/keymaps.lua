@@ -97,9 +97,8 @@ whichkey_map.f = {
 -- Plugins
 whichkey_map.p = {
   name = "+Plugins",
-  c = { "<cmd>PackerCompile<CR>", "Compile Plugins" },
-  s = { "<cmd>PackerStatus<CR>", "Plugins status" },
-  u = { "<cmd>PackerCompile<CR><cmd>PackerSync<CR>", "Update Plugins" },
+  s = { "<cmd>Lazy show<CR>", "Plugins status" },
+  u = { "<cmd>Lazy update<CR>", "Update Plugins" },
 }
 
 -- Git

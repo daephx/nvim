@@ -4,14 +4,14 @@
 --  / /|  /  __/ /_/ / |/ / / / / / / /
 -- /_/ |_/\___/\____/|___/_/_/ /_/ /_/
 -- ====================================
--- Personal Neovim configuration files.
+-- Personal Neovim configuration files
 
-vim.g.debug = false
-
+-- Define globals and leader keys
 vim.g.mapleader = " "
 vim.g.localleader = "\\"
 vim.g.colors_name = "vscode"
 
-require("core")
+-- Load config modules
 require("plugins")
 require("colors")
+require("core")

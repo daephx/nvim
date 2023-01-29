@@ -68,7 +68,7 @@ require("lazy").setup({
       require("plugins.lualine")
     end,
     dependencies = {
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       -- Display LSP progress in the statusline
       "arkav/lualine-lsp-progress",
     },
@@ -89,9 +89,9 @@ require("lazy").setup({
     end,
   },
   { -- Alternative File Tree
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     cmd = "NvimTreeToggle",
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("plugins.nvim-tree")
     end,
@@ -118,7 +118,7 @@ require("lazy").setup({
     config = function()
       require("plugins.trouble")
     end,
-    dependencies = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   { -- A high-performance color highlighter
     "NvChad/nvim-colorizer.lua",
@@ -146,7 +146,7 @@ require("lazy").setup({
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-lua/popup.nvim" },
-      { "kyazdani42/nvim-web-devicons" },
+      { "nvim-tree/nvim-web-devicons" },
     },
     config = function()
       require("plugins.telescope")

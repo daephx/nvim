@@ -98,7 +98,7 @@ require("lazy").setup({
   },
   { -- Easily manage multiple terminal windows
     "akinsho/toggleterm.nvim",
-    cmd = "ToggleTerm",
+    event = "VeryLazy",
     config = function()
       require("plugins.toggleterm")
     end,

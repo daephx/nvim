@@ -204,6 +204,8 @@ require("lazy").setup({
   },
   { -- Weapon to fight against conflicts in Vim.
     "akinsho/git-conflict.nvim",
+    event = "BufReadPre",
+    version = "*",
     config = function()
       require("plugins.git-conflict")
     end,

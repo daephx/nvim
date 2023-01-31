@@ -9,36 +9,42 @@ project_nvim.setup({
   -- Show hidden files in telescope
   show_hidden = true,
   detection_methods = { "lsp", "pattern", "!.git/worktrees" },
-  ignore_lsp = { "null-ls", "efm" },
+  ignore_lsp = { "null-ls", "efm", "taplo" },
 
   -- Don't calculate root dir on specific directories
   exclude_dirs = {
     "~/.cargo/*",
     "~/.local/include/*",
     "~/.luarocks/*",
+    "~/.venv/*",
     "~/Documents",
+    "~/node_modules/*",
   },
   -- All the patterns used to detect root dir, when **"pattern"** is in detection_methods
   patterns = {
-    ".bzr",
-    ".clang-format",
-    ".editorconfig",
-    ".git",
-    ".github",
-    ".hg",
-    ".project",
-    ".sln",
-    ".svn",
-    ".terraform",
-    "Makefile",
-    "_darcs",
-    "cargo.toml",
-    "go.mod",
-    "go.sum",
-    "node_modules",
-    "package.json",
-    "requirements.txt",
-    "requirements.yml",
+    ".bzr", --  Bazaar repository
+    ".clang-format", -- Clang formatting config
+    ".editorconfig", -- Editorconfig file
+    ".git", -- Git repository
+    ".github", -- Github meta config
+    ".hg", -- Mercurial repository
+    ".project", -- Eclipse project config
+    ".sln", -- Visual Studio solution
+    ".svn", -- Subversion repository
+    ".terraform", -- HashiCorp Terraform config
+    ".venv", -- Python virtual environment
+    -- 'Makefile', -- Gnu Makefile
+    "Pipfile.lock", -- Python/Pip requirements
+    "_darcs", -- Darcs repository
+    "cargo.toml", -- Rust/Cargo config
+    "go.mod", -- Golang module config
+    "go.sum", -- Golang checksums
+    "node_modules", -- Node virtual environment
+    -- NOTE: Issues with nvim/snippets directory
+    -- 'package.json', -- Node package config
+    "poetry.lock", -- Python/Pip requirements
+    "requirements.txt", -- Python/Pip requirements
+    "requirements.yml", -- Python/Pip requirements
   },
 })
 

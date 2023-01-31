@@ -33,14 +33,10 @@
 ## Introduction
 
 Personal neovim configuration that uses
-[Packer](https://github.com/wbthomason/packer.nvim) and
+[Lazy](https://github.com/folke/lazy.nvim) and
 [Mason](https://github.com/williamboman/mason.nvim) for dependency management.
 
 For more detailed plugin list, see file `lua/plugins/init.lua`
-
-**Disclaimer**: I primarily develop on Linux or WSL2. I don't have access to
-MacOS and Neovim on Windows tends to be a bit slower. As a result those
-operating systems aren't properly tested / utilized but should still run.
 
 ## Installation
 
@@ -62,12 +58,20 @@ $ git clone https://github.com/daephx/nvim.git ~/.config/nvim
 $ git clone https://github.com/daephx/nvim.git ~\AppData\Roaming\nvim
 ```
 
-After cloning this repository, run `nvim` to allow packer bootstrap process to
-install missing plugins and treesitter parsers. If there are any errors either
-run `:PackerSync` or `:TSUpdateSync`. Then, restart `nvim` to ensure all
-packages are properly loaded.
+After cloning this repository, run `nvim`. The lazy bootstrap process will clone
+and build all missing plugins, including treesitter parsers.
 
-You can also run `:checkhealth` to check for any further errors.
+If there are any errors: run `:checkhealth` or restart `nvim` to ensure all
+packages are properly loaded. If that doesn't work, an issue or pull request
+would be greatly appreciated.
+
+### Fonts
+
+For a better visual experience, install and configure your terminal to use
+patched font family from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts).
+
+Recommended:
+[FiraCode](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip)
 
 ### Compatibility (Optional)
 
@@ -87,14 +91,6 @@ Node client and plugin host:
 npm i -g neovim
 ```
 
-### Fonts
-
-For a better visual experience, install and configure your terminal to use
-patched font family from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts).
-
-Recommended:
-[FiraCode](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip)
-
 ## Folder Structure
 
 ```plain
@@ -110,9 +106,9 @@ nvim                  # Neovim config directory
 │     ├─ init.lua     # Plugin definition file
 │     └─ ...
 ├─ snippets           # Lsp compatible snippets
-│  └─ package.json    # Snippet package manifest
-│  └─ all.json        # Global snippets file
+│  ├─ package.json    # Snippet package manifest
+│  ├─ all.json        # Global snippets file
 │  └─ lua.json        # Lua snippets file
 └─ templates
-│  └─ skel/_.lua      # New file skeleton templates
+   └─ skel/_.lua      # Default new file template
 ```

@@ -109,8 +109,8 @@ lualine.setup({
         return ""
       end,
     },
-    lualine_b = { "windows" },
-    lualine_y = { "tabs" },
+    lualine_b = { "custom_windows" },
+    lualine_y = { "custom_tabs" },
     lualine_z = {
       function()
         return ""

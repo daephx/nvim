@@ -5,9 +5,10 @@ if not lualine_ok then
   return
 end
 
---- Functions ---
+--- Helpers ---
 
 -- Version control diff values
+---@return table?
 local diff_source = function()
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
@@ -20,6 +21,8 @@ local diff_source = function()
 end
 
 -- Put proper separators and gaps between components in sections
+---@param sections table
+---@return table
 local process_sections = function(sections)
   for name, section in pairs(sections) do
     local left = name:sub(9, 10) < "x"
@@ -38,14 +41,9 @@ end
 
 lualine.setup({
   options = {
-    theme = "auto",
-    padding = 1, -- adds padding to the left and right of components
-    icons_enabled = true, -- displays icons in alongside component
-    globalstatus = true, -- Enable global statusline
-    always_divide_middle = false,
+    globalstatus = vim.o.laststatus == 3,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = {},
   },
   sections = {
     lualine_a = {
@@ -63,31 +61,13 @@ lualine.setup({
     lualine_c = {},
     lualine_x = {
       {
-        -- Applicable if lsp_progress is installed
         "lsp_progress",
         display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
-        -- display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
-        -- colors = { spinner = colors.yellow },
-        spinner_symbols = {
-          "⠋",
-          "⠙",
-          "⠹",
-          "⠸",
-          "⠼",
-          "⠴",
-          "⠦",
-          "⠧",
-          "⠇",
-          "⠏",
-        },
+        spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
       },
       {
         "diagnostics",
-        -- Update diagnostics in insert mode
-        update_in_insert = false,
-        -- table of diagnostic sources, available sources:
         sources = { "nvim_diagnostic", "coc", "ale" },
-        -- displays diagnostics from defined severity
         symbols = {
           hint = "",
           info = "",

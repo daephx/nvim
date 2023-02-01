@@ -58,7 +58,13 @@ lualine.setup({
       { "branch", icon = "" },
       { "diff", source = diff_source },
     },
-    lualine_c = {},
+    lualine_c = {
+      {
+        "filename",
+        icon = { "" },
+        path = 1,
+      },
+    },
     lualine_x = {
       {
         "lsp_progress",

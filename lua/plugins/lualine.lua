@@ -71,6 +71,7 @@ lualine.setup({
         display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
         spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
       },
+      { "lsp_client" },
       {
         "diagnostics",
         sources = { "nvim_diagnostic", "coc", "ale" },

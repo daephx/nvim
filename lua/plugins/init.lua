@@ -70,12 +70,6 @@ require("lazy").setup({
       "arkav/lualine-lsp-progress",
     },
   },
-  { -- A "buffer and tab" tabline for neovim
-    "kdheepak/tabline.nvim",
-    event = "VeryLazy",
-    config = config("plugins.tabline"),
-    dependencies = { "nvim-lualine/lualine.nvim" },
-  },
   { -- Indent guides for Neovim
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPost",

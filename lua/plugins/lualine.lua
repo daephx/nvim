@@ -1,6 +1,9 @@
--- Lualine | Blazing fast statusline for neovim, written in pure lua
-
-local lualine = require("lualine")
+-- lualine.nvim | Blazing fast statusline for neovim, written in pure lua
+-- https://github.com/nvim-lualine/lualine.nvim
+local lualine_ok, lualine = pcall(require, "lualine")
+if not lualine_ok then
+  return
+end
 
 --- Functions ---
 
@@ -16,9 +19,20 @@ local diff_source = function()
   end
 end
 
---- Themes ---
-
--- ...
+-- Put proper separators and gaps between components in sections
+local process_sections = function(sections)
+  for name, section in pairs(sections) do
+    local left = name:sub(9, 10) < "x"
+    for id, comp in ipairs(section) do
+      if type(comp) ~= "table" then
+        comp = { comp }
+        section[id] = comp
+      end
+      comp.separator = left and { right = "" } or { left = "" }
+    end
+  end
+  return sections
+end
 
 --- Settings  ---
 
@@ -89,6 +103,20 @@ lualine.setup({
     },
     lualine_z = { "location" },
   },
+  tabline = process_sections({
+    lualine_a = {
+      function()
+        return ""
+      end,
+    },
+    lualine_b = { "windows" },
+    lualine_y = { "tabs" },
+    lualine_z = {
+      function()
+        return ""
+      end,
+    },
+  }),
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},

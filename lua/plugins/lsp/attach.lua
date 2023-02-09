@@ -7,6 +7,8 @@ local signature = require("plugins.lsp.handlers.signature")
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
+---@param client table
+---@param bufnr integer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")

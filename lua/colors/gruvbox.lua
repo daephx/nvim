@@ -15,7 +15,7 @@ g.gruvbox_invert_selection = 0
 
 local M = {}
 
-M.highlights = {
+M.group_overrides = {
 
   Visual = { bg = "#665c54" },
 

@@ -11,7 +11,7 @@ g.vscode_transparent = 1
 
 local M = {}
 
-M.highlights = {
+M.group_overrides = {
 
   Comment = { fg = "#626262" },
   String = { fg = "#CBAA73" },

@@ -83,11 +83,11 @@ M.load = function(name)
     package.loaded[module_path] = nil
   end
 
-  -- Safety check for theme highlight table
+  -- Safety check for theme group_overrides table
   local theme_ok, theme = pcall(require, module_path)
   if theme_ok and type(theme) == "table" then
-    if theme["highlights"] then
-      M.set_highlights(theme.highlights)
+    if theme["group_overrides"] then
+      M.set_highlights(theme.group_overrides)
     end
   end
 end

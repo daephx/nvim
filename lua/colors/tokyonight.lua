@@ -31,7 +31,7 @@ g.tokyonight_colors = {
 
 local M = {}
 
-M.highlights = {
+M.group_overrides = {
   String = { fg = "#cbaa73" },
   FoldColumn = { bg = "none" },
 

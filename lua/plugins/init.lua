@@ -220,9 +220,6 @@ require("lazy").setup({
     end,
     dependencies = {
       "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
     },
   },
   { -- A completion plugin for neovim coded in Lua

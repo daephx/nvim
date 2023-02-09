@@ -22,3 +22,15 @@ wk.setup({
     border = { "", "_", "", "", "", "", "", "" },
   },
 })
+
+wk.register({
+  name = "+WhichKey",
+  d = { name = "+Debug" },
+  f = { name = "+Fuzzy" },
+  g = { name = "+Git" },
+  n = { name = "+New" },
+  p = { name = "+Plugins" },
+  s = { name = "+Session" },
+  t = { name = "+Terminal" },
+  z = { name = "+Notes" },
+}, { prefix = "<Leader>" })

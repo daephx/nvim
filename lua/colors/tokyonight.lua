@@ -1,44 +1,56 @@
-local g = vim.g
+-- tokyonight.nvim | A clean, dark Neovim theme written in Lua
+-- https://github.com/folke/tokyonight.nvim
+local tokyonight_ok, tokyonight = pcall(require, "tokyonight")
+if not tokyonight_ok then
+  return
+end
 
---- Globals ---
-
-g.tokyonight_style = "night"
-g.tokyonight_dark_float = true
-g.tokyonight_terminal_colors = false
-g.tokyonight_transparent = true
-g.tokyonight_transparent_sidebar = true
-g.tokyonight_italic_comments = false
-g.tokyonight_italic_keywords = false
-g.tokyonight_lualine_bold = true
-
-g.tokyonight_sidebars = {
-  "Touble",
-  "packer",
-  "qf",
-  "terminal",
-  "vista_kind",
-}
-
-g.tokyonight_colors = {
-  bg_float = "none",
-  hint = "orange",
-  gitSigns = {
-    change = "#7F6526",
+tokyonight.setup({
+  style = "night",
+  day_brightness = 0.3,
+  transparent = true,
+  terminal_colors = true,
+  styles = {
+    comments = { italic = false },
+    keywords = { italic = false },
+    functions = {},
+    variables = {},
+    sidebars = "transparent",
+    floats = "transparent",
   },
-}
+  sidebars = {
+    "NvimTree",
+    "Touble",
+    "floaterm",
+    "help",
+    "neotree",
+    "nerdtree",
+    "packer",
+    "qf",
+    "terminal",
+    "toggleterm",
+    "vista_kind",
+  },
+  --- You can override specific color groups to use other groups or a hex color
+  --- function will be called with a ColorScheme table
+  ---@param c ColorScheme
+  on_colors = function(c)
+    c.hint = c.orange
+    c.gitSigns.change = "#7F6526"
+  end,
+  --- You can override specific highlights to use other groups or a hex color
+  --- function will be called with a Highlights and ColorScheme table
+  ---@param hl Highlights
+  ---@param c ColorScheme
+  on_highlights = function(hl, _)
+    hl.FoldColumn = { bg = "none" }
+    hl.String = { fg = "#cbaa73" }
+    hl.VertSplit = { fg = "#39394e" }
+    hl.WhichKeyFloat = { link = "StatusLineNC" }
+    hl.NormalFloat = { link = "Normal" }
 
---- Highlights ---
-
-local M = {}
-
-M.group_overrides = {
-  String = { fg = "#cbaa73" },
-  FoldColumn = { bg = "none" },
-
-  -- Disable background for Treesitter warnings
-  TSNote = {},
-  TSWarning = {},
-  TSDanger = {},
-}
-
-return M
+    hl.TelescopePreviewBorder = { link = "VertSplit" }
+    hl.TelescopePromptBorder = { link = "VertSplit" }
+    hl.TelescopeResultsBorder = { link = "VertSplit" }
+  end,
+})

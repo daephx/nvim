@@ -51,3 +51,14 @@ if mason_null_ok then
     },
   })
 end
+
+-- mason-nvim-dap.nvim | mason-nvim-dap bridges mason.nvim with the nvim-dap plugin
+-- https://github.com/jay-babu/mason-nvim-dap.nvim
+local mason_dap_ok, mason_dap = pcall(require, "mason-nvim-dap")
+if mason_dap_ok then
+  mason_dap.setup({
+    automatic_installation = false,
+    automatic_setup = true,
+    ensure_installed = {},
+  })
+end

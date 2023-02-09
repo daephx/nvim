@@ -248,9 +248,14 @@ require("lazy").setup({
     event = "BufReadPre",
     config = config("plugins.lsp"),
     dependencies = {
+      -- Portable package manager for Neovim
       "williamboman/mason.nvim",
+      -- bridges mason.nvim with the nvim-dap
       "williamboman/mason-lspconfig.nvim",
+      -- bridges mason.nvim with the null-ls
       "jayp0521/mason-null-ls.nvim",
+      -- bridges mason.nvim with the nvim-dap
+      "jay-babu/mason-nvim-dap.nvim",
       -- LSP support in Neovim for eclipse.jdt.ls
       "mfussenegger/nvim-jdtls",
       -- Tools for better development in rust

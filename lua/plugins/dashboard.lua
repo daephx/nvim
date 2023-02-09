@@ -15,7 +15,7 @@ end
 
 -- Define callback interfaces
 local icon = fill_str(2)
-local desc = fill_str(32)
+local desc = fill_str(18)
 local keymap = fill_str(7)
 
 --- Setup ---

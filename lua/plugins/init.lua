@@ -20,6 +20,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Generate plugin config string for packer compile
+---@param name string
+---@return function
+local config = function(name)
+  return function()
+    require(name)
+  end
+end
+
 -- Initialize plugin list
 require("lazy").setup({
 
@@ -28,27 +37,19 @@ require("lazy").setup({
   { -- Dark+ theme written in lua
     "Mofiqul/vscode.nvim",
     priority = 1000,
-    config = function()
-      require("colors.vscode")
-    end,
+    config = config("colors.vscode"),
   },
   { -- TokyoNight ColorScheme
     "folke/tokyonight.nvim",
-    config = function()
-      require("colors.tokyonight")
-    end,
+    config = config("colors.tokyonight"),
   },
   { -- Nice pink neovim color scheme
     "numtostr/sakura.nvim",
-    config = function()
-      require("colors.sakura")
-    end,
+    config = config("colors.sakura"),
   },
   { -- Retro groove color scheme for Vim
     "morhetz/gruvbox",
-    config = function()
-      require("colors.gruvbox")
-    end,
+    config = config("colors.gruvbox"),
   },
 
   --- User Interface ---
@@ -57,16 +58,12 @@ require("lazy").setup({
     "glepnir/dashboard-nvim",
     event = "VimEnter",
     dependices = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.dashboard")
-    end,
+    config = config("plugins.dashboard"),
   },
   { -- Blazing fast statusline
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.lualine")
-    end,
+    config = config("plugins.lualine"),
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       -- Display LSP progress in the statusline
@@ -76,63 +73,47 @@ require("lazy").setup({
   { -- A "buffer and tab" tabline for neovim
     "kdheepak/tabline.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.tabline")
-    end,
+    config = config("plugins.tabline"),
     dependencies = { "nvim-lualine/lualine.nvim" },
   },
   { -- Indent guides for Neovim
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPost",
-    config = function()
-      require("plugins.indent_blankline")
-    end,
+    config = config("plugins.indent_blankline"),
   },
   { -- Alternative File Tree
     "nvim-tree/nvim-tree.lua",
     cmd = "NvimTreeToggle",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("plugins.nvim-tree")
-    end,
+    config = config("plugins.nvim-tree"),
   },
   { -- Easily manage multiple terminal windows
     "akinsho/toggleterm.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.toggleterm")
-    end,
+    config = config("plugins.toggleterm"),
   },
   { -- Highlight, list and search todo comments
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = "BufReadPost",
-    config = function()
-      require("plugins.todo-comments")
-    end,
+    config = config("plugins.todo-comments"),
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   { -- A pretty list for showing diagnostics, qf/loc lists
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
-    config = function()
-      require("plugins.trouble")
-    end,
+    config = config("plugins.trouble"),
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
   { -- A high-performance color highlighter
     "NvChad/nvim-colorizer.lua",
-    config = function()
-      require("plugins.colorizer")
-    end,
+    config = config("plugins.colorizer"),
     event = { "BufRead", "BufWinEnter" },
   },
   { -- Neovim easymotions on speed!
     "phaazon/hop.nvim",
     branch = "v2",
-    config = function()
-      require("plugins.hop")
-    end,
+    config = config("plugins.hop"),
   },
   { -- The undo history visualizer for vim
     "mbbill/undotree",
@@ -148,9 +129,7 @@ require("lazy").setup({
       { "nvim-lua/popup.nvim" },
       { "nvim-tree/nvim-web-devicons" },
     },
-    config = function()
-      require("plugins.telescope")
-    end,
+    config = config("plugins.telescope"),
   },
   { -- A small automated session manager for neovim
     "rmagatti/session-lens",
@@ -159,38 +138,28 @@ require("lazy").setup({
       "rmagatti/auto-session",
       "nvim-telescope/telescope.nvim",
     },
-    config = function()
-      require("plugins.auto-session")
-    end,
+    config = config("plugins.auto-session"),
   },
   { -- Superior project management for neovim.
     "ahmedkhalf/project.nvim",
-    config = function()
-      require("plugins.project_nvim")
-    end,
+    config = config("plugins.project_nvim"),
   },
 
   --- Git Integration ---
 
   { -- A Git wrapper so awesome, it should be illegal
     "tpope/vim-fugitive",
-    config = function()
-      require("plugins.fugitive")
-    end,
+    config = config("plugins.fugitive"),
   },
   { -- Magit for Neovim
     "TimUntersberger/neogit",
     cmd = "Neogit",
-    config = function()
-      require("plugins.neogit")
-    end,
+    config = config("plugins.neogit"),
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { -- Easily cycling through diffs
         "sindrets/diffview.nvim",
-        config = function()
-          require("plugins.diffview")
-        end,
+        config = config("plugins.diffview"),
       },
     },
   },
@@ -198,26 +167,20 @@ require("lazy").setup({
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("plugins.gitsigns")
-    end,
+    config = config("plugins.gitsigns"),
   },
   { -- Weapon to fight against conflicts in Vim.
     "akinsho/git-conflict.nvim",
     event = "BufReadPre",
     version = "*",
-    config = function()
-      require("plugins.git-conflict")
-    end,
+    config = config("plugins.git-conflict"),
   },
 
   --- Completion ---
 
   { -- Snippet Engine for Neovim written in Lua
     "L3MON4D3/LuaSnip",
-    config = function()
-      require("plugins.luasnip")
-    end,
+    config = config("plugins.luasnip"),
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
@@ -226,9 +189,7 @@ require("lazy").setup({
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
     event = "InsertEnter",
-    config = function()
-      require("plugins.cmp")
-    end,
+    config = config("plugins.cmp"),
     dependencies = {
       "dmitmel/cmp-cmdline-history",
       "hrsh7th/cmp-buffer",
@@ -242,9 +203,7 @@ require("lazy").setup({
   },
   { -- Autopairs for neovim written in lua
     "windwp/nvim-autopairs",
-    config = function()
-      require("plugins.nvim-autopairs")
-    end,
+    config = config("plugins.nvim-autopairs"),
   },
   { -- tab out from parens, quotes, and similar contexts
     "abecodes/tabout.nvim",
@@ -259,9 +218,7 @@ require("lazy").setup({
 
   { -- Advanced language parsing for neovim
     "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("plugins.nvim-treesitter")
-    end,
+    config = config("plugins.nvim-treesitter"),
     build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
@@ -289,9 +246,7 @@ require("lazy").setup({
   { -- Initialize language server configuration
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
-    config = function()
-      require("plugins.lsp")
-    end,
+    config = config("plugins.lsp"),
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -306,9 +261,7 @@ require("lazy").setup({
   },
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",
-    config = function()
-      require("plugins.dap")
-    end,
+    config = config("plugins.dap"),
     dependencies = {
       { "rcarriga/nvim-dap-ui" },
       { "jbyuki/one-small-step-for-vimkind" },
@@ -327,9 +280,7 @@ require("lazy").setup({
   { -- Smart and powerful comment plugin for neovim
     "numToStr/Comment.nvim",
     event = "BufReadPre",
-    config = function()
-      require("plugins.Comment")
-    end,
+    config = config("plugins.Comment"),
   },
   { -- Support editorconfig for Neovim
     "gpanders/editorconfig.nvim",
@@ -337,9 +288,7 @@ require("lazy").setup({
     dependencies = {
       { -- Automatic indentation style detection
         "NMAC427/guess-indent.nvim",
-        config = function()
-          require("plugins.guess-indent")
-        end,
+        config = config("plugins.guess-indent"),
       },
     },
   },
@@ -351,9 +300,7 @@ require("lazy").setup({
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function()
-      require("plugins.neorg")
-    end,
+    config = config("plugins.neorg"),
   },
   { -- Nice extra's for markdown documents
     "SidOfc/mkdx",
@@ -377,16 +324,12 @@ require("lazy").setup({
   { -- Distraction-free coding for Neovim
     "folke/zen-mode.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.zen-mode")
-    end,
+    config = config("plugins.zen-mode"),
   },
   { -- Lua implementation of vim-which-key
     "folke/which-key.nvim",
     event = "VeryLazy",
-    config = function()
-      require("plugins.which-key")
-    end,
+    config = config("plugins.which-key"),
   },
   { -- spellcheck dictionary for programmers
     "psliwka/vim-dirtytalk",

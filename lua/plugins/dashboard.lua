@@ -98,12 +98,12 @@ db.setup({
         action = "exit",
       },
     },
-    footer = (function()
+    footer = function()
       local plugin_path = vim.fn.stdpath("data") .. "/lazy/"
       local plugin_files = vim.fn.globpath(plugin_path, "*", 0, 1)
       local plugin_count = vim.fn.len(plugin_files)
       return { "", "", string.format("Started with %s detected plugins!", plugin_count) }
-    end)(),
+    end,
   },
 })
 

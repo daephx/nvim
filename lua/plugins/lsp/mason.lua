@@ -17,7 +17,7 @@ mason.setup({
 local mason_lspconfig_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
 if mason_lspconfig_ok then
   mason_lspconfig.setup({
-    automatic_installation = true,
+    automatic_installation = false,
     ensure_installed = {
       "bashls",
       "clangd",
@@ -42,7 +42,7 @@ end
 local mason_null_ok, mason_null = pcall(require, "mason-null-ls")
 if mason_null_ok then
   mason_null.setup({
-    automatic_installation = true,
+    automatic_installation = false,
     ensure_installed = {
       "markdownlint",
       "prettier",

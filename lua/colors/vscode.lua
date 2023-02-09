@@ -13,7 +13,7 @@ local M = {}
 
 M.highlights = {
 
-  Comment = { fg = "#626262", ui = "none" },
+  Comment = { fg = "#626262" },
   String = { fg = "#CBAA73" },
   SpecialChar = { fg = "#56B1BB" },
   LineNr = { bg = "none" },

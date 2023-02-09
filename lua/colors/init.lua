@@ -4,122 +4,102 @@
 -- / /___/ /_/ / / /_/ / /  (__  )
 -- \____/\____/_/\____/_/  /____/
 -- ================================
--- init module for loading colorschemes
--- and overrides for common highlight groups
-
-local g = vim.g
+-- Load colorscheme from lua module
 
 local M = {}
 
---- Highlights ---
-
-M.highlights = {
-  -- Always disable background color
-  Normal = { bg = "NONE" },
-
-  Comment = { ui = "NONE" },
-  NonText = { bg = "NONE", fg = "#2a2a2a", ui = "nocombine" },
-  Question = { bg = "NONE" },
-  CursorLine = { link = "LineNr", fg = "NONE" },
-  CursorLineNr = { link = "Number" },
-  Directory = { bg = "NONE" },
-  VertSplit = { bg = "NONE" },
-  FloatBorder = { bg = "NONE" },
-
-  Todo = { clear = true },
-  TroubleIndent = { clear = true },
-
-  SignColumn = { bg = "NONE" },
-  WhichKeyFloat = { link = "StatusLineNC" },
-
-  QuickFixLine = { link = "Visual" },
-
-  -- DAP Debugging
-  DebugBreakpoint = { fg = "#ff0000", bg = "NONE" },
+-- These highlight definitions apply after any color schemes.
+-- Allowing all themes to be overwritten.
+M.global_overrides = {
+  NormalFloat = { link = "Normal" },
 }
 
---- Utilities ---
+--- Helpers ---
 
---@param  group  : string = 'DiffAdd'
---@param  colors : table  = {'fg', 'gui'}
---@return color  : string = '#10e010'
-function M.getHighlight(group, term)
-  return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), unpack(term))
-end
-
-function M.getHighlightTable(group)
-  local output = fn.execute("hi " .. group)
-  local list = fn.split(output, "\\s\\+")
-
-  local dict = {}
-  for _, item in pairs(list) do
-    if fn.match(item, "=") > 0 then
-      local splited = fn.split(item, "=")
-      dict[splited[1]] = splited[2]
+-- Check if main color scheme file is available in the current runtimepath
+---@param colors_name string
+---@return boolean
+M.is_available = function(colors_name)
+  for _, theme in pairs(vim.api.nvim_get_runtime_file("colors/*.*", true)) do
+    local theme_file = string.match(theme, "/colors/(%w+)%.[lua|vim]")
+    if theme_file == colors_name then
+      return true
     end
   end
-  return dict
+  return false
 end
 
---@param group  : string = 'DiffAdd'
---@param colors : table  = {fg = '#10e010'}
-function M.setHighlight(group, colors)
-  local bg = colors.bg and "guibg=" .. colors.bg or ""
-  local fg = colors.fg and "guifg=" .. colors.fg or ""
-  local sp = colors.sp and "guisp=" .. colors.sp or ""
-  local ui = colors.ui and "gui=" .. colors.ui or ""
+-- Get color table from highlight group with optional section: fg, bg
+---@param group string
+---@param hl? string
+---@return table
+M.get_highlights = function(group, hl)
+  local labels = { background = "bg", foreground = "fg", special = "sp" }
+  local tbl = vim.api.nvim_get_hl_by_name(group, hl or "")
+  local res = {}
+  for k, v in pairs(tbl) do
+    local label = labels[k]
+    if label ~= nil then
+      res[label] = string.format("#%06x", v)
+    else
+      res[k] = v
+    end
+  end
+  return res
+end
 
-  local hl = "silent highlight " .. table.concat({ group, bg, fg, sp, ui }, " ")
+-- Extend table for highlight definitions for nvim_set_hl
+---@param group string
+---@param tbl table
+---@return table
+M.extend_highlights = function(group, tbl)
+  local colors = M.get_highlights(group)
+  return vim.tbl_extend("force", colors, tbl)
+end
 
-  if colors.clear == true then
-    vim.cmd("highlight clear " .. group)
+-- Wrapper for nvim_set_hl that applies higroups from table definitions
+---@param opts function | table
+M.set_highlights = function(opts)
+  if type(opts) == "function" then
+    ---@type table
+    opts = opts()
+  end
+  for group, colors in pairs(opts) do
+    vim.api.nvim_set_hl(0, group, colors)
+  end
+end
+
+-- Load/Reload color scheme modules by name
+---@param name? string
+M.load = function(name)
+  name = name or vim.g.colors_name
+  if not M.is_available(name) then
     return
   end
-  if colors.link then
-    link = table.concat({ "link", group, colors.link }, " ")
-    vim.cmd("highlight! " .. link)
-  end
-  vim.cmd(hl)
-end
 
--- @param opts : { group = { fg = 'red', bg = 'blue' } }
-function M.applyHighlights(opts)
-  local next = next
-  opts = type(opts) == "function" and opts() or opts
-  for group, colors in pairs(opts) do
-    if next(colors) ~= nil then
-      M.setHighlight(group, colors)
+  -- Reload colorscheme module
+  local module_path = ("colors.%s"):format(name)
+  if package.loaded[module_path] then
+    package.loaded[module_path] = nil
+  end
+
+  -- Safety check for theme highlight table
+  local theme_ok, theme = pcall(require, module_path)
+  if theme_ok and type(theme) == "table" then
+    if theme["highlights"] then
+      M.set_highlights(theme.highlights)
     end
   end
 end
 
---- Initialization ---
-
-function M.setup()
-  local name = g.colors_name
-
-  -- Safety check for theme highlight table
-  local ok, theme = pcall(require, "colors." .. name)
-  if ok and theme.highlights then
-    M.applyHighlights(theme.highlights)
-  end
-
-  -- Apply global overrides
-  M.applyHighlights(M.highlights)
-end
-
--- Update Colorscheme
--- Reload this function when colorscheme is updated
--- Run setup function when sourced / required
-
-M.setup()
-
-vim.cmd([[
-augroup colorscheme_au
-  autocmd!
-  autocmd ColorScheme *
-    \ lua require('colors').setup()
-augroup END
-]])
+local group = vim.api.nvim_create_augroup("ColorSchemeSetup", {})
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+  desc = "Load/Reload color scheme module when colorscheme changes",
+  group = group,
+  callback = function(opts)
+    M.load(opts.match)
+    M.set_highlights(M.global_overrides)
+  end,
+})
 
 return M

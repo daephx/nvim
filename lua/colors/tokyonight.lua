@@ -36,9 +36,9 @@ M.highlights = {
   FoldColumn = { bg = "none" },
 
   -- Disable background for Treesitter warnings
-  TSNote = { clear = true },
-  TSWarning = { clear = true },
-  TSDanger = { clear = true },
+  TSNote = {},
+  TSWarning = {},
+  TSDanger = {},
 }
 
 return M

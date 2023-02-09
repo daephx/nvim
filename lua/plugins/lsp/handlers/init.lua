@@ -3,6 +3,8 @@
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = "single",
   close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
+  focusable = false,
+  silent = true,
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {

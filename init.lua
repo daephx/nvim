@@ -11,6 +11,11 @@ vim.g.mapleader = " "
 vim.g.localleader = "\\"
 vim.g.colors_name = "vscode"
 
+-- these highlight definitions apply after any color schemes.
+vim.g.colors_overrides = {
+  NormalFloat = { link = "Normal" },
+}
+
 -- Load config modules
 require("plugins")
 require("colors")

@@ -8,14 +8,6 @@
 
 local M = {}
 
--- These highlight definitions apply after any color schemes.
--- Allowing all themes to be overwritten.
-M.global_overrides = {
-  NormalFloat = { link = "Normal" },
-}
-
---- Helpers ---
-
 -- Check if main color scheme file is available in the current runtimepath
 ---@param colors_name string
 ---@return boolean
@@ -92,13 +84,15 @@ M.load = function(name)
   end
 end
 
+--- Autocmds ---
+
 local group = vim.api.nvim_create_augroup("ColorSchemeSetup", {})
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   desc = "Load/Reload color scheme module when colorscheme changes",
   group = group,
   callback = function(opts)
     M.load(opts.match)
-    M.set_highlights(M.global_overrides)
+    M.set_highlights(vim.g.colors_overrides or {})
   end,
 })
 

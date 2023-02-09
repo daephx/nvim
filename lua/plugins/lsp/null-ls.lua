@@ -78,7 +78,7 @@ null_ls.setup({
 
     -- diagnostics.eslint,
     formatting.prettier.with({
-      extra_filetypes = { "toml", "solidity" },
+      extra_filetypes = { "solidity" },
       extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
     }),
 

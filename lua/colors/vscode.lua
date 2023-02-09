@@ -1,41 +1,48 @@
--- VSCode | Colorscheme settings
+-- vscode.nvim | Neovim/Vim color scheme inspired by Dark+ and Light+
+-- https://github.com/Mofiqul/vscode.nvim
+local vscode_ok, vscode = pcall(require, "vscode")
+if not vscode_ok then
+  return
+end
 
-local g = vim.g
+local c = require("vscode.colors").get_colors()
 
---- Globals ---
+vim.g.vscode_style = "dark"
 
-g.vscode_style = "dark"
-g.vscode_transparent = 1
+vscode.setup({
+  transparent = true,
+  italic_comments = false,
+  disable_nvimtree_bg = true,
+  color_overrides = {
+    vscFoldBackground = "#242424",
+  },
+  group_overrides = {
+    -- General
+    ColorColumn = { bg = "#0f0f0f" },
+    CurSearch = { link = "IncSearch" },
+    CursorLineNr = { link = "Number" },
+    EndOfBuffer = { fg = "#222222" },
+    MsgSeparator = { link = "VertSplit" },
+    SpecialChar = { fg = c.vscBlue },
 
---- Highlights ---
+    -- Floating Windows
+    NormalFloat = { link = "Normal" },
+    FloatBorder = { fg = "#5A5A5A", bg = "none" },
+    LspFloatWinNormal = { link = "NormalFloat" },
+    LspInfoBorder = { link = "FloatBorder" },
 
-local M = {}
+    -- Git status
+    DiffAdd = { bg = "#212D19", fg = "none" },
+    DiffChange = { bg = "#3B3814", fg = "none" },
+    DiffDelete = { bg = "none", fg = "indianred" },
 
-M.group_overrides = {
+    -- Diagnostic
+    DiagnosticVirtualTextError = { bg = c.vscBack, fg = c.vscRed },
+    DiagnosticVirtualTextWarn = { bg = c.vscBack, fg = c.vscYellow },
+    DiagnosticVirtualTextInfo = { bg = c.vscBack, fg = c.vscBlue },
+    DiagnosticVirtualTextHint = { bg = c.vscBack, fg = c.vscWhite },
 
-  Comment = { fg = "#626262" },
-  String = { fg = "#CBAA73" },
-  SpecialChar = { fg = "#56B1BB" },
-  LineNr = { bg = "none" },
-  Visual = { bg = "#0C243C", fg = "none" },
-  EndOfBuffer = { fg = "#222222" },
-
-  -- Git status
-  DiffAdd = { bg = "#212D19", fg = "none" },
-  DiffChange = { bg = "#3B3814", fg = "none" },
-  DiffDelete = { bg = "none", fg = "indianred" },
-
-  -- Floating Windows
-  FloatNormal = { bg = "none" },
-  FloatBorder = { fg = "#5A5A5A", bg = "none" },
-  LspFloatWinNormal = { link = "NormalFloat" },
-  NormalFloat = { link = "Pmenu" },
-
-  -- NvimTree
-  NvimTreeNormal = { bg = "none" },
-
-  -- Lualine | Might want to add to custom theme
-  lualine_a_inactive = { bg = "#1e1e2e" },
-}
-
-return M
+    -- Whichkey
+    WhichKeyFloat = { link = "StatusLineNC" },
+  },
+})

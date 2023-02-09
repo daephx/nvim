@@ -65,7 +65,7 @@ null_ls.setup({
 
     -- Python
     diagnostics.flake8.with({ extra_args = { "--max-line-length=88" } }),
-    formatting.black,
+    formatting.black.with({ extra_args = { "--fast", "--quiet" } }),
     formatting.isort,
 
     -- Golang

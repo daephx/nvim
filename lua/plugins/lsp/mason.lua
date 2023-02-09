@@ -7,6 +7,7 @@ end
 
 mason.setup({
   ui = {
+    height = 0.8,
     border = "single",
   },
 })

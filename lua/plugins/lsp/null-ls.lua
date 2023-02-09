@@ -79,7 +79,7 @@ null_ls.setup({
     -- diagnostics.eslint,
     formatting.prettier.with({
       extra_filetypes = { "solidity" },
-      extra_args = { "--no-semi" },
+      extra_args = { "--no-semi", "--ignore-path=lazy-lock.json" },
     }),
 
     -- Linter for Ansible playbooks, roles and collections.

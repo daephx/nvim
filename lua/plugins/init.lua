@@ -195,7 +195,6 @@ require("lazy").setup({
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
@@ -281,6 +280,10 @@ require("lazy").setup({
       "nvim-telescope/telescope.nvim",
       "mfussenegger/nvim-dap",
     },
+  },
+  { -- LSP signature hint as you type
+    "ray-x/lsp_signature.nvim",
+    config = config("plugins.lsp_signature"),
   },
   { -- Smart and powerful comment plugin for neovim
     "numToStr/Comment.nvim",

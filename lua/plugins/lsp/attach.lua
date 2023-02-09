@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
   highlight.enable_document_highlighting(client, bufnr)
   hover.enable_hover_diagnostics(bufnr)
   keymaps.initialize_keymaps(client, bufnr)
-  -- signature.enable_signature_help(client, bufnr)
+  signature.enable_signature_help(client, bufnr)
 end
 
 return on_attach

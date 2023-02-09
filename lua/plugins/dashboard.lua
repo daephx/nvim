@@ -109,9 +109,10 @@ db.setup({
 
 --- Autocmds ---
 
-vim.api.nvim_create_augroup("Dashboard", {})
+vim.api.nvim_create_augroup("Dashboard", { clear = false })
 vim.api.nvim_create_autocmd("FileType", {
   desc = "Apply local settings to Dashboard buffer",
+  group = "Dashboard",
   pattern = "dashboard",
   callback = function(opts)
     vim.opt_local.fillchars = { eob = " " }

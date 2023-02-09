@@ -39,10 +39,6 @@ map("n", "<localleader>q", "<cmd>call ToggleQFList(1)<CR>")
 map("n", "<c-k>", "<cmd>cprev<CR>zz")
 map("n", "<c-j>", "<cmd>cnext<CR>zz")
 
--- Diffsplit
--- map('n', 'q', "&diff ? '<cmd>tabclose<CR>' : 'q'")
-vim.cmd([[ nnoremap <expr> q &diff ? '<cmd>tabclose<CR>' : 'q' ]])
-
 --- Whichkey ---
 
 -- Check for whichkey plugin

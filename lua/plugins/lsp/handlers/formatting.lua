@@ -29,7 +29,7 @@ local function buf_get_clients(bufnr)
 end
 
 -- Activate document formatting filter to select a preferred formatter
----@param bufnr integer
+---@param bufnr integer?
 M.format_document = function(bufnr)
   bufnr = bufnr or 0
   vim.lsp.buf.format({

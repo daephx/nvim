@@ -1,13 +1,17 @@
--- Module: mappings
--- Description: Define key mappings for lua config
-
-local api = vim.api
-
---- Mappings ---
+--     __ __
+--    / //_/__  __  ______ ___  ____ _____  _____
+--   / ,< / _ \/ / / / __ `__ \/ __ `/ __ \/ ___/
+--  / /| /  __/ /_/ / / / / / / /_/ / /_/ (__  )
+-- /_/ |_\___/\__, /_/ /_/ /_/\__,_/ .___/____/
+-- ========= /____/ ============= /_/ ========
+-- General neovim keyboard mapping definitions
 
 -- Visually move lines <Up/Down>
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "<A-k>", ":m '<-2<CR>gv=gv")
+map("v", "<A-j>", ":m '>+1<CR>gv=gv")
+
+map("v", "<A-Up>", ":m '<-2<CR>gv=gv")
+map("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 
 -- Make Y act like other capitals
 map("n", "Y", "y$")
@@ -16,55 +20,60 @@ map("n", "Y", "y$")
 -- Breaks default functionality
 map("v", "<del>", '"_d') -- Prevent <Delete> from yanking
 
+-- Banish Q to the shadow realm
+map("n", "Q", "<nop>")
+
 -- Remove highlight after search with ESCAPE
 map("n", "<esc>", ":nohlsearch<cr><esc>")
 
--- Ctrl - hjkl to navigate splits
-map("n", "<c-h>", "<cmd>wincmd h<CR>")
-map("n", "<c-j>", "<cmd>wincmd j<CR>")
-map("n", "<c-k>", "<cmd>wincmd k<CR>")
-map("n", "<c-l>", "<cmd>wincmd l<CR>")
+-- Jumplist center cursor
+map("n", "<C-o>", "<C-o>zz")
+map("n", "<C-i>", "<C-i>zz")
+
+-- Keep incsearch in center of buffer
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+-- Prevent jump when search under cursor
+map("n", "*", "*<c-p>")
 
 -- Visual indentation
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Formatting
--- TODO: Better formatting, check if lsp attachedm else rely on cmd / formatter.nvim
-map("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>") -- Activate LSP buffer formatter
+map("v", "<S-Tab>", "<gv")
+map("v", "<Tab>", ">gv")
 
--- Quickfix
-map("n", "<c-q>", "<cmd>call ToggleQFList(1)<CR>")
-map("n", "<localleader>q", "<cmd>call ToggleQFList(1)<CR>")
-map("n", "<c-k>", "<cmd>cprev<CR>zz")
-map("n", "<c-j>", "<cmd>cnext<CR>zz")
+-- Switch buffer
+map("n", "<localleader>[", ":bprevious<cr>")
+map("n", "<localleader>]", ":bnext<cr>")
+
+map("n", "[b", ":bprevious<cr>")
+map("n", "]b", ":bnext<cr>")
+
+-- General save document
+map("n", "<C-s>", "<cmd>write<cr>")
 
 -- General
 map("n", "<leader><Space>", "<cmd>Telescope buffers<CR>", { desc = "Open Buffers" })
 map("n", "<leader>/", "<Plug>kommentary_line_default", { desc = "Comment Line" })
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 
--- Debug Protocol
+-- Debug
 map("n", "<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<CR>', { desc = "Set Breakpoint" })
-map(
-  "n",
-  "<leader>dd",
-  '<cmd>lua require("dap.python").attach_python_debugger()<CR>',
-  { desc = "Start Debugging" }
-)
 map("n", "<leader>dn", '<cmd>lua require("dap").continue()<CR>', { desc = "Continue debugging" })
 
--- Telescope Find
+-- Fuzzy
 map(
   "n",
   "<leader>f.",
   '<cmd>lua require("plugins.telescope").search_dotfiles()<CR>',
   { desc = "Dotfiles" }
 )
-map("n", "<leader>f<S-c>", "<cmd>Telescope commands<CR>", { desc = "Commands" })
-map("n", "<leader>f<S-f>", "<cmd>Telescope treesitter<CR>", { desc = "Treesitter" })
+map("n", "<leader>fC", "<cmd>Telescope commands<CR>", { desc = "Commands" })
+map("n", "<leader>fF", "<cmd>Telescope treesitter<CR>", { desc = "Treesitter" })
 map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Grep Buffer" })
-map("n", "<leader>fc", "<cmd>Telescope colorscheme<CR>", { desc = "ColorSchemes" })
+map("n", "<leader>fc", "<cmd>Telescope colorscheme<CR>", { desc = "Colorschemes" })
 map("n", "<leader>fd", "<cmd>Telescope lsp_document_diagnostics<CR>", { desc = "LSP Diagnostics" })
 map("n", "<leader>fe", "<cmd>Telescope file_browser<CR>", { desc = "File Explorer" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Current Files" })
@@ -81,25 +90,21 @@ map(
   '<cmd>lua require("plugins.telescope").search_vimfiles()<CR>',
   { desc = "VimRC" }
 )
-map(
-  "n",
-  "<leader>fw",
-  '<cmd>lua require("plugins.telescope").search_wikifiles()<CR>',
-  { desc = "Wiki" }
-)
 
 -- Plugins
-map("n", "<leader>ps", "<cmd>Lazy show<CR>", { desc = "Plugins status" })
-map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update Plugins" })
+map("n", "<leader>Pc", "<cmd>Lazy clean<CR>", { desc = "Clean plugins" })
+map("n", "<leader>Ph", "<cmd>Lazy health<CR>", { desc = "Healthcheck plugins" })
+map("n", "<leader>Pl", "<cmd>Lazy show<CR>", { desc = "Show plugins" })
+map("n", "<leader>Pm", "<cmd>Mason<CR>", { desc = "Open Mason" })
+map("n", "<leader>Pp", "<cmd>Lazy profile<CR>", { desc = "Profile plugins" })
+map("n", "<leader>Pr", "<cmd>Lazy restore<CR>", { desc = "Restore plugins" })
+map("n", "<leader>Ps", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
+map("n", "<leader>Pu", "<cmd>Lazy build<CR>", { desc = "Build plugins" })
+map("n", "<leader>Pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 
 -- Git
 map("n", "<leader>gG", '<cmd>lua require("neogit").open()<CR>', { desc = "Git Status (Neogit)" })
-map(
-  "n",
-  "<leader>gb",
-  '<cmd>lua require("plugins.telescope").git_branches()<CR>',
-  { desc = "Git branches" }
-)
+map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
 map("n", "<leader>gd", "<cmd>Gdiffsplit<CR>", { desc = "Diff current buffer" })
 map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "Git files" })
 map("n", "<leader>gg", "<cmd>Gtabedit :<CR>", { desc = "Git Status (Fugitive)" })

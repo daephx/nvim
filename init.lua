@@ -6,17 +6,19 @@
 -- ====================================
 -- Personal Neovim configuration files
 
--- Define globals and leader keys
+-- Define leader keys
 vim.g.mapleader = " "
 vim.g.localleader = "\\"
-vim.g.colors_name = "vscode"
+
+-- Load config modules
+require("core")
+require("plugins")
+require("colors")
 
 -- these highlight definitions apply after any color schemes.
 vim.g.colors_overrides = {
   NormalFloat = { link = "Normal" },
 }
 
--- Load config modules
-require("plugins")
-require("colors")
-require("core")
+-- Apply colorscheme
+vim.cmd.colorscheme("vscode")

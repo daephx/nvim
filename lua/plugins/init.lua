@@ -206,7 +206,7 @@ require("lazy").setup({
   },
   { -- tab out from parens, quotes, and similar contexts
     "abecodes/tabout.nvim",
-    config = true,
+    enabled = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/nvim-cmp",

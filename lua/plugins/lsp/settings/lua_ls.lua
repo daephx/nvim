@@ -1,4 +1,4 @@
--- sumneko-lua language server
+-- lua_ls: language server configuration
 
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")

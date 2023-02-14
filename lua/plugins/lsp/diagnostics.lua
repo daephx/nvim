@@ -2,8 +2,8 @@
 local icons = require("plugins.lsp.icons")
 
 local client_map = {
-  { "Lua Diagnostics.", "Sumneko" },
-  { "Lua Syntax Check.", "Sumneko" },
+  { "Lua Diagnostics.", "LuaLS" },
+  { "Lua Syntax Check.", "LuaLS" },
 }
 
 -- Allow for replacing diagnostic source from matching name

@@ -244,7 +244,7 @@ require("lazy").setup({
   },
   { -- Initialize language server configuration
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
+    event = "VimEnter",
     config = config("plugins.lsp"),
     dependencies = {
       -- Portable package manager for Neovim

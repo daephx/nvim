@@ -31,6 +31,7 @@ if mason_lspconfig_ok then
       "lua_ls",
       "pyright",
       "rust_analyzer",
+      "taplo",
       "yamlls",
       "zk",
     },

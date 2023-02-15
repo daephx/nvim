@@ -191,6 +191,10 @@ vim.opt.fillchars = {
   msgsep = "─", -- Message separator
 }
 
+--- Float ---
+
+vim.g.border = "single"
+
 --- Netrw ---
 
 vim.g.netrw_banner = 0

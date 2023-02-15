@@ -384,6 +384,6 @@ require("lazy").setup({
     },
   },
   ui = {
-    border = "single",
+    border = vim.g.border,
   },
 })

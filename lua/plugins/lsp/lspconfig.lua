@@ -7,5 +7,7 @@ if not lspconfig_ok then
   return
 end
 
--- Override lspconfig border options
-require("lspconfig.ui.windows").default_options.border = "single"
+-- Override lspconfig default options
+require("lspconfig.ui.windows").default_options = {
+  border = vim.g.border,
+}

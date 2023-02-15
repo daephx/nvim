@@ -160,7 +160,7 @@ cmp.setup({
   window = {
     completion = {
       max_width = 80,
-      border = "single",
+      border = vim.g.border,
       completeopt = "menu,menuone,noselect",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 2,
@@ -172,7 +172,7 @@ cmp.setup({
       }, ","),
     },
     documentation = {
-      border = "single",
+      border = vim.g.border,
       winhighlight = table.concat({
         "NormalFloat:NormalFloat",
         "FloatBorder:FloatBorder",

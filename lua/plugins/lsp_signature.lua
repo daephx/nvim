@@ -11,6 +11,6 @@ signature.setup({
   hint_prefix = "■ ",
   max_width = 100,
   handler_opts = {
-    border = "single",
+    border = vim.g.border,
   },
 })

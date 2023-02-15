@@ -101,6 +101,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("NullLsInfoBuffer", {}),
   pattern = "null-ls-info",
   callback = function()
-    vim.api.nvim_win_set_config(0, { border = "single" })
+    vim.api.nvim_win_set_config(0, { border = vim.g.border })
   end,
 })

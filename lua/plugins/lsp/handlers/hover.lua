@@ -11,7 +11,7 @@ M.enable_hover_diagnostics = function(bufnr)
       vim.diagnostic.open_float(nil, {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        border = "single",
+        border = vim.g.border,
         scope = "cursor",
       })
     end,

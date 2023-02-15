@@ -1,14 +1,14 @@
 -- Define lsp handlers to be exported globally
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "single",
+  border = vim.g.border,
   close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
   focusable = false,
   silent = true,
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
+  border = vim.g.border,
 })
 
 -- vim.lsp.handlers['textDocument/rename'] = require('plugins.lsp.handlers.rename').incremental_rename

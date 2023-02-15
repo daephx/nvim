@@ -21,11 +21,18 @@ autocmd({ "CursorHold", "CursorHoldI" }, {
   command = "silent! update",
 })
 
-augroup("DisableSearchHighlight", {})
-autocmd({ "InsertEnter", "WinLeave" }, {
+augroup("ToggleSearchHighlight", { clear = true })
+autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",
-  group = "DisableSearchHighlight",
-  command = "nohlsearch",
+  group = "ToggleSearchHighlight",
+  callback = function(opts)
+    if opts.event == "InsertEnter" or opts.event == "TermEnter" then
+      vim.b["_lastsearch"] = vim.fn.getreg("/")
+      vim.fn.setreg("/", "")
+    else
+      vim.fn.setreg("/", vim.b["_lastsearch"])
+    end
+  end,
 })
 
 augroup("YankHighlight", {})

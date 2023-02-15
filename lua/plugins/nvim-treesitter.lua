@@ -23,11 +23,19 @@ ts_configs.setup({
   ensure_installed = {
     "bash",
     "c",
+    "comment",
+    "gitignore",
     "help",
+    "json",
+    "jsonc",
     "lua",
     "markdown",
+    "markdown_inline",
     "python",
+    "query",
+    "toml",
     "vim",
+    "yaml",
   },
   ignore_install = {}, -- List of parsers to ignore installing
   auto_install = true, -- Automatically install missing parsers when entering buffer

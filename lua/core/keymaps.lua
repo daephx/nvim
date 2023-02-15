@@ -35,7 +35,7 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
 -- Prevent jump when search under cursor
-map("n", "*", "*<c-p>")
+map("n", "*", "*N")
 
 -- Visual indentation
 map("v", "<", "<gv")

@@ -78,7 +78,7 @@ null_ls.setup({
 
     -- diagnostics.eslint,
     formatting.prettier.with({
-      extra_filetypes = { "solidity" },
+      extra_filetypes = { "solidity", "svelte", "yaml" },
       extra_args = { "--no-semi" },
     }),
 

@@ -95,7 +95,19 @@ lualine.setup({
         return ""
       end,
     },
-    lualine_b = { "custom_windows" },
+    lualine_b = {
+      {
+        "custom_windows",
+        disabled_buftypes = {
+          "nowrite",
+        },
+        disabled_filetypes = {
+          "NvimTree",
+          "Trouble",
+          "fugitive",
+        },
+      },
+    },
     lualine_y = { "custom_tabs" },
     lualine_z = {
       function()

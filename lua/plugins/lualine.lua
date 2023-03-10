@@ -41,7 +41,6 @@ end
 
 lualine.setup({
   options = {
-    globalstatus = vim.o.laststatus == 3,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
   },

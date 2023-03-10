@@ -113,9 +113,10 @@ lualine.setup({
     lualine_z = {},
   },
   extensions = {
+    "dashboard",
     "fugitive",
-    "neoterm",
     "quickfix",
+    "terminal",
     "trouble",
   },
 })

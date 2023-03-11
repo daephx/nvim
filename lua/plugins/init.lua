@@ -257,12 +257,15 @@ require("lazy").setup({
       "mickael-menu/zk-nvim",
     },
   },
-  { -- Show winbar/statusline code context
-    "SmiteshP/nvim-navic",
-    config = function()
-      require("plugins.nvim-navic")
-    end,
-    dependencies = { "neovim/nvim-lspconfig" },
+  { -- A VS Code like winbar for Neovim
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    config = config("plugins.barbecue"),
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
   },
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",

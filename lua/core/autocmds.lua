@@ -15,12 +15,6 @@ autocmd({ "FocusLost" }, {
   command = "silent! wall",
 })
 
-autocmd({ "CursorHold", "CursorHoldI" }, {
-  desc = "Update current buffer on CursorHold/I",
-  group = "FocusIssues",
-  command = "silent! update",
-})
-
 augroup("ToggleSearchHighlight", { clear = true })
 autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",

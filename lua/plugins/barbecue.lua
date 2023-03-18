@@ -16,6 +16,7 @@ barbecue.setup({
   show_modified = true,
   attach_navic = false,
   exclude_filetypes = {
+    "dashboard",
     "gitcommit",
     "terminal",
     "toggleterm",

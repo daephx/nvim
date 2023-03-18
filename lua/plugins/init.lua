@@ -261,6 +261,7 @@ require("lazy").setup({
     "utilyre/barbecue.nvim",
     name = "barbecue",
     version = "*",
+    event = "BufReadPost",
     config = config("plugins.barbecue"),
     dependencies = {
       "SmiteshP/nvim-navic",

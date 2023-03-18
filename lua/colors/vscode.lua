@@ -7,9 +7,8 @@ end
 
 local c = require("vscode.colors").get_colors()
 
-vim.g.vscode_style = "dark"
-
 vscode.setup({
+  style = "dark",
   transparent = true,
   italic_comments = false,
   disable_nvimtree_bg = true,

@@ -12,7 +12,7 @@ autocmd({ "BufEnter", "WinLeave", "FocusLost", "VimSuspend" }, {
 autocmd({ "FocusLost" }, {
   desc = "Write all buffers on FocusLost",
   group = "FocusIssues",
-  command = "silent! wall ",
+  command = "silent! wall",
 })
 
 autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -48,7 +48,7 @@ augroup("SmartHybridNumbers", {})
 autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   desc = "Intelligent Relative Numbers | Enable",
   group = "SmartHybridNumbers",
-  command = 'if &nu && mode() != "i" | set rnu | endif',
+  command = "if &nu && mode() != 'i' | set rnu | endif",
 })
 
 autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
@@ -75,7 +75,7 @@ autocmd("FileType", {
 
 augroup("QuickClose", {})
 autocmd("FileType", {
-  desc = 'Apply "q" keymap to close local buffers that match criteria',
+  desc = "Apply 'q' keymap to close local buffers that match criteria",
   group = "QuickClose",
   pattern = { "*", "!term://*", "!dap*" },
   callback = function(opts)

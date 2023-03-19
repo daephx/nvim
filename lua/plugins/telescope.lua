@@ -122,9 +122,6 @@ telescope.setup({
   },
 })
 
--- Highlights
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-
 --- Pickers ---
 
 -- Search dotfiles folder

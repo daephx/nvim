@@ -90,7 +90,7 @@ null_ls.setup({
 -- Get list of null-ls sources
 vim.api.nvim_create_user_command("NullLsSources", function()
   local sources = require("null-ls.sources")
-  print(vim.inspect(vim.tbl_map(function(source)
+  vim.notify(vim.inspect(vim.tbl_map(function(source)
     return source.name
   end, sources.get_available(vim.bo.filetype))))
 end, {})

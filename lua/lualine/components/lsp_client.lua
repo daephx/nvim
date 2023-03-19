@@ -1,5 +1,8 @@
 local lsp_clients = require("lualine.component"):extend()
 
+-- Modify client name for style or to add extra metadata
+---@param client table
+---@return string
 local format_client_name = function(client)
   if client.name == "pyright" then
     -- Check if python lsp and has virtual environment
@@ -16,12 +19,9 @@ local default_options = {
     return #vim.lsp.buf_get_clients() > 0
   end,
   icon = {
-    ":LSP",
+    "",
     align = "right",
-    color = {
-      fg = "Gray",
-      gui = "bold",
-    },
+    color = { fg = "Gray", gui = "bold" },
   },
 }
 

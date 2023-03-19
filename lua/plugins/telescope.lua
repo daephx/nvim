@@ -131,7 +131,7 @@ vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 -- Path Specified via DOTFILES environment variable
 M.search_dotfiles = function()
   builtin.find_files({
-    prompt_title = "< Dotfiles >",
+    prompt_title = "Dotfiles",
     cwd = vim.env.DOTFILES or "~/.dotfiles",
     hidden = true,
     file_ignore_patterns = {
@@ -145,7 +145,7 @@ end
 -- Uses standard config path '.config/nvim'
 M.search_vimfiles = function()
   builtin.find_files({
-    prompt_title = "< VimRC >",
+    prompt_title = "Neovim",
     cwd = vim.fn.stdpath("config"),
     hidden = true,
   })

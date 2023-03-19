@@ -130,8 +130,8 @@ vim.api.nvim_create_autocmd("User", {
 
 --- Pickers ---
 
--- Search dotfiles folder
--- Path Specified via DOTFILES environment variable
+-- Search dotfiles directory
+-- Path determined via environment variable or common `$HOME/.dotfiles`
 M.search_dotfiles = function()
   builtin.find_files({
     prompt_title = "Dotfiles",
@@ -144,8 +144,8 @@ M.search_dotfiles = function()
   })
 end
 
--- Search vimfiles folder
--- Uses standard config path '.config/nvim'
+-- Search neovim config directory
+-- Path determined via `stdpath("config")`
 M.search_vimfiles = function()
   builtin.find_files({
     prompt_title = "Neovim",

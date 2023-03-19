@@ -125,9 +125,7 @@ telescope.setup({
 -- Highlights
 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 
---- Extensions ---
-
--- Pickers
+--- Pickers ---
 
 -- Search dotfiles folder
 -- Path Specified via DOTFILES environment variable
@@ -150,50 +148,6 @@ M.search_vimfiles = function()
     prompt_title = "< VimRC >",
     cwd = vim.fn.stdpath("config"),
     hidden = true,
-  })
-end
-
--- Search Notes/Wiki folder
--- HACK: fix, Telescope wiki path currently hardcoded
-M.search_wikifiles = function()
-  builtin.find_files({
-    prompt_title = "< Wiki >",
-    cwd = "~/Documents/wiki",
-    hidden = true,
-  })
-end
-
--- Search files tracked by git
-M.project_files = function()
-  local opts = {} -- define here if you want to define something
-  local ok = pcall(builtin.git_files, opts)
-  if not ok then
-    builtin.find_files(opts)
-  end
-end
-
-M.todo_comments = function()
-  local opts = {}
-  builtin.live_grep(opts)
-end
-
--- Display git branches
-M.git_branches = function()
-  builtin.git_branches({
-    prompt_prefix = " ",
-    layout_strategy = "bottom_pane",
-    attach_mappings = function(_, map)
-      map("i", "<c-d>", actions.git_delete_branch)
-      map("n", "<c-d>", actions.git_delete_branch)
-      return true
-    end,
-  })
-end
-
--- Language server diagnostics
-M.lsp_workspace_diagnostics = function()
-  builtin.lsp_workspace_diagnostics({
-    layout_strategy = "vertical",
   })
 end
 

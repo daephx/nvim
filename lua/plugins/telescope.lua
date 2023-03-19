@@ -82,16 +82,20 @@ telescope.setup({
       },
     },
 
-    file_ignore_patterns = { -- File patterns to exclude from fuzzy results
+    -- File patterns to exclude from fuzzy results
+    file_ignore_patterns = {
       "*.pyc", -- Python cache
-      "*.git/.*", -- Git version control directory
-      ".pytest_cache/.*", -- Pytest unittest cache files
-      "__pycache__/.*", -- Python cache files
-      "_build/.*",
-      "build/.*",
-      "node_modules/.*", -- Node module environment
-      "src/parser.c",
-      "tags/.*",
+      ".git", -- Git version control files
+      ".pytest_cache", -- Pytest unittest cache files
+      ".venv", -- Python virtual environment
+      ".yarn", -- Yarn package directory
+      "__pycache__", -- Python cache files
+      "_build", -- Build artifacts
+      "build", -- Build artifacts
+      "node_modules", -- Node module environment
+      "nvim/runtime/doc", -- Vim documentation
+      "src/parser.c", -- Treesitter parsers
+      "tags", -- Tag files
     },
   }),
   pickers = { -- Default configuration for builtin pickers goes here:

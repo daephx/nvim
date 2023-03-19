@@ -29,7 +29,6 @@ telescope.setup({
     sorting_strategy = "ascending",
     winblend = 5,
 
-    -- file_sorter = sorters.get_fzy_sorter,
     file_sorter = sorters.get_fuzzy_file,
     file_previewer = previewers.vim_buffer_cat.new,
     grep_previewer = previewers.vim_buffer_vimgrep.new,

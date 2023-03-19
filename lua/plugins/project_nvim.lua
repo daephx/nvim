@@ -33,15 +33,12 @@ project_nvim.setup({
     ".svn", -- Subversion repository
     ".terraform", -- HashiCorp Terraform config
     ".venv", -- Python virtual environment
-    -- 'Makefile', -- Gnu Makefile
     "Pipfile.lock", -- Python/Pip requirements
     "_darcs", -- Darcs repository
     "cargo.toml", -- Rust/Cargo config
     "go.mod", -- Golang module config
     "go.sum", -- Golang checksums
     "node_modules", -- Node virtual environment
-    -- NOTE: Issues with nvim/snippets directory
-    -- 'package.json', -- Node package config
     "poetry.lock", -- Python/Pip requirements
     "requirements.txt", -- Python/Pip requirements
     "requirements.yml", -- Python/Pip requirements

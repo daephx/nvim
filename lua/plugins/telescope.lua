@@ -98,12 +98,17 @@ telescope.setup({
       "tags", -- Tag files
     },
   }),
-  pickers = { -- Default configuration for builtin pickers goes here:
-
-    -- Now the picker_config_key will be applied every time you call this
+  -- Default configuration for builtin pickers goes here:
+  pickers = {
+    man_pages = { sections = { "2", "3" } },
+    lsp_code_actions = { theme = "cursor" },
+    lsp_document_diagnostics = { theme = "ivy" },
+    lsp_document_symbols = { path_display = { "hidden" } },
+    lsp_references = { path_display = { "shorten" } },
+    lsp_workspace_symbols = { path_display = { "shorten" } },
+    colorscheme = { theme = "dropdown", previewer = false },
     buffers = {
       sort_mru = true,
-      theme = "ivy",
       selection_strategy = "closest",
       mappings = {
         i = {
@@ -111,14 +116,6 @@ telescope.setup({
         },
       },
     },
-    man_pages = { sections = { "2", "3" } },
-    lsp_code_actions = { theme = "ivy" },
-    lsp_document_diagnostics = { theme = "ivy" },
-    lsp_document_symbols = { theme = "ivy", path_display = { "hidden" } },
-    lsp_references = { theme = "ivy", path_display = { "shorten" } },
-    lsp_workspace_symbols = { theme = "ivy", path_display = { "shorten" } },
-    colorscheme = { theme = "dropdown", previewer = false },
-    file_browser = { theme = "ivy" },
   },
   extensions = { -- Your extension configuration goes here:
     -- please take a look at the readme of the extension you want to configure

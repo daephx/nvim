@@ -19,7 +19,8 @@ require("mason-lspconfig").setup_handlers({
   -- The first entry (without a key) will be the default handler
   -- and will be called for each installed server that doesn't have
   -- a dedicated handler.
-  function(server_name) -- default handler (optional)
+  ---@param server_name string
+  function(server_name)
     local config -- Set default empty config table
     local namespace = table.concat({ server_mpath, server_name }, "/")
     local module_ok, module = pcall(require, namespace)

@@ -132,7 +132,7 @@ vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
 M.search_dotfiles = function()
   builtin.find_files({
     prompt_title = "< Dotfiles >",
-    cwd = vim.env.DOTFILES,
+    cwd = vim.env.DOTFILES or "~/.dotfiles",
     hidden = true,
     file_ignore_patterns = {
       "meta/dotbot/.*",

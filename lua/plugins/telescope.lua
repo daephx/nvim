@@ -18,7 +18,7 @@ local M = {}
 
 telescope.setup({
   -- Default configuration for telescope goes here:
-  defaults = {
+  defaults = themes.get_ivy({
     prompt_prefix = "> ",
     color_devicons = true,
     dynamic_preview_title = true,
@@ -38,11 +38,6 @@ telescope.setup({
       "--column",
       "--smart-case",
     },
-
-    -- Set character list for prompt borders
-    border = {},
-    -- borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' }, -- Rounded corners
-    borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }, -- Square Corners
 
     layout_config = { -- Default settings for layout themes
       prompt_position = "top",
@@ -98,7 +93,7 @@ telescope.setup({
       "src/parser.c",
       "tags/.*",
     },
-  },
+  }),
   pickers = { -- Default configuration for builtin pickers goes here:
 
     -- Now the picker_config_key will be applied every time you call this

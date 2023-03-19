@@ -122,6 +122,12 @@ telescope.setup({
   },
 })
 
+-- Enable line wrap in previewer
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopePreviewerLoaded",
+  command = "setlocal wrap",
+})
+
 --- Pickers ---
 
 -- Search dotfiles folder

@@ -22,11 +22,7 @@ telescope.setup({
     prompt_prefix = "> ",
     color_devicons = true,
     dynamic_preview_title = true,
-    -- layout_strategy= 'flex',
-    -- scroll_strategy = 'cycle',
-    scroll_strategy = "limit",
-    selection_strategy = "row",
-    sorting_strategy = "ascending",
+    scroll_strategy = "cycle",
     winblend = 5,
 
     file_sorter = sorters.get_fuzzy_file,

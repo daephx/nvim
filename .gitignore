@@ -85,8 +85,10 @@ tags
 .placeholder
 
 # Temporary locations
-.[Tt]emp/
-[Tt]emp/
+[._]home/
+[._]repro/
+[._]temp/
+temp/
 
 # Local XDG
 .cache/
@@ -105,9 +107,9 @@ sessions/
 # Spellcheck cache
 spell/*.spl
 
-# Packer compile
-plugin/packer_compiled.lua
+# Local scratchpad
+lua/scratch/
+scratch/
 
-# Language server directory
-/ls
-
+# Local git worktrees directory
+.worktrees/

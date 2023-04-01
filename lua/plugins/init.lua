@@ -240,7 +240,10 @@ require("lazy").setup({
     config = config("plugins.lsp"),
     dependencies = {
       -- Portable package manager for Neovim
-      "williamboman/mason.nvim",
+      {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+      },
       -- bridges mason.nvim with the nvim-dap
       "williamboman/mason-lspconfig.nvim",
       -- bridges mason.nvim with the null-ls

@@ -30,7 +30,7 @@ autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
 })
 
 augroup("YankHighlight", {})
-autocmd("TextYankPost", {
+autocmd({ "TextYankPost" }, {
   desc = "Highlight the region on yank",
   group = "YankHighlight",
   callback = function()
@@ -60,7 +60,7 @@ autocmd({ "FileType" }, {
 })
 
 augroup("HelpPageSplit", {})
-autocmd("FileType", {
+autocmd({ "FileType" }, {
   desc = "Open vim help pages relative to editor instead of window",
   group = "HelpPageSplit",
   pattern = { "help", "man" },
@@ -68,7 +68,7 @@ autocmd("FileType", {
 })
 
 augroup("QuickClose", {})
-autocmd("FileType", {
+autocmd({ "FileType" }, {
   desc = "Apply 'q' keymap to close local buffers that match criteria",
   group = "QuickClose",
   pattern = { "*", "!term://*", "!dap*" },
@@ -85,7 +85,7 @@ autocmd("FileType", {
 })
 
 augroup("MkDirectory", {})
-autocmd("BufWritePre", {
+autocmd({ "BufWritePre" }, {
   desc = "Create parent directory when writing file if path does not exist",
   group = "MkDirectory",
   callback = function(opts)
@@ -101,7 +101,7 @@ autocmd("BufWritePre", {
 })
 
 augroup("SkeletonTemplate", {})
-autocmd("BufNewFile", {
+autocmd({ "BufNewFile" }, {
   desc = "Inject Skeleton template when creating new file",
   group = "SkeletonTemplate",
   pattern = "*",

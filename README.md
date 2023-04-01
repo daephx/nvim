@@ -50,7 +50,7 @@ Ensure [Neovim](https://github.com/neovim/neovim) is properly installed using
 your preferred package manager and clone this repository to the specified
 location.
 
-```sh
+```bash
 # Linux and MacOS
 $ git clone https://github.com/daephx/nvim.git ~/.config/nvim
 
@@ -80,35 +80,33 @@ packages.
 
 Python client and plugin host: [pynvim](https://github.com/neovim/pynvim)
 
-```sh
+```bash
 pip install pynvim
 ```
 
 Node client and plugin host:
 [node-client](https://github.com/neovim/node-client)
 
-```sh
+```bash
 npm i -g neovim
 ```
 
 ## Folder Structure
 
 ```plain
-nvim                  # Neovim config directory
-├─ after
-│  └─ ftplugin        # Filetype specific options, keymaps
-├─ lua                # Lua modules directory
-│  ├─ core            # Core editor options, keymaps, autocmds
-│  └─ plugins
-│     ├─ cmp          # Completion config
-│     ├─ dap          # Debugging config
-│     ├─ lsp          # Native lsp config
-│     ├─ init.lua     # Plugin definition file
-│     └─ ...
-├─ snippets           # Lsp compatible snippets
-│  ├─ package.json    # Snippet package manifest
+nvim/                 # Neovim config directory
+├─ after/
+│  └─ ftplugin/       # Filetype specific options
+├─ lua/
+│  ├─ core/           # Editor autocmds, keymaps, options
+│  └─ plugins/        # Plugin config directory
+│     ├─ cmp          # Code completion config
+│     ├─ dap          # Debug adapter config
+│     ├─ lsp          # Language server config
+│     └─ init.lua     # Plugin specifications
+├─ snippets/
+│  ├─ package.json    # Snippets package manifest
 │  ├─ all.json        # Global snippets file
-│  └─ lua.json        # Lua snippets file
-└─ templates
-   └─ skel/_.lua      # Default new file template
+│  └─ lua.json        # Filetype snippets file
+└─ templates/         # Templates directory
 ```

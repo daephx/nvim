@@ -17,8 +17,8 @@ autocmd({ "FocusLost" }, {
 autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",
   group = augroup("ToggleSearchHighlight", {}),
-  callback = function(opts)
-    if opts.event == "InsertEnter" or opts.event == "TermEnter" then
+  callback = function(ev)
+    if ev.event == "InsertEnter" or ev.event == "TermEnter" then
       vim.b["_lastsearch"] = vim.fn.getreg("/")
       vim.fn.setreg("/", "")
     else
@@ -65,14 +65,14 @@ autocmd({ "FileType" }, {
   desc = "Apply 'q' keymap to close local buffers that match criteria",
   group = augroup("QuickClose", {}),
   pattern = { "*", "!term://*", "!dap*" },
-  callback = function(opts)
+  callback = function(ev)
     local is_eligible = vim.bo.buftype ~= ""
       or not vim.bo.modifiable
       or vim.bo.readonly
       or vim.wo.previewwindow
     if is_eligible then
-      local options = { buffer = opts.buf, remap = false, silent = true }
-      vim.keymap.set("n", "q", "<cmd>close<CR>", options)
+      local opts = { buffer = ev.buf, silent = true }
+      vim.keymap.set("n", "q", "<cmd>close<CR>", opts)
     end
   end,
 })
@@ -80,9 +80,9 @@ autocmd({ "FileType" }, {
 autocmd({ "BufWritePre" }, {
   desc = "Create parent directory when writing file if path does not exist",
   group = augroup("MkDirectory", {}),
-  callback = function(opts)
-    local folder = vim.fn.fnamemodify(opts.file, ":p:h")
-    local buftype = vim.api.nvim_buf_get_option(opts.buf, "buftype")
+  callback = function(ev)
+    local folder = vim.fn.fnamemodify(ev.file, ":p:h")
+    local buftype = vim.api.nvim_buf_get_option(ev.buf, "buftype")
     local empty = vim.fn.empty(buftype) == 1
     local exists = vim.fn.isdirectory(folder) == 1
     local remote = folder:find("%l+://") == 1

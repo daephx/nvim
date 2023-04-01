@@ -73,8 +73,8 @@ M.enable_auto_formatting = function(client, bufnr)
       desc = "Apply Auto-formatting for to document on save",
       group = group,
       pattern = "*",
-      callback = function(opts)
-        M.format_document(opts.bufnr)
+      callback = function(ev)
+        M.format_document(ev.bufnr)
       end,
     })
   end

@@ -114,11 +114,11 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "Apply local settings to Dashboard buffer",
   group = "Dashboard",
   pattern = "dashboard",
-  callback = function(opts)
+  callback = function(ev)
     vim.opt_local.fillchars = { eob = " " }
     -- Apply keymap settings for dashboard
-    local options = { buffer = opts.buf, remap = false, silent = true }
-    vim.keymap.set("n", "<PageDown>", "<Nop>", options)
-    vim.keymap.set("n", "<PageUp>", "<Nop>", options)
+    local opts = { buffer = ev.buf, silent = true }
+    vim.keymap.set("n", "<PageDown>", "<Nop>", opts)
+    vim.keymap.set("n", "<PageUp>", "<Nop>", opts)
   end,
 })

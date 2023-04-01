@@ -90,8 +90,8 @@ local group = vim.api.nvim_create_augroup("ColorSchemeSetup", {})
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   desc = "Load/Reload color scheme module when colorscheme changes",
   group = group,
-  callback = function(opts)
-    M.load(opts.match)
+  callback = function(ev)
+    M.load(ev.match)
     M.set_highlights(vim.g.colors_overrides or {})
   end,
 })

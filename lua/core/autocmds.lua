@@ -71,6 +71,7 @@ autocmd({ "FileType" }, {
       or vim.bo.readonly
       or vim.wo.previewwindow
     if is_eligible then
+      vim.bo[ev.buf].buflisted = false
       local opts = { buffer = ev.buf, silent = true }
       vim.keymap.set("n", "q", "<cmd>close<CR>", opts)
     end

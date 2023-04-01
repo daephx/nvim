@@ -1,24 +1,22 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-augroup("FocusIssues", {})
 autocmd({ "BufEnter", "WinLeave", "FocusLost", "VimSuspend" }, {
   desc = "Leave insert or replace mode on focus loss",
-  group = "FocusIssues",
+  group = augroup("FocusLostStopInsert", {}),
   pattern = "*",
   command = "if empty(&buftype) | stopinsert | endif",
 })
 
 autocmd({ "FocusLost" }, {
   desc = "Write all buffers on FocusLost",
-  group = "FocusIssues",
+  group = augroup("FocusLostWriteAll", {}),
   command = "silent! wall",
 })
 
-augroup("ToggleSearchHighlight", {})
 autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",
-  group = "ToggleSearchHighlight",
+  group = augroup("ToggleSearchHighlight", {}),
   callback = function(opts)
     if opts.event == "InsertEnter" or opts.event == "TermEnter" then
       vim.b["_lastsearch"] = vim.fn.getreg("/")
@@ -29,19 +27,17 @@ autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   end,
 })
 
-augroup("YankHighlight", {})
 autocmd({ "TextYankPost" }, {
   desc = "Highlight the region on yank",
-  group = "YankHighlight",
+  group = augroup("HighlightOnYank", {}),
   callback = function()
     vim.highlight.on_yank({ higroup = "IncSearch", timeout = 500 })
   end,
 })
 
-augroup("SmartHybridNumbers", {})
 autocmd({ "BufEnter", "FocusGained", "InsertLeave", "WinEnter" }, {
   desc = "Intelligent Relative Numbers | Enable",
-  group = "SmartHybridNumbers",
+  group = augroup("SmartHybridNumbers", {}),
   command = "if &nu && mode() != 'i' | set rnu | endif",
 })
 
@@ -51,26 +47,23 @@ autocmd({ "BufLeave", "FocusLost", "InsertEnter", "WinLeave" }, {
   command = "if &nu | set nornu | endif",
 })
 
-augroup("NoAutoComment", {})
 autocmd({ "FileType" }, {
   desc = "Prevent auto-insert comment leader on all filetypes",
-  group = "NoAutoComment",
+  group = augroup("NoAutoComment", {}),
   pattern = "*",
   command = "setlocal formatoptions-=cro",
 })
 
-augroup("HelpPageSplit", {})
 autocmd({ "FileType" }, {
   desc = "Open vim help pages relative to editor instead of window",
-  group = "HelpPageSplit",
+  group = augroup("HelpPageSplit", {}),
   pattern = { "help", "man" },
   command = "wincmd K",
 })
 
-augroup("QuickClose", {})
 autocmd({ "FileType" }, {
   desc = "Apply 'q' keymap to close local buffers that match criteria",
-  group = "QuickClose",
+  group = augroup("QuickClose", {}),
   pattern = { "*", "!term://*", "!dap*" },
   callback = function(opts)
     local is_eligible = vim.bo.buftype ~= ""
@@ -84,10 +77,9 @@ autocmd({ "FileType" }, {
   end,
 })
 
-augroup("MkDirectory", {})
 autocmd({ "BufWritePre" }, {
   desc = "Create parent directory when writing file if path does not exist",
-  group = "MkDirectory",
+  group = augroup("MkDirectory", {}),
   callback = function(opts)
     local folder = vim.fn.fnamemodify(opts.file, ":p:h")
     local buftype = vim.api.nvim_buf_get_option(opts.buf, "buftype")
@@ -100,10 +92,9 @@ autocmd({ "BufWritePre" }, {
   end,
 })
 
-augroup("SkeletonTemplate", {})
 autocmd({ "BufNewFile" }, {
   desc = "Inject Skeleton template when creating new file",
-  group = "SkeletonTemplate",
+  group = augroup("SkeletonTemplate", {}),
   pattern = "*",
   callback = function()
     vim.cmd(

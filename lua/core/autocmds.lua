@@ -15,7 +15,7 @@ autocmd({ "FocusLost" }, {
   command = "silent! wall",
 })
 
-augroup("ToggleSearchHighlight", { clear = true })
+augroup("ToggleSearchHighlight", {})
 autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",
   group = "ToggleSearchHighlight",
@@ -84,7 +84,7 @@ autocmd("FileType", {
   end,
 })
 
-augroup("MkDirectory", { clear = true })
+augroup("MkDirectory", {})
 autocmd("BufWritePre", {
   desc = "Create parent directory when writing file if path does not exist",
   group = "MkDirectory",

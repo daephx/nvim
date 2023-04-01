@@ -300,10 +300,7 @@ require("lazy").setup({
     "gpanders/editorconfig.nvim",
     event = "BufReadPre",
     dependencies = {
-      { -- Automatic indentation style detection
-        "NMAC427/guess-indent.nvim",
-        config = config("plugins.guess-indent"),
-      },
+      { "tpope/vim-sleuth" },
     },
   },
   { -- Orgmode for Neovim, Life Organization Tool Written in Lua

@@ -14,6 +14,32 @@ autocmd({ "FocusLost" }, {
   command = "silent! wall",
 })
 
+autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  desc = "Check if any buffers were changed outside of Vim on focus changed",
+  group = augroup("UpdateBuffers", {}),
+  command = "checktime",
+})
+
+autocmd({ "VimResized" }, {
+  desc = "Resize splits if vim window is resized",
+  group = augroup("ResizeSplits", {}),
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
+})
+
+autocmd({ "BufReadPost" }, {
+  desc = "Go to last cursor position when opening a buffer",
+  group = augroup("LastBufferLocation", {}),
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
+
 autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",
   group = augroup("ToggleSearchHighlight", {}),

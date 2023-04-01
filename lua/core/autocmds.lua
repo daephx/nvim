@@ -104,21 +104,6 @@ autocmd({ "FileType" }, {
   end,
 })
 
-autocmd({ "BufWritePre" }, {
-  desc = "Create parent directory when writing file if path does not exist",
-  group = augroup("MkDirectory", {}),
-  callback = function(ev)
-    local folder = vim.fn.fnamemodify(ev.file, ":p:h")
-    local buftype = vim.api.nvim_buf_get_option(ev.buf, "buftype")
-    local empty = vim.fn.empty(buftype) == 1
-    local exists = vim.fn.isdirectory(folder) == 1
-    local remote = folder:find("%l+://") == 1
-    if empty and not exists and not remote then
-      vim.fn.mkdir(folder, "p")
-    end
-  end,
-})
-
 autocmd({ "BufNewFile" }, {
   desc = "Inject Skeleton template when creating new file",
   group = augroup("SkeletonTemplate", {}),

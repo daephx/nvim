@@ -212,9 +212,7 @@ require("lazy").setup({
   { -- Advanced language parsing for neovim
     "nvim-treesitter/nvim-treesitter",
     config = config("plugins.nvim-treesitter"),
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
-    end,
+    build = ":TSUpdate",
     dependencies = {
       -- Rainbow parentheses for neovim using tree-sitter
       "p00f/nvim-ts-rainbow",

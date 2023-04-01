@@ -6,6 +6,13 @@
 -- ========= /____/ ============= /_/ ========
 -- General neovim keyboard mapping definitions
 
+-- Easier mapping function
+function map(mode, lhs, rhs, opts)
+  local defaults = { remap = false, silent = true }
+  opts = vim.tbl_extend("force", defaults, opts or {})
+  vim.keymap.set(mode, lhs, rhs, defaults)
+end
+
 -- Visually move lines <Up/Down>
 map("v", "<A-k>", ":m '<-2<CR>gv=gv")
 map("v", "<A-j>", ":m '>+1<CR>gv=gv")

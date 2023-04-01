@@ -30,7 +30,7 @@ end
 
 -- Activate document formatting filter to select a preferred formatter
 ---@param bufnr integer?
-M.format_document = function(bufnr)
+M.format = function(bufnr)
   bufnr = bufnr or 0
   vim.lsp.buf.format({
     bufnr = bufnr,
@@ -74,7 +74,7 @@ M.enable_auto_formatting = function(client, bufnr)
       group = group,
       pattern = "*",
       callback = function(ev)
-        M.format_document(ev.bufnr)
+        M.format(ev.bufnr)
       end,
     })
   end

@@ -46,8 +46,9 @@ M.initialize_keymaps = function(_, bufnr)
   })
   map({ "n", "v" }, "gf", function()
     local formatting = require("plugins.lsp.handlers.formatting")
-    formatting.format_document()
+    formatting.format()
   end, {
+    remap = true,
     desc = "Format document",
   })
   map("n", "<leader>de", vim.diagnostic.open_float, {

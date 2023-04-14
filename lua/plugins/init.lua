@@ -57,7 +57,7 @@ require("lazy").setup({
   { -- Dashboard / Start screen
     "glepnir/dashboard-nvim",
     event = "VimEnter",
-    dependices = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = config("plugins.dashboard"),
   },
   { -- Blazing fast statusline

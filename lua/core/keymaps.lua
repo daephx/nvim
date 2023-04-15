@@ -10,7 +10,7 @@
 function map(mode, lhs, rhs, opts)
   local defaults = { remap = false, silent = true }
   opts = vim.tbl_extend("force", defaults, opts or {})
-  vim.keymap.set(mode, lhs, rhs, defaults)
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- Visually move lines <Up/Down>

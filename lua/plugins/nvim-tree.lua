@@ -14,7 +14,6 @@ nvimtree.setup({
   hijack_cursor = true,
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = true,
-  ignore_ft_on_setup = {},
   hijack_directories = {
     enable = true,
     auto_open = true,

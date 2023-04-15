@@ -55,14 +55,3 @@ nvimtree.setup({
     },
   },
 })
-
-vim.api.nvim_create_augroup("NvimTreeBuffer", {})
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Apply local settings to NvimTree buffer",
-  group = "NvimTreeBuffer",
-  pattern = "NvimTree",
-  callback = function()
-    -- Link NvimTree normal to higroup Normal
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", { link = "Normal" })
-  end,
-})

@@ -8,6 +8,7 @@ vim.opt_local.cursorlineopt = "both"
 vim.opt_local.colorcolumn = "0"
 vim.opt_local.signcolumn = "yes:1"
 vim.opt_local.foldmethod = "syntax"
+vim.opt_local.bufhidden = "delete"
 
 -- Buffer local keymaps
 local opts = { buffer = true, remap = true, silent = true }

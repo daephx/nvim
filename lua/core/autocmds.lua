@@ -84,7 +84,7 @@ autocmd({ "FileType" }, {
   desc = "Open vim help pages relative to editor instead of window",
   group = augroup("HelpPageSplit", {}),
   pattern = { "help", "man" },
-  command = "wincmd K",
+  command = "wincmd K | resize 20",
 })
 
 autocmd({ "FileType" }, {

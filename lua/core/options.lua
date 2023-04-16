@@ -96,7 +96,8 @@ vim.opt.sessionoptions = {
   "curdir", -- Current Directory
   "folds", -- Fold locations
   "globals", -- global variables
-  "help", -- Help pages
+  "help", -- Vimdoc buffers
+  "localoptions", -- Buffer local options
   "tabpages", -- Open Tab pages
   "terminal", -- Open Terminal
   "winpos", -- Window Positions

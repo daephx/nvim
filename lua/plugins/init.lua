@@ -394,5 +394,5 @@ require("lazy").setup({
 vim.api.nvim_create_autocmd("BufRead", {
   desc = "Prevent lazy lockfile from being modified",
   pattern = "lazy-lock.json",
-  command = "setlocal nomodifiable",
+  command = "setlocal readonly",
 })

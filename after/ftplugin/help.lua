@@ -6,15 +6,12 @@ vim.opt_local.list = false
 vim.opt_local.spell = false
 vim.opt_local.bufhidden = "delete"
 vim.opt_local.colorcolumn = "0"
-vim.opt_local.cursorlineopt = "both"
-vim.opt_local.shiftwidth = 4
 vim.opt_local.signcolumn = "yes:1"
 vim.opt_local.tabstop = 4
+vim.opt_local.shiftwidth = 4
 vim.opt_local.textwidth = 78
+
 vim.opt_local.iskeyword:append({ ":", "#", "-" })
-vim.opt_local.formatoptions = {
-  c = false, -- Auto-wrap comments using 'textwidth'
-}
 
 local opts = { buffer = true, remap = false, silent = true }
 

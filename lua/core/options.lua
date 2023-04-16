@@ -25,6 +25,7 @@ vim.opt.colorcolumn = "+1" -- Visually display character line limit
 vim.opt.background = "dark" -- Adjusts the default color groups for background type
 vim.opt.clipboard = { "unnamed", "unnamedplus" } -- Configure system clipboard support
 vim.opt.cmdheight = 1 -- Command line character height
+vim.opt.cmdwinheight = 5 -- Set size of command history buffer
 vim.opt.conceallevel = 0 -- Determine how text with the "conceal" syntax is handled
 vim.opt.cindent = false -- Indent using C indenting rules
 vim.opt.wrap = false -- Wrap text when line is too long

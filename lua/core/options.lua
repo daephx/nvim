@@ -105,10 +105,11 @@ vim.opt.sessionoptions = {
 
 -- Start diff mode in vertical split
 vim.opt.diffopt = {
-  "closeoff",
-  "filler",
-  "internal",
-  "vertical",
+  "closeoff", -- Exit diff on window close
+  "filler", -- Render filler lines
+  "foldcolumn:0", -- Set diff foldcolumn
+  "internal", -- Use internal diff library
+  "vertical", -- Split diff vertically
 }
 
 -- Define preferred font family for GUI clients

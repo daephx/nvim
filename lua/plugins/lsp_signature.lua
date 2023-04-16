@@ -6,10 +6,8 @@ if not signature_ok then
 end
 
 signature.setup({
-  floating_window_above_cur_line = false,
   hint_enable = false,
   hint_prefix = "■ ",
-  max_width = 100,
   handler_opts = {
     border = vim.g.border,
   },

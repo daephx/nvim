@@ -48,8 +48,8 @@ vim.opt.sidescroll = 1 -- Smoother horizontal scrolling
 vim.opt.signcolumn = "yes:2" -- Sign gutter options: yes|no : int = size
 vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Override search if pattern contains uppercase
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
+vim.opt.splitbelow = true -- Open new windows below current
+vim.opt.splitright = true -- Open new windows right of current
 vim.opt.termguicolors = true -- Enable true color support
 vim.opt.timeout = true -- Time limit for key sequences
 vim.opt.timeoutlen = 500 -- Timeout for mapped sequence
@@ -57,12 +57,12 @@ vim.opt.ttimeoutlen = 0 -- Timeout for key code sequence
 vim.opt.updatetime = 50 -- Timeout idle before CursorHold or updating swapfile
 vim.opt.belloff = "all" -- Events error bells will be suppressed
 vim.opt.errorbells = false -- Produce audible error feedback
-vim.opt.number = true -- Print line number
-vim.opt.relativenumber = true -- Print relative line numbers
+vim.opt.number = true -- Display absolute line number in gutter
+vim.opt.relativenumber = true -- Display relative line number in gutter
 vim.opt.swapfile = false -- Disable swap files
 vim.opt.backup = false -- Make a backup before overwriting a file
-vim.opt.writebackup = false -- backup before overwriting a file
-vim.opt.undofile = true -- Persistent undo
+vim.opt.writebackup = false -- Backup before overwriting a file
+vim.opt.undofile = true -- Cache persistent undo
 
 vim.opt.iskeyword:append("-") -- Keywords used in searching and recognizing with commands
 vim.opt.shortmess:append("cfI") -- Avoid 'hit-enter' prompts

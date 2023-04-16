@@ -25,7 +25,6 @@ ts_configs.setup({
     "c",
     "comment",
     "gitignore",
-    "help",
     "json",
     "jsonc",
     "lua",
@@ -35,6 +34,7 @@ ts_configs.setup({
     "query",
     "toml",
     "vim",
+    "vimdoc",
     "yaml",
   },
   ignore_install = {}, -- List of parsers to ignore installing

@@ -109,10 +109,8 @@ autocmd({ "BufNewFile" }, {
   group = augroup("SkeletonTemplate", {}),
   pattern = "*",
   callback = function()
-    vim.cmd(
-      "silent! execute '0r "
-        .. vim.fn.stdpath("config")
-        .. "/templates/skel/skeleton.'.expand('<afile>:e')"
-    )
+    local path = vim.fn.stdpath("config")
+    local fname = vim.fn.expand("<afile>:e") .. ".skel"
+    vim.cmd(("silent! execute '0r %s/templates/skel/%s'"):format(path, fname))
   end,
 })

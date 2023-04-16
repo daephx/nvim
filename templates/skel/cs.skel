@@ -1,0 +1,12 @@
+// Copyright (c) {USER}. All rights reserved.
+// Licensed under the MIT license.
+
+namespace Program;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello, World")
+    }
+}

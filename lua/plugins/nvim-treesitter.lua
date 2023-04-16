@@ -33,6 +33,7 @@ ts_configs.setup({
     "markdown_inline",
     "python",
     "query",
+    "regex",
     "toml",
     "vim",
     "vimdoc",

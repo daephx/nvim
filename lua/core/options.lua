@@ -176,6 +176,7 @@ vim.opt.showbreak = "↳" -- Display line wrap indicator
 vim.opt.listchars = {
   eol = " ", -- End of line ↴
   extends = "❯", -- Horizontal overflow
+  lead = " ", -- Leading whitespace
   multispace = " ", -- Consecutive whitespace
   nbsp = "␣", -- Non-breakable space
   precedes = "❮", -- Horizontal underflow

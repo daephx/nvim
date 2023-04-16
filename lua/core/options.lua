@@ -65,7 +65,6 @@ vim.opt.backup = false -- Make a backup before overwriting a file
 vim.opt.writebackup = false -- Backup before overwriting a file
 vim.opt.undofile = true -- Cache persistent undo
 
-vim.opt.iskeyword:append("-") -- Keywords used in searching and recognizing with commands
 vim.opt.shortmess:append("cfI") -- Avoid 'hit-enter' prompts
 vim.opt.whichwrap:append("<,>,[,]") -- Allows navigation wrapping to previous/next lines
 

@@ -6,11 +6,6 @@
 -- ====================================
 -- Personal Neovim configuration files
 
--- Define leader keys
-vim.g.mapleader = " "
-vim.g.localleader = "\\"
-
--- Load config modules
 require("core")
 require("plugins")
 require("colors")

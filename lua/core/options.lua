@@ -6,6 +6,10 @@
 -- ====/_/==============================
 -- Neovim general editor options/settings
 
+vim.g.mapleader = " " -- Default leader for keymaps
+vim.g.localleader = "\\" -- Default localleader for keymaps
+vim.g.border = "single" -- Default border for floating windows
+
 vim.opt.textwidth = 80 -- Limit length of characters per line
 vim.opt.tabstop = 4 -- Number of spaces to represent tab characters
 vim.opt.softtabstop = 4 -- Number of spaces for tabs during edit operations
@@ -190,10 +194,6 @@ vim.opt.fillchars = {
   foldsep = "│", -- Fold operator
   msgsep = "─", -- Message separator
 }
-
---- Float ---
-
-vim.g.border = "single"
 
 --- Netrw ---
 

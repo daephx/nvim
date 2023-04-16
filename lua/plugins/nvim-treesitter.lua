@@ -28,6 +28,7 @@ ts_configs.setup({
     "json",
     "jsonc",
     "lua",
+    "luadoc",
     "markdown",
     "markdown_inline",
     "python",

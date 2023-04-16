@@ -7,6 +7,7 @@ vim.g.did_load_ftplugin = 0
 vim.filetype.add({
   extension = {
     babelrc = "json",
+    conf = "conf",
     eslintrc = "json",
     frag = "glsl",
     log = "log",
@@ -18,7 +19,7 @@ vim.filetype.add({
     mkdn = "markdown",
     pandoc = "pandoc",
     pde = "processing",
-    prettierrc = "json",
+    prettierrc = "jsonc",
     scm = "scheme",
     stylelintrc = "json",
     tex = "tex",
@@ -31,6 +32,7 @@ vim.filetype.add({
     [".Rprofile"] = "r",
     [".envrc"] = "bash",
     [".luacheckrc"] = "lua",
+    [".markdownlintrc"] = "json",
     [".stylelintrc"] = "json",
     ["poetry.lock"] = "toml",
     ["yup.lock"] = "yaml",

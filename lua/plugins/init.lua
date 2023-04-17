@@ -62,7 +62,7 @@ require("lazy").setup({
   },
   { -- Blazing fast statusline
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    event = "UIEnter",
     config = config("plugins.lualine"),
     dependencies = {
       "nvim-tree/nvim-web-devicons",

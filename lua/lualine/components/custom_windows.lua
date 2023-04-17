@@ -1,5 +1,5 @@
-local Window = require("lualine.components.windows.window")
 local M = require("lualine.components.buffers"):extend()
+local Window = require("lualine.components.windows.window")
 
 local default_options = {
   disabled_filetypes = {},

@@ -4,8 +4,8 @@ if not rust_tools_ok then
   return
 end
 
-local on_attach = require("plugins.lsp.attach")
 local capabilities = require("plugins.lsp.capabilities")
+local on_attach = require("plugins.lsp.attach")
 
 rust_tools.setup({
   server = {

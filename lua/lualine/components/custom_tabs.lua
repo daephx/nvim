@@ -1,5 +1,5 @@
-local custom_tabs = require("lualine.components.tabs")
 local Tab = require("lualine.components.tabs.tab")
+local custom_tabs = require("lualine.components.tabs")
 local modules = require("lualine_require").lazy_require({
   highlight = "lualine.highlight",
   utils = "lualine.utils.utils",

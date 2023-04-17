@@ -5,8 +5,8 @@ if not treesitter_ok then
   return
 end
 
-local ts_configs = require("nvim-treesitter.configs")
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+local ts_configs = require("nvim-treesitter.configs")
 
 -- Include PowerShell parser
 parser_configs.powershell = {

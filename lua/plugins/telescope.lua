@@ -5,14 +5,13 @@ if not telescope_ok then
   return
 end
 
+local action_set = require("telescope.actions.set")
 local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local previewers = require("telescope.previewers")
 local sorters = require("telescope.sorters")
-local themes = require("telescope.themes")
-
 local state = require("telescope.state")
-local action_set = require("telescope.actions.set")
+local themes = require("telescope.themes")
 
 local M = {}
 

@@ -13,7 +13,6 @@ local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
 
 null_ls.setup({
-  on_attach = on_attach,
   sources = {
     -- General
     diagnostics.write_good,
@@ -85,6 +84,12 @@ null_ls.setup({
     -- Linter for Ansible playbooks, roles and collections.
     diagnostics.ansiblelint,
   },
+  on_attach = function(client, bufnr)
+    -- null-ls causes problems with the default formatexpr, which messes up `gq`
+    -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
+    vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+    on_attach(client, bufnr)
+  end,
 })
 
 -- Get list of null-ls sources

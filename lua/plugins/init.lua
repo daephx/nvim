@@ -48,7 +48,7 @@ require("lazy").setup({
     config = config("colors.sakura"),
   },
   { -- Retro groove color scheme for Vim
-    "morhetz/gruvbox",
+    "ellisonleao/gruvbox.nvim",
     config = config("colors.gruvbox"),
   },
 

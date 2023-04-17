@@ -7,7 +7,6 @@ end
 
 local on_attach = require("plugins.lsp.attach")
 
-local code_actions = null_ls.builtins.code_actions
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
@@ -20,11 +19,6 @@ null_ls.setup({
 
     -- Git Version Control
     diagnostics.gitlint.with({
-      condition = function(util)
-        return util.root_has_file({ ".git" })
-      end,
-    }),
-    code_actions.gitsigns.with({
       condition = function(util)
         return util.root_has_file({ ".git" })
       end,
@@ -49,8 +43,8 @@ null_ls.setup({
     }),
 
     -- Shellscript
-    code_actions.shellcheck,
-    diagnostics.shellcheck,
+    -- code_actions.shellcheck,
+    -- diagnostics.shellcheck,
     formatting.shfmt.with({
       extra_args = {
         "--indent " .. vim.o.shiftwidth,

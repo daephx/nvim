@@ -1,22 +1,24 @@
 -- clangd: Language-server configuration
 
 return {
-  -- cmd = {
-  --   clangd_binary,
-  --   '--background-index',
-  --   -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
-  --   -- to add more checks, create .clang-tidy file in the root directory
-  --   -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
-  --   '--clang-tidy',
-  --   '--fallback-style=llvm',
-  --   '--completion-style=bundled',
-  --   '--cross-file-rename',
-  --   '--header-insertion=iwyu',
-  -- },
+  cmd = {
+    "clangd",
+    "--all-scopes-completion",
+    "--background-index",
+    "--clang-tidy",
+    "--clang-tidy-checks=*",
+    "--completion-style=detailed",
+    "--cross-file-rename",
+    "--enable-config",
+    "--fallback-style=microsoft",
+    "--header-insertion-decorators",
+    "--header-insertion=iwyu",
+    "--offset-encoding=utf-16",
+  },
   init_options = {
     clangdFileStatus = true,
-    usePlaceholders = true,
     completeUnimported = true,
     semanticHighlighting = true,
+    usePlaceholders = true,
   },
 }

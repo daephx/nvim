@@ -25,13 +25,20 @@ wk.setup({
 })
 
 wk.register({
-  name = "+WhichKey",
-  d = { name = "+Debug" },
-  f = { name = "+Fuzzy" },
-  g = { name = "+Git" },
-  n = { name = "+New" },
-  p = { name = "+Plugins" },
-  s = { name = "+Session" },
-  t = { name = "+Terminal" },
-  z = { name = "+Notes" },
-}, { prefix = "<Leader>" })
+  mode = { "n", "v" },
+  ["["] = { name = "+Prev" },
+  ["]"] = { name = "+Next" },
+  ["g"] = { name = "+Goto" },
+  ["g'"] = { name = "+Marks" },
+  ["g`"] = { name = "+Marks" },
+  ["gc"] = { name = "+Comment" },
+  ["<leader>b"] = { name = "+Buffer" },
+  ["<leader>d"] = { name = "+Debug" },
+  ["<leader>f"] = { name = "+Fuzzy" },
+  ["<leader>g"] = { name = "+Git" },
+  ["<leader>p"] = { name = "+Plugins" },
+  ["<leader>P"] = { name = "+Projects" },
+  ["<leader>s"] = { name = "+Sessions" },
+  ["<leader>t"] = { name = "+Terminal" },
+  ["<leader>z"] = { name = "+Notes" },
+})

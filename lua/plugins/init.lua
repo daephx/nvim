@@ -189,7 +189,6 @@ require("lazy").setup({
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
     },
@@ -239,6 +238,8 @@ require("lazy").setup({
     event = "VimEnter",
     config = config("plugins.lsp"),
     dependencies = {
+      -- Neovim setup for init.lua and plugin development
+      { "folke/neodev.nvim", config = true },
       -- Portable package manager for Neovim
       {
         "williamboman/mason.nvim",

@@ -14,6 +14,7 @@ wk.setup({
   },
   operators = { gc = "Comments" },
   key_labels = {
+    ["<bs>"] = "BS",
     ["<cr>"] = "RET",
     ["<space>"] = "SPC",
     ["<tab>"] = "TAB",

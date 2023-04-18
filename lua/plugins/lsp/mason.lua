@@ -45,6 +45,11 @@ if mason_null_ok then
   mason_null.setup({
     automatic_installation = false,
     ensure_installed = {
+      "black",
+      "eslint_d",
+      "flake8",
+      "isort",
+      "luacheck",
       "markdownlint",
       "prettier",
       "shfmt",

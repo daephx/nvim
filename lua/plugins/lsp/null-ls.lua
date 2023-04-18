@@ -29,7 +29,11 @@ null_ls.setup({
       condition = function(utils)
         return utils.root_has_file({ ".luacheckrc" })
       end,
-      extra_args = { "--globals", "vim" },
+    }),
+    diagnostics.selene.with({
+      condition = function(utils)
+        return utils.root_has_file({ "selene.toml" })
+      end,
     }),
     formatting.lua_format.with({
       condition = function(utils)
@@ -45,13 +49,7 @@ null_ls.setup({
     -- Shellscript
     -- code_actions.shellcheck,
     -- diagnostics.shellcheck,
-    formatting.shfmt.with({
-      extra_args = {
-        "--indent " .. vim.o.shiftwidth,
-        "--switch-case-indent",
-        "--func-next-line",
-      },
-    }),
+    formatting.shfmt,
     diagnostics.zsh,
     diagnostics.fish,
     formatting.fish_indent,
@@ -65,17 +63,37 @@ null_ls.setup({
     formatting.gofmt,
     formatting.goimports,
 
-    -- C/C++/Rust
-    formatting.clang_format,
-    formatting.rustfmt,
-
-    -- diagnostics.eslint,
-    formatting.prettier.with({
-      extra_filetypes = { "solidity", "svelte", "yaml" },
-      extra_args = { "--no-semi" },
+    -- Clang
+    formatting.clang_format.with({
+      condition = function(utils)
+        return utils.root_has_file({ ".clang-format" })
+      end,
     }),
 
-    -- Linter for Ansible playbooks, roles and collections.
+    -- Rust
+    formatting.rustfmt,
+
+    -- Markdown
+    diagnostics.markdownlint,
+    formatting.cbfmt.with({
+      condition = function(util)
+        return util.root_has_file(".cbfmt.toml")
+      end,
+    }),
+
+    -- JavaScript, etc.
+    diagnostics.eslint_d.with({
+      condition = function(util)
+        return util.root_has_file(".eslintrc.js")
+      end,
+    }),
+
+    formatting.prettier.with({
+      prefer_local = "node_modules/.bin",
+      extra_filetypes = { "solidity", "svelte", "yaml" },
+    }),
+
+    -- Ansible playbooks
     diagnostics.ansiblelint,
   },
   on_attach = function(client, bufnr)

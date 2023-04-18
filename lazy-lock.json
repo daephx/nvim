@@ -67,7 +67,7 @@
   "vim-fugitive": { "branch": "master", "commit": "e6651a79facf5cc2b7c554fdc19eb8a9fe89602c" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vscode.nvim": { "branch": "main", "commit": "d89fa59a78eda50158d94bde059953bda2f56142" },
-  "which-key.nvim": { "branch": "main", "commit": "476d13754db0da7831fc3581fb243cd7f0d3e581" },
+  "which-key.nvim": { "branch": "main", "commit": "8649bf5c66b8fa1fa6ee879b9af78e89f886d13c" },
   "zen-mode.nvim": { "branch": "main", "commit": "d907e638c879642d226d27469b53db6925f69d4c" },
   "zk-nvim": { "branch": "main", "commit": "275578853dc76d282ee5b31f86cd3a4f02d91f2f" }
 }

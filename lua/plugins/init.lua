@@ -340,6 +340,7 @@ require("lazy").setup({
   },
   { -- Lua implementation of vim-which-key
     "folke/which-key.nvim",
+    version = "*",
     event = "VeryLazy",
     config = config("plugins.which-key"),
   },

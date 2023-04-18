@@ -1,4 +1,4 @@
--- html-ls: Language-server configuration
+-- html-lsp: Language-server configuration
 
 return {
   settings = {

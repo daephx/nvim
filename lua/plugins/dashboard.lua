@@ -72,16 +72,16 @@ db.setup({
       {
         icon = icon(""),
         desc = desc("Applications"),
-        keymap = keymap(""),
-        key = "a",
+        keymap = keymap("SPC p m"),
+        key = "m",
         action = "Mason",
       },
       {
         icon = icon(""),
-        desc = desc("Update Plugins"),
-        keymap = keymap("SPC p u"),
+        desc = desc("Plugins"),
+        keymap = keymap("SPC p l"),
         key = "p",
-        action = "Lazy update",
+        action = "Lazy",
       },
       {
         icon = icon(""),

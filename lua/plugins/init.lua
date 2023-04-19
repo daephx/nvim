@@ -36,19 +36,23 @@ require("lazy").setup({
 
   { -- Dark+ theme written in lua
     "Mofiqul/vscode.nvim",
+    lazy = false,
     priority = 1000,
     config = config("colors.vscode"),
   },
   { -- TokyoNight ColorScheme
     "folke/tokyonight.nvim",
+    lazy = false,
     config = config("colors.tokyonight"),
   },
   { -- Nice pink neovim color scheme
     "numtostr/sakura.nvim",
+    lazy = false,
     config = config("colors.sakura"),
   },
   { -- Retro groove color scheme for Vim
     "ellisonleao/gruvbox.nvim",
+    lazy = false,
     config = config("colors.gruvbox"),
   },
 
@@ -72,24 +76,25 @@ require("lazy").setup({
   },
   { -- Indent guides for Neovim
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.indent_blankline"),
   },
   { -- Alternative File Tree
     "nvim-tree/nvim-tree.lua",
-    cmd = "NvimTreeToggle",
+    cmd = { "NvimTreeOpen", "NvimTreeToggle" },
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = config("plugins.nvim-tree"),
   },
   { -- Easily manage multiple terminal windows
     "akinsho/toggleterm.nvim",
+    version = "*",
     event = "VeryLazy",
     config = config("plugins.toggleterm"),
   },
   { -- Highlight, list and search todo comments
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.todo-comments"),
     dependencies = { "nvim-lua/plenary.nvim" },
   },
@@ -107,10 +112,12 @@ require("lazy").setup({
   { -- Neovim easymotions on speed!
     "phaazon/hop.nvim",
     branch = "v2",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.hop"),
   },
   { -- The undo history visualizer for vim
     "mbbill/undotree",
+    cmd = { "UndotreeShow", "UndotreeToggle" },
   },
 
   --- Telescope ---
@@ -118,12 +125,12 @@ require("lazy").setup({
   { -- Highly extendable fuzzy finder
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
+    config = config("plugins.telescope"),
     dependencies = {
       { "nvim-lua/plenary.nvim" },
       { "nvim-lua/popup.nvim" },
       { "nvim-tree/nvim-web-devicons" },
     },
-    config = config("plugins.telescope"),
   },
   { -- A small automated session manager for neovim
     "rmagatti/session-lens",
@@ -136,6 +143,7 @@ require("lazy").setup({
   },
   { -- Superior project management for neovim.
     "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
     config = config("plugins.project_nvim"),
   },
 
@@ -143,6 +151,7 @@ require("lazy").setup({
 
   { -- A Git wrapper so awesome, it should be illegal
     "tpope/vim-fugitive",
+    event = "VeryLazy",
     config = config("plugins.fugitive"),
   },
   { -- Magit for Neovim
@@ -159,14 +168,14 @@ require("lazy").setup({
   },
   { -- Git signs written in pure lua
     "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = config("plugins.gitsigns"),
   },
   { -- Weapon to fight against conflicts in Vim.
     "akinsho/git-conflict.nvim",
-    event = "BufReadPre",
     version = "*",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.git-conflict"),
   },
 
@@ -174,15 +183,16 @@ require("lazy").setup({
 
   { -- Snippet Engine for Neovim written in Lua
     "L3MON4D3/LuaSnip",
+    event = "InsertEnter",
     config = config("plugins.luasnip"),
     dependencies = {
+      -- Set of preconfigured snippets for different languages.
       "rafamadriz/friendly-snippets",
     },
   },
   { -- A completion plugin for neovim coded in Lua
     "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     config = config("plugins.cmp"),
     dependencies = {
       "dmitmel/cmp-cmdline-history",
@@ -195,11 +205,13 @@ require("lazy").setup({
   },
   { -- Autopairs for neovim written in lua
     "windwp/nvim-autopairs",
+    event = { "InsertEnter", "CmdlineEnter" },
     config = config("plugins.nvim-autopairs"),
   },
   { -- tab out from parens, quotes, and similar contexts
     "abecodes/tabout.nvim",
     enabled = false,
+    event = { "InsertEnter" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "hrsh7th/nvim-cmp",
@@ -210,8 +222,10 @@ require("lazy").setup({
 
   { -- Advanced language parsing for neovim
     "nvim-treesitter/nvim-treesitter",
-    config = config("plugins.nvim-treesitter"),
     build = ":TSUpdate",
+    cond = not vim.g.vscode,
+    event = { "BufReadPost", "BufNewFile" },
+    config = config("plugins.nvim-treesitter"),
     dependencies = {
       -- Rainbow parentheses for neovim using tree-sitter
       "p00f/nvim-ts-rainbow",
@@ -231,11 +245,12 @@ require("lazy").setup({
   },
   { -- Use Neovim as a language server
     "jose-elias-alvarez/null-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   { -- Initialize language server configuration
     "neovim/nvim-lspconfig",
-    event = "VimEnter",
+    event = { "BufReadPre", "BufNewFile" },
     config = config("plugins.lsp"),
     dependencies = {
       -- Neovim setup for init.lua and plugin development
@@ -263,7 +278,7 @@ require("lazy").setup({
     "utilyre/barbecue.nvim",
     name = "barbecue",
     version = "*",
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.barbecue"),
     dependencies = {
       "SmiteshP/nvim-navic",
@@ -272,6 +287,7 @@ require("lazy").setup({
   },
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",
+    event = "VeryLazy",
     config = config("plugins.dap"),
     dependencies = {
       { "rcarriga/nvim-dap-ui" },
@@ -290,29 +306,31 @@ require("lazy").setup({
   },
   { -- LSP signature hint as you type
     "ray-x/lsp_signature.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.lsp_signature"),
   },
   { -- Smart and powerful comment plugin for neovim
     "numToStr/Comment.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.Comment"),
   },
   { -- Support editorconfig for Neovim
     "gpanders/editorconfig.nvim",
     event = "BufReadPre",
-    dependencies = {
-      { "tpope/vim-sleuth" },
-    },
+  },
+  { -- Heuristically set buffer options
+    "tpope/vim-sleuth",
+    event = "BufReadPre",
   },
   { -- Orgmode for Neovim, Life Organization Tool Written in Lua
     "nvim-neorg/neorg",
     ft = "norg",
+    config = config("plugins.neorg"),
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = config("plugins.neorg"),
   },
   { -- Nice extra's for markdown documents
     "SidOfc/mkdx",
@@ -335,7 +353,7 @@ require("lazy").setup({
   },
   { -- Distraction-free coding for Neovim
     "folke/zen-mode.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     config = config("plugins.zen-mode"),
   },
   { -- Lua implementation of vim-which-key
@@ -349,8 +367,7 @@ require("lazy").setup({
     build = ":DirtytalkUpdate",
     event = "VeryLazy",
     config = function()
-      -- HACK: Appends site directory to rtp for lazy
-      -- https://github.com/psliwka/vim-dirtytalk/issues/25#issuecomment-1399267808
+      -- Append site directory to rtp for lazy
       vim.opt.rtp:append(vim.fn.stdpath("data") .. "/site")
       vim.opt.spelllang:append("programming")
     end,

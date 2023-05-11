@@ -374,6 +374,7 @@ require("lazy").setup({
   },
   { -- Prevent nested instances of neovim
     "samjwill/nvim-unception",
+    enabled = false,
     config = function()
       vim.g.unception_enable_flavor_text = false
       vim.api.nvim_create_autocmd("User", {

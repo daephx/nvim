@@ -54,6 +54,9 @@ map("v", "<Tab>", ">gv")
 map("n", "[b", ":bprevious<CR>", { desc = "Previous buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Next buffer" })
 
+-- Delete active buffer in window
+map("n", "<c-w>d", "<cmd>bn|bd#<CR>")
+
 -- General save document
 map("n", "<C-s>", "<cmd>write<cr>")
 

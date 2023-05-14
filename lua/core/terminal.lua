@@ -42,6 +42,13 @@ autocmd({ "TermOpen", "BufEnter" }, {
   command = "startinsert",
 })
 
+autocmd({ "TermClose", "BufLeave" }, {
+  desc = "Exit insert mode when leaving a terminal buffer",
+  group = group,
+  pattern = "term://*",
+  command = "stopinsert",
+})
+
 autocmd({ "TermClose" }, {
   desc = "Skip prompt, close exited terminal buffer",
   group = group,
@@ -50,11 +57,4 @@ autocmd({ "TermClose" }, {
     vim.fn.feedkeys("i")
     vim.api.nvim_input("<esc>")
   end,
-})
-
-autocmd({ "TermClose", "BufLeave" }, {
-  desc = "Exit insert mode when leaving a terminal buffer",
-  group = group,
-  pattern = "term://*",
-  command = "stopinsert",
 })

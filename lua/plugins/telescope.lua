@@ -21,7 +21,9 @@ telescope.setup({
     prompt_prefix = "❯ ",
     selection_caret = "❯ ",
     color_devicons = true,
-    dynamic_preview_title = true,
+    dynamic_preview_title = false,
+    preview_title = "",
+    results_title = false,
     scroll_strategy = "cycle",
     winblend = 5,
 

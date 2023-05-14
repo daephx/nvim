@@ -29,6 +29,9 @@ map("v", "<del>", '"_d')
 -- Banish Q to the shadow realm
 map("n", "Q", "<nop>")
 
+-- Ctrl-Z undo in insert
+map("i", "<c-z>", "<c-o>:u<CR>")
+
 -- Remove highlight after search with ESCAPE
 map("n", "<esc>", ":nohlsearch<cr><esc>")
 

@@ -62,7 +62,6 @@ map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
 
 -- General
 map("n", "<leader><Space>", "<cmd>Telescope buffers<CR>", { desc = "Open Buffers" })
-map("n", "<leader>/", "<Plug>kommentary_line_default", { desc = "Comment Line" })
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 
 -- Debug

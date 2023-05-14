@@ -50,12 +50,9 @@ map("v", ">", ">gv")
 map("v", "<S-Tab>", "<gv")
 map("v", "<Tab>", ">gv")
 
--- Switch buffer
-map("n", "<localleader>[", ":bprevious<cr>")
-map("n", "<localleader>]", ":bnext<cr>")
-
-map("n", "[b", ":bprevious<cr>")
-map("n", "]b", ":bnext<cr>")
+-- Navigate buffer
+map("n", "[b", ":bprevious<CR>", { desc = "Previous buffer" })
+map("n", "]b", ":bnext<CR>", { desc = "Next buffer" })
 
 -- General save document
 map("n", "<C-s>", "<cmd>write<cr>")

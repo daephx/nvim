@@ -108,7 +108,7 @@ telescope.setup({
     lsp_document_symbols = { path_display = { "hidden" } },
     lsp_references = { path_display = { "shorten" } },
     lsp_workspace_symbols = { path_display = { "shorten" } },
-    colorscheme = { theme = "dropdown", previewer = false },
+    colorscheme = { previewer = false, layout_config = { height = 12 } },
     buffers = {
       sort_mru = true,
       selection_strategy = "closest",

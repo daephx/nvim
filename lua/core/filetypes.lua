@@ -8,6 +8,7 @@ vim.filetype.add({
   extension = {
     babelrc = "json",
     conf = "conf",
+    csx = "cs",
     eslintrc = "json",
     frag = "glsl",
     log = "log",

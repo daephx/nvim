@@ -18,7 +18,8 @@ local M = {}
 telescope.setup({
   -- Default configuration for telescope goes here:
   defaults = themes.get_ivy({
-    prompt_prefix = "> ",
+    prompt_prefix = "❯ ",
+    selection_caret = "❯ ",
     color_devicons = true,
     dynamic_preview_title = true,
     scroll_strategy = "cycle",

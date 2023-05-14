@@ -25,6 +25,8 @@ telescope.setup({
     preview_title = "",
     results_title = false,
     scroll_strategy = "cycle",
+    selection_strategy = "row",
+    sorting_strategy = "ascending",
     winblend = 5,
 
     file_sorter = sorters.get_fuzzy_file,

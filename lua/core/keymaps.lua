@@ -72,12 +72,7 @@ map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Set Breakpoint"
 map("n", "<leader>dn", "<cmd>DapContinue<CR>", { desc = "Continue debugging" })
 
 -- Fuzzy
-map(
-  "n",
-  "<leader>f.",
-  '<cmd>lua require("plugins.telescope").search_dotfiles()<CR>',
-  { desc = "Dotfiles" }
-)
+map("n", "<leader>f.", "<cmd>Telescope dotfiles<CR>", { desc = "Dotfiles" })
 map("n", "<leader>fC", "<cmd>Telescope commands<CR>", { desc = "Commands" })
 map("n", "<leader>fF", "<cmd>Telescope treesitter<CR>", { desc = "Treesitter" })
 map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Grep Buffer" })
@@ -92,12 +87,7 @@ map("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Project list" })
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Recent Files" })
 map("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Grep String" })
 map("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Search Todo comments" })
-map(
-  "n",
-  "<leader>fv",
-  '<cmd>lua require("plugins.telescope").search_vimfiles()<CR>',
-  { desc = "VimRC" }
-)
+map("n", "<leader>fv", "<cmd>Telescope vimfiles<CR>", { desc = "Neovim config" })
 
 -- Plugins
 map("n", "<leader>pb", "<cmd>Lazy build<CR>", { desc = "Build plugins" })

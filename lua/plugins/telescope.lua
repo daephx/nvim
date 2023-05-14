@@ -7,13 +7,10 @@ end
 
 local action_set = require("telescope.actions.set")
 local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
 local previewers = require("telescope.previewers")
 local sorters = require("telescope.sorters")
 local state = require("telescope.state")
 local themes = require("telescope.themes")
-
-local M = {}
 
 telescope.setup({
   -- Default configuration for telescope goes here:
@@ -111,6 +108,12 @@ telescope.setup({
     lsp_references = { path_display = { "shorten" } },
     lsp_workspace_symbols = { path_display = { "shorten" } },
     colorscheme = { previewer = false, layout_config = { height = 12 } },
+    dotfiles = {
+      file_ignore_patterns = {
+        "meta/dotbot/.*",
+        "meta/dotbot/plugins/.*",
+      },
+    },
     find_files = { hidden = true },
     buffers = {
       sort_mru = true,
@@ -126,6 +129,10 @@ telescope.setup({
     },
   },
 })
+
+-- Load custom extensions
+telescope.load_extension("dotfiles")
+telescope.load_extension("vimfiles")
 
 --- Autocmds ---
 
@@ -146,31 +153,3 @@ vim.api.nvim_create_autocmd({ "WinLeave" }, {
     end
   end,
 })
-
---- Pickers ---
-
--- Search dotfiles directory
--- Path determined via environment variable or common `$HOME/.dotfiles`
-M.search_dotfiles = function()
-  builtin.find_files({
-    prompt_title = "Dotfiles",
-    cwd = vim.env.DOTFILES or "~/.dotfiles",
-    hidden = true,
-    file_ignore_patterns = {
-      "meta/dotbot/.*",
-      "meta/dotbot/plugins/.*",
-    },
-  })
-end
-
--- Search neovim config directory
--- Path determined via `stdpath("config")`
-M.search_vimfiles = function()
-  builtin.find_files({
-    prompt_title = "Neovim",
-    cwd = vim.fn.stdpath("config"),
-    hidden = true,
-  })
-end
-
-return M

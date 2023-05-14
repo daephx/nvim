@@ -88,7 +88,7 @@ db.setup({
         desc = desc("Settings"),
         keymap = keymap("SPC f v"),
         key = "s",
-        action = 'lua require("plugins.telescope").search_vimfiles()',
+        action = "Telescope vimfiles",
       },
       {
         icon = icon(""),

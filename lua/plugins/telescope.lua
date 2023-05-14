@@ -124,8 +124,11 @@ telescope.setup({
   },
 })
 
--- Enable line wrap in previewer
+--- Autocmds ---
+
 vim.api.nvim_create_autocmd("User", {
+  desc = "Enable line wrap in previewer",
+  group = vim.api.nvim_create_augroup("TelescopePreviewerWrap", {}),
   pattern = "TelescopePreviewerLoaded",
   command = "setlocal wrap",
 })

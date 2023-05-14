@@ -52,7 +52,7 @@ vim.keymap.set("n", "<leader>sf", function()
   session_lens.search_session()
 end, { desc = "Show Session list" })
 
-vim.keymap.set("n", "<leader>sd", "<cmd>DeleteSession<CR>", { desc = "Delete current session" })
+vim.keymap.set("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "Delete current session" })
 vim.keymap.set(
   "n",
   "<leader>sl",

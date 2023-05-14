@@ -65,8 +65,8 @@ map("n", "<leader><Space>", "<cmd>Telescope buffers<CR>", { desc = "Open Buffers
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 
 -- Debug
-map("n", "<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<CR>', { desc = "Set Breakpoint" })
-map("n", "<leader>dn", '<cmd>lua require("dap").continue()<CR>', { desc = "Continue debugging" })
+map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Set Breakpoint" })
+map("n", "<leader>dn", "<cmd>DapContinue<CR>", { desc = "Continue debugging" })
 
 -- Fuzzy
 map(
@@ -108,7 +108,7 @@ map("n", "<leader>ps", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
 map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 
 -- Git
-map("n", "<leader>gG", '<cmd>lua require("neogit").open()<CR>', { desc = "Git Status (Neogit)" })
+map("n", "<leader>gG", "<cmd>Neogit<CR>", { desc = "Git Status (Neogit)" })
 map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
 map("n", "<leader>gd", "<cmd>Gdiffsplit<CR>", { desc = "Diff current buffer" })
 map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "Git files" })

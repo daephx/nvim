@@ -107,28 +107,7 @@ map("n", "<leader>gd", "<cmd>Gdiffsplit<CR>", { desc = "Diff current buffer" })
 map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "Git files" })
 map("n", "<leader>gg", "<cmd>Gtabedit :<CR>", { desc = "Git Status (Fugitive)" })
 map("n", "<leader>gl", "<cmd>GclogTab<CR>", { desc = "Git Log" })
-map(
-  "n",
-  "<leader>gz",
-  '<cmd>lua require("plugins.toggleterm").lazygit:toggle()<CR>',
-  { desc = "Lazygit" }
-)
 
 -- New
 map("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" })
-
--- Terminal
-map("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", { desc = "Terminal Tab" })
-map(
-  "n",
-  "<leader>td",
-  '<cmd>lua require("plugins.toggleterm").lazydocker:toggle()<CR>',
-  { desc = "Lazydocker" }
-)
-map(
-  "n",
-  "<leader>tg",
-  '<cmd>lua require("plugins.toggleterm").lazygit:toggle()<CR>',
-  { desc = "Lazygit" }
-)

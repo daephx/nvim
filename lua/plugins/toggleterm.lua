@@ -78,4 +78,6 @@ _G.toggle_terminal = function(name)
   M[name]:toggle()
 end
 
+map("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", { desc = "Terminal Tab" })
+
 return M

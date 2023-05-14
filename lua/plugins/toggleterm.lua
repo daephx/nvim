@@ -38,6 +38,10 @@ toggleterm.setup({
   },
 })
 
+--- Keymaps ---
+
+map("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", { desc = "Terminal Tab" })
+
 --- Terminals ---
 
 -- Export custom terminal settings for different use cases
@@ -46,32 +50,25 @@ local Terminal = require("toggleterm.terminal").Terminal
 
 local M = {}
 
-M.lazygit = Terminal:new({
-  direction = "float",
-  cmd = "lazygit",
-  hidden = false,
-  on_open = function(term)
-    if vim.fn.mapcheck("<esc>", "t") ~= "" then
-      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
-    end
-  end,
-})
+local applications = {
+  "btop",
+  "htop",
+  "lazydocker",
+  "lazygit",
+}
 
-M.lazydocker = Terminal:new({
-  direction = "float",
-  cmd = "lazydocker",
-  hidden = false,
-  on_open = function(term)
-    if vim.fn.mapcheck("<esc>", "t") ~= "" then
-      vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<C-\\><C-N>")
+local init_command_terminals = function()
+  for _, app in pairs(applications) do
+    if vim.fn.executable(app) then
+      M[app] = Terminal:new({ cmd = app, direction = "float" })
+      local command = app:gsub("^%l", string.upper)
+      vim.api.nvim_create_user_command(command, function()
+        M[app]:toggle()
+      end, {})
     end
-  end,
-})
-
-_G.toggle_terminal = function(name)
-  M[name]:toggle()
+  end
 end
 
-map("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", { desc = "Terminal Tab" })
+init_command_terminals()
 
 return M

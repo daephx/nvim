@@ -5,6 +5,7 @@ if not toggleterm_ok then
   return
 end
 
+-- Callback to determine the size of terminal windows
 local function size(term)
   if term.direction == "horizontal" then
     return 20
@@ -13,11 +14,13 @@ local function size(term)
   end
 end
 
+-- Callback to be executed when terminal is opened
 local function on_open(term)
   local opts = { buffer = term.bufnr, silent = true }
   vim.keymap.set({ "n", "t" }, "<esc><esc>", "<C-\\><C-n>", opts)
 end
 
+-- Callback to be executed when terminal is closed
 local function on_close()
   local wins = vim.api.nvim_list_wins()
   if wins == 1 then

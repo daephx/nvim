@@ -39,7 +39,9 @@ autocmd({ "TermOpen", "BufEnter" }, {
   desc = "Enter insert mode when focusing a terminal buffer",
   group = group,
   pattern = "term://*",
-  command = "startinsert",
+  callback = vim.schedule_wrap(function()
+    vim.cmd.startinsert()
+  end),
 })
 
 autocmd({ "TermClose", "BufLeave" }, {

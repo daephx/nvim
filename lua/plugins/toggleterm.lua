@@ -36,12 +36,6 @@ toggleterm.setup({
     Normal = { link = "Normal" },
     FloatBorder = { link = "FloatBorder" },
   },
-  float_opts = {
-    border = "single",
-    width = 190,
-    height = 50,
-    winblend = 8,
-  },
 })
 
 --- Terminals ---

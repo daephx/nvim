@@ -23,9 +23,8 @@ map("v", "<A-Down>", ":m '>+1<CR>gv=gv")
 -- Make Y act like other capitals
 map("n", "Y", "y$")
 
--- Black hole Registers
--- Breaks default functionality
-map("v", "<del>", '"_d') -- Prevent <Delete> from yanking
+-- Prevent <Delete> from yanking
+map("v", "<del>", '"_d')
 
 -- Banish Q to the shadow realm
 map("n", "Q", "<nop>")

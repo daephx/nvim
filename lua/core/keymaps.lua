@@ -58,7 +58,7 @@ map("n", "]b", ":bnext<CR>", { desc = "Next buffer" })
 map("n", "<c-w>d", "<cmd>bn|bd#<CR>")
 
 -- General save document
-map("n", "<C-s>", "<cmd>write<cr>")
+map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
 
 -- General
 map("n", "<leader><Space>", "<cmd>Telescope buffers<CR>", { desc = "Open Buffers" })

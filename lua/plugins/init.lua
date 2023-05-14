@@ -119,6 +119,11 @@ require("lazy").setup({
     "mbbill/undotree",
     cmd = { "UndotreeShow", "UndotreeToggle" },
   },
+  { -- hex editing done right
+    "RaafatTurki/hex.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
 
   --- Telescope ---
 

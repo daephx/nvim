@@ -71,7 +71,7 @@ vim.opt.whichwrap:append("<,>,[,]") -- Allows navigation wrapping to previous/ne
 -- Control vim Spell checking
 vim.opt.spell = true
 vim.opt.spelllang = { "en" }
-vim.opt.spelloptions = { "noplainbuffer" }
+vim.opt.spelloptions = { "camel", "noplainbuffer" }
 
 -- Insert mode completion
 vim.opt.completeopt = { "menu", "menuone", "noselect" }

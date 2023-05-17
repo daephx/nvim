@@ -30,7 +30,6 @@ return {
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")
-      require("plugins.lsp.icons")
       require("plugins.lsp.lspconfig")
       require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler

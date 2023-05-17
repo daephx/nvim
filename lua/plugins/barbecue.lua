@@ -4,7 +4,7 @@
 local function icons()
   return vim.tbl_map(function(icon)
     return icon
-  end, require("plugins.lsp.icons").kinds)
+  end, require("core.icons").kinds)
 end
 
 return {

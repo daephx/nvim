@@ -1,8 +1,6 @@
 -- nvim-cmp | A completion plugin for neovim coded in Lua
 -- https://github.com/hrsh7th/nvim-cmp
 
-local kinds = require("plugins.lsp.icons").kinds
-
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -16,6 +14,7 @@ return {
   },
   config = function()
     local cmp = require("cmp")
+    local kinds = require("core.icons").kinds
 
     -- Detect whitespace before cursor position.
     local check_backspace = function()

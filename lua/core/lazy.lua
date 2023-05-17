@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = "plugins",
   change_detection = { notify = false },
-  defaults = { lazy = false },
+  defaults = { lazy = true },
   dev = {
     path = "~/Projects",
     patterns = { "daephx" },

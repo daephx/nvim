@@ -2,9 +2,9 @@
 -- https://github.com/glepnir/dashboard-nvim
 
 -- Dashboard whitespace padding helper
-local fill_str = function(w)
+local fill_str = function(width)
   return function(str)
-    local fill = (" "):rep(math.abs(#str - w))
+    local fill = (" "):rep(math.abs(#str - width))
     return ("%s%s"):format(str, fill)
   end
 end

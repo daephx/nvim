@@ -8,7 +8,6 @@ end
 local ts_configs = require("nvim-treesitter.configs")
 
 ts_configs.setup({
-  -- A list of parser names, or "all"
   ensure_installed = {
     "bash",
     "c",
@@ -28,17 +27,9 @@ ts_configs.setup({
     "vimdoc",
     "yaml",
   },
-  ignore_install = {}, -- List of parsers to ignore installing
-  auto_install = true, -- Automatically install missing parsers when entering buffer
-  highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = {}, -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
+  ignore_install = {},
+  auto_install = true,
+  highlight = { enable = true },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -54,12 +45,8 @@ ts_configs.setup({
   },
   rainbow = {
     enable = true,
-    -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
     extended_mode = true,
-    -- Do not enable for files with ore than n lines, int
     max_file_lines = 2000,
-    -- colors = {}, -- table of hex strings
-    -- termcolors = {} -- table of colour name strings
   },
   autotag = {
     enable = true,
@@ -67,9 +54,8 @@ ts_configs.setup({
   textobjects = {
     select = {
       enable = true,
-      lookahead = true, -- Automatically jump forward to text object, similar to targets.vim
+      lookahead = true,
       keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["ac"] = "@class.outer",
@@ -78,7 +64,7 @@ ts_configs.setup({
     },
     move = {
       enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
+      set_jumps = true,
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = "@class.outer",

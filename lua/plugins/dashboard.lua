@@ -1,7 +1,9 @@
 -- Dashboard.nvim | vim dashboard
 -- https://github.com/glepnir/dashboard-nvim
 
--- Dashboard whitespace padding helper
+-- Return function with predefined whitespace padding
+---@param width integer
+---@return function
 local fill_str = function(width)
   return function(str)
     local fill = (" "):rep(math.abs(#str - width))
@@ -9,7 +11,7 @@ local fill_str = function(width)
   end
 end
 
--- Define callback interfaces
+-- Define returned function labels
 local icon = fill_str(2)
 local desc = fill_str(18)
 local keymap = fill_str(7)

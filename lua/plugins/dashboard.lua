@@ -99,9 +99,11 @@ return {
         },
       },
       footer = function()
-        local lazy_ok, lazy = pcall(require, "lazy")
-        local plugin_count = lazy_ok and lazy.stats().loaded or nil
-        return { "", "", string.format("Started with %s loaded plugins!", plugin_count) }
+        local plugins_total = require("lazy").stats().count ---@type integer
+        local plugins_loaded = require("lazy").stats().loaded ---@type integer
+        local startup_time = ("%.2f"):format(require("lazy").stats().startuptime)
+        local message = "Neovim loaded %s/%s plugins in %sms"
+        return { "", "", message:format(plugins_loaded, plugins_total, startup_time) }
       end,
     },
   },

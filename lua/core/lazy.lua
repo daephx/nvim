@@ -24,6 +24,9 @@ require("lazy").setup({
     path = "~/Projects",
     patterns = { "daephx" },
   },
+  install = {
+    colorscheme = { "vscode", "default" },
+  },
   performance = {
     rtp = {
       disabled_plugins = {

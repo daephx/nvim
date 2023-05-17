@@ -30,13 +30,12 @@ end
 return {
   "folke/zen-mode.nvim",
   event = { "BufReadPost", "BufNewFile" },
+  keys = {
+    { "<c-w>z", "<cmd>ZenMode<CR>", desc = "Enable ZenMode" },
+  },
   opts = {
     backdrop = 1, -- Backdrop shade: Set to 1 to keep the same as Normal.
     -- callback where you can add custom code when the Zen window opens
     on_open = on_open,
   },
-  config = function(_, opts)
-    require("zen-mode").setup(opts)
-    vim.keymap.set("n", "<c-w>z", "<cmd>ZenMode<CR>", { desc = "Enable ZenMode" })
-  end,
 }

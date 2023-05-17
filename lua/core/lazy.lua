@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Initialize plugin list
 require("lazy").setup({
   spec = "plugins",
+  change_detection = { notify = false },
   defaults = { lazy = false },
   performance = {
     rtp = {

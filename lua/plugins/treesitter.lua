@@ -11,6 +11,8 @@ return {
     { "p00f/nvim-ts-rainbow" },
     -- Treesitter auto html tags
     { "windwp/nvim-ts-autotag" },
+    -- set commentstring based on the cursor location
+    { "JoosepAlviste/nvim-ts-context-commentstring" },
     -- Syntax aware text-objects, select, move, swap, etc
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     -- Treesitter playground integrated into Neovim

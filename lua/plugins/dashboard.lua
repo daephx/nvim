@@ -119,9 +119,9 @@ return {
       callback = function(ev)
         vim.opt_local.fillchars = { eob = " " }
         -- Apply keymap settings for dashboard
-        local opts = { buffer = ev.buf, silent = true }
-        vim.keymap.set("n", "<PageDown>", "<Nop>", opts)
-        vim.keymap.set("n", "<PageUp>", "<Nop>", opts)
+        local options = { buffer = ev.buf, silent = true }
+        vim.keymap.set("n", "<PageDown>", "<Nop>", options)
+        vim.keymap.set("n", "<PageUp>", "<Nop>", options)
       end,
     })
   end,

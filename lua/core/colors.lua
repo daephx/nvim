@@ -74,21 +74,28 @@ local get_colors_file = function(name, rtp)
   end
 end
 
+-- Runtime paths to check for colorscheme overrides
+local runtime = {
+  "lua/plugins/colors",
+  "after/colors",
+}
+
 ---Load colorscheme from runtime path.
 ---@param name string # Name of the desired colorscheme
 local load = function(name)
-  local rtp = "lua/plugins/colors"
-  local filepath = get_colors_file(name, rtp) or ""
+  for _, rtp in pairs(runtime) do
+    local filepath = get_colors_file(name, rtp) or ""
 
-  -- Match extension for loading vimscript files
-  if filepath:match(".+%.vim") then
-    vim.cmd.source(filepath)
-  end
+    -- Match extension for loading vimscript files
+    if filepath:match(".+%.vim") then
+      vim.cmd.source(filepath)
+    end
 
-  -- Safely load lua file for theme highlights
-  local theme_ok, theme = pcall(dofile, filepath)
-  if theme_ok and type(theme) == "table" then
-    M.set_highlights(theme["colors"] or {})
+    -- Safely load lua file for theme highlights
+    local theme_ok, theme = pcall(dofile, filepath)
+    if theme_ok and type(theme) == "table" then
+      M.set_highlights(theme["colors"] or {})
+    end
   end
 
   -- Apply global highlights variable for all colorschemes

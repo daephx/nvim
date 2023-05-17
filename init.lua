@@ -6,8 +6,14 @@
 -- ====================================
 -- Personal Neovim configuration files
 
-require("core")
-require("plugins")
+require("core.options")
+require("core.filetypes")
+require("core.commands")
+require("core.keymaps")
+require("core.autocmds")
+require("core.terminal")
+require("core.colors")
+require("core.lazy")
 
 -- these highlight definitions apply after any color schemes.
 vim.g.colors = {

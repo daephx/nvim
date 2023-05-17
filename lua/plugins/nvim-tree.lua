@@ -53,4 +53,23 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    -- initialize plugin
+    require("nvim-tree").setup(opts)
+
+    -- HACK: Close nvimtree window when leaving vim,
+    -- Prevents Compatibility issues with auto-session
+    -- https://github.com/nvim-tree/nvim-tree.lua/issues/1992
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "NvimTree" },
+      callback = function(args)
+        vim.api.nvim_create_autocmd("VimLeavePre", {
+          callback = function()
+            vim.api.nvim_buf_delete(args.buf, { force = true })
+            return true
+          end,
+        })
+      end,
+    })
+  end,
 }

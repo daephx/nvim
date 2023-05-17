@@ -1,58 +1,62 @@
 -- todo-comments.nvim | Highlight, list and search todo comments in your projects
 -- https://github.com/folke/todo-comments.nvim
-local todo_ok, todo = pcall(require, "todo-comments")
-if not todo_ok then
-  return
-end
 
---- Setup ---
-
-todo.setup({
-  signs = true, -- show icons in the signs column
-  sign_priority = 8,
-  keywords = {
-    FIX = {
-      icon = " ",
-      color = "error",
-      alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" },
+return {
+  "folke/todo-comments.nvim",
+  cmd = { "TodoTrouble", "TodoTelescope" },
+  event = { "BufReadPost", "BufNewFile" },
+  dependencies = { "nvim-lua/plenary.nvim" },
+  opts = {
+    signs = true, -- show icons in the signs column
+    sign_priority = 8,
+    keywords = {
+      FIX = {
+        icon = " ",
+        color = "error",
+        alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" },
+      },
+      TODO = { icon = " ", color = "info", alt = { "WIP" } },
+      HACK = { icon = " ", color = "warning" },
+      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+      PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
     },
-    TODO = { icon = " ", color = "info", alt = { "WIP" } },
-    HACK = { icon = " ", color = "warning" },
-    WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-    PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-    NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-  },
-  highlight = {
-    keyword = "wide", -- "fg", "bg", "wide" or empty.
-    after = "fg", -- "fg" or "bg" or empty
-    pattern = [[.*<(KEYWORDS)(\(.*\))?:]],
-    comments_only = true,
-    exclude = { -- list of file types to exclude highlighting
-      "help",
-      "log",
-      "vim",
+    highlight = {
+      keyword = "wide", -- "fg", "bg", "wide" or empty.
+      after = "fg", -- "fg" or "bg" or empty
+      pattern = [[.*<(KEYWORDS)(\(.*\))?:]],
+      comments_only = true,
+      exclude = { -- list of file types to exclude highlighting
+        "help",
+        "log",
+        "vim",
+      },
+    },
+    search = {
+      -- regex that will be used to match keywords.
+      -- don't replace the (KEYWORDS) placeholder!
+      -- Match to colon ':', optional parenthesis | KEYWORD(AUTHOR):
+      pattern = [[\b(KEYWORDS)(\(.*\))?:]],
     },
   },
-  search = {
-    -- regex that will be used to match keywords.
-    -- don't replace the (KEYWORDS) placeholder!
-    -- Match to colon ':', optional parenthesis | KEYWORD(AUTHOR):
-    pattern = [[\b(KEYWORDS)(\(.*\))?:]],
-  },
-})
+  config = function(_, opts)
+    local todo = require("todo-comments")
+    todo.setup(opts)
 
---- Keymaps ---
+    --- Keymaps ---
 
-vim.keymap.set("n", "]t", todo.jump_next, { desc = "Next todo comment" })
-vim.keymap.set("n", "[t", todo.jump_prev, { desc = "Previous todo comment" })
+    vim.keymap.set("n", "]t", todo.jump_next, { desc = "Next todo comment" })
+    vim.keymap.set("n", "[t", todo.jump_prev, { desc = "Previous todo comment" })
 
---- Autocmds ---
+    --- Autocmds ---
 
-local group = vim.api.nvim_create_augroup("TodoCommentHooks", {})
-vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
-  desc = "Remove default todo higroup",
-  group = group,
-  callback = function()
-    vim.api.nvim_set_hl(0, "Todo", {})
+    local group = vim.api.nvim_create_augroup("TodoCommentHooks", {})
+    vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+      desc = "Remove default todo higroup",
+      group = group,
+      callback = function()
+        vim.api.nvim_set_hl(0, "Todo", {})
+      end,
+    })
   end,
-})
+}

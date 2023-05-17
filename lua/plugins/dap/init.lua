@@ -1,25 +1,6 @@
 -- DAP | Debug Adapter Protocol
 
--- Define Debugging highlights
-vim.cmd("highlight link debugBreakpoint DiagnosticsHint")
-
--- Define Debugging signs
-vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "debugBreakpoint" })
-vim.fn.sign_define("DapBreakpointCondition", { text = " ", texthl = "DiagnosticWarn" })
-vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError" })
-vim.fn.sign_define("DapLogPoint", { text = " ", texthl = "debugBreakpoint" })
-vim.fn.sign_define("DapStopped", { text = "●", texthl = "DiagnosticsHint" })
-
-local dap = require("dap")
-
-dap.listeners.after["event_initialized"]["dapui"] = function()
-  require("dapui").open()
-end
-dap.listeners.after["event_terminated"]["dapui"] = function()
-  require("dapui").close()
-end
-
-local mappings = function()
+local initialize_keymaps = function()
   map("n", "<leader>dC", '<cmd>lua require("dap").continue()<CR>')
   map("n", "<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<CR>')
   map(
@@ -42,23 +23,8 @@ local mappings = function()
   map("n", "<leader>dX", '<cmd>lua require("dapui").eval(vim.fn.input("expression: "))<CR>')
 end
 
-vim.cmd([[
-function! SetupREPL()
-  lua require("dap.ext.autocompl").attach()
-  setlocal nobuflisted
-  setlocal nonumber
-  setlocal norelativenumber
-  setlocal signcolumn=no
-endfunction
-
-augroup dapui_au
-  autocmd!
-  autocmd FileType dap-repl call SetupREPL()
-augroup END
-]])
-
 -- Languages defined here will be looked for in the plugin.dap module,
--- Any lua script with the coorisponding name will be loaded if found.
+-- Any lua script with the corresponding name will be loaded if found.
 -- i.e. lua/plugins/dap/python.lua
 
 local languages = {
@@ -72,17 +38,71 @@ local languages = {
   -- "javascript",
 }
 
-local M = {}
+return {
+  { -- Debug adapter protocol client
+    "mfussenegger/nvim-dap",
+    event = "VeryLazy",
+    dependencies = {
+      { "rcarriga/nvim-dap-ui" },
+      { "jbyuki/one-small-step-for-vimkind" },
+      -- bridges mason.nvim with the nvim-dap
+      { "jay-babu/mason-nvim-dap.nvim" },
+    },
+    config = function()
+      local dap = require("dap")
 
-M.setup = function()
-  mappings() -- initialize Debugger keymaps
-  -- initialize adapters/configs for languages
-  for _, lang in pairs(languages) do
-    if not pcall(require, "plugins.dap." .. lang) then
-      error("DAP: Config for " .. lang .. " is not defined!")
-      return
-    end
-  end
-end
+      -- Define Debugging highlights
+      vim.cmd("highlight link debugBreakpoint DiagnosticsHint")
 
-return M
+      -- Define Debugging signs
+      vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "debugBreakpoint" })
+      vim.fn.sign_define("DapBreakpointCondition", { text = " ", texthl = "DiagnosticWarn" })
+      vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError" })
+      vim.fn.sign_define("DapLogPoint", { text = " ", texthl = "debugBreakpoint" })
+      vim.fn.sign_define("DapStopped", { text = "●", texthl = "DiagnosticsHint" })
+
+      dap.listeners.after["event_initialized"]["dapui"] = function()
+        require("dapui").open()
+      end
+      dap.listeners.after["event_terminated"]["dapui"] = function()
+        require("dapui").close()
+      end
+
+      initialize_keymaps()
+      -- initialize adapters/configs for languages
+      for _, lang in pairs(languages) do
+        if not pcall(require, "plugins.dap." .. lang) then
+          error("DAP: Config for " .. lang .. " is not defined!")
+          return
+        end
+      end
+
+      vim.cmd([[
+      function! SetupREPL()
+        lua require("dap.ext.autocompl").attach()
+        setlocal nobuflisted
+        setlocal nonumber
+        setlocal norelativenumber
+        setlocal signcolumn=no
+      endfunction
+
+      augroup dapui_au
+        autocmd!
+        autocmd FileType dap-repl call SetupREPL()
+      augroup END
+      ]])
+    end,
+  },
+  {
+    { -- Integration for nvim-dap with telescope.nvim
+      "nvim-telescope/telescope-dap.nvim",
+      config = function()
+        require("telescope").load_extension("dap")
+      end,
+      dependencies = {
+        "mfussenegger/nvim-dap",
+        "nvim-telescope/telescope.nvim",
+      },
+    },
+  },
+}

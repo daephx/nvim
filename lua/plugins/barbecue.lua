@@ -1,9 +1,5 @@
 -- barbecue.nvim | A VS Code like winbar for Neovim
 -- https://github.com/utilyre/barbecue.nvim
-local barbecue_ok, barbecue = pcall(require, "barbecue")
-if not barbecue_ok then
-  return
-end
 
 local function icons()
   return vim.tbl_map(function(icon)
@@ -11,17 +7,27 @@ local function icons()
   end, require("plugins.lsp.icons").kinds)
 end
 
-barbecue.setup({
-  kinds = icons(),
-  show_modified = true,
-  attach_navic = false,
-  exclude_filetypes = {
-    "dashboard",
-    "gitcommit",
-    "terminal",
-    "toggleterm",
+return {
+  "utilyre/barbecue.nvim",
+  name = "barbecue",
+  version = "*",
+  event = { "BufReadPost", "BufNewFile" },
+  dependencies = {
+    "SmiteshP/nvim-navic",
+    "nvim-tree/nvim-web-devicons",
   },
-  theme = {
-    separator = { fg = "gray" },
+  opts = {
+    kinds = icons(),
+    show_modified = true,
+    attach_navic = false,
+    exclude_filetypes = {
+      "dashboard",
+      "gitcommit",
+      "terminal",
+      "toggleterm",
+    },
+    theme = {
+      separator = { fg = "gray" },
+    },
   },
-})
+}

@@ -8,10 +8,9 @@
 
 require("core")
 require("plugins")
-require("colors")
 
 -- these highlight definitions apply after any color schemes.
-vim.g.colors_overrides = {
+vim.g.colors = {
   NormalFloat = { link = "Normal" },
 }
 

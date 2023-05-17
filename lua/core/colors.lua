@@ -23,7 +23,7 @@ end
 
 -- Get color table from highlight group with optional section: fg, bg
 ---@param group string
----@param hl? string
+---@param hl string|nil
 ---@return table
 M.get_highlights = function(group, hl)
   local labels = { background = "bg", foreground = "fg", special = "sp" }
@@ -50,49 +50,60 @@ M.extend_highlights = function(group, tbl)
 end
 
 -- Wrapper for nvim_set_hl that applies higroups from table definitions
----@param opts function | table
+---@param opts function|table
 M.set_highlights = function(opts)
   if type(opts) == "function" then
-    ---@type table
-    opts = opts()
+    opts = opts() ---@type table
   end
   for group, colors in pairs(opts) do
     vim.api.nvim_set_hl(0, group, colors)
   end
 end
 
--- Load/Reload color scheme modules by name
----@param name? string
-M.load = function(name)
-  name = name or vim.g.colors_name
-  if not M.is_available(name) then
-    return
-  end
-
-  -- Reload colorscheme module
-  local module_path = ("colors.%s"):format(name)
-  if package.loaded[module_path] then
-    package.loaded[module_path] = nil
-  end
-
-  -- Safety check for theme group_overrides table
-  local theme_ok, theme = pcall(require, module_path)
-  if theme_ok and type(theme) == "table" then
-    if theme["group_overrides"] then
-      M.set_highlights(theme.group_overrides)
+---Get filepath for matching colorscheme name in after/colors directory.
+---@param name string # Name of the desired colorscheme
+---@param rtp string # Parent directory to search for runtime files
+---@return string|nil # Path string to first matching runtime file
+local get_colors_file = function(name, rtp)
+  local files = vim.api.nvim_get_runtime_file(rtp .. "/*", true)
+  for _, path in pairs(files) do
+    local match = string.match(path, rtp .. "/(%w+)%.[lua|vim]")
+    if match == name then
+      return path
     end
+  end
+end
+
+---Load colorscheme from runtime path.
+---@param name string # Name of the desired colorscheme
+local load = function(name)
+  local rtp = "lua/plugins/colors"
+  local filepath = get_colors_file(name, rtp) or ""
+
+  -- Match extension for loading vimscript files
+  if filepath:match(".+%.vim") then
+    vim.cmd.source(filepath)
+  end
+
+  -- Safely load lua file for theme highlights
+  local theme_ok, theme = pcall(dofile, filepath)
+  if theme_ok and type(theme) == "table" then
+    M.set_highlights(theme["colors"] or {})
+  end
+
+  -- Apply global highlights variable for all colorschemes
+  if vim.g.colors then
+    M.set_highlights(vim.g.colors or {})
   end
 end
 
 --- Autocmds ---
 
-local group = vim.api.nvim_create_augroup("ColorSchemeSetup", {})
 vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   desc = "Load/Reload color scheme module when colorscheme changes",
-  group = group,
+  group = vim.api.nvim_create_augroup("ColorSchemeOverrides", {}),
   callback = function(ev)
-    M.load(ev.match)
-    M.set_highlights(vim.g.colors_overrides or {})
+    load(ev.match)
   end,
 })
 

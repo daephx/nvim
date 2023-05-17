@@ -1,9 +1,5 @@
 -- ZenMode | Distraction-free coding for Neovim
 -- https://github.com/folke/zen-mode.nvim
-local zenmode_ok, zenmode = pcall(require, "zen-mode")
-if not zenmode_ok then
-  return
-end
 
 local filetypes = {
   "fugitive",
@@ -31,12 +27,16 @@ local on_open = function(win)
   end
 end
 
-zenmode.setup({
-  backdrop = 1, -- Backdrop shade: Set to 1 to keep the same as Normal.
-  -- callback where you can add custom code when the Zen window opens
-  on_open = on_open,
-})
-
---- Keymaps ---
-
-vim.keymap.set("n", "<c-w>z", "<cmd>ZenMode<CR>", { desc = "Enable ZenMode" })
+return {
+  "folke/zen-mode.nvim",
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    backdrop = 1, -- Backdrop shade: Set to 1 to keep the same as Normal.
+    -- callback where you can add custom code when the Zen window opens
+    on_open = on_open,
+  },
+  config = function(_, opts)
+    require("zen-mode").setup(opts)
+    vim.keymap.set("n", "<c-w>z", "<cmd>ZenMode<CR>", { desc = "Enable ZenMode" })
+  end,
+}

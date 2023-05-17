@@ -1,15 +1,12 @@
 -- lualine.nvim | Blazing fast statusline for neovim, written in pure lua
 -- https://github.com/nvim-lualine/lualine.nvim
-local lualine_ok, lualine = pcall(require, "lualine")
-if not lualine_ok then
-  return
-end
 
 --- Helpers ---
 
 -- Version control diff values
----@return table?
+---@return table|nil
 local diff_source = function()
+  ---@diagnostic disable-next-line:undefined-field
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
     return {
@@ -39,92 +36,102 @@ end
 
 --- Settings  ---
 
-lualine.setup({
-  options = {
-    component_separators = { left = "", right = "" },
-    section_separators = { left = "", right = "" },
+return {
+  "nvim-lualine/lualine.nvim",
+  event = "UIEnter",
+  dependencies = {
+    -- Lua fork of vim-web-devicons for neovim
+    { "nvim-tree/nvim-web-devicons" },
+    -- Display LSP progress in the statusline
+    { "arkav/lualine-lsp-progress", event = "LspAttach" },
   },
-  sections = {
-    lualine_a = {
-      {
-        "mode",
-        fmt = function(str)
-          return str:sub(1, 1)
+  opts = {
+    options = {
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
+    },
+    sections = {
+      lualine_a = {
+        {
+          "mode",
+          fmt = function(str)
+            return str:sub(1, 1)
+          end,
+        },
+      },
+      lualine_b = {
+        { "branch", icon = "" },
+        { "diff", source = diff_source },
+      },
+      lualine_c = {
+        {
+          "filename",
+          icon = { "" },
+          path = 1,
+        },
+      },
+      lualine_x = {
+        {
+          "lsp_progress",
+          display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
+          spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+        },
+        { "lsp_client" },
+        {
+          "diagnostics",
+          sources = { "nvim_diagnostic", "coc", "ale" },
+          symbols = {
+            hint = "",
+            info = "",
+            warn = "",
+            error = "",
+          },
+        },
+      },
+      lualine_y = {
+        { "filetype", icon_only = false },
+        { "encoding" },
+        { "fileformat" },
+      },
+      lualine_z = { "location" },
+    },
+    tabline = process_sections({
+      lualine_a = {
+        function()
+          return ""
         end,
       },
-    },
-    lualine_b = {
-      { "branch", icon = "" },
-      { "diff", source = diff_source },
-    },
-    lualine_c = {
-      {
-        "filename",
-        icon = { "" },
-        path = 1,
-      },
-    },
-    lualine_x = {
-      {
-        "lsp_progress",
-        display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
-        spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-      },
-      { "lsp_client" },
-      {
-        "diagnostics",
-        sources = { "nvim_diagnostic", "coc", "ale" },
-        symbols = {
-          hint = "",
-          info = "",
-          warn = "",
-          error = "",
+      lualine_b = {
+        {
+          "custom_windows",
+          disabled_buftypes = {
+            "nowrite",
+          },
+          disabled_filetypes = {
+            "NvimTree",
+            "Trouble",
+            "fugitive",
+          },
         },
       },
-    },
-    lualine_y = {
-      { "filetype", icon_only = false },
-      { "encoding" },
-      { "fileformat" },
-    },
-    lualine_z = { "location" },
-  },
-  tabline = process_sections({
-    lualine_a = {
-      function()
-        return ""
-      end,
-    },
-    lualine_b = {
-      {
-        "custom_windows",
-        disabled_buftypes = {
-          "nowrite",
-        },
-        disabled_filetypes = {
-          "NvimTree",
-          "Trouble",
-          "fugitive",
-        },
+      lualine_y = { "custom_tabs" },
+      lualine_z = {
+        function()
+          return ""
+        end,
+      },
+    }),
+    inactive_sections = {
+      lualine_c = {
+        { "filename", path = 1 },
       },
     },
-    lualine_y = { "custom_tabs" },
-    lualine_z = {
-      function()
-        return ""
-      end,
-    },
-  }),
-  inactive_sections = {
-    lualine_c = {
-      { "filename", path = 1 },
+    extensions = {
+      "dashboard",
+      "fugitive",
+      "quickfix",
+      "terminal",
+      "trouble",
     },
   },
-  extensions = {
-    "dashboard",
-    "fugitive",
-    "quickfix",
-    "terminal",
-    "trouble",
-  },
-})
+}

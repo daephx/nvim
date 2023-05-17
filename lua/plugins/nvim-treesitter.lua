@@ -5,18 +5,7 @@ if not treesitter_ok then
   return
 end
 
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 local ts_configs = require("nvim-treesitter.configs")
-
--- Include PowerShell parser
-parser_configs.powershell = {
-  install_info = {
-    url = "https://github.com/jrsconfitto/tree-sitter-powershell",
-    files = { "src/parser.c" },
-  },
-  filetype = "ps1",
-  used_by = { "psm1", "psd1", "pssc", "psxml", "cdxml" },
-}
 
 ts_configs.setup({
   -- A list of parser names, or "all"

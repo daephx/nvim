@@ -29,7 +29,7 @@ end
 
 return {
   "folke/zen-mode.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  cmd = "ZenMode",
   keys = {
     { "<c-w>z", "<cmd>ZenMode<CR>", desc = "Enable ZenMode" },
   },

@@ -5,7 +5,9 @@
 -- /_/ |_/\___/\____/|___/_/_/ /_/ /_/
 -- ====================================
 -- Personal Neovim configuration files
+-- https://github.com/daephx/nvim
 
+-- Load core modules
 require("core.options")
 require("core.filetypes")
 require("core.commands")

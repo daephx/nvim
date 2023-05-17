@@ -20,6 +20,10 @@ require("lazy").setup({
   spec = "plugins",
   change_detection = { notify = false },
   defaults = { lazy = false },
+  dev = {
+    path = "~/Projects",
+    patterns = { "daephx" },
+  },
   performance = {
     rtp = {
       disabled_plugins = {

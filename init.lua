@@ -17,10 +17,5 @@ require("core.terminal")
 require("core.colors")
 require("core.lazy")
 
--- these highlight definitions apply after any color schemes.
-vim.g.colors = {
-  NormalFloat = { link = "Normal" },
-}
-
 -- Apply colorscheme
 vim.cmd.colorscheme("vscode")

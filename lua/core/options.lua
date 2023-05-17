@@ -198,6 +198,15 @@ vim.opt.fillchars = {
   msgsep = "─", -- Message separator
 }
 
+--- Colors ---
+
+-- Global highlight overrides
+vim.g.colors = {
+  LspInfoBorder = { link = "FloatBorder" },
+  MsgSeparator = { link = "VertSplit" },
+  NormalFloat = { link = "Normal" },
+}
+
 --- Netrw ---
 
 vim.g.netrw_banner = 0

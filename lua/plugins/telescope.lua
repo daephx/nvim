@@ -65,6 +65,7 @@ return {
         mappings = {
           i = {
             ["qq"] = actions.close,
+            ["jk"] = actions.close,
             ["<C-u>"] = false,
             ["<C-h>"] = "which_key",
             ["<C-d>"] = false,
@@ -84,6 +85,8 @@ return {
             end,
           },
           n = {
+            ["q"] = actions.close,
+            ["jk"] = actions.close,
             ["<esc>"] = actions.close,
             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
             ["<C-k>"] = actions.move_selection_previous,

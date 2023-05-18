@@ -36,7 +36,7 @@ return {
       ["gc"] = { name = "+Comment" },
       ["<leader>b"] = { name = "+Buffer" },
       ["<leader>d"] = { name = "+Debug" },
-      ["<leader>f"] = { name = "+Fuzzy" },
+      ["<leader>f"] = { name = "+Find" },
       ["<leader>g"] = { name = "+Git" },
       ["<leader>p"] = { name = "+Plugins" },
       ["<leader>P"] = { name = "+Projects" },

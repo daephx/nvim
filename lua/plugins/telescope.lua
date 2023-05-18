@@ -9,7 +9,7 @@ return {
     { "nvim-lua/plenary.nvim" },
     -- Popup API from vim in Neovim
     { "nvim-lua/popup.nvim" },
-    -- Lua fork of vim-web-devicons for neovim
+    -- Adds file type icons to Vim plugins
     { "nvim-tree/nvim-web-devicons" },
   },
   opts = function()
@@ -20,7 +20,6 @@ return {
     local state = require("telescope.state")
     local themes = require("telescope.themes")
     return {
-      -- Default configuration for telescope goes here:
       defaults = themes.get_ivy({
         prompt_prefix = "❯ ",
         selection_caret = "❯ ",
@@ -47,7 +46,8 @@ return {
           "--smart-case",
         },
 
-        layout_config = { -- Default settings for layout themes
+        -- Default settings for layout themes
+        layout_config = {
           prompt_position = "top",
           horizontal = {
             width = 0.9,
@@ -61,12 +61,13 @@ return {
           },
         },
 
-        mappings = { -- Custom mappings for telescope prompt
+        -- Custom mappings for telescope prompt
+        mappings = {
           i = {
             ["qq"] = actions.close,
             ["<C-u>"] = false,
-            ["<C-d>"] = false,
             ["<C-h>"] = "which_key",
+            ["<C-d>"] = false,
             ["<C-PageUp>"] = "preview_scrolling_up",
             ["<C-PageDown>"] = "preview_scrolling_down",
 
@@ -84,9 +85,9 @@ return {
           },
           n = {
             ["<esc>"] = actions.close,
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<C-j>"] = actions.move_selection_next,
           },
         },
 
@@ -106,6 +107,7 @@ return {
           "tags", -- Tag files
         },
       }),
+
       -- Default configuration for builtin pickers goes here:
       pickers = {
         man_pages = { sections = { "2", "3" } },
@@ -141,7 +143,7 @@ return {
     local telescope = require("telescope")
     telescope.setup(opts)
 
-    -- Load custom extensions
+    -- Load extensions
     telescope.load_extension("dotfiles")
     telescope.load_extension("vimfiles")
 

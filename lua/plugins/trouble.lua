@@ -12,22 +12,7 @@ return {
     use_diagnostic_signs = true, -- enabling this will use the signs defined in your lsp client
   },
   config = function(_, opts)
-    -- Initialize plugin
     require("trouble").setup(opts)
-
-    -- Enable telescope support
-    local telescope_ok, telescope = pcall(require, "telescope")
-    if telescope_ok then
-      local _trouble = require("trouble.providers.telescope")
-      telescope.setup({
-        defaults = {
-          mappings = {
-            i = { ["<c-t>"] = _trouble.open_with_trouble },
-            n = { ["<c-t>"] = _trouble.open_with_trouble },
-          },
-        },
-      })
-    end
 
     --- Autocmds ---
 

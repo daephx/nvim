@@ -130,7 +130,6 @@ return {
         { name = "luasnip" },
         {
           name = "buffer",
-          max_item_count = 8,
           keyword_length = 4,
           option = {
             -- use only buffers from current tabpage, but omit man pages as they can
@@ -151,7 +150,6 @@ return {
         {
           name = "path",
           keyword_length = 10,
-          max_item_count = 10,
         },
       }),
       experimental = {
@@ -166,6 +164,7 @@ return {
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       },
+      performance = { max_view_entries = 25 },
       window = {
         completion = {
           max_width = 80,
@@ -207,7 +206,7 @@ return {
         -- Do not show completion for words starting with '!'
         { name = "cmdline", keyword_pattern = "\\!@<!\\w*" },
       }, {
-        { name = "path", max_item_count = 15 },
+        { name = "path" },
       }),
     })
 
@@ -215,7 +214,7 @@ return {
     -- (if you enabled `native_menu`, this won't work anymore).
     local search_opts = {
       sources = cmp.config.sources({
-        { name = "buffer", max_item_count = 20 },
+        { name = "buffer" },
       }),
     }
 
@@ -225,21 +224,21 @@ return {
     -- Set configuration for specific filetype.
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
-        { name = "cmp_git", max_item_count = 10 },
-        { name = "buffer", max_item_count = 10 },
+        { name = "cmp_git" },
+        { name = "buffer" },
       }, {
-        { name = "spell", max_item_count = 10 },
+        { name = "spell" },
       }),
     })
 
     cmp.setup.filetype("markdown", {
       sources = cmp.config.sources({
-        { name = "buffer", max_item_count = 10 },
-        { name = "nvim_lsp", max_item_count = 10 },
-        { name = "luasnip", max_item_count = 10 },
-        { name = "path", max_item_count = 10 },
+        { name = "buffer" },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "path" },
       }, {
-        { name = "spell", max_item_count = 10 },
+        { name = "spell" },
       }),
     })
   end,

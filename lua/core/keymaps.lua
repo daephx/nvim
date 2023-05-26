@@ -86,7 +86,6 @@ map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Bookmarks" })
 map("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Project list" })
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Recent Files" })
 map("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Grep String" })
-map("n", "<leader>ft", "<cmd>TodoTelescope<CR>", { desc = "Search Todo comments" })
 map("n", "<leader>fv", "<cmd>Telescope vimfiles<CR>", { desc = "Neovim config" })
 
 -- Plugins

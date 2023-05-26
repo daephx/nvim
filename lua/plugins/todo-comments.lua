@@ -6,6 +6,14 @@ return {
   cmd = { "TodoTrouble", "TodoTelescope" },
   event = { "BufReadPost", "BufNewFile" },
   dependencies = { "nvim-lua/plenary.nvim" },
+  keys = function()
+    local todo = require("todo-comments")
+    return {
+      { "]t", todo.jump_next, desc = "Next todo comment" },
+      { "[t", todo.jump_prev, desc = "Previous todo comment" },
+      { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Search Todo comments" },
+    }
+  end,
   opts = {
     signs = true, -- show icons in the signs column
     sign_priority = 8,
@@ -40,15 +48,7 @@ return {
     },
   },
   config = function(_, opts)
-    local todo = require("todo-comments")
-    todo.setup(opts)
-
-    --- Keymaps ---
-
-    vim.keymap.set("n", "]t", todo.jump_next, { desc = "Next todo comment" })
-    vim.keymap.set("n", "[t", todo.jump_prev, { desc = "Previous todo comment" })
-
-    --- Autocmds ---
+    require("todo-comments").setup(opts)
 
     local group = vim.api.nvim_create_augroup("TodoCommentHooks", {})
     vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {

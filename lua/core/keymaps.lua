@@ -7,6 +7,10 @@
 -- General neovim keyboard mapping definitions
 
 -- Easier mapping function
+---@param mode string|table
+---@param lhs string
+---@param rhs string|function
+---@param opts table|nil
 function map(mode, lhs, rhs, opts)
   local defaults = { remap = false, silent = true }
   opts = vim.tbl_extend("force", defaults, opts or {})

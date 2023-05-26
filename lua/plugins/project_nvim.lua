@@ -35,15 +35,15 @@ return {
       ".svn", -- Subversion repository
       ".terraform", -- HashiCorp Terraform config
       ".venv", -- Python virtual environment
-      "Pipfile.lock", -- Python/Pip requirements
+      "Pipfile.lock", -- Python/Pipenv dependencies
       "_darcs", -- Darcs repository
       "cargo.toml", -- Rust/Cargo config
       "go.mod", -- Golang module config
       "go.sum", -- Golang checksums
       "node_modules", -- Node virtual environment
-      "poetry.lock", -- Python/Pip requirements
-      "requirements.txt", -- Python/Pip requirements
-      "requirements.yml", -- Python/Pip requirements
+      "poetry.lock", -- Python/Poetry dependencies
+      "requirements.txt", -- Python/Pip dependencies
+      "requirements.yml", -- Ansible dependencies
     },
   },
   config = function(_, opts)

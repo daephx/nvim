@@ -5,6 +5,9 @@ return {
   "nvim-tree/nvim-tree.lua",
   cmd = { "NvimTreeOpen", "NvimTreeToggle" },
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  keys = {
+    { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+  },
   opts = {
     sort_by = "case_sensitive",
     sync_root_with_cwd = true,

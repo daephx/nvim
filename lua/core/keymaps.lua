@@ -63,9 +63,6 @@ map("n", "<c-w>d", "<cmd>bn|bd#<CR>")
 -- General save document
 map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
 
--- General
-map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
-
 -- Debug
 map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Set Breakpoint" })
 map("n", "<leader>dn", "<cmd>DapContinue<CR>", { desc = "Continue debugging" })

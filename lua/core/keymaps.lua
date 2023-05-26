@@ -78,9 +78,6 @@ map("n", "<leader>pr", "<cmd>Lazy restore<CR>", { desc = "Restore plugins" })
 map("n", "<leader>ps", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
 map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 
--- Git
-map("n", "<leader>gG", "<cmd>Neogit<CR>", { desc = "Git Status (Neogit)" })
-
 -- New
 map("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" })

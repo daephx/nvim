@@ -4,6 +4,9 @@
 return {
   "TimUntersberger/neogit",
   cmd = "Neogit",
+  keys = {
+    { "<leader>gG", "<cmd>Neogit<CR>", desc = "Git Status (Neogit)" },
+  },
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { -- Easily cycling through diffs

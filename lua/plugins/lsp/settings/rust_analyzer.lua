@@ -1,4 +1,5 @@
 -- rust_analyzer: Rust language server
+-- https://github.com/rust-lang/rust-analyzer
 local rust_tools_ok, rust_tools = pcall(require, "rust-tools")
 if not rust_tools_ok then
   return

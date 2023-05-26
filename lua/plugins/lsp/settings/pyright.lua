@@ -1,7 +1,5 @@
 -- Pyright: Python Language-server configuration
--- For more information on setting up language-servers, See:
--- https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-
+-- https://github.com/microsoft/pyright
 local exepath = vim.fn.exepath
 local path = require("lspconfig.util").path
 

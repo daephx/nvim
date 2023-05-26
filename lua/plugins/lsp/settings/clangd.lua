@@ -1,4 +1,5 @@
 -- clangd: Language-server configuration
+-- https://github.com/clangd/clangd
 
 return {
   cmd = {

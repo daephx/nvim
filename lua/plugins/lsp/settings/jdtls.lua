@@ -1,4 +1,5 @@
 -- jdtls: Java eclipse language server
+-- https://github.com/eclipse/eclipse.jdt.ls
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 if not jdtls_ok then
   vim.notify("nvim-jdtls: package not found, please install it first", vim.log.levels.ERROR)

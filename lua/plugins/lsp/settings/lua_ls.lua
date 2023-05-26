@@ -1,4 +1,5 @@
 -- lua_ls: language server configuration
+-- https://github.com/LuaLS/lua-language-server
 
 return {
   settings = {

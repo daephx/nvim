@@ -12,6 +12,11 @@ return {
       end,
     },
   },
+  keys = {
+    { "<leader>sd", "<cmd>SessionDelete<CR>", desc = "Delete current session" },
+    { "<leader>ss", "<cmd>SessionSave<CR>", desc = "Save current session" },
+    { "<leader>sl", "<cmd>Telescope session-lens search_session<CR>", desc = "Show Session list" },
+  },
   opts = {
     log_level = "info",
     auto_restore_enabled = true,
@@ -20,11 +25,4 @@ return {
     bypass_session_save_file_types = { "dashboard" },
     session_lens = { load_on_setup = false },
   },
-  config = function(_, opts)
-    require("auto-session").setup(opts)
-
-    vim.keymap.set("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "Delete current session" })
-    vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save current session" })
-    vim.keymap.set("n", "<leader>sl", "<cmd>Telescope session-lens search_session<CR>", { desc = "Show Session list" })
-  end,
 }

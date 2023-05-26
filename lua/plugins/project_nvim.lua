@@ -4,9 +4,16 @@
 return {
   "ahmedkhalf/project.nvim",
   event = "VeryLazy",
+  dependencies = {
+    "nvim-telescope/telescope.nvim",
+  },
   keys = {
     { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
   },
+  config = function(_, opts)
+    require("project_nvim").setup(opts)
+    require("telescope").load_extension("projects")
+  end,
   opts = {
     -- Show hidden files in telescope
     show_hidden = true,
@@ -46,27 +53,4 @@ return {
       "requirements.txt", -- Python/Pip dependencies
     },
   },
-  config = function(_, opts)
-    require("project_nvim").setup(opts)
-
-    -- Apply telescope extension settings
-    local telescope_ok, telescope = pcall(require, "telescope")
-    if telescope_ok then
-      -- Initialize telescope extension
-      telescope.setup({
-        extensions = {
-          project = {
-            hidden_files = true, -- default: false
-            base_dirs = {
-              { "~/", max_depth = 2 },
-              { "~/.dotfiles/", max_depth = 3 },
-              { "~/Documents/Projects", max_depth = 4 },
-              { "~/Projects", max_depth = 4 },
-            },
-          },
-        },
-      })
-      telescope.load_extension("projects")
-    end
-  end,
 }

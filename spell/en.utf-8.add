@@ -4,8 +4,6 @@ AppData
 AutoCmd
 AutoCommands
 AutoHotkey
-Autocmd
-Autorun
 BufEnter
 BufHidden
 BufNewFile
@@ -31,8 +29,6 @@ CursorHold
 CursorHoldI
 CursorLine
 DNSmasq
-Devicon
-Devops/!
 DiffView
 DockerHub
 EndOfBuffer
@@ -44,9 +40,6 @@ FloatBorder
 FugitiveIndex
 GBrowse
 GIFs
-Gamesave
-Gamesaves
-Git
 HKEY_CURRENT_USER
 IPython
 ImageMagick
@@ -57,7 +50,6 @@ LaTex
 LineNr
 LocalState
 Loopcloud
-Lorem
 LspAttachBuffers
 LspDocumentHighlight
 LspInfo
@@ -113,6 +105,7 @@ ToggleTerm
 TokyoNight
 TypeScript
 UIEnter
+UTF16
 UTF8
 UltiSnip
 UltiSnips
@@ -124,15 +117,14 @@ VeryLazy
 VimEnter
 VimLeave
 VirtualBox
-WIP
 WebAPI
+WebUI
 Win32
 WinEnter
 WinEvent
 WinLeave
 WinZoom
 WriteLine
-Xours
 YankHighlight
 YouTube
 ZoomWin
@@ -200,6 +192,7 @@ botright
 bp
 bpytop
 branchless
+bs
 btop
 buf
 bufdel
@@ -213,6 +206,7 @@ builtins
 busybox
 cbfmt
 cd
+cdpath
 celsius
 centos
 certresolver
@@ -247,6 +241,7 @@ cmp
 cnext
 cnoreabbrev
 cnoremap
+cobol
 coc
 codebase
 codeblock
@@ -268,6 +263,7 @@ compe
 compsci
 computercraft
 concat
+conceallevel
 conda
 condabin
 conemu
@@ -293,6 +289,7 @@ csharp/!
 csharpier
 css
 cssls
+csx
 ctermbg
 ctermfg
 ctop
@@ -336,12 +333,7 @@ devcontainer
 devicon
 devicons
 devops
-devopsheaven
 dhcp
-diagnosticserror
-diagnosticshint
-diagnosticsinfo
-diagnosticswarn
 diff
 diffadd
 diffopts
@@ -372,7 +364,6 @@ dockerls
 docs
 dofile
 dom
-domainname
 dosini
 dotbot
 dotenv
@@ -381,11 +372,11 @@ dotfiles
 dotnet
 dotposh
 dpkg
+dropbox
 dropdown
 ds_store
 dstask
 easymotion
-easymotions
 echo
 editorconfig
 eex
@@ -413,6 +404,7 @@ eof
 eol
 eq
 erlang
+errtrace
 esc
 eslint
 eslintrc
@@ -431,6 +423,7 @@ favour
 fd
 fdfind
 feat
+feedkey
 feedkeys
 ffmpeg
 fg
@@ -464,6 +457,7 @@ formatprg
 formatter
 formulae
 fortran
+fpath
 framerate
 freemium
 frontend
@@ -476,6 +470,8 @@ fullscreen
 func
 fzf
 fzfterm
+gamesave
+gamesaves
 gcc
 gdb
 gdscript
@@ -549,6 +545,8 @@ homebrew
 homelab
 hostname
 hostnames
+hsl
+hsla
 html
 htop
 htpasswd
@@ -583,7 +581,9 @@ ipsum
 ipynb
 ipython
 iskeyword
+iso
 isort
+issuecomment
 jackett
 janet
 javac
@@ -698,6 +698,7 @@ manpages
 mapleader
 markdownlint
 markdownlintrc
+matchit
 matchparen
 matryoshka
 maxLine
@@ -721,6 +722,7 @@ mkdocs
 mkdx
 mklink
 mksession
+mkspell
 mkv
 mnt
 modeline
@@ -762,6 +764,7 @@ nerdfont
 nerdtree
 netrw
 nextcloud
+nginx
 ngrams
 nil
 nlua
@@ -809,9 +812,11 @@ ontop
 openid
 openssl
 opensuse
+optarg
 organizr
 orgmode
 os
+outdir
 owo
 packadd
 packercompile
@@ -904,6 +909,7 @@ pytest
 python3
 pythonrc
 pytype
+pyvenv
 qall
 qf
 ql
@@ -941,6 +947,7 @@ repro
 req
 resolv
 restruct
+ret
 retval
 rg
 rgb
@@ -954,7 +961,10 @@ rockstar
 root
 rootfs
 rpi
+rplugin
 rprofile
+rrggbb
+rrggbbaa
 rsa
 rst
 rsync
@@ -997,6 +1007,7 @@ signin
 signup
 skel
 slint
+sln
 smarthybridnumbers
 smartindent
 smarttab
@@ -1005,11 +1016,14 @@ source
 sox
 sparql
 spawner
+spc
 spellcapcheck
 spellfile
+spelloptions
 spellsitter
 spyder
 sql
+sqlite
 sqlite3
 src
 srt
@@ -1090,6 +1104,7 @@ tgz
 tif
 timecode
 timecodes
+timestamp
 timestamps
 tlaplus
 tldr
@@ -1136,11 +1151,13 @@ ultisnip
 ultisnips
 umask
 un
+unception
 undotree
 unicode
 unittest
 unix
 unnamedplus
+unpushed
 unsplash
 unstage
 unstaged
@@ -1209,9 +1226,11 @@ vue
 vuejs
 wav
 webapi
+webdev
 webkit
 webm
 webp
+webpack
 webpassword
 websecure
 webui
@@ -1254,6 +1273,8 @@ xdg
 xdg_dirs
 xhost
 xours
+xtheirs
+xtrace
 yaml
 yamlls
 yml

@@ -120,12 +120,6 @@ return {
         lsp_references = { path_display = { "shorten" } },
         lsp_workspace_symbols = { path_display = { "shorten" } },
         colorscheme = { previewer = false, layout_config = { height = 12 } },
-        dotfiles = {
-          file_ignore_patterns = {
-            "meta/dotbot/.*",
-            "meta/dotbot/plugins/.*",
-          },
-        },
         find_files = { hidden = true },
         buffers = {
           sort_mru = true,
@@ -137,6 +131,16 @@ return {
             n = {
               ["<c-d>"] = actions.delete_buffer,
             },
+          },
+        },
+      },
+
+      -- Telescope extension configuration
+      extensions = {
+        dotfiles = {
+          file_ignore_patterns = {
+            "meta/dotbot/.*",
+            "meta/dotbot/plugins/.*",
           },
         },
       },

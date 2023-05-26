@@ -31,7 +31,7 @@ return {
       "toggleterm",
     },
     theme = {
-      separator = { fg = "gray" },
+      separator = { link = "LineNr" },
     },
   },
 }

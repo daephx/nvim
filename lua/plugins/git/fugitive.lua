@@ -4,6 +4,11 @@
 return {
   "tpope/vim-fugitive",
   event = "VeryLazy",
+  keys = {
+    { "<leader>gd", "<cmd>Gdiffsplit<CR>", desc = "Diff current buffer" },
+    { "<leader>gg", "<cmd>Gtabedit :<CR>", desc = "Git Status (Fugitive)" },
+    { "<leader>gl", "<cmd>GclogTab<CR>", desc = "Git Log" },
+  },
   config = function(_, _)
     -- Open Gdiffsplit in new tab
     vim.api.nvim_create_user_command("GdiffsplitTab", function()

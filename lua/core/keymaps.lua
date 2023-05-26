@@ -80,9 +80,6 @@ map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 
 -- Git
 map("n", "<leader>gG", "<cmd>Neogit<CR>", { desc = "Git Status (Neogit)" })
-map("n", "<leader>gd", "<cmd>Gdiffsplit<CR>", { desc = "Diff current buffer" })
-map("n", "<leader>gg", "<cmd>Gtabedit :<CR>", { desc = "Git Status (Fugitive)" })
-map("n", "<leader>gl", "<cmd>GclogTab<CR>", { desc = "Git Log" })
 
 -- New
 map("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" })

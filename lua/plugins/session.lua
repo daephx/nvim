@@ -1,25 +1,10 @@
--- lua/plugins/session.lua
+-- auto-session | A small automated session manager for Neovim
+-- https://github.com/rmagatti/auto-session
 
 return {
-  "rmagatti/session-lens",
-  lazy = false,
+  "rmagatti/auto-session",
+  event = "VimEnter",
   dependencies = {
-    {
-      "rmagatti/auto-session",
-      opts = {
-        log_level = "info",
-        auto_restore_enabled = true,
-        auto_save_enabled = true,
-        bypass_session_save_file_types = false,
-        auto_session_suppress_dirs = {
-          "/",
-          "~/",
-          "~/Documents",
-          "~/Downloads",
-          "~/Projects",
-        },
-      },
-    },
     {
       "nvim-telescope/telescope.nvim",
       config = function()
@@ -27,31 +12,19 @@ return {
       end,
     },
   },
-  opts = function()
-    local themes = require("telescope.themes")
-    return {
-      prompt_title = "Sessions",
-      previewer = false,
-      theme_conf = {
-        theme = themes.get_ivy(),
-        border = true,
-      },
-    }
-  end,
+  opts = {
+    log_level = "info",
+    auto_restore_enabled = true,
+    auto_save_enabled = true,
+    bypass_session_save_file_types = false,
+    auto_session_suppress_dirs = { "/", "~/", "~/Documents", "~/Downloads", "~/Projects" },
+    session_lens = { load_on_setup = false },
+  },
   config = function(_, opts)
-    require("session-lens").setup(opts)
-
-    vim.keymap.set("n", "<leader>sf", function()
-      require("session-lens").search_session()
-    end, { desc = "Show Session list" })
+    require("auto-session").setup(opts)
 
     vim.keymap.set("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "Delete current session" })
-    vim.keymap.set(
-      "n",
-      "<leader>sl",
-      "<cmd>Telescope session-lens search_session<CR>",
-      { desc = "Load last session" }
-    )
     vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Save current session" })
+    vim.keymap.set("n", "<leader>sl", "<cmd>Telescope session-lens search_session<CR>", { desc = "Show Session list" })
   end,
 }

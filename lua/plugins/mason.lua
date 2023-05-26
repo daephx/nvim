@@ -5,6 +5,9 @@ return {
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
+    keys = {
+      { "<leader>pm", "<cmd>Mason<CR>", desc = "Show mason" },
+    },
     opts = {
       ui = {
         height = 0.8,

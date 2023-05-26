@@ -13,7 +13,9 @@ return {
   version = "*",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
+    -- Code context for winbar/statusline
     "SmiteshP/nvim-navic",
+    -- Adds file type icons to Vim plugins
     "nvim-tree/nvim-web-devicons",
   },
   opts = {

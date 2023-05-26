@@ -22,6 +22,7 @@ return {
     kinds = icons(),
     show_modified = true,
     attach_navic = false,
+    create_autocmd = false,
     exclude_filetypes = {
       "",
       "dashboard",
@@ -47,6 +48,23 @@ return {
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, ev.buf)
         end
+      end,
+    })
+
+    vim.api.nvim_create_autocmd({
+      "BufWinEnter",
+      "BufWritePost",
+      "CursorHold",
+      "InsertLeave",
+      "TextChanged",
+      "TextChangedI",
+      "WinScrolled",
+    }, {
+      desc = "Gain better performance when moving the cursor around",
+      group = vim.api.nvim_create_augroup("barbecue#create_autocmd", {}),
+      callback = function()
+        ---@diagnostic disable-next-line:await-in-sync
+        require("barbecue.ui").update()
       end,
     })
   end,

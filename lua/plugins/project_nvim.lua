@@ -27,6 +27,7 @@ return {
       "~/.luarocks/*", -- Luarocks Package directory
       "~/.venv/*", -- Python virtual environment
       "~/Documents", -- User documents directory
+      "~/go/*", -- Golang home directory
       "~/node_modules/*", -- Node package directory
     },
     -- All the patterns used to detect root dir, when **"pattern"** is in detection_methods

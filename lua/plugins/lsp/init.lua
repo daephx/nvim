@@ -11,7 +11,7 @@ local default_options = {
 return {
   { -- Initialize language server configuration
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       -- Portable package manager for Neovim
       { "williamboman/mason.nvim" },

@@ -34,4 +34,20 @@ return {
       separator = { link = "LineNr" },
     },
   },
+  config = function(_, opts)
+    require("barbecue").setup(opts)
+
+    --- Autocmds ---
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      desc = "Get nvim-navic working with multiple tabs",
+      group = vim.api.nvim_create_augroup("LspAttachNavic", {}),
+      callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client.server_capabilities.documentSymbolProvider then
+          require("nvim-navic").attach(client, ev.buf)
+        end
+      end,
+    })
+  end,
 }

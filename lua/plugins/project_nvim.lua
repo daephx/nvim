@@ -43,7 +43,6 @@ return {
       "node_modules", -- Node virtual environment
       "poetry.lock", -- Python/Poetry dependencies
       "requirements.txt", -- Python/Pip dependencies
-      "requirements.yml", -- Ansible dependencies
     },
   },
   config = function(_, opts)

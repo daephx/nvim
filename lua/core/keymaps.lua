@@ -67,16 +67,6 @@ map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
 map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Set Breakpoint" })
 map("n", "<leader>dn", "<cmd>DapContinue<CR>", { desc = "Continue debugging" })
 
--- Plugins
-map("n", "<leader>pb", "<cmd>Lazy build<CR>", { desc = "Build plugins" })
-map("n", "<leader>pc", "<cmd>Lazy clean<CR>", { desc = "Clean plugins" })
-map("n", "<leader>ph", "<cmd>Lazy health<CR>", { desc = "Healthcheck plugins" })
-map("n", "<leader>pl", "<cmd>Lazy show<CR>", { desc = "Show plugins" })
-map("n", "<leader>pp", "<cmd>Lazy profile<CR>", { desc = "Profile plugins" })
-map("n", "<leader>pr", "<cmd>Lazy restore<CR>", { desc = "Restore plugins" })
-map("n", "<leader>ps", "<cmd>Lazy sync<CR>", { desc = "Sync plugins" })
-map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
-
 -- New
 map("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" })

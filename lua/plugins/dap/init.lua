@@ -62,7 +62,7 @@ return {
       vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "debugBreakpoint" })
       vim.fn.sign_define("DapBreakpointCondition", { text = " ", texthl = "DiagnosticWarn" })
       vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError" })
-      vim.fn.sign_define("DapLogPoint", { text = " ", texthl = "debugBreakpoint" })
+      vim.fn.sign_define("DapLogPoint", { text = "󰍪 ", texthl = "debugBreakpoint" })
       vim.fn.sign_define("DapStopped", { text = "●", texthl = "DiagnosticsHint" })
 
       dap.listeners.after["event_initialized"]["dapui"] = function()

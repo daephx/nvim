@@ -13,7 +13,7 @@ M.sections = vim.tbl_extend("force", default_sections, {
         local cwd = vim.fn.getcwd()
         return cwd:gsub(vim.env.HOME, "~")
       end,
-      icon = { "" },
+      icon = { "󰋊" },
     },
   },
 })

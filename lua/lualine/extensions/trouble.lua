@@ -20,7 +20,7 @@ M.sections = {
         local cwd = vim.fn.getcwd()
         return cwd:gsub(vim.env.HOME, "~")
       end,
-      icon = { "" },
+      icon = { "󰋊" },
     },
   },
   lualine_z = { "location" },

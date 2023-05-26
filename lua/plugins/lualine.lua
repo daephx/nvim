@@ -66,7 +66,7 @@ return {
       lualine_c = {
         {
           "filename",
-          icon = { "" },
+          icon = { "󰋊" },
           path = 1,
         },
       },
@@ -81,7 +81,7 @@ return {
           "diagnostics",
           sources = { "nvim_diagnostic", "coc", "ale" },
           symbols = {
-            hint = "",
+            hint = "󰌵",
             info = "",
             warn = "",
             error = "",

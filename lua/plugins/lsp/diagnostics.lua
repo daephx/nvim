@@ -44,7 +44,7 @@ vim.diagnostic.config({
     border = vim.g.border,
     focusable = false,
     format = format,
-    header = { "ﴫ Diagnostics:", "Label" },
+    header = { "󰠭 Diagnostics:", "Label" },
     prefix = float_prefix,
     scope = "line",
     show_header = true,

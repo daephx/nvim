@@ -4,6 +4,9 @@
 return {
   "ahmedkhalf/project.nvim",
   event = "VeryLazy",
+  keys = {
+    { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
+  },
   opts = {
     -- Show hidden files in telescope
     show_hidden = true,

@@ -64,29 +64,11 @@ map("n", "<c-w>d", "<cmd>bn|bd#<CR>")
 map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
 
 -- General
-map("n", "<leader><Space>", "<cmd>Telescope buffers<CR>", { desc = "Open Buffers" })
 map("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "Toggle NvimTree" })
 
 -- Debug
 map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Set Breakpoint" })
 map("n", "<leader>dn", "<cmd>DapContinue<CR>", { desc = "Continue debugging" })
-
--- Fuzzy
-map("n", "<leader>f.", "<cmd>Telescope dotfiles<CR>", { desc = "Dotfiles" })
-map("n", "<leader>fC", "<cmd>Telescope commands<CR>", { desc = "Commands" })
-map("n", "<leader>fF", "<cmd>Telescope treesitter<CR>", { desc = "Treesitter" })
-map("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Grep Buffer" })
-map("n", "<leader>fc", "<cmd>Telescope colorscheme<CR>", { desc = "Colorschemes" })
-map("n", "<leader>fd", "<cmd>Telescope lsp_document_diagnostics<CR>", { desc = "LSP Diagnostics" })
-map("n", "<leader>fe", "<cmd>Telescope file_browser<CR>", { desc = "File Explorer" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Current Files" })
-map("n", "<leader>fh", "<cmd>Telescope highlights<CR>", { desc = "Highlight Groups" })
-map("n", "<leader>fl", "<cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
-map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "Bookmarks" })
-map("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Project list" })
-map("n", "<leader>fr", "<cmd>Telescope oldfiles<CR>", { desc = "Recent Files" })
-map("n", "<leader>fs", "<cmd>Telescope grep_string<CR>", { desc = "Grep String" })
-map("n", "<leader>fv", "<cmd>Telescope vimfiles<CR>", { desc = "Neovim config" })
 
 -- Plugins
 map("n", "<leader>pb", "<cmd>Lazy build<CR>", { desc = "Build plugins" })
@@ -101,9 +83,7 @@ map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 
 -- Git
 map("n", "<leader>gG", "<cmd>Neogit<CR>", { desc = "Git Status (Neogit)" })
-map("n", "<leader>gb", "<cmd>Telescope git_branches<CR>", { desc = "Git branches" })
 map("n", "<leader>gd", "<cmd>Gdiffsplit<CR>", { desc = "Diff current buffer" })
-map("n", "<leader>gf", "<cmd>Telescope git_files<CR>", { desc = "Git files" })
 map("n", "<leader>gg", "<cmd>Gtabedit :<CR>", { desc = "Git Status (Fugitive)" })
 map("n", "<leader>gl", "<cmd>GclogTab<CR>", { desc = "Git Log" })
 

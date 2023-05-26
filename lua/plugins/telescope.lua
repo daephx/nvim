@@ -12,6 +12,28 @@ return {
     -- Adds file type icons to Vim plugins
     { "nvim-tree/nvim-web-devicons" },
   },
+  keys = {
+    { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+    { "<leader>f.", "<cmd>Telescope dotfiles<CR>", desc = "Dotfiles" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>fB", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Grep Buffer" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<CR>", desc = "Colorschemes" },
+    { "<leader>fC", "<cmd>Telescope commands<CR>", desc = "Commands" },
+    { "<leader>fd", "<cmd>Telescope lsp_document_diagnostics<CR>", desc = "LSP Diagnostics" },
+    { "<leader>fe", "<cmd>Telescope file_browser<CR>", desc = "File Explorer" },
+    { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Current Files" },
+    { "<leader>fF", "<cmd>Telescope treesitter<CR>", desc = "Treesitter" },
+    { "<leader>fh", "<cmd>Telescope highlights<CR>", desc = "Highlight Groups" },
+    { "<leader>fl", "<cmd>Telescope live_grep<CR>", desc = "Live Grep" },
+    { "<leader>fm", "<cmd>Telescope marks<CR>", desc = "Bookmarks" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Recent Files" },
+    { "<leader>fs", "<cmd>Telescope grep_string<CR>", desc = "Grep String" },
+    { "<leader>fv", "<cmd>Telescope vimfiles<CR>", desc = "Neovim config" },
+    { "<leader>gb", "<cmd>Telescope git_branches<CR>", desc = "Branches" },
+    { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+    { "<leader>gf", "<cmd>Telescope git_files<CR>", desc = "Files" },
+    { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
+  },
   opts = function()
     local action_set = require("telescope.actions.set")
     local actions = require("telescope.actions")

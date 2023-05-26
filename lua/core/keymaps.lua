@@ -63,10 +63,6 @@ map("n", "<c-w>d", "<cmd>bn|bd#<CR>")
 -- General save document
 map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
 
--- Debug
-map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Set Breakpoint" })
-map("n", "<leader>dn", "<cmd>DapContinue<CR>", { desc = "Continue debugging" })
-
--- New
+-- Create new buffers/tabs
 map("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" })
 map("n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" })

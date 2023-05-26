@@ -48,6 +48,10 @@ return {
       -- bridges mason.nvim with the nvim-dap
       { "jay-babu/mason-nvim-dap.nvim" },
     },
+    keys = {
+      { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Set Breakpoint" },
+      { "<leader>dn", "<cmd>DapContinue<CR>", desc = "Continue debugging" },
+    },
     config = function()
       local dap = require("dap")
 

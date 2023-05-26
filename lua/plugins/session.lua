@@ -16,8 +16,8 @@ return {
     log_level = "info",
     auto_restore_enabled = true,
     auto_save_enabled = true,
-    bypass_session_save_file_types = false,
     auto_session_suppress_dirs = { "/", "~/", "~/Documents", "~/Downloads", "~/Projects" },
+    bypass_session_save_file_types = { "dashboard" },
     session_lens = { load_on_setup = false },
   },
   config = function(_, opts)

@@ -25,6 +25,7 @@ return {
     exclude_filetypes = {
       "",
       "dashboard",
+      "git",
       "gitcommit",
       "terminal",
       "toggleterm",

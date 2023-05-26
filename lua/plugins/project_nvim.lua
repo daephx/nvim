@@ -22,12 +22,12 @@ return {
 
     -- Don't calculate root dir on specific directories
     exclude_dirs = {
-      "~/.cargo/*",
-      "~/.local/include/*",
-      "~/.luarocks/*",
-      "~/.venv/*",
-      "~/Documents",
-      "~/node_modules/*",
+      "~/.cargo/*", -- Rust package manager
+      "~/.local/include/*", -- User XDG library
+      "~/.luarocks/*", -- Luarocks Package directory
+      "~/.venv/*", -- Python virtual environment
+      "~/Documents", -- User documents directory
+      "~/node_modules/*", -- Node package directory
     },
     -- All the patterns used to detect root dir, when **"pattern"** is in detection_methods
     patterns = {

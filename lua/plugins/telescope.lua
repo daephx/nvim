@@ -136,7 +136,6 @@ return {
       -- Default configuration for builtin pickers goes here:
       pickers = {
         man_pages = { sections = { "2", "3" } },
-        lsp_code_actions = { theme = "cursor" },
         lsp_document_diagnostics = { theme = "ivy" },
         lsp_document_symbols = { path_display = { "hidden" } },
         lsp_references = { path_display = { "shorten" } },

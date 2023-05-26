@@ -30,6 +30,7 @@ return {
       ".git", -- Git repository
       ".github", -- Github meta config
       ".hg", -- Mercurial repository
+      ".luarc.json", -- Lua_LS configuration
       ".project", -- Eclipse project config
       ".sln", -- Visual Studio solution
       ".svn", -- Subversion repository

@@ -24,6 +24,56 @@ local search_tabpage = {
   end,
 }
 
+-- Truncate completion abbreviations to control width of float.
+-- https://github.com/hrsh7th/nvim-cmp/issues/980#issuecomment-1121773499
+---@param abbr string
+---@return string
+local truncate_abbreviation = function(abbr)
+  local max_width = 60
+  local min_width = 20
+  local truncated_abbr = vim.fn.strcharpart(abbr, 0, max_width)
+  if truncated_abbr ~= abbr then
+    abbr = truncated_abbr .. "…"
+  elseif string.len(abbr) < min_width then
+    local padding = string.rep(" ", min_width - string.len(abbr))
+    abbr = abbr .. padding
+  end
+  return abbr
+end
+
+local source_labels = {
+  buffer = "[Buffer]",
+  cmp_tabnine = "[TabNine]",
+  copilot = "[Copilot]",
+  crates = "[Crates]",
+  git = "[Git]",
+  latex_symbols = "[LaTex]",
+  luasnip = "[LuaSnip]",
+  neorg = "[Neorg]",
+  nvim_lsp = "[LSP]",
+  nvim_lua = "[Neovim]",
+  path = "[Path]",
+  spell = "[Spell]",
+  ultisnips = "[UltiSnip]",
+  vsnip = "[VSnip]",
+  zsh = "[ZSH]",
+}
+
+-- Set source label for `vim_item.menu` in cmp popup menu.
+-- If: source is nvim_lsp, replace `item.menu` with the clients name.
+-- Else: set the appropriate label from `source_labels`.
+---@param entry table
+---@return string
+local format_source_labels = function(entry)
+  if entry.source.name == "nvim_lsp" then
+    if entry.source.source.client then
+      local name = entry.source.source.client.name
+      return ("[%s]"):format(name)
+    end
+  end
+  return source_labels[entry.source.name]
+end
+
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -37,48 +87,19 @@ return {
   },
   config = function()
     local cmp = require("cmp")
-    local kinds = require("core.icons").kinds
-
-    local ELLIPSIS_CHAR = "…"
-    local MAX_LABEL_WIDTH = 60
-    local MIN_LABEL_WIDTH = 20
 
     cmp.setup({
       enable = true,
       formatting = {
+        maxwidth = 120,
+        fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
-          item.kind = string.format("%s", kinds[item.kind])
-          item.max_width = 60
-          item.menu = ({
-            buffer = "[Buffer]",
-            cmp_tabnine = "[TabNine]",
-            copilot = "[Copilot]",
-            crates = "[Crates]",
-            git = "[Git]",
-            latex_symbols = "[Latex]",
-            luasnip = "[LuaSnip]",
-            nvim_lsp = "[LSP]",
-            nvim_lua = "[Lua]",
-            path = "[Path]",
-            spell = "[Spell]",
-            ultisnips = "[UltiSnip]",
-            vsnip = "[VSnip]",
-            zsh = "[Shell]",
-          })[entry.source.name]
-          -- Replace [LSP] with relevant client name
-          if entry.source.source.client then
-            item.menu = ("[%s]"):format(entry.source.source.client.name)
-          end
-          -- Truncate completion labels to control width of float
-          -- https://github.com/hrsh7th/nvim-cmp/issues/980#issuecomment-1121773499
-          local label = item.abbr
-          local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
-          if truncated_label ~= label then
-            item.abbr = truncated_label .. ELLIPSIS_CHAR
-          elseif string.len(label) < MIN_LABEL_WIDTH then
-            local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
-            item.abbr = label .. padding
-          end
+          local kinds = require("core.icons").kinds
+          item.max_width = 80
+          item.mode = "text_symbol"
+          item.kind = ("%s %s"):format(kinds[item.kind], item.kind)
+          item.menu = format_source_labels(entry)
+          item.abbr = truncate_abbreviation(item.abbr)
           return item
         end,
       },

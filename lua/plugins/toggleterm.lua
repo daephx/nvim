@@ -82,7 +82,7 @@ end
 
 -- Generate custom terminals from user opts
 ---@param opts table
-local init_command_terminals = function(opts)
+local initialize_terminals = function(opts)
   local terminals = {}
   local Terminal = require("toggleterm.terminal").Terminal
   for _, app in pairs(opts.applications) do
@@ -106,7 +106,7 @@ return {
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)
-    init_command_terminals(opts)
+    initialize_terminals(opts)
   end,
   opts = {
     open_mapping = "<C-\\>",

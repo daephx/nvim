@@ -8,9 +8,9 @@ local terminals = {}
 ---@return integer|nil
 local function size(term)
   if term.direction == "horizontal" then
-    return 20
+    return vim.o.lines * 0.33
   elseif term.direction == "vertical" then
-    return vim.o.columns * 0.4
+    return vim.o.columns * 0.5
   end
 end
 

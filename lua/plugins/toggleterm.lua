@@ -80,22 +80,17 @@ end
 --   },
 -- })
 
-local applications = {
-  "btop",
-  "htop",
-  "lazydocker",
-  "lazygit",
-}
-
-local init_command_terminals = function()
-  local _terminals = {}
+-- Generate custom terminals from user opts
+---@param opts table
+local init_command_terminals = function(opts)
+  local terminals = {}
   local Terminal = require("toggleterm.terminal").Terminal
-  for _, app in pairs(applications) do
-    if vim.fn.executable(app) then
-      _terminals[app] = Terminal:new({ cmd = app, direction = "float" })
+  for _, app in pairs(opts.applications) do
+    if vim.fn.executable(app) == 1 then
       local command = app:gsub("^%l", string.upper)
+      terminals[app] = Terminal:new({ cmd = app, direction = "float" })
       vim.api.nvim_create_user_command(command, function()
-        _terminals[app]:toggle()
+        terminals[app]:toggle()
       end, {})
     end
   end
@@ -111,7 +106,7 @@ return {
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)
-    init_command_terminals()
+    init_command_terminals(opts)
   end,
   opts = {
     open_mapping = "<C-\\>",
@@ -123,6 +118,13 @@ return {
     highlights = {
       Normal = { link = "Normal" },
       FloatBorder = { link = "FloatBorder" },
+    },
+    -- Commands will be generate to open apps as floating terminals
+    applications = {
+      "btop",
+      "htop",
+      "lazydocker",
+      "lazygit",
     },
   },
 }

@@ -39,8 +39,11 @@ autocmd({ "TermOpen", "BufEnter" }, {
   desc = "Enter insert mode when focusing a terminal buffer",
   group = group,
   pattern = "term://*",
-  callback = vim.schedule_wrap(function()
-    vim.cmd.startinsert()
+  callback = vim.schedule_wrap(function(ev)
+    local curbuf = vim.api.nvim_win_get_buf(0)
+    if curbuf == ev.buf then
+      vim.cmd.startinsert()
+    end
   end),
 })
 

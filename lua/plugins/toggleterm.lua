@@ -4,6 +4,8 @@
 local terminals = {}
 
 -- Callback to determine the size of terminal windows
+---@param term Terminal
+---@return integer|nil
 local function size(term)
   if term.direction == "horizontal" then
     return 20
@@ -13,6 +15,7 @@ local function size(term)
 end
 
 -- Callback to be executed when terminal is opened
+---@param term Terminal
 local function on_open(term)
   local opts = { buffer = term.bufnr, silent = true }
   vim.keymap.set({ "n", "t" }, "<esc><esc>", "<C-\\><C-n>", opts)

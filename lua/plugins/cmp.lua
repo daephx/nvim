@@ -8,6 +8,22 @@ local has_whitespace_before = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+-- Use buffers from the current tabpage, but omit man pages as they can
+-- slow down neovim by being too large.
+local search_tabpage = {
+  get_bufnrs = function()
+    local ret = {}
+    for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+      local bufnr = vim.api.nvim_win_get_buf(winid)
+      local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+      if ft ~= "man" then
+        table.insert(ret, bufnr)
+      end
+    end
+    return ret
+  end,
+}
+
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -129,29 +145,8 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        {
-          name = "buffer",
-          keyword_length = 4,
-          option = {
-            -- use only buffers from current tabpage, but omit man pages as they can
-            -- slow down neovim by being too large
-            get_bufnrs = function()
-              local ret = {}
-              for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-                local bufnr = vim.api.nvim_win_get_buf(winid)
-                local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
-                if ft ~= "man" then
-                  table.insert(ret, bufnr)
-                end
-              end
-              return ret
-            end,
-          },
-        },
-        {
-          name = "path",
-          keyword_length = 10,
-        },
+        { name = "buffer", option = search_tabpage },
+        { name = "path", keyword_length = 10 },
       }),
       experimental = {
         ghost_text = true, -- Let's play with this for a day or two
@@ -215,7 +210,7 @@ return {
     -- (if you enabled `native_menu`, this won't work anymore).
     local search_opts = {
       sources = cmp.config.sources({
-        { name = "buffer" },
+        { name = "buffer", option = search_tabpage },
       }),
     }
 
@@ -226,7 +221,7 @@ return {
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
         { name = "cmp_git" },
-        { name = "buffer" },
+        { name = "buffer", option = search_tabpage },
       }, {
         { name = "spell" },
       }),
@@ -234,7 +229,7 @@ return {
 
     cmp.setup.filetype("markdown", {
       sources = cmp.config.sources({
-        { name = "buffer" },
+        { name = "buffer", option = search_tabpage },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "path" },

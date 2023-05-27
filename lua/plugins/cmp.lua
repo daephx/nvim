@@ -117,7 +117,7 @@ return {
       },
       snippet = {
         expand = function(args)
-          require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+          require("luasnip").lsp_expand(args.body)
         end,
       },
       mapping = cmp.mapping.preset.insert({
@@ -182,8 +182,8 @@ return {
         { name = "path", keyword_length = 10 },
       }),
       experimental = {
-        ghost_text = true, -- Let's play with this for a day or two
-        native_menu = false, -- I like the new menu better! Nice work hrsh7th
+        ghost_text = true,
+        native_menu = false,
       },
       completion = {
         completeopt = "menu,menuone,noselect",

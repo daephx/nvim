@@ -1,6 +1,13 @@
 -- nvim-cmp | A completion plugin for neovim coded in Lua
 -- https://github.com/hrsh7th/nvim-cmp
 
+-- Return true if whitespace is detected before cursor position.
+---@return boolean
+local has_whitespace_before = function()
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
+
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },
@@ -15,12 +22,6 @@ return {
   config = function()
     local cmp = require("cmp")
     local kinds = require("core.icons").kinds
-
-    -- Detect whitespace before cursor position.
-    local check_backspace = function()
-      local col = vim.fn.col(".") - 1
-      return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-    end
 
     local ELLIPSIS_CHAR = "…"
     local MAX_LABEL_WIDTH = 60
@@ -97,7 +98,7 @@ return {
         }),
 
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() and not check_backspace() then
+          if cmp.visible() and not has_whitespace_before() then
             cmp.confirm({ select = true })
           elseif require("luasnip").expand_or_jumpable() then
             require("luasnip").expand_or_jump()

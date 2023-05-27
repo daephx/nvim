@@ -105,6 +105,14 @@ return {
   "akinsho/toggleterm.nvim",
   version = "*",
   event = "VeryLazy",
+  keys = {
+    { "<C-\\>" },
+    { "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
+  },
+  config = function(_, opts)
+    require("toggleterm").setup(opts)
+    init_command_terminals()
+  end,
   opts = {
     open_mapping = "<C-\\>",
     direction = "horizontal",
@@ -117,10 +125,4 @@ return {
       FloatBorder = { link = "FloatBorder" },
     },
   },
-  config = function(_, opts)
-    local toggleterm = require("toggleterm")
-    toggleterm.setup(opts)
-    map("n", "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", { desc = "Terminal Tab" })
-    init_command_terminals()
-  end,
 }

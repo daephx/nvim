@@ -55,6 +55,7 @@ return {
   event = "VeryLazy",
   keys = {
     { "<C-\\>" },
+    { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
     { "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
   },
   -- Terminals exposed in spec for easy access

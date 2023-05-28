@@ -191,8 +191,6 @@ return {
         },
       },
       completion = {
-        completeopt = "menu,menuone,noselect",
-        keyword_length = 1,
         get_trigger_characters = function(chars)
           local extras = { "!", "#", "-", "." }
           return vim.list_extend(chars, extras)

@@ -223,16 +223,14 @@ return {
       }),
     })
 
-    -- Use buffer source for `/`, '?'
+    -- Define options for search commands: `/`, `?`
     -- (if you enabled `native_menu`, this won't work anymore).
-    local search_opts = {
+    cmp.setup.cmdline({ "/", "?" }, {
+      mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "buffer", option = search_tabpage },
       }),
-    }
-
-    cmp.setup.cmdline("/", search_opts)
-    cmp.setup.cmdline("?", search_opts)
+    })
 
     -- Set configuration for specific filetype.
     cmp.setup.filetype("gitcommit", {

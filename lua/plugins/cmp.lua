@@ -24,6 +24,18 @@ local search_tabpage = {
   end,
 }
 
+-- Options for completion/documentation windows
+local window_opts = {
+  max_width = 80,
+  border = vim.g.border,
+  winhighlight = table.concat({
+    "NormalFloat:NormalFloat",
+    "FloatBorder:FloatBorder",
+    "CursorLine:CursorLine",
+    "Search:None",
+  }, ","),
+}
+
 -- Truncate completion abbreviations to control width of float.
 -- https://github.com/hrsh7th/nvim-cmp/issues/980#issuecomment-1121773499
 ---@param abbr string
@@ -183,28 +195,8 @@ return {
       },
       performance = { max_view_entries = 25 },
       window = {
-        completion = {
-          max_width = 80,
-          border = vim.g.border,
-          completeopt = "menu,menuone,noselect",
-          keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-          keyword_length = 2,
-          winhighlight = table.concat({
-            "NormalFloat:NormalFloat",
-            "FloatBorder:FloatBorder",
-            "CursorLine:Visual",
-            "Search:None",
-          }, ","),
-        },
-        documentation = {
-          border = vim.g.border,
-          winhighlight = table.concat({
-            "NormalFloat:NormalFloat",
-            "FloatBorder:FloatBorder",
-            "CursorLine:Visual",
-            "Search:None",
-          }, ","),
-        },
+        completion = window_opts,
+        documentation = window_opts,
       },
       view = {
         entries = {

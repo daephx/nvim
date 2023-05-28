@@ -182,8 +182,10 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer", option = search_tabpage },
         { name = "path", option = { trailing_slash = true } },
+      }, {
+        { name = "buffer", option = search_tabpage },
+        { name = "spell" },
       }),
       experimental = {
         native_menu = false,
@@ -215,10 +217,12 @@ return {
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
-        { name = "cmdline_history" },
         { name = "cmdline" },
+        { name = "nvim_lua" },
       }, {
         { name = "path", option = { trailing_slash = true } },
+      }, {
+        { name = "cmdline_history" },
       }),
     })
 
@@ -228,6 +232,8 @@ return {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "buffer", option = search_tabpage },
+      }, {
+        { name = "cmdline_history" },
       }),
     })
 
@@ -235,21 +241,9 @@ return {
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
         { name = "cmp_git" },
-        { name = "buffer", option = search_tabpage },
-        { name = "path" },
-      }, {
-        { name = "spell" },
-      }),
-    })
-
-    -- Define specific sources for markdown filetype
-    cmp.setup.filetype("markdown", {
-      sources = cmp.config.sources({
-        { name = "buffer", option = search_tabpage },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "path", option = { trailing_slash = true } },
       }, {
+        { name = "buffer", option = search_tabpage },
         { name = "spell" },
       }),
     })

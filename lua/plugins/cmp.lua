@@ -66,6 +66,7 @@ local source_labels = {
   nvim_lua = "[Neovim]",
   path = "[Path]",
   spell = "[Spell]",
+  treesitter = "[Treesitter]",
   ultisnips = "[UltiSnip]",
   vsnip = "[VSnip]",
   zsh = "[ZSH]",

@@ -210,7 +210,7 @@ return {
       },
     })
 
-    -- Use cmdline & path source for ':'
+    -- Define options for cmdline: `:`
     -- (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
@@ -232,7 +232,7 @@ return {
       }),
     })
 
-    -- Set configuration for specific filetype.
+    -- Define specific sources for gitcommit filetype
     cmp.setup.filetype("gitcommit", {
       sources = cmp.config.sources({
         { name = "cmp_git" },
@@ -243,6 +243,7 @@ return {
       }),
     })
 
+    -- Define specific sources for markdown filetype
     cmp.setup.filetype("markdown", {
       sources = cmp.config.sources({
         { name = "buffer", option = search_tabpage },

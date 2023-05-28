@@ -123,10 +123,14 @@ return {
       mapping = cmp.mapping.preset.insert({
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+        ["<C-PageUp>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-PageDown>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Up>"] = cmp.mapping.scroll_docs(-1),
+        ["<C-Down>"] = cmp.mapping.scroll_docs(1),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
         ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ["<C-y>"] = cmp.mapping.confirm({ select = true }),
         ["<C-e>"] = cmp.mapping({
           i = cmp.mapping.abort(),

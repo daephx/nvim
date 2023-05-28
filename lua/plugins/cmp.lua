@@ -214,7 +214,7 @@ return {
     -- Use cmdline & path source for ':'
     -- (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline(":", {
-      preselect = cmp.PreselectMode.None,
+      mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "cmdline_history" },
         -- Do not show completion for words starting with '!'

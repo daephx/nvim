@@ -107,6 +107,7 @@ return {
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
           local kinds = require("core.icons").kinds
+          item.dup = nil
           item.max_width = 80
           item.mode = "text_symbol"
           item.kind = ("%s %s"):format(kinds[item.kind], item.kind)

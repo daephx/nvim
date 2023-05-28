@@ -35,11 +35,13 @@ return {
     ls.filetype_extend("all", { "_" })
     ls.filetype_extend("glsl", { "c" })
 
-    -- Add local snippet directories to runtime path
+    -- Load primary LSP snippets from friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()
+    -- Add local LSP snippets from config runtime path
     require("luasnip.loaders.from_vscode").lazy_load({
       paths = { vim.fn.stdpath("config") .. "/snippets/" },
     })
+    -- Add local lua snippets from snippets module
     require("luasnip.loaders.from_lua").lazy_load({
       paths = { vim.fn.stdpath("config") .. "/lua/snippets/" },
     })

@@ -196,10 +196,6 @@ return {
           return vim.list_extend(chars, extras)
         end,
       },
-      confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-      },
       performance = { max_view_entries = 25 },
       window = {
         completion = window_opts,

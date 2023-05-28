@@ -182,8 +182,10 @@ return {
         { name = "path", option = { trailing_slash = true } },
       }),
       experimental = {
-        ghost_text = true,
         native_menu = false,
+        ghost_text = {
+          hl_group = "LspCodeLens",
+        },
       },
       completion = {
         completeopt = "menu,menuone,noselect",

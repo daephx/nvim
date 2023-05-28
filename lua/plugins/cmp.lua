@@ -201,7 +201,7 @@ return {
       view = {
         entries = {
           name = "custom",
-          selection_order = "cursor",
+          selection_order = "near_cursor",
         },
       },
     })

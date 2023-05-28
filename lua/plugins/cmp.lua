@@ -179,7 +179,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer", option = search_tabpage },
-        { name = "path" },
+        { name = "path", option = { trailing_slash = true } },
       }),
       experimental = {
         ghost_text = true,
@@ -215,7 +215,7 @@ return {
         -- Do not show completion for words starting with '!'
         { name = "cmdline", keyword_pattern = "\\!@<!\\w*" },
       }, {
-        { name = "path" },
+        { name = "path", option = { trailing_slash = true } },
       }),
     })
 
@@ -245,7 +245,7 @@ return {
         { name = "buffer", option = search_tabpage },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "path" },
+        { name = "path", option = { trailing_slash = true } },
       }, {
         { name = "spell" },
       }),

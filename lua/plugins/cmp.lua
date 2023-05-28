@@ -235,6 +235,7 @@ return {
       sources = cmp.config.sources({
         { name = "cmp_git" },
         { name = "buffer", option = search_tabpage },
+        { name = "path" },
       }, {
         { name = "spell" },
       }),

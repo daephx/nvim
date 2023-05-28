@@ -94,6 +94,7 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lua",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
   },
@@ -217,6 +218,8 @@ return {
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
+        { name = "nvim_lua" },
+      }, {
         { name = "cmdline" },
         { name = "nvim_lua" },
       }, {

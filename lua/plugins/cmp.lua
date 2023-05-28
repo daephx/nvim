@@ -216,8 +216,7 @@ return {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
         { name = "cmdline_history" },
-        -- Do not show completion for words starting with '!'
-        { name = "cmdline", keyword_pattern = "\\!@<!\\w*" },
+        { name = "cmdline" },
       }, {
         { name = "path", option = { trailing_slash = true } },
       }),

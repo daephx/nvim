@@ -102,6 +102,11 @@ return {
   config = function()
     local cmp = require("cmp")
 
+    -- HACK: Disable default completion mapping
+    -- When the cmp window isn't visible this will open the default completion menu
+    vim.keymap.set("i", "<C-n>", "<nop>")
+    vim.keymap.set("i", "<C-p>", "<nop>")
+
     cmp.setup({
       enable = true,
       formatting = {

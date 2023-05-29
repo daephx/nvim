@@ -179,7 +179,7 @@ return {
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer", option = search_tabpage },
-        { name = "path", keyword_length = 10 },
+        { name = "path" },
       }),
       experimental = {
         ghost_text = true,

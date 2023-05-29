@@ -34,6 +34,8 @@ return {
     -- Compatibility with `honza/vim-snippets`: all = '_'
     ls.filetype_extend("all", { "_" })
     ls.filetype_extend("glsl", { "c" })
+    ls.filetype_extend("javascript", { "javascriptreact" })
+    ls.filetype_extend("typescript", { "typescriptreact" })
 
     -- Load primary LSP snippets from friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()

@@ -24,13 +24,12 @@ return {
         "██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
         "╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
         "",
-        string.format(
-          "--- [   %s.%s.%s%s   ] ---",
-          vim.version().major,
-          vim.version().minor,
-          vim.version().patch,
-          vim.version().prerelease == true and "-dev" or ""
-        ),
+        (function()
+          local v = vim.version()
+          local release = v.prerelease == false and "stable" or "nightly"
+          local template = "--- [   %s.%s.%s %s   ] ---"
+          return template:format(v.major, v.minor, v.patch, release)
+        end)(),
         "",
         "",
       },

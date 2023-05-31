@@ -48,6 +48,7 @@ return {
     -- Javascript arrow function
     npairs.add_rule(Rule("%(.*%)%s*%=>$", " {}", {
       "javascript",
+      "javascriptreact",
       "typescript",
       "typescriptreact",
     }):use_regex(true):set_end_pair_length(1))

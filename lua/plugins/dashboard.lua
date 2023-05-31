@@ -1,23 +1,6 @@
 -- Dashboard.nvim | vim dashboard
 -- https://github.com/glepnir/dashboard-nvim
 
--- Return function with predefined whitespace padding
----@param width integer
----@return function
-local fill_str = function(width)
-  return function(str)
-    local fill = (" "):rep(math.abs(#str - width))
-    return ("%s%s"):format(str, fill)
-  end
-end
-
--- Define returned function labels
-local icon = fill_str(2)
-local desc = fill_str(18)
-local keymap = fill_str(7)
-
---- Setup ---
-
 return {
   "glepnir/dashboard-nvim",
   event = "VimEnter",
@@ -51,51 +34,51 @@ return {
       },
       center = {
         {
-          icon = icon(""),
-          desc = desc("Find Files"),
-          keymap = keymap("SPC f f"),
+          icon = "",
+          desc = "Find Files",
+          keymap = "SPC f f",
           key = "f",
           action = "Telescope find_files",
         },
         {
-          icon = icon(""),
-          desc = desc("Recent Files"),
-          keymap = keymap("SPC f r"),
+          icon = "",
+          desc = "Recent Files",
+          keymap = "SPC f r",
           key = "r",
           action = "Telescope oldfiles",
         },
         {
-          icon = icon(""),
-          desc = desc("Projects"),
-          keymap = keymap("SPC f p"),
+          icon = "",
+          desc = "Projects",
+          keymap = "SPC f p",
           key = "P",
           action = "Telescope projects",
         },
         {
-          icon = icon("󰆓"),
-          desc = desc("Applications"),
-          keymap = keymap("SPC p m"),
+          icon = "󰆓",
+          desc = "Applications",
+          keymap = "SPC p m",
           key = "m",
           action = "Mason",
         },
         {
-          icon = icon(""),
-          desc = desc("Plugins"),
-          keymap = keymap("SPC p l"),
+          icon = "",
+          desc = "Plugins",
+          keymap = "SPC p l",
           key = "p",
           action = "Lazy",
         },
         {
-          icon = icon(""),
-          desc = desc("Settings"),
-          keymap = keymap("SPC f v"),
+          icon = "",
+          desc = "Settings",
+          keymap = "SPC f v",
           key = "s",
           action = "Telescope vimfiles",
         },
         {
-          icon = icon("󰅗"),
-          desc = desc("Exit"),
-          keymap = keymap(""),
+          icon = "󰅗",
+          desc = "Exit",
+          keymap = "",
           key = "q",
           action = "exit",
         },
@@ -111,6 +94,13 @@ return {
   },
   config = function(_, opts)
     require("dashboard").setup(opts)
+
+    -- Add padding to dashboard entries
+    for _, item in pairs(opts.config.center) do
+      local pad = (" "):rep(math.abs(#item.desc - 19))
+      item.icon = item.icon .. " "
+      item.desc = item.desc .. pad
+    end
 
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Apply local settings to Dashboard buffer",

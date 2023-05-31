@@ -17,6 +17,7 @@ return {
       store_selection_keys = "<Tab>",
       updateevents = "TextChanged,TextChangedI",
       delete_check_events = "TextChanged,InsertLeave",
+      region_check_events = "InsertEnter",
       ext_opts = {
         [types.choiceNode] = {
           active = {

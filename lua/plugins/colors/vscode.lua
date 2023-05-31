@@ -41,6 +41,15 @@ return {
         DiagnosticVirtualTextInfo = { bg = c.vscBack, fg = c.vscBlue },
         DiagnosticVirtualTextHint = { bg = c.vscBack, fg = c.vscWhite },
 
+        -- Treesitter Rainbow | Treesitter/Indent-Blankline
+        TSRainbowBlue = { fg = c.vscBlue, nocombine = true },
+        TSRainbowCyan = { fg = c.vscBlueGreen, nocombine = true },
+        TSRainbowGreen = { fg = c.vscGreen, nocombine = true },
+        TSRainbowOrange = { fg = c.vscOrange, nocombine = true },
+        TSRainbowPink = { fg = c.vscPink, nocombine = true },
+        TSRainbowRed = { fg = c.vscRed, nocombine = true },
+        TSRainbowYellow = { fg = c.vscYellow, nocombine = true },
+
         -- Whichkey
         WhichKeyFloat = { link = "StatusLineNC" },
       },

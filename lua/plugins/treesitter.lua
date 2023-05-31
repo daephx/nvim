@@ -7,8 +7,8 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   cond = not vim.g.vscode,
   dependencies = {
-    -- Rainbow parentheses for neovim using tree-sitter
-    { "p00f/nvim-ts-rainbow" },
+    -- Rainbow delimiters for Neovim through Tree-sitter
+    { "HiPhish/nvim-ts-rainbow2" },
     -- Treesitter auto html tags
     { "windwp/nvim-ts-autotag" },
     -- set commentstring based on the cursor location
@@ -55,17 +55,11 @@ return {
         node_decremental = "grm",
       },
     },
+    autotag = { enable = true },
+    rainbow = { enable = true },
     indent = {
       enable = true,
       disable = { "python", "yaml" },
-    },
-    rainbow = {
-      enable = true,
-      extended_mode = true,
-      max_file_lines = 2000,
-    },
-    autotag = {
-      enable = true,
     },
     textobjects = {
       select = {

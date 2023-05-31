@@ -59,7 +59,7 @@ return {
     rainbow = { enable = true },
     indent = {
       enable = true,
-      disable = { "python", "yaml" },
+      disable = { "yaml" },
     },
     textobjects = {
       select = {

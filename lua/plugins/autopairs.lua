@@ -14,18 +14,18 @@ return {
     },
   },
   config = function(_, opts)
-    local autopairs = require("nvim-autopairs")
-    autopairs.setup(opts)
+    local npairs = require("nvim-autopairs")
+    npairs.setup(opts)
 
     -- Enable cmp compatibility
     local cmp_ok, cmp = pcall(require, "cmp")
     if cmp_ok then
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local cmp_npairs = require("nvim-autopairs.completion.cmp")
       local handlers = require("nvim-autopairs.completion.handlers")
       -- Complete parens after select function or method item
       cmp.event:on(
         "confirm_done",
-        cmp_autopairs.on_confirm_done({
+        cmp_npairs.on_confirm_done({
           filetypes = {
             ["*"] = { -- "*" alias to all filetypes
               ["("] = {
@@ -46,7 +46,7 @@ return {
     local Rule = require("nvim-autopairs.rule")
 
     -- Javascript arrow function
-    autopairs.add_rule(Rule("%(.*%)%s*%=>$", " {}", {
+    npairs.add_rule(Rule("%(.*%)%s*%=>$", " {}", {
       "javascript",
       "typescript",
       "typescriptreact",

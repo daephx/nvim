@@ -17,7 +17,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Initialize plugin list
 require("lazy").setup({
-  spec = "plugins",
+  spec = {
+    { import = "plugins" },
+    { import = "plugins.colors" },
+    { import = "plugins.git" },
+  },
   change_detection = { notify = false },
   defaults = { lazy = true },
   dev = {

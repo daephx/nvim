@@ -86,8 +86,9 @@ return {
       },
       footer = function()
         local stats = require("lazy").stats()
+        local startuptime = ("%.2f"):format(stats.startuptime)
         local message = "Neovim loaded %s/%s plugins in %sms"
-        return { "", "", message:format(stats.loaded, stats.count, stats.startuptime) }
+        return { "", "", message:format(stats.loaded, stats.count, startuptime) }
       end,
     },
   },

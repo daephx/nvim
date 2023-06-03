@@ -3,6 +3,6 @@
 
 return {
   "RaafatTurki/hex.nvim",
-  event = "VeryLazy",
-  config = true,
+  cmd = { "HexAssemble", "HexDump", "HexToggle" },
+  event = { "BufReadPre", "BufNewFile" },
 }

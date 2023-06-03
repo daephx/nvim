@@ -6,14 +6,12 @@ return {
   cmd = { "TodoTrouble", "TodoTelescope" },
   event = { "BufReadPost", "BufNewFile" },
   dependencies = { "nvim-lua/plenary.nvim" },
-  keys = function()
-    local todo = require("todo-comments")
-    return {
-      { "]t", todo.jump_next, desc = "Next todo comment" },
-      { "[t", todo.jump_prev, desc = "Previous todo comment" },
-      { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Search Todo comments" },
-    }
-  end,
+  -- stylua: ignore
+  keys = {
+    { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+    { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+    { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Search Todo comments" },
+  },
   opts = {
     signs = true, -- show icons in the signs column
     sign_priority = 8,

@@ -7,6 +7,8 @@ return {
   version = "*",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = {
+    -- Quickstart configs for Nvim LSP
+    "neovim/nvim-lspconfig",
     -- Code context for winbar/statusline
     "SmiteshP/nvim-navic",
     -- Adds file type icons to Vim plugins

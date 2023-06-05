@@ -97,16 +97,15 @@ return {
       ]])
     end,
   },
-  {
-    { -- Integration for nvim-dap with telescope.nvim
-      "nvim-telescope/telescope-dap.nvim",
-      config = function()
-        require("telescope").load_extension("dap")
-      end,
-      dependencies = {
-        "mfussenegger/nvim-dap",
-        "nvim-telescope/telescope.nvim",
-      },
+  { -- Integration for nvim-dap with telescope.nvim
+    "nvim-telescope/telescope-dap.nvim",
+    cmd = "Telescope",
+    config = function()
+      require("telescope").load_extension("dap")
+    end,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-telescope/telescope.nvim",
     },
   },
 }

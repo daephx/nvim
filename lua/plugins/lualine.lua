@@ -43,7 +43,7 @@ return {
     -- Lua fork of vim-web-devicons for neovim
     { "nvim-tree/nvim-web-devicons" },
     -- Display LSP progress in the statusline
-    { "arkav/lualine-lsp-progress", event = "LspAttach" },
+    { "arkav/lualine-lsp-progress" },
   },
   opts = {
     options = {

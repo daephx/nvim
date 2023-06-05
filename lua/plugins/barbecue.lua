@@ -1,12 +1,6 @@
 -- barbecue.nvim | A VS Code like winbar for Neovim
 -- https://github.com/utilyre/barbecue.nvim
 
-local function icons()
-  return vim.tbl_map(function(icon)
-    return icon
-  end, require("core.icons").kinds)
-end
-
 return {
   "utilyre/barbecue.nvim",
   name = "barbecue",
@@ -19,7 +13,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    kinds = icons(),
+    kinds = require("core.icons").kinds,
     show_modified = true,
     attach_navic = false,
     create_autocmd = false,

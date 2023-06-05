@@ -5,7 +5,7 @@ return {
   "utilyre/barbecue.nvim",
   name = "barbecue",
   version = "*",
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "LspAttach" },
   dependencies = {
     -- Quickstart configs for Nvim LSP
     "neovim/nvim-lspconfig",
@@ -31,11 +31,7 @@ return {
       separator = { link = "LineNr" },
     },
   },
-  config = function(_, opts)
-    require("barbecue").setup(opts)
-
-    --- Autocmds ---
-
+  init = function()
     vim.api.nvim_create_autocmd("LspAttach", {
       desc = "Get nvim-navic working with multiple tabs",
       group = vim.api.nvim_create_augroup("LspAttachNavic", {}),
@@ -46,6 +42,9 @@ return {
         end
       end,
     })
+  end,
+  config = function(_, opts)
+    require("barbecue").setup(opts)
 
     vim.api.nvim_create_autocmd({
       "BufWinEnter",

@@ -3,7 +3,7 @@
 
 return {
   "folke/tokyonight.nvim",
-  lazy = false,
+  event = { "ColorSchemePre" },
   opts = {
     style = "night",
     day_brightness = 0.3,

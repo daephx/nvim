@@ -3,7 +3,7 @@
 
 return {
   "numtostr/sakura.nvim",
-  lazy = false,
+  event = { "ColorSchemePre" },
   opts = {
     transparent = true,
   },

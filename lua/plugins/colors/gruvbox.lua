@@ -3,7 +3,7 @@
 
 return {
   "ellisonleao/gruvbox.nvim",
-  lazy = false,
+  event = { "ColorSchemePre" },
   opts = {
     contrast = "hard", -- can be "hard", "soft" or empty string
     inverse = false, -- invert background for search, diffs, statusline and errors

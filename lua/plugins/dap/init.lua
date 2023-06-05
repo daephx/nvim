@@ -41,7 +41,7 @@ local languages = {
 return {
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       { "rcarriga/nvim-dap-ui" },
       { "jbyuki/one-small-step-for-vimkind" },

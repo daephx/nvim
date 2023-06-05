@@ -3,7 +3,7 @@
 
 return {
   "L3MON4D3/LuaSnip",
-  event = "InsertEnter",
+  event = "InsertCharPre",
   dependencies = {
     -- Set of preconfigured snippets for different languages.
     "rafamadriz/friendly-snippets",

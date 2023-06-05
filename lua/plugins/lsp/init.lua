@@ -67,7 +67,7 @@ return {
   },
   { -- Use Neovim as a language server
     "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       -- Collection of useful lua functions
       { "nvim-lua/plenary.nvim" },

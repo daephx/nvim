@@ -4,7 +4,7 @@
 return {
   "psliwka/vim-dirtytalk",
   build = ":DirtytalkUpdate",
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     vim.opt.spelllang:append("programming")
   end,

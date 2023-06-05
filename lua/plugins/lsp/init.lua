@@ -80,7 +80,8 @@ return {
   },
   {
     "ray-x/lsp_signature.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = true,
+    dependencies = { "neovim/nvim-lspconfig" },
     opts = {
       hint_enable = false,
       hint_prefix = "■ ",
@@ -88,10 +89,7 @@ return {
         border = vim.g.border,
       },
     },
-    config = function(_, opts)
-      local signature = require("lsp_signature")
-      signature.setup(opts)
-
+    init = function()
       vim.api.nvim_create_autocmd("LspAttach", {
         desc = "Attach lsp_signature if client supports signature help",
         group = vim.api.nvim_create_augroup("LspSignatureAttach", {}),

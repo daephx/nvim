@@ -3,7 +3,7 @@
 
 return {
   "gpanders/editorconfig.nvim",
-  event = "BufReadPre",
+  event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     -- Heuristically set buffer options
     "tpope/vim-sleuth",

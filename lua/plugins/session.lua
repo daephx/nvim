@@ -16,14 +16,6 @@ local save_session = cmd_wrapper("SessionSave")
 return {
   "rmagatti/auto-session",
   event = "VimEnter",
-  dependencies = {
-    {
-      "nvim-telescope/telescope.nvim",
-      config = function()
-        require("telescope").load_extension("session-lens")
-      end,
-    },
-  },
   keys = {
     { "<leader>sd", delete_session, desc = "Delete current session" },
     { "<leader>ss", save_session, desc = "Save current session" },

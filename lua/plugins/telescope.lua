@@ -172,8 +172,20 @@ return {
     telescope.setup(opts)
 
     -- Load extensions
-    telescope.load_extension("dotfiles")
-    telescope.load_extension("vimfiles")
+    -- Some plugins specs don't cleanly handle lazy loading telescope integrations
+    -- Here we can safely initialize them when telescope is finally loaded.
+    pcall(function()
+      -- Local
+      telescope.load_extension("dotfiles")
+      telescope.load_extension("vimfiles")
+
+      -- Auto-session
+      require("auto-session").setup_session_lens()
+      telescope.load_extension("session-lens")
+
+      -- Project_nvim
+      telescope.load_extension("projects")
+    end)
 
     --- Autocmds ---
 

@@ -3,17 +3,11 @@
 
 return {
   "ahmedkhalf/project.nvim",
+  name = "project_nvim",
   event = "VeryLazy",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-  },
   keys = {
-    { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
+    { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Projects" },
   },
-  config = function(_, opts)
-    require("project_nvim").setup(opts)
-    require("telescope").load_extension("projects")
-  end,
   opts = {
     -- Show hidden files in telescope
     show_hidden = true,

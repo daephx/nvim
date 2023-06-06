@@ -3,7 +3,7 @@
 
 return {
   "glepnir/dashboard-nvim",
-  event = "VimEnter",
+  event = "UIEnter",
   dependices = { "nvim-tree/nvim-web-devicons" },
   opts = {
     theme = "doom",

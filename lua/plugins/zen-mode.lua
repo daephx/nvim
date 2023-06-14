@@ -19,11 +19,14 @@ local on_open = function(win)
   if vim.tbl_contains(buftypes, bt) or vim.tbl_contains(filetypes, ft) then
     vim.api.nvim_win_set_width(win, vim.o.columns)
   else
-    -- Calculate size based on gutter, textwidth and colorcolumn spacing
+    -- Calculate size based on gutter, textwidth and colorcolumn spacing.
+    -- Ensure textwidth is greater than or equal to a minimum of 80 columns.
+    local min, max = 80, 120
     local ccol = tonumber(vim.o.colorcolumn:sub(2)) or 0
     local textoff = vim.fn.getwininfo(win)[1].textoff
-    local width = vim.o.textwidth + textoff + ccol
-    vim.api.nvim_win_set_width(win, width)
+    local textwidth = vim.bo.textwidth >= min and vim.bo.textwidth or max
+    local bufwidth = textwidth + textoff + ccol
+    vim.api.nvim_win_set_width(win, bufwidth)
   end
 end
 

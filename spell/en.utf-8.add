@@ -283,6 +283,7 @@ codeblock
 codec
 codedark
 codelens
+codelldb
 codestyle
 colorcolumn
 colorflag
@@ -356,6 +357,8 @@ darkgreen
 datamoshes
 datamoshing
 dataview
+deadzone
+deadzones
 deaphx
 debian
 debugpy
@@ -444,6 +447,7 @@ enew
 entrypoint
 entrypoints
 enum
+enums
 env
 envrc
 envs
@@ -475,6 +479,7 @@ fdfind
 feat
 feedkey
 feedkeys
+feh
 ffmpeg
 ffprobe
 fg
@@ -530,6 +535,7 @@ fzf
 fzfterm
 gamesave
 gamesaves
+gc
 gcc
 gdb
 gdscript
@@ -580,6 +586,7 @@ gravatar
 gruvbox
 gsettings
 gsub
+gtk
 gui
 guibg
 guicursor
@@ -737,6 +744,7 @@ linux
 listchar
 listchars
 listdir
+lldb
 llvm
 ln
 loadbalancer
@@ -748,6 +756,7 @@ localleader
 localoptions
 localstate
 lockfile
+lockscreen
 loclist
 loglevel
 lombok
@@ -822,6 +831,7 @@ mkv
 mnt
 modeline
 modulepath
+monospace
 motd
 mountpoint
 mov
@@ -953,6 +963,7 @@ pgm
 pgup
 photoshop
 php
+picom
 pictograms
 pid
 pihole
@@ -966,11 +977,13 @@ plaintext
 plex
 pmenu
 png
+polybar
 popd
 popen
 popup
 popups
 portainer
+pos
 poshmaid
 posix
 postfix
@@ -1040,6 +1053,7 @@ quickfix
 quickstart
 quitall
 radarr
+rasi
 raspbian
 raspi
 rawvideo
@@ -1053,7 +1067,9 @@ reddit
 redeployable
 redstone
 refactor
+refind
 reflog
+reflow
 reformats
 regedit
 rego
@@ -1084,6 +1100,7 @@ rmd
 rnu
 ro
 rockstar
+rofi
 root
 rootfs
 rpi
@@ -1173,6 +1190,7 @@ startinsert
 startpage
 startswith
 startuptime
+startx
 statusbar
 statusline
 statuslinenc
@@ -1249,6 +1267,7 @@ textobjects
 textwidth
 tga
 tgz
+thumbstick
 tif
 timecode
 timecodes
@@ -1435,10 +1454,14 @@ xclock
 xdg
 xdg_dirs
 xhost
+xinit
+xinitrc
 xlast
 xml
+xna
 xoff
 xours
+xrdb
 xtheirs
 xtrace
 yaml

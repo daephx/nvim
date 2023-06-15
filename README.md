@@ -1,33 +1,20 @@
 <div align="center">
 <h1>Neovim Configuration</h1>
-<a href="https://github.com/neovim/neovim/releases/tag/nightly" target="_blank" rel="noopener noreferrer">
-<img alt="Neovim version" src="https://img.shields.io/badge/Neovim-0.9.0--dev-blueviolet.svg?style=for-the-badge&logo=Neovim&labelColor=000000&logoColor=green"/>
-</a>
-<a href="https://github.com/daephx/nvim/actions" target="_blank" rel="noopener noreferrer">
-<img alt="Checks" src="https://img.shields.io/github/checks-status/daephx/nvim/main?style=for-the-badge&labelColor=000000&label=CI"/>
-</a>
-<a href="#">
-<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/daephx/nvim?label=Size&style=for-the-badge&labelColor=000000">
-</a>
-<a href="https://github.com/daephx/nvim/search?l=lua" target="_blank" rel="noopener noreferrer">
-<img alt="Top languages" src="https://img.shields.io/github/languages/top/daephx/nvim?style=for-the-badge&labelColor=000000&logo=lua&logoColor=blue"/>
-</a>
-<a href="https://github.com/daephx/nvim/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">
-<img alt="License" src="https://img.shields.io/github/license/daephx/nvim?&label=License&style=for-the-badge&color=8937dd&labelColor=000000"/>
-</a>
+
+[![Neovim version](https://img.shields.io/github/v/release/neovim/neovim?include_prereleases&style=for-the-badge&label=Neovim&logo=neovim&labelColor=000000)](https://github.com/neovim/neovim/releases/tag/nightly)
+[![Actions](https://img.shields.io/github/actions/workflow/status/daephx/nvim/lint.yml?branch=main&label=CI&style=for-the-badge&labelColor=000000)](https://github.com/daephx/nvim/actions)
+[![Code size](https://img.shields.io/github/languages/code-size/daephx/nvim?label=Size&style=for-the-badge&labelColor=000000)](#)
+[![Top languages](https://img.shields.io/github/languages/top/daephx/nvim?style=for-the-badge&labelColor=000000&logo=lua&logoColor=blue)](https://github.com/daephx/nvim/search?l=lua)
+[![License](https://img.shields.io/github/license/daephx/nvim?&label=License&style=for-the-badge&color=8937dd&labelColor=000000)](https://github.com/daephx/nvim/blob/main/LICENSE)
 <br/>
-<a href="https://en.wikipedia.org/wiki/Linux" target="_blank" rel="noopener noreferrer">
-<img alt="Linux" src="https://img.shields.io/badge/Linux-%23.svg?logo=linux&style=for-the-badge&color=000000&logoColor=yellow"/>
-</a>
-<a href="https://en.wikipedia.org/wiki/MacOS" target="_blank" rel="noopener noreferrer">
-<img alt="MacOS" src="https://img.shields.io/badge/MacOS-%23.svg?logo=apple&style=for-the-badge&color=000000&logoColor=white"/>
-</a>
-<a href="https://en.wikipedia.org/wiki/Microsoft_Windows" target="_blank" rel="noopener noreferrer">
-<img alt="Windows" src="https://img.shields.io/badge/Windows-%23.svg?logo=windows11&style=for-the-badge&color=000000&logoColor=blue"/>
-</a>
-</br>
-<sup>&#149; Uses Neovim nightly. No backward compatibility guaranteed! &#149;</sup>
-<img src="https://user-images.githubusercontent.com/36192863/208231941-b54d0d70-0d46-4ad0-89ed-398917a2bd72.gif"></img>
+[![Linux](https://img.shields.io/badge/Linux-%23.svg?logo=linux&style=for-the-badge&color=000000&logoColor=yellow)](https://en.wikipedia.org/wiki/Linux)
+[![MacOS](https://img.shields.io/badge/MacOS-%23.svg?logo=apple&style=for-the-badge&color=000000&logoColor=white)](https://en.wikipedia.org/wiki/MacOS)
+[![Windows](https://img.shields.io/badge/Windows-%23.svg?logo=windows11&style=for-the-badge&color=000000&logoColor=blue)](https://en.wikipedia.org/wiki/Microsoft_Windows)
+<br/>
+
+<sup>• Backward compatibility is NOT guaranteed! •</sup>
+<img src="https://github.com/daephx/nvim/assets/36192863/597acb0a-ee6f-4aef-a380-5329d8df6f99"/>
+
 </div>
 
 ## Introduction
@@ -36,19 +23,17 @@ Personal neovim configuration that uses
 [Lazy](https://github.com/folke/lazy.nvim) and
 [Mason](https://github.com/williamboman/mason.nvim) for dependency management.
 
-For more detailed plugin list, see file `lua/plugins/init.lua`
+You can find all plugin specifications within: `lua/plugins`.
 
 ## Installation
 
-**NOTE**: Before installing, be sure to move or delete any existing config
-folders:
+**NOTE**: Before installing, be sure backup/move any existing config!
+
+Ensure [Neovim](https://github.com/neovim/neovim) is properly installed and
+clone this repository to one of the following locations.
 
 - Unix: `~/.config/nvim`
 - Windows: `~\AppData\Local\nvim`
-
-Ensure [Neovim](https://github.com/neovim/neovim) is properly installed using
-your preferred package manager and clone this repository to the specified
-location.
 
 ```bash
 # Linux and MacOS
@@ -58,11 +43,12 @@ $ git clone https://github.com/daephx/nvim.git ~/.config/nvim
 $ git clone https://github.com/daephx/nvim.git ~\AppData\Roaming\nvim
 ```
 
-After cloning this repository, run `nvim`. The lazy bootstrap process will clone
-and build all missing plugins, including treesitter parsers.
+Then run `nvim` which will kick-off the lazy bootstrap process and install all
+the required plugins and treesitter parsers.
 
-If there are any errors: run `:checkhealth` or restart `nvim` to ensure all
-packages are properly loaded. If that doesn't work, an issue or pull request
+If there are any errors? First restart `nvim` to ensure all the newly installed
+packages are properly loaded. If that doesn't work try running the
+`:checkhealth` command. You can also raise an issue or pull request, as they
 would be greatly appreciated.
 
 ### Fonts
@@ -71,7 +57,13 @@ For a better visual experience, install and configure your terminal to use
 patched font family from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts).
 
 Recommended:
-[FiraCode](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip)
+
+- [CascadiaCode](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaCode.zip)
+- [FiraCode](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip)
+- [Hack](https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip)
+
+Or you can configure your system to handle symbols via
+[Font Substitution & Fallback](https://github.com/ryanoasis/nerd-fonts/wiki/Font-Substitution-&-Fallback)
 
 ### Compatibility (Optional)
 
@@ -96,17 +88,27 @@ npm i -g neovim
 ```plain
 nvim/                 # Neovim config directory
 ├─ after/
-│  └─ ftplugin/       # Filetype specific options
+│  ├─ colors/         # Override builtin colorschemes
+│  │  ├─ default.lua
+│  │  └─ habamax.lua
+│  ├─ ftplugin/       # Filetype specific options
+│  │  └─ lua.lua
+│  └─ queries/        # Treesitter extended queries
+│     └─ lua/
 ├─ lua/
-│  ├─ config/           # Editor autocmds, keymaps, options
-│  └─ plugins/        # Plugin config directory
-│     ├─ cmp          # Code completion config
-│     ├─ dap          # Debug adapter config
-│     ├─ lsp          # Language server config
-│     └─ init.lua     # Plugin specifications
-├─ snippets/
+│  ├─ config/         # Editor options and commands
+│  ├─ plugins/        # Plugin specifications/configs
+│  │  ├─ colors/      # Colorscheme plugins
+│  │  ├─ dap/         # Debug adapter plugins
+│  │  ├─ lsp/         # Language server plugins
+│  │  └─ cmp.lua      # Code completion plugins
+│  └─ snippets/       # Dynamic lua snippets
+│     ├─ all.lua
+│     └─ lua.lua
+├─ snippets/          # Lsp compatible snippets
 │  ├─ package.json    # Snippets package manifest
-│  ├─ all.json        # Global snippets file
-│  └─ lua.json        # Filetype snippets file
+│  ├─ all.json
+│  └─ lua.json
 └─ templates/         # Templates directory
+   └─ lua.skel        # New lua file skeleton
 ```

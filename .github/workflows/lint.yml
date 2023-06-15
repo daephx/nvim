@@ -1,4 +1,4 @@
-name: lint
+name: Lint/Style checking
 
 on: [push, pull_request]
 

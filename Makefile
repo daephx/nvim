@@ -52,7 +52,7 @@ test: mktemp ## Run testing framework: plenary
 	$(MAKE) clean
 
 format: ## Run formatter: stylua
-	@stylua --config-path=".stylua.toml" .
+	@stylua .
 
 lint: ## Run linter: luacheck
-	@luacheck --config ".luacheckrc" .
+	@luacheck after lua init.lua

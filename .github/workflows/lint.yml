@@ -13,7 +13,7 @@ jobs:
           sudo apt-get install luarocks
           sudo luarocks install luacheck
       - name: Run
-        run: luacheck --config ".luacheckrc" .
+        run: luacheck after lua init.lua
 
   stylua:
     runs-on: ubuntu-22.04

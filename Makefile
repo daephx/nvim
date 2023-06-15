@@ -15,7 +15,7 @@ help: ## Display Makefile commands
 
 banner:
 	@echo "$(BANNER)"
-	@printf "\e[90m%-14s --- [ ${VERSION} ] --- \e[0m\n"
+	@printf "\e[90m%-10s --- [ ${VERSION} ] --- \e[0m\n"
 	@echo
 
 .PHONY: run

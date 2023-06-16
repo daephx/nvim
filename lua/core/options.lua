@@ -194,9 +194,20 @@ vim.opt.fillchars = {
   fold = " ", -- Fold region
   foldclose = "", -- Fold closed
   foldopen = "", -- Fold open
-  foldsep = "│", -- Fold operator
-  msgsep = "─", -- Message separator
 }
+
+-- Improve window separators
+vim.opt.fillchars:append({
+  foldsep = "┃",
+  horiz = "━",
+  horizdown = "┳",
+  horizup = "┻",
+  msgsep = "━",
+  vert = "┃",
+  verthoriz = "╋",
+  vertleft = "┫",
+  vertright = "┣",
+})
 
 --- Colors ---
 

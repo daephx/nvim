@@ -45,7 +45,7 @@ vim.opt.showmode = false -- Manage whether EOL message is shown
 vim.opt.splitbelow = true -- Open new windows below current
 vim.opt.splitright = true -- Open new windows right of current
 
-vim.opt.timeoutlen = 500 -- Timeout for mapped sequence
+vim.opt.timeoutlen = 250 -- Timeout for mapped sequence
 vim.opt.ttimeoutlen = 0 -- Timeout for key code sequence
 vim.opt.updatetime = 50 -- Timeout idle before CursorHold or updating swapfile
 vim.opt.swapfile = false -- Use a swapfile for the current buffer

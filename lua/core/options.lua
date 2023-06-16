@@ -27,7 +27,7 @@ vim.opt.cursorlineopt = "number" -- Control how 'cursorline' is displayed
 vim.opt.colorcolumn = "+1" -- Visually display character line limit
 vim.opt.signcolumn = "yes:2" -- Sign gutter options: yes|no : int = size
 vim.opt.scrolloff = 8 -- Keep cursor closer to center vertically
-vim.opt.sidescrolloff = 2 -- Keep cursor closer to center horizontally
+vim.opt.sidescrolloff = 8 -- Keep cursor closer to center horizontally
 vim.opt.laststatus = 3 -- Apply statusline options
 vim.opt.showtabline = 2 -- Always show tabline
 vim.opt.cmdwinheight = 5 -- Set size of command history buffer

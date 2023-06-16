@@ -19,7 +19,6 @@ vim.opt.softtabstop = 4 -- Number of spaces for tabs during edit operations
 vim.opt.shiftwidth = 4 -- Number of spaces for expandtab indent
 vim.opt.expandtab = true -- Convert tabs characters to spaces
 vim.opt.shiftround = true -- Round indent to shift width
-vim.opt.autoindent = false -- Auto apply indentation on newline
 
 vim.opt.number = true -- Display absolute line number in gutter
 vim.opt.relativenumber = true -- Display relative line number in gutter

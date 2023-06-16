@@ -72,6 +72,7 @@ vim.opt.whichwrap:append("<,>,[,]") -- Allows navigation wrapping to previous/ne
 
 -- Avoid 'hit-enter' prompts
 vim.opt.shortmess:append({
+  C = true, -- Don't give messages while scanning for ins-completion items
   I = true, -- Don't give the intro message when starting Vim
   c = true, -- Don't give ins-completion-menu messages
   f = true, -- Use "(3 of 5)" instead of "(file 3 of 5)"

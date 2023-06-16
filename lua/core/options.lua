@@ -108,10 +108,16 @@ vim.opt.sessionoptions = {
 
 -- Start diff mode in vertical split
 vim.opt.diffopt = {
+  "algorithm:histogram", -- Set diff algorithm
   "closeoff", -- Exit diff on window close
+  "context:4", -- Context between folds
   "filler", -- Render filler lines
   "foldcolumn:0", -- Set diff foldcolumn
+  "hiddenoff", -- Disable for hidden buffers
+  "indent-heuristic", -- Use indent heuristic
   "internal", -- Use internal diff library
+  "iwhite", -- Ignore changes in whitespace
+  "linematch:60", -- Align hunk lines
   "vertical", -- Split diff vertically
 }
 

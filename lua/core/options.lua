@@ -51,6 +51,7 @@ vim.opt.updatetime = 1000 -- Timeout idle before CursorHold or updating swapfile
 vim.opt.swapfile = false -- Use a swapfile for the current buffer
 vim.opt.writebackup = false -- Backup before overwriting a file
 vim.opt.undofile = true -- Cache persistent undo
+vim.opt.undolevels = 10000 -- Maximum number of changes that can be undone
 
 -- Popup menu options
 vim.opt.pumblend = 10 -- Pop-up menu transparency

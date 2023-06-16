@@ -40,7 +40,6 @@ vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Override search if pattern contains uppercase
 
 vim.opt.autoread = true -- Load changes made outside of Vim
-vim.opt.lazyredraw = true -- Execute macros faster
 vim.opt.showmode = false -- Manage whether EOL message is shown
 vim.opt.splitbelow = true -- Open new windows below current
 vim.opt.splitright = true -- Open new windows right of current

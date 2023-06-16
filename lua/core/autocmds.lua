@@ -87,6 +87,20 @@ autocmd({ "FileType" }, {
   command = "wincmd K | resize 20",
 })
 
+autocmd({ "BufEnter" }, {
+  desc = "Enable lazyredraw for buffers with lots of lines",
+  group = augroup("LazyredrawLargeFiles", {}),
+  callback = function(ev)
+    local limit = 1000
+    local count = vim.api.nvim_buf_line_count(ev.buf)
+    if count >= limit and vim.o.lazyredraw == false then
+      vim.o.lazyredraw = true
+    elseif count < limit and vim.o.lazyredraw == true then
+      vim.o.lazyredraw = false
+    end
+  end,
+})
+
 autocmd({ "FileType" }, {
   desc = "Apply 'q' keymap to close local buffers that match criteria",
   group = augroup("QuickClose", {}),

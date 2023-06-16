@@ -44,6 +44,7 @@ vim.opt.autoread = true -- Load changes made outside of Vim
 vim.opt.showmode = false -- Manage whether EOL message is shown
 vim.opt.splitbelow = true -- Open new windows below current
 vim.opt.splitright = true -- Open new windows right of current
+vim.opt.splitkeep = "screen" -- Determines the scroll behavior for horizontal splits
 
 vim.opt.timeoutlen = 250 -- Timeout for mapped sequence
 vim.opt.ttimeoutlen = 0 -- Timeout for key code sequence

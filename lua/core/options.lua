@@ -146,9 +146,10 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldtext = "v:lua._foldtext()"
 
 -- Wildmenu options
-vim.opt.wildmenu = true -- Command-line completion
+vim.opt.wildmenu = false -- Command-line completion
 vim.opt.wildignorecase = true -- Case insensitive command-line completion
 vim.opt.wildmode = "full:lastused" -- Command-line completion mode
+vim.opt.wildoptions = "pum" -- change how cmdline-completion is done
 -- Path patterns wild menu should ignore
 vim.opt.wildignore = {
   "**/.git/*", -- Git Version control

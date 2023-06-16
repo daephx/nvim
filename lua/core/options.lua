@@ -192,8 +192,8 @@ vim.opt.fillchars = {
   diff = "", -- Diff Removed
   eob = "~", -- End of Buffer
   fold = " ", -- Fold region
-  foldclose = "▸", -- Fold closed
-  foldopen = "▾", -- Fold open
+  foldclose = "", -- Fold closed
+  foldopen = "", -- Fold open
   foldsep = "│", -- Fold operator
   msgsep = "─", -- Message separator
 }

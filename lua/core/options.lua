@@ -35,6 +35,7 @@ vim.opt.winminwidth = 5 -- The minimal width for windows
 
 vim.opt.mouse = "a" -- Enable mouse support
 vim.opt.wrap = false -- Wrap text when line is too long
+vim.opt.breakindent = true -- Indent the start of wrapped lines
 vim.opt.linebreak = true -- Split on line break
 vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Override search if pattern contains uppercase

@@ -81,7 +81,7 @@ vim.opt.shortmess:append({
 -- Describes how auto-format is handled
 -- See `:h fo-table` for details and more options
 vim.opt.formatoptions = {
-  c = false, -- Auto-wrap comments using 'textwidth'
+  c = true, -- Auto-wrap comments using 'textwidth'
   j = true, -- Remove comment leader when joining lines
   l = true, -- Long lines are not broken in insert mode
   n = true, -- Recognize numbered lists

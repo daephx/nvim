@@ -129,6 +129,7 @@ return {
     extensions = {
       "dashboard",
       "fugitive",
+      "lazy",
       "quickfix",
       "terminal",
       "trouble",

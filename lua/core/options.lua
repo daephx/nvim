@@ -53,7 +53,7 @@ vim.opt.writebackup = false -- Backup before overwriting a file
 vim.opt.undofile = true -- Cache persistent undo
 
 -- Popup menu options
-vim.opt.pumblend = 24 -- Pop-up menu transparency
+vim.opt.pumblend = 10 -- Pop-up menu transparency
 vim.opt.pumheight = 12 -- Pop-up menu height
 vim.opt.pumwidth = 16 -- Pop-up menu thickness
 

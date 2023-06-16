@@ -69,7 +69,13 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.clipboard = { "unnamed", "unnamedplus" }
 
 vim.opt.whichwrap:append("<,>,[,]") -- Allows navigation wrapping to previous/next lines
-vim.opt.shortmess:append("cfI") -- Avoid 'hit-enter' prompts
+
+-- Avoid 'hit-enter' prompts
+vim.opt.shortmess:append({
+  I = true, -- Don't give the intro message when starting Vim
+  c = true, -- Don't give ins-completion-menu messages
+  f = true, -- Use "(3 of 5)" instead of "(file 3 of 5)"
+})
 
 -- Describes how auto-format is handled
 -- See `:h fo-table` for details and more options

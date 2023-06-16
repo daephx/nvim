@@ -194,6 +194,8 @@ vim.opt.fillchars = {
   fold = " ", -- Fold region
   foldclose = "", -- Fold closed
   foldopen = "", -- Fold open
+  stl = " ", -- Statusline current
+  stlnc = " ", -- Statusline non-current
 }
 
 -- Improve window separators

@@ -209,10 +209,9 @@ vim.g.colors = {
 
 -- Define preferred font family for GUI clients
 vim.opt.guifont = {
-  "FiraCode NFM Retina:h12",
   "FiraCode NFM:h12",
-  "CaskaydiaCove Nerd Font:h12",
-  "CaskaydiaCove NF:h12",
+  "CascadiaCode NFM:h12",
+  "Hack NFM:h12",
 }
 
 -- Netrw specific options

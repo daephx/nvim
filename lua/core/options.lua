@@ -128,12 +128,12 @@ function _G._foldtext()
   local foldend = vim.fn.getline(vim.v.foldend)
   local linecount = vim.v.foldend - vim.v.foldstart + 1
   local tabwidth = string.rep(" ", vim.bo.tabstop)
-  return table.concat({
+  return string.format(
+    "%s … %s %s",
     vim.fn.substitute(foldstart, "\t", tabwidth, "g"),
-    "...",
     vim.fn.trim(foldend),
-    string.format("[%s lines]", linecount),
-  }, " ")
+    string.format("[%s lines]", linecount)
+  )
 end
 
 -- Apply buffer folding options

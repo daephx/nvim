@@ -27,6 +27,17 @@ return {
       -- Neovim extension for zk
       { "mickael-menu/zk-nvim" },
     },
+    init = function()
+      -- Prevent high cpu usage due to new watch files implementation.
+      -- NOTE: https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
+      local ok, wf = pcall(require, "vim.lsp._watchfiles")
+      if ok then
+        -- disable lsp watcher. Too slow on linux
+        wf._watchfunc = function()
+          return function() end
+        end
+      end
+    end,
     config = function()
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")

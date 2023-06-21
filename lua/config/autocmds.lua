@@ -104,16 +104,12 @@ autocmd({ "BufEnter" }, {
 autocmd({ "FileType" }, {
   desc = "Apply 'q' keymap to close local buffers that match criteria",
   group = augroup("QuickClose", {}),
-  pattern = { "*", "!term://*", "!dap*" },
   callback = function(ev)
-    local is_eligible = vim.bo.buftype ~= ""
-      or not vim.bo.modifiable
-      or vim.bo.readonly
-      or vim.wo.previewwindow
-    if is_eligible then
-      vim.bo[ev.buf].buflisted = false
-      local opts = { buffer = ev.buf, silent = true }
-      vim.keymap.set("n", "q", "<cmd>close<CR>", opts)
+    local exclude = { "", "diff", "prompt", "terminal", "undotree" }
+    local is_eligible = vim.bo.readonly or vim.bo.modifiable == false or vim.wo.previewwindow
+    if is_eligible and not vim.list_contains(exclude, vim.bo.buftype) then
+      vim.api.nvim_buf_set_option(ev.buf, "buflisted", false)
+      vim.api.nvim_buf_set_keymap(ev.buf, "n", "q", "<cmd>close<cr>", { silent = true })
     end
   end,
 })

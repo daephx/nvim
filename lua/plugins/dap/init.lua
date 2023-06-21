@@ -75,7 +75,7 @@ return {
 
       -- initialize adapters/configs for languages
       for _, lang in pairs(languages) do
-        if not pcall(require, "plugins.dap." .. lang) then
+        if not pcall(require, "plugins.dap.settings" .. lang) then
           error("DAP: Config for " .. lang .. " is not defined!")
           return
         end

@@ -103,13 +103,22 @@ return {
   },
   { -- Integration for nvim-dap with telescope.nvim
     "nvim-telescope/telescope-dap.nvim",
-    cmd = "Telescope",
+    cmd = { "DapContinue", "DapToggleBreakpoint", "Telescope" },
+    dependencies = {
+      -- Debug adapter protocol client
+      "mfussenegger/nvim-dap",
+      -- A highly extendable fuzzy finder for neovim
+      "nvim-telescope/telescope.nvim",
+    },
+    -- stylua: ignore
+    keys = {
+      { "<F5>", function() require("dap").continue() end, desc = "Continue" },
+      { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
+      { "<leader>dd", "<cmd>Telescope dap commands<CR>", desc = "Commands" },
+      { "<leader>dv", "<cmd>Telescope dap variables<CR>", desc = "Variables" },
+    },
     config = function()
       require("telescope").load_extension("dap")
     end,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "nvim-telescope/telescope.nvim",
-    },
   },
 }

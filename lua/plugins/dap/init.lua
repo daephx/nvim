@@ -42,8 +42,9 @@ return {
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",
     event = { "BufReadPost", "BufNewFile" },
+    cmd = { "DapContinue", "DapToggleBreakpoint" },
     dependencies = {
-      { "rcarriga/nvim-dap-ui" },
+      -- Debug adapter for Neovim plugins
       { "jbyuki/one-small-step-for-vimkind" },
       -- bridges mason.nvim with the nvim-dap
       { "jay-babu/mason-nvim-dap.nvim" },
@@ -53,8 +54,6 @@ return {
       { "<leader>dn", "<cmd>DapContinue<CR>", desc = "Continue debugging" },
     },
     config = function()
-      local dap = require("dap")
-
       -- Set default highlights
       vim.api.nvim_set_hl(0, "DapBreakpoint", { default = true, link = "Error" })
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
@@ -69,13 +68,6 @@ return {
         vim.fn.sign_define(name, { text = text, texthl = texthl, linehl = sign[3], numhl = sign[3] })
       end
 
-      dap.listeners.after["event_initialized"]["dapui"] = function()
-        require("dapui").open()
-      end
-      dap.listeners.after["event_terminated"]["dapui"] = function()
-        require("dapui").close()
-      end
-
       initialize_keymaps()
       -- initialize adapters/configs for languages
       for _, lang in pairs(languages) do
@@ -84,21 +76,16 @@ return {
           return
         end
       end
-
-      vim.cmd([[
-      function! SetupREPL()
-        lua require("dap.ext.autocompl").attach()
-        setlocal nobuflisted
-        setlocal nonumber
-        setlocal norelativenumber
-        setlocal signcolumn=no
-      endfunction
-
-      augroup dapui_au
-        autocmd!
-        autocmd FileType dap-repl call SetupREPL()
-      augroup END
-      ]])
+    end,
+  },
+  { -- Fancy UI for the debugger
+    "rcarriga/nvim-dap-ui",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "DapContinue", "DapToggleBreakpoint" },
+    dependencies = { "mfussenegger/nvim-dap" },
+    config = function(_, opts)
+      require("dapui").setup(opts)
+      require("plugins.dap.ui")
     end,
   },
   { -- virtual text for the debugger

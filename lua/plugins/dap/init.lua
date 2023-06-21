@@ -83,6 +83,12 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "DapContinue", "DapToggleBreakpoint" },
     dependencies = { "mfussenegger/nvim-dap" },
+    -- stylua: ignore
+    keys = {
+      { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = { "n", "v" } },
+      { "<leader>dE", function() require("dapui").eval(vim.fn.input("expression: ")) end, desc = "Eval Expression" },
+      { "<leader>du", function() require("dapui").toggle({ reset = true }) end, desc = "Dap UI" },
+    },
     config = function(_, opts)
       require("dapui").setup(opts)
       require("plugins.dap.ui")

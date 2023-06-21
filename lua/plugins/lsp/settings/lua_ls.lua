@@ -25,9 +25,12 @@ return {
           ["unbalanced"] = "Opened",
           ["unused"] = "Opened",
         },
-        unusedLocalExclude = { "_*" },
-        disable = { "lowercase-global" },
+        disable = {
+          "incomplete-signature-doc",
+          "lowercase-global",
+        },
         globals = { "vim" },
+        unusedLocalExclude = { "_*" },
       },
       format = {
         enable = false,

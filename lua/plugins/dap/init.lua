@@ -59,12 +59,15 @@ return {
       vim.api.nvim_set_hl(0, "DapBreakpoint", { default = true, link = "Error" })
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
-      -- Define Debugging signs
-      vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "DapBreakpoint" })
-      vim.fn.sign_define("DapBreakpointCondition", { text = " ", texthl = "DiagnosticWarn" })
-      vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError" })
-      vim.fn.sign_define("DapLogPoint", { text = "󰍪 ", texthl = "debugBreakpoint" })
-      vim.fn.sign_define("DapStopped", { text = "●", texthl = "DiagnosticsHint" })
+      -- Set custom sign icons
+      local icons = require("core.icons").dap
+      for name, sign in pairs(icons) do
+        sign = type(sign) == "table" and sign or { sign }
+        name = "Dap" .. name
+        local text = sign[1] .. " "
+        local texthl = sign[2] or name
+        vim.fn.sign_define(name, { text = text, texthl = texthl, linehl = sign[3], numhl = sign[3] })
+      end
 
       dap.listeners.after["event_initialized"]["dapui"] = function()
         require("dapui").open()

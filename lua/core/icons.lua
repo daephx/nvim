@@ -2,6 +2,14 @@
 
 local M = {}
 
+M.dap = {
+  Breakpoint = "",
+  BreakpointCondition = { "", "DiagnosticWarn" },
+  BreakpointRejected = { "", "DiagnosticError" },
+  LogPoint = "󰆈",
+  Stopped = { "󰁕", "DiagnosticWarn", "DapStoppedLine" },
+}
+
 M.diagnostics = {
   [vim.diagnostic.severity.ERROR] = { text = "", hl = "DiagnosticSignError" },
   [vim.diagnostic.severity.WARN] = { text = "", hl = "DiagnosticSignWarn" },

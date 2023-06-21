@@ -55,11 +55,12 @@ return {
     config = function()
       local dap = require("dap")
 
-      -- Define Debugging highlights
-      vim.cmd("highlight link debugBreakpoint DiagnosticsHint")
+      -- Set default highlights
+      vim.api.nvim_set_hl(0, "DapBreakpoint", { default = true, link = "Error" })
+      vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
       -- Define Debugging signs
-      vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "debugBreakpoint" })
+      vim.fn.sign_define("DapBreakpoint", { text = " ", texthl = "DapBreakpoint" })
       vim.fn.sign_define("DapBreakpointCondition", { text = " ", texthl = "DiagnosticWarn" })
       vim.fn.sign_define("DapBreakpointRejected", { text = " ", texthl = "DiagnosticError" })
       vim.fn.sign_define("DapLogPoint", { text = "󰍪 ", texthl = "debugBreakpoint" })

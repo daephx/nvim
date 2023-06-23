@@ -101,6 +101,15 @@ return {
       ]])
     end,
   },
+  { -- virtual text for the debugger
+    "theHamsta/nvim-dap-virtual-text",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "DapContinue", "DapToggleBreakpoint" },
+    dependencies = { "mfussenegger/nvim-dap" },
+    opts = {
+      show_stop_reason = false,
+    },
+  },
   { -- Integration for nvim-dap with telescope.nvim
     "nvim-telescope/telescope-dap.nvim",
     cmd = { "DapContinue", "DapToggleBreakpoint", "Telescope" },

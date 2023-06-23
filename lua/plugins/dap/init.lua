@@ -58,28 +58,9 @@ return {
         vim.fn.sign_define(name, { text = text, texthl = texthl, linehl = sign[3], numhl = sign[3] })
       end
 
-      -- Languages defined here will be looked for in the plugin.dap module,
-      -- Any lua script with the corresponding name will be loaded if found.
-      -- i.e. lua/plugins/dap/python.lua
-
-      local languages = {
-        -- "cpp",
-        -- "cs",
-        -- "go",
-        -- "ruby",
-        -- "lua",
-        "python",
-        -- "rust",
-        -- "javascript",
-      }
-
-      -- initialize adapters/configs for languages
-      for _, lang in pairs(languages) do
-        if not pcall(require, "plugins.dap.settings" .. lang) then
-          error("DAP: Config for " .. lang .. " is not defined!")
-          return
-        end
-      end
+      -- Load adapters/config from settings directory
+      vim.cmd("runtime! lua/plugins/dap/settings/*.lua")
+      require("dap.ext.vscode").load_launchjs()
     end,
   },
   { -- Fancy UI for the debugger

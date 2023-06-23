@@ -27,13 +27,11 @@ dap.listeners.after.event_terminated["dapui_config"] = function()
 end
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "dap-repl" },
+  desc = "Apply local settings for dapui buffers",
   group = group,
+  pattern = "dap*",
   callback = function()
     require("dap.ext.autocompl").attach()
-    vim.opt_local.buflisted = false
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-    vim.opt_local.signcolumn = "no"
+    vim.opt_local.textwidth = 0
   end,
 })

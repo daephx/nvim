@@ -1,42 +1,5 @@
--- DAP | Debug Adapter Protocol
-
-local initialize_keymaps = function()
-  map("n", "<leader>dC", '<cmd>lua require("dap").continue()<CR>')
-  map("n", "<leader>db", '<cmd>lua require("dap").toggle_breakpoint()<CR>')
-  map(
-    "n",
-    "<leader>dB",
-    '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>'
-  )
-  map("n", "<leader>do", '<cmd>lua require("dap").step_over()<CR>')
-  map("n", "<leader>dO", '<cmd>lua require("dap").step_out()<CR>')
-  map("n", "<leader>dn", '<cmd>lua require("dap").step_into()<CR>')
-  map("n", "<leader>dN", '<cmd>lua require("dap").step_back()<CR>')
-  map("n", "<leader>dr", '<cmd>lua require("dap").repl.toggle()<CR>')
-  map("n", "<leader>d.", '<cmd>lua require("dap").goto_()<CR>')
-  map("n", "<leader>dh", '<cmd>lua require("dap").run_to_cursor()<CR>')
-  map("n", "<leader>de", '<cmd>lua require("dap").set_exception_breakpoints()<CR>')
-  map("n", "<leader>dv", "<cmd>Telescope dap variables<CR>")
-  map("n", "<leader>dc", "<cmd>Telescope dap commands<CR>")
-  map("n", "<leader>dx", '<cmd>lua require("dapui").eval()<CR>')
-  map("x", "<leader>dx", '<cmd>lua require("dapui").eval()<CR>')
-  map("n", "<leader>dX", '<cmd>lua require("dapui").eval(vim.fn.input("expression: "))<CR>')
-end
-
--- Languages defined here will be looked for in the plugin.dap module,
--- Any lua script with the corresponding name will be loaded if found.
--- i.e. lua/plugins/dap/python.lua
-
-local languages = {
-  -- "cpp",
-  -- "cs",
-  -- "go",
-  -- "ruby",
-  -- "lua",
-  "python",
-  -- "rust",
-  -- "javascript",
-}
+-- nvim-dap | Debug Adapter Protocol client implementation for neovim
+-- https://github.com/mfussenegger/nvim-dap
 
 return {
   { -- Debug adapter protocol client
@@ -44,14 +7,41 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "DapContinue", "DapToggleBreakpoint" },
     dependencies = {
-      -- Debug adapter for Neovim plugins
-      { "jbyuki/one-small-step-for-vimkind" },
       -- bridges mason.nvim with the nvim-dap
       { "jay-babu/mason-nvim-dap.nvim" },
+      -- Debug adapter for Neovim plugins
+      { "jbyuki/one-small-step-for-vimkind" },
     },
+    -- stylua: ignore
     keys = {
-      { "<leader>db", "<cmd>DapToggleBreakpoint<CR>", desc = "Set Breakpoint" },
-      { "<leader>dn", "<cmd>DapContinue<CR>", desc = "Continue debugging" },
+      { "<F3>", function() require("dap").repl.toggle({ height = 20 }) end, desc = "Toggle REPL" },
+      { "<F4>", function() require("dap").terminate() end, desc = "Terminate" },
+      { "<F5>", function() require("dap").continue() end, desc = "Continue" },
+      { "<F6>", function() require("dap").pause() end, desc = "Pause" },
+      { "<F9>", function() require("dap").toggle_breakpoint() end, desc = "Set breakpoint" },
+      { "<F10>", function() require("dap").step_over() end, desc = "Step over" },
+      { "<F11>", function() require("dap").step_into() end, desc = "Step into" },
+      { "<F12>", function() require("dap").step_out() end, desc = "Step out" },
+      { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "Breakpoint condition" },
+      { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Set breakpoint" },
+      { "<leader>dc", function() require("dap").continue() end, desc = "Continue" },
+      { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to cursor" },
+      { "<leader>de", function() require("dap").set_exception_breakpoints() end, desc = "Exception breakpoint" },
+      { "<leader>dg", function() require("dap").goto_() end, desc = "Go to line (no execute)" },
+      { "<leader>dh", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
+      { "<leader>di", function() require("dap").step_into() end, desc = "Step into" },
+      { "<leader>dj", function() require("dap").down() end, desc = "Down" },
+      { "<leader>dk", function() require("dap").up() end, desc = "Up" },
+      { "<leader>dl", function() require("dap").run_last() end, desc = "Run last" },
+      { "<leader>dL", function() require("dap").toggle_breakpoint(nil, nil, vim.fn.input("Log point message: "), true) end, desc = "Set log breakpoint" },
+      { "<leader>dN", function() require("dap").step_back() end, desc = "Step back" },
+      { "<leader>dO", function() require("dap").step_out() end, desc = "Step out" },
+      { "<leader>do", function() require("dap").step_over() end, desc = "Step over" },
+      { "<leader>dp", function() require("dap").pause() end, desc = "Pause" },
+      { "<leader>dr", function() require("dap").repl.toggle({ height = 20 }) end, desc = "Toggle REPL" },
+      { "<leader>ds", function() require("dap").session() end, desc = "Session" },
+      { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
+      { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
     },
     config = function()
       -- Set default highlights
@@ -68,7 +58,21 @@ return {
         vim.fn.sign_define(name, { text = text, texthl = texthl, linehl = sign[3], numhl = sign[3] })
       end
 
-      initialize_keymaps()
+      -- Languages defined here will be looked for in the plugin.dap module,
+      -- Any lua script with the corresponding name will be loaded if found.
+      -- i.e. lua/plugins/dap/python.lua
+
+      local languages = {
+        -- "cpp",
+        -- "cs",
+        -- "go",
+        -- "ruby",
+        -- "lua",
+        "python",
+        -- "rust",
+        -- "javascript",
+      }
+
       -- initialize adapters/configs for languages
       for _, lang in pairs(languages) do
         if not pcall(require, "plugins.dap." .. lang) then

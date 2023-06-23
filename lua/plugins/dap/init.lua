@@ -89,6 +89,30 @@ return {
       { "<leader>dE", function() require("dapui").eval(vim.fn.input("expression: ")) end, desc = "Eval Expression" },
       { "<leader>du", function() require("dapui").toggle({ reset = true }) end, desc = "Dap UI" },
     },
+    opts = {
+      expand_lines = false,
+      floating = { border = vim.g.border },
+      layouts = {
+        {
+          elements = {
+            { id = "scopes", size = 0.25 },
+            { id = "breakpoints", size = 0.25 },
+            { id = "stacks", size = 0.25 },
+            { id = "watches", size = 0.25 },
+          },
+          position = "right",
+          size = 40,
+        },
+        {
+          elements = {
+            { id = "repl", size = 0.5 },
+            { id = "console", size = 0.5 },
+          },
+          position = "bottom",
+          size = 0.25,
+        },
+      },
+    },
     config = function(_, opts)
       require("dapui").setup(opts)
       require("plugins.dap.ui")

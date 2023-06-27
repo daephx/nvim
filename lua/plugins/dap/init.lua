@@ -59,7 +59,7 @@ return {
       end
 
       -- Load adapters/config from settings directory
-      vim.cmd("runtime! lua/plugins/dap/settings/*.lua")
+      vim.cmd("runtime! lua/plugins/dap/adapters/*.lua")
       require("dap.ext.vscode").load_launchjs()
     end,
   },

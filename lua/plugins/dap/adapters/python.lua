@@ -48,6 +48,18 @@ dap.configurations.python = {
   },
   {
     type = "python",
+    request = "launch",
+    name = "Launch file with arguments",
+    program = "${file}",
+    cwd = "${workspaceFolder}",
+    args = function()
+      local args_string = vim.fn.input("Arguments: ")
+      return vim.split(args_string, " +")
+    end,
+    pythonPath = get_python_path(),
+  },
+  {
+    type = "python",
     request = "attach",
     name = "Attach remote",
     justMyCode = false,
@@ -64,41 +76,3 @@ dap.configurations.python = {
     end,
   },
 }
-
-local M = {}
-
-M.attach_python_debugger = function(args)
-  local host = args[1] -- This should be configured for remote debugging if your SSH tunnel is setup.
-  local port = "5678"
-  -- You can even make nvim responsible for starting the debugpy server/adapter:
-  --  vim.fn.system({"${some_script_that_starts_debugpy_in_your_container}", ${script_args}})
-  pythonAttachAdapter = {
-    type = "server",
-    host = host,
-    port = tonumber(port),
-  }
-  pythonAttachConfig = {
-    type = "python",
-    request = "attach",
-    connect = {
-      port = tonumber(port),
-      host = host,
-    },
-    mode = "remote",
-    name = "Remote Attached Debugger",
-    cwd = vim.fn.getcwd(),
-    pathMappings = {
-      {
-        localRoot = vim.fn.getcwd(), -- Wherever your Python code lives locally.
-        remoteRoot = "/usr/src/app", -- Wherever your Python code lives in the container.
-      },
-    },
-  }
-  local session = dap.attach(host, tonumber(port), pythonAttachConfig)
-  if session == nil then
-    io.write("Error launching adapter")
-  end
-  dap.repl.open()
-end
-
-return M

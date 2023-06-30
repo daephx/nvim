@@ -3,6 +3,14 @@
 
 --- Helpers ---
 
+---@param str string
+---@return function
+local function insert_string(str)
+  return function()
+    return str
+  end
+end
+
 -- Version control diff values
 ---@return table|nil
 local diff_source = function()
@@ -101,11 +109,7 @@ return {
       lualine_z = { "location" },
     },
     tabline = {
-      lualine_a = {
-        function()
-          return ""
-        end,
-      },
+      lualine_a = { insert_string("") },
       lualine_b = {
         {
           "windows",
@@ -120,11 +124,7 @@ return {
         },
       },
       lualine_y = { "tabs" },
-      lualine_z = {
-        function()
-          return ""
-        end,
-      },
+      lualine_z = { insert_string("") },
     },
     inactive_sections = {
       lualine_c = {

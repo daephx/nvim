@@ -108,7 +108,7 @@ return {
       },
       lualine_b = {
         {
-          "custom_windows",
+          "windows",
           disabled_buftypes = {
             "nowrite",
           },
@@ -119,7 +119,7 @@ return {
           },
         },
       },
-      lualine_y = { "custom_tabs" },
+      lualine_y = { "tabs" },
       lualine_z = {
         function()
           return ""

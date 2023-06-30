@@ -1,8 +1,6 @@
 -- lualine.nvim | Blazing fast statusline for neovim, written in pure lua
 -- https://github.com/nvim-lualine/lualine.nvim
 
---- Helpers ---
-
 ---@param str string
 ---@return function
 local function insert_string(str)
@@ -10,6 +8,24 @@ local function insert_string(str)
     return str
   end
 end
+
+local mode = {
+  "mode",
+  fmt = function(str)
+    return str:sub(1, 1)
+  end,
+}
+
+local filename = {
+  "filename",
+  path = 1,
+  icon = { "󰋊" },
+}
+
+local branch = {
+  "branch",
+  icon = "",
+}
 
 -- Version control diff values
 ---@return table|nil
@@ -23,6 +39,45 @@ local diff_source = function()
     }
   end
 end
+
+local diff = {
+  "diff",
+  source = diff_source,
+}
+
+local diagnostics = {
+  "diagnostics",
+  sources = { "nvim_diagnostic", "coc", "ale" },
+  symbols = {
+    hint = "󰌵",
+    info = "",
+    warn = "",
+    error = "",
+  },
+}
+
+local lsp_client = {
+  "lsp_client",
+  icon = { "", align = "right" },
+}
+
+local lsp_progress = {
+  "lsp_progress",
+  display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
+  spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+}
+
+local windows = {
+  "windows",
+  disabled_buftypes = {
+    "nowrite",
+  },
+  disabled_filetypes = {
+    "NvimTree",
+    "Trouble",
+    "fugitive",
+  },
+}
 
 -- Override separators for tabline between components and sections
 ---@param sections table
@@ -40,8 +95,6 @@ local process_sections = function(sections)
   end
   return sections
 end
-
---- Settings  ---
 
 return {
   "nvim-lualine/lualine.nvim",
@@ -63,72 +116,21 @@ return {
       section_separators = { left = "", right = "" },
     },
     sections = {
-      lualine_a = {
-        {
-          "mode",
-          fmt = function(str)
-            return str:sub(1, 1)
-          end,
-        },
-      },
-      lualine_b = {
-        { "branch", icon = "" },
-        { "diff", source = diff_source },
-      },
-      lualine_c = {
-        {
-          "filename",
-          icon = { "󰋊" },
-          path = 1,
-        },
-      },
-      lualine_x = {
-        {
-          "lsp_progress",
-          display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
-          spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-        },
-        { "lsp_client" },
-        {
-          "diagnostics",
-          sources = { "nvim_diagnostic", "coc", "ale" },
-          symbols = {
-            hint = "󰌵",
-            info = "",
-            warn = "",
-            error = "",
-          },
-        },
-      },
-      lualine_y = {
-        { "filetype", icon_only = false },
-        { "encoding" },
-        { "fileformat" },
-      },
+      lualine_a = { mode },
+      lualine_b = { branch, diff },
+      lualine_c = { filename },
+      lualine_x = { lsp_progress, lsp_client, diagnostics },
+      lualine_y = { "filetype", "encoding", "fileformat" },
       lualine_z = { "location" },
     },
     tabline = {
       lualine_a = { insert_string("") },
-      lualine_b = {
-        {
-          "windows",
-          disabled_buftypes = {
-            "nowrite",
-          },
-          disabled_filetypes = {
-            "NvimTree",
-            "Trouble",
-            "fugitive",
-          },
-        },
-      },
+      lualine_b = { windows },
       lualine_y = { "tabs" },
       lualine_z = { insert_string("") },
     },
     inactive_sections = {
-      lualine_c = {
-        { "filename", path = 1 },
-      },
+      lualine_c = { filename },
     },
     extensions = {
       "dashboard",

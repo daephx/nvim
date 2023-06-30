@@ -17,18 +17,18 @@ local diff_source = function()
   end
 end
 
--- Put proper separators and gaps between components in sections
+-- Override separators for tabline between components and sections
 ---@param sections table
 ---@return table
 local process_sections = function(sections)
-  for name, section in pairs(sections) do
-    local left = name:sub(9, 10) < "x"
+  for _, section in pairs(sections) do
     for id, comp in ipairs(section) do
       if type(comp) ~= "table" then
         comp = { comp }
         section[id] = comp
       end
-      comp.separator = left and { right = "" } or { left = "" }
+      comp.component_separators = { left = "", right = "" }
+      comp.section_separators = { left = "", right = "" }
     end
   end
   return sections
@@ -45,6 +45,11 @@ return {
     -- Display LSP progress in the statusline
     { "arkav/lualine-lsp-progress" },
   },
+  config = function(_, opts)
+    -- Invert tabline separators before loading plugin
+    opts.tabline = process_sections(opts.tabline)
+    require("lualine").setup(opts)
+  end,
   opts = {
     options = {
       component_separators = { left = "", right = "" },
@@ -95,7 +100,7 @@ return {
       },
       lualine_z = { "location" },
     },
-    tabline = process_sections({
+    tabline = {
       lualine_a = {
         function()
           return ""
@@ -120,7 +125,7 @@ return {
           return ""
         end,
       },
-    }),
+    },
     inactive_sections = {
       lualine_c = {
         { "filename", path = 1 },

@@ -47,7 +47,7 @@ local diff = {
 
 local diagnostics = {
   "diagnostics",
-  sources = { "nvim_diagnostic", "coc", "ale" },
+  sources = { "nvim_diagnostic" },
   symbols = {
     hint = "󰌵",
     info = "",

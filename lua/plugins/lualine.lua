@@ -14,8 +14,7 @@ end
 -- Version control diff values
 ---@return table|nil
 local diff_source = function()
-  ---@diagnostic disable-next-line:undefined-field
-  local gitsigns = vim.b.gitsigns_status_dict
+  local gitsigns = vim.b["gitsigns_status_dict"]
   if gitsigns then
     return {
       added = gitsigns.added,

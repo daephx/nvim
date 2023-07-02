@@ -67,6 +67,19 @@ local lsp_progress = {
   spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
 }
 
+local tabs = {
+  "tabs",
+  mode = 1,
+  -- Display tab label as name if set else use tabnr
+  fmt = function(_name, ctx)
+    local ok, tabname = pcall(vim.api.nvim_tabpage_get_var, ctx.tabId, "tabname")
+    if ok and tabname ~= "" then
+      return tabname
+    end
+    return ctx.tabnr
+  end,
+}
+
 local windows = {
   "windows",
   disabled_buftypes = {
@@ -126,7 +139,7 @@ return {
     tabline = {
       lualine_a = { insert_string("") },
       lualine_b = { windows },
-      lualine_y = { "tabs" },
+      lualine_y = { tabs },
       lualine_z = { insert_string("") },
     },
     inactive_sections = {

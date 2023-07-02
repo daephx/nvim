@@ -82,13 +82,9 @@ local tabs = {
 
 local windows = {
   "windows",
-  disabled_buftypes = {
-    "nowrite",
-  },
-  disabled_filetypes = {
-    "NvimTree",
-    "Trouble",
-    "fugitive",
+  filetype_names = {
+    fugitive = "Fugitive",
+    lazy = "Lazy",
   },
 }
 

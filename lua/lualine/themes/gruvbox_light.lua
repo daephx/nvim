@@ -25,6 +25,11 @@ return {
     b = { bg = colors.lightgray, fg = colors.black },
     c = { bg = colors.gray, fg = colors.black },
   },
+  terminal = {
+    a = { bg = colors.blue, fg = colors.white, gui = "bold" },
+    b = { bg = colors.lightgray, fg = colors.black },
+    c = { bg = colors.gray, fg = colors.black },
+  },
   visual = {
     a = { bg = colors.orange, fg = colors.white, gui = "bold" },
     b = { bg = colors.lightgray, fg = colors.black },

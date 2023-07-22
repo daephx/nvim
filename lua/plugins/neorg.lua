@@ -5,8 +5,11 @@ return {
   "nvim-neorg/neorg",
   ft = "norg",
   dependencies = {
+    -- Collection of useful lua functions
     "nvim-lua/plenary.nvim",
+    -- Find, Filter, Preview, Pick. All lua, all the time
     "nvim-telescope/telescope.nvim",
+    -- Nvim Treesitter configurations and abstraction layer
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {

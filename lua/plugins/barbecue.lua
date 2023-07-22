@@ -15,7 +15,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    kinds = require("core.icons").kinds,
+    kinds = require("config.icons").kinds,
     show_modified = true,
     attach_navic = false,
     create_autocmd = false,

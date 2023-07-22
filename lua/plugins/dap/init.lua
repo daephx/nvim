@@ -49,7 +49,7 @@ return {
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
       -- Set custom sign icons
-      local icons = require("core.icons").dap
+      local icons = require("config.icons").dap
       for name, sign in pairs(icons) do
         sign = type(sign) == "table" and sign or { sign }
         name = "Dap" .. name

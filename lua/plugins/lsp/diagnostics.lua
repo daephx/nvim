@@ -1,5 +1,5 @@
 -- lsp/handlers/diagnostics.lua
-local icons = require("core.icons")
+local icons = require("config.icons")
 
 local client_map = {
   { "Lua Diagnostics.", "LuaLS" },

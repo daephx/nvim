@@ -18,7 +18,8 @@ return {
     disable_context_highlighting = true,
     use_magit_keybindings = true,
     integrations = {
-      diffview = true, -- Requires you to have `sindrets/diffview.nvim` installed.
+      diffview = true,
+      telescope = true,
     },
     sections = {
       staged = {

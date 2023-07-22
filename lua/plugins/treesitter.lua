@@ -46,7 +46,12 @@ return {
     },
     ignore_install = {},
     auto_install = true,
+    autotag = { enable = true },
     highlight = { enable = true },
+    indent = {
+      enable = true,
+      disable = { "yaml" },
+    },
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -55,11 +60,6 @@ return {
         scope_incremental = "grc",
         node_decremental = "grm",
       },
-    },
-    autotag = { enable = true },
-    indent = {
-      enable = true,
-      disable = { "yaml" },
     },
     textobjects = {
       select = {

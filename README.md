@@ -98,7 +98,7 @@ nvim/                 # Neovim config directory
 ├─ after/
 │  └─ ftplugin/       # Filetype specific options
 ├─ lua/
-│  ├─ core/           # Editor autocmds, keymaps, options
+│  ├─ config/           # Editor autocmds, keymaps, options
 │  └─ plugins/        # Plugin config directory
 │     ├─ cmp          # Code completion config
 │     ├─ dap          # Debug adapter config

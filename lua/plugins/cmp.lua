@@ -113,7 +113,7 @@ return {
         maxwidth = 120,
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
-          local kinds = require("core.icons").kinds
+          local kinds = require("config.icons").kinds
           item.dup = nil
           item.max_width = 80
           item.mode = "text_symbol"

@@ -7,15 +7,15 @@
 -- Personal Neovim configuration files
 -- https://github.com/daephx/nvim
 
--- Load core modules
-require("core.options")
-require("core.filetypes")
-require("core.commands")
-require("core.keymaps")
-require("core.autocmds")
-require("core.terminal")
-require("core.colors")
-require("core.lazy")
+-- Load config modules
+require("config.options")
+require("config.filetypes")
+require("config.commands")
+require("config.keymaps")
+require("config.autocmds")
+require("config.terminal")
+require("config.colors")
+require("config.lazy")
 
 -- Apply colorscheme
 vim.cmd.colorscheme("vscode")

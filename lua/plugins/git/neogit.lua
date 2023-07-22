@@ -43,12 +43,6 @@ return {
         folded = false,
       },
     },
-    mappings = {
-      status = {
-        ["B"] = "BranchPopup",
-        ["q"] = "Close",
-      },
-    },
   },
   config = function(_, opts)
     local neogit = require("neogit")

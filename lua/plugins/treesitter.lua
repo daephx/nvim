@@ -8,8 +8,8 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   cond = not vim.g.vscode,
   dependencies = {
-    -- Rainbow delimiters for Neovim through Tree-sitter
-    { "HiPhish/nvim-ts-rainbow2" },
+    -- Rainbow delimiters for Neovim with Tree-sitter
+    { "hiphish/rainbow-delimiters.nvim" },
     -- Treesitter auto html tags
     { "windwp/nvim-ts-autotag" },
     -- set commentstring based on the cursor location
@@ -57,7 +57,6 @@ return {
       },
     },
     autotag = { enable = true },
-    rainbow = { enable = true },
     indent = {
       enable = true,
       disable = { "yaml" },

@@ -4,6 +4,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  cmd = { "TSInstall", "TSInstallFromGrammar", "TSUpdateSync", "TSUpdate" },
   event = { "BufReadPost", "BufNewFile" },
   cond = not vim.g.vscode,
   dependencies = {

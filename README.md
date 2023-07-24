@@ -88,12 +88,13 @@ npm i -g neovim
 ```plain
 nvim/                 # Neovim config directory
 ├─ after/
+│  ├─ colors/         # Override builtin colorschemes
+│  │  ├─ default.lua
+│  │  └─ habamax.lua
 │  ├─ ftplugin/       # Filetype specific options
-│  └─ colors/         # Override builtin colorschemes
-│     ├─ default.lua
-│     └─ habamax.lua
-├─ queries/           # Treesitter extended queries
-│  └─ lua/            # Queries sperated by language
+│  │  └─ lua.lua
+│  └─ queries/        # Treesitter extended queries
+│     └─ lua/
 ├─ lua/
 │  ├─ config/         # Editor options and commands
 │  ├─ plugins/        # Plugin specifications/configs
@@ -103,7 +104,7 @@ nvim/                 # Neovim config directory
 │  │  └─ cmp.lua      # Code completion plugins
 │  └─ snippets/       # Dynamic lua snippets
 │     ├─ all.lua
-│     └─ lua.json
+│     └─ lua.lua
 ├─ snippets/          # Lsp compatible snippets
 │  ├─ package.json    # Snippets package manifest
 │  ├─ all.json

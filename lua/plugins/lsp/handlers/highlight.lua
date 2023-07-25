@@ -14,7 +14,7 @@ M.enable_document_highlighting = function(client, bufnr)
       group = augroup,
       callback = vim.lsp.buf.document_highlight,
     })
-    vim.api.nvim_create_autocmd({ "CursorMoved", "InsertEnter", "CursorMovedI" }, {
+    vim.api.nvim_create_autocmd({ "BufLeave", "CursorMoved", "CursorMovedI", "InsertEnter" }, {
       buffer = bufnr,
       desc = "Disable LSP document reference highlighting on CursorMoved",
       group = augroup,

@@ -128,3 +128,23 @@ autocmd({ "BufNewFile" }, {
     vim.cmd(("silent! execute '0r %s/templates/skel/%s'"):format(path, fname))
   end,
 })
+
+autocmd({ "InsertEnter", "InsertLeave", "WinEnter", "WinLeave" }, {
+  desc = "Show cursor line only in active window",
+  group = augroup("AutoCursorLine", {}),
+  callback = function(ev)
+    if vim.list_contains({ "InsertEnter", "WinLeave" }, ev.event) then
+      local cl = vim.wo.cursorline
+      if cl then
+        vim.api.nvim_win_set_var(0, "auto-cursorline", cl)
+        vim.wo.cursorline = false
+      end
+    elseif vim.list_contains({ "InsertLeave", "WinEnter" }, ev.event) then
+      local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
+      if ok and cl then
+        vim.wo.cursorline = true
+        vim.api.nvim_win_del_var(0, "auto-cursorline")
+      end
+    end
+  end,
+})

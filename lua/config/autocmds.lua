@@ -128,3 +128,19 @@ autocmd({ "BufNewFile" }, {
     vim.cmd(("silent! execute '0r %s/templates/skel/%s'"):format(path, fname))
   end,
 })
+
+autocmd({ "BufReadPre", "BufWinEnter", "BufWritePost", "BufWinLeave" }, {
+  desc = "Persist folded regions for the current session",
+  group = augroup("RememberFolds", {}),
+  pattern = { "*.*" },
+  callback = function(ev)
+    local bt_exclude = { "terminal", "help" }
+    if not vim.list_contains(bt_exclude, vim.bo.buftype) then
+      if ev.event == "BufWinEnter" then
+        vim.cmd.loadview()
+      else
+        vim.cmd.mkview()
+      end
+    end
+  end,
+})

@@ -30,18 +30,6 @@ autocmd({ "VimResized" }, {
   end,
 })
 
-autocmd({ "BufReadPost" }, {
-  desc = "Go to last cursor position when opening a buffer",
-  group = augroup("LastBufferLocation", {}),
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
-})
-
 autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
   desc = "Disable search highlight when entering insert mode",
   group = augroup("ToggleSearchHighlight", {}),
@@ -124,5 +112,43 @@ autocmd({ "BufNewFile" }, {
     local path = vim.fn.stdpath("config")
     local fname = vim.fn.expand("<afile>:e") .. ".skel"
     vim.cmd(("silent! execute '0r %s/templates/skel/%s'"):format(path, fname))
+  end,
+})
+
+local autoview = augroup("AutoView", { clear = true })
+autocmd({ "BufWinLeave", "BufWritePost", "WinLeave" }, {
+  group = autoview,
+  desc = "Save view with mkview for real files",
+  callback = function(ev)
+    if vim.b[ev.buf].view_activated then
+      vim.cmd.mkview({ mods = { emsg_silent = true } })
+    end
+  end,
+})
+autocmd({ "BufWinEnter" }, {
+  group = autoview,
+  desc = "Try to load file view if available and enable view saving for real files",
+  callback = function(ev)
+    if not vim.b[ev.buf].view_activated then
+      local filetype = vim.bo[ev.buf].filetype
+      local buftype = vim.bo[ev.buf].buftype
+      local ignore_filetypes = { "gitcommit", "gitrebase", "svg", "hgcommit" }
+      if
+        buftype == ""
+        and filetype
+        and filetype ~= ""
+        and not vim.tbl_contains(ignore_filetypes, filetype)
+      then
+        vim.b[ev.buf].view_activated = true
+        vim.cmd.loadview({ mods = { emsg_silent = true } })
+      end
+    end
+
+    local mark = vim.api.nvim_buf_get_mark(ev.buf, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+      vim.cmd("norm! zxzz")
+    end
   end,
 })

@@ -128,8 +128,6 @@ vim.opt.diffopt = {
 
 -- Apply buffer folding options
 vim.opt.foldcolumn = "0" -- Disable fold column
-vim.opt.foldlevel = 99 -- Set nested fold depth level
-vim.opt.foldlevelstart = 99 -- We want all fold to be expand at start
 vim.opt.foldmethod = "expr" -- use treesitter for folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldtext = ""

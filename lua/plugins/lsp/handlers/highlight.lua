@@ -6,16 +6,6 @@ local M = {}
 M.enable_document_highlighting = function(client, bufnr)
   if client.supports_method("textDocument/documentHighlight") then
     local augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = true })
-    vim.api.nvim_create_autocmd({ "VimEnter", "ColorScheme" }, {
-      desc = "Link LSP document reference highlight groups to IncSearch",
-      group = augroup,
-      callback = function()
-        local opts = { link = "IncSearch", bold = true }
-        vim.api.nvim_set_hl(0, "LspReferenceRead", opts)
-        vim.api.nvim_set_hl(0, "LspReferenceText", opts)
-        vim.api.nvim_set_hl(0, "LspReferenceWrite", opts)
-      end,
-    })
     vim.api.nvim_create_autocmd({ "CursorHold" }, {
       buffer = bufnr,
       desc = "Apply LSP document reference highlighting on CursorHold",

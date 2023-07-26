@@ -1,6 +1,7 @@
 local dap = require("dap")
 local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
 local luadb_dir = mason_packages .. "/local-lua-debugger-vscode"
+local HOME = vim.loop.os_homedir()
 
 dap.adapters["local-lua"] = {
   type = "executable",
@@ -89,8 +90,8 @@ dap.configurations.lua = {
     name = "New instance (dotfiles)",
     port = free_port,
     start_neovim = {
-      cwd = os.getenv("HOME"),
-      fname = os.getenv("XDG_CONFIG_HOME") .. "/nvim/init.lua",
+      cwd = HOME,
+      fname = vim.fn.stdpath("config") .. "/init.lua",
     },
   },
   {
@@ -99,7 +100,7 @@ dap.configurations.lua = {
     name = "New instance (neovim/neovim)",
     port = free_port,
     start_neovim = {
-      cwd = os.getenv("HOME") .. "/projects/neovim/neovim",
+      cwd = HOME .. "/projects/neovim/neovim",
       fname = "src/nvim/main.c",
     },
   },

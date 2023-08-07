@@ -50,6 +50,8 @@ require("lazy").setup({
 
 --- Keymaps ---
 
+local map = vim.keymap.set
+
 map("n", "<leader>pb", "<cmd>Lazy build<CR>", { desc = "Build plugins" })
 map("n", "<leader>pc", "<cmd>Lazy clean<CR>", { desc = "Clean plugins" })
 map("n", "<leader>ph", "<cmd>Lazy health<CR>", { desc = "Healthcheck plugins" })

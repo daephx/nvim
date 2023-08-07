@@ -66,7 +66,13 @@ map("n", "<leader>pu", "<cmd>Lazy update<CR>", { desc = "Update plugins" })
 --- Autocmds ---
 
 vim.api.nvim_create_autocmd("BufRead", {
-  desc = "Prevent lazy lockfile from being modified",
+  desc = "Prevent formatting errors in neovim lazy lockfile",
   pattern = "lazy-lock.json",
-  command = "setlocal readonly",
+  callback = function()
+    vim.b.autoformat = false
+    vim.b.editorconfig = false
+    vim.bo.binary = true
+    vim.bo.fixendofline = false
+    vim.wo.spell = false
+  end,
 })

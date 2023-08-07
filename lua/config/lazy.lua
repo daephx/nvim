@@ -24,12 +24,11 @@ require("lazy").setup({
   },
   change_detection = { notify = false },
   defaults = { lazy = true },
+  install = { colorscheme = { "vscode", "default" } },
+  ui = { border = vim.g.border },
   dev = {
     path = "~/Projects",
     patterns = { "daephx" },
-  },
-  install = {
-    colorscheme = { "vscode", "default" },
   },
   performance = {
     rtp = {
@@ -46,9 +45,6 @@ require("lazy").setup({
         "zipPlugin",
       },
     },
-  },
-  ui = {
-    border = vim.g.border,
   },
 })
 

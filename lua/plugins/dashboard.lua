@@ -56,7 +56,7 @@ return {
           action = "Telescope projects",
         },
         {
-          icon = "󰆓",
+          icon = "",
           desc = "Applications",
           keymap = "SPC p m",
           key = "m",
@@ -77,7 +77,7 @@ return {
           action = "Telescope vimfiles",
         },
         {
-          icon = "󰅗",
+          icon = "",
           desc = "Exit",
           keymap = "",
           key = "q",

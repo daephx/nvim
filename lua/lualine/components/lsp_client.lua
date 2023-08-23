@@ -27,8 +27,8 @@ local null_sources = function(exclude)
     local sources = require("null-ls.sources")
     local available = sources.get_available(vim.bo.filetype)
     for _, client in pairs(available) do
-      local is_exclude = vim.list_contains(exclude, client.name)
-      local is_present = vim.list_contains(ret, client.name)
+      local is_exclude = vim.tbl_contains(exclude, client.name)
+      local is_present = vim.tbl_contains(ret, client.name)
       if not is_exclude and not is_present then
         table.insert(ret, client.name)
       end
@@ -54,12 +54,13 @@ end
 
 function lsp_clients:update_status()
   local clients = {}
+  -- TODO: Deprecation warning v0.10: Use vim.lsp.get_clients({ bufnr = 0 })
   local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
   local exclude = self.options.exclude_sources
   for _, client in pairs(buf_clients) do
     if client.name == "null-ls" then
       clients = vim.list_extend(null_sources(exclude), clients)
-    elseif not vim.list_contains(exclude, client.name) then
+    elseif not vim.tbl_contains(exclude, client.name) then
       table.insert(clients, format_client_name(client))
     end
   end

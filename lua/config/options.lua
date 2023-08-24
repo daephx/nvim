@@ -190,22 +190,10 @@ vim.opt.fillchars = {
   fold = " ", -- Fold region
   foldclose = "", -- Fold closed
   foldopen = "", -- Fold open
+  msgsep = "─", -- Message separator
   stl = " ", -- Statusline current
   stlnc = " ", -- Statusline non-current
 }
-
--- Improve window separators
-vim.opt.fillchars:append({
-  foldsep = "┃",
-  horiz = "━",
-  horizdown = "┳",
-  horizup = "┻",
-  msgsep = "━",
-  vert = "┃",
-  verthoriz = "╋",
-  vertleft = "┫",
-  vertright = "┣",
-})
 
 -- Global highlight overrides
 vim.g.colors = {

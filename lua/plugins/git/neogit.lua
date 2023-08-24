@@ -4,14 +4,14 @@
 return {
   "TimUntersberger/neogit",
   cmd = "Neogit",
-  keys = {
-    { "<leader>gG", "<cmd>Neogit<CR>", desc = "Git Status (Neogit)" },
-  },
   dependencies = {
     -- Collection of useful lua functions
     { "nvim-lua/plenary.nvim" },
     -- Easily cycling through diffs
     { "sindrets/diffview.nvim" },
+  },
+  keys = {
+    { "<leader>gG", "<cmd>Neogit<CR>", desc = "Git Status (Neogit)" },
   },
   opts = {
     kind = "tab",

@@ -39,10 +39,6 @@ return {
     view = {
       width = 40,
       side = "right",
-      mappings = {
-        custom_only = false,
-        list = {},
-      },
     },
     renderer = {
       group_empty = true,

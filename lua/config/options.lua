@@ -179,7 +179,7 @@ vim.opt.listchars = {
   nbsp = "␣", -- Non-breakable space
   precedes = "(", -- Horizontal underflow
   space = " ", -- Standard Whitespace
-  tab = "  »", -- Tab indentation
+  tab = "  →", -- Tab indentation
   trail = "·", -- Trailing whitespace
 }
 

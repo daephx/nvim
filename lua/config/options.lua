@@ -131,7 +131,9 @@ function _G._foldtext()
   local tabwidth = string.rep(" ", vim.bo.tabstop)
   return string.format(
     "%s … %s %s",
+    ---@cast foldstart string
     vim.fn.substitute(foldstart, "\t", tabwidth, "g"),
+    ---@cast foldend string
     vim.fn.trim(foldend),
     string.format("[%s lines]", linecount)
   )

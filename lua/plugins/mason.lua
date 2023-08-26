@@ -44,7 +44,6 @@ return {
       ensure_installed = {
         "black",
         "eslint_d",
-        "flake8",
         "isort",
         "luacheck",
         "markdownlint",

@@ -28,7 +28,6 @@ return {
         "emmet_ls",
         "gopls",
         "html",
-        "jdtls",
         "jsonls",
         "lua_ls",
         "pyright",

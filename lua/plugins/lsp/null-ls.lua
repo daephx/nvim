@@ -55,7 +55,7 @@ null_ls.setup({
     formatting.fish_indent,
 
     -- Python
-    formatting.black.with({ extra_args = { "--fast", "--quiet" } }),
+    formatting.black,
 
     diagnostics.ruff,
     formatting.ruff,

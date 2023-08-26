@@ -34,7 +34,6 @@ return {
         "rust_analyzer",
         "taplo",
         "yamlls",
-        "zk",
       },
     },
   },

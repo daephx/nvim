@@ -55,9 +55,10 @@ null_ls.setup({
     formatting.fish_indent,
 
     -- Python
-    diagnostics.flake8.with({ extra_args = { "--max-line-length=88" } }),
     formatting.black.with({ extra_args = { "--fast", "--quiet" } }),
-    formatting.isort,
+
+    diagnostics.ruff,
+    formatting.ruff,
 
     -- Golang
     formatting.gofmt,

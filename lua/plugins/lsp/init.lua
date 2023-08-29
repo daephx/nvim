@@ -101,4 +101,11 @@ return {
       },
     },
   },
+  { -- IDE-like code action indicator
+    "kosayoda/nvim-lightbulb",
+    event = { "LspAttach" },
+    opts = {
+      autocmd = { enabled = true },
+    },
+  },
 }

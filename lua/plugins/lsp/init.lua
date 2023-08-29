@@ -91,7 +91,7 @@ return {
   },
   {
     "ray-x/lsp_signature.nvim",
-    lazy = true,
+    event = { "LspAttach" },
     dependencies = { "neovim/nvim-lspconfig" },
     opts = {
       hint_enable = false,

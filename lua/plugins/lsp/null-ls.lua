@@ -64,6 +64,9 @@ null_ls.setup({
     formatting.gofmt,
     formatting.goimports,
 
+    -- CSharp
+    formatting.csharpier,
+
     -- Clang
     formatting.clang_format.with({
       condition = function(utils)

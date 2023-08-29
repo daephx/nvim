@@ -1,4 +1,4 @@
--- Define lsp handlers to be exported globally
+-- Define LSP handlers to be exported globally
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = vim.g.border,

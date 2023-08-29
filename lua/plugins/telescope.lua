@@ -88,9 +88,9 @@ return {
           i = {
             ["qq"] = actions.close,
             ["jk"] = actions.close,
-            ["<C-u>"] = false,
+            ["<C-d>"] = actions.preview_scrolling_down,
+            ["<C-u>"] = actions.preview_scrolling_up,
             ["<C-h>"] = "which_key",
-            ["<C-d>"] = false,
             ["<C-PageUp>"] = "preview_scrolling_up",
             ["<C-PageDown>"] = "preview_scrolling_down",
 
@@ -111,8 +111,6 @@ return {
             ["jk"] = actions.close,
             ["<esc>"] = actions.close,
             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-            ["<C-k>"] = actions.move_selection_previous,
-            ["<C-j>"] = actions.move_selection_next,
           },
         },
 

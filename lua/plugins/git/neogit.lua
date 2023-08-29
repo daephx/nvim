@@ -20,6 +20,8 @@ return {
       diffview = true,
       telescope = true,
     },
+    popup = { kind = "split" },
+    commit_popup = { kind = "split_above" },
   },
   init = function()
     vim.api.nvim_create_autocmd("FileType", {

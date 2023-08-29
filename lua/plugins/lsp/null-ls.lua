@@ -93,9 +93,6 @@ null_ls.setup({
       prefer_local = "node_modules/.bin",
       extra_filetypes = { "solidity", "svelte", "yaml" },
     }),
-
-    -- Ansible playbooks
-    diagnostics.ansiblelint,
   },
   on_attach = function(client, bufnr)
     -- null-ls causes problems with the default formatexpr, which messes up `gq`

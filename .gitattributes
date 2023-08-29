@@ -1,3 +1,10 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Denote all files that are truly binary and should not be modified.
+*.jpg binary
+*.png binary
+
 # Exclude templates from language statistics
 snippets/** linguist-vendored
 templates/** linguist-vendored

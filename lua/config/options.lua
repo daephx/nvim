@@ -23,7 +23,7 @@ vim.opt.shiftround = true -- Round indent to shift width
 vim.opt.number = true -- Display absolute line number in gutter
 vim.opt.relativenumber = true -- Display relative line number in gutter
 vim.opt.cursorline = true -- Highlight the text line of the cursor
-vim.opt.cursorlineopt = "number" -- Control how 'cursorline' is displayed
+vim.opt.cursorlineopt = "both" -- Control how 'cursorline' is displayed
 vim.opt.colorcolumn = "+1" -- Visually display character line limit
 vim.opt.signcolumn = "yes:2" -- Sign gutter options: yes|no : int = size
 vim.opt.scrolloff = 8 -- Keep cursor closer to center vertically

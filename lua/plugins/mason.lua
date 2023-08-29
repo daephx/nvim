@@ -47,6 +47,7 @@ return {
         "luacheck",
         "markdownlint",
         "prettier",
+        "ruff",
         "shfmt",
         "stylua",
       },

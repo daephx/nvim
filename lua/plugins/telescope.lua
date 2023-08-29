@@ -70,6 +70,7 @@ return {
 
         -- Default settings for layout themes
         layout_config = {
+          height = 0.5,
           prompt_position = "top",
           horizontal = {
             width = 0.9,

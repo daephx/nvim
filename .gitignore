@@ -111,5 +111,10 @@ spell/*.spl
 lua/scratch/
 scratch/
 
+# Git patch files
+.diff
+.patch
+.patches/
+
 # Local git worktrees directory
 .worktrees/

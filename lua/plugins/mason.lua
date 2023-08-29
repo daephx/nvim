@@ -4,8 +4,9 @@
 return {
   {
     "williamboman/mason.nvim",
-    cmd = { "Mason", "MasonUpdate" },
     build = ":MasonUpdate",
+    cmd = { "Mason", "MasonLog", "MasonUninstall", "MasonUninstallAll", "MasonUpdate" },
+    event = { "BufReadPre", "BufNewFile" },
     keys = {
       { "<leader>pm", "<cmd>Mason<CR>", desc = "Show mason" },
     },
@@ -18,6 +19,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    cmd = { "LspInstall", "LspUninstall" },
     dependencies = {
       "williamboman/mason.nvim",
       "neovim/nvim-lspconfig",
@@ -42,6 +44,7 @@ return {
   },
   {
     "jayp0521/mason-null-ls.nvim",
+    cmd = { "NullLsInstall", "NullLsUninstall" },
     dependencies = {
       "williamboman/mason.nvim",
       "jose-elias-alvarez/null-ls.nvim",
@@ -63,6 +66,7 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    cmd = { "DapInstall", "DapUninstall" },
     dependencies = {
       "williamboman/mason.nvim",
       "mfussenegger/nvim-dap",

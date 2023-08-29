@@ -55,10 +55,10 @@ null_ls.setup({
     formatting.fish_indent,
 
     -- Python
-    formatting.black,
+    formatting.black.with({ prefer_local = ".venv/bin" }),
 
-    diagnostics.ruff,
-    formatting.ruff,
+    diagnostics.ruff.with({ prefer_local = ".venv/bin" }),
+    formatting.ruff.with({ prefer_local = ".venv/bin" }),
 
     -- Golang
     formatting.gofmt,

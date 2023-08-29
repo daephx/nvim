@@ -51,5 +51,12 @@ return {
         require("neogit").close()
       end,
     })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      desc = "Set filetype back to gitcommit for NeogitCommitMessage buffer",
+      group = vim.api.nvim_create_augroup("NeogitCommitMessageOptions", {}),
+      pattern = "NeogitCommitMessage",
+      command = "silent! set filetype=gitcommit",
+    })
   end,
 }

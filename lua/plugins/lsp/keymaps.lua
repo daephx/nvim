@@ -41,6 +41,9 @@ M.initialize_keymaps = function(_, bufnr)
   map("n", "<leader>rn", vim.lsp.buf.rename, {
     desc = "Rename reference",
   })
+  map("n", "ga", vim.lsp.buf.code_action, {
+    desc = "Code actions",
+  })
   map("n", "gr", vim.lsp.buf.references, {
     desc = "Goto references",
   })

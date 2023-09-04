@@ -9,6 +9,29 @@ return {
     { "<leader>gg", "<cmd>Gtabedit :<CR>", desc = "Git Status (Fugitive)" },
     { "<leader>gl", "<cmd>GclogTab<CR>", desc = "Git Log" },
   },
+  init = function()
+    vim.api.nvim_create_autocmd({ "FileType" }, {
+      desc = "",
+      group = vim.api.nvim_create_augroup("FugitiveOptions", {}),
+      pattern = { "fugitive" },
+      callback = function()
+        -- Buffer local options
+        vim.opt_local.number = false
+        vim.opt_local.relativenumber = false
+        vim.opt_local.cursorline = true
+        vim.opt_local.cursorlineopt = "both"
+        vim.opt_local.colorcolumn = "0"
+        vim.opt_local.signcolumn = "yes:1"
+        vim.opt_local.foldmethod = "syntax"
+        vim.opt_local.bufhidden = "delete"
+
+        -- Buffer local keymaps
+        local opts = { buffer = true, remap = true, silent = true }
+
+        vim.keymap.set("n", "<tab>", "=", opts)
+      end,
+    })
+  end,
   config = function(_, _)
     -- Open Gdiffsplit in new tab
     vim.api.nvim_create_user_command("GdiffsplitTab", function()

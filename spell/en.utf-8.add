@@ -100,7 +100,6 @@ SmartHybridNumbers
 SourcePost
 StackOverflow
 Subdirectory
-TODOs
 TSPlayground
 TSUpdate
 TabNine
@@ -141,6 +140,7 @@ ZoomWin
 abc
 abi
 abspath
+addr
 adduser
 adhoc
 afile
@@ -248,6 +248,7 @@ builtin
 builtins
 busybox
 bzr
+calloc
 capcheck
 capslock
 cascadia
@@ -257,6 +258,7 @@ cdpath
 celsius
 centos
 certresolver
+cfg
 chan
 changedelete
 changelog
@@ -300,6 +302,7 @@ codebase
 codeblock
 codec
 codedark
+codeium
 codelens
 codelldb
 codestyle
@@ -345,6 +348,7 @@ crf
 crit
 csharp
 csharpier
+csproj
 css
 cssls
 csx
@@ -386,6 +390,7 @@ defered
 defs
 defx
 del
+delim
 demuxer
 dendron
 deps
@@ -442,6 +447,7 @@ dropbox
 dropdown
 ds_store
 dstask
+duckdns
 easymotion
 echo
 editorconfig
@@ -460,8 +466,10 @@ ender
 endfunc
 endif
 endofbuffer
+endofline
 endregion
 endswith
+endtext
 enew
 entrypoint
 entrypoints
@@ -528,12 +536,14 @@ fnamemodify
 fo
 foldclose
 foldcolumn
+foldend
 foldexpr
 foldlevel
 foldlevelstart
 foldmethod
 foldopen
 foldsep
+foldstart
 foldtext
 folke
 foreach
@@ -545,11 +555,13 @@ formatter
 formulae
 fortran
 fpath
+fprintf
 framerate
 freemium
 frontend
 frontends
 frontmatter
+fsproj
 fstab
 ftplugin
 fugitiveindex
@@ -615,6 +627,7 @@ gravatar
 gruvbox
 gsettings
 gsub
+gsudo
 gtk
 gtkrc
 gui
@@ -765,6 +778,7 @@ lazyload
 lazyredraw
 len
 lesspipe
+letsencrypt
 lf
 lfs
 lhs
@@ -774,6 +788,7 @@ libtool
 lidarr
 lifecycle
 lightbulb
+linecount
 linehl
 linematch
 linenr
@@ -821,6 +836,7 @@ lua
 luacheck
 luacheckrc
 luadoc
+luadocs
 luafile
 luafmt
 luajit
@@ -850,6 +866,7 @@ maxLine
 maxpreload
 md
 mdx
+mechatronics
 mem
 menuone
 metadata
@@ -859,6 +876,8 @@ middleware
 middlewares
 minLine
 minecraft
+mingw
+mingw32
 minimumres
 mixin
 mk
@@ -898,6 +917,7 @@ namedef
 nameserver
 namespaced
 nano
+nargs
 nav
 navbar
 navic
@@ -951,6 +971,7 @@ npairs
 npm
 nt
 nuget
+num
 numhl
 numlock
 nvim
@@ -974,6 +995,7 @@ openssh
 openssl
 opensuse
 optarg
+optifine
 optim
 organizr
 orgmode
@@ -1053,9 +1075,11 @@ preloadfilesize
 prepend
 prepending
 preproc
+prerelease
 prettierrc
 previewwindow
 printf
+prio
 prisma
 proc
 programdata
@@ -1071,6 +1095,8 @@ psd1
 psm1
 psxml
 psytrance
+ptr
+pumblend
 pumenu
 pumvisible
 pushd
@@ -1116,6 +1142,7 @@ readline
 readlink
 readme
 readonly
+realloc
 rebase
 rect
 recurse
@@ -1194,6 +1221,7 @@ setlocal
 setopt
 setpos
 setq
+sfx
 sha1
 shader
 shellcheck
@@ -1218,6 +1246,7 @@ signin
 signup
 skel
 skellum
+skillset
 slackware
 slint
 sln
@@ -1245,6 +1274,7 @@ srt
 srv
 ss
 sshconfig
+ssl
 stackoverflow
 starfield
 startinsert
@@ -1266,6 +1296,7 @@ strace
 strftime
 strikethrough
 stripprefix
+strlen
 struct
 stty
 styleguide
@@ -1293,6 +1324,7 @@ swapon
 switchbuf
 swp
 sys
+system32
 system76
 systemctl
 systemd
@@ -1426,6 +1458,7 @@ utf8
 util
 utils
 uuid
+uv
 v0
 v2
 vala
@@ -1433,6 +1466,7 @@ vbs
 vbscript
 vendored
 venv
+ver
 verilog
 vf
 vicmd

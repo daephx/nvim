@@ -43,6 +43,7 @@ FugitiveIndex
 GBrowse
 GIFs
 HKEY_CURRENT_USER
+IIFE
 IOError
 IPython
 ImageMagick
@@ -78,6 +79,7 @@ NonText
 NormalFloat
 NumLock
 NvimTree
+OSTYPE
 PackerCompile
 PackerComplete
 PageDown
@@ -139,10 +141,13 @@ ZoomWin
 abc
 abi
 abspath
+adduser
 adhoc
 afile
+agnoster
 ahk
 alacritty
+alist
 amd64
 anaconda
 anaconda2
@@ -158,8 +163,10 @@ archlinux
 arg
 argparse
 args
+argv
 arm7
 ascii
+asm
 asperand
 aspirant
 async
@@ -169,8 +176,11 @@ augroup
 auth
 autocmd
 autocmds
+autocommand
 autocommands
 autocompl
+autocrlf
+autofix
 autohide
 autohotkey
 autoindent
@@ -187,9 +197,13 @@ autosuggestions
 autotag
 autowrap
 avi
+aws
+az
+azfunc
 backend
 backticks
 backupext
+barbar
 base16
 basedir
 bashdb
@@ -204,6 +218,7 @@ beancount
 bg
 bibtex
 bindkey
+bindsym
 bitrate
 blankline
 blockwise
@@ -212,6 +227,7 @@ bn
 bo
 bool
 borderchars
+borderless
 botright
 bp
 bpytop
@@ -234,12 +250,14 @@ busybox
 bzr
 capcheck
 capslock
+cascadia
 cbfmt
 cd
 cdpath
 celsius
 centos
 certresolver
+chan
 changedelete
 changelog
 charset
@@ -311,13 +329,13 @@ config
 configs
 consolas
 const
-constantant/!
 cookiecutter
 cooklang
 copen
 copyindent
 copypasta
 coreclr
+coreos
 cpp
 cprev
 cpu
@@ -409,6 +427,7 @@ dockerfiles
 dockerhub
 dockerls
 docs
+doctest
 dofile
 dom
 dosini
@@ -472,6 +491,7 @@ expandtab
 export
 expr
 exrc
+eza
 f1
 favour
 fd
@@ -492,7 +512,9 @@ filereadable
 filesize
 filetype
 filetypes
+fillchar
 fillchars
+fira
 fix
 fixit
 fixme
@@ -513,8 +535,10 @@ foldmethod
 foldopen
 foldsep
 foldtext
+folke
 foreach
 formatexpr
+formatoption
 formatoptions
 formatprg
 formatter
@@ -525,6 +549,7 @@ framerate
 freemium
 frontend
 frontends
+frontmatter
 fstab
 ftplugin
 fugitiveindex
@@ -533,6 +558,7 @@ fullscreen
 func
 fzf
 fzfterm
+fzy
 gamesave
 gamesaves
 gc
@@ -540,9 +566,11 @@ gcc
 gdb
 gdscript
 gentoo
+getattr
 getchar
 getcwd
 getenv
+getitem
 gfm
 gh
 gid
@@ -559,6 +587,7 @@ github
 githubusercontent
 gitignore
 gitkeep
+gitlab
 gitlint
 gitmodules
 gitrebase
@@ -587,11 +616,13 @@ gruvbox
 gsettings
 gsub
 gtk
+gtkrc
 gui
 guibg
 guicursor
 guifg
 guifonts
+gunicorn
 gz
 gzip
 h264
@@ -601,8 +632,10 @@ hardcoded
 hardmode
 hasattr
 hashi
+hashs
 haskell
 hcl
+hdmi
 healthcheck
 heex
 hererocks
@@ -615,6 +648,7 @@ histfile
 histsize
 hjkl
 hl
+hlsearch
 homebrew
 homelab
 hostname
@@ -629,12 +663,12 @@ htpasswd
 htpc
 http
 https
+ibl
 ico
 icursor
 idgaf
 idx
 ie
-ie/!
 ifconfig
 iframe
 imagemagick
@@ -664,12 +698,14 @@ ipv4
 ipv6
 ipynb
 ipython
+isdir
 isdirectory
 isinstance
 iskeyword
 iso
 isort
 issuecomment
+iter
 iterdir
 iwhite
 jackett
@@ -685,6 +721,7 @@ jit
 jk
 jpeg
 jpg
+jq
 js
 jsdoc
 json
@@ -711,6 +748,7 @@ keypress
 kickstart
 kommentary
 kotlin
+kubectl
 kubernetes
 kwargs
 lalrpop
@@ -732,6 +770,7 @@ lfs
 lhs
 libcurl
 libssh
+libtool
 lidarr
 lifecycle
 lightbulb
@@ -740,6 +779,7 @@ linematch
 linenr
 linewise
 linter
+linters
 linux
 listchar
 listchars
@@ -790,6 +830,7 @@ luarc
 luarocks
 luasnip
 luaver
+macchina
 macos
 magical8bit
 magit
@@ -831,6 +872,7 @@ mkv
 mnt
 modeline
 modulepath
+monogame
 monospace
 motd
 mountpoint
@@ -862,6 +904,7 @@ navic
 ncdu
 neo
 neoclide
+neodev
 neogit
 neorg
 neoterm
@@ -876,6 +919,8 @@ nextcloud
 nginx
 ngrams
 nil
+nixos
+nls
 nlua
 nmap
 nnn
@@ -905,6 +950,7 @@ nowrite
 npairs
 npm
 nt
+nuget
 numhl
 numlock
 nvim
@@ -924,6 +970,7 @@ onemore
 ontop
 openid
 openjdk
+openssh
 openssl
 opensuse
 optarg
@@ -931,11 +978,14 @@ optim
 organizr
 orgmode
 os
+osv
+osx
 outdir
 owo
 packadd
 packercompile
 packercomplete
+pacman
 pagedown
 pageup
 pandoc
@@ -948,7 +998,6 @@ parsers
 passwd
 pathlib
 pathogen
-pathogen/!
 pathprefix
 pbcopy
 pbm
@@ -969,6 +1018,7 @@ pid
 pihole
 pioasm
 pip3
+pipefail
 pipenv
 pipfile
 pixiedust
@@ -1002,7 +1052,9 @@ preload
 preloadfilesize
 prepend
 prepending
+preproc
 prettierrc
+previewwindow
 printf
 prisma
 proc
@@ -1032,7 +1084,9 @@ pycache
 pyd
 pyenv
 pyflow
+pygame
 pygmentize
+pygments
 pyinstaller
 pynvim
 pyo
@@ -1063,6 +1117,8 @@ readlink
 readme
 readonly
 rebase
+rect
+recurse
 reddit
 redeployable
 redstone
@@ -1083,8 +1139,8 @@ repo
 repr
 repro
 req
+rerere
 resolv
-responce/!
 restruct
 ret
 retval
@@ -1133,10 +1189,13 @@ scss
 sdk
 sed
 selene
+setattr
 setlocal
 setopt
 setpos
+setq
 sha1
+shader
 shellcheck
 shellcmdflag
 shellquote
@@ -1159,6 +1218,7 @@ signin
 signup
 skel
 skellum
+slackware
 slint
 sln
 smarthybridnumbers
@@ -1186,6 +1246,7 @@ srv
 ss
 sshconfig
 stackoverflow
+starfield
 startinsert
 startpage
 startswith
@@ -1210,6 +1271,7 @@ stty
 styleguide
 stylelintrc
 stylesheet
+stylesheets
 stylua
 subdir
 subdirectory
@@ -1240,7 +1302,9 @@ tabdo
 tabline
 tabname
 tabnew
+tabnine
 tabnr
+tabout
 tabpage
 tabpages
 tabstop
@@ -1294,6 +1358,7 @@ topdown
 topleft
 toplevel
 topline
+topsplit
 toptal
 touchd
 toupper
@@ -1316,6 +1381,7 @@ typeparameter
 typescript
 typescriptreact
 tz
+tzdata
 uber
 ubuntu
 ui
@@ -1325,7 +1391,9 @@ ultisnip
 ultisnips
 umask
 un
+uncategorized
 unception
+undercurl
 undolevel
 undotree
 unicode
@@ -1333,6 +1401,7 @@ unindent
 unittest
 unix
 unnamedplus
+uno
 unpushed
 unsplash
 unstage
@@ -1340,6 +1409,7 @@ unstaged
 untoggle
 updatetime
 uplay
+upvalue
 uri
 url
 urls
@@ -1404,6 +1474,7 @@ vterm
 vue
 vuejs
 wav
+wayland
 webapi
 webdev
 webkit
@@ -1427,14 +1498,17 @@ win
 win32
 win64
 winbar
+winblend
 wincmd
 winevent
+winfixheight
 winnr
 winpos
 winsize
 winwidth
 wip
 wipeout
+wl
 workspace
 worktree
 worktrees
@@ -1443,6 +1517,7 @@ writeline
 writeln
 wsl
 wsl2
+wslconfig
 www
 x11
 x64
@@ -1456,12 +1531,16 @@ xdg_dirs
 xhost
 xinit
 xinitrc
+xinput
 xlast
 xml
+xmldoc
 xna
 xoff
 xours
+xrandr
 xrdb
+xset
 xtheirs
 xtrace
 yaml

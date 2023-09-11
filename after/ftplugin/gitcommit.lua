@@ -15,7 +15,7 @@ vim.opt_local.commentstring = "#%s"
 
 vim.opt_local.formatoptions = {
   c = false, -- Auto-wrap comments using 'textwidth'
-  l = false, -- Auto-wrap long lines in insert mode
-  q = true, -- Allow formatting of comments with "gq"
+  l = true, -- Auto-wrap long lines in insert mode
+  q = false, -- Allow formatting of comments with "gq"
   t = true, -- Auto-wrap text using 'textwidth'
 }

@@ -17,18 +17,14 @@ return {
       },
       group_overrides = {
         -- General
+        NormalFloat = { link = "Normal" },
+        FloatBorder = { fg = "#5A5A5A", bg = "none" },
         ColorColumn = { bg = "#0f0f0f" },
         CurSearch = { link = "IncSearch" },
         CursorLineNr = { link = "Number" },
         EndOfBuffer = { fg = "#222222" },
         MsgSeparator = { link = "VertSplit" },
         SpecialChar = { fg = c.vscBlue },
-
-        -- Floating Windows
-        NormalFloat = { link = "Normal" },
-        FloatBorder = { fg = "#5A5A5A", bg = "none" },
-        LspFloatWinNormal = { link = "NormalFloat" },
-        LspInfoBorder = { link = "FloatBorder" },
 
         -- Git status
         DiffAdd = { bg = "#212D19", fg = "none" },
@@ -40,6 +36,11 @@ return {
         DiagnosticVirtualTextWarn = { bg = c.vscBack, fg = c.vscYellow },
         DiagnosticVirtualTextInfo = { bg = c.vscBack, fg = c.vscBlue },
         DiagnosticVirtualTextHint = { bg = c.vscBack, fg = c.vscWhite },
+
+        -- LSP
+        LspCodeLens = { link = "LineNr" },
+        LspFloatWinNormal = { link = "NormalFloat" },
+        LspInfoBorder = { link = "FloatBorder" },
 
         -- Treesitter Rainbow | Treesitter/Indent-Blankline
         RainbowDelimiterBlue = { fg = c.vscBlue, nocombine = true },

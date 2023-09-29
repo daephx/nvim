@@ -21,6 +21,7 @@ vim.filetype.add({
     pandoc = "pandoc",
     pde = "processing",
     prettierrc = "jsonc",
+    rasi = "rasi",
     scm = "scheme",
     stylelintrc = "json",
     tex = "tex",

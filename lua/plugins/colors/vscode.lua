@@ -21,6 +21,7 @@ return {
         FloatBorder = { fg = "#5A5A5A", bg = "none" },
         ColorColumn = { bg = "#0f0f0f" },
         CurSearch = { link = "IncSearch" },
+        CursorLine = { bg = "Gray8" },
         CursorLineNr = { link = "Number" },
         EndOfBuffer = { fg = "#222222" },
         MsgSeparator = { link = "VertSplit" },

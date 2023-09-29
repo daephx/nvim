@@ -30,8 +30,8 @@ return {
     filters = {
       dotfiles = false,
       custom = {
-        ".cache", -- General cache directory
-        ".git", -- Git repository directory
+        "^.cache$", -- General cache directory
+        "^.git$", -- Git repository directory
         "__pycache__", -- Python cache directory
         "node_modules", -- Node module directory
       },

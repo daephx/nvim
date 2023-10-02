@@ -52,7 +52,6 @@ return {
         scroll_strategy = "cycle",
         selection_strategy = "row",
         sorting_strategy = "ascending",
-        winblend = 5,
 
         file_sorter = sorters.get_fuzzy_file,
         file_previewer = previewers.vim_buffer_cat.new,

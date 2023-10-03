@@ -49,6 +49,7 @@ return {
         RainbowDelimiterOrange = { fg = c.vscOrange, nocombine = true },
         RainbowDelimiterPink = { fg = c.vscPink, nocombine = true },
         RainbowDelimiterRed = { fg = c.vscRed, nocombine = true },
+        RainbowDelimiterViolet = { fg = c.vscViolet, nocombine = true },
         RainbowDelimiterYellow = { fg = c.vscYellow, nocombine = true },
 
         -- Whichkey

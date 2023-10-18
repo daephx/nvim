@@ -20,8 +20,6 @@ end
 
 local set_terminal_keymaps = function()
   local opts = { buffer = 0, remap = false, silent = true }
-  vim.keymap.set("t", "<C-PageDown>", "<C-\\><C-n><C-PageDown>", opts)
-  vim.keymap.set("t", "<C-PageUp>", "<C-\\><C-n><C-PageUp>", opts)
   vim.keymap.set("t", "<c-w>", "<c-\\><c-n><c-w>", opts)
   vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", opts)
 end

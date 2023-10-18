@@ -52,12 +52,3 @@ autocmd({ "TermClose", "BufLeave" }, {
   pattern = "term://*",
   command = "stopinsert",
 })
-
-autocmd({ "TermClose" }, {
-  desc = "Skip process exit prompt by deleting terminal buffer",
-  group = group,
-  pattern = "term://*",
-  callback = function(ev)
-    vim.cmd.bdelete(ev.buf)
-  end,
-})

@@ -122,30 +122,13 @@ vim.opt.diffopt = {
   "vertical", -- Split diff vertically
 }
 
--- Define how folded lines should be displayed
----@return string
-function _G._foldtext()
-  local foldstart = vim.fn.getline(vim.v.foldstart)
-  local foldend = vim.fn.getline(vim.v.foldend)
-  local linecount = vim.v.foldend - vim.v.foldstart + 1
-  local tabwidth = string.rep(" ", vim.bo.tabstop)
-  return string.format(
-    "%s … %s %s",
-    ---@cast foldstart string
-    vim.fn.substitute(foldstart, "\t", tabwidth, "g"),
-    ---@cast foldend string
-    vim.fn.trim(foldend),
-    string.format("[%s lines]", linecount)
-  )
-end
-
 -- Apply buffer folding options
 vim.opt.foldcolumn = "0" -- Disable fold column
 vim.opt.foldlevel = 99 -- Set nested fold depth level
 vim.opt.foldlevelstart = 99 -- We want all fold to be expand at start
 vim.opt.foldmethod = "expr" -- use treesitter for folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldtext = "v:lua._foldtext()"
+vim.opt.foldtext = "v:lua.require('config.util').foldtext()"
 
 -- Wildmenu options
 vim.opt.wildmenu = false -- Command-line completion

@@ -55,4 +55,4 @@ format: ## Run formatter: stylua
 	@stylua after/ lua/ init.lua
 
 lint: ## Run linter: luacheck
-	@luacheck after/ lua/ init.lua
+	@selene after/ lua/ init.lua

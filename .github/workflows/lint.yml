@@ -2,25 +2,20 @@ name: Lint/Style checking
 
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  luacheck:
+  selene:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
-      - name: Setup
-        run: |
-          sudo apt-get update
-          sudo apt-get install luarocks
-          sudo luarocks install luacheck
-      - name: Run
-        run: luacheck after lua init.lua
+      - uses: NTBBloodbath/selene-action@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: 0.25.0
+          args: --display-style=quiet .
 
   stylua:
     runs-on: ubuntu-22.04

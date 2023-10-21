@@ -63,6 +63,18 @@ return {
   config = function(_, opts)
     require("toggleterm").setup(opts)
     initialize_terminals(opts)
+
+    -- HACK: Terminal buffers that are restored from session don't properly close
+    vim.api.nvim_create_autocmd({ "TermClose" }, {
+      desc = "Preveent process exited prompt when closing terminal buffer",
+      group = vim.api.nvim_create_augroup("ToggleTerm_FixClose", { clear = true }),
+      pattern = "term://*;#toggleterm*",
+      callback = function(ev)
+        if vim.api.nvim_buf_is_loaded(ev.buf) then
+          vim.api.nvim_buf_delete(ev.buf, { force = true })
+        end
+      end,
+    })
   end,
   opts = {
     open_mapping = "<C-\\>",

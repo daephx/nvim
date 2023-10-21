@@ -24,8 +24,8 @@ end
 local null_sources = function(exclude)
   local _, sources = pcall(function()
     local ret = {}
-    local sources = require("null-ls.sources")
-    local available = sources.get_available(vim.bo.filetype)
+    local nls_sources = require("null-ls.sources")
+    local available = nls_sources.get_available(vim.bo.filetype)
     for _, client in pairs(available) do
       local is_exclude = vim.tbl_contains(exclude, client.name)
       local is_present = vim.tbl_contains(ret, client.name)

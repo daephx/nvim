@@ -77,7 +77,7 @@ autocmd({ "FileType" }, {
   desc = "Prevent auto-insert comment leader on all filetypes",
   group = augroup("NoAutoComment", {}),
   pattern = "*",
-  command = "setlocal formatoptions-=cro",
+  command = "setlocal formatoptions-=ro",
 })
 
 autocmd({ "FileType" }, {

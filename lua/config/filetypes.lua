@@ -1,5 +1,6 @@
 -- Enable lua-based filetype plugin
 vim.g.do_filetype_lua = 1
+
 -- Disable filetype plugins
 vim.g.did_load_ftplugin = 0
 

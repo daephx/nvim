@@ -1,4 +1,4 @@
--- lsp/icons.lua
+-- Set icons for diagnostics and various plugins
 
 local M = {}
 

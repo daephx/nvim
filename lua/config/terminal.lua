@@ -1,4 +1,5 @@
--- Terminal buffer | A better terminal experience!
+-- Improve terminal buffers with autocmds and options
+
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 

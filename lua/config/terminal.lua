@@ -10,6 +10,7 @@ local set_terminal_options = function()
   vim.opt_local.list = false
   vim.opt_local.number = false
   vim.opt_local.relativenumber = false
+  vim.opt_local.cursorline = false
   vim.opt_local.scrolloff = 0
   vim.opt_local.sidescrolloff = 0
   vim.opt_local.signcolumn = "no"

@@ -17,6 +17,8 @@ return {
     },
     user_default_options = {
       RGB = false, -- #RGB hex codes
+      RRGGBB = true, -- #RRGGBB hex codes
+      RRGGBBAA = true, -- #RRGGBBAA hex codes
       names = false, -- "Name" codes like Blue
       mode = "background", -- Set the display mode.
     },

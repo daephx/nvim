@@ -33,7 +33,7 @@ local window_opts = {
   winhighlight = table.concat({
     "NormalFloat:NormalFloat",
     "FloatBorder:FloatBorder",
-    "CursorLine:CursorLine",
+    "CursorLine:PmenuSel",
     "Search:None",
   }, ","),
 }

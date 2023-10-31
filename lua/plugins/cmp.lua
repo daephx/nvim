@@ -6,7 +6,8 @@
 ---@return boolean
 local has_whitespace_before = function()
   local col = vim.fn.col(".") - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+  local line = vim.api.nvim_get_current_line()
+  return col == 0 or line:sub(col, col):match("%s")
 end
 
 -- Use buffers from the current tabpage, but omit man pages as they can

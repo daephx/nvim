@@ -31,13 +31,6 @@ return {
       },
     },
     exclude = {
-      buftypes = {
-        "help",
-        "nofile",
-        "prompt",
-        "quickfix",
-        "terminal",
-      },
       filetypes = {
         "NvimTree",
         "Outline",

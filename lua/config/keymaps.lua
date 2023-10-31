@@ -50,6 +50,9 @@ map("n", "N", "Nzzzv")
 -- Prevent jump when search under cursor
 map("n", "*", "*N")
 
+-- Search for visually highlighted text
+map("v", "*", 'y<ESC>/<c-r>"<CR>N')
+
 -- Visual indentation
 map("v", "<", "<gv")
 map("v", ">", ">gv")

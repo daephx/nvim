@@ -54,7 +54,7 @@ vim.opt.undofile = true -- Cache persistent undo
 vim.opt.undolevels = 10000 -- Maximum number of changes that can be undone
 
 -- Popup menu options
-vim.opt.pumblend = 10 -- Pop-up menu transparency
+vim.opt.pumblend = 0 -- Pop-up menu transparency
 vim.opt.pumheight = 12 -- Pop-up menu height
 vim.opt.pumwidth = 16 -- Pop-up menu thickness
 

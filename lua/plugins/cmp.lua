@@ -1,5 +1,6 @@
 -- nvim-cmp | A completion plugin for neovim coded in Lua
 -- https://github.com/hrsh7th/nvim-cmp
+---@diagnostic disable: missing-fields, inject-field
 
 -- Return true if whitespace is detected before cursor position.
 ---@return boolean

@@ -1,5 +1,4 @@
-name: Lint/Style checking
-
+name: CI
 on:
   push:
     branches: [main]

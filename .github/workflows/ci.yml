@@ -7,7 +7,7 @@ on:
 
 jobs:
   stylua:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: JohnnyMorganz/stylua-action@v3
@@ -17,7 +17,7 @@ jobs:
           args: --check .
 
   selene:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: NTBBloodbath/selene-action@v1.0.0

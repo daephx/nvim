@@ -43,7 +43,7 @@ return {
     renderer = {
       group_empty = true,
       highlight_git = true,
-      highlight_opened_files = "2",
+      highlight_opened_files = "icon",
       indent_markers = {
         enable = true,
       },

@@ -1,13 +1,6 @@
 -- Neovim LSP Configuration (Language Server Protocol)
 -- Setup native lsp using lspconfig helper plugin
 
--- Define default variables
-local server_mpath = "plugins/lsp/settings"
-local default_options = {
-  capabilities = require("plugins.lsp.capabilities"),
-  on_attach = require("plugins.lsp.attach"),
-}
-
 return {
   { -- Initialize language server configuration
     "neovim/nvim-lspconfig",
@@ -39,6 +32,13 @@ return {
       end
     end,
     config = function()
+      -- Define default variables
+      local server_mpath = "plugins/lsp/settings"
+      local default_options = {
+        capabilities = require("plugins.lsp.capabilities"),
+        on_attach = require("plugins.lsp.attach"),
+      }
+
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")

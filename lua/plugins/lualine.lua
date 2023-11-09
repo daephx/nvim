@@ -56,7 +56,6 @@ local diagnostics = {
 
 local lsp_info = {
   "lsp_info",
-  max_size = 80,
   icon = { "", align = "right" },
   client_names = {
     ["arduino_language_server"] = "arduino_ls",

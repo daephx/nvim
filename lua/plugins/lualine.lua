@@ -27,22 +27,20 @@ local branch = {
   icon = "",
 }
 
--- Version control diff values
----@return table|nil
-local diff_source = function()
-  local gitsigns = vim.b["gitsigns_status_dict"]
-  if gitsigns then
-    return {
-      added = gitsigns.added,
-      modified = gitsigns.changed,
-      removed = gitsigns.removed,
-    }
-  end
-end
-
 local diff = {
   "diff",
-  source = diff_source,
+  ---Version control diff values
+  ---@return table|nil
+  source = function()
+    local gitsigns = vim.b["gitsigns_status_dict"]
+    if gitsigns then
+      return {
+        added = gitsigns.added,
+        modified = gitsigns.changed,
+        removed = gitsigns.removed,
+      }
+    end
+  end,
 }
 
 local diagnostics = {
@@ -56,15 +54,16 @@ local diagnostics = {
   },
 }
 
-local lsp_client = {
-  "lsp_client",
+local lsp_info = {
+  "lsp_info",
+  max_size = 80,
   icon = { "", align = "right" },
-}
-
-local lsp_progress = {
-  "lsp_progress",
-  display_components = { { "title", "percentage" }, "lsp_client_name", "spinner" },
-  spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+  client_names = {
+    ["arduino_language_server"] = "arduino_ls",
+    ["docker_compose_language_service"] = "docker-compose",
+    ["fennel_language_server"] = "fennel_ls",
+    ["pkgbuild_language_server"] = "pkgbuild_ls",
+  },
 }
 
 local tabs = {
@@ -96,10 +95,10 @@ local windows = {
   },
 }
 
--- Override separators for tabline between components and sections
+---Override separators for tabline between components and sections
 ---@param sections table
 ---@return table
-local process_sections = function(sections)
+local function process_sections(sections)
   for _, section in pairs(sections) do
     for id, comp in ipairs(section) do
       if type(comp) ~= "table" then
@@ -113,14 +112,40 @@ local process_sections = function(sections)
   return sections
 end
 
+---Set formatting rules for lsp_progress clients
+---@param client_name string
+---@param spinner table
+---@param series_messages table
+---@return string|nil
+local function client_format(client_name, spinner, series_messages)
+  local active_clients = vim.tbl_map(function(client)
+    return client.name
+  end, vim.lsp.get_active_clients({ bufnr = 0 }))
+  if #series_messages > 0 and vim.tbl_contains(active_clients, client_name) then
+    local messages = table.concat(series_messages, ", ")
+    return ("%s %s [%s]"):format(messages, spinner, client_name)
+  end
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   event = "UIEnter",
   dependencies = {
     -- Lua fork of vim-web-devicons for neovim
     { "nvim-tree/nvim-web-devicons" },
-    -- Display LSP progress in the statusline
-    { "arkav/lualine-lsp-progress" },
+    -- A performant LSP progress status for Neovim
+    {
+      "linrongbin16/lsp-progress.nvim",
+      opts = { client_format = client_format },
+      init = function()
+        vim.api.nvim_create_autocmd("User", {
+          desc = "listen for lsp-progress event and refresh lualine",
+          group = vim.api.nvim_create_augroup("Lualine_LspProgressUpdate", {}),
+          pattern = "LspProgressStatusUpdated",
+          callback = require("lualine").refresh,
+        })
+      end,
+    },
   },
   config = function(_, opts)
     -- Invert tabline separators before loading plugin
@@ -136,7 +161,7 @@ return {
       lualine_a = { mode },
       lualine_b = { branch, diff },
       lualine_c = { filename },
-      lualine_x = { lsp_progress, lsp_client, diagnostics },
+      lualine_x = { lsp_info, diagnostics },
       lualine_y = { "filetype", "encoding", "fileformat" },
       lualine_z = { "location" },
     },

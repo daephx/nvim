@@ -1,14 +1,6 @@
 -- lualine.nvim | Blazing fast statusline for neovim, written in pure lua
 -- https://github.com/nvim-lualine/lualine.nvim
 
----@param str string
----@return function
-local function insert_string(str)
-  return function()
-    return str
-  end
-end
-
 local mode = {
   "mode",
   fmt = function(str)
@@ -93,6 +85,14 @@ local windows = {
     lazy = "Lazy",
   },
 }
+
+---@param str string
+---@return function
+local function insert_string(str)
+  return function()
+    return str
+  end
+end
 
 ---Override separators for tabline between components and sections
 ---@param sections table

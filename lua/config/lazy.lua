@@ -20,7 +20,6 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
     { import = "plugins.colors" },
-    { import = "plugins.git" },
   },
   change_detection = { notify = false },
   defaults = { lazy = true },

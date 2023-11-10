@@ -4,7 +4,10 @@
 return {
   "glepnir/dashboard-nvim",
   event = "UIEnter",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    -- Adds file type icons to Vim plugins
+    { "nvim-tree/nvim-web-devicons" },
+  },
   opts = {
     theme = "doom",
     hide = {
@@ -14,24 +17,12 @@ return {
     },
     config = {
       header = {
-        "",
-        "",
-        "",
         "███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
         "████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
         "██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║",
         "██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
         "██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
         "╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
-        "",
-        (function()
-          local v = vim.version()
-          local release = v.prerelease == false and "stable" or "nightly"
-          local template = "--- [   %s.%s.%s %s   ] ---"
-          return template:format(v.major, v.minor, v.patch, release)
-        end)(),
-        "",
-        "",
       },
       center = {
         {
@@ -92,16 +83,7 @@ return {
       end,
     },
   },
-  config = function(_, opts)
-    require("dashboard").setup(opts)
-
-    -- Add padding to dashboard entries
-    for _, item in pairs(opts.config.center) do
-      local pad = (" "):rep(math.abs(#item.desc - 19))
-      item.icon = item.icon .. " "
-      item.desc = item.desc .. pad
-    end
-
+  init = function()
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Apply local settings to Dashboard buffer",
       group = vim.api.nvim_create_augroup("DashboardBuffer", {}),
@@ -114,5 +96,31 @@ return {
         vim.keymap.set("n", "<PageUp>", "<Nop>", options)
       end,
     })
+  end,
+  config = function(_, opts)
+    -- Add version information as sub header
+    local v = vim.version()
+    local release = v.prerelease == false and "stable" or "nightly"
+    local template = "--- [   %s.%s.%s %s   ] ---"
+    vim.list_extend(
+      opts.config.header,
+      { "", template:format(v.major, v.minor, v.patch, release), "", "" }
+    )
+
+    -- Add padding to the top of the header
+    local toppad = 3
+    for _ = 1, toppad do
+      table.insert(opts.config.header, 1, "")
+    end
+
+    -- Add padding to dashboard entries
+    for _, item in pairs(opts.config.center) do
+      local pad = (" "):rep(math.abs(#item.desc - 19))
+      item.icon = item.icon .. " "
+      item.desc = item.desc .. pad
+    end
+
+    -- Load plugin and initialize options
+    require("dashboard").setup(opts)
   end,
 }

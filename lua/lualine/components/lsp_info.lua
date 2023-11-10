@@ -103,12 +103,12 @@ end
 function lsp_info:update_status()
   local clients = get_client_names(self.options)
   local separator = (" %s "):format(self.options.separator)
-  local plugin_ok, lsp_progress = pcall(require, "lsp-progress")
-  if not plugin_ok then
+  if not package.loaded["lsp-progress"] then
     return table.concat(clients, separator)
   end
 
   -- Use plugins provided progress method if available
+  local lsp_progress = require("lsp-progress")
   return lsp_progress.progress({
     max_size = self.options.max_size,
     format = function(messages)

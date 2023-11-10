@@ -127,59 +127,62 @@ local function client_format(client_name, spinner, series_messages)
 end
 
 return {
-  "nvim-lualine/lualine.nvim",
-  event = "UIEnter",
-  dependencies = {
-    -- Lua fork of vim-web-devicons for neovim
-    { "nvim-tree/nvim-web-devicons" },
-    -- A performant LSP progress status for Neovim
-    {
-      "linrongbin16/lsp-progress.nvim",
-      opts = { client_format = client_format },
-      init = function()
-        vim.api.nvim_create_autocmd("User", {
-          desc = "listen for lsp-progress event and refresh lualine",
-          group = vim.api.nvim_create_augroup("Lualine_LspProgressUpdate", {}),
-          pattern = "LspProgressStatusUpdated",
-          callback = require("lualine").refresh,
-        })
-      end,
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "UIEnter",
+    dependencies = {
+      -- Lua fork of vim-web-devicons for neovim
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    config = function(_, opts)
+      -- Invert tabline separators before loading plugin
+      opts.tabline = process_sections(opts.tabline)
+      require("lualine").setup(opts)
+    end,
+    opts = {
+      options = {
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+      },
+      sections = {
+        lualine_a = { mode },
+        lualine_b = { branch, diff },
+        lualine_c = { filename },
+        lualine_x = { lsp_info, diagnostics },
+        lualine_y = { "filetype", "encoding", "fileformat" },
+        lualine_z = { "location" },
+      },
+      tabline = {
+        lualine_a = { insert_string("") },
+        lualine_b = { windows },
+        lualine_y = { tabs },
+        lualine_z = { insert_string("") },
+      },
+      inactive_sections = {
+        lualine_c = { filename },
+      },
+      extensions = {
+        "dashboard",
+        "fugitive",
+        "lazy",
+        "quickfix",
+        "terminal",
+        "trouble",
+      },
     },
   },
-  config = function(_, opts)
-    -- Invert tabline separators before loading plugin
-    opts.tabline = process_sections(opts.tabline)
-    require("lualine").setup(opts)
-  end,
-  opts = {
-    options = {
-      component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
-    },
-    sections = {
-      lualine_a = { mode },
-      lualine_b = { branch, diff },
-      lualine_c = { filename },
-      lualine_x = { lsp_info, diagnostics },
-      lualine_y = { "filetype", "encoding", "fileformat" },
-      lualine_z = { "location" },
-    },
-    tabline = {
-      lualine_a = { insert_string("") },
-      lualine_b = { windows },
-      lualine_y = { tabs },
-      lualine_z = { insert_string("") },
-    },
-    inactive_sections = {
-      lualine_c = { filename },
-    },
-    extensions = {
-      "dashboard",
-      "fugitive",
-      "lazy",
-      "quickfix",
-      "terminal",
-      "trouble",
-    },
+  { -- A performant LSP progress status for Neovim
+    "linrongbin16/lsp-progress.nvim",
+    event = { "LspAttach" },
+    dependencies = { "nvim-lualine/lualine.nvim" },
+    opts = { client_format = client_format },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        desc = "listen for lsp-progress event and refresh lualine",
+        group = vim.api.nvim_create_augroup("Lualine_LspProgressUpdate", {}),
+        pattern = "LspProgressStatusUpdated",
+        callback = require("lualine").refresh,
+      })
+    end,
   },
 }

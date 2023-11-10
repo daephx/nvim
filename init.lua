@@ -15,6 +15,7 @@ require("config.keymaps")
 require("config.autocmds")
 require("config.terminal")
 require("config.colors")
+require("config.icons")
 require("config.lazy")
 
 -- Apply colorscheme

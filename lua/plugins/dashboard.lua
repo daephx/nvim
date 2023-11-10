@@ -86,7 +86,7 @@ return {
   init = function()
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Apply local settings to Dashboard buffer",
-      group = vim.api.nvim_create_augroup("DashboardBuffer", {}),
+      group = vim.api.nvim_create_augroup("Dashboard_ftplugin", {}),
       pattern = "dashboard",
       callback = function(ev)
         vim.opt_local.fillchars = { eob = " " }

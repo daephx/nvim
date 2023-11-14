@@ -1,28 +1,24 @@
 -- hop.nvim | Neovim motions on speed!
--- https://github.com/phaazon/hop.nvim
+-- https://github.com/smoka7/hop.nvim
+
+local search_line = function()
+  require("hop").hint_char1({
+    current_line_only = true,
+    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+  })
+end
+
+local search_buffer = function()
+  require("hop").hint_char1({ current_line_only = false })
+end
 
 return {
-  "phaazon/hop.nvim",
-  branch = "v2",
+  "smoka7/hop.nvim",
+  version = "*",
   event = { "BufReadPost", "BufNewFile" },
   config = true,
   keys = {
-    {
-      "f",
-      function()
-        require("hop").hint_char1({
-          direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-          current_line_only = true,
-        })
-      end,
-      desc = "Hop line",
-    },
-    {
-      "F",
-      function()
-        require("hop").hint_char1({ current_line_only = false })
-      end,
-      desc = "Hop buffer",
-    },
+    { "f", search_line, desc = "Hop line" },
+    { "F", search_buffer, desc = "Hop buffer" },
   },
 }

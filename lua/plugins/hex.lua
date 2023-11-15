@@ -5,4 +5,5 @@ return {
   "RaafatTurki/hex.nvim",
   cmd = { "HexAssemble", "HexDump", "HexToggle" },
   event = { "BufReadPre", "BufNewFile" },
+  config = true,
 }

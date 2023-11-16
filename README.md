@@ -2,7 +2,7 @@
 <h1>Neovim Configuration</h1>
 
 [![Neovim](https://img.shields.io/github/v/release/neovim/neovim?include_prereleases&style=for-the-badge&label=Neovim&logo=neovim&labelColor=000000)](https://github.com/neovim/neovim/releases/tag/nightly)
-[![Actions](https://img.shields.io/github/actions/workflow/status/daephx/nvim/lint.yml?branch=main&label=CI&style=for-the-badge&logo=githubactions&labelColor=000000)](https://github.com/daephx/nvim/actions)
+[![Actions](https://img.shields.io/github/actions/workflow/status/daephx/nvim/ci.yml?branch=main&label=CI&style=for-the-badge&logo=githubactions&labelColor=000000)](https://github.com/daephx/nvim/actions)
 [![Languages](https://img.shields.io/github/languages/top/daephx/nvim?style=for-the-badge&labelColor=000000&logo=lua&logoColor=blue)](https://github.com/daephx/nvim/search?l=lua)
 [![Size](https://img.shields.io/github/languages/code-size/daephx/nvim?label=Size&style=for-the-badge&labelColor=000000)](#)
 [![License](https://img.shields.io/github/license/daephx/nvim?&label=License&style=for-the-badge&color=8937dd&labelColor=000000)](https://github.com/daephx/nvim/blob/main/LICENSE)

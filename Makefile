@@ -54,5 +54,5 @@ test: mktemp ## Run testing framework: plenary
 format: ## Run formatter: stylua
 	@stylua after/ lua/ init.lua
 
-lint: ## Run linter: luacheck
+lint: ## Run linter: selene
 	@selene after/ lua/ init.lua

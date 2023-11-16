@@ -1,0 +1,7 @@
+{
+  "printf": {
+    "prefix": "printf",
+    "body": "printf \"${0:message}\n\"",
+    "description": "Print a formatted message."
+  }
+}

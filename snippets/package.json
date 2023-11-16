@@ -7,44 +7,22 @@
   "contributes": {
     "snippets": [
       {
-        "language": "all",
-        "path": "./all.json"
+        "language": [
+          "all",
+          "global",
+          "html",
+          "markdown",
+          "plaintext",
+          "tex"
+        ],
+        "path": "./global.json"
       },
       {
         "language": [
-          "sh",
-          "zsh"
+          "ahk",
+          "autohotkey"
         ],
-        "path": "./sh.json"
-      },
-      {
-        "language": "zsh",
-        "path": "./zsh.json"
-      },
-      {
-        "language": "fish",
-        "path": "./fish.json"
-      },
-      {
-        "language": [
-          "markdown"
-        ],
-        "path": "./markdown.json"
-      },
-      {
-        "language": [
-          "gitcommit",
-          "NeogitCommitMessage"
-        ],
-        "path": "./gitcommit.json"
-      },
-      {
-        "language": "html",
-        "path": "./html.json"
-      },
-      {
-        "language": "json",
-        "path": "./json.json"
+        "path": "./autohotkey.json"
       },
       {
         "language": "c",
@@ -62,27 +40,51 @@
         "path": "./csharp.json"
       },
       {
-        "language": "lua",
-        "path": "./lua.json"
-      },
-      {
         "language": "go",
         "path": "./go.json"
       },
       {
-        "language": "sql",
-        "path": "./sql.json"
+        "language": "java",
+        "path": "./java.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./javascript.json"
+      },
+      {
+        "language": "lua",
+        "path": "./lua.json"
       },
       {
         "language": [
-          "py",
-          "python"
+          "markdown",
+          "rmd"
         ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": [
+          "powershell",
+          "ps1"
+        ],
+        "path": "./powershell.json"
+      },
+      {
+        "language": "python",
         "path": "./python.json"
       },
       {
-        "language": "powershell",
-        "path": "./powershell.json"
+        "language": [
+          "shellscript",
+          "shell",
+          "sh",
+          "zsh"
+        ],
+        "path": "./shell.json"
+      },
+      {
+        "language": "vim",
+        "path": "./vim.json"
       }
     ]
   }

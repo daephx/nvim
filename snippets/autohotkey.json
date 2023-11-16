@@ -1,29 +1,64 @@
 {
-  "template: AutoHotkey script": {
-    "prefix": "template: AutoHotkey script",
+  "Documentation Header": {
+    "prefix": ["skeleton", "st", "starter"],
     "body": [
-      "/*",
-      " *  Starting Script:",
-      " *  This is just a jumping off point I like to have automatically created!",
-      " *  Uncomment the functionality you desire or remove the rest.",
-      " *  For more information see the Documentation: https://www.autohotkey.com/docs/AutoHotkey.html",
-      "**/",
-      "; #KeyHistory, 0 ; To disable key history, specify the following line anywhere in the script.",
-      "; #MaxThreadsPerHotkey, 1 ; no re-entrant hotkey handling",
-      "; #NoTrayIcon ; Disables the showing of a tray icon.",
+      "; ==============================================================================",
+      "; Title .........: ${1:FILE_NAME / FUNCTION_NAME / CLASS_NAME}",
+      "; Description ...: ${2:Description}",
+      "; Version .......: ${3:v0.1.0}",
+      "; AHK Version ...: 1.1.36.02 x64 Unicode",
+      "; OS Version ....: Windows 10 Professional x64",
+      "; Language ......: English (en-US)",
+      "; Licence .......: Unlicense <https://en.wikipedia.org/wiki/Unlicense>",
+      "; Author(s) .....: ${4:FirstName LastName <email@address.xyz>",
+      "; =============================================================================="
+    ],
+    "description": "An comment block including script information such as title, description, version, etc."
+  },
+  "Starter Template": {
+    "prefix": ["skeleton", "st", "starter"],
+    "body": [
+      "#NoEnv ; Avoids checking empty variables to see if they are environment variables (recommended for all new scripts).",
+      "; #NoTrayIcon ; Uncomment to disable this script from showing in the system tray.",
       "#SingleInstance, Force ; Determines whether a script is allowed to run again when it is already running.",
+      "#Warn ; Enable warnings to assist with detecting common errors",
+      "ListLines, Off ; Displays the script lines most recently executed.",
+      "SendMode Input ; Forces Send and SendRaw to use SendInput buffering for speed.",
+      "SetBatchLines, -1 ; Run script at maximum speed: 10ms default || -1 to never sleep",
+      "SetTitleMatchMode, 3 ; A window's title must exactly match WinTitle to be a match.",
+      "SetWorkingDir, % A_ScriptDir ; Changes the script's current working directory.",
+      "SplitPath, A_ScriptName,,,, A_AppName ; Get the current script name without it's extension.",
+      "OnExit, ScriptExit ; Run a subroutine or function automatically when the script exits",
+      "",
+      "return ; End automatic execution",
+      "",
+      "GuiClose:",
+      "GuiEscape:",
+      "ScriptExit:",
+      "ExitApp"
+    ],
+    "description": "Standard starter template for a tiny AutoHotkey program"
+  },
+  "Script Options": {
+    "prefix": ["options"],
+    "body": [
+      "; #KeyHistory, 0 ; Disable key history, specify the following line anywhere in the script.",
+      "; #MaxThreadsPerHotkey, 1 ; No re-entrant hotkey handling",
+      "#NoEnv ; Avoids checking empty variables to see if they are environment variables (recommended for all new scripts).",
+      "; #NoTrayIcon ; Uncomment to disable this script from showing in the system tray.",
+      "#SingleInstance, Force ; Determines whether a script is allowed to run again when it is already running.",
+      "#Warn ; Enable warnings to assist with detecting common errors",
       "; DetectHiddenWindows, On ; Determines whether invisible windows are \"seen\" by the script.",
       "ListLines, Off ; Displays the script lines most recently executed.",
       "SendMode Input ; Forces Send and SendRaw to use SendInput buffering for speed.",
-      "; SetBatchLines, -1 ; 10ms default || -1 to never sleep (i.e. maximum speed).",
+      "SetBatchLines, -1 ; Run script at maximum speed: 10ms default || -1 to never sleep",
       "; SetKeyDelay, -1, -1 ; Remove short delay done automatically after every keystroke sent by Send or ControlSend",
       "; SetMouseDelay, -1 ; Remove short delay done automatically after Click and MouseMove/Click/Drag",
       "SetTitleMatchMode, 3 ; A window's title must exactly match WinTitle to be a match.",
       "; SetWinDelay, -1 ; Remove short delay done automatically after every windowing command except IfWinActive and IfWinExist",
       "SetWorkingDir, % A_ScriptDir ; Changes the script's current working directory.",
-      "SplitPath, A_ScriptName,,,, A_AppName ; Get the current script name without it's extension.",
-      ""
+      "SplitPath, A_ScriptName,,,, A_AppName ; Get the current script name without it's extension."
     ],
-    "description": "Quickly create a new AutoHotkey script from this template. Contains a few toggle-able optimization features!"
+    "description": "Insert a list of script options and directives for AutoHotkey v1."
   }
 }

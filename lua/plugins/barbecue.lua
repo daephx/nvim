@@ -15,7 +15,6 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    kinds = require("config.icons").kinds,
     show_modified = true,
     attach_navic = false,
     create_autocmd = false,
@@ -44,6 +43,7 @@ return {
     })
   end,
   config = function(_, opts)
+    opts.kinds = require("config.icons").kinds
     require("barbecue").setup(opts)
 
     vim.api.nvim_create_autocmd({

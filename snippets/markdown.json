@@ -1,132 +1,17 @@
 {
-  "header 1": {
-    "prefix": "h1",
-    "body": ["# ${0}"],
-    "description": "Insert header level 1"
-  },
-  "header 2": {
-    "prefix": "h2",
-    "body": ["## ${0}"],
-    "description": "Insert header level 2"
-  },
-  "header 3": {
-    "prefix": "h3",
-    "body": ["### ${0}"],
-    "description": "Insert header level 3"
-  },
-  "header 4": {
-    "prefix": "h4",
-    "body": ["#### ${0}"],
-    "description": "Insert header level 4"
-  },
-  "header 5": {
-    "prefix": "h5",
-    "body": ["##### ${0}"],
-    "description": "Insert header level 5"
-  },
-  "header 6": {
-    "prefix": "h6",
-    "body": ["###### ${0}"],
-    "description": "Insert header level 6"
-  },
-  "Links": {
-    "prefix": ["l", "link"],
-    "body": ["[${1}](${2}) ${0}"],
-    "description": "Insert links"
-  },
-  "URLS": {
-    "prefix": ["u", "url"],
-    "body": ["<${1}> ${0}"],
-    "description": "Insert urls"
-  },
   "Images": {
     "prefix": ["img", "image"],
-    "body": ["![${1}](${2}) ${0}"],
-    "description": "Insert images"
-  },
-  "strike-through": {
-    "prefix": "strike-through",
-    "body": "~~${1}~~ ${0}",
-    "description": "Insert strike-through text"
-  },
-  "bold text": {
-    "prefix": ["bold", "b"],
-    "body": "**${1}** $0",
-    "description": "Insert bold text"
-  },
-  "italic text": {
-    "prefix": ["i", "italic"],
-    "body": "*${1}* $0",
-    "description": "Insert italic text"
-  },
-  "bold and italic text": {
-    "prefix": ["bold and italic", "bi"],
-    "body": "***${1}*** $0",
-    "description": "Insert bold and italic text"
-  },
-  "quoted text": {
-    "prefix": "quote",
-    "body": "> ${1}",
-    "description": "Insert quoted text"
-  },
-  "code": {
-    "prefix": "code",
-    "body": "`${1}` $0",
-    "description": "Insert code"
-  },
-  "code block": {
-    "prefix": "block",
-    "body": ["```${1:lang}", "$0", "```"],
-    "description": "Insert fenced code block"
-  },
-  "unordered list": {
-    "prefix": "ul",
-    "body": ["- ${1:first}", "- ${2:second}", "- ${3:third}", "$0"],
-    "description": "Insert unordered list"
-  },
-  "ordered list": {
-    "prefix": "ol",
-    "body": ["1. ${1:first}", "2. ${2:second}", "3. ${3:third}", "$0"],
-    "description": "Insert ordered list"
-  },
-  "task list": {
-    "prefix": "task",
-    "body": ["- [${1| ,x|}] ${2:text}", "${0}"],
-    "description": "Insert task list"
-  },
-  "table (2x1)": {
-    "prefix": "table2x1",
-    "body": [
-      "| ${1:Column1}  |",
-      "|-------------- |",
-      "| ${2:Item1}    |",
-      "${0}"
-    ],
-    "description": "Insert table with 2 rows and 1 column. First row is heading."
-  },
-  "table (2x2)": {
-    "prefix": "table2x2",
-    "body": [
-      "| ${1:Column1}   | ${2:Column2}    |",
-      "|--------------- | --------------- |",
-      "| ${3:Item1.1}   | ${4:Item2.1}   |",
-      "${0}"
-    ],
-    "description": "Insert table with 2 rows and 2 columns. First row is heading."
-  },
-  "table (2x3)": {
-    "prefix": "table2x3",
-    "body": [
-      "| ${1:Column1}    | ${2:Column2}    | ${3:Column3}    |",
-      "|---------------- | --------------- | --------------- |",
-      "| ${4:Item1.1}    | ${5:Item2.1}    | ${6:Item3.1}    |",
-      "${0}"
-    ],
-    "description": "Insert table with 2 rows and 3 columns. First row is heading."
+    "body": ["![${1:alt text}](${2:path}) ${0}"],
+    "description": "Add images"
   },
   "details": {
     "prefix": "details",
-    "body": ["<details>", "  <summary>$1</summary>", "", "</details>"],
+    "body": [
+      "<details>",
+      "  <summary>${1:summary}</summary>",
+      "${0:content}",
+      "</details>"
+    ],
     "description": "Insert collapsible details"
   }
 }

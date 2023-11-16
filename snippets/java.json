@@ -1,7 +1,7 @@
 {
   "PrintLn": {
-    "prefix": "print",
+    "prefix": "println",
     "body": ["System.out.println(${0});"],
-    "description": "Print string"
+    "description": "Print to standard out"
   }
 }

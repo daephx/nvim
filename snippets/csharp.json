@@ -1,6 +1,6 @@
 {
-  "Creates a Hello World sample": {
-    "prefix": "#helloworld",
+  "Starter Template": {
+    "prefix": ["skeleton", "st", "starter"],
     "body": [
       "using System;",
       "",
@@ -15,19 +15,21 @@
       "\t}",
       "}"
     ],
-    "description": "Creates a 'Hello World' sample"
+    "description": "Standard starter template for a tiny C# program"
   },
-  "Console.WriteLine": {
-    "prefix": ["print", "writeln"],
-    "body": ["System.Console.WriteLine(${0});"],
-    "description": "Console.Writeline"
-  },
-  "Public main class": {
+  "main": {
     "prefix": "main",
     "body": [
-      "public static void Main()\n{",
-      "\tSystem.Console.WriteLine(\"Hello\");\n}"
+      "public static void Main(string[] args)",
+      "{",
+      "\tConsole.WriteLine(\"Hello, World!\");",
+      "}"
     ],
-    "description": "Public main class"
+    "description": "Public static main method"
+  },
+  "Console.WriteLine": {
+    "prefix": ["cw", "print", "writeln"],
+    "body": ["Console.WriteLine($0);"],
+    "description": "Console.WriteLine"
   }
 }

@@ -1,12 +1,17 @@
 {
-  "Comment Section": {
-    "prefix": ["cm", "comment"],
-    "body": "/* ${0} */",
-    "description": "Create a multi line comment"
-  },
-  "printf": {
-    "prefix": "print",
-    "body": ["printf(${0});"],
-    "description": "Create printf statement"
+  "Starter Template": {
+    "prefix": ["skeleton", "st", "starter"],
+    "body": [
+      "#include <stdbool.h>",
+      "#include <stdio.h>",
+      "#include <stdlib.h>",
+      "",
+      "int main(int argc, char *argv[])",
+      "{$0",
+      "",
+      "\treturn EXIT_SUCCESS;",
+      "}"
+    ],
+    "description": "Standard starter template for a tiny C program"
   }
 }

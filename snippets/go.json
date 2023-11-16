@@ -1,23 +1,16 @@
 {
-  "Skeleton Template": {
-    "prefix": ["main", "skel"],
+  "Starter Template": {
+    "prefix": ["skeleton", "st", "starter"],
     "body": [
-      "package main",
+      "package main\n",
       "import (\n\t\"fmt\"\n)\n",
-      "func main() {",
-      "\tfmt.Println(\"hello\")",
-      "}"
+      "func main() {\n\tfmt.Println(\"Hello, World!\")\n}"
     ],
-    "description": ""
+    "description": "Standard starter template for a tiny Go program"
   },
-  "For loop i": {
-    "prefix": "fori",
-    "body": ["for i := ${1}; i < n; i++ {", "\t${0}\n}"],
-    "description": ""
-  },
-  "Println": {
-    "prefix": "println",
-    "body": ["fmt.Println(${1})${0}"],
-    "description": "Fmt.PrintLn"
+  "fmt.Println": {
+    "prefix": ["fp", "println"],
+    "body": "fmt.Println(\"$1\")",
+    "description": "Snippet for fmt.Println()"
   }
 }

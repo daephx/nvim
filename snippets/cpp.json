@@ -1,14 +1,15 @@
 {
-  "skeleton": {
-    "prefix": ["main", "skel"],
+  "Starter Template": {
+    "prefix": ["skeleton", "st", "starter"],
     "body": [
       "#include <iostream>",
-      "using namespace std;",
-      "\n",
-      "int main() {",
-      "\t\t${0}}",
-      "\t\trn 0;"
+      "",
+      "int main (int argc, char *argv[]) {",
+      "\t$1",
+      "",
+      "\treturn 0;",
+      "}"
     ],
-    "description": ""
+    "description": "Standard starter template for a tiny C++ program"
   }
 }

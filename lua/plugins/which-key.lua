@@ -6,12 +6,8 @@ return {
   version = "*",
   event = "VeryLazy",
   opts = {
-    plugins = {
-      spelling = {
-        enabled = true,
-        suggestions = 20,
-      },
-    },
+    plugins = { spelling = true },
+    window = { border = { "", "_", "", "", "", "", "", "" } },
     operators = { gc = "Comments" },
     key_labels = {
       ["<bs>"] = "BS",
@@ -19,14 +15,7 @@ return {
       ["<space>"] = "SPC",
       ["<tab>"] = "TAB",
     },
-    window = {
-      border = { "", "_", "", "", "", "", "", "" },
-    },
-  },
-  config = function(_, opts)
-    local wk = require("which-key")
-    wk.setup(opts)
-    wk.register({
+    defaults = {
       mode = { "n", "v" },
       ["["] = { name = "+prev" },
       ["]"] = { name = "+next" },
@@ -43,6 +32,11 @@ return {
       ["<leader>s"] = { name = "+sessions" },
       ["<leader>t"] = { name = "+terminal" },
       ["<leader>z"] = { name = "+notes" },
-    })
+    },
+  },
+  config = function(_, opts)
+    local wk = require("which-key")
+    wk.setup(opts)
+    wk.register(opts.defaults)
   end,
 }

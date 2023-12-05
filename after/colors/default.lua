@@ -1,34 +1,57 @@
 local M = {}
 
 M.colors = {
-  Normal = { bg = "none", fg = "Grey93" },
-  ColorColumn = { bg = "Gray10" },
-  CursorLineNr = { fg = "Gold", underline = false },
-  CursorLine = { bg = "Gray15" },
-  LineNr = { fg = "Gray30" },
-  NonText = { fg = "Gray15" },
-  SignColumn = { bg = "none" },
-  VertSplit = { fg = "Gray27" },
-  FloatBorder = { fg = "Gray" },
-  Visual = { bg = "Gray20" },
+  ColorColumn = { bg = "NvimDarkBlue" },
+  Constant = { fg = "NvimLightRed" },
+  CursorLineNr = { ctermfg = 222, fg = "NvimLightYellow" },
+  FloatBorder = { link = "WinSeparator" },
+  NonText = { ctermfg = 239, fg = "Gray15" },
+  Normal = { ctermfg = 253, bg = "none", fg = "NvimLightGrey2" },
+  PmenuSel = { bg = "NvimDarkGrey3" },
+  Statement = { fg = "NvimLightMagenta" },
+  StatusLine = { bg = "none" },
+  Type = { fg = "NvimLightCyan" },
+  WinSeparator = { ctermfg = 236, fg = "NvimDarkGrey3" },
 
-  DiffAdd = { link = "Type" },
-  DiffChange = { link = "Statement" },
-  DiffDelete = { fg = "Red", bg = "none" },
+  -- Git
+  GitSignsAdd = { ctermfg = 157, fg = "NvimLightGreen", bold = true },
+  GitSignsChange = { ctermfg = 222, fg = "NvimLightYellow", bold = true },
+  GitSignsDelete = { ctermfg = 217, fg = "NvimLightRed", bold = true },
 
-  -- Telescope
-  TelescopeNormal = { link = "Normal" },
-  TelescopePreviewBorder = { fg = "Gray" },
-  TelescopePromptBorder = { fg = "Gray" },
-  TelescopeResultsBorder = { fg = "Gray" },
-  TelescopeSelection = { bg = "Gray23" },
+  -- LSP
+  ["@lsp.mod.defaultLibrary.lua"] = { link = "@namespace" },
 
-  -- Indent Blankline
-  IndentBlanklineChar = { link = "LineNr" },
+  -- Treesitter
+  ["@variable"] = { link = "Identifier" },
 
-  -- Whichkey
-  WhichKey = { link = "Define" },
-  -- WhichKeyFloat = { bg = "none" },
+  -- Rainbow Delimiters
+  RainbowDelimiterBlue = { fg = "NvimLightBlue", nocombine = true },
+  RainbowDelimiterCyan = { fg = "NvimLightCyan", nocombine = true },
+  RainbowDelimiterGreen = { fg = "NvimLightGreen", nocombine = true },
+  RainbowDelimiterOrange = { ctermfg = 221, fg = "LightGoldenrod2", nocombine = true },
+  RainbowDelimiterPink = { ctermfg = 210, fg = "LightCoral", nocombine = true },
+  RainbowDelimiterRed = { fg = "NvimLightRed", nocombine = true },
+  RainbowDelimiterViolet = { fg = "NvimLightMagenta", nocombine = true },
+  RainbowDelimiterYellow = { fg = "NvimLightYellow", nocombine = true },
+
+  -- Dashboard
+  DashboardHeader = { link = "Special" },
+  DashboardDesc = { link = "String" },
+  DashboardFooter = { link = "Comment" },
+  DashboardIcon = { link = "String" },
+  DashboardShortCut = { link = "Keyword" },
 }
+
+-- Neovim 0.10+ introduces a new default colorscheme.
+-- In older versions, `default` refers to the old scheme, now renamed `vim` in newer versions.
+-- Support older versions by loading the appropriate color definitions.
+if vim.fn.has("nvim-0.10") == 0 then
+  M.colors = require("after.colors.vim")
+end
+
+-- Don't modify Normal if background is set to light mode.
+if vim.o.background == "light" then
+  M.colors["Normal"] = nil
+end
 
 return M

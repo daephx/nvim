@@ -198,6 +198,7 @@ autotag
 autowrap
 avi
 aws
+ayu
 az
 azfunc
 backend
@@ -252,6 +253,7 @@ calloc
 capcheck
 capslock
 cascadia
+catppuccin
 cbfmt
 cd
 cdpath
@@ -352,6 +354,7 @@ csproj
 css
 cssls
 csx
+cterm
 ctermbg
 ctermfg
 ctime
@@ -407,6 +410,7 @@ diffadd
 diffopt
 diffopts
 diffsplit
+diffthis
 difftool
 difftools
 diffview
@@ -418,6 +422,7 @@ dirs
 dirtytalk
 disassembly
 distro
+distrobox
 django
 dl
 dll
@@ -676,6 +681,8 @@ htpasswd
 htpc
 http
 https
+huggingchat
+huggingface
 ibl
 ico
 icursor
@@ -846,6 +853,7 @@ luarc
 luarocks
 luasnip
 luaver
+macchiato
 macchina
 macos
 magical8bit
@@ -959,6 +967,7 @@ nop
 nopasswd
 noplainbuffer
 noprofile
+noqa
 noremap
 noreply
 norg

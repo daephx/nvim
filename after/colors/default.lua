@@ -1,3 +1,5 @@
+-- Define colors for builtin colorscheme: default
+
 local M = {}
 
 M.colors = {
@@ -26,5 +28,15 @@ M.colors = {
   TelescopePromptBorder = { link = "WinSeparator" },
   TelescopeResultsBorder = { link = "WinSeparator" },
 }
+
+-- Ensure background is always dark for default colorscheme
+vim.opt.background = "dark"
+
+-- Neovim 0.10+ introduces a new default colorscheme.
+-- In older versions, `default` refers to the old scheme, now renamed `vim` in newer versions.
+-- Support older versions by loading the appropriate color definitions.
+if vim.fn.has("nvim-0.10") == 0 then
+  M.colors = require("after.colors.vim")
+end
 
 return M

@@ -1,34 +1,30 @@
 local M = {}
 
 M.colors = {
-  Normal = { bg = "none", fg = "Grey93" },
-  ColorColumn = { bg = "Gray10" },
-  CursorLineNr = { fg = "Gold", underline = false },
-  CursorLine = { bg = "Gray15" },
-  LineNr = { fg = "Gray30" },
-  NonText = { fg = "Gray15" },
-  SignColumn = { bg = "none" },
-  VertSplit = { fg = "Gray27" },
-  FloatBorder = { fg = "Gray" },
-  Visual = { bg = "Gray20" },
+  Normal = { ctermfg = 253, bg = "none", fg = "NvimLightGrey2" },
+  CursorLineNr = { ctermfg = 222, fg = "NvimLightYellow" },
+  FloatBorder = { link = "WinSeparator" },
+  NonText = { ctermfg = 239, fg = "Gray15" },
+  WinSeparator = { ctermfg = 236, fg = "NvimDarkGrey3" },
 
-  DiffAdd = { link = "Type" },
-  DiffChange = { link = "Statement" },
-  DiffDelete = { fg = "Red", bg = "none" },
+  GitSignsAdd = { ctermfg = 157, fg = "NvimLightGreen", bold = true },
+  GitSignsChange = { ctermfg = 222, fg = "NvimLightYellow", bold = true },
+  GitSignsDelete = { ctermfg = 217, fg = "NvimLightRed", bold = true },
+
+  -- Dashboard
+  DashboardHeader = { link = "Comment" },
+  DashboardDesc = { link = "String" },
+  DashboardFooter = { link = "Comment" },
+  DashboardIcon = { link = "String" },
+  DashboardShortCut = { link = "Keyword" },
+  DashboardKey = {},
 
   -- Telescope
-  TelescopeNormal = { link = "Normal" },
-  TelescopePreviewBorder = { fg = "Gray" },
-  TelescopePromptBorder = { fg = "Gray" },
-  TelescopeResultsBorder = { fg = "Gray" },
-  TelescopeSelection = { bg = "Gray23" },
-
-  -- Indent Blankline
-  IndentBlanklineChar = { link = "LineNr" },
-
-  -- Whichkey
-  WhichKey = { link = "Define" },
-  -- WhichKeyFloat = { bg = "none" },
+  TelescopeBorder = { ctermfg = 253, fg = "NvimLightGrey2" },
+  TelescopeSelection = { ctermbg = 236, bg = "NvimDarkGrey3" },
+  TelescopePreviewBorder = { link = "WinSeparator" },
+  TelescopePromptBorder = { link = "WinSeparator" },
+  TelescopeResultsBorder = { link = "WinSeparator" },
 }
 
 return M

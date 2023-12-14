@@ -20,10 +20,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     cmd = { "LspInstall", "LspUninstall" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig",
-    },
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
       automatic_installation = false,
       ensure_installed = {
@@ -45,10 +42,7 @@ return {
   {
     "jayp0521/mason-null-ls.nvim",
     cmd = { "NullLsInstall", "NullLsUninstall" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
-    },
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
       automatic_installation = false,
       ensure_installed = {
@@ -67,10 +61,7 @@ return {
   {
     "jay-babu/mason-nvim-dap.nvim",
     cmd = { "DapInstall", "DapUninstall" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "mfussenegger/nvim-dap",
-    },
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
       automatic_installation = false,
       automatic_setup = true,

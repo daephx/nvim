@@ -27,6 +27,7 @@ return {
         EndOfBuffer = { fg = "#222222" },
         MsgSeparator = { link = "VertSplit" },
         SpecialChar = { fg = c.vscBlue },
+        WinSeparator = { link = "VertSplit" },
 
         -- Git status
         DiffAdd = { bg = "#212D19", fg = "none" },

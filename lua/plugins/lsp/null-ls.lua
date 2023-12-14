@@ -1,17 +1,31 @@
--- Null-ls | Neovim language server
--- https://github.com/jose-elias-alvarez/null-ls.nvim
-local null_ok, null_ls = pcall(require, "null-ls")
-if not null_ok then
-  return
-end
-
+-- none-ls | null-ls.nvim reloaded / Use Neovim as a language server
+-- https://github.com/nvimtools/none-ls.nvim
+local null_ls = require("null-ls")
 local on_attach = require("plugins.lsp.attach")
+
+-- Get list of null-ls sources
+vim.api.nvim_create_user_command("NullLsSources", function()
+  local sources = require("null-ls.sources")
+  vim.notify(vim.inspect(vim.tbl_map(function(source)
+    return source.name
+  end, sources.get_available(vim.bo.filetype))))
+end, {})
+
+-- Fix window options for null-ls-info eg. border
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Override window options for filetype: null-ls-info",
+  group = vim.api.nvim_create_augroup("NullLsInfoBuffer", {}),
+  pattern = "null-ls-info",
+  callback = function()
+    vim.api.nvim_win_set_config(0, { border = vim.g.border })
+  end,
+})
 
 local diagnostics = null_ls.builtins.diagnostics
 local formatting = null_ls.builtins.formatting
 local hover = null_ls.builtins.hover
 
-null_ls.setup({
+return {
   sources = {
     -- General
     diagnostics.write_good,
@@ -103,22 +117,4 @@ null_ls.setup({
     vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
     on_attach(client, bufnr)
   end,
-})
-
--- Get list of null-ls sources
-vim.api.nvim_create_user_command("NullLsSources", function()
-  local sources = require("null-ls.sources")
-  vim.notify(vim.inspect(vim.tbl_map(function(source)
-    return source.name
-  end, sources.get_available(vim.bo.filetype))))
-end, {})
-
--- Override window options for null-ls info
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Override window options for null-ls info",
-  group = vim.api.nvim_create_augroup("NullLsInfoBuffer", {}),
-  pattern = "null-ls-info",
-  callback = function()
-    vim.api.nvim_win_set_config(0, { border = vim.g.border })
-  end,
-})
+}

@@ -77,7 +77,7 @@ return {
     end,
   },
   { -- Use Neovim as a language server
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       -- Collection of useful lua functions
@@ -86,7 +86,9 @@ return {
       { "jayp0521/mason-null-ls.nvim" },
     },
     config = function()
-      require("plugins.lsp.null-ls")
+      local null_ls = require("null-ls")
+      local opts = require("plugins.lsp.null-ls")
+      null_ls.setup(opts)
     end,
   },
   { -- LSP signature hint as you type

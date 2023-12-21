@@ -1,2 +1,5 @@
-std = "lua51+vim"
+std = "vim"
 exclude = ["lua/scratch/*"]
+
+[lints]
+mixed_table = "allow"

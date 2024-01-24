@@ -109,7 +109,7 @@ autocmd({ "FileType" }, {
   callback = function(ev)
     local exclude = { "", "diff", "prompt", "terminal", "undotree" }
     local is_eligible = vim.bo.readonly or vim.bo.modifiable == false or vim.wo.previewwindow
-    if is_eligible and not vim.list_contains(exclude, vim.bo.buftype) then
+    if is_eligible and not vim.tbl_contains(exclude, vim.bo.buftype) then
       vim.api.nvim_buf_set_option(ev.buf, "buflisted", false)
       vim.api.nvim_buf_set_keymap(ev.buf, "n", "q", "<cmd>close<cr>", { silent = true })
     end

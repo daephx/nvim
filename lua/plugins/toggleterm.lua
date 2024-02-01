@@ -58,8 +58,6 @@ return {
     { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
     { "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
   },
-  -- Terminals exposed in spec for easy access
-  terminals = terminals,
   config = function(_, opts)
     require("toggleterm").setup(opts)
     initialize_terminals(opts)

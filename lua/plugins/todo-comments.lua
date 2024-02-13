@@ -11,9 +11,12 @@ return {
   },
   -- stylua: ignore
   keys = {
-    { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
     { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-    { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Search Todo comments" },
+    { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+    { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+    { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+    { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+    { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
   },
   opts = {
     keywords = {

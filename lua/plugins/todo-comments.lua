@@ -51,10 +51,9 @@ return {
   config = function(_, opts)
     require("todo-comments").setup(opts)
 
-    local group = vim.api.nvim_create_augroup("TodoCommentHooks", {})
     vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
       desc = "Remove default todo higroup",
-      group = group,
+      group = vim.api.nvim_create_augroup("Todo#RemoveDefaultHigroup", {}),
       callback = function()
         vim.api.nvim_set_hl(0, "Todo", {})
       end,

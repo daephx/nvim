@@ -48,9 +48,7 @@ return {
       pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]],
     },
   },
-  config = function(_, opts)
-    require("todo-comments").setup(opts)
-
+  init = function()
     vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
       desc = "Remove default todo higroup",
       group = vim.api.nvim_create_augroup("Todo#RemoveDefaultHigroup", {}),

@@ -27,8 +27,8 @@ return {
       WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
     },
     highlight = {
-      keyword = "wide", -- "fg", "bg", "wide" or empty.
-      after = "fg", -- "fg" or "bg" or empty
+      keyword = "fg", -- "fg", "bg", "wide" or empty.
+      after = "", -- "fg" or "bg" or empty
       pattern = [[.*<(KEYWORDS)(\(.*\))?:]],
       comments_only = true,
       exclude = { -- list of file types to exclude highlighting

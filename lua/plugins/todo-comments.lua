@@ -20,11 +20,11 @@ return {
     sign_priority = 8,
     keywords = {
       FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" } },
-      TODO = { icon = " ", color = "info", alt = { "WIP" } },
       HACK = { icon = " ", color = "warning" },
-      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-      PERF = { icon = "󰅒 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
       NOTE = { icon = "󰍨 ", color = "hint", alt = { "INFO" } },
+      PERF = { icon = "󰅒 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      TODO = { icon = " ", color = "info", alt = { "WIP" } },
+      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
     },
     highlight = {
       keyword = "wide", -- "fg", "bg", "wide" or empty.

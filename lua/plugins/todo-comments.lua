@@ -31,11 +31,8 @@ return {
       after = "", -- "fg" or "bg" or empty
       pattern = [[.*<(KEYWORDS)(\(.*\))?:]],
       comments_only = true,
-      exclude = { -- list of file types to exclude highlighting
-        "help",
-        "log",
-        "vim",
-      },
+      -- list of file types to exclude highlighting
+      exclude = { "help", "log" },
     },
     search = {
       -- regex that will be used to match keywords.

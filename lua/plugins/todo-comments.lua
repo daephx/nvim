@@ -5,7 +5,10 @@ return {
   "folke/todo-comments.nvim",
   cmd = { "TodoTrouble", "TodoTelescope" },
   event = { "BufReadPost", "BufNewFile" },
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    -- Collection of useful lua functions
+    { "nvim-lua/plenary.nvim" },
+  },
   -- stylua: ignore
   keys = {
     { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },

@@ -16,13 +16,12 @@ return {
     { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Search Todo comments" },
   },
   opts = {
-    signs = true, -- show icons in the signs column
-    sign_priority = 8,
     keywords = {
       FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" } },
-      HACK = { icon = " ", color = "warning" },
+      HACK = { icon = "󰈸 ", color = "warning" },
       NOTE = { icon = "󰍨 ", color = "hint", alt = { "INFO" } },
-      PERF = { icon = "󰅒 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      PERF = { icon = "󰓅 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      TEST = { icon = "󰂓 ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
       TODO = { icon = " ", color = "info", alt = { "WIP" } },
       WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
     },
@@ -30,9 +29,17 @@ return {
       keyword = "fg", -- "fg", "bg", "wide" or empty.
       after = "", -- "fg" or "bg" or empty
       pattern = [[.*<(KEYWORDS)(\(.*\))?:]],
-      comments_only = true,
+      comments_only = true,  -- uses treesitter to match keywords in comments only
       -- list of file types to exclude highlighting
       exclude = { "help", "log" },
+    },
+    colors = {
+      default = { "Include", "#7C3AED" },
+      error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+      hint = { "DiagnosticHint", "#10B981" },
+      info = { "DiagnosticInfo", "#2563EB" },
+      test = { "Include", "#FF00FF" },
+      warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
     },
     search = {
       -- regex that will be used to match keywords.

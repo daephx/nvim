@@ -19,11 +19,7 @@ return {
     signs = true, -- show icons in the signs column
     sign_priority = 8,
     keywords = {
-      FIX = {
-        icon = " ",
-        color = "error",
-        alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" },
-      },
+      FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" } },
       TODO = { icon = " ", color = "info", alt = { "WIP" } },
       HACK = { icon = " ", color = "warning" },
       WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },

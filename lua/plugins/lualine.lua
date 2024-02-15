@@ -100,8 +100,12 @@ local windows = {
   "windows",
   use_mode_colors = true,
   filetype_names = {
+    NvimTree = "NvimTree",
+    checkhealth = "checkhealth",
     fugitive = "Fugitive",
     lazy = "Lazy",
+    mason = "Mason",
+    tsplayground = "TSPlayground",
   },
 }
 

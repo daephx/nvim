@@ -85,10 +85,7 @@ local lsp_info = {
 local tabs = {
   "tabs",
   mode = 1,
-  tabs_color = {
-    active = "lualine_c_normal",
-    inactive = "lualine_c_inactive",
-  },
+  use_mode_colors = true,
   -- Display tab label as name if set else use tabnr
   fmt = function(_name, ctx)
     local ok, tabname = pcall(vim.api.nvim_tabpage_get_var, ctx.tabId, "tabname")
@@ -101,10 +98,7 @@ local tabs = {
 
 local windows = {
   "windows",
-  windows_color = {
-    active = "lualine_c_normal",
-    inactive = "lualine_c_inactive",
-  },
+  use_mode_colors = true,
   filetype_names = {
     fugitive = "Fugitive",
     lazy = "Lazy",

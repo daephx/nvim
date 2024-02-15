@@ -8,6 +8,13 @@ local mode = {
   end,
 }
 
+local filetype = {
+  "filetype",
+  icon_only = true,
+  component_sperator = "",
+  separator = "",
+}
+
 local encoding = {
   "encoding",
   fmt = function(str)
@@ -27,7 +34,9 @@ local fileformat = {
 local filename = {
   "filename",
   path = 1,
-  icon = { "󰋊" },
+  padding = 0,
+  separator = "",
+  component_separator = "",
 }
 
 local branch = {
@@ -163,9 +172,9 @@ return {
       sections = {
         lualine_a = { mode },
         lualine_b = { branch, diff },
-        lualine_c = { filename },
+        lualine_c = { filetype, filename },
         lualine_x = { lsp_info, diagnostics },
-        lualine_y = { "filetype", encoding, fileformat },
+        lualine_y = { encoding, fileformat },
         lualine_z = { "location" },
       },
       tabline = {
@@ -175,7 +184,7 @@ return {
         lualine_z = { insert_string("") },
       },
       inactive_sections = {
-        lualine_c = { filename },
+        lualine_c = { filetype, filename },
       },
       extensions = {
         "dashboard",

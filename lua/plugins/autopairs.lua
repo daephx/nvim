@@ -27,6 +27,7 @@ return {
         "confirm_done",
         cmp_npairs.on_confirm_done({
           filetypes = {
+            sh = false,
             ps1 = false,
             ["*"] = { -- "*" alias to all filetypes
               ["("] = {

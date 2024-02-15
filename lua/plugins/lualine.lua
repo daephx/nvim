@@ -8,6 +8,13 @@ local mode = {
   end,
 }
 
+local encoding = {
+  "encoding",
+  fmt = function(str)
+    return str:upper()
+  end,
+}
+
 local fileformat = {
   "fileformat",
   symbols = {
@@ -158,7 +165,7 @@ return {
         lualine_b = { branch, diff },
         lualine_c = { filename },
         lualine_x = { lsp_info, diagnostics },
-        lualine_y = { "filetype", "encoding", fileformat },
+        lualine_y = { "filetype", encoding, fileformat },
         lualine_z = { "location" },
       },
       tabline = {

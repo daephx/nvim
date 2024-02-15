@@ -8,6 +8,15 @@ local mode = {
   end,
 }
 
+local fileformat = {
+  "fileformat",
+  symbols = {
+    dos = "CRLF",
+    mac = "CR",
+    unix = "LF",
+  },
+}
+
 local filename = {
   "filename",
   path = 1,
@@ -149,7 +158,7 @@ return {
         lualine_b = { branch, diff },
         lualine_c = { filename },
         lualine_x = { lsp_info, diagnostics },
-        lualine_y = { "filetype", "encoding", "fileformat" },
+        lualine_y = { "filetype", "encoding", fileformat },
         lualine_z = { "location" },
       },
       tabline = {

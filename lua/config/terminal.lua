@@ -3,7 +3,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-local group = augroup("TerminalBuffers", {})
+local group = augroup("Term#Options", { clear = true })
 
 local set_terminal_options = function()
   vim.opt_local.spell = false

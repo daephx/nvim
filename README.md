@@ -41,6 +41,7 @@ Here is a list of plugin dependencies:
 | [mason.nvim](https://github.com/williamboman/mason.nvim)                 | `curl`, `wget`, `gzip`, `tar`, `unzip`                                                |
 | [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)       | [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) |
 | [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) | [npm](https://www.npmjs.com/)                                                         |
+| [octo.nvim](https://github.com/pwntester/octo.nvim)                      | [gh-cli](https://github.com/cli/cli)                                                  |
 
 ### Mason
 

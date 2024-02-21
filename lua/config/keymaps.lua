@@ -1,69 +1,60 @@
 -- General neovim keyboard mapping definitions
+local util = require("config.util")
 
--- Easier mapping function
----@param mode string|table
----@param lhs string
----@param rhs string|function
----@param opts table|nil
-function map(mode, lhs, rhs, opts)
-  local defaults = { remap = false, silent = true }
-  opts = vim.tbl_extend("force", defaults, opts or {})
-  vim.keymap.set(mode, lhs, rhs, opts)
-end
+local defaults = { remap = false, silent = true }
+util.register_keymaps(defaults, {
+  -- Visually move lines <Up/Down>
+  { "v", "<A-k>", ":m '<-2<CR>gv=gv" },
+  { "v", "<A-j>", ":m '>+1<CR>gv=gv" },
+  { "v", "<A-Up>", ":m '<-2<CR>gv=gv" },
+  { "v", "<A-Down>", ":m '>+1<CR>gv=gv" },
 
--- Visually move lines <Up/Down>
-map("v", "<A-k>", ":m '<-2<CR>gv=gv")
-map("v", "<A-j>", ":m '>+1<CR>gv=gv")
+  -- Make Y act like other capitals
+  { "n", "Y", "y$" },
 
-map("v", "<A-Up>", ":m '<-2<CR>gv=gv")
-map("v", "<A-Down>", ":m '>+1<CR>gv=gv")
+  -- Prevent <Delete> from yanking
+  { "v", "<del>", '"_d' },
 
--- Make Y act like other capitals
-map("n", "Y", "y$")
+  -- Banish Q to the shadow realm
+  { "n", "Q", "<nop>" },
 
--- Prevent <Delete> from yanking
-map("v", "<del>", '"_d')
+  -- Ctrl-Z undo in insert
+  { "i", "<c-z>", "<c-o>:u<CR>" },
 
--- Banish Q to the shadow realm
-map("n", "Q", "<nop>")
+  -- Remove highlight after search with ESCAPE
+  { "n", "<esc>", ":nohlsearch<cr><esc>" },
 
--- Ctrl-Z undo in insert
-map("i", "<c-z>", "<c-o>:u<CR>")
+  -- Jumplist center cursor
+  { "n", "<C-o>", "<C-o>zz" },
+  { "n", "<C-i>", "<C-i>zz" },
 
--- Remove highlight after search with ESCAPE
-map("n", "<esc>", ":nohlsearch<cr><esc>")
+  -- Keep incsearch in center of buffer
+  { "n", "n", "nzzzv" },
+  { "n", "N", "Nzzzv" },
 
--- Jumplist center cursor
-map("n", "<C-o>", "<C-o>zz")
-map("n", "<C-i>", "<C-i>zz")
+  -- Prevent jump when search under cursor
+  { "n", "*", "*N" },
 
--- Keep incsearch in center of buffer
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+  -- Search for visually highlighted text
+  { "v", "*", 'y<ESC>/<c-r>"<CR>N' },
 
--- Prevent jump when search under cursor
-map("n", "*", "*N")
+  -- Visual indentation
+  { "v", "<", "<gv" },
+  { "v", ">", ">gv" },
+  { "v", "<S-Tab>", "<gv" },
+  { "v", "<Tab>", ">gv" },
 
--- Search for visually highlighted text
-map("v", "*", 'y<ESC>/<c-r>"<CR>N')
+  -- Navigate buffer
+  { "n", "[b", ":bprevious<CR>", { desc = "Previous buffer" } },
+  { "n", "]b", ":bnext<CR>", { desc = "Next buffer" } },
 
--- Visual indentation
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+  -- Delete active buffer in window
+  { "n", "<c-w>d", "<cmd>bn|bd#<CR>" },
 
-map("v", "<S-Tab>", "<gv")
-map("v", "<Tab>", ">gv")
+  -- General save document
+  { { "i", "n" }, "<c-s>", "<cmd>write<CR>" },
 
--- Navigate buffer
-map("n", "[b", ":bprevious<CR>", { desc = "Previous buffer" })
-map("n", "]b", ":bnext<CR>", { desc = "Next buffer" })
-
--- Delete active buffer in window
-map("n", "<c-w>d", "<cmd>bn|bd#<CR>")
-
--- General save document
-map({ "i", "n" }, "<c-s>", "<cmd>write<CR>")
-
--- Create new buffers/tabs
-map("n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" })
-map("n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" })
+  -- Create new buffers/tabs
+  { "n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" } },
+  { "n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" } },
+})

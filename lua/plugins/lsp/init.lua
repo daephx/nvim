@@ -78,6 +78,7 @@ return {
   },
   { -- Use Neovim as a language server
     "nvimtools/none-ls.nvim",
+    commit = "bb680d7",
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       -- Collection of useful lua functions

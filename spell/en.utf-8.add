@@ -158,6 +158,7 @@ amd64
 anaconda
 anaconda2
 anaconda3
+ansi
 ansible
 ansiblelint
 api
@@ -235,6 +236,7 @@ bo
 bool
 borderchars
 borderless
+borked
 botright
 bp
 bpytop
@@ -320,6 +322,7 @@ colorflag
 colorizer
 colorscheme
 colorschemes
+colorterm
 commentstring
 commit
 commonlisp
@@ -392,6 +395,7 @@ dataframe
 datamoshes
 datamoshing
 dataview
+dbui
 deadzone
 deadzones
 deaphx
@@ -879,6 +883,7 @@ macchina
 macos
 magical8bit
 magit
+mailto
 makeflags
 malloc
 manjaro
@@ -939,6 +944,7 @@ msgsep
 mswin
 multiband
 multispace
+mux
 muxed
 mypy
 myresolver
@@ -1159,6 +1165,7 @@ python3
 pythonrc
 pytype
 pyvenv
+pywal
 qa
 qall
 qf
@@ -1316,6 +1323,7 @@ srt
 srv
 ss
 sshconfig
+sshd
 ssl
 stackoverflow
 starfield
@@ -1563,6 +1571,7 @@ webpack
 webpassword
 websecure
 webui
+wezterm
 wget
 which-key
 whichkey

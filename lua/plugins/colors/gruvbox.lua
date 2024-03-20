@@ -1,6 +1,7 @@
 -- Lua port of the most famous vim colorscheme
 -- https://github.com/ellisonleao/gruvbox.nvim
 
+---@type LazyPluginSpec
 return {
   "ellisonleao/gruvbox.nvim",
   event = { "ColorSchemePre" },

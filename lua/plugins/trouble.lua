@@ -1,6 +1,7 @@
 -- trouble.nvim | pretty diagnostics, references, telescope results
 -- https://github.com/folke/trouble.nvim
 
+---@type LazyPluginSpec
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },

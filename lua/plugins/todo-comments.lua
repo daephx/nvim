@@ -1,6 +1,7 @@
 -- todo-comments.nvim | Highlight, list and search todo comments in your projects
 -- https://github.com/folke/todo-comments.nvim
 
+---@type LazyPluginSpec
 return {
   "folke/todo-comments.nvim",
   cmd = { "TodoTrouble", "TodoTelescope" },

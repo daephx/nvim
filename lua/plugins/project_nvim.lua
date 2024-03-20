@@ -1,6 +1,7 @@
 -- project_nvim | The superior project management solution for neovim.
 -- https://github.com/ahmedkhalf/project.nvim
 
+---@type LazyPluginSpec
 return {
   "ahmedkhalf/project.nvim",
   name = "project_nvim",

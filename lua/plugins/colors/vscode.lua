@@ -1,6 +1,7 @@
 -- Neovim/Vim color scheme inspired by Dark+ and Light+
 -- https://github.com/Mofiqul/vscode.nvim
 
+---@type LazyPluginSpec
 return {
   "Mofiqul/vscode.nvim",
   event = { "ColorSchemePre" },

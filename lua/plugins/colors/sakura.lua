@@ -1,6 +1,7 @@
 -- Sakura.nvim | Nice color scheme for neovim
 -- https://github.com/numToStr/Sakura.nvim
 
+---@type LazyPluginSpec
 return {
   "numtostr/sakura.nvim",
   event = { "ColorSchemePre" },

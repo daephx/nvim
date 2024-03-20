@@ -1,6 +1,7 @@
 -- neorg | The future of organizing your life in Neovim
 -- https://github.com/nvim-neorg/neorg
 
+---@type LazyPluginSpec
 return {
   "nvim-neorg/neorg",
   ft = "norg",

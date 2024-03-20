@@ -1,6 +1,7 @@
 -- Dashboard.nvim | vim dashboard
 -- https://github.com/glepnir/dashboard-nvim
 
+---@type LazyPluginSpec
 return {
   "glepnir/dashboard-nvim",
   event = "UIEnter",

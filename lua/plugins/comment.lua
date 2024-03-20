@@ -19,6 +19,7 @@ local post_hook = function(ctx)
   end
 end
 
+---@type LazyPluginSpec
 return {
   "numToStr/Comment.nvim",
   event = { "BufReadPost", "BufNewFile" },

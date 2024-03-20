@@ -1,6 +1,7 @@
 -- indent-blankline.nvim | Indent guides for Neovim
 -- https://github.com/lukas-reineke/indent-blankline.nvim
 
+---@type LazyPluginSpec
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",

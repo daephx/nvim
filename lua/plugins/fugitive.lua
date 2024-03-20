@@ -1,6 +1,7 @@
 -- vim-fugitive | A Git wrapper so awesome, it should be illegal
 -- https://github.com/tpope/vim-fugitive
 
+---@type LazyPluginSpec
 return {
   "tpope/vim-fugitive",
   event = "VeryLazy",

@@ -1,6 +1,7 @@
 -- mason.nvim | Portable package manager for Neovim
 -- https://github.com/williamboman/mason.nvim
 
+---@type LazyPluginSpec[]
 return {
   {
     "williamboman/mason.nvim",

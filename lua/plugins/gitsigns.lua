@@ -1,6 +1,7 @@
 -- gitsigns.nvim | Git integration for buffers
 -- https://github.com/lewis6991/gitsigns.nvim
 
+---@type LazyPluginSpec
 return {
   "lewis6991/gitsigns.nvim",
   event = { "BufReadPost", "BufNewFile" },

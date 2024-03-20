@@ -1,5 +1,6 @@
 -- lua/plugins/markdown.lua
 
+---@type LazyPluginSpec[]
 return {
   { -- Nice extra's for markdown documents
     "SidOfc/mkdx",

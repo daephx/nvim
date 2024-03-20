@@ -1,6 +1,7 @@
 -- Telescope config | configurations for telescope fuzzy-finder
 -- https://github.com/nvim-telescope/telescope.nvim
 
+---@type LazyPluginSpec
 return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",

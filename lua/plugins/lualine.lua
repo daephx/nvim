@@ -149,6 +149,7 @@ local function client_format(client_name, spinner, series_messages)
   end
 end
 
+---@type LazyPluginSpec[]
 return {
   {
     "nvim-lualine/lualine.nvim",

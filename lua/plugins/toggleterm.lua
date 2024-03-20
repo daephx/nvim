@@ -49,6 +49,7 @@ local initialize_terminals = function(opts)
   end
 end
 
+---@type LazyPluginSpec
 return {
   "akinsho/toggleterm.nvim",
   version = "*",

@@ -1,6 +1,7 @@
 -- nvim-treesitter | Nvim Treesitter configurations and abstraction layer
 -- https://github.com/nvim-treesitter/nvim-treesitter
 
+---@type LazyPluginSpec
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",

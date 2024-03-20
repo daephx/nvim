@@ -1,6 +1,7 @@
 -- nvim-tree | file browser for neovim
 -- https://github.com/kyazdani42/nvim-tree.lua
 
+---@type LazyPluginSpec
 return {
   "nvim-tree/nvim-tree.lua",
   cmd = { "NvimTreeOpen", "NvimTreeToggle" },

@@ -13,6 +13,7 @@ end
 local delete_session = cmd_wrapper("SessionDelete")
 local save_session = cmd_wrapper("SessionSave")
 
+---@type LazyPluginSpec
 return {
   "rmagatti/auto-session",
   event = "VimEnter",

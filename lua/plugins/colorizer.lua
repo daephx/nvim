@@ -1,6 +1,7 @@
 -- colorizer.nvim | The fastest Neovim colorizer.
 -- https://github.com/NvChad/nvim-colorizer.lua
 
+---@type LazyPluginSpec
 return {
   "NvChad/nvim-colorizer.lua",
   event = { "BufReadPost", "BufNewFile" },

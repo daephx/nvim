@@ -1,6 +1,7 @@
 -- nvim-unception | open files from terminal without nesting
 -- https://github.com/samjwill/nvim-unception
 
+---@type LazyPluginSpec
 return {
   "samjwill/nvim-unception",
   enabled = false,

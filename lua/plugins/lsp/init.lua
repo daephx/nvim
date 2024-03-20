@@ -1,6 +1,7 @@
 -- Neovim LSP Configuration (Language Server Protocol)
 -- Setup native lsp using lspconfig helper plugin
 
+---@type LazyPluginSpec[]
 return {
   { -- Initialize language server configuration
     "neovim/nvim-lspconfig",

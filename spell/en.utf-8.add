@@ -1,5 +1,6 @@
 1280x720
 1920x1080
+Allman
 AppData
 AutoCmd
 AutoCommands
@@ -19,6 +20,7 @@ BufWritePre
 Bufferline
 BusyBox
 CSharp
+CapsLock
 CmdlineEnter
 ColorColumn
 ColorScheme
@@ -35,6 +37,7 @@ DockerHub
 EndOfBuffer
 EventLog
 ExecutionPolicy
+ExitApp
 ExitPre
 FFmpeg
 FileType
@@ -70,6 +73,7 @@ MacOS
 Matryoshka
 Microsoft
 MinimumRes
+MouseMove
 Myriadth
 NERDTree
 NOPASSWD
@@ -79,6 +83,7 @@ NodeJS
 NonText
 NormalFloat
 NumLock
+NumPad
 NvimTree
 OSC
 OSD
@@ -100,6 +105,9 @@ RemoteSigned
 SHA256
 SageMath
 Scrapy
+Scriptable
+SendInput
+SendRaw
 SilentlyContinue
 SmartHybridNumbers
 SourcePost
@@ -121,6 +129,7 @@ UTF8
 UltiSnip
 UltiSnips
 VBScript
+VODs
 VSCode
 VSnip
 VertSplit
@@ -138,6 +147,7 @@ WinEnter
 WinEvent
 WinLeave
 WinNew
+WinTitle
 WinZoom
 WriteLine
 YankHighlight
@@ -158,6 +168,7 @@ amd64
 anaconda
 anaconda2
 anaconda3
+ansi
 ansible
 ansiblelint
 api
@@ -177,6 +188,7 @@ asperand
 aspirant
 async
 asyncio
+attr
 attrib
 augroup
 auth
@@ -207,7 +219,9 @@ aws
 ayu
 az
 azfunc
+backbuffer
 backend
+backlinking
 backticks
 backupext
 barbar
@@ -228,6 +242,7 @@ bindkey
 bindsym
 bitrate
 blankline
+blockchain
 blockwise
 bmp
 bn
@@ -235,6 +250,7 @@ bo
 bool
 borderchars
 borderless
+borked
 botright
 bp
 bpytop
@@ -256,6 +272,8 @@ builtins
 busybox
 bzr
 calloc
+callout
+callouts
 capcheck
 capslock
 cascadia
@@ -278,12 +296,14 @@ checkhealth
 checkmark
 checkmarks
 checktime
+chinese
 chiptune
 chore
 chown
 chsh
 ci
 cindent
+citra
 clangd
 cli
 clojure
@@ -294,6 +314,7 @@ cls
 cmake
 cmatrix
 cmd
+cmder
 cmdlet
 cmdlets
 cmdline
@@ -308,6 +329,7 @@ cobol
 coc
 codebase
 codeblock
+codeblocks
 codec
 codedark
 codeium
@@ -320,6 +342,7 @@ colorflag
 colorizer
 colorscheme
 colorschemes
+colorterm
 commentstring
 commit
 commonlisp
@@ -392,6 +415,7 @@ dataframe
 datamoshes
 datamoshing
 dataview
+dbui
 deadzone
 deadzones
 deaphx
@@ -403,6 +427,8 @@ deepcopy
 defered
 defs
 defx
+deinterlace
+deinterlacing
 del
 delim
 demuxer
@@ -435,6 +461,7 @@ disassembly
 distro
 distrobox
 django
+djangoproject
 dl
 dll
 dmitmel
@@ -500,10 +527,12 @@ eof
 eol
 eq
 erlang
+errorlevel
 errtrace
 esc
 eslint
 eslintrc
+ethernet
 ev
 eval
 eventlog
@@ -515,6 +544,7 @@ expandtab
 export
 expr
 exrc
+extmark
 eza
 f1
 fallbacks
@@ -547,6 +577,7 @@ fixprefix
 fixup
 flake8
 floaterm
+flushright
 fn
 fname
 fnamemodify
@@ -563,6 +594,8 @@ foldsep
 foldstart
 foldtext
 folke
+foobar2000
+footnotesize
 foreach
 formatexpr
 formatoption
@@ -574,6 +607,7 @@ fortran
 fpath
 fprintf
 framerate
+frecency
 freemium
 frontend
 frontends
@@ -621,6 +655,7 @@ gitlint
 gitmodules
 gitrebase
 gitsigns
+glazewm
 globpath
 glsl
 gnu
@@ -632,6 +667,8 @@ golang
 gomod
 gopath
 gopls
+goroutine
+goroutines
 goto
 gowork
 gpg
@@ -773,6 +810,7 @@ jumplist
 jupyter
 jvm
 k8s
+kanagawa
 kanban
 kbs
 keep
@@ -784,12 +822,14 @@ keyframes
 keymap
 keymaps
 keypress
+keypresses
 kickstart
 kommentary
 kotlin
 kubectl
 kubernetes
 kwargs
+laggy
 lalrpop
 lang
 langs
@@ -802,6 +842,7 @@ lazydocker
 lazygit
 lazyload
 lazyredraw
+leftmargin
 len
 lesspipe
 letsencrypt
@@ -820,6 +861,7 @@ linehl
 linematch
 linenr
 linewise
+linkedin
 linter
 linters
 linux
@@ -842,6 +884,7 @@ lockfile
 lockscreen
 loclist
 loglevel
+logseq
 lombok
 long
 loopback
@@ -879,6 +922,7 @@ macchina
 macos
 magical8bit
 magit
+mailto
 makeflags
 malloc
 manjaro
@@ -892,6 +936,7 @@ matchit
 matchparen
 matryoshka
 maxLine
+maxdepth
 maxpreload
 md
 md5
@@ -906,9 +951,11 @@ microsoft
 middleware
 middlewares
 minLine
+mindepth
 minecraft
 mingw
 mingw32
+minibuffer
 minimumres
 mixin
 mk
@@ -921,11 +968,14 @@ mkspell
 mkv
 mnt
 modeline
+modname
 modulepath
 monogame
 monospace
+moonfly
 motd
 mountpoint
+mouseout
 mov
 moz
 mp3
@@ -937,8 +987,10 @@ mpv
 msg
 msgsep
 mswin
+mtime
 multiband
 multispace
+mux
 muxed
 mypy
 myresolver
@@ -967,6 +1019,7 @@ nerdfonts
 nerdtree
 netcoredbg
 netrw
+newcommand
 nextcloud
 nginx
 ngrams
@@ -1007,6 +1060,7 @@ nuget
 num
 numhl
 numlock
+numpad
 nvim
 nvimtree
 oauth
@@ -1078,6 +1132,7 @@ pip3
 pipefail
 pipenv
 pipfile
+pixelwise
 pixiedust
 pkill
 plaintext
@@ -1094,6 +1149,7 @@ pos
 poshmaid
 posix
 postfix
+postgres
 postgresql
 postprocessor
 postspace
@@ -1102,7 +1158,10 @@ powerline
 powershell
 ppa
 ppid
+pprint
 pre
+pre-recordered
+precmd
 preconfigured
 prefs
 preload
@@ -1159,9 +1218,11 @@ python3
 pythonrc
 pytype
 pyvenv
+pywal
 qa
 qall
 qf
+qflist
 ql
 qq
 quickclose
@@ -1169,6 +1230,7 @@ quickfix
 quickstart
 quitall
 radarr
+raisebox
 rasi
 raspbian
 raspi
@@ -1180,6 +1242,8 @@ readme
 readonly
 realloc
 rebase
+recents
+recordered
 rect
 recurse
 reddit
@@ -1194,9 +1258,11 @@ regedit
 rego
 relativenumber
 reloadpackage
+remapper
 remotesigned
 remux
 remuxed
+renewcommand
 repl
 repo
 repr
@@ -1246,6 +1312,7 @@ scanf
 schemastore
 scm
 screenrc
+screensaver
 scrollback
 scrolloff
 scss
@@ -1260,10 +1327,12 @@ setlocal
 setopt
 setpos
 setq
+setw
 sfx
 sha1
 sha256
 shader
+shaders
 shellcheck
 shellcmdflag
 shellquote
@@ -1316,6 +1385,7 @@ srt
 srv
 ss
 sshconfig
+sshd
 ssl
 stackoverflow
 starfield
@@ -1331,6 +1401,7 @@ stderr
 stdin
 stdout
 stdpath
+stdpaths
 steelblue
 stopinsert
 str
@@ -1420,6 +1491,7 @@ tnoremap
 toc
 todo
 todotxt
+toggleable
 toggler
 toggleterm
 tohtml
@@ -1437,6 +1509,7 @@ toptal
 touchd
 toupper
 tox
+tpm
 tpope
 traceback
 tracklist
@@ -1478,16 +1551,19 @@ unittest
 unix
 unnamedplus
 uno
+unpause
 unpushed
 unsplash
 unstage
 unstaged
 untoggle
+uosc
 updatetime
 uplay
 upvalue
 uri
 url
+urlpatterns
 urls
 uselast
 useopen
@@ -1525,6 +1601,7 @@ vimdoc
 vimenter
 vimfiles
 vimgood
+vimgrep
 viminfo
 viml
 vimleave
@@ -1544,6 +1621,7 @@ vnew
 vnoremap
 vocoder
 vocoding
+voxel
 vscode
 vsnip
 vsplit
@@ -1563,12 +1641,14 @@ webpack
 webpassword
 websecure
 webui
+wezterm
 wget
 which-key
 whichkey
 whitelist
 whitespace
 whoami
+wifi
 wikilink
 wildcard
 wildignore

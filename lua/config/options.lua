@@ -111,7 +111,6 @@ vim.opt.diffopt = {
   "hiddenoff", -- Disable for hidden buffers
   "indent-heuristic", -- Use indent heuristic
   "internal", -- Use internal diff library
-  "iwhite", -- Ignore changes in whitespace
   "linematch:60", -- Align hunk lines
   "vertical", -- Split diff vertically
 }

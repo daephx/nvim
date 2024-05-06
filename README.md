@@ -35,12 +35,13 @@ extra packages to be installed.
 
 Here is a list of plugin dependencies:
 
-| Plugin                                                                   | Dependencies                                                                          |
-| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| [lazy.nvim](https://github.com/folke/lazy.nvim)                          | [git](https://git-scm.com/)                                                           |
-| [mason.nvim](https://github.com/williamboman/mason.nvim)                 | `curl`, `wget`, `gzip`, `tar`, `unzip`                                                |
-| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)       | [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) |
-| [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) | [npm](https://www.npmjs.com/)                                                         |
+| Plugin                                                                   | Dependencies                                                                            |
+| :----------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- |
+| [lazy.nvim](https://github.com/folke/lazy.nvim)                          | [git](https://git-scm.com/)                                                             |
+| [mason.nvim](https://github.com/williamboman/mason.nvim)                 | `curl`, `wget`, `gzip`, `tar`, `unzip`                                                  |
+| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)       | [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep)   |
+| [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) | [npm](https://www.npmjs.com/)                                                           |
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)    | [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md) |
 
 ### Mason
 

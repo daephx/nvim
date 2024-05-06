@@ -7,6 +7,8 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "DapContinue", "DapToggleBreakpoint" },
     dependencies = {
+      -- A library for asynchronous IO in Neovim
+      { "nvim-neotest/nvim-nio" },
       -- bridges mason.nvim with the nvim-dap
       { "jay-babu/mason-nvim-dap.nvim" },
       -- Debug adapter for Neovim plugins

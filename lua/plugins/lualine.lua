@@ -142,7 +142,7 @@ end
 local function client_format(client_name, spinner, series_messages)
   local active_clients = vim.tbl_map(function(client)
     return client.name
-  end, vim.lsp.get_active_clients({ bufnr = 0 }))
+  end, vim.lsp.get_clients({ bufnr = 0 }))
   if #series_messages > 0 and vim.tbl_contains(active_clients, client_name) then
     local messages = table.concat(series_messages, ", ")
     return ("%s %s [%s]"):format(messages, spinner, client_name)

@@ -114,7 +114,7 @@ return {
   on_attach = function(client, bufnr)
     -- null-ls causes problems with the default formatexpr, which messes up `gq`
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/issues/1131
-    vim.api.nvim_buf_set_option(bufnr, "formatexpr", "")
+    vim.api.nvim_set_option_value("formatexpr", "", { buf = bufnr })
     on_attach(client, bufnr)
   end,
 }

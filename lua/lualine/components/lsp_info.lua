@@ -9,7 +9,7 @@ local default_options = {
   -- Prevent the component from being displayed by some condition.
   -- Be default, the condition checks there is at least 1 active client
   condition = function()
-    return vim.lsp.get_active_clients({ bufnr = 0 }) > 0
+    return vim.lsp.get_clients({ bufnr = 0 }) > 0
   end,
   -- List of excluded clients and null-ls sources.
   exclude = {
@@ -76,7 +76,7 @@ end
 ---@return table
 local function get_client_names(options)
   local clients = {}
-  local active_clients = vim.lsp.get_active_clients({ bufnr = 0 })
+  local active_clients = vim.lsp.get_clients({ bufnr = 0 })
   for _, client in pairs(active_clients) do
     local excluded = vim.tbl_contains(options.exclude, client.name)
     if client and client.name == "null-ls" then

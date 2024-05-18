@@ -14,8 +14,8 @@ local buftypes = {
 local on_open = function(win)
   -- Make certain buffers use all available columns
   local bufnr = vim.api.nvim_win_get_buf(win)
-  local bt = vim.api.nvim_buf_get_option(bufnr, "buftype")
-  local ft = vim.api.nvim_buf_get_option(bufnr, "filetype")
+  local bt = vim.api.nvim_get_option_value("buftype", { buf = bufnr })
+  local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
   if vim.tbl_contains(buftypes, bt) or vim.tbl_contains(filetypes, ft) then
     vim.api.nvim_win_set_width(win, vim.o.columns)
   else

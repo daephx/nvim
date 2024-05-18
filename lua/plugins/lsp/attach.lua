@@ -11,7 +11,8 @@ local symbols = require("plugins.lsp.handlers.symbols")
 ---@param bufnr integer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+  vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
+
   -- Enable Local handlers
   codelens.enable_code_lens(client, bufnr)
   formatting.enable_auto_formatting(client, bufnr)

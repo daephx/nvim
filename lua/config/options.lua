@@ -63,7 +63,18 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- Configure system clipboard support
 vim.opt.clipboard = { "unnamed", "unnamedplus" }
 
-vim.opt.whichwrap:append("<,>,[,]") -- Allows navigation wrapping to previous/next lines
+-- Enable cursor blinking
+vim.opt.guicursor:append("n-v-c:blinkon500-blinkoff500")
+
+-- Define preferred font family for GUI clients
+vim.opt.guifont = {
+  "FiraCode NFM:h12",
+  "CascadiaCode NFM:h12",
+  "Hack NFM:h12",
+}
+
+-- Allows navigation wrapping to previous/next lines
+vim.opt.whichwrap:append("<,>,[,]")
 
 -- Avoid 'hit-enter' prompts
 vim.opt.shortmess:append({
@@ -178,13 +189,6 @@ vim.g.colors = {
   LspInfoBorder = { link = "FloatBorder" },
   MsgSeparator = { link = "VertSplit" },
   NormalFloat = { link = "Normal" },
-}
-
--- Define preferred font family for GUI clients
-vim.opt.guifont = {
-  "FiraCode NFM:h12",
-  "CascadiaCode NFM:h12",
-  "Hack NFM:h12",
 }
 
 -- Netrw specific options

@@ -5,7 +5,16 @@
 return {
   "nvim-neorg/neorg",
   ft = "norg",
+  enabled = false,
   dependencies = {
+    {
+      "vhyrro/luarocks.nvim",
+      -- Very high priority is required,
+      -- luarocks.nvim should run as the first plugin in your config.
+      priority = 1000,
+      lazy = false,
+      config = true,
+    },
     -- Collection of useful lua functions
     "nvim-lua/plenary.nvim",
     -- Find, Filter, Preview, Pick. All lua, all the time
@@ -14,21 +23,27 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
-    load = { -- Tell Neorg what modules to load
-      ["core.defaults"] = {}, -- Load all the default modules
-      ["core.keybinds"] = { -- Configure core.keybinds
+    -- Tell Neorg what modules to load
+    load = {
+      -- Load all the default modules
+      ["core.defaults"] = {},
+      -- Configure core.keybinds
+      ["core.keybinds"] = {
         config = {
-          default_keybinds = true, -- Generate the default keybinds
-          neorg_leader = "<Leader>o", -- This is the default if unspecified
+          -- Generate the default keybinds
+          default_keybinds = true,
+          neorg_leader = "<Leader>o",
         },
       },
       ["core.norg.completion"] = {
         config = {
-          engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
+          engine = "nvim-cmp",
         },
       },
-      ["core.norg.concealer"] = {}, -- Allows for use of icons
-      ["core.norg.dirman"] = { -- Manage your directories with Neorg
+      -- Allows for use of icons
+      ["core.norg.concealer"] = {},
+      -- Manage your directories with Neorg
+      ["core.norg.dirman"] = {
         config = {
           workspaces = {
             my_workspace = "~/Documents/neorg",

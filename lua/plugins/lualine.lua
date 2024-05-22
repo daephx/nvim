@@ -1,6 +1,50 @@
 -- lualine.nvim | Blazing fast statusline for neovim, written in pure lua
 -- https://github.com/nvim-lualine/lualine.nvim
 
+---Wrapper function for printing string as lualine component
+---@param str string
+---@return function
+local function insert_string(str)
+  return function()
+    return str
+  end
+end
+
+---Override separators for tabline between components and sections
+---@param sections table
+---@return table
+local function process_sections(sections)
+  for _, section in pairs(sections) do
+    for id, comp in ipairs(section) do
+      if type(comp) ~= "table" then
+        comp = { comp }
+        section[id] = comp
+      end
+      comp.component_separators = { left = "", right = "" }
+      comp.section_separators = { left = "", right = "" }
+    end
+  end
+  return sections
+end
+
+---Set formatting rules for lsp_progress clients
+---@param client_name string
+---@param spinner table
+---@param series_messages table
+---@return string|nil
+local function client_format(client_name, spinner, series_messages)
+  local active_clients = vim.tbl_map(function(client)
+    return client.name
+  end, vim.lsp.get_clients({ bufnr = 0 }))
+  if #series_messages > 0 and vim.tbl_contains(active_clients, client_name) then
+    local messages = table.concat(series_messages, ", ")
+    return ("%s %s [%s]"):format(messages, spinner, client_name)
+  end
+end
+
+-- Components
+-- Define custom lualine component options
+
 local mode = {
   "mode",
   fmt = function(str)
@@ -108,46 +152,6 @@ local windows = {
     tsplayground = "TSPlayground",
   },
 }
-
----@param str string
----@return function
-local function insert_string(str)
-  return function()
-    return str
-  end
-end
-
----Override separators for tabline between components and sections
----@param sections table
----@return table
-local function process_sections(sections)
-  for _, section in pairs(sections) do
-    for id, comp in ipairs(section) do
-      if type(comp) ~= "table" then
-        comp = { comp }
-        section[id] = comp
-      end
-      comp.component_separators = { left = "", right = "" }
-      comp.section_separators = { left = "", right = "" }
-    end
-  end
-  return sections
-end
-
----Set formatting rules for lsp_progress clients
----@param client_name string
----@param spinner table
----@param series_messages table
----@return string|nil
-local function client_format(client_name, spinner, series_messages)
-  local active_clients = vim.tbl_map(function(client)
-    return client.name
-  end, vim.lsp.get_clients({ bufnr = 0 }))
-  if #series_messages > 0 and vim.tbl_contains(active_clients, client_name) then
-    local messages = table.concat(series_messages, ", ")
-    return ("%s %s [%s]"):format(messages, spinner, client_name)
-  end
-end
 
 ---@type LazyPluginSpec[]
 return {

@@ -1,5 +1,6 @@
 1280x720
 1920x1080
+APPNAME
 Allman
 AppData
 AutoCmd
@@ -19,6 +20,7 @@ BufWritePost
 BufWritePre
 Bufferline
 BusyBox
+COLORTERM
 CSharp
 CapsLock
 CmdlineEnter
@@ -34,6 +36,7 @@ DNSmasq
 Devicon
 DiffView
 DockerHub
+EMACSDIR
 EndOfBuffer
 EventLog
 ExecutionPolicy
@@ -45,6 +48,8 @@ FloatBorder
 FugitiveIndex
 GBrowse
 GIFs
+GTK2
+Gdiffsplit
 HKEY_CURRENT_USER
 IIFE
 IOError
@@ -53,6 +58,7 @@ ImageMagick
 IncSearch
 IndentBlankline
 InsertEnter
+LBUFFER
 LaTex
 LineNr
 LocalState
@@ -68,6 +74,7 @@ LspReferenceWrite
 LuaJIT
 LuaRocks
 LuaSnip
+MANPATH
 MD5
 MacOS
 Matryoshka
@@ -138,6 +145,7 @@ VimEnter
 VimLeave
 VimResized
 VirtualBox
+WEZTERM
 WScript
 WebAPI
 WebUI
@@ -174,6 +182,7 @@ ansiblelint
 api
 apk
 appdata
+appmenu
 appxmanifest
 archflags
 archlinux
@@ -192,6 +201,8 @@ attr
 attrib
 augroup
 auth
+autoattach
+autoclean
 autocmd
 autocmds
 autocommand
@@ -213,6 +224,7 @@ autosquash
 autostart
 autosuggestions
 autotag
+autowidth
 autowrap
 avi
 aws
@@ -227,6 +239,7 @@ backupext
 barbar
 base16
 basedir
+bashcompinit
 bashdb
 bashls
 bashrc
@@ -236,6 +249,7 @@ bbb
 bd
 bdelete
 beancount
+bezier
 bg
 bibtex
 bindkey
@@ -279,6 +293,7 @@ capslock
 cascadia
 catppuccin
 cbfmt
+ccls
 cd
 cdpath
 celsius
@@ -347,6 +362,7 @@ commentstring
 commit
 commonlisp
 commonrc
+compdef
 compe
 compinit
 completeopt
@@ -416,6 +432,7 @@ datamoshes
 datamoshing
 dataview
 dbui
+dconf
 deadzone
 deadzones
 deaphx
@@ -427,6 +444,7 @@ deepcopy
 defered
 defs
 defx
+deinit
 deinterlace
 deinterlacing
 del
@@ -435,6 +453,7 @@ demuxer
 dendron
 deps
 desc
+dest
 dev
 devcontainer
 devicon
@@ -464,6 +483,7 @@ django
 djangoproject
 dl
 dll
+dmenu
 dmitmel
 dns
 dnslookup
@@ -478,6 +498,7 @@ docs
 doctest
 dofile
 dom
+donut
 dosini
 dotbot
 dotenv
@@ -495,6 +516,7 @@ easymotion
 echo
 editorconfig
 eex
+efi
 efm
 eg
 egrep
@@ -506,6 +528,7 @@ emby
 emerg
 emmylua
 ender
+endfor
 endfunc
 endif
 endofbuffer
@@ -570,12 +593,15 @@ filetypes
 fillchar
 fillchars
 fira
+firefox
 fix
 fixit
 fixme
 fixprefix
 fixup
 flake8
+flathub
+flatpak
 floaterm
 flushright
 fn
@@ -627,6 +653,7 @@ gamesaves
 gc
 gcc
 gdb
+gdm3
 gdscript
 gentoo
 getattr
@@ -671,7 +698,9 @@ goroutine
 goroutines
 goto
 gowork
+gparted
 gpg
+gpt
 gq
 gradle
 gradlew
@@ -683,6 +712,8 @@ gsettings
 gsub
 gsudo
 gtk
+gtk2
+gtk3
 gtkrc
 gui
 guibg
@@ -690,6 +721,7 @@ guicursor
 guifg
 guifonts
 gunicorn
+gvim
 gz
 gzip
 h264
@@ -735,7 +767,12 @@ https
 huggingchat
 huggingface
 hydrus
+hyprland
+i3config
+i3ipc
+i3lock
 ibl
+icat
 ico
 icursor
 idgaf
@@ -747,7 +784,9 @@ ifttt
 imagemagick
 imap
 img
+imgcat
 imgur
+impl
 incsearch
 indentblankline
 ini
@@ -822,11 +861,15 @@ keyframes
 keymap
 keymaps
 keypress
+keypressed
 keypresses
+keyset
 kickstart
 kommentary
 kotlin
+kubeadm
 kubectl
+kubelet
 kubernetes
 kwargs
 laggy
@@ -838,6 +881,7 @@ lastsearch
 laststatus
 lastused
 latin
+lazydev
 lazydocker
 lazygit
 lazyload
@@ -850,6 +894,7 @@ lf
 lfs
 lhs
 libcurl
+libpam
 libssh
 libtool
 lidarr
@@ -865,9 +910,11 @@ linkedin
 linter
 linters
 linux
+linx
 listchar
 listchars
 listdir
+listview
 lldb
 llvm
 ln
@@ -890,6 +937,8 @@ long
 loopback
 loopcloud
 lorem
+love2d
+lscolors
 lsd
 lsp
 lspattachbuffers
@@ -912,6 +961,7 @@ luafile
 luafmt
 luajit
 lualine
+lualines
 lualint
 luarc
 luarocks
@@ -935,6 +985,7 @@ markdownlintrc
 matchit
 matchparen
 matryoshka
+maui
 maxLine
 maxdepth
 maxpreload
@@ -944,6 +995,8 @@ mdx
 mechatronics
 mem
 menuone
+menuselect
+mergetool
 metadata
 metatable
 mgcb
@@ -978,6 +1031,7 @@ mountpoint
 mouseout
 mov
 moz
+mozillateam
 mp3
 mp4
 mpath
@@ -986,6 +1040,7 @@ mplayer
 mpv
 msg
 msgsep
+msvc
 mswin
 mtime
 multiband
@@ -1006,14 +1061,17 @@ nav
 navbar
 navic
 ncdu
+ne
 neo
 neoclide
 neodev
+neofetch
 neogit
 neorg
 neoterm
 neovide
 neovim
+nerdfix
 nerdfont
 nerdfonts
 nerdtree
@@ -1032,6 +1090,7 @@ nnn
 nnoremap
 nocombine
 nodejs
+nodesource
 nodex
 nofile
 nohlsearch
@@ -1061,12 +1120,18 @@ num
 numhl
 numlock
 numpad
+nvidia
 nvim
+nvimtools
 nvimtree
+nvr
 oauth
 oauth2
 ocaml
+ocamlfuse
 octo
+ohmybash
+ohmyzsh
 ok
 oldfiles
 omnifunc
@@ -1093,6 +1158,7 @@ osv
 osx
 outdir
 owo
+p7zip
 packadd
 packercompile
 packercomplete
@@ -1131,7 +1197,9 @@ pioasm
 pip3
 pipefail
 pipenv
+pipewire
 pipfile
+pipx
 pixelwise
 pixiedust
 pkill
@@ -1147,6 +1215,7 @@ popups
 portainer
 pos
 poshmaid
+poshthemes
 posix
 postfix
 postgres
@@ -1163,6 +1232,7 @@ pre
 pre-recordered
 precmd
 preconfigured
+preexec
 prefs
 preload
 preloadfilesize
@@ -1176,6 +1246,7 @@ printf
 prio
 prisma
 proc
+prog
 programdata
 programmatically
 progressbar
@@ -1316,14 +1387,20 @@ screensaver
 scrollback
 scrolloff
 scss
+sda1
+sddm
 sdk
+searchpath
 sed
 seekbar
 seekrange
 seekranges
+sel
 selene
 setattr
 setlocal
+setmetatable
+setmetatable/!
 setopt
 setpos
 setq
@@ -1345,9 +1422,11 @@ shorthands
 shortmess
 showbreak
 showcmd
+showkey
 showmode
 showtabline
 shutil
+sid
 sidechain
 sidescrolloff
 signcolumn
@@ -1362,6 +1441,7 @@ sln
 smarthybridnumbers
 smartindent
 smarttab
+snapd
 softrepeat
 sonarr
 source
@@ -1371,11 +1451,14 @@ sp
 sparql
 spawner
 spc
+speedtest
 spellcapcheck
 spellfile
 spelloptions
 spellsitter
 splitkeep
+spotify
+spritefont
 spyder
 sql
 sqlite
@@ -1386,7 +1469,9 @@ srv
 ss
 sshconfig
 sshd
+sshfs
 ssl
+stackexchange
 stackoverflow
 starfield
 startinsert
@@ -1412,6 +1497,7 @@ stripprefix
 strlen
 struct
 stty
+stylecheck
 styleguide
 stylelintrc
 stylesheet
@@ -1434,6 +1520,9 @@ svc
 swapfile
 swapoff
 swapon
+swaybg
+swayconfig
+swaymsg
 switchbuf
 swp
 sys
@@ -1441,6 +1530,7 @@ system32
 system76
 systemctl
 systemd
+tab2
 tabWidth
 tabclose
 tabdo
@@ -1468,16 +1558,20 @@ terminalwithcode
 terminfo
 termopen
 termux
+testbench
 tex
 textDocument
 textdocument
 texthl
+textmate
 textobjects
 textwidth
 tga
 tgz
+thinclient
 thumbstick
 tif
+tilemap
 timecode
 timecodes
 timestamp
@@ -1506,9 +1600,11 @@ toplevel
 topline
 topsplit
 toptal
+tostring/!
 touchd
 toupper
 tox
+tp
 tpm
 tpope
 traceback
@@ -1553,6 +1649,7 @@ unnamedplus
 uno
 unpause
 unpushed
+unreachability
 unsplash
 unstage
 unstaged
@@ -1585,6 +1682,7 @@ vala
 vbs
 vbscript
 vcproj
+vcs
 vendored
 venv
 ver
@@ -1595,6 +1693,7 @@ video0
 video1
 video2
 video4linux2
+viins
 vim
 vim8
 vimdoc
@@ -1617,6 +1716,8 @@ virtualenvs
 virtualization
 virtualtext
 vm
+vnc
+vncserver
 vnew
 vnoremap
 vocoder
@@ -1631,6 +1732,7 @@ vterm
 vue
 vuejs
 wav
+waybar
 wayland
 webapi
 webdev
@@ -1641,6 +1743,7 @@ webpack
 webpassword
 websecure
 webui
+wez
 wezterm
 wget
 which-key
@@ -1659,6 +1762,8 @@ win64
 winbar
 winblend
 wincmd
+windo
+wine64
 winevent
 winfixheight
 winget
@@ -1680,14 +1785,18 @@ wsl2
 wslconfig
 www
 x11
+x256
 x64
 x86
 xargs
 xbm
 xclip
 xclock
+xconfig
 xdg
 xdg_dirs
+xdotool
+xev
 xhost
 xinit
 xinitrc
@@ -1695,20 +1804,28 @@ xinput
 xlast
 xml
 xmldoc
+xmodmap
 xna
 xoff
+xorg
 xours
+xprop
 xrandr
 xrdb
+xrdp
 xset
+xstartup
 xtheirs
 xtrace
+xwayland
 yaml
 yamlls
 ylast
 yml
 youtube
+zcompdump
 zdotdir
+zellij
 zenmode
 zettelkasten
 zfs
@@ -1716,7 +1833,10 @@ zig
 zk
 zle
 zlib
+zmodload
 zoxide
+zprof
+zprofile
 zsh
 zshell
 zshenv

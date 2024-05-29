@@ -4,8 +4,7 @@
 ---@type LazyPluginSpec
 return {
   "willothy/flatten.nvim",
-  lazy = false,
-  priority = 1001,
+  event = { "TermOpen" },
   opts = {
     window = { open = "alternate" },
   },

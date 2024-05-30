@@ -22,6 +22,9 @@ return {
       { "mickael-menu/zk-nvim" },
     },
     init = function()
+      -- Initialize diagnostic settings
+      require("plugins.lsp.diagnostics")
+
       -- Prevent high cpu usage due to new watch files implementation.
       -- NOTE: https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
       local ok, wf = pcall(require, "vim.lsp._watchfiles")
@@ -45,7 +48,6 @@ return {
       windows.default_options = { border = vim.g.border }
 
       -- Initialize local lsp modules
-      require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")
       require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler

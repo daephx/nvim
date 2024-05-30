@@ -4,6 +4,7 @@
 ---@type LazyPluginSpec
 return {
   "ahmedkhalf/project.nvim",
+  cond = vim.fn.has("nvim-0.10") == 0,
   name = "project_nvim",
   event = "VeryLazy",
   keys = {

@@ -40,10 +40,13 @@ return {
         on_attach = require("plugins.lsp.attach"),
       }
 
+      -- Override lspconfig default window options
+      local windows = require("lspconfig.ui.windows")
+      windows.default_options = { border = vim.g.border }
+
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")
-      require("plugins.lsp.lspconfig")
       require("mason-lspconfig").setup_handlers({
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have

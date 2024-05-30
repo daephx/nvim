@@ -30,7 +30,6 @@ return {
         "cssls",
         "dockerls",
         "emmet_ls",
-        "gopls",
         "html",
         "jsonls",
         "lua_ls",

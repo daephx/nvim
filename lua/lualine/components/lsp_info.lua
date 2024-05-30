@@ -9,7 +9,7 @@ local default_options = {
   -- Prevent the component from being displayed by some condition.
   -- Be default, the condition checks there is at least 1 active client
   condition = function()
-    return vim.lsp.get_clients({ bufnr = 0 }) > 0
+    return #vim.lsp.get_clients({ bufnr = 0 }) > 0
   end,
   -- List of excluded clients and null-ls sources.
   exclude = {

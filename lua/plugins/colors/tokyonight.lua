@@ -1,5 +1,6 @@
 -- tokyonight.nvim | A clean, dark Neovim theme written in Lua
 -- https://github.com/folke/tokyonight.nvim
+---@module "tokyonight"
 
 ---@type LazyPluginSpec
 return {

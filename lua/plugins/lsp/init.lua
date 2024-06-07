@@ -12,8 +12,6 @@ return {
       { "williamboman/mason.nvim" },
       -- bridges mason.nvim with the nvim-dap
       { "williamboman/mason-lspconfig.nvim" },
-      -- Neovim setup for init.lua and plugin development
-      { "folke/neodev.nvim", config = true },
       -- LSP support in Neovim for eclipse.jdt.ls
       { "mfussenegger/nvim-jdtls" },
       -- Tools for better development in rust
@@ -97,6 +95,16 @@ return {
       local opts = require("plugins.lsp.null-ls")
       null_ls.setup(opts)
     end,
+  },
+  { -- Faster LuaLS setup for Neovim
+    "folke/lazydev.nvim",
+    ft = "lua",
+    cmd = "LazyDev",
+    opts = {
+      library = {
+        { path = "lazy.nvim" },
+      },
+    },
   },
   { -- LSP signature hint as you type
     "ray-x/lsp_signature.nvim",

@@ -42,8 +42,8 @@ return {
     --- You can override specific highlights to use other groups or a hex color
     --- function will be called with a Highlights and ColorScheme table
     ---@param hl Highlights
-    ---@param c ColorScheme
-    on_highlights = function(hl, _)
+    ---@param _c ColorScheme
+    on_highlights = function(hl, _c)
       hl.FoldColumn = { bg = "none" }
       hl.String = { fg = "#cbaa73" }
       hl.VertSplit = { fg = "#39394e" }

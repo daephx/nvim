@@ -55,7 +55,7 @@ local mode = {
 local filetype = {
   "filetype",
   icon_only = true,
-  component_sperator = "",
+  component_separator = "",
   separator = "",
 }
 

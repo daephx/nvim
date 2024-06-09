@@ -107,12 +107,14 @@ local diff = {
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
-  symbols = {
-    hint = "󰌵",
-    info = "",
-    warn = "",
-    error = "",
-  },
+  symbols = (function()
+    local symbols = {}
+    local icons = require("config.icons")
+    for key, value in pairs(icons.diagnostics) do
+      symbols[key:lower()] = value .. " "
+    end
+    return symbols
+  end)(),
 }
 
 local lsp_info = {

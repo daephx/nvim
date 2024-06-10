@@ -184,7 +184,7 @@ return {
         lualine_z = { "location" },
       },
       tabline = {
-        lualine_a = { insert_string("") },
+        lualine_a = { insert_string("") },
         lualine_b = { windows },
         lualine_y = { tabs },
         lualine_z = { insert_string("") },

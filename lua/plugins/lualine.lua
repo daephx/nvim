@@ -57,6 +57,7 @@ local filetype = {
   icon_only = true,
   component_separator = "",
   separator = "",
+  padding = { left = 1, right = 0 },
 }
 
 local encoding = {

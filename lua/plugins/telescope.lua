@@ -194,20 +194,5 @@ return {
       pattern = "TelescopePreviewerLoaded",
       command = "setlocal wrap",
     })
-
-    -- HACK: https://github.com/nvim-telescope/telescope.nvim/issues/2027#issuecomment-1510001730
-    vim.api.nvim_create_autocmd({ "WinLeave" }, {
-      desc = "Prevent entering buffers in insert mode",
-      group = vim.api.nvim_create_augroup("TelescopePromptInsertFix", {}),
-      callback = function()
-        if vim.bo.ft == "TelescopePrompt" and vim.fn.mode() == "i" then
-          vim.api.nvim_feedkeys(
-            vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-            "i",
-            false
-          )
-        end
-      end,
-    })
   end,
 }

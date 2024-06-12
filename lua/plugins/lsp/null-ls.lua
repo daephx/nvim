@@ -60,9 +60,7 @@ return {
       end,
     }),
 
-    -- Shellscript
-    -- code_actions.shellcheck,
-    -- diagnostics.shellcheck,
+    -- Shell
     formatting.shfmt,
     diagnostics.zsh,
     diagnostics.fish,

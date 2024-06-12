@@ -93,12 +93,6 @@ return {
     }),
 
     -- JavaScript, etc.
-    diagnostics.eslint_d.with({
-      condition = function(util)
-        return util.root_has_file(".eslintrc.js")
-      end,
-    }),
-
     formatting.prettier.with({
       prefer_local = "node_modules/.bin",
       extra_filetypes = { "solidity", "svelte", "yaml" },

@@ -30,6 +30,7 @@ return {
         "cssls",
         "dockerls",
         "emmet_ls",
+        "eslint",
         "html",
         "jsonls",
         "lua_ls",
@@ -47,7 +48,6 @@ return {
       automatic_installation = false,
       ensure_installed = {
         "black",
-        "eslint_d",
         "isort",
         "markdownlint",
         "prettier",

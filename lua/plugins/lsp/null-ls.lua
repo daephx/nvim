@@ -39,24 +39,20 @@ return {
     }),
 
     -- Lua
-    diagnostics.luacheck.with({
-      condition = function(utils)
-        return utils.root_has_file({ ".luacheckrc" })
-      end,
-    }),
     diagnostics.selene.with({
       condition = function(utils)
         return utils.root_has_file({ "selene.toml" })
       end,
     }),
-    formatting.lua_format.with({
-      condition = function(utils)
-        return utils.root_has_file({ ".lua_format" })
-      end,
-    }),
     formatting.stylua.with({
       condition = function(utils)
         return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
+      end,
+    }),
+
+    require("none-ls-luacheck.diagnostics.luacheck").with({
+      condition = function(utils)
+        return utils.root_has_file({ ".luacheckrc" })
       end,
     }),
 
@@ -66,9 +62,6 @@ return {
 
     -- Python
     formatting.black.with({ prefer_local = ".venv/bin" }),
-
-    diagnostics.ruff.with({ prefer_local = ".venv/bin" }),
-    formatting.ruff.with({ prefer_local = ".venv/bin" }),
 
     -- Golang
     formatting.gofmt,

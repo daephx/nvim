@@ -84,9 +84,6 @@ return {
       end,
     }),
 
-    -- Rust
-    formatting.rustfmt,
-
     -- Markdown
     diagnostics.markdownlint,
     formatting.cbfmt.with({

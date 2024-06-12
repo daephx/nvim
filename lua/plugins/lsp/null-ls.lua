@@ -63,8 +63,6 @@ return {
     -- Shell
     formatting.shfmt,
     diagnostics.zsh,
-    diagnostics.fish,
-    formatting.fish_indent,
 
     -- Python
     formatting.black.with({ prefer_local = ".venv/bin" }),

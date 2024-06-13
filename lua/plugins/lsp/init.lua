@@ -103,9 +103,14 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
     cmd = "LazyDev",
+    dependencies = {
+      -- NOTE: optional `vim.uv` typing
+      { "Bilal2453/luvit-meta", lazy = true },
+    },
     opts = {
       library = {
         { path = "lazy.nvim" },
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
     },
   },

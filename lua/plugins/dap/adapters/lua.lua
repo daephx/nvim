@@ -1,7 +1,7 @@
 local dap = require("dap")
 local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
 local luadb_dir = mason_packages .. "/local-lua-debugger-vscode"
-local HOME = vim.loop.os_homedir()
+local HOME = vim.uv.os_homedir()
 
 dap.adapters["local-lua"] = {
   type = "executable",
@@ -43,7 +43,7 @@ dap.adapters.nlua = function(callback, config)
       detached = true,
     }
     local command = "/home/daephx/.local/share/cargo/bin/alacritty"
-    handle, pid_or_err = vim.loop.spawn(command, opts, function(code)
+    handle, pid_or_err = vim.uv.spawn(command, opts, function(code)
       if handle ~= nil then
         handle:close()
       end
@@ -52,7 +52,7 @@ dap.adapters.nlua = function(callback, config)
     if not handle then
       error(pid_or_err)
     end
-    local timer = vim.loop.new_timer()
+    local timer = vim.uv.new_timer()
     if timer ~= nil then
       timer:start(1000, 0, function()
         timer:stop()
@@ -68,7 +68,7 @@ dap.adapters.nlua = function(callback, config)
 end
 
 local function free_port()
-  local tcp = vim.loop.new_tcp()
+  local tcp = vim.uv.new_tcp()
   tcp:bind("127.0.0.1", 0)
   local port = tcp:getsockname().port
   tcp:shutdown()

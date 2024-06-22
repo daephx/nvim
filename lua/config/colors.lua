@@ -53,13 +53,13 @@ M.set_hl = function(colors)
 end
 
 ---extend set_hl to register an autocmd that will run for the provided colorscheme
----@param name string Name of the colorscheme
+---@param name string? Name of the colorscheme for autocmd patten. Use `nil` to match any colorscheme.
 ---@param colors table Table of highlight definitions
 M.set_hl_autocmd = function(name, colors)
-  local groups_name = ("ColorScheme_%s"):format(name)
+  local group_name = ("ColorScheme#%s"):format(name or "Any")
   vim.api.nvim_create_autocmd("ColorScheme", {
     desc = ("Override highlights for theme: %s"):format(name),
-    group = vim.api.nvim_create_augroup(groups_name, { clear = true }),
+    group = vim.api.nvim_create_augroup(group_name, { clear = false }),
     pattern = name,
     callback = function()
       M.set_hl(colors)

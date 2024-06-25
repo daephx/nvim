@@ -58,6 +58,7 @@ ImageMagick
 IncSearch
 IndentBlankline
 InsertEnter
+Keepass
 LBUFFER
 LaTex
 LineNr
@@ -187,6 +188,7 @@ appxmanifest
 archflags
 archlinux
 arg
+argc
 argparse
 args
 argv
@@ -285,6 +287,7 @@ builtin
 builtins
 busybox
 bzr
+calibri
 calloc
 callout
 callouts
@@ -355,6 +358,7 @@ codestyle
 colorcolumn
 colorflag
 colorizer
+colors
 colorscheme
 colorschemes
 colorterm
@@ -366,6 +370,7 @@ compdef
 compe
 compinit
 completeopt
+complist
 compsci
 computercraft
 concat
@@ -448,6 +453,7 @@ deinit
 deinterlace
 deinterlacing
 del
+delek
 delim
 demuxer
 dendron
@@ -521,6 +527,7 @@ efm
 eg
 egrep
 el
+elflord
 elif
 elseif
 emacs
@@ -638,6 +645,7 @@ freemium
 frontend
 frontends
 frontmatter
+fsharp
 fsproj
 fstab
 ftplugin
@@ -726,6 +734,7 @@ gz
 gzip
 h264
 h265
+habamax
 haha
 hardcoded
 hardmode
@@ -738,6 +747,7 @@ hcl
 hdmi
 healthcheck
 heex
+helvetica
 hererocks
 hiddenoff
 highoups
@@ -774,6 +784,7 @@ i3lock
 ibl
 icat
 ico
+iconize
 icursor
 idgaf
 idx
@@ -858,6 +869,7 @@ keybind
 keybinds
 keyframe
 keyframes
+keygen
 keymap
 keymaps
 keypress
@@ -967,6 +979,7 @@ luarc
 luarocks
 luasnip
 luaver
+luvit
 macchiato
 macchina
 macos
@@ -1099,6 +1112,7 @@ nologo
 nomodifiable
 noninteractive
 nontext
+noop
 nop
 nopasswd
 noplainbuffer
@@ -1180,6 +1194,7 @@ pbcopy
 pbm
 pc
 pcall
+pdm
 perf
 performant
 perl
@@ -1256,6 +1271,7 @@ prometheus
 protocol
 ps
 ps1
+psd
 psd1
 psm
 psm1
@@ -1296,6 +1312,7 @@ qf
 qflist
 ql
 qq
+quickadd
 quickclose
 quickfix
 quickstart
@@ -1343,6 +1360,7 @@ rerere
 resolv
 restruct
 ret
+retab
 retval
 reusability
 rf
@@ -1357,6 +1375,7 @@ rnu
 ro
 rockstar
 rofi
+ron
 root
 rootfs
 rpi
@@ -1397,7 +1416,10 @@ seekrange
 seekranges
 sel
 selene
+serverless
+sessionizer
 setattr
+setenv
 setlocal
 setmetatable
 setmetatable/!
@@ -1406,6 +1428,7 @@ setpos
 setq
 setw
 sfx
+sha
 sha1
 sha256
 shader
@@ -1560,6 +1583,7 @@ termopen
 termux
 testbench
 tex
+texlab
 textDocument
 textdocument
 texthl
@@ -1624,6 +1648,7 @@ typeof
 typeparameter
 typescript
 typescriptreact
+typings
 tz
 tzdata
 uber
@@ -1650,6 +1675,7 @@ uno
 unpause
 unpushed
 unreachability
+unsetopt
 unsplash
 unstage
 unstaged
@@ -1731,6 +1757,8 @@ vsts
 vterm
 vue
 vuejs
+watchfiles
+watchfunc
 wav
 waybar
 wayland
@@ -1753,12 +1781,14 @@ whitespace
 whoami
 wifi
 wikilink
+wikipedia
 wildcard
 wildignore
 wildmenu
 win
 win32
 win64
+winaero
 winbar
 winblend
 wincmd

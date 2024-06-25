@@ -1,8 +1,9 @@
--- Load colorscheme from lua module
+-- Utility functions for loading and managing neovim colorschemes.
+-- Provides color handling, highlight setup, and event-based updates.
 
 local M = {}
 
----Check if colorscheme filename is available in the runtimepath
+---Check if colorscheme filename is available in the runtimepath.
 ---@param colors_name string
 ---@return boolean
 M.is_available = function(colors_name)
@@ -15,8 +16,8 @@ M.is_available = function(colors_name)
   return false
 end
 
----Get color table from highlight group
----@param name string higroup name
+---Get color table from highlight group.
+---@param name string higroup name.
 ---@return table
 M.get_hl = function(name)
   local labels = { "bg", "fg", "sp" }
@@ -32,7 +33,7 @@ M.get_hl = function(name)
   return res
 end
 
----Extend table for highlight definitions for nvim_set_hl
+---Extend table for highlight definitions for `nvim_set_hl`.
 ---@param group string
 ---@param tbl table
 ---@return table
@@ -41,20 +42,20 @@ M.extend_hl = function(group, tbl)
   return vim.tbl_extend("force", colors, tbl)
 end
 
----Wrapper for nvim_set_hl that applies higroups from table definitions
----@param colors table|function
+---Wrapper for `nvim_set_hl` that applies higroups from table definitions.
+---@param colors table|fun(): table
 M.set_hl = function(colors)
   if type(colors) == "function" then
-    colors = colors() ---@type table
+    colors = colors()
   end
   for group, hl in pairs(colors) do
     vim.api.nvim_set_hl(0, group, hl)
   end
 end
 
----extend set_hl to register an autocmd that will run for the provided colorscheme
----@param name string Name of the colorscheme
----@param colors table Table of highlight definitions
+---Wrapper for `set_hl` to register an autocmd that will run on `ColorScheme` event.
+---@param name string? Name of the colorscheme for autocmd patten. Use `nil` to match any colorscheme.
+---@param colors table<string, table> Table of highlight definitions.
 M.set_hl_autocmd = function(name, colors)
   local groups_name = ("ColorScheme_%s"):format(name)
   vim.api.nvim_create_autocmd("ColorScheme", {
@@ -67,10 +68,10 @@ M.set_hl_autocmd = function(name, colors)
   })
 end
 
----Get filepath for matching colorscheme name in after/colors directory.
----@param name string Name of the desired colorscheme
----@param rtp string Parent directory to search for runtime files
----@return string|nil Path string to first matching runtime file
+---Get filepath for matching colorscheme name in `after/colors` directory.
+---@param name string Name of the desired colorscheme.
+---@param rtp string Parent directory to search for runtime files.
+---@return string?
 local get_colors_file = function(name, rtp)
   local files = vim.api.nvim_get_runtime_file(rtp .. "/*", true)
   for _, path in pairs(files) do
@@ -81,8 +82,8 @@ local get_colors_file = function(name, rtp)
   end
 end
 
----Load colorscheme from runtime path: after/colors
----@param name string Name of the desired colorscheme
+---Load colorscheme from runtime path: `after/colors`
+---@param name string Name of the desired colorscheme.
 M.load = function(name)
   local filepath = get_colors_file(name, "after/colors")
 
@@ -97,7 +98,7 @@ M.load = function(name)
     M.set_hl(theme["colors"] or {})
   end
 
-  -- Apply global highlights variable for all colorschemes
+  -- Apply global highlights variable for all colorschemes.
   if vim.g.colors then
     M.set_hl(vim.g.colors or {})
   end

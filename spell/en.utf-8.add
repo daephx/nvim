@@ -58,6 +58,7 @@ ImageMagick
 IncSearch
 IndentBlankline
 InsertEnter
+Keepass
 LBUFFER
 LaTex
 LineNr
@@ -355,6 +356,7 @@ codestyle
 colorcolumn
 colorflag
 colorizer
+colors
 colorscheme
 colorschemes
 colorterm
@@ -638,6 +640,7 @@ freemium
 frontend
 frontends
 frontmatter
+fsharp
 fsproj
 fstab
 ftplugin
@@ -858,6 +861,7 @@ keybind
 keybinds
 keyframe
 keyframes
+keygen
 keymap
 keymaps
 keypress
@@ -1343,6 +1347,7 @@ rerere
 resolv
 restruct
 ret
+retab
 retval
 reusability
 rf
@@ -1398,6 +1403,7 @@ seekranges
 sel
 selene
 setattr
+setenv
 setlocal
 setmetatable
 setmetatable/!
@@ -1406,6 +1412,7 @@ setpos
 setq
 setw
 sfx
+sha
 sha1
 sha256
 shader
@@ -1560,6 +1567,7 @@ termopen
 termux
 testbench
 tex
+texlab
 textDocument
 textdocument
 texthl
@@ -1753,6 +1761,7 @@ whitespace
 whoami
 wifi
 wikilink
+wikipedia
 wildcard
 wildignore
 wildmenu

@@ -27,12 +27,14 @@ CmdlineEnter
 ColorColumn
 ColorScheme
 CommitID
+CopyPathToClipboard
 CurrentVersion
 CursorHold
 CursorHoldI
 CursorLine
 CursorMoved
 DNSmasq
+DarkGray
 Devicon
 DiffView
 DockerHub
@@ -42,6 +44,7 @@ EventLog
 ExecutionPolicy
 ExitApp
 ExitPre
+ExternalScript
 FFmpeg
 FileType
 FloatBorder
@@ -96,10 +99,13 @@ NvimTree
 OSC
 OSD
 OSTYPE
+Oem4
+PSReadLine
 PackerCompile
 PackerComplete
 PageDown
 PageUp
+ParameterValue
 PmenuSel
 PostgreSQL
 PowerShell
@@ -165,6 +171,7 @@ ZoomWin
 abc
 abi
 abspath
+acodec
 addr
 adduser
 adhoc
@@ -254,6 +261,7 @@ beancount
 bezier
 bg
 bibtex
+bigfile
 bindkey
 bindsym
 bitrate
@@ -879,6 +887,7 @@ keyset
 kickstart
 kommentary
 kotlin
+kotlinc
 kubeadm
 kubectl
 kubelet
@@ -928,6 +937,7 @@ listchars
 listdir
 listview
 lldb
+lldebugger
 llvm
 ln
 lnk
@@ -967,6 +977,7 @@ lts
 lua
 luacheck
 luacheckrc
+luadb
 luadoc
 luadocs
 luafile
@@ -1042,6 +1053,7 @@ moonfly
 motd
 mountpoint
 mouseout
+mousereleased
 mov
 moz
 mozillateam
@@ -1186,6 +1198,7 @@ paren
 parens
 parseable
 parsers
+passthrough
 passwd
 pathlib
 pathogen
@@ -1526,6 +1539,7 @@ stylelintrc
 stylesheet
 stylesheets
 stylua
+subclassed
 subdir
 subdirectory
 submenu
@@ -1589,6 +1603,7 @@ textdocument
 texthl
 textmate
 textobjects
+textoff
 textwidth
 tga
 tgz
@@ -1707,6 +1722,7 @@ v2
 vala
 vbs
 vbscript
+vcodec
 vcproj
 vcs
 vendored

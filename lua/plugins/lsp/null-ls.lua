@@ -28,7 +28,6 @@ local hover = null_ls.builtins.hover
 return {
   sources = {
     -- General
-    diagnostics.write_good,
     hover.dictionary,
 
     -- Git Version Control

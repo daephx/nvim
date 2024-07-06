@@ -4,7 +4,8 @@
 ---@type LazyPluginSpec
 return {
   "ellisonleao/gruvbox.nvim",
-  event = { "ColorSchemePre" },
+  lazy = false,
+  priority = 1000,
   opts = {
     contrast = "hard", -- can be "hard", "soft" or empty string
     inverse = false, -- invert background for search, diffs, statusline and errors

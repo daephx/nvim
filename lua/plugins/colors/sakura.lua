@@ -4,7 +4,8 @@
 ---@type LazyPluginSpec
 return {
   "numtostr/sakura.nvim",
-  event = { "ColorSchemePre" },
+  lazy = false,
+  priority = 1000,
   opts = {
     transparent = true,
   },

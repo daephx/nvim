@@ -7,52 +7,43 @@ return {
   "folke/tokyonight.nvim",
   event = { "ColorSchemePre" },
   opts = {
-    style = "night",
-    day_brightness = 0.3,
-    transparent = true,
-    terminal_colors = true,
+    style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
+    transparent = true, -- Enable this to disable setting the background color
     styles = {
+      -- Style to be applied to different syntax groups
+      -- Value is any valid attr-list value for `:help nvim_set_hl`
       comments = { italic = false },
       keywords = { italic = false },
-      functions = {},
-      variables = {},
-      sidebars = "transparent",
-      floats = "transparent",
+      -- Background styles. Can be "dark", "transparent" or "normal"
+      floats = "transparent", -- style for floating windows
+      sidebars = "transparent", -- style for sidebars
     },
-    sidebars = {
-      "NvimTree",
-      "Touble",
-      "floaterm",
-      "help",
-      "neotree",
-      "nerdtree",
-      "packer",
-      "qf",
-      "terminal",
-      "toggleterm",
-      "vista_kind",
-    },
-    --- You can override specific color groups to use other groups or a hex color
-    --- function will be called with a ColorScheme table
+    ---You can override specific color groups to use other groups or a hex color
+    ---function will be called with a ColorScheme table
     ---@param c ColorScheme
     on_colors = function(c)
       c.hint = c.orange
-      c.gitSigns.change = "#7F6526"
     end,
-    --- You can override specific highlights to use other groups or a hex color
-    --- function will be called with a Highlights and ColorScheme table
-    ---@param hl Highlights
+    ---You can override specific highlights to use other groups or a hex color
+    ---function will be called with a Highlights and ColorScheme table
+    ---@param hl tokyonight.Highlights
     ---@param _c ColorScheme
     on_highlights = function(hl, _c)
-      hl.FoldColumn = { bg = "none" }
-      hl.String = { fg = "#cbaa73" }
-      hl.VertSplit = { fg = "#39394e" }
-      hl.WhichKeyFloat = { link = "StatusLineNC" }
       hl.NormalFloat = { link = "Normal" }
+      hl.WinSeparator = { fg = "#39394e" }
+      hl.VertSplit = { link = "WinSeparator" }
 
-      hl.TelescopePreviewBorder = { link = "VertSplit" }
-      hl.TelescopePromptBorder = { link = "VertSplit" }
-      hl.TelescopeResultsBorder = { link = "VertSplit" }
+      -- Telescope
+      hl.TelescopeSelection = { link = "PmenuSel" }
+      hl.TelescopePreviewBorder = { link = "WinSeparator" }
+      hl.TelescopePromptBorder = { link = "WinSeparator" }
+      hl.TelescopeResultsBorder = { link = "WinSeparator" }
+
+      -- Treesitter
+      hl.TreesitterContext = { bg = "none" }
+
+      -- Whichkey
+      hl.WhichKeyFloat = { link = "StatusLineNC" }
     end,
   },
 }

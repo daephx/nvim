@@ -71,7 +71,7 @@ return {
         {
           icon = "",
           desc = "Exit",
-          keymap = "",
+          keymap = "SHFT z z",
           key = "q",
           action = "exit",
         },

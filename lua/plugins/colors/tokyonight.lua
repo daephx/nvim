@@ -5,7 +5,8 @@
 ---@type LazyPluginSpec
 return {
   "folke/tokyonight.nvim",
-  event = { "ColorSchemePre" },
+  lazy = false,
+  priority = 1000,
   opts = {
     style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
     transparent = true, -- Enable this to disable setting the background color

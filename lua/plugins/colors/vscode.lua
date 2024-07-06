@@ -4,7 +4,7 @@
 ---@type LazyPluginSpec
 return {
   "Mofiqul/vscode.nvim",
-  event = { "ColorSchemePre" },
+  lazy = false,
   priority = 1000,
   opts = function()
     local c = require("vscode.colors").get_colors()

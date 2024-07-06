@@ -25,7 +25,8 @@ You can find all plugin specifications within `lua/plugins`.
 
 ## Dependencies
 
-> NOTE: This configuration primarily targets Neovim nightly but aims to be
+> [!NOTE]
+> This configuration primarily targets Neovim nightly but aims to be
 > compatible with the latest stable release. Be sure the version provided by
 > your package manager is up-to-date, or see one of the other available methods
 > for installation: <https://github.com/neovim/neovim/wiki/Installing-Neovim>

@@ -56,8 +56,10 @@ return {
   event = "VeryLazy",
   keys = {
     { "<C-\\>" },
-    { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
-    { "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
+    { "tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
+    { "ts", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal (split)" },
+    { "tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
+    { "tv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal (vsplit)" },
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)
@@ -65,7 +67,7 @@ return {
   end,
   opts = {
     open_mapping = "<C-\\>",
-    direction = "horizontal",
+    direction = "float",
     shade_terminals = false,
     size = size,
     on_open = on_open,

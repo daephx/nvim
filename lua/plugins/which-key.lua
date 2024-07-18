@@ -4,40 +4,41 @@
 ---@type LazyPluginSpec
 return {
   "folke/which-key.nvim",
-  version = "*",
-  event = "VeryLazy",
+  event = { "VeryLazy" },
+  ---@class wk.Opts
   opts = {
-    plugins = { spelling = true },
-    window = { border = { "", "_", "", "", "", "", "", "" } },
-    operators = { gc = "Comments" },
-    key_labels = {
-      ["<bs>"] = "BS",
-      ["<cr>"] = "RET",
-      ["<space>"] = "SPC",
-      ["<tab>"] = "TAB",
+    preset = "classic",
+    icons = { mappings = false },
+    win = {
+      row = math.huge,
+      border = { "─", "─", "─", " ", "─", "", "", " " },
     },
-    defaults = {
-      mode = { "n", "v" },
-      ["["] = { name = "+prev" },
-      ["]"] = { name = "+next" },
-      ["g"] = { name = "+goto" },
-      ["g'"] = { name = "+marks" },
-      ["g`"] = { name = "+marks" },
-      ["gc"] = { name = "+comment" },
-      ["<leader>b"] = { name = "+buffer" },
-      ["<leader>d"] = { name = "+debug" },
-      ["<leader>f"] = { name = "+find" },
-      ["<leader>g"] = { name = "+git" },
-      ["<leader>p"] = { name = "+plugins" },
-      ["<leader>P"] = { name = "+projects" },
-      ["<leader>s"] = { name = "+sessions" },
-      ["<leader>t"] = { name = "+terminal" },
-      ["<leader>z"] = { name = "+notes" },
+    replace = {
+      key = {
+        { "<BS>", "BS" },
+        { "<CR>", "RET" },
+        { "<Esc>", "ESC" },
+        { "<Space>", "SPC" },
+        { "<Tab>", "TAB" },
+      },
     },
   },
   config = function(_, opts)
     local wk = require("which-key")
     wk.setup(opts)
-    wk.register(opts.defaults)
+    wk.add({
+      { "[", group = "Prev" },
+      { "]", group = "Next" },
+      { "g", group = "Goto" },
+      { "<leader>P", group = "Projects" },
+      { "<leader>b", group = "Buffer" },
+      { "<leader>d", group = "Debug" },
+      { "<leader>f", group = "Find" },
+      { "<leader>g", group = "Git" },
+      { "<leader>p", group = "Plugins" },
+      { "<leader>s", group = "Sessions" },
+      { "<leader>t", group = "Terminal" },
+      { "<leader>z", group = "Notes" },
+    })
   end,
 }

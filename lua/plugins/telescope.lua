@@ -118,17 +118,18 @@ return {
         -- File patterns to exclude from fuzzy results
         file_ignore_patterns = {
           "*.pyc", -- Python cache
-          ".git", -- Git version control files
-          ".pytest_cache", -- Pytest unittest cache files
-          ".venv", -- Python virtual environment
-          ".yarn", -- Yarn package directory
-          "__pycache__", -- Python cache files
-          "_build", -- Build artifacts
-          "build", -- Build artifacts
-          "node_modules", -- Node module environment
-          "nvim/runtime/doc", -- Vim documentation
+          ".git/", -- Git version control files
+          ".pytest_cache/", -- Pytest unittest cache files
+          ".venv/", -- Python virtual environment
+          ".yarn/", -- Yarn package directory
+          "__pycache__/", -- Python cache files
+          "_build/", -- Jekyll build directory
+          "build/", -- General build artifacts
+          "node_modules/", -- Node module environment
+          "nvim/runtime/doc/", -- Vim documentation
+          "out/", -- CMake default build directory
           "src/parser.c", -- Treesitter parsers
-          "tags", -- Tag files
+          "tags/", -- Tag files
         },
       }),
 

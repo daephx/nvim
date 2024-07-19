@@ -25,9 +25,7 @@ return {
     },
     signs_staged_enable = false,
     current_line_blame = true,
-    current_line_blame_formatter_opts = {
-      relative_time = false,
-    },
+    current_line_blame_formatter = " <author>, <author_time> - <summary> ",
     on_attach = function(bufnr)
       local gitsigns = require("gitsigns")
       local function map(mode, l, r, opts)

@@ -152,6 +152,7 @@ local windows = {
     fugitive = "Fugitive",
     lazy = "Lazy",
     mason = "Mason",
+    oil = "Oil",
     tsplayground = "TSPlayground",
   },
 }

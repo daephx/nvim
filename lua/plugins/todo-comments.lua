@@ -4,8 +4,13 @@
 ---@type LazyPluginSpec
 return {
   "folke/todo-comments.nvim",
-  cmd = { "TodoTrouble", "TodoTelescope" },
   event = { "BufReadPost", "BufNewFile" },
+  cmd = {
+    "TodoLocList",
+    "TodoQuickFix",
+    "TodoTelescope",
+    "TodoTrouble",
+  },
   dependencies = {
     -- Collection of useful lua functions
     { "nvim-lua/plenary.nvim" },

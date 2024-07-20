@@ -13,9 +13,7 @@ return {
       transparent = true,
       italic_comments = false,
       disable_nvimtree_bg = true,
-      color_overrides = {
-        vscFoldBackground = "#242424",
-      },
+      color_overrides = {},
       group_overrides = {
         -- General
         NormalFloat = { link = "Normal" },

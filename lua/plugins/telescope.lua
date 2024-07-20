@@ -87,13 +87,29 @@ return {
         -- Custom mappings for telescope prompt
         mappings = {
           i = {
+            -- Add common alternative to close prompt
             ["qq"] = actions.close,
             ["jk"] = actions.close,
+
+            -- Disable key mappings to prevent accidental actions
+            ["<C-m>"] = nil,
+
+            -- Allow ctrl-u to clear search prompt
+            ["<C-u>"] = false,
+
+            -- Replace Tab multi-select with simple navigation.
+            ["<Tab>"] = actions.move_selection_next,
+            ["<S-Tab>"] = actions.move_selection_previous,
+
+            -- Set extra keybindings for preview navigation
+            ["<C-Up>"] = actions.preview_scrolling_up,
+            ["<C-Down>"] = actions.preview_scrolling_down,
+            ["<C-Left>"] = actions.preview_scrolling_left,
+            ["<C-Right>"] = actions.preview_scrolling_right,
+            ["<C-PageUp>"] = actions.preview_scrolling_up,
+            ["<C-PageDown>"] = actions.preview_scrolling_down,
+            ["<C-b>"] = actions.preview_scrolling_up,
             ["<C-d>"] = actions.preview_scrolling_down,
-            ["<C-u>"] = actions.preview_scrolling_up,
-            ["<C-h>"] = "which_key",
-            ["<C-PageUp>"] = "preview_scrolling_up",
-            ["<C-PageDown>"] = "preview_scrolling_down",
 
             -- Scroll results by half/page
             ["<PageUp>"] = function(prompt_bufnr)

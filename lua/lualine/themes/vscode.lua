@@ -54,7 +54,7 @@ vscode.insert = {
 
 vscode.terminal = {
   a = { fg = vim.o.background == "dark" and colors.bg or colors.fg, bg = colors.green, gui = "bold" },
-  b = { fg = colors.fg, bg = colors.bg2 },
+  b = { fg = colors.green, bg = colors.bg2 },
   c = { fg = colors.fg, bg = config.opts.transparent and "NONE" or colors.bg },
 }
 

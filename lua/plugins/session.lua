@@ -27,7 +27,7 @@ return {
     auto_restore_enabled = true,
     auto_save_enabled = true,
     auto_session_suppress_dirs = { "/", "~/", "~/Documents", "~/Downloads", "~/Projects" },
-    bypass_session_save_file_types = { "dashboard" },
+    bypass_session_save_file_types = { "dashboard", "oil" },
     session_lens = { load_on_setup = false },
   },
 }

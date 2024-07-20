@@ -38,6 +38,7 @@ return {
       { "<leader>p", group = "Plugins" },
       { "<leader>s", group = "Sessions" },
       { "<leader>t", group = "Terminal" },
+      { "<leader>x", group = "Diagnostics" },
       { "<leader>z", group = "Notes" },
     })
   end,

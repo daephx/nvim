@@ -3,7 +3,7 @@
 
 ---Wrapper function for printing string as lualine component
 ---@param str string
----@return function
+---@return fun(): string
 local function insert_string(str)
   return function()
     return str

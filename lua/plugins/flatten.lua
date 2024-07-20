@@ -4,7 +4,10 @@
 ---@type LazyPluginSpec
 return {
   "willothy/flatten.nvim",
-  event = { "TermOpen" },
+  -- Disable lazy-loading to ensure that it runs first.
+  -- This should minimize delay when opening file from terminal
+  lazy = false,
+  priority = 1001,
   opts = {
     window = { open = "alternate" },
   },

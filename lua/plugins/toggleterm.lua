@@ -1,9 +1,11 @@
 -- toggleterm.nvim | easily manage multiple terminal windows
 -- https://github.com/akinsho/toggleterm.nvim
+---@module "toggleterm"
 
+---@type Terminal[]
 local terminals = {}
 
--- Callback to determine the size of terminal windows
+---Callback to determine the size of terminal windows.
 ---@param term Terminal
 ---@return integer|nil
 local function size(term)
@@ -14,14 +16,14 @@ local function size(term)
   end
 end
 
--- Callback to be executed when terminal is opened
+---Callback to be executed when terminal is opened.
 ---@param term Terminal
 local function on_open(term)
   local opts = { buffer = term.bufnr, silent = true }
   vim.keymap.set({ "n", "t" }, "<esc><esc>", "<C-\\><C-n>", opts)
 end
 
--- Callback to be executed when terminal is closed
+---Callback to be executed when terminal is closed.
 local function on_close()
   local wins = vim.api.nvim_list_wins()
   if wins == 1 then
@@ -29,7 +31,7 @@ local function on_close()
   end
 end
 
--- Generate custom terminals from user opts
+---Generate custom terminals from user opts.
 ---@param opts table
 local initialize_terminals = function(opts)
   local Terminal = require("toggleterm.terminal").Terminal

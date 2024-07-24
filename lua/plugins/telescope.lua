@@ -38,8 +38,6 @@ return {
   opts = function()
     local action_set = require("telescope.actions.set")
     local actions = require("telescope.actions")
-    local previewers = require("telescope.previewers")
-    local sorters = require("telescope.sorters")
     local state = require("telescope.state")
     local themes = require("telescope.themes")
     return {
@@ -53,11 +51,6 @@ return {
         scroll_strategy = "cycle",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
-
-        file_sorter = sorters.get_fuzzy_file,
-        file_previewer = previewers.vim_buffer_cat.new,
-        grep_previewer = previewers.vim_buffer_vimgrep.new,
-        qflist_previewer = previewers.vim_buffer_qflist.new,
 
         vimgrep_arguments = {
           "rg",

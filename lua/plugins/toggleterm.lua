@@ -58,10 +58,10 @@ return {
   event = "VeryLazy",
   keys = {
     { "<C-\\>" },
-    { "tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
-    { "ts", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal (split)" },
-    { "tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
-    { "tv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal (vsplit)" },
+    { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal (float)" },
+    { "<leader>ts", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal (split)" },
+    { "<leader>tt", "<cmd>ToggleTerm direction=tab<CR>", desc = "Terminal (tab)" },
+    { "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal (vsplit)" },
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)

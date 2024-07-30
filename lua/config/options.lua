@@ -134,6 +134,21 @@ vim.opt.foldmethod = "expr" -- use treesitter for folding
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldtext = "v:lua.require('config.util').foldtext()"
 
+-- Specifies for which type of commands folds will be opened
+vim.opt.foldopen = {
+  -- "all", -- Any
+  -- "block", -- (, {, [[, [{, etc.
+  "hor", -- Horizontal movements: "l", "w", "fx", etc.
+  "insert", -- Any command in Insert mode
+  "jump", -- Far jumps: "G", "gg", etc.
+  "mark", -- Jumping to a mark: "'m", CTRL-O, etc.
+  "percent", -- Jump to matching item "%"
+  "quickfix", -- ":cn", ":crew", ":make", etc.
+  "search", -- Search for a pattern: "/", "n", "*", "gd", etc.
+  "tag", -- Jumping to a tag: ":ta", CTRL-T, etc.
+  "undo", -- Undo or redo: "u" and CTRL-R
+}
+
 -- Wildmenu options
 vim.opt.wildmenu = false -- Command-line completion
 vim.opt.wildignorecase = true -- Case insensitive command-line completion

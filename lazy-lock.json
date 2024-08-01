@@ -34,6 +34,7 @@
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "4ba55f9755ebe8297d92c419b90a946123292ae6" },
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "mkdx": { "branch": "master", "commit": "ee667cad506954b706c3fa972fbaaad46b1bf028" },
+  "moonfly": { "branch": "master", "commit": "339fbb83a1bf2fb77305b20c37686b3224adfb8f" },
   "neogit": { "branch": "master", "commit": "af1d8d88f426a4da63c913f3b81a37350dbe8d02" },
   "none-ls-extras.nvim": { "branch": "main", "commit": "059bb6561b8f5ff99a7acc9262b557ebbe5c34ec" },
   "none-ls-luacheck.nvim": { "branch": "main", "commit": "a1dfea0d4c40c4023829c8b9a7ab0a26135985ca" },

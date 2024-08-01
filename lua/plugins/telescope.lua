@@ -149,7 +149,11 @@ return {
         lsp_document_symbols = { path_display = { "hidden" } },
         lsp_references = { path_display = { "shorten" } },
         lsp_workspace_symbols = { path_display = { "shorten" } },
-        colorscheme = { previewer = false, layout_config = { height = 12 } },
+        colorscheme = {
+          previewer = false,
+          on_complete = false,
+          layout_config = { height = 12 },
+        },
         find_files = { hidden = true },
         buffers = {
           sort_mru = true,

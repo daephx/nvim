@@ -38,6 +38,9 @@ return {
     ls.filetype_extend("glsl", { "c" })
     ls.filetype_extend("javascript", { "javascriptreact" })
     ls.filetype_extend("typescript", { "typescriptreact" })
+    ls.filetype_extend("html", { "loremipsum" })
+    ls.filetype_extend("markdown", { "loremipsum" })
+    ls.filetype_extend("plain", { "loremipsum" })
 
     -- Load primary LSP snippets from friendly-snippets
     require("luasnip.loaders.from_vscode").lazy_load()

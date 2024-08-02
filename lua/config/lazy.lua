@@ -34,7 +34,7 @@ require("lazy").setup({
       paths = { vim.fn.stdpath("data") .. "/site" },
       disabled_plugins = {
         "gzip",
-        -- "matchit",
+        "matchit",
         -- "matchparen",
         "netrwPlugin",
         "rplugin",

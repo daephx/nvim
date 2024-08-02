@@ -35,7 +35,7 @@ return {
         "jsonls",
         "lua_ls",
         "pyright",
-        "ruff_lsp",
+        "ruff",
         "taplo",
         "yamlls",
       },

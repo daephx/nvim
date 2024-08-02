@@ -37,7 +37,7 @@ return {
     highlight = {
       keyword = "fg", -- "fg", "bg", "wide" or empty.
       after = "", -- "fg" or "bg" or empty
-      pattern = [[(KEYWORDS)\s*(\([^\)]*\))?:]],
+      pattern = ".*<((KEYWORDS)%(\\(.{-1,}\\))?):",
       comments_only = true, -- uses treesitter to match keywords in comments only
       -- list of file types to exclude highlighting
       exclude = { "help", "log" },
@@ -54,7 +54,7 @@ return {
       -- regex that will be used to match keywords.
       -- don't replace the (KEYWORDS) placeholder!
       -- Match to colon ':', optional parenthesis | KEYWORD(AUTHOR):
-      pattern = [[\b(KEYWORDS)(\([^\)]*\))?:]],
+      pattern = "\b(KEYWORDS)(\\([^\\)]*\\))?:",
     },
   },
   init = function()

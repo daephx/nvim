@@ -27,10 +27,12 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 })
 
 autocmd({ "VimResized" }, {
-  desc = "Resize splits if vim window is resized",
+  desc = "Resize splits when vim window is resized",
   group = augroup("ResizeSplits", {}),
   callback = function()
+    local current_tab = vim.fn.tabpagenr()
     vim.cmd("tabdo wincmd =")
+    vim.cmd.tabnext(current_tab)
   end,
 })
 

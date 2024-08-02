@@ -19,7 +19,11 @@ autocmd({ "FocusLost" }, {
 autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   desc = "Check if any buffers were changed outside of Vim on focus changed",
   group = augroup("UpdateBuffers", {}),
-  command = "checktime",
+  callback = function()
+    if vim.o.buftype ~= "nofile" then
+      vim.cmd.checktime()
+    end
+  end,
 })
 
 autocmd({ "VimResized" }, {

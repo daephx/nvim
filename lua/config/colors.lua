@@ -3,7 +3,9 @@
 
 local M = {}
 
----Check if colorscheme filename is available in the runtimepath.
+vim.g.COLORSCHEME = "default"
+
+---Check if colorscheme filename is available in the runtimepath
 ---@param colors_name string
 ---@return boolean
 M.is_available = function(colors_name)
@@ -109,11 +111,21 @@ end
 
 local group = vim.api.nvim_create_augroup("ColorSchemeFix", {})
 
-vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
-  desc = "Automatically load/reload colorscheme changes",
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  desc = "Start neovim with the previously loaded colorscheme",
+  group = group,
+  nested = true,
+  callback = function()
+    pcall(vim.cmd.colorscheme, vim.g.COLORSCHEME)
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+  desc = "Save the current colorscheme as a global",
   group = group,
   callback = function(ev)
-    M.load(vim.g.colors_name and ev.match or "default")
+    vim.g.COLORSCHEME = vim.g.colors_name or ev.match
+    M.load(vim.g.COLORSCHEME)
   end,
 })
 

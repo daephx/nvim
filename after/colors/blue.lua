@@ -1,15 +1,33 @@
+-- Define colors for builtin colorscheme: blue
+
 local M = {}
 
 M.colors = {
+  CurSearch = { link = "IncSearch" },
+  CursorLine = { ctermbg = 25, bg = "#003562" },
+  CursorLineNr = { ctermfg = 87, fg = "#5fffff", bold = true },
+  CursorLineSign = { ctermbg = "none", bg = "none" },
+  EndOfBuffer = { ctermfg = 220, fg = "#ffd700" },
+  Error = { ctermfg = 209, fg = "#ff7f50" },
+  ErrorMsg = { link = "Error" },
+  FloatBorder = { link = "WinSeparator" },
+  Folded = { bg = "Grey12" },
+  IncSearch = { ctermfg = 40, bg = "Green" },
+  LineNr = { fg = "Grey37" },
+  MatchParen = { bg = "Grey37" },
+  MsgSeparator = { link = "WinSeparator" },
+  Normal = { ctermbg = "none", bg = "none" },
   NormalFloat = { link = "Normal" },
-  FloatBorder = { link = "VertSplit" },
-  CursorLinrNr = { bg = "none" },
-  EndOfBuffer = { fg = "DodgerBlue3" },
-  VertSplit = { bg = "none" },
+  PmenuSel = { ctermbg = 231, bg = "Turquoise4" },
+  Statement = { fg = "Violet" },
+  VertSplit = { link = "WinSeparator" },
+  Visual = { ctermfg = 231, ctermbg = 30, bg = "Turquoise4" },
 
-  DiffAdd = { bg = "none" },
-  DiffChange = { bg = "none" },
-  DiffDelete = { bg = "none" },
+  -- Diff
+  DiffAdd = { ctermfg = 231, ctermbg = 65, bg = "#293a29", fg = "none" },
+  DiffChange = { ctermfg = 231, ctermbg = 67, bg = "#354b62", fg = "none" },
+  DiffDelete = { ctermfg = 231, ctermbg = 133, bg = "#623562", fg = "#af5faf" },
+  DiffText = { ctermfg = 16, ctermbg = 251, bg = "#415b7b", fg = "none" },
 }
 
 return M

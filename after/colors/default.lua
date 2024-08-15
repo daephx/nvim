@@ -1,45 +1,55 @@
+-- Define colors for builtin colorscheme: default
+
 local M = {}
 
 M.colors = {
-  ColorColumn = { bg = "NvimDarkBlue" },
-  Constant = { fg = "NvimLightRed" },
-  CursorLineNr = { ctermfg = 222, fg = "NvimLightYellow" },
+  ColorColumn = { ctermbg = 24, bg = "NvimDarkBlue" },
+  Constant = { ctermfg = 217, fg = "NvimLightRed" },
+  CursorLineNr = { ctermfg = 222, fg = "NvimLightYellow", bold = true },
+  Error = { ctermfg = 217, fg = "NvimLightRed" },
+  ErrorMsg = { ctermfg = 217, ctermbg = 9, fg = "NvimLightRed", bg = "NvimDarkRed" },
   FloatBorder = { link = "WinSeparator" },
-  NonText = { ctermfg = 239, fg = "Gray15" },
-  Normal = { ctermfg = 253, bg = "none", fg = "NvimLightGrey2" },
-  PmenuSel = { bg = "NvimDarkGrey3" },
-  Statement = { fg = "NvimLightMagenta" },
-  StatusLine = { bg = "none" },
-  Type = { fg = "NvimLightCyan" },
-  WinSeparator = { ctermfg = 236, fg = "NvimDarkGrey3" },
+  Folded = { ctermbg = 234, bg = "NvimDarkGrey2" },
+  MsgSeparator = { link = "WinSeparator" },
+  Normal = { ctermfg = 253, fg = "NvimLightGrey2" },
+  PmenuSel = { ctermbg = 254, ctermfg = 16, bg = "NvimLightGrey2", fg = "Black" },
+  Statement = { ctermfg = 177, fg = "Violet" },
+  StatusLine = { ctermbg = "none", bg = "none" },
+  Title = { link = "Special" },
+  Type = { ctermfg = 153, fg = "NvimLightBlue" },
+  WinSeparator = { ctermfg = 237, fg = "NvimDarkGrey4" },
+  WinBar = { link = "Normal" },
+  WinBarNC = { link = "Normal" },
+  VertSplit = { link = "WinSeparator" },
 
   -- Git
-  GitSignsAdd = { ctermfg = 157, fg = "NvimLightGreen", bold = true },
-  GitSignsChange = { ctermfg = 222, fg = "NvimLightYellow", bold = true },
-  GitSignsDelete = { ctermfg = 217, fg = "NvimLightRed", bold = true },
+  Added = { ctermfg = 157, fg = "NvimLightGreen", bold = true },
+  Changed = { ctermfg = 222, fg = "NvimLightYellow", bold = true },
+  Removed = { ctermfg = 217, fg = "NvimLightRed", bold = true },
+
+  -- Diff
+  DiffAdd = { ctermbg = 236, ctermfg = 40, bg = "NvimDarkGreen" },
+  DiffChange = { ctermbg = 236, ctermfg = 75, bg = "NvimDarkBlue" },
+  DiffDelete = { ctermbg = 236, ctermfg = 196, fg = "NvimLightRed" },
+  DiffText = { ctermbg = 236, bg = "Grey19" },
 
   -- LSP
   ["@lsp.mod.defaultLibrary.lua"] = { link = "@namespace" },
+  ["@lsp.mod.global.lua"] = { ctermfg = 217, fg = "NvimLightRed" },
 
   -- Treesitter
+  ["@string.special.url.comment"] = { ctermfg = 153, fg = "NvimLightBlue", underline = true },
   ["@variable"] = { link = "Identifier" },
 
   -- Rainbow Delimiters
-  RainbowDelimiterBlue = { fg = "NvimLightBlue", nocombine = true },
-  RainbowDelimiterCyan = { fg = "NvimLightCyan", nocombine = true },
-  RainbowDelimiterGreen = { fg = "NvimLightGreen", nocombine = true },
-  RainbowDelimiterOrange = { ctermfg = 221, fg = "LightGoldenrod2", nocombine = true },
-  RainbowDelimiterPink = { ctermfg = 210, fg = "LightCoral", nocombine = true },
-  RainbowDelimiterRed = { fg = "NvimLightRed", nocombine = true },
-  RainbowDelimiterViolet = { fg = "NvimLightMagenta", nocombine = true },
-  RainbowDelimiterYellow = { fg = "NvimLightYellow", nocombine = true },
-
-  -- Dashboard
-  DashboardHeader = { link = "Special" },
-  DashboardDesc = { link = "String" },
-  DashboardFooter = { link = "Comment" },
-  DashboardIcon = { link = "String" },
-  DashboardShortCut = { link = "Keyword" },
+  RainbowDelimiterBlue = { ctermfg = 153, fg = "NvimLightBlue", nocombine = true },
+  RainbowDelimiterCyan = { ctermfg = 123, fg = "NvimLightCyan", nocombine = true },
+  RainbowDelimiterGreen = { ctermfg = 157, fg = "NvimLightGreen", nocombine = true },
+  RainbowDelimiterOrange = { ctermfg = 214, fg = "Orange", nocombine = true },
+  RainbowDelimiterPink = { ctermfg = 209, fg = "Salmon", nocombine = true },
+  RainbowDelimiterRed = { ctermfg = 217, fg = "NvimLightRed", nocombine = true },
+  RainbowDelimiterViolet = { ctermfg = 211, fg = "PaleVioletRed1", nocombine = true },
+  RainbowDelimiterYellow = { ctermfg = 222, fg = "NvimLightYellow", nocombine = true },
 }
 
 -- Neovim 0.10+ introduces a new default colorscheme.
@@ -51,7 +61,9 @@ end
 
 -- Don't modify Normal if background is set to light mode.
 if vim.o.background == "light" then
-  M.colors["Normal"] = nil
+  M.colors.Constant = { fg = "NvimDarkRed" }
+  M.colors.Normal = nil
+  M.colors.Statement = { fg = "DarkViolet", bold = true }
 end
 
 return M

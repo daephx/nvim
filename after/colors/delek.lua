@@ -1,11 +1,13 @@
 local M = {}
 
 M.colors = {
-  FloatBorder = { link = "VertSplit" },
+  FloatBorder = { link = "WinSeparator" },
   NonText = { fg = "Gray15" },
   SignColumn = { bg = "none" },
-  VertSplit = { fg = "Gray" },
+  WinSeparator = { fg = "Gray" },
+  VertSplit = { link = "WinSeparator" },
 
+  -- Git
   DiffAdd = { fg = "Green", bg = "none" },
   DiffChange = { fg = "Yellow", bg = "none" },
   DiffDelete = { fg = "Red", bg = "none" },

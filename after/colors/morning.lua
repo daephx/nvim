@@ -1,30 +1,17 @@
+-- Define colors for builtin colorscheme: morning
+
 local M = {}
 
 M.colors = {
-  -- Normal = { bg = "none" },
-  NormalFloat = { link = "Normal" },
-  NormalBorder = { link = "VertSplit" },
+  Constant = { ctermbg = "none", ctermfg = 201, bg = "none", fg = "#ff00ff" },
   CursorLinrNr = { bg = "none" },
+  EndOfBuffer = { ctermbg = 252, ctermfg = 21, bg = "none", fg = "#0000ff", bold = true },
   NonText = { bg = "none" },
-  EndOfBuffer = { fg = "red" },
-  FloatBorder = { fg = "Gray" },
-  VertSplit = { bg = "none" },
-  Whitespace = { bg = "none" },
-  -- StatusLineNC = { bg = "Gray15" },
-
-  DiffAdd = { bg = "none", fg = "#5f875f" },
-  DiffChange = { bg = "none", fg = "#5f87af" },
-  DiffDelete = { bg = "none", fg = "#af5faf" },
-
-  -- Telescope
-  TelescopeNormal = { link = "Normal" },
-  TelescopePreviewBorder = { fg = "Gray" },
-  TelescopePromptBorder = { fg = "Gray" },
-  TelescopeResultsBorder = { fg = "Gray" },
-  TelescopeSelection = { bg = "Gray23" },
-
-  -- Whichkey
-  WhichKey = { link = "Define" },
+  Normal = { ctermfg = 16, ctermbg = 254, fg = "Black", bg = "#e4e4e4" },
+  NormalBorder = { link = "VertSplit" },
+  NormalFloat = { link = "Normal" },
+  StatusLineNC = { bg = "Gray4" },
+  WinSeparator = { bg = "none" },
 }
 
 return M

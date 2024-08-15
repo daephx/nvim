@@ -76,6 +76,7 @@ return {
     on_close = on_close,
     highlights = {
       Normal = { link = "Normal" },
+      NormalFloat = { link = "NormalFloat" },
       FloatBorder = { link = "FloatBorder" },
     },
     -- Commands will be generate to open apps as floating terminals

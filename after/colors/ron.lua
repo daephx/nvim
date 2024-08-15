@@ -1,37 +1,31 @@
+-- Define colors for builtin colorscheme: ron
+
 local M = {}
 
 M.colors = {
-  Normal = { bg = "none" },
-  Comment = { fg = "Gray45" },
-  CursorLine = { bg = "none" },
-  CursorLineNr = { bg = "none", fg = "Yellow" },
-  EndOfBuffer = { fg = "Grey17" },
-  LineNr = { fg = "Gray35" },
-  MsgSeparator = { link = "VertSplit" },
-  NonText = { fg = "Gray15" },
-  FloatBorder = { link = "VertSplit" },
-  SignColumn = { bg = "none" },
-  StatusLine = { bg = "Blue", fg = "Gray80" },
-  StatusLineNC = { bg = "NavyBlue" },
-  VertSplit = { fg = "Gray35" },
+  CursorLine = { bg = "Gray15" },
+  CursorLineNr = { ctermfg = 226, bg = "Gray15", fg = "Yellow", bold = true },
+  EndOfBuffer = { ctermfg = 226, fg = "Yellow" },
+  FloatBorder = { link = "WinSeparator" },
+  Folded = { ctermbg = 234, bg = "Gray12" },
+  LineNr = { ctermfg = 242, fg = "Gray42" },
+  MsgSeparator = { link = "WinSeparator" },
+  NonText = { fg = "Gray25" },
+  Normal = { ctermbg = "none", bg = "none" },
+  NormalFloat = { link = "Normal" },
+  Pmenu = { ctermbg = "none", bg = "none" },
+  SignColumn = { ctermbg = "none", bg = "none" },
+  StatusLine = { ctermfg = 242, bg = "Blue", fg = "Gray2" },
+  Title = { ctermfg = 145, fg = "Yellow" },
+  WinSeparator = { ctermfg = 238, fg = "Gray32" },
+  Visual = { ctermbg = 18, bg = "Gray24" },
+  VertSplit = { link = "WinSeparator" },
 
-  DiffAdd = { fg = "Green", bg = "none" },
-  DiffChange = { fg = "Yellow", bg = "none" },
-  DiffDelete = { fg = "Red", bg = "none" },
-
-  -- Telescope
-  TelescopeNormal = { link = "Normal" },
-  TelescopePreviewBorder = { fg = "Gray" },
-  TelescopePromptBorder = { fg = "Gray" },
-  TelescopeResultsBorder = { fg = "Gray" },
-  TelescopeSelection = { bg = "Gray23" },
-
-  -- Indent Blankline
-  IndentBlanklineChar = { link = "LineNr" },
-
-  -- Whichkey
-  WhichKey = { link = "Define" },
-  WhichKeyFloat = { bg = "Gray5" },
+  -- Diff
+  DiffAdd = { ctermbg = "none", bg = "none" },
+  DiffChange = { ctermbg = "none", bg = "none" },
+  DiffDelete = { ctermbg = "none", bg = "none" },
+  DiffText = { ctermbg = "none", bg = "none" },
 }
 
 return M

@@ -28,17 +28,22 @@ return {
     ---You can override specific highlights to use other groups or a hex color
     ---function will be called with a Highlights and ColorScheme table
     ---@param hl tokyonight.Highlights
-    ---@param _c ColorScheme
-    on_highlights = function(hl, _c)
+    ---@param c ColorScheme
+    on_highlights = function(hl, c)
+      hl.CursorLine = { bg = "#1b1e2b" }
       hl.NormalFloat = { link = "Normal" }
-      hl.WinSeparator = { fg = "#39394e" }
+      hl.Underlined = { fg = c.blue, underline = true }
       hl.VertSplit = { link = "WinSeparator" }
+      hl.WinSeparator = { fg = "#39394e" }
+
+      -- Diff
+      hl.DiffDelete = { fg = c.git.delete, bg = c.bg_highlight }
 
       -- Telescope
       hl.TelescopeSelection = { link = "PmenuSel" }
-      hl.TelescopePreviewBorder = { link = "WinSeparator" }
-      hl.TelescopePromptBorder = { link = "WinSeparator" }
-      hl.TelescopeResultsBorder = { link = "WinSeparator" }
+      hl.TelescopePreviewBorder = { link = "FloatBorder" }
+      hl.TelescopePromptBorder = { link = "FloatBorder" }
+      hl.TelescopeResultsBorder = { link = "FloatBorder" }
 
       -- Treesitter
       hl.TreesitterContext = { bg = "none" }

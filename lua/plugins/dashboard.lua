@@ -101,7 +101,7 @@ return {
   config = function(_, opts)
     -- Add version information as sub header
     local v = vim.version()
-    local release = v.prerelease == false and "stable" or "nightly"
+    local release = v.prerelease == nil and "stable" or "nightly"
     local template = "--- [   %s.%s.%s %s   ] ---"
     vim.list_extend(
       opts.config.header,

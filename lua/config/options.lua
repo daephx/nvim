@@ -200,10 +200,33 @@ vim.opt.fillchars = {
 }
 
 -- Global highlight overrides
+-- Many of these are manually set to default so that colorschemes are able to overwrite them.
+-- Using default prevents issues with themes that don't explicitly set the same highlight groups.
+---@type table<string, vim.api.keyset.highlight>
 vim.g.colors = {
-  LspInfoBorder = { link = "FloatBorder" },
-  MsgSeparator = { link = "VertSplit" },
-  NormalFloat = { link = "Normal" },
+  FloatBorder = { link = "WinSeparator", default = true },
+  LspInfoBorder = { link = "FloatBorder", default = true },
+  MsgSeparator = { link = "WinSeparator", default = true },
+  NormalFloat = { link = "Normal", default = true },
+  VertSplit = { link = "WinSeparator", default = true },
+
+  -- Dashboard
+  DashboardDesc = { link = "String", default = true },
+  DashboardFooter = { link = "Comment", default = true },
+  DashboardHeader = { link = "Special", default = true },
+  DashboardIcon = { link = "String", default = true },
+  DashboardKey = { link = "Comment", default = true },
+  DashboardShortCut = { link = "Keyword", default = true },
+
+  -- Telescope
+  TelescopeBorder = { link = "WinSeparator", default = true },
+  TelescopeSelection = { link = "CursorLine", default = true },
+  TelescopeTitle = { link = "Title", default = true },
+
+  -- WhichKey
+  WhichKeyNormal = { link = "Normal", default = true },
+  WhichKeySeparator = { link = "WinSeparator", default = true },
+  WhichKeyTitle = { link = "Title", default = true },
 }
 
 -- Netrw specific options

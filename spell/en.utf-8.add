@@ -87,6 +87,7 @@ MinimumRes
 MouseMove
 Myriadth
 NERDTree
+NES
 NOPASSWD
 NoLogo
 NoProfile
@@ -101,6 +102,7 @@ OSD
 OSTYPE
 Oem4
 PSReadLine
+PYTHONPATH
 PackerCompile
 PackerComplete
 PageDown
@@ -162,6 +164,7 @@ WinEnter
 WinEvent
 WinLeave
 WinNew
+WinSeparator
 WinTitle
 WinZoom
 WriteLine
@@ -175,6 +178,7 @@ acodec
 addr
 adduser
 adhoc
+aegisub
 afile
 agnoster
 ahk
@@ -231,6 +235,7 @@ autorun
 autosave
 autosquash
 autostart
+autosuggest
 autosuggestions
 autotag
 autowidth
@@ -280,6 +285,7 @@ bp
 bpytop
 branchless
 breakindent
+broadcasthost
 bs
 btop
 buf
@@ -439,6 +445,7 @@ damnit
 dap
 dapui
 darcs
+darkblue
 darkgreen
 dataframe
 datamoshes
@@ -526,6 +533,7 @@ dropdown
 ds_store
 dstask
 duckdns
+dups
 easymotion
 echo
 editorconfig
@@ -586,6 +594,7 @@ extmark
 eza
 f1
 fallbacks
+famicom
 favour
 fd
 fdfind
@@ -630,6 +639,7 @@ foldexpr
 foldlevel
 foldlevelstart
 foldmethod
+foldnestmax
 foldopen
 foldsep
 foldstart
@@ -664,6 +674,7 @@ func
 fzf
 fzfterm
 fzy
+gameboy
 gamesave
 gamesaves
 gc
@@ -699,6 +710,7 @@ gitmodules
 gitrebase
 gitsigns
 glazewm
+globdots
 globpath
 glsl
 gnu
@@ -823,6 +835,7 @@ io
 ios
 iostream
 ip
+ipaddr
 ipairs
 ipsum
 ipv4
@@ -885,6 +898,7 @@ keypressed
 keypresses
 keyset
 kickstart
+koehler
 kommentary
 kotlin
 kotlinc
@@ -990,6 +1004,8 @@ luarc
 luarocks
 luasnip
 luaver
+lunaperche
+lunaperche/!
 luvit
 macchiato
 macchina
@@ -1018,6 +1034,7 @@ md5
 mdx
 mechatronics
 mem
+mempak
 menuone
 menuselect
 mergetool
@@ -1070,6 +1087,7 @@ mswin
 mtime
 multiband
 multispace
+murphy
 mux
 muxed
 mypy
@@ -1185,6 +1203,7 @@ osx
 outdir
 owo
 p7zip
+pablo
 packadd
 packercompile
 packercomplete
@@ -1374,6 +1393,7 @@ resolv
 restruct
 ret
 retab
+retrobox
 retval
 reusability
 rf
@@ -1414,6 +1434,7 @@ scaleability
 scanf
 schemastore
 scm
+scp
 screenrc
 screensaver
 scrollback
@@ -1444,6 +1465,7 @@ sfx
 sha
 sha1
 sha256
+shada
 shader
 shaders
 shellcheck
@@ -1584,6 +1606,8 @@ tabwidth
 tada
 taplo
 taskbar
+taskwarrior
+taskwarrior/!
 tautulli
 taz
 tbl
@@ -1681,6 +1705,7 @@ undercurl
 undolevel
 undotree
 unescape
+unescaped
 unicode
 unindent
 unittest
@@ -1799,6 +1824,7 @@ wifi
 wikilink
 wikipedia
 wildcard
+wildcharm
 wildignore
 wildmenu
 win
@@ -1841,8 +1867,10 @@ xclock
 xconfig
 xdg
 xdg_dirs
+xdigit
 xdotool
 xev
+xfce
 xhost
 xinit
 xinitrc
@@ -1869,9 +1897,11 @@ yamlls
 ylast
 yml
 youtube
+zaibatsu
 zcompdump
 zdotdir
 zellij
+zellner
 zenmode
 zettelkasten
 zfs

@@ -33,29 +33,46 @@ vim.cmd.cnoreabbrev({ "xA", "xa" })
 -- Delete buffer without closing window
 vim.cmd.cnoreabbrev({ "bdd", "bn|bd#" })
 
--- Plenary reload module
-vim.api.nvim_create_user_command("R", function(ev)
-  local name = ev.args
-  if name == "" then
-    name = vim.fn.expand("%:."):gsub("%.lua", "")
-  end
-  local plenary_ok, _ = pcall(require, "plenary")
-  if plenary_ok then
+---Load or reload a Lua module in the current Neovim session
+---@param name string Path to the Lua file
+---@return any
+local reload_module = function(name)
+  if package.loaded["plenary"] then
     require("plenary.reload").reload_module(name, true)
   else
     package.loaded[name] = nil
   end
-  local _, module = pcall(require, name)
-  return module
-end, {
+  return require(name)
+end
+
+---Handle the reload command by parsing the module name
+---@param ctx table Context containing the command arguments
+local function reload_command_handler(ctx)
+  local name = ctx.args
+  if name == "" then
+    name = vim.fn.expand("%:.")
+    name = name:gsub("%.lua", "")
+    name = name:gsub("lua[/|\\]", "")
+  end
+  print(("Reloading module: %s"):format(name))
+  reload_module(name)
+end
+
+---Provide completion options for the reload command
+---@return table
+local reload_command_completion = function()
+  local modules = {}
+  for key, _ in pairs(package.loaded) do
+    table.insert(modules, key)
+  end
+  return modules
+end
+
+-- Register commands: Reload
+vim.cmd.cnoreabbrev({ "R", "Reload" })
+vim.api.nvim_create_user_command("Reload", reload_command_handler, {
+  complete = reload_command_completion,
   nargs = "?",
-  complete = function()
-    local modules = {}
-    for key, _ in pairs(package.loaded) do
-      table.insert(modules, key)
-    end
-    return modules
-  end,
 })
 
 ---Redirect the output of a command to a new buffer

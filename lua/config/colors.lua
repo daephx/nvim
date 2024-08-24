@@ -10,15 +10,15 @@
 
 local M = {}
 
-vim.g.COLORSCHEME = "default"
-
----Check if colorscheme filename is available in the runtimepath.
----@param colors_name string
+---Check if colorscheme filename is available in the runtimepath
+---@param name string
 ---@return boolean
-M.is_available = function(colors_name)
-  for _, theme in pairs(vim.api.nvim_get_runtime_file("colors/*.*", true)) do
-    local theme_file = string.match(theme, "/colors/(%w+)%.[lua|vim]")
-    if theme_file == colors_name then
+M.check_colorscheme_exists = function(name)
+  for _, path in pairs(vim.api.nvim_get_runtime_file("colors/*.*", true)) do
+    local basename = string.match(path, "/colors/(%w+)%.[lua|vim]")
+    local is_after = string.match(path, "/after/colors/")
+    -- Ensure the path does not located in the `after/` directory.
+    if basename and basename == name and not is_after then
       return true
     end
   end
@@ -96,10 +96,14 @@ local get_colors_file = function(name, rtp)
   end
 end
 
----Load colorscheme from runtime path: `after/colors`
----@param name string Name of the desired colorscheme.
-M.load = function(name)
-  local filepath = get_colors_file(name, "after/colors")
+---Load highlight overrides for the specified colorscheme and apply global overrides.
+---@param name string Colorscheme name used to look for a matching `after/colors` module.
+---@return nil
+M.load_after_colors = function(name)
+  local filepath
+  if name then
+    filepath = get_colors_file(name, "after/colors")
+  end
 
   -- Match extension for loading vimscript files
   if filepath and filepath:match(".+%.vim") then
@@ -117,36 +121,62 @@ M.load = function(name)
   end
 end
 
---- Autocmds ---
+---Persist and restore colorscheme across sessions
+---This function sets up autocommands to save the current colorscheme in a
+---global variable and reload it when Neovim starts.
+---@return nil
+M.persist_colorscheme = function()
+  local group = vim.api.nvim_create_augroup("ColorScheme#Persist", { clear = true })
+  vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+    desc = "Save current colorscheme to an environment variable",
+    group = group,
+    callback = function(ev)
+      vim.g.COLORSCHEME = ev.match
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "VimEnter" }, {
+    desc = "Restore the saved global colorscheme on startup",
+    group = group,
+    nested = true,
+    callback = function()
+      pcall(vim.cmd.colorscheme, vim.g.COLORSCHEME or "default")
+    end,
+  })
+end
 
-local group = vim.api.nvim_create_augroup("ColorSchemeFix", {})
+---Enable automatic reloading of colorscheme changes
+---This function sets up autocommands for reloading the colorscheme when
+---the ColorScheme or VimEnter events are triggered.
+---@return nil
+M.hook_colorscheme_change = function()
+  vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+    desc = "Load custom highlight definitions from after/colors matching the active colorscheme",
+    group = vim.api.nvim_create_augroup("ColorScheme#AfterColors", { clear = true }),
+    callback = function()
+      M.load_after_colors(vim.g.colors_name)
+    end,
+  })
+end
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  desc = "Start neovim with the previously loaded colorscheme",
-  group = group,
-  nested = true,
-  callback = function()
-    pcall(vim.cmd.colorscheme, vim.g.COLORSCHEME)
-  end,
-})
+---Fix terminal color variables when changing colorscheme
+---This function sets up an autocommand to unset global terminal color
+---variables before a colorscheme change to prevent issues with terminal colors.
+---@return nil
+M.reset_terminal_colors = function()
+  vim.api.nvim_create_autocmd({ "ColorSchemePre" }, {
+    desc = "Clear terminal color variables before applying a new colorscheme",
+    group = vim.api.nvim_create_augroup("ColorScheme#ClearTermColros", { clear = true }),
+    callback = function()
+      for i = 0, 15 do
+        vim.g["terminal_color_" .. i] = nil
+      end
+    end,
+  })
+end
 
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-  desc = "Save the current colorscheme as a global",
-  group = group,
-  callback = function(ev)
-    vim.g.COLORSCHEME = vim.g.colors_name or ev.match
-    M.load(vim.g.COLORSCHEME)
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "ColorSchemePre" }, {
-  desc = "Unset global terminal color variables before changing colorscheme",
-  group = group,
-  callback = function()
-    for i = 0, 15 do
-      vim.g["terminal_color_" .. i] = nil
-    end
-  end,
-})
+-- Initialize autocmds
+M.hook_colorscheme_change()
+M.persist_colorscheme()
+M.reset_terminal_colors()
 
 return M

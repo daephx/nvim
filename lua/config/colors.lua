@@ -106,10 +106,9 @@ M.load = function(name)
     vim.cmd.source(filepath)
   end
 
-  -- Safely load lua file for theme highlights
-  local theme_ok, theme = pcall(dofile, filepath)
-  if theme_ok and type(theme) == "table" then
-    M.set_hl(theme or {})
+  -- Load lua file for theme highlights
+  if filepath and filepath:match(".+%.lua") then
+    M.set_hl(dofile(filepath) or {})
   end
 
   -- Apply global highlights variable for all colorschemes.

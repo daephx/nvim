@@ -22,7 +22,7 @@ util.register_keymaps(defaults, {
   { "i", "<c-z>", "<c-o>:u<CR>" },
 
   -- Remove highlight after search with ESCAPE
-  { "n", "<esc>", ":nohlsearch<cr><esc>" },
+  { "n", "<esc>", "<cmd>nohlsearch<cr><esc>" },
 
   -- Jumplist center cursor
   { "n", "<C-o>", "<C-o>zz" },
@@ -45,8 +45,8 @@ util.register_keymaps(defaults, {
   { "v", "<Tab>", ">gv" },
 
   -- Navigate buffer
-  { "n", "[b", ":bprevious<CR>", { desc = "Previous buffer" } },
-  { "n", "]b", ":bnext<CR>", { desc = "Next buffer" } },
+  { "n", "[b", "<cmd>bprevious<CR>", { desc = "Previous buffer" } },
+  { "n", "]b", "<cmd>bnext<CR>", { desc = "Next buffer" } },
 
   -- Delete active buffer in window
   { "n", "<c-w>d", "<cmd>bn|bd#<CR>" },

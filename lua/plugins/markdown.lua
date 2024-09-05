@@ -1,4 +1,5 @@
--- lua/plugins/markdown.lua
+-- Configures plugins for Markdown files and note management.
+-- Includes tools for editing/previewing and exploring Markdown files.
 
 ---@type LazyPluginSpec[]
 return {
@@ -20,5 +21,21 @@ return {
         ["prefers-color-scheme"] = "dark",
       }
     end,
+  },
+  { -- Neovim extension for zk
+    "zk-org/zk-nvim",
+    main = "zk",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>zb", "<cmd>ZkBacklinks<CR>", desc = "Show backlinks" },
+      { "<leader>zf", "<cmd>ZkNotes<CR>", desc = "Show notes" },
+      { "<leader>zl", "<cmd>ZkLinks<CR>", desc = "Show links" },
+      { "<leader>zn", "<cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", desc = "New note" },
+    },
+    opts = {
+      -- Can be "telescope", "fzf" or "select" (`vim.ui.select`)
+      -- It's recommended to use "telescope" or "fzf"
+      picker = "telescope",
+    },
   },
 }

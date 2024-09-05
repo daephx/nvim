@@ -61,8 +61,7 @@ return {
         vim.fn.sign_define(name, { text = text, texthl = texthl, linehl = sign[3], numhl = sign[3] })
       end
 
-      -- Load adapters/config from settings directory
-      vim.cmd("runtime! lua/plugins/dap/adapters/*.lua")
+      -- Load launch settings from local directory
       require("dap.ext.vscode").load_launchjs()
     end,
   },

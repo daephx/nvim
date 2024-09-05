@@ -16,8 +16,6 @@ return {
       { "mfussenegger/nvim-jdtls" },
       -- Tools for better development in rust
       { "simrat39/rust-tools.nvim" },
-      -- Neovim extension for zk
-      { "mickael-menu/zk-nvim" },
     },
     init = function()
       -- Initialize diagnostic settings
@@ -72,10 +70,6 @@ return {
 
         ["jdtls"] = function()
           require("plugins/lsp/settings/jdtls")
-        end,
-
-        ["zk"] = function()
-          require("plugins/lsp/settings/zk")
         end,
       })
     end,

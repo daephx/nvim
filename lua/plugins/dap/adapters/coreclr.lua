@@ -6,12 +6,6 @@ dap.adapters.coreclr = {
   args = { "--interpreter=vscode" },
 }
 
-dap.adapters.unity = {
-  type = "executable",
-  command = "<path-to-mono-directory>/Commands/mono",
-  args = { "<path-to-unity-debug-directory>/unity.unity-debug-x.x.x/bin/UnityDebug.exe" },
-}
-
 local dotnet_build_project = function()
   local default_path = vim.fn.getcwd() .. "/"
   if vim.g["dotnet_last_proj_path"] ~= nil then
@@ -50,32 +44,6 @@ local dotnet_get_dll_path = function()
   return vim.g["dotnet_last_dll_path"]
 end
 
-local config = {}
-
-table.insert(config, {
-  type = "coreclr",
-  request = "launch",
-  name = "Launch project (netcoredbg)",
-  console = "integratedTerminal",
-  program = function()
-    if vim.fn.confirm("Attempt to rebuild project?", "&yes\n&no", 2) == 1 then
-      dotnet_build_project()
-    end
-    return dotnet_get_dll_path()
-  end,
-})
-
-table.insert(config, {
-  type = "coreclr",
-  request = "launch",
-  name = "Launch DLL (netcoredbg)",
-  program = function()
-    local dir = vim.fn.expand("%:p:h")
-    local path = ("%s/bin/Debug/"):format(dir)
-    return vim.fn.input("Path to DLL: ", path, "file")
-  end,
-})
-
 local telescope_picker = function()
   return coroutine.create(function(coro)
     local action_state = require("telescope.actions.state")
@@ -101,29 +69,46 @@ local telescope_picker = function()
   end)
 end
 
-table.insert(config, {
-  type = "coreclr",
-  request = "launch",
-  name = "Select DLL (telescope)",
-  program = telescope_picker,
-})
-
-table.insert(config, {
-  type = "coreclr",
-  request = "attach",
-  name = "Attach to PID (netcoredbg)",
-  processId = function()
-    local pid = require("dap.utils").pick_process()
-    vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
-    return pid
-  end,
-})
-
-table.insert(config, {
-  name = "Launch unity editor",
-  type = "unity",
-  request = "attach",
-})
+local config = {
+  {
+    type = "coreclr",
+    request = "launch",
+    name = "Launch project (netcoredbg)",
+    console = "integratedTerminal",
+    program = function()
+      if vim.fn.confirm("Attempt to rebuild project?", "&yes\n&no", 2) == 1 then
+        dotnet_build_project()
+      end
+      return dotnet_get_dll_path()
+    end,
+  },
+  {
+    type = "coreclr",
+    request = "launch",
+    name = "Launch DLL (netcoredbg)",
+    program = function()
+      local dir = vim.fn.expand("%:p:h")
+      local path = ("%s/bin/Debug/"):format(dir)
+      return vim.fn.input("Path to DLL: ", path, "file")
+    end,
+  },
+  {
+    type = "coreclr",
+    request = "launch",
+    name = "Select DLL (telescope)",
+    program = telescope_picker,
+  },
+  {
+    type = "coreclr",
+    request = "attach",
+    name = "Attach to PID (netcoredbg)",
+    processId = function()
+      local pid = require("dap.utils").pick_process()
+      vim.fn.setenv("NETCOREDBG_ATTACH_PID", pid)
+      return pid
+    end,
+  },
+}
 
 dap.configurations.cs = config
 dap.configurations.fsharp = config

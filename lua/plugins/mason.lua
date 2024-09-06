@@ -46,7 +46,7 @@ return {
         ---@param server_name string
         function(server_name)
           -- Define default variables
-          local server_mpath = "plugins/lsp/settings"
+          local server_mpath = "plugins/lsp/servers"
           local default_options = {
             capabilities = require("plugins.lsp.capabilities"),
             on_attach = require("plugins.lsp.attach"),

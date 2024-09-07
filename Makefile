@@ -38,8 +38,9 @@ endif
 	@export MYVIMRC="${ROOT_DIR}/init.lua" && \
 	export XDG_CACHE_HOME="${TEMP_DIR}/.cache" && \
 	export XDG_CONFIG_HOME="${TEMP_DIR}/.config" && \
-	export XDG_LOCAL_HOME="${TEMP_DIR}/.local" && \
 	export XDG_DATA_HOME="${TEMP_DIR}/.local/share" && \
+	export XDG_LOCAL_HOME="${TEMP_DIR}/.local" && \
+	export XDG_STATE_HOME="${TEMP_DIR}/.local/state" && \
 	nvim # Launch nvim with patched xdg_dirs
 
 format: ## Run formatter: stylua

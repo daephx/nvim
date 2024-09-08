@@ -53,17 +53,18 @@ M.set_hl = function(colors)
   end
 end
 
----Wrapper for `set_hl` to register an autocmd that will run on `ColorScheme` event.
----@param name string? Name of the colorscheme for autocmd patten. Use `nil` to match any colorscheme.
----@param colors table<string, table> Table of highlight definitions.
+---Registers an autocmd to set highlights on `ColorScheme` event.
+---@param name string? Name of the colorscheme for the autocmd pattern; use `"*"` or `nil` to match all colorschemes.
+---@param colors table<string, table> Table of highlight definitions (e.g., { Normal = { fg = "#ffffff", bg = "#000000" } }).
 M.set_hl_autocmd = function(name, colors)
-  local groups_name = ("ColorScheme_%s"):format(name)
-  vim.api.nvim_create_autocmd("ColorScheme", {
-    desc = ("Override highlights for theme: %s"):format(name),
-    group = vim.api.nvim_create_augroup(groups_name, { clear = true }),
-    pattern = name,
+  local pattern = name or "*"
+  M._hl_cache = vim.tbl_deep_extend("force", M._hl_cache or {}, { [pattern] = colors })
+  vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+    desc = ("Apply highlight overrides for colorscheme: %s"):format(pattern),
+    group = vim.api.nvim_create_augroup(("ColorScheme#%s"):format(pattern), { clear = true }),
+    pattern = pattern,
     callback = function()
-      M.set_hl(colors)
+      M.set_hl(M._hl_cache[pattern])
     end,
   })
 end

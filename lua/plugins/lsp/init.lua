@@ -17,27 +17,26 @@ return {
       -- Tools for better development in rust
       { "simrat39/rust-tools.nvim" },
     },
-    init = function()
-      -- Initialize diagnostic settings
-      require("plugins.lsp.diagnostics")
-
-      -- Prevent high cpu usage due to new watch files implementation.
-      -- NOTE: https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
-      local ok, wf = pcall(require, "vim.lsp._watchfiles")
-      if ok then
-        -- disable lsp watcher. Too slow on linux
-        wf._watchfunc = function()
-          return function() end
-        end
-      end
-    end,
     config = function()
       -- Override lspconfig default window options
       local windows = require("lspconfig.ui.windows")
       windows.default_options = { border = vim.g.border }
 
       -- Initialize local lsp modules
+      require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")
+
+      -- Prevent high cpu usage due to new watch files implementation.
+      -- NOTE: https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
+      if vim.fn.has("nvim-0.10") == 0 then
+        local ok, wf = pcall(require, "vim.lsp._watchfiles")
+        if ok then
+          -- disable lsp watcher. Too slow on linux
+          wf._watchfunc = function()
+            return function() end
+          end
+        end
+      end
     end,
   },
   { -- Use Neovim as a language server

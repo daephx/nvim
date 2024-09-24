@@ -1,11 +1,13 @@
 -- indent-blankline.nvim | Indent guides for Neovim
 -- https://github.com/lukas-reineke/indent-blankline.nvim
+---@module "ibl"
 
 ---@type LazyPluginSpec
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
   event = { "BufRead", "BufNewFile" },
+  ---@type ibl.config
   opts = {
     indent = {
       char = "│",

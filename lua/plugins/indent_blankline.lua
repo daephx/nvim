@@ -35,10 +35,12 @@ return {
     },
     exclude = {
       filetypes = {
+        "Neogit*",
         "dashboard",
         "dbui",
         "floaterm",
         "fugitive",
+        "git",
         "log",
         "neogit",
         "undotree",

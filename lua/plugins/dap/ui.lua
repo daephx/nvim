@@ -44,7 +44,7 @@ local function close_debugger()
 
     local current_win = vim.fn.win_getid()
     if vim.api.nvim_win_get_tabpage(current_win) == current_tab then
-      vim.api.nvim_set_current_tabpage(current_tab)
+      vim.api.nvim_set_current_tabpage(current_tab or 0)
     end
   end
 

@@ -174,9 +174,49 @@ M.reset_terminal_colors = function()
   })
 end
 
+---Sets default semantic highlight groups for LSP types and clears any comment-related
+---highlights on token updates. This helps ensure consistent styling by linking LSP
+---types to existing highlight groups and removing unnecessary comment highlights.
+---@return nil
+M.refresh_lsp_highlights = function()
+  -- Set defaults for semantic highlights
+  local links = {
+    ["@lsp.type.class"] = "@type",
+    ["@lsp.type.decorator"] = "@function",
+    ["@lsp.type.enum"] = "@type",
+    ["@lsp.type.enumMember"] = "@constant",
+    ["@lsp.type.function"] = "@function",
+    ["@lsp.type.interface"] = "@type",
+    ["@lsp.type.macro"] = "@macro",
+    ["@lsp.type.method"] = "@method",
+    ["@lsp.type.namespace"] = "@namespace",
+    ["@lsp.type.parameter"] = "@parameter",
+    ["@lsp.type.property"] = "@property",
+    ["@lsp.type.struct"] = "@structure",
+    ["@lsp.type.type"] = "@type",
+    ["@lsp.type.variable"] = "@variable",
+  }
+  for new_hlgroup, old_hlgroup in pairs(links) do
+    vim.api.nvim_set_hl(0, new_hlgroup, { link = old_hlgroup, default = true })
+  end
+
+  vim.api.nvim_create_autocmd("LspTokenUpdate", {
+    desc = "Clear all comment associated highlights when updating tokens",
+    group = vim.api.nvim_create_augroup("LspTokenUpdate#DisableComments", { clear = true }),
+    callback = function()
+      -- NOTE: This could cause problems with luadocs
+      -- Clear all lsp highlights associated with comment strings
+      for _, group in ipairs(vim.fn.getcompletion("@lsp.type.comment", "highlight")) do
+        vim.api.nvim_set_hl(0, group, {})
+      end
+    end,
+  })
+end
+
 -- Initialize autocmds
 M.hook_colorscheme_change()
 M.persist_colorscheme()
+M.refresh_lsp_highlights()
 M.reset_terminal_colors()
 
 return M

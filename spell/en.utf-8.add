@@ -20,6 +20,7 @@ BufWritePost
 BufWritePre
 Bufferline
 BusyBox
+CIELAB
 COLORTERM
 CSharp
 CapsLock
@@ -54,6 +55,7 @@ GIFs
 GTK2
 Gdiffsplit
 HKEY_CURRENT_USER
+HSV
 IIFE
 IOError
 IPython
@@ -964,6 +966,7 @@ localleader
 localoptions
 localstate
 lockfile
+lockfiles
 lockscreen
 loclist
 loglevel
@@ -1114,6 +1117,7 @@ neorg
 neoterm
 neovide
 neovim
+neovim's
 nerdfix
 nerdfont
 nerdfonts
@@ -1137,6 +1141,7 @@ nodesource
 nodex
 nofile
 nohlsearch
+noice
 noinsert
 nologo
 nomodifiable
@@ -1227,6 +1232,7 @@ pbm
 pc
 pcall
 pdm
+peachpuff
 perf
 performant
 perl
@@ -1401,6 +1407,7 @@ rg
 rgb
 rgb32
 rgba
+rglob
 rhs
 ripgrep
 rmd
@@ -1451,6 +1458,7 @@ seekranges
 sel
 selene
 serverless
+sesh
 sessionizer
 setattr
 setenv
@@ -1501,6 +1509,7 @@ smartindent
 smarttab
 snapd
 softrepeat
+soho
 sonarr
 source
 sourceforge
@@ -1655,6 +1664,7 @@ tohtml
 tokyonight
 toml
 tonumber
+toolchain
 topbar
 topdelete
 topdown
@@ -1745,6 +1755,7 @@ uv
 v0
 v2
 vala
+valheim
 vbs
 vbscript
 vcodec

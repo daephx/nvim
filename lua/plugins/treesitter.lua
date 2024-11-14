@@ -63,6 +63,7 @@ return {
       "bash",
       "c",
       "comment",
+      "editorconfig",
       "gitignore",
       "json",
       "jsonc",

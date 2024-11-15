@@ -55,6 +55,7 @@ local truncate_abbreviation = function(abbr)
   return abbr
 end
 
+-- Styled names for cmp source labels
 local source_labels = {
   buffer = "[Buffer]",
   cmp_tabnine = "[TabNine]",
@@ -80,13 +81,14 @@ local source_labels = {
 ---@param entry table
 ---@return string
 local format_source_labels = function(entry)
+  local default = ("[%s]"):format(entry.source.name)
   if entry.source.name == "nvim_lsp" then
     if entry.source.source.client then
-      local name = entry.source.source.client.name
-      return ("[%s]"):format(name)
+      local client = entry.source.source.client.name
+      return ("[%s]"):format(client)
     end
   end
-  return source_labels[entry.source.name]
+  return source_labels[entry.source.name] or default
 end
 
 ---@type LazyPluginSpec

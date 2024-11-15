@@ -44,7 +44,7 @@ endif
 	nvim # Launch nvim with patched xdg_dirs
 
 format: ## Run formatter: stylua
-	@stylua after/ lua/ init.lua
+	@stylua -v after/ lua/ init.lua
 
 lint: ## Run linter: selene
 	@selene after/ lua/ init.lua

@@ -31,7 +31,7 @@ local window_opts = {
   max_width = 80,
   border = vim.g.border,
   winhighlight = table.concat({
-    "NormalFloat:NormalFloat",
+    "Normal:NormalFloat",
     "FloatBorder:FloatBorder",
     "CursorLine:PmenuSel",
     "Search:None",

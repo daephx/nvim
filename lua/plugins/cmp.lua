@@ -213,8 +213,8 @@ return {
       },
       performance = { max_view_entries = 25 },
       window = {
-        completion = window_opts,
-        documentation = window_opts,
+        completion = cmp.config.window.bordered(window_opts),
+        documentation = cmp.config.window.bordered(window_opts),
       },
       view = {
         entries = {

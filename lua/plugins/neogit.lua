@@ -12,7 +12,7 @@ return {
     { "sindrets/diffview.nvim" },
   },
   keys = {
-    { "<leader>gG", "<cmd>Neogit<CR>", desc = "Git Status (Neogit)" },
+    { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git Status" },
   },
   opts = {
     kind = "tab",
@@ -25,6 +25,19 @@ return {
     commit_popup = { kind = "split_above" },
   },
   init = function()
+    -- Alias command `Neogit` to `Git`
+    vim.api.nvim_create_user_command("Git", function(o)
+      local neogit = require("neogit")
+      neogit.open(require("neogit.lib.util").parse_command_args(o.fargs))
+    end, {
+      nargs = "*",
+      desc = "Open Neogit",
+      complete = function(arglead)
+        local neogit = require("neogit")
+        return neogit.complete(arglead)
+      end,
+    })
+
     -- Set default highlights
     local colors = require("config.colors")
     colors.set_hl_autocmd(nil, {

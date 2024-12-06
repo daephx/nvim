@@ -50,7 +50,7 @@ return {
           return "]h"
         end
         vim.schedule(function()
-          gitsigns.next_hunk()
+          gitsigns.nav_hunk("next")
         end)
         return "<Ignore>"
       end, { expr = true, desc = "Next hunk" })
@@ -60,7 +60,7 @@ return {
           return "[h"
         end
         vim.schedule(function()
-          gitsigns.prev_hunk()
+          gitsigns.nav_hunk("prev")
         end)
         return "<Ignore>"
       end, { expr = true, desc = "Previous hunk" })

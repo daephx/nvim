@@ -209,24 +209,6 @@ vim.g.colors = {
   MsgSeparator = { link = "WinSeparator", default = true },
   NormalFloat = { link = "Normal", default = true },
   VertSplit = { link = "WinSeparator", default = true },
-
-  -- Dashboard
-  DashboardDesc = { link = "String", default = true },
-  DashboardFooter = { link = "Comment", default = true },
-  DashboardHeader = { link = "Special", default = true },
-  DashboardIcon = { link = "String", default = true },
-  DashboardKey = { link = "Comment", default = true },
-  DashboardShortCut = { link = "Keyword", default = true },
-
-  -- Telescope
-  TelescopeBorder = { link = "WinSeparator", default = true },
-  TelescopeSelection = { link = "CursorLine", default = true },
-  TelescopeTitle = { link = "Title", default = true },
-
-  -- WhichKey
-  WhichKeyNormal = { link = "Normal", default = true },
-  WhichKeySeparator = { link = "WinSeparator", default = true },
-  WhichKeyTitle = { link = "Title", default = true },
 }
 
 -- Netrw specific options

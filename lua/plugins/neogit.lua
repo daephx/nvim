@@ -25,6 +25,13 @@ return {
     commit_popup = { kind = "split_above" },
   },
   init = function()
+    -- Set default highlights
+    local colors = require("config.colors")
+    colors.set_hl_autocmd(nil, {
+      NeogitCommitViewDescription = { link = "Normal" },
+      NeogitWinSeparator = { link = "WinSeparator" },
+    })
+
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Local options to apply to neogit filetypes",
       group = vim.api.nvim_create_augroup("NeogitBufferOptions", {}),

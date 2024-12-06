@@ -1,6 +1,22 @@
 -- nvim-treesitter | Nvim Treesitter configurations and abstraction layer
 -- https://github.com/nvim-treesitter/nvim-treesitter
 
+---Set default highlights for rainbow-delimiters
+---NOTE: Prevents errors when switching colorschemes which don't have these highlights set.
+local init_default_highlights = function()
+  local colors = require("config.colors")
+  colors.set_hl_autocmd(nil, {
+    RainbowDelimiterBlue = { ctermfg = 4, fg = "NvimLightBlue", default = true },
+    RainbowDelimiterCyan = { ctermfg = 6, fg = "NvimLightCyan", default = true },
+    RainbowDelimiterGreen = { ctermfg = 2, fg = "NvimLightGreen", default = true },
+    RainbowDelimiterOrange = { ctermfg = 221, fg = "LightGoldenrod2", default = true },
+    RainbowDelimiterPink = { ctermfg = 210, fg = "LightCoral", nocombine = true },
+    RainbowDelimiterRed = { ctermfg = 1, fg = "NvimLightRed", default = true },
+    RainbowDelimiterViolet = { ctermfg = 177, fg = "NvimLightMagenta", default = true },
+    RainbowDelimiterYellow = { ctermfg = 3, fg = "NvimLightYellow", default = true },
+  })
+end
+
 ---@type LazyPluginSpec
 return {
   "nvim-treesitter/nvim-treesitter",
@@ -9,8 +25,6 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   cond = not vim.g.vscode,
   dependencies = {
-    -- Rainbow delimiters for Neovim with Tree-sitter
-    { "hiphish/rainbow-delimiters.nvim" },
     -- Treesitter auto html tags
     { "windwp/nvim-ts-autotag" },
     -- set commentstring based on the cursor location
@@ -19,8 +33,20 @@ return {
     { "nvim-treesitter/nvim-treesitter-textobjects" },
     -- Treesitter playground integrated into Neovim
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+    -- Rainbow delimiters for Neovim with Tree-sitter
+    { "hiphish/rainbow-delimiters.nvim", init = init_default_highlights },
     -- Alternative to context.vim using nvim-treesitter
-    { "nvim-treesitter/nvim-treesitter-context", opts = { max_lines = 1 } },
+    {
+      "nvim-treesitter/nvim-treesitter-context",
+      opts = { max_lines = 1 },
+      init = function()
+        local colors = require("config.colors")
+        colors.set_hl_autocmd(nil, {
+          TreesitterContext = { link = "Normal" },
+          TreesitterContextLineNumber = { link = "Normal" },
+        })
+      end,
+    },
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)

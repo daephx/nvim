@@ -5,6 +5,14 @@
 return {
   "folke/which-key.nvim",
   event = { "VeryLazy" },
+  init = function()
+    local colors = require("config.colors")
+    colors.set_hl_autocmd(nil, {
+      WhichKeyNormal = { link = "Normal", default = true },
+      WhichKeySeparator = { link = "WinSeparator", default = true },
+      WhichKeyTitle = { link = "Title", default = true },
+    })
+  end,
   ---@class wk.Opts
   opts = {
     preset = "classic",

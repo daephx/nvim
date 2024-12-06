@@ -85,6 +85,16 @@ return {
     },
   },
   init = function()
+    local colors = require("config.colors")
+    colors.set_hl_autocmd(nil, {
+      DashboardDesc = { link = "String", default = true },
+      DashboardFooter = { link = "Comment", default = true },
+      DashboardHeader = { link = "Special", default = true },
+      DashboardIcon = { link = "String", default = true },
+      DashboardKey = { link = "Comment", default = true },
+      DashboardShortCut = { link = "Keyword", default = true },
+    })
+
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Apply local settings to Dashboard buffer",
       group = vim.api.nvim_create_augroup("Dashboard_ftplugin", {}),

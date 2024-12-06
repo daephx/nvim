@@ -62,7 +62,13 @@ M.set_hl = function(colors)
     ret = colors
   end
   for group, hl in pairs(ret) do
-    vim.api.nvim_set_hl(0, group, hl)
+    if not pcall(vim.api.nvim_set_hl, 0, group, hl) then
+      vim.notify(
+        ("Error occured applying highlight group: %s"):format(group),
+        vim.log.levels.ERROR,
+        nil
+      )
+    end
   end
 end
 

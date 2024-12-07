@@ -212,10 +212,10 @@ return {
   init = function()
     local colors = require("config.colors")
     colors.set_hl_autocmd(nil, {
-      TelescopeBorder = { link = "WinSeparator", default = true },
-      TelescopePreviewBorder = { link = "WinSeparator", default = true },
-      TelescopePromptBorder = { link = "WinSeparator", default = true },
-      TelescopeResultsBorder = { link = "WinSeparator", default = true },
+      TelescopeBorder = { link = "FloatBorder", default = true },
+      TelescopePreviewBorder = { link = "FloatBorder", default = true },
+      TelescopePromptBorder = { link = "FloatBorder", default = true },
+      TelescopeResultsBorder = { link = "FloatBorder", default = true },
       TelescopeSelection = { link = "CursorLine", default = true },
       TelescopeTitle = { link = "Title", default = true },
     })

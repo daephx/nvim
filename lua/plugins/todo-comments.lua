@@ -58,12 +58,10 @@ return {
     },
   },
   init = function()
-    vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
-      desc = "Remove default todo higroup",
-      group = vim.api.nvim_create_augroup("Todo#RemoveDefaultHigroup", {}),
-      callback = function()
-        vim.api.nvim_set_hl(0, "Todo", {})
-      end,
+    -- Set default highlights
+    local colors = require("config.colors")
+    colors.set_hl_autocmd(nil, {
+      Todo = {},
     })
   end,
 }

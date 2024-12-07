@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: torte
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Grey15" },
   CursorLineFold = { ctermbg = "none", bg = "none" },
   CursorLineNr = { fg = "Yellow" },
@@ -41,5 +40,3 @@ M.colors = {
   NeogitDiffDelete = { ctermbg = 52, ctermfg = 196, fg = "#bb4c4c", bg = "#301414" },
   NeogitDiffText = { ctermbg = 238, bg = "Grey27" },
 }
-
-return M

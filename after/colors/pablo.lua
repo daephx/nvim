@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: pablo
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Gray15" },
   CursorLineNr = { ctermfg = 226, fg = "Yellow", bold = true },
   CursorLineSign = { ctermbg = "none", bg = "none" },
@@ -18,5 +17,3 @@ M.colors = {
   Title = { ctermfg = 145, fg = "Yellow" },
   WinSeparator = { ctermfg = 238, fg = "Gray32" },
 }
-
-return M

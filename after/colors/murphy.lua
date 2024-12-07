@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: murphy
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Gray15" },
   CursorLineSign = { ctermbg = "none", bg = "none" },
   CursorLinrNr = { ctermbg = "none", bg = "none", fg = "Yellow", bold = true },
@@ -49,5 +48,3 @@ M.colors = {
   RainbowDelimiterViolet = { ctermfg = 5, fg = "Magenta", nocombine = true },
   RainbowDelimiterYellow = { ctermfg = 3, fg = "Yellow", nocombine = true },
 }
-
-return M

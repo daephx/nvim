@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: industry
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Gray15" },
   CursorLineSign = { ctermbg = "none", bg = "none" },
   CursorLinrNr = { ctermbg = "none", bg = "none" },
@@ -40,5 +39,3 @@ M.colors = {
   RainbowDelimiterViolet = { fg = "Violet" },
   RainbowDelimiterYellow = { fg = "Yellow" },
 }
-
-return M

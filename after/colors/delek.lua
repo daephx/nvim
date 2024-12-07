@@ -1,6 +1,7 @@
-local M = {}
+-- Define colors for builtin colorscheme: delek
 
-M.colors = {
+---@type config.Highlights
+return {
   FloatBorder = { link = "WinSeparator" },
   NonText = { fg = "Gray15" },
   SignColumn = { bg = "none" },
@@ -15,5 +16,3 @@ M.colors = {
   -- Telescope
   TelescopeNormal = { bg = "none" },
 }
-
-return M

@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: retrobox
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+local colors = {
   ColorColumn = { ctermbg = 233, bg = "Grey7" },
   CursorLineNr = { ctermfg = 215, fg = "#fabd2f", bold = true },
   CursorLineSign = { ctermbg = "none", bg = "none" },
@@ -43,8 +42,8 @@ M.colors = {
 
 -- Don't modify Normal if background is set to light mode.
 if vim.o.background == "light" then
-  M.colors.Normal = nil
-  M.colors.StatusLine = nil
+  colors.Normal = nil
+  colors.StatusLine = nil
 end
 
-return M
+return colors

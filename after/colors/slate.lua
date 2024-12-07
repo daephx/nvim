@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: slate
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Gray15" },
   CursorLineNr = { fg = "#d7d787" },
   CursorLineSign = { ctermbg = "none", bg = "none" },
@@ -41,5 +40,3 @@ M.colors = {
   RainbowDelimiterViolet = { ctermfg = 177, fg = "#d787ff", nocombine = true },
   RainbowDelimiterYellow = { ctermfg = 186, fg = "#d7d787", nocombine = true },
 }
-
-return M

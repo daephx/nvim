@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: blue
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CurSearch = { link = "IncSearch" },
   CursorLine = { ctermbg = 25, bg = "#003562" },
   CursorLineNr = { ctermfg = 87, fg = "#5fffff", bold = true },
@@ -29,5 +28,3 @@ M.colors = {
   DiffDelete = { ctermfg = 231, ctermbg = 133, bg = "#623562", fg = "#af5faf" },
   DiffText = { ctermfg = 16, ctermbg = 251, bg = "#415b7b", fg = "none" },
 }
-
-return M

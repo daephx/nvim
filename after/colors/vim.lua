@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: vim
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   ColorColumn = { ctermbg = 234, bg = "Grey10" },
   Cursor = { ctermfg = 220, bg = "Gold" },
   CursorLine = { ctermbg = 235, bg = "Grey15" },
@@ -72,5 +71,3 @@ M.colors = {
   -- Whichkey
   WhichKey = { link = "Define" },
 }
-
-return M

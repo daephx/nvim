@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: zellner
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   NonText = { ctermfg = 235, fg = "Grey15" },
   NormalFloat = { bg = "Grey82" },
   SignColumn = { ctermbg = 15, bg = "none" },
@@ -21,5 +20,3 @@ M.colors = {
   RainbowDelimiterViolet = { ctermfg = 5, fg = "Magenta", nocombine = true },
   RainbowDelimiterYellow = { ctermfg = 3, fg = "Yellow", nocombine = true },
 }
-
-return M

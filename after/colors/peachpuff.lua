@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: peachpuff
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   ColorColumn = { ctermbg = 173, bg = "#cc8c6c" },
   CursorLineSign = { ctermbg = "none", bg = "none" },
   TabLineFill = { ctermbg = "none", bg = "none" },
@@ -22,5 +21,3 @@ M.colors = {
   TelescopeSelection = { link = "CursorLine" },
   TelescopeSelectionCaret = { ctermbg = 180, ctermfg = 16, bg = "#f5c195", fg = "Black" },
 }
-
-return M

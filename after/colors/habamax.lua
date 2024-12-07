@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: habamax
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLineNr = { fg = "#d7af87", bold = true },
   Error = { ctermfg = 131, ctermbg = 234, fg = "#af5f5f", bg = "#1c1c1c" },
   ErrorMsg = { link = "Error" },
@@ -51,5 +50,3 @@ M.colors = {
   RainbowDelimiterViolet = { ctermfg = 176, fg = "#d787d7" },
   RainbowDelimiterYellow = { ctermfg = 186, fg = "#d7c387" },
 }
-
-return M

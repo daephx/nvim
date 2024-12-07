@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: quiet
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   ErrorMsg = { link = "Error" },
   IncSearch = { ctermbg = 52, bg = "DarkRed" },
   MsgSeparator = { link = "WinSeparator" },
@@ -15,5 +14,3 @@ M.colors = {
   Removed = { ctermfg = 9, fg = "NvimLightRed", bold = true },
   Changed = { ctermfg = 14, fg = "NvimLightCyan", bold = true },
 }
-
-return M

@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: ron
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Gray15" },
   CursorLineNr = { ctermfg = 226, bg = "Gray15", fg = "Yellow", bold = true },
   EndOfBuffer = { ctermfg = 226, fg = "Yellow" },
@@ -27,5 +26,3 @@ M.colors = {
   DiffDelete = { ctermbg = "none", bg = "none" },
   DiffText = { ctermbg = "none", bg = "none" },
 }
-
-return M

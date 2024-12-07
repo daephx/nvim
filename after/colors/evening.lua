@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: evening
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   LineNr = { fg = "Grey49" },
   CursorLine = { bg = "Gray15" },
   CursorLineNr = { ctermfg = 3, bg = "none", fg = "Yellow", bold = true },
@@ -28,5 +27,3 @@ M.colors = {
   Changed = { ctermfg = 75, fg = "SteelBlue2" },
   Removed = { ctermfg = 196, fg = "Red" },
 }
-
-return M

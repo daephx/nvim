@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: sorbet
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { ctermbg = 237, bg = "#2f3347" },
   CursorLineNr = { fg = "#d7af5f", bold = true },
   Error = { ctermfg = 203, fg = "#ff5f5f", bold = true },
@@ -51,5 +50,3 @@ M.colors = {
   RainbowDelimiterViolet = { fg = "#af87d7", nocombine = true },
   RainbowDelimiterYellow = { fg = "#d7af5f", nocombine = true },
 }
-
-return M

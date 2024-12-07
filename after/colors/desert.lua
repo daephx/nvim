@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: desert
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   FloatBorder = { link = "WinSeparator" },
   NonText = { fg = "Gray15" },
   SignColumn = { bg = "none" },
@@ -26,5 +25,3 @@ M.colors = {
   -- Telescope
   TelescopeTitle = { link = "Title" },
 }
-
-return M

@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: koehler
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLine = { bg = "Gray15" },
   CursorLineNr = { bg = "Gray15", fg = "Yellow", bold = true },
   Folded = { bg = "Gray12" },
@@ -16,5 +15,3 @@ M.colors = {
   WinSeparator = { fg = "Gray32" },
   Visual = { ctermbg = 241, bg = "Grey39" },
 }
-
-return M

@@ -1,11 +1,18 @@
--- Utility functions for loading and managing neovim colorschemes.
--- Provides color handling, highlight setup, and event-based updates.
+-- colors.lua: Utility for managing and customizing Neovim colorschemes
+--
+-- Provides functions to load colorschemes, manage highlight groups,
+-- and apply custom highlight definitions dynamically during ColorScheme events.
+-- Supports autocommands to ensure custom highlights are re-applied when changing themes.
+
+---@alias config.HighlightsTbl table<string, vim.api.keyset.highlight>
+---@alias config.HighlightsFn fun(hl?: config.HighlightsTbl): nil
+---@alias config.Highlights config.HighlightsTbl|config.HighlightsFn
 
 local M = {}
 
 vim.g.COLORSCHEME = "default"
 
----Check if colorscheme filename is available in the runtimepath
+---Check if colorscheme filename is available in the runtimepath.
 ---@param colors_name string
 ---@return boolean
 M.is_available = function(colors_name)
@@ -20,7 +27,7 @@ end
 
 ---Get color table from highlight group.
 ---@param name string higroup name.
----@return table
+---@return config.HighlightsTbl
 M.get_hl = function(name)
   local labels = { "bg", "fg", "sp" }
   local colors = vim.api.nvim_get_hl(0, { name = name })
@@ -37,27 +44,31 @@ end
 
 ---Extend table for highlight definitions for `nvim_set_hl`.
 ---@param group string
----@param tbl table
----@return table
-M.extend_hl = function(group, tbl)
-  local colors = M.get_highlights(group)
-  return vim.tbl_extend("force", colors, tbl)
+---@param colors config.HighlightsTbl
+---@return config.HighlightsTbl
+M.extend_hl = function(group, colors)
+  local group_colors = M.get_highlight(group)
+  return vim.tbl_extend("force", group_colors, colors)
 end
 
----Wrapper for `nvim_set_hl` that applies higroups from table definitions.
----@param colors table|fun(): table
+---Wrapper for nvim_set_hl that applies higroups from table/func definitions.
+---@param colors config.Highlights
+---@return nil
 M.set_hl = function(colors)
+  local ret = {}
   if type(colors) == "function" then
-    colors = colors()
+    colors(ret)
+  elseif type(colors) == "table" then
+    ret = colors
   end
-  for group, hl in pairs(colors) do
+  for group, hl in pairs(ret) do
     vim.api.nvim_set_hl(0, group, hl)
   end
 end
 
 ---Registers an autocmd to set highlights on `ColorScheme` event.
 ---@param name string? Name of the colorscheme for the autocmd pattern; use `"*"` or `nil` to match all colorschemes.
----@param colors table<string, table> Table of highlight definitions (e.g., { Normal = { fg = "#ffffff", bg = "#000000" } }).
+---@param colors config.Highlights Table of highlight definitions.
 M.set_hl_autocmd = function(name, colors)
   local pattern = name or "*"
   M._hl_cache = vim.tbl_deep_extend("force", M._hl_cache or {}, { [pattern] = colors })
@@ -98,7 +109,7 @@ M.load = function(name)
   -- Safely load lua file for theme highlights
   local theme_ok, theme = pcall(dofile, filepath)
   if theme_ok and type(theme) == "table" then
-    M.set_hl(theme["colors"] or {})
+    M.set_hl(theme or {})
   end
 
   -- Apply global highlights variable for all colorschemes.

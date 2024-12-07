@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: darkblue
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CurSearch = { link = "IncSearch" },
   CursorLine = { ctermbg = 236, bg = "Grey19" },
   CursorLineFold = { ctermbg = "none", bg = "none" },
@@ -43,5 +42,3 @@ M.colors = {
   NeogitDiffDelete = { ctermbg = 52, ctermfg = 196, fg = "#bb4c4c", bg = "#301414" },
   NeogitDiffText = { ctermbg = 238, bg = "Grey27" },
 }
-
-return M

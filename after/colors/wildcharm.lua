@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: wildcharm
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+local colors = {
   CursorLineNr = { ctermfg = 213, fg = "Orchid1", bold = true },
   Error = { ctermfg = 161, fg = "#d7005f" },
   ErrorMsg = { link = "Error" },
@@ -41,7 +40,7 @@ M.colors = {
 
 -- Force transparent background in dark mode.
 if vim.o.background == "light" then
-  M.colors.Normal = nil
+  colors.Normal = nil
 end
 
-return M
+return colors

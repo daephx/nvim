@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: elflord
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLineFold = { ctermbg = "none", bg = "none" },
   CursorLineNr = { ctermfg = 3, fg = "Yellow", bold = true },
   CursorLineSign = { ctermbg = "none", bg = "none" },
@@ -47,5 +46,3 @@ M.colors = {
   NeogitDiffDelete = { ctermbg = 52, ctermfg = 196, fg = "#bb4c4c", bg = "#301414" },
   NeogitDiffText = { ctermbg = 238, bg = "Grey27" },
 }
-
-return M

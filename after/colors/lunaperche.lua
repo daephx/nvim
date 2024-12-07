@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: lunaperche
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLineNr = { ctermfg = 75, fg = "#5fafff", bold = true },
   Error = { ctermfg = 16, ctermbg = 203, fg = "Black", bg = "IndianRed1" },
   ErrorMsg = { link = "Error" },
@@ -50,5 +49,3 @@ M.colors = {
   RainbowDelimiterViolet = { ctermfg = 213, fg = "#ff87ff", nocombine = true },
   RainbowDelimiterYellow = { ctermfg = 222, fg = "#ffd787", nocombine = true },
 }
-
-return M

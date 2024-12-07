@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: shine
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   NonText = { fg = "Gray15" },
   NormalFloat = { bg = "Gray82" },
   SignColumn = { ctermbg = "none", bg = "none" },
@@ -10,5 +9,3 @@ M.colors = {
   StatusLineNC = { ctermfg = 234, ctermbg = 243, bg = "Grey36", fg = "Grey11" },
   WinSeparator = { fg = "Gray" },
 }
-
-return M

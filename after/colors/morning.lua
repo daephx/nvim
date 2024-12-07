@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: morning
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   Constant = { ctermbg = "none", ctermfg = 201, bg = "none", fg = "#ff00ff" },
   CursorLinrNr = { bg = "none" },
   EndOfBuffer = { ctermbg = 252, ctermfg = 21, bg = "none", fg = "#0000ff", bold = true },
@@ -13,5 +12,3 @@ M.colors = {
   StatusLineNC = { bg = "Gray4" },
   WinSeparator = { bg = "none" },
 }
-
-return M

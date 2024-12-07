@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: zaibatsu
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+return {
   CursorLineNr = { ctermfg = 227, fg = "#ffff5f", bold = true },
   CursorLineSign = { ctermbg = "none", bg = "none" },
   EndOfBuffer = { ctermfg = 147, fg = "#afafff" },
@@ -53,5 +52,3 @@ M.colors = {
   RainbowDelimiterViolet = { ctermfg = 14, fg = "#8787ff", nocombine = true },
   RainbowDelimiterYellow = { ctermfg = 227, fg = "#ffff5f", nocombine = true },
 }
-
-return M

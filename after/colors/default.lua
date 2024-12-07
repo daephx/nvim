@@ -1,8 +1,7 @@
 -- Define colors for builtin colorscheme: default
 
-local M = {}
-
-M.colors = {
+---@type config.Highlights
+local colors = {
   ColorColumn = { ctermbg = 24, bg = "NvimDarkBlue" },
   Constant = { ctermfg = 217, fg = "NvimLightRed" },
   CursorLineNr = { ctermfg = 222, fg = "NvimLightYellow", bold = true },
@@ -56,14 +55,14 @@ M.colors = {
 -- In older versions, `default` refers to the old scheme, now renamed `vim` in newer versions.
 -- Support older versions by loading the appropriate color definitions.
 if vim.fn.has("nvim-0.10") == 0 then
-  M.colors = require("after.colors.vim")
+  colors = require("after.colors.vim")
 end
 
 -- Don't modify Normal if background is set to light mode.
 if vim.o.background == "light" then
-  M.colors.Constant = { fg = "NvimDarkRed" }
-  M.colors.Normal = nil
-  M.colors.Statement = { fg = "DarkViolet", bold = true }
+  colors.Constant = { fg = "NvimDarkRed" }
+  colors.Normal = nil
+  colors.Statement = { fg = "DarkViolet", bold = true }
 end
 
-return M
+return colors

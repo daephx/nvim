@@ -60,7 +60,6 @@
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "5f73b24aeb94f5274c218955573153c69ce4d1ee" },
   "rust-tools.nvim": { "branch": "master", "commit": "676187908a1ce35ffcd727c654ed68d851299d3e" },
-  "sakura.nvim": { "branch": "master", "commit": "2fbf430890dd9466afc41a62a809c21871d126ef" },
   "satellite.nvim": { "branch": "main", "commit": "dfc2b220f4969ebc49b0f2a94ab6faae240705bd" },
   "telescope-dap.nvim": { "branch": "master", "commit": "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe" },
   "telescope.nvim": { "branch": "master", "commit": "b324469959908c1c7434eb65d80e87895e6828f7" },

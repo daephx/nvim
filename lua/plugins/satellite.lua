@@ -14,8 +14,11 @@ return {
     })
   end,
   opts = {
-    -- FIX: Disable winblend to prevent black background
+    -- HACK: Disable winblend to prevent black background
     -- https://github.com/neovim/neovim/issues/18576
     winblend = 0,
+    handlers = {
+      gitsigns = { enable = false },
+    },
   },
 }

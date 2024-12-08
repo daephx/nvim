@@ -16,7 +16,7 @@ return {
   ---@class wk.Opts
   opts = {
     preset = "classic",
-    icons = { mappings = false },
+    icons = { mappings = true },
     win = {
       row = math.huge,
       border = { "─", "─", "─", " ", "─", "", "", " " },

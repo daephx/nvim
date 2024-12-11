@@ -28,8 +28,9 @@ return {
   priority = 1000,
   ---@type GruvboxConfig
   opts = {
-    contrast = "soft", -- can be "hard", "soft" or empty string
     bold = false,
+    contrast = "soft", -- can be "hard", "soft" or empty string
+    dim_inactive = false,
     inverse = false, -- invert background for search, diffs, statusline and errors
     transparent_mode = true,
     italic = {

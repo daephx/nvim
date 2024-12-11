@@ -52,6 +52,16 @@ M.extend_hl = function(group, colors)
   return vim.tbl_extend("force", group_colors, colors)
 end
 
+---Swap the foreground and background definitions for the provided highlight group.
+---@param group string Provided highlight group name
+---@return table
+M.invert_hl = function(group)
+  assert(type(group) == "string", "paramater 'name' must be of type 'string'")
+  local colors = M.get_hl(group)
+  colors["bg"], colors["fg"] = colors["fg"] or "none", colors["bg"] or "none"
+  return colors
+end
+
 ---Wrapper for nvim_set_hl that applies higroups from table/func definitions.
 ---@param colors config.Highlights
 ---@return nil

@@ -48,7 +48,7 @@ end
 ---@return config.HighlightsTbl
 M.extend_hl = function(group, colors)
   assert(type(group) == "string", "paramater 'name' must be of type 'string'")
-  local group_colors = M.get_highlight(group)
+  local group_colors = M.get_hl(group)
   return vim.tbl_extend("force", group_colors, colors)
 end
 

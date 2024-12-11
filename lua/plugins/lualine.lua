@@ -43,8 +43,11 @@ local function client_format(client_name, spinner, series_messages)
 end
 
 -- Components
--- Define custom lualine component options
+-- Define custom lualine options for various statusline elements.
+-- Each table represents the configuration for a specific type of information
+-- displayed in the statusline, organized for clarity and modularity.
 
+-- Displays the current editor mode.
 local mode = {
   "mode",
   fmt = function(str)
@@ -52,6 +55,7 @@ local mode = {
   end,
 }
 
+-- Shows the current file type.
 local filetype = {
   "filetype",
   icon_only = true,
@@ -60,6 +64,7 @@ local filetype = {
   padding = { left = 1, right = 0 },
 }
 
+-- Displays file encoding.
 local encoding = {
   "encoding",
   fmt = function(str)
@@ -67,6 +72,7 @@ local encoding = {
   end,
 }
 
+-- Indicates the file's line-ending format.
 local fileformat = {
   "fileformat",
   symbols = {
@@ -76,6 +82,7 @@ local fileformat = {
   },
 }
 
+-- Shows the current file name.
 local filename = {
   "filename",
   path = 1,
@@ -84,11 +91,13 @@ local filename = {
   component_separator = "",
 }
 
+-- Displays the current Git branch.
 local branch = {
   "branch",
   icon = "",
 }
 
+-- Shows Git diff stats.
 local diff = {
   "diff",
   ---Version control diff values
@@ -105,6 +114,7 @@ local diff = {
   end,
 }
 
+-- Displays LSP or diagnostic counts.
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -118,6 +128,7 @@ local diagnostics = {
   end)(),
 }
 
+-- Shows attached LSP client info.
 local lsp_info = {
   "lsp_info",
   icon = { "", align = "right" },
@@ -129,6 +140,7 @@ local lsp_info = {
   },
 }
 
+-- Manages and displays tab info.
 local tabs = {
   "tabs",
   mode = 1,
@@ -143,6 +155,7 @@ local tabs = {
   end,
 }
 
+-- Manages and displays window info.
 local windows = {
   "windows",
   use_mode_colors = true,

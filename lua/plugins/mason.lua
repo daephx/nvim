@@ -6,8 +6,14 @@ return {
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
-    cmd = { "Mason", "MasonLog", "MasonUninstall", "MasonUninstallAll", "MasonUpdate" },
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "VeryLazy" },
+    cmd = {
+      "Mason",
+      "MasonLog",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonUpdate",
+    },
     keys = {
       { "<leader>pm", "<cmd>Mason<CR>", desc = "Show mason" },
     },

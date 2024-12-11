@@ -36,32 +36,33 @@ return {
   config = function(_, opts)
     require("Comment").setup(opts)
     local api = require("Comment.api")
-    local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-    local map = vim.keymap.set
 
-    map("i", "<c-_>", api.toggle.linewise.current)
-    map("n", "<c-_>", api.toggle.linewise.current)
-    map("n", "<c-/>", api.toggle.linewise.current)
-    map("i", "<c-/>", api.toggle.linewise.current)
+    -- Return callback function for visual mode keymaps
+    local function locked(cb)
+      local esc = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+      return function()
+        vim.api.nvim_feedkeys(esc, "nx", false)
+        api.locked(cb)(vim.fn.visualmode())
+      end
+    end
 
-    -- Utilizing Comment.nvim extended keymaps
-    -- Includes duplicate mappings due to terminal differences
-    -- + Kitty Terminal   | <c-/>
-    -- + Windows Terminal | <c-_>
+    -- Define extended keymaps
+    local util = require("config.util")
+    util.register_keymaps(nil, {
+      -- Windows Terminal: <c-_>
+      { "i", "<c-_>", api.toggle.linewise.current },
+      { "n", "<c-_>", api.toggle.linewise.current },
+      { "x", "<c-_>", locked("toggle.linewise") },
 
-    map("x", "<c-_>", function()
-      vim.api.nvim_feedkeys(esc, "nx", false)
-      api.locked("toggle.linewise")(vim.fn.visualmode())
-    end, { desc = "Comment toggle linewise (visual)" })
+      -- Kitty Terminal: <c-/>
+      { "i", "<c-/>", api.toggle.linewise.current },
+      { "n", "<c-/>", api.toggle.linewise.current },
+      { "x", "<c-/>", locked("toggle.linewise") },
 
-    map("x", "<c-/>", function()
-      vim.api.nvim_feedkeys(esc, "nx", false)
-      api.locked("toggle.linewise")(vim.fn.visualmode())
-    end, { desc = "Comment toggle linewise (visual)" })
-
-    map("x", "<a-A>", function()
-      vim.api.nvim_feedkeys(esc, "nx", false)
-      api.locked("toggle.blockwise")(vim.fn.visualmode())
-    end, { desc = "Comment toggle blockwise (visual)" })
+      -- Comment block selection
+      { "i", "<a-A>", api.toggle.blockwise.current },
+      { "n", "<a-A>", api.toggle.blockwise.current },
+      { "x", "<a-A>", locked("toggle.blockwise") },
+    })
   end,
 }

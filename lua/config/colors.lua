@@ -47,6 +47,7 @@ end
 ---@param colors config.HighlightsTbl
 ---@return config.HighlightsTbl
 M.extend_hl = function(group, colors)
+  assert(type(group) == "string", "paramater 'name' must be of type 'string'")
   local group_colors = M.get_highlight(group)
   return vim.tbl_extend("force", group_colors, colors)
 end
@@ -55,6 +56,7 @@ end
 ---@param colors config.Highlights
 ---@return nil
 M.set_hl = function(colors)
+  assert(colors ~= nil, "paramater 'colors' must be of type 'table|function'")
   local ret = {}
   if type(colors) == "function" then
     colors(ret)
@@ -93,6 +95,7 @@ end
 ---@param rtp string Parent directory to search for runtime files.
 ---@return string?
 local get_colors_file = function(name, rtp)
+  assert(type(name) == "string", "paramater 'name' must be of type 'string'")
   local files = vim.api.nvim_get_runtime_file(rtp .. "/*", true)
   for _, path in pairs(files) do
     local match = string.match(path, rtp .. "/(%w+)%.[lua|vim]")

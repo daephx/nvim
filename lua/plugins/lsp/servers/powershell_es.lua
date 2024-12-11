@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("LspAttach_PowerShellES", {}),
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client.name == "powershell_es" then
+    if client and client.name == "powershell_es" then
       client.server_capabilities.semanticTokensProvider = nil
     end
   end,

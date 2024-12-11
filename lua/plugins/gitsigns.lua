@@ -17,6 +17,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     sign_priority = priority(),
+    attach_to_untracked = true,
     signs_staged_enable = false,
     current_line_blame = true,
     current_line_blame_formatter = " <author>, <author_time> - <summary> ",

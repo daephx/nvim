@@ -1,9 +1,6 @@
-local M = {}
+local format = require("plugins.lsp.handlers.format")
 
--- Invoke document formatting
-local format_document = function()
-  require("plugins.lsp.handlers.formatting").format()
-end
+local M = {}
 
 -- Display buffer workspace folders
 local list_workspace_folders = function()
@@ -33,7 +30,8 @@ M.initialize_keymaps = function(_, bufnr)
     { "n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" } },
     { "n", "gi", vim.lsp.buf.implementation, { desc = "Goto implementation" } },
     { "n", "gr", vim.lsp.buf.references, { desc = "Goto references" } },
-    { { "n", "v" }, "gf", format_document, { remap = true, desc = "Format document" } },
+
+    { { "n", "v" }, "gf", format.format_document, { remap = true, desc = "Format document" } },
   })
 end
 

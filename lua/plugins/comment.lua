@@ -14,7 +14,7 @@ local post_hook = function(ctx)
 
     if ctx.cmotion > 1 then
       -- Reselect visual lines
-      vim.cmd([[exe "norm! gv"]])
+      vim.cmd.normal("gv")
     end
   end
 end

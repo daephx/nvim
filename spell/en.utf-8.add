@@ -59,6 +59,7 @@ HSV
 IIFE
 IOError
 IPython
+ImGui
 ImageMagick
 IncSearch
 IndentBlankline
@@ -80,6 +81,7 @@ LspReferenceWrite
 LuaJIT
 LuaRocks
 LuaSnip
+LÖVE
 MANPATH
 MD5
 MacOS
@@ -197,6 +199,7 @@ api
 apk
 appdata
 appmenu
+approach
 appxmanifest
 archflags
 archlinux
@@ -336,6 +339,7 @@ chore
 chown
 chsh
 ci
+cimgui
 cindent
 citra
 clangd
@@ -371,6 +375,8 @@ codelens
 codelldb
 codepoints
 codestyle
+collider
+colliders
 colorcolumn
 colorflag
 colorizer
@@ -403,6 +409,7 @@ consolas
 const
 cookiecutter
 cooklang
+cooldowns
 copen
 copyindent
 copypasta
@@ -453,6 +460,7 @@ dataframe
 datamoshes
 datamoshing
 dataview
+dbg
 dbui
 dconf
 deadzone
@@ -584,6 +592,7 @@ ethernet
 ev
 eval
 eventlog
+eviline
 exa
 exe
 execute
@@ -781,6 +790,7 @@ histsize
 hitbox
 hjkl
 hl
+hlgroups
 hlsearch
 homebrew
 homelab
@@ -818,6 +828,7 @@ imagemagick
 imap
 img
 imgcat
+imgui
 imgur
 impl
 incsearch
@@ -898,6 +909,7 @@ keymaps
 keypress
 keypressed
 keypresses
+keyreleased
 keyset
 kickstart
 koehler
@@ -1009,6 +1021,7 @@ luasnip
 luaver
 lunaperche
 lunaperche/!
+luv
 luvit
 macchiato
 macchina
@@ -1027,6 +1040,7 @@ markdownlint
 markdownlintrc
 matchit
 matchparen
+matplotlib
 matryoshka
 maui
 maxLine
@@ -1044,6 +1058,7 @@ mergetool
 metadata
 metatable
 mgcb
+microservices
 microsoft
 middleware
 middlewares
@@ -1257,6 +1272,7 @@ pixelwise
 pixiedust
 pkill
 plaintext
+platformer
 plex
 pmenu
 png
@@ -1577,7 +1593,9 @@ submenu
 submodule
 submodules
 subnet
+substates
 subtractive
+subtrees
 sudo
 sudoedit
 sudoer
@@ -1648,6 +1666,7 @@ timecode
 timecodes
 timestamp
 timestamps
+timestep
 tlaplus
 tldr
 tls
@@ -1673,6 +1692,7 @@ toplevel
 topline
 topsplit
 toptal
+tostring
 tostring/!
 touchd
 toupper

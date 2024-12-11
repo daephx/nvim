@@ -1,5 +1,6 @@
 -- Which-key | Configurations for plugin WhichKey.nvim
 -- https://github.com/folke/which-key.nvim
+---@module "which-key"
 
 ---@type LazyPluginSpec
 return {

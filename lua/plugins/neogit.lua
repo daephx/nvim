@@ -17,6 +17,7 @@ return {
   opts = {
     kind = "tab",
     disable_context_highlighting = true,
+    process_spinner = false,
     integrations = {
       diffview = true,
       telescope = true,

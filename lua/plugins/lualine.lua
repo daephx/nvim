@@ -221,13 +221,16 @@ return {
     event = { "LspAttach" },
     dependencies = { "nvim-lualine/lualine.nvim" },
     opts = { client_format = client_format },
-    config = function(_, opts)
-      require("lsp-progress").setup(opts)
+    init = function()
       vim.api.nvim_create_autocmd("User", {
         desc = "listen for lsp-progress event and refresh lualine",
-        group = vim.api.nvim_create_augroup("Lualine_LspProgressUpdate", {}),
+        group = vim.api.nvim_create_augroup("Lualine#LspProgressUpdate", { clear = true }),
         pattern = "LspProgressStatusUpdated",
-        callback = require("lualine").refresh,
+        callback = function()
+          if package.loaded["lualine"] then
+            require("lualine").refresh()
+          end
+        end,
       })
     end,
   },

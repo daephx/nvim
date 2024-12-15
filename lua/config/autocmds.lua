@@ -132,3 +132,25 @@ autocmd({ "BufNewFile" }, {
     vim.cmd(("silent! execute '0r %s/templates/skel/%s'"):format(path, fname))
   end,
 })
+
+autocmd({ "BufWritePre" }, {
+  desc = "Create intermediate directories as needed, when saving a file",
+  group = augroup("auto_create_dir", { clear = true }),
+  pattern = "*",
+  callback = function(ev)
+    if ev.match:match("^%w%w+://") then
+      return
+    end
+    local path = vim.uv.fs_realpath(ev.match) or ev.match
+    local dir = vim.fs.dirname(path)
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.ui.input({
+        prompt = ("Directory doesn't exist: %s\nDo you want to create it? [y/N]: "):format(dir),
+      }, function(choice)
+        if choice == "y" then
+          vim.uv.fs_mkdir(dir, tonumber("0755", 8))
+        end
+      end)
+    end
+  end,
+})

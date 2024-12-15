@@ -216,6 +216,8 @@ return {
         "dashboard",
         "fugitive",
         "lazy",
+        "man",
+        "mason",
         "quickfix",
         "terminal",
         "trouble",

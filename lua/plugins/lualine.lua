@@ -100,7 +100,7 @@ local branch = {
 -- Shows Git diff stats.
 local diff = {
   "diff",
-  ---Version control diff values
+  ---Provides version control diff values from gitsigns for the statusline.
   ---@return table|nil
   source = function()
     local gitsigns = vim.b["gitsigns_status_dict"]
@@ -145,10 +145,13 @@ local tabs = {
   "tabs",
   mode = 1,
   use_mode_colors = true,
-  -- Display tab label as name if set else use tabnr
+  ---Format the tabpage to display the tab name if available, otherwise use the tab number.
+  ---@param _name string: The default name of the tab (unused in this function).
+  ---@param ctx table: The context table containing tab information.
+  ---@return string: The formatted tab name or tab number.
   fmt = function(_name, ctx)
-    local ok, tabname = pcall(vim.api.nvim_tabpage_get_var, ctx.tabId, "tabname")
-    if ok and tabname ~= "" then
+    local tabname_ok, tabname = pcall(vim.api.nvim_tabpage_get_var, ctx.tabId, "tabname")
+    if tabname_ok and tabname ~= "" then
       return tabname
     end
     return ctx.tabnr

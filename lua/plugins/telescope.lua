@@ -73,15 +73,6 @@ return {
         selection_strategy = "reset",
         sorting_strategy = "ascending",
 
-        vimgrep_arguments = {
-          "rg",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-        },
-
         -- Default settings for layout themes
         layout_config = {
           height = 0.5,
@@ -96,6 +87,16 @@ return {
             height_padding = 1,
             preview_height = 0.5,
           },
+        },
+
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--column",
+          "--line-number",
+          "--no-heading",
+          "--smart-case",
+          "--with-filename",
         },
 
         -- Custom mappings for telescope prompt

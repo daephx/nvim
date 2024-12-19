@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
   group = vim.api.nvim_create_augroup("LspEnvFileDiagnostics", {}),
   pattern = ".env*",
   callback = function(ev)
-    vim.diagnostic.disable(ev.buf)
+    vim.diagnostic.enable(false, { bufnr = ev.buf })
   end,
 })
 

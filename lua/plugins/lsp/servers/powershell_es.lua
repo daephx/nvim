@@ -13,6 +13,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 return {
+  init_options = {
+    enableProfileLoading = false,
+  },
   settings = {
     powershell = {
       codeFormatting = {

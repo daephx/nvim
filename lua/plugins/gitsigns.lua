@@ -1,22 +1,12 @@
 -- gitsigns.nvim | Git integration for buffers
 -- https://github.com/lewis6991/gitsigns.nvim
 
----Sets a high sign priority if the signcolumn width is greater than 2.
----@return number?
-local priority = function()
-  local number = tonumber(vim.o.signcolumn:match("^[^:]+:(%d+)$"))
-  if number and number >= 2 then
-    return 1000
-  end
-end
-
 ---@type LazyPluginSpec
 return {
   "lewis6991/gitsigns.nvim",
   event = { "BufReadPost", "BufNewFile" },
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
-    sign_priority = priority(),
     attach_to_untracked = true,
     signs_staged_enable = false,
     current_line_blame = true,

@@ -13,7 +13,7 @@ local function get_python_path(workspace)
   for _, pattern in ipairs({ "*", ".*" }) do
     local match = vim.fn.glob(path.join(workspace, pattern, "pyvenv.cfg"))
     if match ~= "" then
-      return path.join(path.dirname(match), "bin", "python")
+      return path.join(vim.fs.dirname(match), "bin", "python")
     end
   end
 

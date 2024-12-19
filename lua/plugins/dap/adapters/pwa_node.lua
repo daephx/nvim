@@ -41,7 +41,7 @@ table.insert(config, {
   cwd = vim.fn.getcwd(),
   sourceMaps = true,
   port = function()
-    return vim.fn.input("Select port: ", 9222)
+    return vim.fn.input("Select port: ", "9222")
   end,
   webRoot = "${workspaceFolder}",
 })

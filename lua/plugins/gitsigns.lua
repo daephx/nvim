@@ -67,10 +67,10 @@ return {
         gitsigns.blame_line({ full = true })
       end, { desc = "Blame line" })
       map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Toggle blame line" })
-      map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff buffer" })
-      map("n", "<leader>gD", function()
-        gitsigns.diffthis("~")
-      end, { desc = "Diffthis ~" })
+      -- map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff buffer" })
+      -- map("n", "<leader>gD", function()
+      --   gitsigns.diffthis("~")
+      -- end, { desc = "Diffthis ~" })
       map("n", "<leader>gtd", gitsigns.toggle_deleted, { desc = "Toggle deleted" })
 
       -- Text object

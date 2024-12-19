@@ -48,9 +48,8 @@ local default_attach = require("plugins.lsp.attach")
 local default_config = require("lspconfig").jdtls.document_config.default_config
 
 local function on_attach(client, bufnr)
-  require("jdtls.setup").add_commands()
   default_attach(client, bufnr)
-  jdtls.setup_dap({ hotcodereplace = "auto" })
+  jdtls.setup_dap({ hotcodereplace = "auto", config_overrides = {} })
   local map = vim.keymap.set
   map({ "n" }, "<A-o>", "<Cmd>lua require('jdtls').organize_imports()<CR>", { remap = false })
   map({ "n", "v" }, "crv", "<Esc><Cmd>lua require('jdtls').extract_variable()<CR>", { remap = false })

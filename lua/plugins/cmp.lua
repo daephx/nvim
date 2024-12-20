@@ -229,10 +229,10 @@ return {
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
-        { name = "cmdline" },
         { name = "nvim_lua" },
-      }, {
         { name = "path", option = { trailing_slash = true } },
+      }, {
+        { name = "cmdline" },
       }, {
         { name = "cmdline_history" },
       }),

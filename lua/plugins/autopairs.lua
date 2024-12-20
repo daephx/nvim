@@ -47,6 +47,7 @@ return {
     --- Rules ---
 
     local Rule = require("nvim-autopairs.rule")
+    local conds = require("nvim-autopairs.conds")
 
     -- Javascript arrow function
     npairs.add_rule(Rule("%(.*%)%s*%=>$", " {}", {
@@ -55,5 +56,15 @@ return {
       "typescript",
       "typescriptreact",
     }):use_regex(true):set_end_pair_length(1))
+
+    -- Add angle bracket pairs to filetypes
+    npairs.add_rule(Rule("<", ">", { "cs", "rust" }):with_move(conds.after_regex("<")))
+
+    -- Add pipe pairs to filetypes
+    npairs.add_rule(Rule("|", "|", { "go", "rust" }):with_move(conds.after_regex("|")))
+
+    -- Disable single quote pairs in lisp filetypes
+    npairs.get_rules("'")[1].not_filetypes = { "scheme", "lisp", "clojure" }
+    npairs.get_rules("'")[1]:with_pair(conds.not_after_text("["))
   end,
 }

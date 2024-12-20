@@ -8,6 +8,7 @@ local list_workspace_folders = function()
 end
 
 -- Initialize and attach Language Server keymaps to the active buffer
+---@param _ vim.lsp.Client
 ---@param bufnr integer
 M.initialize_keymaps = function(_, bufnr)
   local util = require("config.util")

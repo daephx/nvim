@@ -1,7 +1,7 @@
 local M = {}
 
 ---Register autocmd for LSP codelens
----@param client table
+---@param client vim.lsp.Client
 ---@param bufnr integer
 M.enable_code_lens = function(client, bufnr)
   local group = vim.api.nvim_create_augroup("LspCodeLens", {})

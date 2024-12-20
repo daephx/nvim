@@ -43,21 +43,18 @@ M.format_document = function()
 end
 
 -- Enable document formatting autocmd to trigger on BufWritePre
----@param client table
+---@param client vim.lsp.Client
 ---@param bufnr integer
 M.enable_auto_format = function(client, bufnr)
-  -- Prevent formatting if client disabled it
-  local disabled = (
-    client.config
-    and client.config.capabilities
-    and client.config.capabilities.documentFormattingProvider == false
-  )
-  -- Apply autocmd if client supports formatting
-  if not disabled or client.supports_method("textDocument/formatting") then
+  if
+    client.server_capabilities.documentFormattingProvider
+    or client.supports_method("textDocument/formatting")
+  then
     -- Add formatting user commands
     vim.api.nvim_create_user_command("Format", M.format_document, {})
     vim.api.nvim_create_user_command("FormatToggle", M.format_toggle, {})
 
+    -- Add autocmd to handle format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       desc = "Apply Auto-formatting for to document on save",

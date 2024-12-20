@@ -6,7 +6,7 @@ local keymaps = require("plugins.lsp.keymaps")
 
 -- Use an on_attach function to set LSP related actions for
 -- when the language server attaches to the current buffer
----@param client table
+---@param client vim.lsp.Client
 ---@param bufnr integer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>

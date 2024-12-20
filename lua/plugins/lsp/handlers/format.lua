@@ -10,7 +10,7 @@ end
 -- Toggle document formatting on save
 M.format_toggle = function()
   if vim.b.autoformat == false then
-    vim.b.autoformat = nil ---@type boolean|nil
+    vim.b.autoformat = nil
     M.autoformat = true
   else
     M.autoformat = not M.autoformat
@@ -24,11 +24,11 @@ end
 
 -- Activate document formatting filter to select a preferred formatter
 M.format_document = function()
-  local bufnr = vim.api.nvim_get_current_buf() ---@type integer
+  local bufnr = vim.api.nvim_get_current_buf()
   if vim.b.autoformat == false then
     return
   end
-  local ft = vim.bo[bufnr].filetype ---@type string
+  local ft = vim.bo[bufnr].filetype
   local have_nls = #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
 
   vim.lsp.buf.format({

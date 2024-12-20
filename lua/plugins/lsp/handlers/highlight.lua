@@ -4,7 +4,7 @@ local augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = tr
 
 -- Set autocmd for the current buffer to enable and clear document highlight.
 -- Only sets if the active client supported the textDocument/documentHighlight method.
----@param client table
+---@param client vim.lsp.Client
 ---@param bufnr integer
 M.enable_document_highlighting = function(client, bufnr)
   if client.supports_method("textDocument/documentHighlight") then

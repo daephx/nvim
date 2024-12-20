@@ -2,38 +2,51 @@ local format = require("plugins.lsp.handlers.format")
 
 local M = {}
 
--- Display buffer workspace folders
-local list_workspace_folders = function()
-  vim.print(vim.lsp.buf.list_workspace_folders())
-end
-
 -- Initialize and attach Language Server keymaps to the active buffer
 ---@param _ vim.lsp.Client
 ---@param bufnr integer
 M.initialize_keymaps = function(_, bufnr)
   local util = require("config.util")
   local opts = { buffer = bufnr, remap = false, silent = true }
+
+  -- stylua: ignore
   util.register_keymaps(opts, {
+    { "n", "<leader>cl", "<cmd>LspInfo<cr>", desc = "Open LspInfo" },
+
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    { "n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" } },
-    { "n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Show type definitions" } },
-    { "n", "<leader>de", vim.diagnostic.open_float, { desc = "Open diagnostic float" } },
-    { "n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Diagnostic loclist" } },
-    { "n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename reference" } },
-    { "n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" } },
-    { "n", "<leader>wl", list_workspace_folders, { desc = "Show workspace folders" } },
-    { "n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove workspace folder" } },
-    { "n", "K", vim.lsp.buf.hover, { desc = "Show hover diagnostic" } },
-    { "n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" } },
-    { "n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" } },
     { "n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" } },
-    { "n", "ga", vim.lsp.buf.code_action, { desc = "Code actions" } },
     { "n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" } },
     { "n", "gi", vim.lsp.buf.implementation, { desc = "Goto implementation" } },
     { "n", "gr", vim.lsp.buf.references, { desc = "Goto references" } },
+    { "n", "gy", vim.lsp.buf.type_definition, { desc = "Show type definitions" } },
 
-    { { "n", "v" }, "gf", format.format_document, { remap = true, desc = "Format document" } },
+    { "i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" } },
+    { "n", "K", vim.lsp.buf.hover, { desc = "Show hover diagnostic" } },
+    { "n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" } },
+
+    { "n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh & Display Codelens" } },
+    { "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" } },
+
+    { { "n", "v" }, "<leader>cF", format.format_toggle, { remap = true, desc = "Toggle format" } },
+    { { "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" } },
+    { { "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" } },
+    { { "n", "v" }, "<leader>cf", format.format_document, { remap = true, desc = "Format document" } },
   })
+
+  -- TODO: Compatibility for Neovim 0.11+; remove when stable packages are updated.
+  if vim.fn.has("nvim-0.11") == 1 then
+    -- stylua: ignore
+    util.register_keymaps(opts, {
+      { "n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Previous diagnostic" } },
+      { "n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next diagnostic" } },
+
+      ---@diagnostic disable-next-line: redundant-parameter
+      { "n", "<C-k>", function() vim.lsp.buf.signature_help({ border = vim.g.border }) end, { desc = "Signature Help" } },
+
+      ---@diagnostic disable-next-line: redundant-parameter
+      { "n", "K", function() vim.lsp.buf.hover({ border = vim.g.border }) end, { desc = "Show hover diagnostic" } },
+    })
+  end
 end
 
 return M

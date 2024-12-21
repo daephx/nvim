@@ -14,10 +14,10 @@ return {
       local overrides = {
         -- General
         Comment = { fg = c.comment },
-        CursorLineNr = { fg = c.accent },
-        Error = { fg = c.error },
+        CursorLineNr = { fg = c.accent, bg = "none", bold = true },
+        Error = { fg = c.error, bg = "none" },
         FloatBorder = { fg = "#394050" },
-        FoldColumn = { fg = c.fg_idle },
+        FoldColumn = { fg = c.fg_idle, bg = "none" },
         Folded = { fg = c.fg_idle, bg = "#2a2a2a" },
         IncSearch = { fg = c.bg, bg = c.special },
         LineNr = { fg = c.fg_idle },
@@ -25,13 +25,15 @@ return {
         NonText = { fg = c.guide_active },
         Normal = { bg = "none" },
         NormalFloat = { link = "Normal" },
-        PmenuSel = { bg = c.selection_inactive },
+        PmenuSel = { fg = "none", bg = c.selection_inactive, reverse = false },
         SignColumn = { bg = "none" },
+        StatusLine = { bg = "none" },
         Underlined = { fg = c.accent, underline = true },
+        VertSplit = { link = "WinSeparator" },
         Visual = { bg = c.selection_bg },
         WinBar = { link = "Normal" },
         WinBarNC = { link = "Normal" },
-        WinSeparator = { fg = c.guide_normal },
+        WinSeparator = { fg = c.guide_normal, bg = "none" },
 
         -- Diff
         DiffDelete = { fg = c.vcs_removed, bg = "#321619" },

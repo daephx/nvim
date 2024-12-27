@@ -11,15 +11,16 @@ local colors = {
   Folded = { ctermbg = 234, bg = "NvimDarkGrey2" },
   MsgSeparator = { link = "WinSeparator" },
   Normal = { ctermfg = 253, fg = "NvimLightGrey2" },
-  PmenuSel = { ctermbg = 254, ctermfg = 16, bg = "NvimLightGrey2", fg = "Black" },
+  PmenuSel = { ctermbg = 254, ctermfg = 16, bg = "Grey15", fg = "none" },
   Statement = { ctermfg = 177, fg = "Violet" },
   StatusLine = { ctermbg = "none", bg = "none" },
   Title = { link = "Special" },
   Type = { ctermfg = 153, fg = "NvimLightBlue" },
-  WinSeparator = { ctermfg = 237, fg = "NvimDarkGrey4" },
+  VertSplit = { link = "WinSeparator" },
   WinBar = { link = "Normal" },
   WinBarNC = { link = "Normal" },
-  VertSplit = { link = "WinSeparator" },
+  WinSeparator = { ctermfg = 237, fg = "NvimDarkGrey4" },
+  QuickfixLine = { link = "PmenuSel" },
 
   -- Git
   Added = { ctermfg = 157, fg = "NvimLightGreen", bold = true },
@@ -37,7 +38,7 @@ local colors = {
   ["@lsp.mod.global.lua"] = { ctermfg = 217, fg = "NvimLightRed" },
 
   -- Treesitter
-  ["@string.special.url.comment"] = { ctermfg = 153, fg = "NvimLightBlue", underline = true },
+  ["@string.special.url"] = { ctermfg = 153, fg = "NvimLightBlue", underline = true },
   ["@variable"] = { link = "Identifier" },
 
   -- Rainbow Delimiters

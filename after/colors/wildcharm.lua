@@ -3,8 +3,6 @@
 ---@type config.Highlights
 local colors = {
   CursorLineNr = { ctermfg = 213, fg = "Orchid1", bold = true },
-  Error = { ctermfg = 161, fg = "#d7005f" },
-  ErrorMsg = { link = "Error" },
   MsgSeparator = { link = "WinSeparator" },
   Normal = { ctermbg = "none", bg = "none" },
   NormalFloat = { link = "Normal" },
@@ -15,6 +13,14 @@ local colors = {
   VertSplit = { link = "WinSeparator" },
   Visual = { ctermbg = 25, ctermfg = 16, bg = "#144454" },
   WinSeparator = { ctermfg = 240, fg = "#585858" },
+
+  -- Diagnostics
+  DiagnosticError = { link = "Error" },
+  DiagnosticInfo = { ctermfg = 32, fg = "#00afff" },
+  DiagnosticOk = { ctermfg = 35, fg = "#00d75f" },
+  Error = { ctermfg = 161, fg = "#d7005f" },
+  ErrorMsg = { link = "Error" },
+  NvimInternalError = { link = "Error" },
 
   -- Git
   Added = { ctermfg = 35, fg = "#00d75f" },
@@ -41,6 +47,13 @@ local colors = {
 -- Force transparent background in dark mode.
 if vim.o.background == "light" then
   colors.Normal = nil
+  colors.Visual = { ctermbg = 25, ctermfg = 16, bg = "#abdbeb" }
+  colors.WinSeparator = { ctermfg = 240, fg = "#a7a7a7" }
+
+  colors.DiffAdd = { ctermfg = "none", ctermbg = 65, fg = "none", bg = "#d1eddf" }
+  colors.DiffChange = { ctermfg = "none", ctermbg = 59, fg = "none", bg = "#c1dbe1" }
+  colors.DiffDelete = { ctermfg = 217, ctermbg = 234, fg = "#ff5f87", bg = "#edced5" }
+  colors.DiffText = { ctermfg = "none", ctermbg = 66, fg = "none", bg = "#adcece" }
 end
 
 return colors

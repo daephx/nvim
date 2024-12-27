@@ -59,31 +59,38 @@ return {
       LineNr = { fg = "highlight_med" },
       MatchParen = { bg = "subtle" },
       Pmenu = { bg = "surface" },
+      StatusLine = { bg = "none" },
       Underlined = { fg = "iris", underline = true },
-      WinBar = { bg = "none" },
-      WinBarNC = { bg = "none" },
+      VertSplit = { link = "WinSeparator" },
+      WinBar = { bg = "none", inherit = false },
+      WinBarNC = { bg = "none", inherit = false },
 
       -- Diff
-      DiffAdd = { bg = "#2a383a", inherit = false },
-      DiffChange = { bg = "#4a3824", inherit = false },
-      DiffDelete = { bg = "#381a22", fg = "love", inherit = false },
-      DiffText = { bg = "#2e395c", inherit = false },
+      DiffAdd = { fg = "none", bg = "#2a383a", inherit = false },
+      DiffChange = { fg = "none", bg = "#4a3824", inherit = false },
+      DiffDelete = { fg = "love", bg = "#421e28", inherit = false },
+      DiffText = { fg = "none", bg = "#2e395c", inherit = false },
+
+      -- Git
+      Added = { fg = "foam", bg = "none" },
+      Changed = { fg = "gold", bg = "none" },
+      Removed = { fg = "love", bg = "none" },
 
       -- Neogit
-      NeogitDiffAdd = { link = "DiffAdd" },
-      NeogitDiffChange = { link = "DiffChange" },
-      NeogitDiffDelete = { link = "DiffDelete" },
-      NeogitDiffText = { link = "DiffText" },
+      NeogitActiveItem = { fg = "gold", bg = "highlight_med" },
+      NeogitDiffAdditions = { link = "Added", inherit = false },
+      NeogitGraphAuthor = { fg = "leaf" },
 
-      -- Rainbow Delimiters
-      RainbowDelimiterBlue = { fg = "foam", nocombine = true },
-      RainbowDelimiterCyan = { fg = "foam", nocombine = true },
-      RainbowDelimiterGreen = { fg = "iris", nocombine = true },
-      RainbowDelimiterOrange = { fg = "gold", nocombine = true },
-      RainbowDelimiterPink = { fg = "rose", nocombine = true },
-      RainbowDelimiterRed = { fg = "rose", nocombine = true },
-      RainbowDelimiterViolet = { fg = "iris", nocombine = true },
-      RainbowDelimiterYellow = { fg = "gold", nocombine = true },
+      NeogitDiffAdd = { fg = "foam", bg = "#2a383a", inherit = false },
+      NeogitDiffChange = { fg = "gold", bg = "#4a3824", inherit = false },
+      NeogitDiffDelete = { fg = "love", bg = "#421e28", inherit = false },
+      NeogitDiffText = { fg = "none", bg = "#2e395c", inherit = false },
+
+      -- LSP
+      ["@string.special.url"] = { fg = "link", underline = true },
+
+      -- DAP
+      DapStoppedLine = { bg = "#5c482c" },
     },
   },
 }

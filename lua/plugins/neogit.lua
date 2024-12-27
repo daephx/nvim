@@ -55,8 +55,12 @@ return {
     -- Set default highlights
     local colors = require("config.colors")
     colors.set_hl_autocmd(nil, {
-      NeogitCommitViewDescription = { link = "Normal" },
-      NeogitWinSeparator = { link = "WinSeparator" },
+      DiffviewFilePanelDeletions = { link = "Removed", default = true },
+      DiffviewFilePanelInsertions = { link = "Added", default = true },
+      NeogitCommitViewDescription = { link = "Normal", default = true },
+      NeogitDiffAdditions = { link = "Added", default = true },
+      NeogitDiffDeletions = { link = "Removed", default = true },
+      NeogitObjectId = { link = "Structure", default = true },
     })
 
     vim.api.nvim_create_autocmd("FileType", {

@@ -42,16 +42,20 @@ return {
     },
     palette_overrides = {},
     overrides = {
-      CursorLine = { bg = "#262322" },
       CursorLineNr = { bg = "none" },
       ErrorMsg = { link = "Error" },
       FloatBorder = { link = "GruvboxGray" },
-      MsgSeparator = { link = "VertSplit" },
+      MsgSeparator = { link = "WinSeparator" },
       NormalFloat = { link = "Normal" },
-      StatusLine = { bg = "#282828" },
-      Visual = { bg = "#47403a" },
+      SignColumn = { link = "Normal" },
+      VertSplit = { link = "WinSeparator" },
       WinBar = { bg = "none" },
       WinBarNC = { bg = "none" },
+
+      -- Git
+      Added = { link = "GruvboxGreen" },
+      Changed = { link = "GruvboxBlue" },
+      Removed = { link = "GruvboxRed" },
 
       -- Diff
       DiffAdd = { ctermfg = 142, ctermbg = 235, fg = "none", bg = "#2c2c07" },
@@ -73,7 +77,7 @@ return {
       TelescopePreviewBorder = { link = "FloatBorder" },
       TelescopePromptBorder = { link = "FloatBorder" },
       TelescopeResultsBorder = { link = "FloatBorder" },
-      TelescopeSelection = { bg = "#3c3836", fg = "#fe8019" },
+      TelescopeSelection = { link = "CursorLine" },
 
       -- Dap
       DapUINormal = { link = "Normal" },
@@ -81,7 +85,21 @@ return {
     },
   },
   init = function()
-    require("config.colors").set_hl_autocmd("gruvbox", function(_hl)
+    vim.api.nvim_create_autocmd({ "ColorSchemePre" }, {
+      desc = "Enable `transparent_mode` only when background is set to `dark`",
+      group = vim.api.nvim_create_augroup("Gruvbox#FixBackground", {}),
+      pattern = "gruvbox",
+      callback = function()
+        local is_dark = vim.o.background == "dark" and true or false
+        local gruvbox = package.loaded["gruvbox"]
+        if gruvbox ~= nil then
+          gruvbox.setup({ transparent_mode = is_dark })
+        end
+      end,
+    })
+
+    local colors = require("config.colors")
+    colors.set_hl_autocmd("gruvbox", function()
       if vim.o.background == "dark" then
         -- Apply terminal color overrides
         for i, color in ipairs(terminal) do

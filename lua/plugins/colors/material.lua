@@ -30,7 +30,6 @@ return {
         "neogit",
         "nvim-cmp",
         "nvim-navic",
-        "nvim-tree",
         "nvim-web-devicons",
         "telescope",
         "trouble",
@@ -41,7 +40,18 @@ return {
       -- Overwrite highlights with your own
       custom_highlights = {
         CursorLine = { bg = "Grey15" },
+        FoldColumn = { link = "NonText" },
+        Folded = { bg = "#311d00" },
         MsgSeparator = { link = "WinSeparator" },
+        StatusLine = { bg = "none" },
+        VertSplit = { link = "WinSeparator" },
+        WinBar = { bg = "none" },
+        WinBarNC = { bg = "none" },
+
+        -- Search
+        CurSearch = { link = "IncSearch" },
+        IncSearch = { fg = "black", bg = "#ffcb6b", bold = true },
+        Search = { fg = "black", bg = "#6bc3ff" },
 
         -- Diff
         DiffAdd = { bg = "#2c351e" },
@@ -58,7 +68,7 @@ return {
         -- Treesitter
         TSField = { link = "TSVariable" },
         ["@property"] = { link = "Identifier" },
-        ["@string.special.url.comment"] = { fg = c.editor.link, underline = true },
+        ["@string.special.url"] = { fg = c.editor.link, underline = true },
 
         -- WhichKey
         WhichKeyFloat = { link = "StatusLineNC" },

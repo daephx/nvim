@@ -98,11 +98,12 @@ return {
 
         -- Telescope
         TelescopePromptPrefix = { fg = c.vscBlue },
-        TelescopeSelectionCaret = { bg = c.vscUiBlue, fg = c.vscYellow },
+        TelescopeSelection = { bg = c.vscSelection },
+        TelescopeSelectionCaret = { bg = c.vscSelection, fg = c.vscYellow },
 
         -- Neogit
         NeogitBranch = { fg = c.vscYellow },
-        NeogitCommitViewHeader = { fg = c.vscBlue },
+        NeogitCommitViewHeader = { fg = c.vscBlue, bg = c.vscContext, bold = true },
         NeogitDiffAdditions = { fg = c.vscGitAdded },
         NeogitObjectId = { fg = c.vscBlueGreen },
         NeogitStash = { fg = c.vscViolet },
@@ -113,7 +114,7 @@ return {
         HopNextKey1 = { fg = c.vscBlue, bold = true },
         HopNextKey2 = { fg = c.vscBlueGreen, bold = true },
         HopPreview = { link = "IncSearch" },
-        HopUnmatched = { fg = c.vscGray },
+        HopUnmatched = { fg = c.vscContext },
       },
     }
   end,

@@ -25,7 +25,21 @@ return {
   { -- Neovim extension for zk
     "zk-org/zk-nvim",
     main = "zk",
-    event = "VeryLazy",
+    cmd = {
+      "ZkBacklinks",
+      "ZkBuffers",
+      "ZkCd",
+      "ZkIndex",
+      "ZkInsertLink",
+      "ZkInsertLinkAtSelection",
+      "ZkLinks",
+      "ZkMatch",
+      "ZkNew",
+      "ZkNewFromContentSelection",
+      "ZkNewFromTitleSelection",
+      "ZkNotes",
+      "ZkTags",
+    },
     keys = {
       { "<leader>zb", "<cmd>ZkBacklinks<CR>", desc = "Show backlinks" },
       { "<leader>zf", "<cmd>ZkNotes<CR>", desc = "Show notes" },

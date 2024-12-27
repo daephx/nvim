@@ -16,16 +16,16 @@ return {
         Comment = { fg = c.comment },
         CursorLineNr = { fg = c.accent, bg = "none", bold = true },
         Error = { fg = c.error, bg = "none" },
-        FloatBorder = { fg = "#394050" },
+        FloatBorder = { fg = c.guide_inactive },
         FoldColumn = { fg = c.fg_idle, bg = "none" },
-        Folded = { fg = c.fg_idle, bg = "#2a2a2a" },
+        Folded = { fg = "none", bg = c.guide_normal },
         IncSearch = { fg = c.bg, bg = c.special },
-        LineNr = { fg = c.fg_idle },
+        LineNr = { fg = c.gutter_normal },
         MsgSeparator = { link = "WinSeparator" },
         NonText = { fg = c.guide_active },
         Normal = { bg = "none" },
         NormalFloat = { link = "Normal" },
-        PmenuSel = { fg = "none", bg = c.selection_inactive, reverse = false },
+        PmenuSel = { fg = "none", bg = c.selection_bg, reverse = false },
         SignColumn = { bg = "none" },
         StatusLine = { bg = "none" },
         Underlined = { fg = c.accent, underline = true },
@@ -36,7 +36,7 @@ return {
         WinSeparator = { fg = c.guide_normal, bg = "none" },
 
         -- Diff
-        DiffDelete = { fg = c.vcs_removed, bg = "#321619" },
+        DiffDelete = { fg = c.vcs_removed, bg = c.vcs_removed_bg },
 
         -- LSP
         ["@lsp.mod.global.lua"] = { fg = c.markup },
@@ -49,12 +49,17 @@ return {
         RainbowDelimiterRed = { fg = c.vcs_removed },
         RainbowDelimiterViolet = { fg = c.lsp_parameter },
         RainbowDelimiterYellow = { fg = c.special },
+
+        -- DAP
+        DapStoppedLine = { bg = c.vcs_added_bg },
+
+        -- Telescope
+        TelescopePromptBorder = { link = "FloatBorder" },
+        TelescopeSelection = { link = "PmenuSel" },
       }
 
       -- Conditionally override colors for `h background
       if vim.o.background == "light" then
-        overrides.DiffDelete = { fg = c.vcs_removed, bg = "#ebecec" }
-        overrides.Folded = { fg = c.fg_idle, bg = "#c2c2c2" }
         overrides.Normal = nil
       else
         vim.g.terminal_color_8 = "#394050"

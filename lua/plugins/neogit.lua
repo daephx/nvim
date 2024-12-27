@@ -24,6 +24,19 @@ return {
     },
     popup = { kind = "split" },
     commit_popup = { kind = "split_above" },
+    mappings = {
+      rebase_editor = {
+        ["d"] = false,
+        ["e"] = false,
+        ["f"] = false,
+        ["p"] = false,
+        ["r"] = false,
+        ["s"] = false,
+        ["x"] = false,
+        -- ["<m-j>"] = "MoveDown",
+        -- ["<m-k>"] = "MoveUp",
+      },
+    },
   },
   init = function()
     -- Alias command `Neogit` to `Git`

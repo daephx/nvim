@@ -22,32 +22,37 @@ return {
     default_file_exporer = true,
     -- Buffer-local options to use for oil buffers
     buf_options = {
-      buflisted = false,
       bufhidden = "hide",
+      buflisted = false,
     },
     -- Window-local options to use for oil buffers
     win_options = {
-      number = false,
-      relativenumber = false,
-      concealcursor = "nvic",
       colorcolumn = "0",
+      concealcursor = "nvic",
       conceallevel = 3,
       cursorcolumn = false,
       foldcolumn = "0",
+      number = false,
+      relativenumber = false,
+      signcolumn = "no",
+      statuscolumn = "",
     },
     view_options = {
       show_hidden = true,
     },
     -- Configuration for the floating window in oil.open_float
     float = {
-      max_width = 114,
-      max_height = 32,
       border = vim.g.border,
+      max_height = 32,
+      max_width = 155,
+      win_options = {
+        winblend = 0,
+      },
     },
     -- Configuration for the actions floating preview window
     preview = {
       border = vim.g.border,
-      width = 0.5,
+      min_width = { 50, 0.5 },
     },
     -- Configuration for the floating progress window
     progress = {

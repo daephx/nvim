@@ -2,6 +2,48 @@
 -- https://github.com/stevearc/oil.nvim
 ---@module "oil"
 
+-- Mapping of file permission characters to their respective highlight groups.
+-- Used to apply syntax highlighting to each character in a permission string.
+local permission_hlgroups = {
+  ["-"] = "NonText",
+  ["r"] = "DiagnosticSignWarn",
+  ["w"] = "DiagnosticSignError",
+  ["x"] = "DiagnosticSignOk",
+}
+
+---Generate highlight groups for file permissions.
+---Maps each character in the permission string to a highlight group
+---based on the `permission_hlgroups` table.
+---@param perm string Permission string (e.g., "rwxr-xr-x")
+---@return table
+local permission_highlights = function(perm)
+  local hls = {}
+  for i = 1, #perm do
+    local char = perm:sub(i, i)
+    table.insert(hls, { permission_hlgroups[char], i - 1, i })
+  end
+  return hls
+end
+
+-- Tracks whether the details view is currently enabled
+local details_enabled = false
+
+-- Toggle file permission details in the Oil plugin.
+-- Adds or removes columns like permissions, size, and mtime.
+local enable_details = function()
+  details_enabled = not details_enabled
+  if not details_enabled then
+    require("oil").set_columns({ "icon", add_padding = false })
+  else
+    require("oil").set_columns({
+      { "permissions", highlight = permission_highlights },
+      { "size", highlight = "Special" },
+      { "mtime", highlight = "Number" },
+      { "icon", add_padding = false },
+    })
+  end
+end
+
 ---@type LazyPluginSpec
 return {
   "stevearc/oil.nvim",
@@ -20,6 +62,13 @@ return {
   end,
   opts = {
     default_file_exporer = true,
+    -- Keymaps in oil buffer.
+    keymaps = {
+      ["gd"] = {
+        desc = "Toggle file detail view",
+        callback = enable_details,
+      },
+    },
     -- Buffer-local options to use for oil buffers
     buf_options = {
       bufhidden = "hide",

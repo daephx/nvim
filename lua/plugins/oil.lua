@@ -50,7 +50,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   cmd = { "Oil" },
   keys = {
-    { "<leader>e", "<cmd>Oil --float .<CR>", desc = "Open file explorer" },
+    { "<leader>e", "<cmd>Oil --float<cr>", desc = "File explorer" },
   },
   init = function()
     -- Set custom vim style explorer commands

@@ -59,6 +59,18 @@ return {
     create_command("Sexplore", "belowright split | Oil <args>", { nargs = "?", complete = "dir" })
     create_command("Vexplore", "rightbelow vsplit | Oil <args>", { nargs = "?", complete = "dir" })
     create_command("Texplore", "tabedit % | Oil <args>", { nargs = "?", complete = "dir" })
+
+    -- HACK: Due to lazy-loading, the plugin is not available during the `VimEnter` event
+    -- which breaks the ability to launch directories via `nvim $PWD`
+    vim.api.nvim_create_autocmd({ "UIEnter" }, {
+      desc = "Open file explorer when launching neovim with a directory path",
+      group = vim.api.nvim_create_augroup("Oil#OpenDirectory", { clear = true }),
+      callback = function(ev)
+        if vim.fn.isdirectory(ev.file) == 1 then
+          require("oil").open(ev.file)
+        end
+      end,
+    })
   end,
   opts = {
     default_file_exporer = true,

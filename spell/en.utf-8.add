@@ -746,6 +746,7 @@ gradlew
 grafana
 graphql
 gravatar
+graymap
 gruvbox
 gsettings
 gsub
@@ -901,6 +902,8 @@ keep
 keepLine
 keybind
 keybinds
+keycode
+keycodes
 keyframe
 keyframes
 keygen
@@ -1207,6 +1210,7 @@ onemore
 ontop
 openid
 openjdk
+opensource
 openssh
 openssl
 opensuse
@@ -1563,6 +1567,7 @@ startswith
 startuptime
 startx
 statusbar
+statuscolumn
 statusline
 statuslinenc
 stderr
@@ -1675,6 +1680,7 @@ tmux
 tnoremap
 toc
 todo
+todos
 todotxt
 toggleable
 toggler
@@ -1866,6 +1872,7 @@ winbar
 winblend
 wincmd
 windo
+windowizer
 wine64
 winevent
 winfixheight

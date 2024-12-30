@@ -1,4 +1,4 @@
--- oil.nvim | Edit your filesystem like a buffer
+-- oil.nvim | Neovim file explorer: edit your filesystem like a buffer
 -- https://github.com/stevearc/oil.nvim
 ---@module "oil"
 
@@ -47,7 +47,10 @@ end
 ---@type LazyPluginSpec
 return {
   "stevearc/oil.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    -- Adds file type icons to Vim plugins
+    { "nvim-tree/nvim-web-devicons" },
+  },
   cmd = {
     "Oil",
     "Explore",
@@ -83,8 +86,11 @@ return {
     create_command("Texplore", "tabedit % | Oil <args>", cmd_opts)
     create_command("Vexplore", "rightbelow vsplit | Oil <args>", cmd_opts)
   end,
+  ---@type oil.setupOpts
   opts = {
+    -- Oil will take over directory buffers
     default_file_exporer = true,
+    -- Set to true to watch the filesystem for changes and reload oil
     watch_for_changes = true,
     -- Keymaps in oil buffer.
     keymaps = {

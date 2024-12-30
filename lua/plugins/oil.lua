@@ -48,18 +48,17 @@ end
 return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  cmd = { "Oil" },
+  cmd = {
+    "Oil",
+    "Explore",
+    "Fexplore",
+    "Sexplore",
+    "Vexplore",
+  },
   keys = {
     { "<leader>e", "<cmd>Oil --float<cr>", desc = "File explorer" },
   },
   init = function()
-    -- Set custom vim style explorer commands
-    local create_command = vim.api.nvim_create_user_command
-    create_command("Explore", "Oil <args>", { nargs = "?", complete = "dir" })
-    create_command("Sexplore", "belowright split | Oil <args>", { nargs = "?", complete = "dir" })
-    create_command("Vexplore", "rightbelow vsplit | Oil <args>", { nargs = "?", complete = "dir" })
-    create_command("Texplore", "tabedit % | Oil <args>", { nargs = "?", complete = "dir" })
-
     -- HACK: Due to lazy-loading, the plugin is not available during the `VimEnter` event
     -- which breaks the ability to launch directories via `nvim $PWD`
     vim.api.nvim_create_autocmd({ "UIEnter" }, {
@@ -71,6 +70,18 @@ return {
         end
       end,
     })
+  end,
+  config = function(_, opts)
+    require("oil").setup(opts)
+
+    -- Set custom vim style explorer commands
+    local cmd_opts = { nargs = "?", complete = "dir" }
+    local create_command = vim.api.nvim_create_user_command
+    create_command("Explore", "Oil <args>", cmd_opts)
+    create_command("Fexplore", "Oil --float <args>", cmd_opts)
+    create_command("Sexplore", "belowright split | Oil <args>", cmd_opts)
+    create_command("Texplore", "tabedit % | Oil <args>", cmd_opts)
+    create_command("Vexplore", "rightbelow vsplit | Oil <args>", cmd_opts)
   end,
   opts = {
     default_file_exporer = true,

@@ -1,16 +1,21 @@
 -- ZenMode | Distraction-free coding for Neovim
 -- https://github.com/folke/zen-mode.nvim
 
+-- Filetypes to exclude from custom on_open rules
 local filetypes = {
   "fugitive",
   "log",
 }
+
+-- Buftypes to exclude from custom on_open rules
 local buftypes = {
   "nofile",
   "prompt",
   "terminal",
 }
 
+---Define function to apply custom sizing rules when opening ZenMode.
+---@param win integer
 local on_open = function(win)
   -- Make certain buffers use all available columns
   local bufnr = vim.api.nvim_win_get_buf(win)

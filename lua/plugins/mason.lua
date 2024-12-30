@@ -65,11 +65,11 @@ return {
         end,
 
         ["rust_analyzer"] = function()
-          require("plugins/lsp/settings/rust_analyzer")
+          require("plugins/lsp/servers/rust_analyzer")
         end,
 
         ["jdtls"] = function()
-          require("plugins/lsp/settings/jdtls")
+          require("plugins/lsp/servers/jdtls")
         end,
       },
     },

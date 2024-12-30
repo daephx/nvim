@@ -217,6 +217,7 @@ async
 asyncio
 attr
 attrib
+attrs
 augroup
 augroups
 auth
@@ -470,6 +471,7 @@ deaphx
 debian
 debugpy
 decompile
+deduplicate
 deduplication
 deepcopy
 defered
@@ -605,6 +607,8 @@ exrc
 extmark
 eza
 f1
+facepalm
+facepalming
 fallbacks
 famicom
 favour
@@ -694,6 +698,7 @@ gcc
 gdb
 gdm3
 gdscript
+gdu
 gentoo
 getattr
 getchar
@@ -799,6 +804,7 @@ homelab
 hostname
 hostnames
 hotstring
+hotstrings
 href
 hsl
 hsla
@@ -1083,6 +1089,7 @@ mklink
 mksession
 mkspell
 mkv
+mkvmerge
 mnt
 modeline
 modname
@@ -1507,6 +1514,8 @@ shellscript
 shellxquote
 shfmt
 shiftwidth
+shortcode
+shortcodes
 shorthands
 shortmess
 showbreak
@@ -1751,6 +1760,7 @@ unittest
 unix
 unnamedplus
 uno
+unokai
 unpause
 unpushed
 unreachability

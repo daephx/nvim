@@ -87,6 +87,9 @@ return {
     default_file_exporer = true,
     -- Keymaps in oil buffer.
     keymaps = {
+      ["<c-b>"] = "actions.preview_scroll_up",
+      ["<c-d>"] = "actions.preview_scroll_down",
+      ["<M-p>"] = "actions.preview",
       ["gd"] = {
         desc = "Toggle file detail view",
         callback = enable_details,

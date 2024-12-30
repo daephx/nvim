@@ -85,6 +85,7 @@ return {
   end,
   opts = {
     default_file_exporer = true,
+    watch_for_changes = true,
     -- Keymaps in oil buffer.
     keymaps = {
       ["<c-b>"] = "actions.preview_scroll_up",

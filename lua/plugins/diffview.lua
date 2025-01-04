@@ -20,7 +20,11 @@ end
 ---@type LazyPluginSpec
 return {
   "sindrets/diffview.nvim",
-  cmd = { "DiffviewOpen" },
+  cmd = {
+    "DiffviewFileHistory",
+    "DiffviewLog",
+    "DiffviewOpen",
+  },
   keys = {
     { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "DiffView" },
   },

@@ -2,7 +2,7 @@
 -- https://github.com/marko-cerovac/material.nvim
 ---@module "material
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "marko-cerovac/material.nvim",
   lazy = false,

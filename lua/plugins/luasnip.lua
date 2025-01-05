@@ -1,7 +1,7 @@
 -- LuaSnip | Snippet Engine for Neovim written in Lua.
 -- https://github.com/L3MON4D3/LuaSnip
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "L3MON4D3/LuaSnip",
   event = "InsertCharPre",

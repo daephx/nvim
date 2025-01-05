@@ -12,7 +12,7 @@ local search_buffer = function()
   require("hop").hint_char1({ current_line_only = false })
 end
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "smoka7/hop.nvim",
   version = "*",

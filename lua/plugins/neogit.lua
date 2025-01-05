@@ -1,7 +1,7 @@
 -- Neogit | magit for Neovim
 -- https://github.com/TimUntersberger/neogit
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "TimUntersberger/neogit",
   cmd = "Neogit",

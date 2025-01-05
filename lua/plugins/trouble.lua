@@ -2,7 +2,7 @@
 -- https://github.com/folke/trouble.nvim
 ---@module "trouble"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "folke/trouble.nvim",
   cmd = { "Trouble" },

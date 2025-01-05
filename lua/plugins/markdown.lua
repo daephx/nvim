@@ -1,7 +1,7 @@
 -- Configures plugins for Markdown files and note management.
 -- Includes tools for editing/previewing and exploring Markdown files.
 
----@type LazyPluginSpec[]
+---@type LazySpec
 return {
   { -- Nice extra's for markdown documents
     "SidOfc/mkdx",

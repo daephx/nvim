@@ -1,7 +1,7 @@
 -- flatten.nvim | Open files from terminal buffers without creating a nested session
 -- https://github.com/willothy/flatten.nvim
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "willothy/flatten.nvim",
   -- Disable lazy-loading to ensure that it runs first.

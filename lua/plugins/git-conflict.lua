@@ -1,7 +1,7 @@
 -- git-conflict.nvim | Visualise and resolve merge conflicts in neovim
 -- https://github.com/akinsho/git-conflict.nvim
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "akinsho/git-conflict.nvim",
   version = "*",

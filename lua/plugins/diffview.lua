@@ -17,7 +17,7 @@ local win_config = function()
   }
 end
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "sindrets/diffview.nvim",
   cmd = {

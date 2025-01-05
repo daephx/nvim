@@ -91,7 +91,7 @@ local format_source_labels = function(entry)
   return source_labels[entry.source.name] or default
 end
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "hrsh7th/nvim-cmp",
   event = { "InsertEnter", "CmdlineEnter" },

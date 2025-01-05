@@ -2,7 +2,7 @@
 -- https://github.com/folke/which-key.nvim
 ---@module "which-key"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "folke/which-key.nvim",
   event = { "VeryLazy" },

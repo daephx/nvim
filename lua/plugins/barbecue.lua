@@ -1,7 +1,7 @@
 -- barbecue.nvim | A VS Code like winbar for Neovim
 -- https://github.com/utilyre/barbecue.nvim
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "utilyre/barbecue.nvim",
   name = "barbecue",

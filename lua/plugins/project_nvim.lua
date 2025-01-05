@@ -1,7 +1,7 @@
 -- project_nvim | The superior project management solution for neovim.
 -- https://github.com/ahmedkhalf/project.nvim
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "ahmedkhalf/project.nvim",
   cond = vim.fn.has("nvim-0.10") == 0,

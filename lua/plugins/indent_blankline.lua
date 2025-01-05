@@ -2,7 +2,7 @@
 -- https://github.com/lukas-reineke/indent-blankline.nvim
 ---@module "ibl"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",

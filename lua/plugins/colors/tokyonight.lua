@@ -2,7 +2,7 @@
 -- https://github.com/folke/tokyonight.nvim
 ---@module "tokyonight"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "folke/tokyonight.nvim",
   lazy = false,

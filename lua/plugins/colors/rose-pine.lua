@@ -2,7 +2,7 @@
 -- https://github.com/rose-pine/neovim
 ---@module "rose-pine"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "rose-pine/neovim",
   name = "rose-pine",

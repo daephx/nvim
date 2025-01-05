@@ -44,7 +44,7 @@ local enable_details = function()
   end
 end
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "stevearc/oil.nvim",
   dependencies = {

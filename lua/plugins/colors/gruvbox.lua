@@ -21,7 +21,7 @@ local terminal = {
   "#ebdbb2",
 }
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "ellisonleao/gruvbox.nvim",
   lazy = false,

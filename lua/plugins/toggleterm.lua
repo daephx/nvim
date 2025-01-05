@@ -58,7 +58,7 @@ local executables = {
   "python",
 }
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "akinsho/toggleterm.nvim",
   event = { "VeryLazy" },

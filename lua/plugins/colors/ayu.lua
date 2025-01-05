@@ -2,7 +2,7 @@
 -- https://github.com/Shatur/neovim-ayu
 ---@module "ayu"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "Shatur/neovim-ayu",
   name = "ayu",

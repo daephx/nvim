@@ -2,7 +2,7 @@
 -- https://github.com/rebelot/kanagawa.nvim
 ---@module "kanagawa"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "rebelot/kanagawa.nvim",
   lazy = false,

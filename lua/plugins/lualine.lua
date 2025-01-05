@@ -174,7 +174,7 @@ local windows = {
   },
 }
 
----@type LazyPluginSpec[]
+---@type LazySpec
 return {
   {
     "nvim-lualine/lualine.nvim",

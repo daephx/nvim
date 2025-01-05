@@ -1,7 +1,7 @@
 -- todo-comments.nvim | Highlight, list and search todo comments in your projects
 -- https://github.com/folke/todo-comments.nvim
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "folke/todo-comments.nvim",
   event = { "BufReadPost", "BufNewFile" },

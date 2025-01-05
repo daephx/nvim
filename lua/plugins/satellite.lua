@@ -2,7 +2,7 @@
 -- https://github.com/lewis6991/satellite.nvim
 ---@module "satellite"
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "lewis6991/satellite.nvim",
   event = { "BufReadPost", "BufNewFile" },

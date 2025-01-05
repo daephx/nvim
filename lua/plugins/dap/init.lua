@@ -1,7 +1,7 @@
 -- nvim-dap | Debug Adapter Protocol client implementation for neovim
 -- https://github.com/mfussenegger/nvim-dap
 
----@type LazyPluginSpec[]
+---@type LazySpec
 return {
   { -- Debug adapter protocol client
     "mfussenegger/nvim-dap",

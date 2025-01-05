@@ -35,7 +35,7 @@ local on_open = function(win)
   end
 end
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",

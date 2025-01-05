@@ -21,7 +21,7 @@ local terminal = {
   "#E5E5E5",
 }
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "Mofiqul/vscode.nvim",
   lazy = false,

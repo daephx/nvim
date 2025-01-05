@@ -20,7 +20,7 @@ local terminal = {
   "#e4e4e4",
 }
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "bluz71/vim-moonfly-colors",
   name = "moonfly",

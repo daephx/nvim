@@ -17,7 +17,7 @@ local init_default_highlights = function()
   })
 end
 
----@type LazyPluginSpec
+---@type LazySpec
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",

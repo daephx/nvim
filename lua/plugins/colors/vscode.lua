@@ -52,7 +52,7 @@ return {
 
         -- Git
         Added = { fg = c.vscGitAdded },
-        Changed = { fg = c.vscDiffRedDark },
+        Changed = { fg = c.vscYellow },
         Removed = { fg = c.vscRed },
 
         -- Diff

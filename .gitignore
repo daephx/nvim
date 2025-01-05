@@ -85,7 +85,7 @@ tags
 .placeholder
 
 # Temporary locations
-[._]home/
+[._]build/
 [._]repro/
 [._]temp/
 temp/

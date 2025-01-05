@@ -112,7 +112,7 @@ git clone https://github.com/daephx/nvim.git ~/.config/nvim-daephx
 NVIM_APPNAME=nvim-daephx nvim
 ```
 
-On Unix, you can use the Makefile to create a temporary instance: `make run`
+On Unix, you can use the Makefile to create a temporary instance: `make build`
 
 This will overwrite the XDG environment variables just for that session,
 creating a temporary home directory where Neovim will run for storing plugins,

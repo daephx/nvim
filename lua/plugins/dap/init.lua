@@ -60,9 +60,6 @@ return {
         local texthl = sign[2] or name
         vim.fn.sign_define(name, { text = text, texthl = texthl, linehl = sign[3], numhl = sign[3] })
       end
-
-      -- Load launch settings from local directory
-      require("dap.ext.vscode").load_launchjs()
     end,
   },
   { -- Fancy UI for the debugger

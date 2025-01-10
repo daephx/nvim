@@ -27,6 +27,9 @@ return {
     popup = { kind = "split" },
     commit_popup = { kind = "split_above" },
     mappings = {
+      commit_editor = {
+        ["q"] = false,
+      },
       rebase_editor = {
         ["d"] = false,
         ["e"] = false,
@@ -35,8 +38,6 @@ return {
         ["r"] = false,
         ["s"] = false,
         ["x"] = false,
-        -- ["<m-j>"] = "MoveDown",
-        -- ["<m-k>"] = "MoveUp",
       },
     },
   },
@@ -98,6 +99,18 @@ return {
       group = vim.api.nvim_create_augroup("NeogitCommitMessageOptions", {}),
       pattern = "NeogitCommitMessage",
       command = "silent! set filetype=gitcommit",
+    })
+
+    -- NOTE: Cannot disable `q` in plugin options due to inherited mappings from
+    -- `status`, which would prevent closing the status buffer with `q`.
+    vim.api.nvim_create_autocmd("WinEnter", {
+      desc = "Disable 'q' mapping in NeogitDiffView to prevent accidental closure",
+      group = vim.api.nvim_create_augroup("NeogitStagedDiff#KeymapOverride", {}),
+      callback = function(ev)
+        if vim.bo[ev.buf].filetype == "NeogitDiffView" then
+          vim.keymap.set("n", "q", "<nop>", { buffer = ev.buf, remap = true })
+        end
+      end,
     })
   end,
 }

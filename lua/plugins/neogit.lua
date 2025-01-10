@@ -68,7 +68,7 @@ return {
 
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Local options to apply to neogit filetypes",
-      group = vim.api.nvim_create_augroup("NeogitBufferOptions", {}),
+      group = vim.api.nvim_create_augroup("NeogitBuffer#OptionOverride", {}),
       pattern = "Neogit*",
       callback = function()
         vim.opt_local.colorcolumn = "0"
@@ -78,7 +78,7 @@ return {
 
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Prevent status buffers from over-scrolling",
-      group = vim.api.nvim_create_augroup("NeogitStatusOptions", {}),
+      group = vim.api.nvim_create_augroup("NeogitStatus#OptionOverride", {}),
       pattern = { "NeogitPopup", "NeogitStatus" },
       callback = function()
         vim.opt_local.scrolloff = 999
@@ -87,7 +87,7 @@ return {
 
     vim.api.nvim_create_autocmd("User", {
       desc = "Close Neogit after pushing to remote repository",
-      group = vim.api.nvim_create_augroup("NeogitPushOptions", {}),
+      group = vim.api.nvim_create_augroup("NeogitPush#AutoClose", {}),
       pattern = "NeogitPushComplete",
       callback = function()
         require("neogit").close()
@@ -96,7 +96,7 @@ return {
 
     vim.api.nvim_create_autocmd("FileType", {
       desc = "Set filetype back to gitcommit for NeogitCommitMessage buffer",
-      group = vim.api.nvim_create_augroup("NeogitCommitMessageOptions", {}),
+      group = vim.api.nvim_create_augroup("NeogitCommitMessage#FileTypeOverride", {}),
       pattern = "NeogitCommitMessage",
       command = "silent! set filetype=gitcommit",
     })

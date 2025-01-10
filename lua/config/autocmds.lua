@@ -109,7 +109,7 @@ autocmd({ "BufEnter" }, {
   end,
 })
 
-autocmd({ "FileType" }, {
+autocmd({ "BufWinEnter" }, {
   desc = "Apply 'q' keymap to close local buffers that match criteria",
   group = augroup("QuickClose", {}),
   callback = function(ev)

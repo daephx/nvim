@@ -69,11 +69,13 @@ end
 
 local function free_port()
   local tcp = vim.uv.new_tcp()
-  tcp:bind("127.0.0.1", 0)
-  local port = tcp:getsockname().port
-  tcp:shutdown()
-  tcp:close()
-  return port
+  if tcp then
+    tcp:bind("127.0.0.1", 0)
+    local port = tcp:getsockname().port
+    tcp:shutdown()
+    tcp:close()
+    return port
+  end
 end
 
 dap.configurations.lua = {

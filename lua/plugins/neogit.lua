@@ -1,5 +1,6 @@
 -- Neogit | magit for Neovim
 -- https://github.com/TimUntersberger/neogit
+---@module "neogit"
 
 ---@type LazySpec
 return {
@@ -14,6 +15,7 @@ return {
   keys = {
     { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git Status" },
   },
+  ---@type NeogitConfig
   opts = {
     kind = "tab",
     disable_context_highlighting = true,

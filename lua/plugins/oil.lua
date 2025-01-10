@@ -94,6 +94,7 @@ return {
     watch_for_changes = true,
     -- Keymaps in oil buffer.
     keymaps = {
+      ["q"] = "actions.close",
       ["<c-b>"] = "actions.preview_scroll_up",
       ["<c-d>"] = "actions.preview_scroll_down",
       ["<M-p>"] = "actions.preview",

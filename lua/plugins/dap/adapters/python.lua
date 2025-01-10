@@ -11,18 +11,15 @@ end
 
 local get_python_path = function(workspace)
   -- Use activated virtualenv.
-  local util = require("lspconfig.util")
-
-  local path = util.path
   if vim.env.VIRTUAL_ENV then
-    return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+    return vim.fs.joinpath(vim.env.VIRTUAL_ENV, "bin", "python")
   end
 
   -- Find and use virtualenv in workspace directory.
   for _, pattern in ipairs({ "*", ".*" }) do
-    local match = vim.fn.glob(path.join(workspace or vim.fn.getcwd(), pattern, "pyvenv.cfg"))
+    local match = vim.fn.glob(vim.fs.joinpath(workspace or vim.fn.getcwd(), pattern, "pyvenv.cfg"))
     if match ~= "" then
-      return path.join(vim.fs.dirname(match), "bin", "python")
+      return vim.fs.joinpath(vim.fs.dirname(match), "bin", "python")
     end
   end
 

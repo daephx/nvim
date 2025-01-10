@@ -1,6 +1,5 @@
 -- ruff: Ruff Language-server configuration
 -- https://github.com/astral-sh/ruff
----@module "lspconfig"
 
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "LSP: Disable hover capability from Ruff",
@@ -13,7 +12,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
----@type lspconfig.Config
+---@type config.lsp.ClientConfig
 return {
   init_options = {
     settings = {

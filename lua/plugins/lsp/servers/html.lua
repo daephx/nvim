@@ -1,6 +1,7 @@
 -- html-lsp: Language-server configuration
 -- https://github.com/microsoft/vscode-html-languageservice
 
+---@type config.lsp.ClientConfig
 return {
   settings = {
     html = {

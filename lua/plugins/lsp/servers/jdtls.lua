@@ -60,6 +60,7 @@ local function on_attach(client, bufnr)
   map({ "n" }, "<leader>dn", "<Cmd>lua require('jdtls').test_nearest_method()<CR>", { remap = false })
 end
 
+---@type config.lsp.ClientConfig
 local config = {
   capabilities = capabilities,
   on_attach = on_attach,

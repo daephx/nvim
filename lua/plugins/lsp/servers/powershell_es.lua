@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+---@type config.lsp.ClientConfig
 return {
   init_options = {
     enableProfileLoading = false,

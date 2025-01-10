@@ -1,6 +1,7 @@
 -- lua_ls: language server configuration
 -- https://github.com/LuaLS/lua-language-server
 
+---@type config.lsp.ClientConfig
 return {
   settings = {
     Lua = {

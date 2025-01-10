@@ -10,4 +10,5 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
   end,
 })
 
+---@type config.lsp.ClientConfig
 return {}

@@ -1,6 +1,7 @@
 -- clangd: Language-server configuration
 -- https://github.com/clangd/clangd
 
+---@type config.lsp.ClientConfig
 return {
   cmd = {
     "clangd",

@@ -23,6 +23,7 @@ end
 -- use the VIRTUAL_ENV path if it exists else just use the system default
 vim.g.python3_host_prog = get_python_path()
 
+---@type config.lsp.ClientConfig
 return {
   -- cmd = { pyright_binary, '--stdio' },
   on_init = function(client)

@@ -1,6 +1,7 @@
 -- taplo: A TOML toolkit written in Rust
 -- https://github.com/tamasfe/taplo
 
+---@type config.lsp.ClientConfig
 return {
   settings = {
     evenBetterToml = {

@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 return {
   init_options = {
     settings = {
-      lineLength = 100,
+      lineLength = 88,
       quote_style = "double",
       indent_style = "space",
       docstring_code_format = true,

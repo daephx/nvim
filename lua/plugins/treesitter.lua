@@ -42,8 +42,8 @@ return {
       init = function()
         local colors = require("config.colors")
         colors.set_hl_autocmd(nil, {
-          TreesitterContext = { link = "Normal" },
-          TreesitterContextLineNumber = { link = "Normal" },
+          TreesitterContext = { link = "Normal", default = true },
+          TreesitterContextLineNumber = { link = "CursorLineNr", default = true },
         })
       end,
     },

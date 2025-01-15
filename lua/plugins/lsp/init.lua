@@ -86,15 +86,17 @@ return {
   },
   { -- LSP signature hint as you type
     "ray-x/lsp_signature.nvim",
-    event = { "LspAttach" },
+    event = "InsertEnter",
     dependencies = { "neovim/nvim-lspconfig" },
-    opts = {
-      hint_enable = false,
-      hint_prefix = "■ ",
-      handler_opts = {
-        border = vim.g.border,
-      },
-    },
+    opts = function()
+      require("lsp_signature").on_attach({
+        hint_enable = false,
+        hint_prefix = "■ ",
+        handler_opts = {
+          border = vim.g.border,
+        },
+      })
+    end,
   },
   { -- IDE-like code action indicator
     "kosayoda/nvim-lightbulb",

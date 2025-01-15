@@ -39,7 +39,7 @@ return {
         CurSearch = { link = "IncSearch" },
         CursorLine = { bg = "Grey12" },
         CursorLineNr = { link = "Number" },
-        EndOfBuffer = { fg = "Grey1" },
+        EndOfBuffer = { fg = "Grey35" },
         FloatBorder = { fg = "Grey35", bg = "none" },
         MsgSeparator = { link = "WinSeparator" },
         NormalFloat = { link = "Normal" },

@@ -26,8 +26,11 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
       -- LSP support in Neovim for eclipse.jdt.ls
       { "mfussenegger/nvim-jdtls" },
-      -- Tools for better development in rust
-      { "simrat39/rust-tools.nvim" },
+      { -- Supercharge your Rust experience in Neovim!
+        "mrcjkb/rustaceanvim",
+        version = "^5", -- Recommended
+        lazy = false, -- This plugin is already lazy
+      },
     },
     config = function()
       -- Override lspconfig default window options

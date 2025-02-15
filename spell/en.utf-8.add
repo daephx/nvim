@@ -218,6 +218,7 @@ asyncio
 attr
 attrib
 augroup
+augroups
 auth
 autoattach
 autoclean
@@ -1004,6 +1005,7 @@ lspkind
 lspreferenceread
 lspreferencetext
 lspreferencewrite
+lt
 ltex
 lts
 lua
@@ -1452,6 +1454,7 @@ rtr
 rubygem
 runtime
 runtimepath
+rustaceanvim
 rustfmt
 sagemath
 sakura

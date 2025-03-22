@@ -16,7 +16,7 @@ local save_session = cmd_wrapper("SessionSave")
 ---@type LazySpec
 return {
   "rmagatti/auto-session",
-  event = "VimEnter",
+  lazy = false,
   keys = {
     { "<leader>sd", delete_session, desc = "Delete current session" },
     { "<leader>ss", save_session, desc = "Save current session" },

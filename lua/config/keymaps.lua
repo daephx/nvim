@@ -18,8 +18,8 @@ util.register_keymaps(defaults, {
   -- Banish Q to the shadow realm
   { "n", "Q", "<nop>" },
 
-  -- Ctrl-Z undo in insert
-  { "i", "<c-z>", "<c-o>:u<CR>" },
+  -- Use Ctrl-Z for undo
+  { { "i", "n" }, "<c-z>", "<c-o>:u<CR>" },
 
   -- Remove highlight after search with ESCAPE
   { "n", "<esc>", "<cmd>nohlsearch<cr><esc>" },

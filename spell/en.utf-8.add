@@ -300,6 +300,7 @@ bufdel
 bufdelete
 bufferline
 bufhidden
+buflen
 buflisted
 bufnr
 buftype
@@ -328,6 +329,7 @@ chan
 changedelete
 changelog
 charset
+chdir
 cheatsheet
 checkbox
 checkboxes
@@ -529,6 +531,7 @@ dockerfiles
 dockerhub
 dockerls
 docs
+docstrings
 doctest
 dofile
 dom
@@ -563,6 +566,7 @@ emacs
 emby
 emerg
 emmylua
+emsg
 ender
 endfor
 endfunc
@@ -787,6 +791,7 @@ healthcheck
 heex
 helvetica
 hererocks
+hgcommit
 hiddenoff
 highoups
 highscores
@@ -827,6 +832,7 @@ ico
 iconize
 icursor
 idgaf
+idk
 idx
 ie
 ifconfig
@@ -953,6 +959,8 @@ lf
 lfs
 lhs
 libcurl
+libevent
+libinput
 libpam
 libssh
 libtool
@@ -981,6 +989,7 @@ ln
 lnk
 loadbalancer
 loadfile
+loadview
 loc
 local
 localhost
@@ -1089,11 +1098,13 @@ mklink
 mksession
 mkspell
 mkv
+mkview
 mkvmerge
 mnt
 modeline
 modname
 modulepath
+monocraft
 monogame
 monospace
 moonfly
@@ -1116,6 +1127,7 @@ msvc
 mswin
 mtime
 multiband
+multiline
 multispace
 murphy
 mux
@@ -1134,6 +1146,7 @@ nav
 navbar
 navic
 ncdu
+ncurses
 ne
 neo
 neoclide
@@ -1439,6 +1452,7 @@ rgba
 rglob
 rhs
 ripgrep
+ripgreprc
 rmd
 rnu
 ro

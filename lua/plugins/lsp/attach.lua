@@ -14,7 +14,7 @@ local on_attach = function(client, bufnr)
 
   -- Enable Local handlers
   codelens.enable_code_lens(client, bufnr)
-  format.enable_auto_format(client, bufnr)
+  format.setup(client, bufnr)
   highlight.enable_document_highlighting(client, bufnr)
   hover.enable_hover_diagnostics(bufnr)
   keymaps.initialize_keymaps(client, bufnr)

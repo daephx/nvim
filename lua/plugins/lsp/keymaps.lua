@@ -27,10 +27,10 @@ M.initialize_keymaps = function(_, bufnr)
     { "n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh & Display Codelens" } },
     { "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename" } },
 
-    { { "n", "v" }, "<leader>cF", format.format_toggle, { remap = true, desc = "Toggle format" } },
+    { { "n", "v" }, "<leader>cF", format.toggle, { remap = true, desc = "Toggle format" } },
     { { "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" } },
     { { "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens" } },
-    { { "n", "v" }, "<leader>cf", format.format_document, { remap = true, desc = "Format document" } },
+    { { "n", "v" }, "<leader>cf", format.execute, { remap = true, desc = "Format document" } },
   })
 
   -- TODO: Compatibility for Neovim 0.11+; remove when stable packages are updated.

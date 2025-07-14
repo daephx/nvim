@@ -5,6 +5,7 @@
 return {
   {
     "williamboman/mason.nvim",
+    version = "^1.0.0",
     build = ":MasonUpdate",
     event = { "VeryLazy" },
     cmd = {
@@ -26,6 +27,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    version = "^1.0.0",
     cmd = { "LspInstall", "LspUninstall" },
     dependencies = { "williamboman/mason.nvim" },
     opts = {

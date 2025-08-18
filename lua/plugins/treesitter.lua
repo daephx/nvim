@@ -31,8 +31,6 @@ return {
     { "JoosepAlviste/nvim-ts-context-commentstring" },
     -- Syntax aware text-objects, select, move, swap, etc
     { "nvim-treesitter/nvim-treesitter-textobjects" },
-    -- Treesitter playground integrated into Neovim
-    { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     -- Rainbow delimiters for Neovim with Tree-sitter
     { "hiphish/rainbow-delimiters.nvim", init = init_default_highlights },
     -- Alternative to context.vim using nvim-treesitter

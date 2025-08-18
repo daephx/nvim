@@ -49,43 +49,61 @@ return {
       -- Navigation
       map("n", "]h", function()
         if vim.wo.diff then
-          return "]h"
-        end
-        vim.schedule(function()
+          vim.cmd.normal({ "]h", bang = true })
+        else
+          ---@diagnostic disable-next-line: param-type-mismatch
           gitsigns.nav_hunk("next")
-        end)
-        return "<Ignore>"
-      end, { expr = true, desc = "Next hunk" })
+        end
+      end, { desc = "Next hunk" })
 
       map("n", "[h", function()
         if vim.wo.diff then
-          return "[h"
-        end
-        vim.schedule(function()
+          vim.cmd.normal({ "[h", bang = true })
+        else
+          ---@diagnostic disable-next-line: param-type-mismatch
           gitsigns.nav_hunk("prev")
-        end)
-        return "<Ignore>"
-      end, { expr = true, desc = "Previous hunk" })
+        end
+      end, { desc = "Previous hunk" })
 
       -- Actions
-      map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
-      map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
+      map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage hunk" })
+      map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
+
+      map("v", "<leader>gs", function()
+        gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+      end)
+
+      map("v", "<leader>gr", function()
+        gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+      end)
+
       map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "stage buffer" })
-      map("n", "<leader>gu", gitsigns.undo_stage_hunk, { desc = "Undo stage hunk" })
       map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Reset buffer" })
       map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
+      map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline" })
+
       map("n", "<leader>gb", function()
         gitsigns.blame_line({ full = true })
       end, { desc = "Blame line" })
-      map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Toggle blame line" })
-      -- map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff buffer" })
+
+      -- map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diffthis" })
       -- map("n", "<leader>gD", function()
+      --   ---@diagnostic disable-next-line: param-type-mismatch
       --   gitsigns.diffthis("~")
       -- end, { desc = "Diffthis ~" })
-      map("n", "<leader>gtd", gitsigns.toggle_deleted, { desc = "Toggle deleted" })
+
+      map("n", "<leader>gQ", function()
+        ---@diagnostic disable-next-line: param-type-mismatch
+        gitsigns.setqflist("all")
+      end, { desc = "Set quickfix all" })
+      map("n", "<leader>gq", gitsigns.setqflist, { desc = "Set quickfix" })
+
+      -- Toggles
+      map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Toggle blame line" })
+      map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "Toggle deleted" })
 
       -- Text object
-      map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })
+      map({ "o", "x" }, "gih", gitsigns.select_hunk, { desc = "Select hunk" })
     end,
   },
 }

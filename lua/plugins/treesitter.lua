@@ -20,9 +20,9 @@ end
 ---@type LazySpec
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   build = ":TSUpdate",
-  cmd = { "TSInstall", "TSInstallFromGrammar", "TSUpdateSync", "TSUpdate" },
-  event = { "BufReadPost", "BufNewFile" },
+  lazy = false,
   cond = not vim.g.vscode,
   dependencies = {
     -- Treesitter auto html tags

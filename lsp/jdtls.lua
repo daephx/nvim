@@ -60,7 +60,7 @@ local function on_attach(client, bufnr)
   map({ "n" }, "<leader>dn", "<Cmd>lua require('jdtls').test_nearest_method()<CR>", { remap = false })
 end
 
----@type config.lsp.ClientConfig
+---@type vim.lsp.Config
 local config = {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -77,6 +77,8 @@ local config = {
   flags = {
     allow_incremental_sync = true,
     server_side_fuzzy_completion = true,
+    debounce_text_changes = 1000,
+    exit_timeout = 1000,
   },
   settings = {
     java = {

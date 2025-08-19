@@ -1,18 +1,6 @@
 -- Neovim LSP Configuration (Language Server Protocol)
 -- Setup native lsp using lspconfig helper plugin
 
----Custom LSP client config type.
----HACK: Overrides required `cmd` field for type completion, as `cmd` is
----provided by plugins like lspconfig and mason.
----@class config.lsp.ClientConfig: vim.lsp.ClientConfig
----@field cmd any? See: @type vim.lsp.ClientConfig for more information.
----@field flags config.lsp.Client.Flags?
-
----See: @type vim.lsp.Client.Flags for more information.
----@class config.lsp.Client.Flags: vim.lsp.Client.Flags
----@field debounce_text_changes any?
----@field exit_timeout any?
-
 ---@type LazySpec
 return {
   { -- Initialize language server configuration
@@ -40,6 +28,12 @@ return {
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")
+
+      -- Set default config for all servers
+      vim.lsp.config("*", {
+        capabilities = require("plugins.lsp.capabilities"),
+        on_attach = require("plugins.lsp.attach"),
+      })
     end,
   },
   { -- Faster LuaLS setup for Neovim

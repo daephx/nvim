@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
----@type config.lsp.ClientConfig
+---@type vim.lsp.Config
 return {
   init_options = {
     settings = {

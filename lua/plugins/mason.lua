@@ -5,7 +5,6 @@
 return {
   {
     "williamboman/mason.nvim",
-    version = "^1.0.0",
     build = ":MasonUpdate",
     event = { "VeryLazy" },
     cmd = {
@@ -27,11 +26,9 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    version = "^1.0.0",
     cmd = { "LspInstall", "LspUninstall" },
     dependencies = { "williamboman/mason.nvim" },
     opts = {
-      automatic_installation = false,
       ensure_installed = {
         "bashls",
         "clangd",
@@ -47,33 +44,6 @@ return {
         "taplo",
         "yamlls",
       },
-      handlers = {
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        ---@param server_name string
-        function(server_name)
-          -- Define default variables
-          local server_mpath = "plugins/lsp/servers"
-          local default_options = {
-            capabilities = require("plugins.lsp.capabilities"),
-            on_attach = require("plugins.lsp.attach"),
-          }
-          local namespace = table.concat({ server_mpath, server_name }, "/")
-          local _, module = pcall(require, namespace)
-          module = type(module) == "table" and module or {}
-          local config = vim.tbl_deep_extend("force", default_options, module or {})
-          require("lspconfig")[server_name].setup(config)
-        end,
-
-        ["rust_analyzer"] = function()
-          require("plugins/lsp/servers/rust_analyzer")
-        end,
-
-        ["jdtls"] = function()
-          require("plugins/lsp/servers/jdtls")
-        end,
-      },
     },
   },
   {
@@ -83,8 +53,6 @@ return {
     opts = {
       automatic_installation = false,
       ensure_installed = {
-        "black",
-        "isort",
         "markdownlint",
         "prettier",
         "selene",
@@ -103,8 +71,7 @@ return {
       ensure_installed = {},
       handlers = {
         function(config)
-          local adapters_path = "plugins/dap/adapters"
-          local namespace = table.concat({ adapters_path, config.name }, "/")
+          local namespace = table.concat({ "plugins/dap/adapters", config.name }, "/")
           local _, module = pcall(require, namespace)
           module = type(module) == "table" and module or {}
           config = vim.tbl_deep_extend("force", config, module or {})

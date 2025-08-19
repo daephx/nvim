@@ -1,7 +1,7 @@
 -- lua_ls: language server configuration
 -- https://github.com/LuaLS/lua-language-server
 
----@type config.lsp.ClientConfig
+---@type vim.lsp.Config
 return {
   settings = {
     Lua = {
@@ -34,7 +34,7 @@ return {
         unusedLocalExclude = { "_*" },
       },
       format = {
-        enable = false,
+        enable = true,
         defaultConfig = {
           indent_size = "2",
           continuation_indent = "2",

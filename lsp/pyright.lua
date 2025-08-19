@@ -21,12 +21,13 @@ local function get_python_path(workspace)
 end
 
 -- use the VIRTUAL_ENV path if it exists else just use the system default
-vim.g.python3_host_prog = get_python_path()
+-- vim.g.python3_host_prog = get_python_path()
 
----@type config.lsp.ClientConfig
+---@type vim.lsp.Config
 return {
   -- cmd = { pyright_binary, '--stdio' },
   on_init = function(client)
+    -- use the VIRTUAL_ENV path if it exists else just use the system default
     client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
   end,
   analysis = {

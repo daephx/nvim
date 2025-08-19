@@ -141,13 +141,16 @@ nvim/                 # Neovim config directory
 │  └─ queries/        # Treesitter extended queries
 │     ├─ lua/
 │     └─ vim/
+├─ lsp/               # Custom LSP server configurations
+│  │─ bashls
+│  └─ lua_ls
 ├─ lua/
 │  ├─ config/         # Editor options and commands
 │  ├─ plugins/        # Plugin specifications/configs
 │  │  ├─ colors/      # Colorscheme plugins
 │  │  ├─ cmp          # Code completion plugins
 │  │  ├─ dap          # Debug adapter plugins
-│  │  └─ lsp          # Language server plugins
+│  │  └─ lsp          # Lspconfig plugin settings
 │  └─ snippets/       # Luasnip compatible snippets
 │     ├─ global
 │     └─ lua

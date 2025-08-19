@@ -42,25 +42,6 @@ return {
       require("plugins.lsp.handlers")
     end,
   },
-  { -- Use Neovim as a language server
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      -- Collection of useful lua functions
-      { "nvim-lua/plenary.nvim" },
-      -- bridges mason.nvim with the null-ls
-      { "jayp0521/mason-null-ls.nvim" },
-      -- Extra sources for none-ls.nvim
-      { "nvimtools/none-ls-extras.nvim" },
-      -- Luacheck diagnostics source for none-ls.nvim
-      { "gbprod/none-ls-luacheck.nvim" },
-    },
-    config = function()
-      local null_ls = require("null-ls")
-      local opts = require("plugins.lsp.null-ls")
-      null_ls.setup(opts)
-    end,
-  },
   { -- Faster LuaLS setup for Neovim
     "folke/lazydev.nvim",
     ft = "lua",

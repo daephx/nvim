@@ -19,112 +19,131 @@ end
 
 ---@type LazySpec
 return {
-  "nvim-treesitter/nvim-treesitter",
-  branch = "master",
-  build = ":TSUpdate",
-  lazy = false,
-  cond = not vim.g.vscode,
-  dependencies = {
-    -- Treesitter auto html tags
-    { "windwp/nvim-ts-autotag" },
-    -- set commentstring based on the cursor location
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
-    -- Syntax aware text-objects, select, move, swap, etc
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
-    -- Rainbow delimiters for Neovim with Tree-sitter
-    { "hiphish/rainbow-delimiters.nvim", init = init_default_highlights },
-    -- Alternative to context.vim using nvim-treesitter
-    {
-      "nvim-treesitter/nvim-treesitter-context",
-      opts = { max_lines = 1 },
-      init = function()
-        local colors = require("config.colors")
-        colors.set_hl_autocmd(nil, {
-          TreesitterContext = { link = "Normal", default = true },
-          TreesitterContextLineNumber = { link = "CursorLineNr", default = true },
-        })
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    build = ":TSUpdate",
+    lazy = false,
+    cond = not vim.g.vscode,
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+    opts = {
+      disable = function(_lang, buf)
+        local max_filesize = 100 * 1024 -- 100 KB
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+          return true
+        end
       end,
+      ensure_installed = {
+        "bash",
+        "c",
+        "comment",
+        "editorconfig",
+        "gitignore",
+        "json",
+        "jsonc",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "vim",
+        "vimdoc",
+        "yaml",
+      },
+      ignore_install = {},
+      auto_install = true,
+      autotag = { enable = true },
+      highlight = { enable = true },
+      indent = {
+        enable = true,
+        disable = { "yaml" },
+      },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
+        },
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            ["]m"] = "@function.outer",
+            ["]]"] = "@class.outer",
+          },
+          goto_next_end = {
+            ["]M"] = "@function.outer",
+            ["]["] = "@class.outer",
+          },
+          goto_previous_start = {
+            ["[m"] = "@function.outer",
+            ["[["] = "@class.outer",
+          },
+          goto_previous_end = {
+            ["[M"] = "@function.outer",
+            ["[]"] = "@class.outer",
+          },
+        },
+      },
     },
   },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end,
-  opts = {
-    disable = function(_lang, buf)
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        return true
-      end
+  -- Treesitter auto html tags
+  {
+    "windwp/nvim-ts-autotag",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = { "BufNewFile", "BufReadPost" },
+  },
+  -- set commentstring based on the cursor location
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = { "BufNewFile", "BufReadPost" },
+  },
+  -- Syntax aware text-objects, select, move, swap, etc
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = { "BufNewFile", "BufReadPost" },
+  },
+  -- Rainbow delimiters for Neovim with Tree-sitter
+  {
+    "hiphish/rainbow-delimiters.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = { "BufNewFile", "BufReadPost" },
+    init = init_default_highlights,
+  },
+  -- Alternative to context.vim using nvim-treesitter
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    event = { "BufNewFile", "BufReadPost" },
+    opts = { max_lines = 1 },
+    init = function()
+      local colors = require("config.colors")
+      colors.set_hl_autocmd(nil, {
+        TreesitterContext = { link = "Normal", default = true },
+        TreesitterContextLineNumber = { link = "CursorLineNr", default = true },
+      })
     end,
-    ensure_installed = {
-      "bash",
-      "c",
-      "comment",
-      "editorconfig",
-      "gitignore",
-      "json",
-      "jsonc",
-      "lua",
-      "luadoc",
-      "markdown",
-      "markdown_inline",
-      "python",
-      "query",
-      "regex",
-      "toml",
-      "vim",
-      "vimdoc",
-      "yaml",
-    },
-    ignore_install = {},
-    auto_install = true,
-    autotag = { enable = true },
-    highlight = { enable = true },
-    indent = {
-      enable = true,
-      disable = { "yaml" },
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "gnn",
-        node_incremental = "grn",
-        scope_incremental = "grc",
-        node_decremental = "grm",
-      },
-    },
-    textobjects = {
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = {
-          ["]m"] = "@function.outer",
-          ["]]"] = "@class.outer",
-        },
-        goto_next_end = {
-          ["]M"] = "@function.outer",
-          ["]["] = "@class.outer",
-        },
-        goto_previous_start = {
-          ["[m"] = "@function.outer",
-          ["[["] = "@class.outer",
-        },
-        goto_previous_end = {
-          ["[M"] = "@function.outer",
-          ["[]"] = "@class.outer",
-        },
-      },
-    },
   },
 }

@@ -7,7 +7,7 @@ local augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = tr
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 M.enable_document_highlighting = function(client, bufnr)
-  if client.supports_method("textDocument/documentHighlight") then
+  if client:supports_method("textDocument/documentHighlight") then
     vim.api.nvim_create_autocmd({ "CursorHold" }, {
       buffer = bufnr,
       desc = "Apply LSP document reference highlighting on CursorHold",

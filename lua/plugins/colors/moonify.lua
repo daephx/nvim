@@ -40,41 +40,43 @@ return {
     colors.set_hl_autocmd("moonfly", {
       -- General
       CursorLineNr = { fg = palette.blue, bold = true },
-      FloatBorder = { link = "MoonflyGrey39" },
-      Folded = { fg = "Grey50", bg = "Grey19" },
+      CursorLineSign = { link = "Normal" },
+      FloatBorder = { fg = palette.grey39 },
+      FoldColumn = { bg = "none", fg = palette.grey39 },
+      Folded = { bg = palette.grey18, fg = palette.grey50 },
       MsgSeparator = { link = "WinSeparator" },
+      NormalFloat = { fg = "#c6c6c6", bg = "#080808" },
+      Underlined = { fg = palette.purple, underline = true },
       VertSplit = { link = "WinSeparator" },
       Visual = { bg = palette.bay },
       WinBar = { bg = "none" },
       WinBarNC = { bg = "none" },
-      WinSeparator = { link = "MoonflyGrey27" },
+      WinSeparator = { fg = palette.grey27 },
 
       -- Diff
       DiffAdd = { bg = "#2d3e38" },
       DiffChange = { bg = "#2e2e2e" },
-      DiffDelete = { bg = "#542b2b", fg = "#b23a3a" },
+      DiffDelete = { bg = "#542b2b", fg = palette.red },
       DiffText = { bg = "#313b5a" },
 
       -- Neogit
-      NeogitDiffAdd = { link = "DiffAdd" },
-      NeogitDiffChange = { link = "DiffChange" },
-      NeogitDiffDelete = { link = "DiffDelete" },
-      NeogitDiffText = { link = "DiffText" },
+      NeogitDiffAdd = { bg = "#2d3e38", fg = palette.green },
+      NeogitDiffChange = { bg = "#2e2e2e" },
+      NeogitDiffDelete = { bg = "#542b2b", fg = palette.red },
+      NeogitDiffText = { bg = "#313b5a", fg = "none" },
 
       -- Treesitter
       TreesitterContextBottom = {},
+      ["@string.special.url"] = { link = "Underlined" },
 
       -- Treesitter Rainbow
-      RainbowDelimiterBlue = { link = "MoonflyBlue" },
-      RainbowDelimiterCyan = { link = "MoonflySky" },
-      RainbowDelimiterGreen = { link = "MoonflyGreen" },
-      RainbowDelimiterOrange = { link = "MoonflyOrange" },
-      RainbowDelimiterRed = { link = "MoonflyRed" },
-      RainbowDelimiterViolet = { link = "MoonflyViolet" },
-      RainbowDelimiterYellow = { link = "MoonflyYellow" },
-
-      -- Telescope
-      TelescopeTitle = { link = "Title", bold = true },
+      RainbowDelimiterBlue = { fg = palette.blue },
+      RainbowDelimiterCyan = { fg = palette.sky },
+      RainbowDelimiterGreen = { fg = palette.green },
+      RainbowDelimiterOrange = { fg = palette.orange },
+      RainbowDelimiterRed = { fg = palette.red },
+      RainbowDelimiterViolet = { fg = palette.violet },
+      RainbowDelimiterYellow = { fg = palette.yellow },
     })
   end,
   init = function()

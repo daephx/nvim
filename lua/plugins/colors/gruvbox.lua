@@ -24,7 +24,7 @@ local terminal = {
 ---@type LazySpec
 return {
   "ellisonleao/gruvbox.nvim",
-  lazy = false,
+  lazy = true,
   priority = 1000,
   ---@type GruvboxConfig
   opts = {

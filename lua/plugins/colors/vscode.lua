@@ -24,7 +24,7 @@ local terminal = {
 ---@type LazySpec
 return {
   "Mofiqul/vscode.nvim",
-  lazy = false,
+  lazy = true,
   priority = 1000,
   opts = function()
     local c = require("vscode.colors").get_colors()

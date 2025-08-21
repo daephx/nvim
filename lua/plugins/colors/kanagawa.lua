@@ -5,7 +5,7 @@
 ---@type LazySpec
 return {
   "rebelot/kanagawa.nvim",
-  lazy = false,
+  lazy = true,
   priority = 1000,
   ---@type KanagawaConfig
   opts = {

@@ -6,7 +6,7 @@
 return {
   "Shatur/neovim-ayu",
   name = "ayu",
-  lazy = false,
+  lazy = true,
   priority = 1000,
   opts = {
     overrides = function()

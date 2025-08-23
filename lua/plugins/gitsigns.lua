@@ -11,6 +11,63 @@ local priority = function()
   end
 end
 
+---@param buffer integer
+local on_attach = function(buffer)
+  local gitsigns = require("gitsigns")
+  local util = require("config.util")
+  -- stylua: ignore
+  util.register_keymaps({ buffer = buffer }, {
+    -- Navigation
+    { "n", "]h", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "]h", bang = true })
+      else
+      ---@diagnostic disable-next-line: param-type-mismatch
+        gitsigns.nav_hunk("next")
+      end
+    end, { desc = "Next hunk" } },
+
+    { "n", "[h", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "[h", bang = true })
+      else
+      ---@diagnostic disable-next-line: param-type-mismatch
+        gitsigns.nav_hunk("prev")
+      end
+    end, { desc = "Previous hunk" } },
+
+    -- Actions
+    { "n", "<leader>gR", gitsigns.reset_buffer, { desc = "Reset buffer" } },
+    { "n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" } },
+    { "v", "<leader>gr", function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, { desc = "Reset hunk" } },
+
+    { "n", "<leader>gS", gitsigns.stage_buffer, { desc = "Stage buffer" } },
+    { "n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage hunk" } },
+    { "v", "<leader>gs", function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") }) end, { desc = "Stage hunk" } },
+
+    { "n", "<leader>gb", function() gitsigns.blame_line({ full = true }) end, { desc = "Blame line" } },
+
+    { "n", "<leader>gP", gitsigns.preview_hunk_inline, { desc = "Preview hunk (inline)" } },
+    { "n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" } },
+
+    -- NOTE: Disabled in favor of using diffview.nvim for diffs
+    -- { "n", "<leader>gD", function() gitsigns.diffthis("~") end, { desc = "Diff buffer ~" } },
+    -- { "n", "<leader>gd", gitsigns.diffthis, { desc = "Diff buffer" } },
+
+    -- Quickfix
+    ---@diagnostic disable-next-line: param-type-mismatch
+    { "n", "<leader>gQ", function() gitsigns.setqflist("all") end, { desc = "Set quickfix (all)" } },
+    { "n", "<leader>gq", gitsigns.setqflist, { desc = "Set quickfix" } },
+
+    -- Toggles
+    { "n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Toggle blame line" } },
+    { "n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "Toggle word diff" } },
+
+    -- Text object
+    { { "o", "x" }, "gih", gitsigns.select_hunk, { desc = "Select hunk" } },
+  })
+end
+
 ---@type LazySpec
 return {
   "lewis6991/gitsigns.nvim",
@@ -18,6 +75,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     sign_priority = priority(),
+    on_attach = on_attach,
     attach_to_untracked = true,
     signs_staged_enable = true,
     current_line_blame = true,
@@ -38,72 +96,5 @@ return {
       changedelete = { text = "│" },
       untracked = { text = "┆" },
     },
-    on_attach = function(bufnr)
-      local gitsigns = require("gitsigns")
-      local function map(mode, l, r, opts)
-        opts = opts or {}
-        opts.buffer = bufnr
-        vim.keymap.set(mode, l, r, opts)
-      end
-
-      -- Navigation
-      map("n", "]h", function()
-        if vim.wo.diff then
-          vim.cmd.normal({ "]h", bang = true })
-        else
-          ---@diagnostic disable-next-line: param-type-mismatch
-          gitsigns.nav_hunk("next")
-        end
-      end, { desc = "Next hunk" })
-
-      map("n", "[h", function()
-        if vim.wo.diff then
-          vim.cmd.normal({ "[h", bang = true })
-        else
-          ---@diagnostic disable-next-line: param-type-mismatch
-          gitsigns.nav_hunk("prev")
-        end
-      end, { desc = "Previous hunk" })
-
-      -- Actions
-      map("n", "<leader>gs", gitsigns.stage_hunk, { desc = "Stage hunk" })
-      map("n", "<leader>gr", gitsigns.reset_hunk, { desc = "Reset hunk" })
-
-      map("v", "<leader>gs", function()
-        gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-      end)
-
-      map("v", "<leader>gr", function()
-        gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-      end)
-
-      map("n", "<leader>gS", gitsigns.stage_buffer, { desc = "stage buffer" })
-      map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "Reset buffer" })
-      map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "Preview hunk" })
-      map("n", "<leader>gi", gitsigns.preview_hunk_inline, { desc = "Preview hunk inline" })
-
-      map("n", "<leader>gb", function()
-        gitsigns.blame_line({ full = true })
-      end, { desc = "Blame line" })
-
-      -- map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diffthis" })
-      -- map("n", "<leader>gD", function()
-      --   ---@diagnostic disable-next-line: param-type-mismatch
-      --   gitsigns.diffthis("~")
-      -- end, { desc = "Diffthis ~" })
-
-      map("n", "<leader>gQ", function()
-        ---@diagnostic disable-next-line: param-type-mismatch
-        gitsigns.setqflist("all")
-      end, { desc = "Set quickfix all" })
-      map("n", "<leader>gq", gitsigns.setqflist, { desc = "Set quickfix" })
-
-      -- Toggles
-      map("n", "<leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Toggle blame line" })
-      map("n", "<leader>gtw", gitsigns.toggle_word_diff, { desc = "Toggle deleted" })
-
-      -- Text object
-      map({ "o", "x" }, "gih", gitsigns.select_hunk, { desc = "Select hunk" })
-    end,
   },
 }

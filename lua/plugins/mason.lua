@@ -6,7 +6,6 @@ return {
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
-    event = { "VeryLazy" },
     cmd = {
       "Mason",
       "MasonLog",
@@ -26,7 +25,6 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    cmd = { "LspInstall", "LspUninstall" },
     dependencies = { "williamboman/mason.nvim" },
     opts = {
       ensure_installed = {
@@ -48,7 +46,6 @@ return {
   },
   {
     "jayp0521/mason-null-ls.nvim",
-    cmd = { "NullLsInstall", "NullLsUninstall" },
     dependencies = { "williamboman/mason.nvim" },
     opts = {
       automatic_installation = false,
@@ -63,7 +60,6 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
-    cmd = { "DapInstall", "DapUninstall" },
     dependencies = { "williamboman/mason.nvim" },
     opts = {
       automatic_installation = false,

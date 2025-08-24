@@ -1,6 +1,6 @@
 -- Neovim general editor options/settings
 
-vim.g.border = "single" -- Default border for floating windows
+vim.g.border = "rounded" -- Default border for floating windows
 vim.g.localleader = "\\" -- Default localleader for keymaps
 vim.g.mapleader = " " -- Default leader for keymaps
 

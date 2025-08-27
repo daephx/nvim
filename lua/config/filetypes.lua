@@ -40,6 +40,7 @@ vim.filetype.add({
     [".stylelintrc"] = "json",
     ["poetry.lock"] = "toml",
     ["yup.lock"] = "yaml",
+    dunstrc = "ini",
   },
   pattern = {
     [".*%.env.*"] = "sh",

@@ -68,6 +68,7 @@ vim.opt.guicursor:append("n-v-c:blinkon500-blinkoff500")
 
 -- Define preferred font family for GUI clients
 vim.opt.guifont = {
+  "JetbrainsMono Nerd Font:h12",
   "FiraCode NFM:h12",
   "CascadiaCode NFM:h12",
   "Hack NFM:h12",

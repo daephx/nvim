@@ -15,7 +15,9 @@ return {
     enable_named_colors = false,
     enable_tailwind = true,
     custom_colors = {},
-    exclude_filetypes = {},
+    exclude_filetypes = {
+      "xxd",
+    },
     exclude_buftypes = {
       "nofile",
       "popup",

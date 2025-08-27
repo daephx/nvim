@@ -8,6 +8,7 @@ vim.g.did_load_ftplugin = 0
 vim.filetype.add({
   extension = {
     babelrc = "json",
+    base = "yaml",
     conf = "conf",
     csx = "cs",
     eslintrc = "json",

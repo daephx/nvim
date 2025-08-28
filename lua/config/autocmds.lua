@@ -95,6 +95,15 @@ autocmd({ "FileType" }, {
   command = "wincmd K | resize 20",
 })
 
+autocmd({ "FileType" }, {
+  desc = "Move cursor to the first line when editing a commit message",
+  group = augroup("GitCommitCursor", {}),
+  pattern = "gitcommit",
+  callback = function()
+    vim.api.nvim_win_set_cursor(0, { 1, 1 })
+  end,
+})
+
 autocmd({ "BufEnter" }, {
   desc = "Enable lazyredraw for buffers with lots of lines",
   group = augroup("LazyredrawLargeFiles", {}),

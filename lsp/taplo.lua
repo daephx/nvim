@@ -5,13 +5,14 @@
 return {
   settings = {
     evenBetterToml = {
+      cachePath = vim.fn.stdpath("cache") .. "/taplo",
       schema = {
         enabled = true,
         repositoryEnabled = true,
         repositoryUrl = "https://taplo.tamasfe.dev/schema_index.json",
       },
-      cachePath = vim.fn.stdpath("cache") .. "/taplo",
       formatter = {
+        alignComments = false,
         alignEntries = false,
         allowedBlankLines = 1,
         indentEntries = false,

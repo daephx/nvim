@@ -62,6 +62,11 @@ return {
     local colors = require("config.colors")
     colors.set_hl_autocmd(nil, {
       Todo = {},
+      ["@comment.todo"] = {},
+      ["@comment.hint"] = {},
+      ["@comment.note"] = {},
+      ["@comment.warning"] = {},
+      ["@comment.error"] = {},
     })
   end,
 }

@@ -112,6 +112,12 @@ return {
       on_attach(client, bufnr)
     end
 
+    -- Override highlight groups for null-ls
+    local colors = require("config.colors")
+    colors.set_hl_autocmd(nil, {
+      NullLsInfoBorder = { link = "FloatBorder" },
+    })
+
     -- Adjusts window options for `null-ls-info`, such as setting a custom border style.
     vim.api.nvim_create_autocmd({ "FileType" }, {
       desc = "Override window options for filetype: null-ls-info",

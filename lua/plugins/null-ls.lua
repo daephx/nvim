@@ -112,14 +112,6 @@ return {
       on_attach(client, bufnr)
     end
 
-    -- Defines a custom command to list active null-ls sources for the current buffer's filetype.
-    vim.api.nvim_create_user_command("NullLsSources", function()
-      local nls_sources = require("null-ls.sources")
-      vim.notify(vim.inspect(vim.tbl_map(function(source)
-        return source.name
-      end, nls_sources.get_available(vim.bo.filetype))))
-    end, {})
-
     -- Adjusts window options for `null-ls-info`, such as setting a custom border style.
     vim.api.nvim_create_autocmd({ "FileType" }, {
       desc = "Override window options for filetype: null-ls-info",

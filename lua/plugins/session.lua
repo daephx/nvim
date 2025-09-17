@@ -1,25 +1,13 @@
 -- auto-session | A small automated session manager for Neovim
 -- https://github.com/rmagatti/auto-session
 
-local cmd_wrapper = function(cmd)
-  return function()
-    local action = (cmd):gsub("Session", "")
-    local cwd = vim.fn.getcwd()
-    vim.notify(("%s session: %s"):format(action, cwd), 2, {})
-    vim.cmd(cmd)
-  end
-end
-
-local delete_session = cmd_wrapper("SessionDelete")
-local save_session = cmd_wrapper("SessionSave")
-
 ---@type LazySpec
 return {
   "rmagatti/auto-session",
   lazy = false,
   keys = {
-    { "<leader>sd", delete_session, desc = "Delete current session" },
-    { "<leader>ss", save_session, desc = "Save current session" },
+    { "<leader>sd", "<cmd>AutoSession delete<CR>", desc = "Delete current session" },
+    { "<leader>ss", "<cmd>AutoSession save<CR>", desc = "Save current session" },
     { "<leader>sl", "<cmd>Telescope session-lens search_session<CR>", desc = "Show Session list" },
   },
   opts = {

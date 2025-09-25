@@ -10,7 +10,7 @@ XDG_DIRS := 'cache' 'config' 'data' 'state'
 all: build
 
 help: ## Display Makefile commands
-	@echo "$(BANNER)"
+	@echo -e "$(BANNER)"
 	@$(eval VERSION_WIDTH=$(shell echo -n "--- [ $(VERSION) ] ---" | wc -c))
 	@$(eval PADDING=$(shell echo "(51 - $(VERSION_WIDTH)) / 2" | bc))
 	@printf "%${PADDING}s\e[90m--- [ \e[95m$(VERSION)\e[90m ] ---\e[0m\n\n"

@@ -1,6 +1,35 @@
 -- nvim-autopairs | autopairs for neovim written by lua
 -- https://github.com/windwp/nvim-autopairs
 
+---Enable cmp compatibility
+local function enable_cmp_support()
+  local cmp_ok, cmp = pcall(require, "cmp")
+  if not cmp_ok then
+    return
+  end
+  local cmp_npairs = require("nvim-autopairs.completion.cmp")
+  local handlers = require("nvim-autopairs.completion.handlers")
+  -- Complete parens after select function or method item
+  cmp.event:on(
+    "confirm_done",
+    cmp_npairs.on_confirm_done({
+      filetypes = {
+        sh = false,
+        ps1 = false,
+        ["*"] = { -- "*" alias to all filetypes
+          ["("] = {
+            kind = {
+              cmp.lsp.CompletionItemKind.Function,
+              cmp.lsp.CompletionItemKind.Method,
+            },
+            handler = handlers["*"],
+          },
+        },
+      },
+    })
+  )
+end
+
 ---@type LazySpec
 return {
   "windwp/nvim-autopairs",
@@ -17,32 +46,7 @@ return {
   config = function(_, opts)
     local npairs = require("nvim-autopairs")
     npairs.setup(opts)
-
-    -- Enable cmp compatibility
-    local cmp_ok, cmp = pcall(require, "cmp")
-    if cmp_ok then
-      local cmp_npairs = require("nvim-autopairs.completion.cmp")
-      local handlers = require("nvim-autopairs.completion.handlers")
-      -- Complete parens after select function or method item
-      cmp.event:on(
-        "confirm_done",
-        cmp_npairs.on_confirm_done({
-          filetypes = {
-            sh = false,
-            ps1 = false,
-            ["*"] = { -- "*" alias to all filetypes
-              ["("] = {
-                kind = {
-                  cmp.lsp.CompletionItemKind.Function,
-                  cmp.lsp.CompletionItemKind.Method,
-                },
-                handler = handlers["*"],
-              },
-            },
-          },
-        })
-      )
-    end
+    enable_cmp_support()
 
     --- Rules ---
 

@@ -23,7 +23,6 @@ return {
     config = function()
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")
-      require("plugins.lsp.handlers")
 
       -- Set default config for all servers
       vim.lsp.config("*", {

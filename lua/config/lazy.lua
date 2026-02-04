@@ -23,7 +23,7 @@ require("lazy").setup({
   change_detection = { notify = false },
   defaults = { lazy = true },
   install = { colorscheme = { "vscode", "default" } },
-  ui = { border = vim.g.border },
+  ui = { border = vim.o.winborder },
   dev = {
     path = "~/Projects",
     patterns = { "daephx" },

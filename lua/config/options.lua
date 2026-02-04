@@ -1,9 +1,9 @@
 -- Neovim general editor options/settings
 
-vim.g.border = "rounded" -- Default border for floating windows
 vim.g.localleader = "\\" -- Default localleader for keymaps
 vim.g.mapleader = " " -- Default leader for keymaps
 
+vim.opt.winborder = "rounded" -- Default border for floating windows
 vim.opt.background = "dark" -- Adjusts the default color groups for background type
 vim.opt.termguicolors = true -- Enable true color support
 

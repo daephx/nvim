@@ -125,7 +125,6 @@ return {
     },
     -- Configuration for the floating window in oil.open_float
     float = {
-      border = vim.g.border,
       max_height = 32,
       max_width = 155,
       win_options = {
@@ -134,20 +133,7 @@ return {
     },
     -- Configuration for the actions floating preview window
     preview = {
-      border = vim.g.border,
       min_width = { 50, 0.5 },
-    },
-    -- Configuration for the floating progress window
-    progress = {
-      border = vim.g.border,
-    },
-    -- Configuration for the floating SSH window
-    ssh = {
-      border = vim.g.border,
-    },
-    -- Configuration for the floating keymaps help window
-    keymaps_help = {
-      border = vim.g.border,
     },
   },
 }

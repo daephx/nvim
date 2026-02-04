@@ -124,7 +124,8 @@ return {
       group = vim.api.nvim_create_augroup("NullLsInfoBuffer", { clear = true }),
       pattern = "null-ls-info",
       callback = function()
-        vim.api.nvim_win_set_config(0, { border = vim.g.border })
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        vim.api.nvim_win_set_config(0, { border = vim.o.winborder })
       end,
     })
 

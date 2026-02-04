@@ -59,7 +59,6 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
   float = {
-    border = vim.g.border,
     focusable = false,
     format = format,
     header = { "󰠭 Diagnostics:", "Label" },

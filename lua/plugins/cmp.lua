@@ -29,7 +29,6 @@ local search_tabpage = {
 -- Options for completion/documentation windows
 local window_opts = {
   max_width = 80,
-  border = vim.g.border,
   winhighlight = table.concat({
     "Normal:NormalFloat",
     "FloatBorder:FloatBorder",

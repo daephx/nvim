@@ -81,6 +81,7 @@ return {
     size = size,
     on_open = on_open,
     on_close = on_close,
+    float_opts = { border = vim.o.winborder },
     highlights = {
       Normal = { link = "Normal" },
       NormalFloat = { link = "NormalFloat" },

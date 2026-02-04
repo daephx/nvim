@@ -21,10 +21,6 @@ return {
       },
     },
     config = function()
-      -- Override lspconfig default window options
-      local windows = require("lspconfig.ui.windows")
-      windows.default_options = { border = vim.g.border }
-
       -- Initialize local lsp modules
       require("plugins.lsp.diagnostics")
       require("plugins.lsp.handlers")
@@ -55,9 +51,6 @@ return {
       require("lsp_signature").on_attach({
         hint_enable = false,
         hint_prefix = "■ ",
-        handler_opts = {
-          border = vim.g.border,
-        },
       })
     end,
   },

@@ -25,7 +25,6 @@ return {
     focus = true, -- Focus the window when opened
     follow = false, -- Follow the current item
     win = {
-      border = vim.g.border,
       wo = {
         number = false,
         relativenumber = false,

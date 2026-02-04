@@ -19,7 +19,6 @@ return {
     opts = {
       ui = {
         height = 0.8,
-        border = vim.g.border,
       },
     },
   },

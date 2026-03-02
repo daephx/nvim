@@ -1,6 +1,6 @@
 -- none-ls | null-ls.nvim reloaded / Use Neovim as a language server
 -- https://github.com/nvimtools/none-ls.nvim
----@module "null-ls
+---@module "null-ls"
 
 -- Use Neovim as a language server
 ---@type LazySpec

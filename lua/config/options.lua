@@ -42,7 +42,7 @@ vim.opt.splitkeep = "screen" -- Determines the scroll behavior for horizontal sp
 
 vim.opt.timeoutlen = 250 -- Timeout for mapped sequence
 vim.opt.ttimeoutlen = 0 -- Timeout for key code sequence
-vim.opt.updatetime = 1000 -- Timeout idle before CursorHold or updating swapfile
+vim.opt.updatetime = 250 -- Timeout idle before CursorHold or updating swapfile
 vim.opt.swapfile = false -- Use a swapfile for the current buffer
 vim.opt.undofile = true -- Cache persistent undo
 vim.opt.undolevels = 10000 -- Maximum number of changes that can be undone

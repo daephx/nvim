@@ -1,4 +1,3 @@
-local codelens = require("plugins.lsp.handlers.codelens")
 local format = require("plugins.lsp.handlers.format")
 local highlight = require("plugins.lsp.handlers.highlight")
 local hover = require("plugins.lsp.handlers.hover")
@@ -13,7 +12,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 
   -- Enable Local handlers
-  codelens.enable_code_lens(client, bufnr)
   format.setup(client, bufnr)
   highlight.enable_document_highlighting(client, bufnr)
   hover.enable_hover_diagnostics(bufnr)

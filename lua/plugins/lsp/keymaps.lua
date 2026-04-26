@@ -7,6 +7,7 @@ local M = {}
 ---@param _ vim.lsp.Client
 ---@param bufnr integer
 M.initialize_keymaps = function(_, bufnr)
+  -- stylua: ignore
   util.register_keymaps({
     buffer = bufnr,
     remap = false,
@@ -16,9 +17,6 @@ M.initialize_keymaps = function(_, bufnr)
     { "n", "gD", vim.lsp.buf.declaration, { desc = "Goto declaration" } },
     { "n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" } },
     { "n", "gy", vim.lsp.buf.type_definition, { desc = "Show type definitions" } },
-
-    { "n", "<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh codelens" } },
-    { { "n", "v" }, "<leader>cc", vim.lsp.codelens.run, { desc = "Run codelens" } },
 
     { { "n", "v" }, "grF", format.toggle, { remap = true, desc = "Toggle format" } },
     { { "n", "v" }, "grf", format.execute, { remap = true, desc = "Format document" } },

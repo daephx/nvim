@@ -1,20 +1,22 @@
 -- project_nvim | The superior project management solution for neovim.
--- https://github.com/ahmedkhalf/project.nvim
+-- https://github.com/DrKJeff16/project.nvim
 
 ---@type LazySpec
 return {
-  "ahmedkhalf/project.nvim",
-  cond = vim.fn.has("nvim-0.10") == 0,
-  name = "project_nvim",
-  event = "VeryLazy",
+  "DrKJeff16/project.nvim",
+  event = { "BufNewFile", "BufReadPre" },
+  cmd = { "Project" },
   keys = {
     { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Projects" },
   },
   opts = {
     -- Show hidden files in telescope
     show_hidden = true,
-    detection_methods = { "lsp", "pattern", "!.git/worktrees" },
-    ignore_lsp = { "null-ls", "efm", "taplo" },
+    detection_methods = { "lsp", "pattern" },
+    lsp = {
+      enabled = true,
+      ignore = { "null-ls", "efm", "taplo" },
+    },
 
     -- Don't calculate root dir on specific directories
     exclude_dirs = {
@@ -28,26 +30,36 @@ return {
     },
     -- All the patterns used to detect root dir, when **"pattern"** is in detection_methods
     patterns = {
+      -- General
+      "!.git/worktrees", -- Ignore git worktrees
       ".bzr", --  Bazaar repository
-      ".clang-format", -- Clang formatting config
-      ".editorconfig", -- Editorconfig file
       ".git", -- Git repository
-      ".github", -- Github meta config
       ".hg", -- Mercurial repository
-      ".luarc.json", -- Lua_LS configuration
-      ".project", -- Eclipse project config
-      ".sln", -- Visual Studio solution
       ".svn", -- Subversion repository
-      ".terraform", -- HashiCorp Terraform config
-      ".venv", -- Python virtual environment
-      "Pipfile.lock", -- Python/Pipenv dependencies
       "_darcs", -- Darcs repository
+      ".github", -- Github meta config
+
+      -- Editor
+      ".editorconfig", -- Editorconfig file
+      ".project", -- Eclipse project config
+      ".terraform", -- HashiCorp Terraform config
+      ".neoconf.json", -- Neovim/neoconf configuration file
+      "neoconf.json", -- Neovim/neoconf configuration file
+
+      -- Languages
+      ".clang-format", -- Clang formatting config
+      ".luarc.json", -- lua-language-server configuration
+      ".sln", -- Visual Studio solution
       "cargo.toml", -- Rust/Cargo config
       "go.mod", -- Golang module config
       "go.sum", -- Golang checksums
       "node_modules", -- Node virtual environment
+
+      ".venv", -- Python virtual environment
+      "Pipfile.lock", -- Python/Pipenv dependencies
       "poetry.lock", -- Python/Poetry dependencies
       "requirements.txt", -- Python/Pip dependencies
+      "uv.lock", -- Python/UV lockfile
     },
   },
 }

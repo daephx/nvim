@@ -36,7 +36,7 @@ return {
   event = { "InsertEnter" },
   opts = {
     check_ts = true,
-    disable_filetype = { "TelescopePrompt", "vim" },
+    disable_filetype = { "vim" },
     fast_wrap = {},
     ts_config = {
       lua = { "string", "source" },

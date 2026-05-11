@@ -12,7 +12,4 @@ return {
   DiffAdd = { fg = "Green", bg = "none" },
   DiffChange = { fg = "Yellow", bg = "none" },
   DiffDelete = { fg = "Red", bg = "none" },
-
-  -- Telescope
-  TelescopeNormal = { bg = "none" },
 }

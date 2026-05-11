@@ -16,8 +16,4 @@ return {
   RainbowDelimiterRed = { ctermfg = 1, fg = "DarkRed", nocombine = true },
   RainbowDelimiterViolet = { ctermfg = 5, fg = "DarkMagenta", nocombine = true },
   RainbowDelimiterYellow = { ctermfg = 3, fg = "DarkYellow", nocombine = true },
-
-  -- Telescope
-  TelescopeSelection = { link = "CursorLine" },
-  TelescopeSelectionCaret = { ctermbg = 180, ctermfg = 16, bg = "#f5c195", fg = "Black" },
 }

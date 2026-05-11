@@ -47,9 +47,9 @@ return {
       { "<leader>zn", "<cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", desc = "New note" },
     },
     opts = {
-      -- Can be "telescope", "fzf" or "select" (`vim.ui.select`)
-      -- It's recommended to use "telescope" or "fzf"
-      picker = "telescope",
+      -- Can be "telescope", "fzf", "fzf_lua", "minipick", "snacks_picker",
+      -- or select" (`vim.ui.select`).
+      picker = "snacks_picker",
     },
   },
 }

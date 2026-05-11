@@ -7,17 +7,18 @@ return {
   event = { "BufNewFile", "BufReadPre" },
   cmd = { "Project" },
   keys = {
-    { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Projects" },
+    { "<leader>fp", "<cmd>Project snacks<CR>", desc = "Projects" },
   },
   opts = {
-    -- Show hidden files in telescope
+    snacks = {
+      enabled = true,
+    },
     show_hidden = true,
     detection_methods = { "lsp", "pattern" },
     lsp = {
       enabled = true,
       ignore = { "null-ls", "efm", "taplo" },
     },
-
     -- Don't calculate root dir on specific directories
     exclude_dirs = {
       "~/.cargo/*", -- Rust package manager

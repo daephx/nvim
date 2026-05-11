@@ -39,12 +39,6 @@ return {
       -- Diff
       hl.DiffDelete = { fg = c.git.delete, bg = c.bg_highlight }
 
-      -- Telescope
-      hl.TelescopeSelection = { link = "PmenuSel" }
-      hl.TelescopePreviewBorder = { link = "FloatBorder" }
-      hl.TelescopePromptBorder = { link = "FloatBorder" }
-      hl.TelescopeResultsBorder = { link = "FloatBorder" }
-
       -- Treesitter
       hl.TreesitterContext = { bg = "none" }
 

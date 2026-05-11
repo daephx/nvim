@@ -8,6 +8,9 @@ any = true
 [jit]
 any = true
 
+[Snacks]
+any = true
+
 [[describe.args]]
 type = "string"
 [[describe.args]]

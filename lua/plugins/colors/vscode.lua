@@ -93,13 +93,8 @@ return {
         RainbowDelimiterViolet = { fg = c.vscViolet, nocombine = true },
         RainbowDelimiterYellow = { fg = c.vscYellow, nocombine = true },
 
-        -- Dashboard
-        DashboardKey = { fg = c.vscGray },
-
-        -- Telescope
-        TelescopePromptPrefix = { fg = c.vscBlue },
-        TelescopeSelection = { bg = c.vscSelection },
-        TelescopeSelectionCaret = { bg = c.vscSelection, fg = c.vscYellow },
+        -- Snacks
+        SnacksPickerBorder = { link = "FloatBorder" },
 
         -- Neogit
         NeogitBranch = { fg = c.vscYellow },

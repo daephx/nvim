@@ -72,13 +72,6 @@ return {
       -- LSP
       LspReferenceWrite = { fg = "#fe8019", bg = "#3c3836" },
 
-      -- Telescope
-      TelescopeBorder = { link = "FloatBorder" },
-      TelescopePreviewBorder = { link = "FloatBorder" },
-      TelescopePromptBorder = { link = "FloatBorder" },
-      TelescopeResultsBorder = { link = "FloatBorder" },
-      TelescopeSelection = { link = "CursorLine" },
-
       -- Dap
       DapUINormal = { link = "Normal" },
       DapUINormalNC = { link = "Normal" },

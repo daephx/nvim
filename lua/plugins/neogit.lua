@@ -22,7 +22,7 @@ return {
     process_spinner = false,
     integrations = {
       diffview = true,
-      telescope = true,
+      snacks = true,
     },
     popup = { kind = "split" },
     commit_popup = { kind = "split_above" },

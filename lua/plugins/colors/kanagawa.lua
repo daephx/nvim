@@ -58,10 +58,6 @@ return {
         RainbowDelimiterViolet = { fg = colors.palette.oniViolet, nocombine = true },
         RainbowDelimiterYellow = { fg = colors.palette.carpYellow, nocombine = true },
 
-        -- Telescope
-        TelescopeBorder = { ctermbg = "none", ctermfg = 240, bg = "none", fg = theme.ui.bg_p2 },
-        TelescopeTitle = { link = "Title" },
-
         -- WhichKey
         WhichkeyTitle = { link = "Title" },
       }

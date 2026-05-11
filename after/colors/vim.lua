@@ -60,14 +60,6 @@ return {
   NeogitDiffDelete = { ctermbg = 52, ctermfg = 196, fg = "#bb4c4c", bg = "#301414" },
   NeogitDiffText = { ctermbg = 238, bg = "Grey27" },
 
-  -- Telescope
-  TelescopeNormal = { link = "Normal" },
-  TelescopePreviewBorder = { link = "FloatBorder" },
-  TelescopePromptBorder = { link = "FloatBorder" },
-  TelescopeResultsBorder = { link = "FloatBorder" },
-  TelescopeSelection = { ctermbg = 236, bg = "Grey23" },
-  TelescopeSelectionCaret = { ctermfg = 214, fg = "Orange" },
-
   -- Whichkey
   WhichKey = { link = "Define" },
 }

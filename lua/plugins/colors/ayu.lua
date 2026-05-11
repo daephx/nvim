@@ -52,10 +52,6 @@ return {
 
         -- DAP
         DapStoppedLine = { bg = c.vcs_added_bg },
-
-        -- Telescope
-        TelescopePromptBorder = { link = "FloatBorder" },
-        TelescopeSelection = { link = "PmenuSel" },
       }
 
       -- Conditionally override colors for `h background

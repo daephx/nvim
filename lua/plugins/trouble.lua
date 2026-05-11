@@ -1,4 +1,4 @@
--- trouble.nvim | pretty diagnostics, references, telescope results
+-- trouble.nvim | pretty diagnostics, references, search results
 -- https://github.com/folke/trouble.nvim
 ---@module "trouble"
 

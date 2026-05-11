@@ -44,29 +44,35 @@ local dotnet_get_dll_path = function()
   return vim.g["dotnet_last_dll_path"]
 end
 
-local telescope_picker = function()
-  return coroutine.create(function(coro)
-    local action_state = require("telescope.actions.state")
-    local actions = require("telescope.actions")
-    local conf = require("telescope.config").values
-    local finders = require("telescope.finders")
-    local pickers = require("telescope.pickers")
-    local opts = {}
-    pickers
-      .new(opts, {
-        prompt_title = "Path to executable",
-        finder = finders.new_oneshot_job({ "fd", "--hidden", "--no-ignore", "--type", "x" }, {}),
-        sorter = conf.generic_sorter(opts),
-        attach_mappings = function(bufnr)
-          actions.select_default:replace(function()
-            actions.close(bufnr)
-            coroutine.resume(coro, action_state.get_selected_entry()[1])
-          end)
-          return true
-        end,
-      })
-      :find()
+local function pick_executable()
+  -- Get list of executable files (synchronous)
+  local handle = io.popen("fd --hidden --no-ignore --type x")
+  if handle == nil then
+    return nil
+  end
+  local files = {}
+  for line in handle:lines() do
+    table.insert(files, line)
+  end
+  handle:close()
+
+  local result = nil
+  local chosen = false
+
+  vim.ui.select(files, {
+    prompt = "Path to executable",
+    format_item = function(item)
+      return item
+    end,
+  }, function(choice)
+    result = choice
+    chosen = true
   end)
+
+  vim.wait(100000, function()
+    return chosen
+  end)
+  return result
 end
 
 local config = {
@@ -95,8 +101,8 @@ local config = {
   {
     type = "coreclr",
     request = "launch",
-    name = "Select DLL (telescope)",
-    program = telescope_picker,
+    name = "Select DLL",
+    program = pick_executable,
   },
   {
     type = "coreclr",

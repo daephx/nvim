@@ -8,22 +8,19 @@ return {
   cmd = {
     "TodoLocList",
     "TodoQuickFix",
-    "TodoTelescope",
     "TodoTrouble",
-  },
-  dependencies = {
-    -- Collection of useful lua functions
-    { "nvim-lua/plenary.nvim" },
   },
   -- stylua: ignore
   keys = {
+    { "<leader>sT", function () Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+    { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Todo" },
     { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
     { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-    { "<leader>fT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    { "<leader>ft", "<cmd>TodoTelescope<cr>", desc = "Todo" },
     { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
     { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
   },
+  ---@module "todo-comments"
+  ---@type TodoOptions
   opts = {
     keywords = {
       FIX = { icon = " ", color = "error", alt = { "FIXME", "BUG", "FIXIT", "FIX", "ISSUE" } },

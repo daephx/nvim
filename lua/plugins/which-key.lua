@@ -1,6 +1,5 @@
 -- Which-key | Configurations for plugin WhichKey.nvim
 -- https://github.com/folke/which-key.nvim
----@module "which-key"
 
 ---@type LazySpec
 return {
@@ -14,7 +13,8 @@ return {
       WhichKeyTitle = { link = "Title", default = true },
     })
   end,
-  ---@class wk.Opts
+  ---@module "which-key"
+  ---@type wk.Opts
   opts = {
     preset = "classic",
     icons = { mappings = true },

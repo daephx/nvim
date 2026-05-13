@@ -9,6 +9,7 @@ local search_line = function()
 end
 
 local search_buffer = function()
+  ---@diagnostic disable-next-line: missing-fields
   require("hop").hint_char1({ current_line_only = false })
 end
 

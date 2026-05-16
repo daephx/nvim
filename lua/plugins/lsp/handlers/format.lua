@@ -15,7 +15,7 @@ end
 ---@param state boolean
 ---@return string
 local format_state = function(state)
-  return state and "ENABLED" or "DISABLED"
+  return state and "Enabled" or "Disabled"
 end
 
 ---Check if formatting should occur based on buffer and global states.
@@ -24,6 +24,34 @@ end
 local should_format = function(bufnr)
   bufnr = bufnr or vim.api.nvim_get_current_buf()
   return M.autoformat and (vim.b[bufnr].autoformat ~= false)
+end
+
+---Check for configured formatters within null-ls
+---@return boolean
+local should_use_nls = function(bufnr)
+  local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+  local nls_ok, has_formatter = pcall(function()
+    return #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
+  end)
+  return nls_ok and has_formatter
+end
+
+---Check for configured formatters within efm
+---@return boolean
+local should_use_efm = function(bufnr)
+  local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+  local clients = vim.lsp.get_clients({ bufnr = bufnr, name = "efm" })
+  if #clients > 0 then
+    local langs = vim.tbl_get(clients[1], "config", "settings", "languages")
+      or vim.tbl_get(clients[1], "settings", "languages")
+      or {}
+    for _, t in ipairs(langs[ft] or {}) do
+      if t["formatCommand"] then
+        return true
+      end
+    end
+  end
+  return false
 end
 
 ---Context-aware command completion
@@ -93,19 +121,21 @@ M.execute = function(opts)
     )
   end
 
-  local ft = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-  local _, has_nls_formatter = pcall(function()
-    return #require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") > 0
-  end)
+  -- Check special format providers
+  local has_nls = should_use_nls(bufnr)
+  local has_efm = should_use_efm(bufnr)
 
+  -- Call the formatter
   vim.lsp.buf.format({
     bufnr = bufnr,
     filter = function(client)
-      local is_nls = client.name == "null-ls"
-      -- 1. If client is null-ls and has formatter -> use it
-      -- 2. If client is not null-ls and null-ls has formatter -> skip it
-      -- 3. If null-ls has no formatter -> use any non-null-ls client
-      return (is_nls and has_nls_formatter) or (not is_nls and not has_nls_formatter)
+      if has_nls then
+        return client.name == "null-ls"
+      elseif has_efm then
+        return client.name == "efm"
+      else
+        return true
+      end
     end,
   })
 end

@@ -40,11 +40,6 @@ return {
             return utils.root_has_file({ "selene.toml" })
           end,
         }),
-        formatting.stylua.with({
-          condition = function(utils)
-            return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
-          end,
-        }),
 
         -- Shell
         formatting.shfmt,

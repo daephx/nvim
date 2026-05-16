@@ -34,7 +34,7 @@ return {
         unusedLocalExclude = { "_*" },
       },
       format = {
-        enable = true,
+        enable = false,
         defaultConfig = {
           indent_size = "2",
           continuation_indent = "2",

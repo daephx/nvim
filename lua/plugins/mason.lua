@@ -40,6 +40,7 @@ return {
         "ruff",
         "stylua",
         "taplo",
+        "ts_ls",
         "yamlls",
       },
     },

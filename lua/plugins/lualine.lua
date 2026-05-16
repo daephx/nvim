@@ -27,21 +27,6 @@ local function process_sections(sections)
   return sections
 end
 
----Set formatting rules for lsp_progress clients
----@param client_name string
----@param spinner table
----@param series_messages table
----@return string|nil
-local function client_format(client_name, spinner, series_messages)
-  local active_clients = vim.tbl_map(function(client)
-    return client.name
-  end, vim.lsp.get_clients({ bufnr = 0 }))
-  if #series_messages > 0 and vim.tbl_contains(active_clients, client_name) then
-    local messages = table.concat(series_messages, ", ")
-    return ("%s %s [%s]"):format(messages, spinner, client_name)
-  end
-end
-
 -- Components
 -- Define custom lualine options for various statusline elements.
 -- Each table represents the configuration for a specific type of information
@@ -135,7 +120,7 @@ local diagnostics = {
 local lsp_info = {
   "lsp_info",
   icon = { "", align = "right" },
-  client_names = {
+  format_clients = {
     ["arduino_language_server"] = "arduino_ls",
     ["docker_compose_language_service"] = "docker-compose",
     ["fennel_language_server"] = "fennel_ls",
@@ -226,7 +211,6 @@ return {
     "linrongbin16/lsp-progress.nvim",
     event = { "LspAttach" },
     dependencies = { "nvim-lualine/lualine.nvim" },
-    opts = { client_format = client_format },
     init = function()
       vim.api.nvim_create_autocmd("User", {
         desc = "listen for lsp-progress event and refresh lualine",

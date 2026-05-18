@@ -1,6 +1,5 @@
 -- Lua port of the most famous vim colorscheme
 -- https://github.com/ellisonleao/gruvbox.nvim
----@module "gruvbox"
 
 local terminal = {
   "#32302f",
@@ -24,8 +23,9 @@ local terminal = {
 ---@type LazySpec
 return {
   "ellisonleao/gruvbox.nvim",
-  lazy = true,
+  lazy = false,
   priority = 1000,
+  ---@module "gruvbox"
   ---@type GruvboxConfig
   opts = {
     bold = false,

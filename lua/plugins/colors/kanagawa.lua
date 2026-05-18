@@ -1,12 +1,12 @@
 -- kanagawa.nvim | dark colorscheme inspired by famous painting of Katsushika Hokusai
 -- https://github.com/rebelot/kanagawa.nvim
----@module "kanagawa"
 
 ---@type LazySpec
 return {
   "rebelot/kanagawa.nvim",
-  lazy = true,
+  lazy = false,
   priority = 1000,
+  ---@module "kanagawa"
   ---@type KanagawaConfig
   opts = {
     transparent = true,

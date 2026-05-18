@@ -1,12 +1,13 @@
 -- tokyonight.nvim | A clean, dark Neovim theme written in Lua
 -- https://github.com/folke/tokyonight.nvim
----@module "tokyonight"
 
 ---@type LazySpec
 return {
   "folke/tokyonight.nvim",
-  lazy = true,
+  lazy = false,
   priority = 1000,
+  ---@module "tokyonight"
+  ---@type tokyonight.Config
   opts = {
     style = "night", -- The theme comes in three styles, `storm`, a darker variant `night` and `day`
     transparent = true, -- Enable this to disable setting the background color

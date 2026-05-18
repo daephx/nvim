@@ -56,7 +56,6 @@
   "nvim-web-devicons": { "branch": "master", "commit": "7d8dad2c837fcdf2e65997e68657c1a21c568074" },
   "oil.nvim": { "branch": "master", "commit": "0fcc83805ad11cf714a949c98c605ed717e0b83e" },
   "one-small-step-for-vimkind": { "branch": "main", "commit": "1af6ffb9b5229a856e8090fa2f690e0931a5aace" },
-  "opencode.nvim": { "branch": "main", "commit": "05547308bb931dc5da80a81d282f18e581788752" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "project.nvim": { "branch": "main", "commit": "39a135c377e1a1dd69c5d55a13b55e3cfb43c0fb" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "9bcf34fa65def40aef16bbd60b6155bf76edf57b" },

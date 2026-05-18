@@ -30,6 +30,9 @@ vim.cmd.cnoreabbrev({ "XA", "xa" })
 vim.cmd.cnoreabbrev({ "Xa", "xa" })
 vim.cmd.cnoreabbrev({ "xA", "xa" })
 
+vim.cmd.cnoreabbrev({ "Sort", "sort" })
+vim.cmd.cnoreabbrev({ "Uniq", "uniq" })
+
 -- Delete buffer without closing window
 vim.cmd.cnoreabbrev({ "bdd", "bn|bd#" })
 

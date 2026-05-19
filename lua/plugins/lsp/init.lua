@@ -55,10 +55,13 @@ return {
   },
   { -- IDE-like code action indicator
     "kosayoda/nvim-lightbulb",
-    cond = vim.fn.has("nvim-0.10") == 0,
     event = { "LspAttach" },
     opts = {
+      priority = 8,
       autocmd = { enabled = true },
+      sign = {
+        text = "󰖷",
+      },
     },
   },
 }

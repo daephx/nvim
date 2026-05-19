@@ -29,26 +29,37 @@ return {
         "nvim-cmp",
         "nvim-navic",
         "nvim-web-devicons",
+        "rainbow-delimiters",
         "trouble",
         "which-key",
       },
-      -- Overwrite default colors with your own
-      custom_colors = {},
+      -- Custom colors must be a function that takes in the default colors table as
+      -- a parameter, and then modifies them.
+      -- To see the available colors, see lua/material/colors/init.lua
+      custom_colors = function(colors)
+        colors.syntax.comments = "#848484"
+      end,
       -- Overwrite highlights with your own
       custom_highlights = {
-        CursorLine = { bg = "Grey15" },
+        ColorColumn = { bg = "#222222" },
+        CursorLine = { bg = c.editor.contrast },
+        FloatBorder = { fg = c.main.gray },
         FoldColumn = { link = "NonText" },
         Folded = { bg = "#311d00" },
+        MatchParen = { reverse = true },
         MsgSeparator = { link = "WinSeparator" },
-        StatusLine = { bg = "none" },
+        PmenuThumb = { bg = c.main.gray },
+        StatusLine = { bg = "none", fg = "black" },
+        StatusLineTerm = { link = "StatusLine" },
+        TabLineSel = { fg = c.main.black, bg = c.main.orange },
         VertSplit = { link = "WinSeparator" },
         WinBar = { bg = "none" },
         WinBarNC = { bg = "none" },
 
         -- Search
         CurSearch = { link = "IncSearch" },
-        IncSearch = { fg = "black", bg = "#ffcb6b", bold = true },
-        Search = { fg = "black", bg = "#6bc3ff" },
+        IncSearch = { fg = "black", bg = c.main.yellow, bold = true },
+        Search = { fg = "black", bg = c.main.blue },
 
         -- Diff
         DiffAdd = { bg = "#2c351e" },
@@ -61,6 +72,10 @@ return {
         NeogitDiffChange = { fg = c.git.modified, bg = "#1a2438" },
         NeogitDiffDelete = { fg = c.git.removed, bg = "#5c272b" },
         NeogitDiffText = { bg = "#263553" },
+
+        NeogitHunkHeader = { fg = c.main.purple, bg = "#3f3f3f" },
+        NeogitWinSeparator = { link = "WinSeparator" },
+        NeogitNormalFloat = { link = "NormalFloat" },
 
         -- Treesitter
         TSField = { link = "TSVariable" },

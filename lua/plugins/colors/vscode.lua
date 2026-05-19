@@ -2,25 +2,6 @@
 -- https://github.com/Mofiqul/vscode.nvim
 ---@module "vscode"
 
-local terminal = {
-  "#000000",
-  "#CD3131",
-  "#0DBC79",
-  "#E5E510",
-  "#2472C8",
-  "#BC3FBC",
-  "#11A8CD",
-  "#E5E5E5",
-  "#484848",
-  "#F14C4C",
-  "#23D18B",
-  "#F5F543",
-  "#3B8EEA",
-  "#D670D6",
-  "#29B8DB",
-  "#E5E5E5",
-}
-
 ---@type LazySpec
 return {
   "Mofiqul/vscode.nvim",
@@ -39,15 +20,16 @@ return {
         CurSearch = { link = "IncSearch" },
         CursorLine = { bg = "Grey12" },
         CursorLineNr = { link = "Number" },
-        EndOfBuffer = { fg = "Grey35" },
-        FloatBorder = { fg = "Grey35", bg = "none" },
+        EndOfBuffer = { fg = c.vscGray },
+        FloatBorder = { fg = c.vscGray },
         MsgSeparator = { link = "WinSeparator" },
         NormalFloat = { link = "Normal" },
         SpecialChar = { fg = c.vscBlue },
         StatusLine = { bg = "none" },
-        Tabline = { bg = "none" },
         TablineFill = { bg = "none" },
-        Title = { link = "Special" },
+        Title = { fg = c.vscYellowOrange },
+
+        Error = { fg = c.vscRed, bold = true },
         WarningMsg = { fg = c.vscYellowOrange, bold = true },
 
         -- Git
@@ -63,9 +45,9 @@ return {
 
         -- Diagnostics
         DiagnosticVirtualTextError = { bg = c.vscBack, fg = c.vscRed },
-        DiagnosticVirtualTextWarn = { bg = c.vscBack, fg = c.vscYellow },
-        DiagnosticVirtualTextInfo = { bg = c.vscBack, fg = c.vscBlue },
         DiagnosticVirtualTextHint = { bg = c.vscBack, fg = c.vscWhite },
+        DiagnosticVirtualTextInfo = { bg = c.vscBack, fg = c.vscBlue },
+        DiagnosticVirtualTextWarn = { bg = c.vscBack, fg = c.vscYellow },
 
         -- LSP
         LspCodeLens = { link = "LineNr" },
@@ -81,20 +63,11 @@ return {
         NvimDapVirtualText = { link = "LspCodeLens" },
 
         -- Treesitter
-        ["@string.special.url"] = { fg = c.vscBlue },
-
-        -- Rainbow Delimiters
-        RainbowDelimiterBlue = { fg = c.vscBlue, nocombine = true },
-        RainbowDelimiterCyan = { fg = c.vscBlueGreen, nocombine = true },
-        RainbowDelimiterGreen = { fg = c.vscGreen, nocombine = true },
-        RainbowDelimiterOrange = { fg = c.vscOrange, nocombine = true },
-        RainbowDelimiterPink = { fg = c.vscPink, nocombine = true },
-        RainbowDelimiterRed = { fg = c.vscRed, nocombine = true },
-        RainbowDelimiterViolet = { fg = c.vscViolet, nocombine = true },
-        RainbowDelimiterYellow = { fg = c.vscYellow, nocombine = true },
+        ["@string.special.url"] = { fg = c.vscBlue, underline = true },
 
         -- Snacks
         SnacksPickerBorder = { link = "FloatBorder" },
+        SnacksPickerDir = { link = "NonText" },
 
         -- Neogit
         NeogitBranch = { fg = c.vscYellow },
@@ -112,17 +85,5 @@ return {
         HopUnmatched = { fg = c.vscContext },
       },
     }
-  end,
-  init = function()
-    vim.api.nvim_create_autocmd("ColorScheme", {
-      desc = "Replace terminal colors for colorscheme: vscode",
-      group = vim.api.nvim_create_augroup("ColorScheme#VscodeTerminal", { clear = true }),
-      pattern = "vscode",
-      callback = function()
-        for i, color in ipairs(terminal) do
-          vim.g["terminal_color_" .. i - 1] = color
-        end
-      end,
-    })
   end,
 }

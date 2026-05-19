@@ -9,6 +9,6 @@ return {
   lazy = false,
   priority = 1001,
   opts = {
-    window = { open = "alternate" },
+    window = { open = "tab" },
   },
 }

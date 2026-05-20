@@ -22,7 +22,6 @@ local on_attach = function(buffer)
       if vim.wo.diff then
         vim.cmd.normal({ "]h", bang = true })
       else
-      ---@diagnostic disable-next-line: param-type-mismatch
         gitsigns.nav_hunk("next")
       end
     end, { desc = "Next hunk" } },
@@ -31,7 +30,6 @@ local on_attach = function(buffer)
       if vim.wo.diff then
         vim.cmd.normal({ "[h", bang = true })
       else
-      ---@diagnostic disable-next-line: param-type-mismatch
         gitsigns.nav_hunk("prev")
       end
     end, { desc = "Previous hunk" } },
@@ -55,7 +53,6 @@ local on_attach = function(buffer)
     -- { "n", "<leader>gd", gitsigns.diffthis, { desc = "Diff buffer" } },
 
     -- Quickfix
-    ---@diagnostic disable-next-line: param-type-mismatch
     { "n", "<leader>gQ", function() gitsigns.setqflist("all") end, { desc = "Set quickfix (all)" } },
     { "n", "<leader>gq", gitsigns.setqflist, { desc = "Set quickfix" } },
 

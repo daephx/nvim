@@ -85,6 +85,25 @@ return {
     create_command("Sexplore", "belowright split | Oil <args>", cmd_opts)
     create_command("Texplore", "tabedit % | Oil <args>", cmd_opts)
     create_command("Vexplore", "rightbelow vsplit | Oil <args>", cmd_opts)
+
+    vim.api.nvim_create_autocmd("User", {
+      desc = "Quit Neovim if Oil closes the last remaining buffer",
+      pattern = "OilClose",
+      callback = function()
+        -- Delay to let Oil finish closing its buffer
+        vim.defer_fn(function()
+          if #vim.api.nvim_list_tabpages() == 1 and #vim.api.nvim_list_wins() == 1 then
+            -- Only one tab and one window left (the current one)
+            -- If the buffer is empty, quit
+            local buf = vim.api.nvim_get_current_buf()
+            local bufname = vim.api.nvim_buf_get_name(buf)
+            if bufname == "" or bufname:match("^oil://") then
+              vim.cmd("quit")
+            end
+          end
+        end, 10)
+      end,
+    })
   end,
   ---@type oil.setupOpts
   opts = {

@@ -56,10 +56,12 @@ return {
     ---@type table<string, vim.api.keyset.highlight>
     highlight_groups = {
       CursorLineNr = { fg = "gold" },
+      Folded = { bg = "#161221" },
       LineNr = { fg = "highlight_med" },
       MatchParen = { bg = "subtle" },
       Pmenu = { bg = "surface" },
       StatusLine = { bg = "none" },
+      StatusLineTerm = { bg = "none" },
       Underlined = { fg = "iris", underline = true },
       VertSplit = { link = "WinSeparator" },
       WinBar = { bg = "none", inherit = false },

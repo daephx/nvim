@@ -12,15 +12,15 @@ local colors = {
   MsgSeparator = { link = "WinSeparator" },
   Normal = { ctermfg = 253, fg = "NvimLightGrey2" },
   PmenuSel = { ctermbg = 254, ctermfg = 16, bg = "Grey15", fg = "none" },
-  Statement = { ctermfg = 177, fg = "Violet" },
+  QuickfixLine = { link = "PmenuSel" },
+  Statement = { ctermfg = 177, fg = "NvimLightMagenta" },
   StatusLine = { ctermbg = "none", bg = "none" },
   Title = { link = "Special" },
-  Type = { ctermfg = 153, fg = "NvimLightBlue" },
+  Type = { ctermfg = 153, fg = "NvimLightCyan" },
   VertSplit = { link = "WinSeparator" },
   WinBar = { link = "Normal" },
   WinBarNC = { link = "Normal" },
   WinSeparator = { ctermfg = 237, fg = "NvimDarkGrey4" },
-  QuickfixLine = { link = "PmenuSel" },
 
   -- Git
   Added = { ctermfg = 157, fg = "NvimLightGreen", bold = true },
@@ -36,6 +36,9 @@ local colors = {
   -- LSP
   ["@lsp.mod.defaultLibrary.lua"] = { link = "@namespace" },
   ["@lsp.mod.global.lua"] = { ctermfg = 217, fg = "NvimLightRed" },
+  ["@lsp.typemod.function.defaultLibrary.lua"] = { link = "Special" },
+  ["@namespace"] = { fg = "NvimLightRed" },
+  ["@variable.parameter"] = { fg = "NvimLightYellow" },
 
   -- Treesitter
   ["@string.special.url"] = { ctermfg = 153, fg = "NvimLightBlue", underline = true },

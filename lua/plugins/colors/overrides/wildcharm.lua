@@ -6,6 +6,7 @@ local colors = {
   MsgSeparator = { link = "WinSeparator" },
   Normal = { ctermbg = "none", bg = "none" },
   NormalFloat = { link = "Normal" },
+  Pmenu = { link = "NormalFloat" },
   StatusLine = { ctermbg = 81, ctermfg = 15, fg = "White" },
   StatusLineNC = { ctermbg = 237, ctermfg = 243, bg = "Grey23", fg = "White" },
   Title = { link = "Define" },
@@ -47,6 +48,7 @@ local colors = {
 -- Force transparent background in dark mode.
 if vim.o.background == "light" then
   colors.Normal = nil
+  colors.StatusLine = { bg = "#FFFFFF", ctermbg = 231, ctermfg = 16, fg = "#000000" }
   colors.Visual = { ctermbg = 25, ctermfg = 16, bg = "#abdbeb" }
   colors.WinSeparator = { ctermfg = 240, fg = "#a7a7a7" }
 

@@ -16,7 +16,7 @@ return {
   Normal = { ctermbg = "none", bg = "none" },
   NormalFloat = { link = "Normal" },
   Pmenu = { ctermbg = 105, bg = "#00004d" },
-  PmenuSel = { ctermbg = 59, bg = "Grey32" },
+  PmenuSel = { bg = "#0030FF", ctermbg = 27 },
   Statement = { ctermfg = 177, fg = "Violet" },
   StatusLine = { ctermfg = 233, ctermbg = 18, fg = "Grey30", bg = "#000040" },
   StatusLineNC = { ctermbg = 18, ctermfg = 239, fg = "Grey30", bg = "DarkBlue" },

@@ -3,23 +3,30 @@
 ---@type config.Highlights
 local colors = {
   ColorColumn = { ctermbg = 233, bg = "Grey7" },
+  CursorLine = { ctermbg = 236, bg = "#181818" },
   CursorLineFold = { link = "FoldColumn" },
   CursorLineNr = { ctermfg = 215, fg = "#fabd2f", bold = true },
   CursorLineSign = { ctermbg = "none", bg = "none" },
-  Error = { ctermfg = 203, fg = "#fb4934", bold = true },
-  ErrorMsg = { link = "Error" },
   FloatBorder = { link = "WinSeparator" },
   FoldColumn = { ctermbg = "none", bg = "none" },
-  Folded = { ctermbg = 234, bg = "Grey12" },
   IncSearch = { ctermbg = 208, ctermfg = 234, bg = "#fe8019", fg = "Grey11" },
   MsgSeparator = { link = "WinSeparator" },
   Normal = { ctermbg = "none", bg = "none" },
   NormalFloat = { link = "Normal" },
   Operator = { ctermfg = 208, fg = "#fe8019" },
+  Pmenu = { link = "NormalFloat" },
   SignColumn = { ctermbg = "none", bg = "none" },
-  StatusLine = { ctermfg = 246, fg = "#a89984" },
-  Visual = { ctermbg = 238, bg = "#47403a" },
+  StatusLine = { ctermfg = 246, fg = "#a89984", ctermbg = "none", bg = "none" },
   WinSeparator = { ctermfg = 238, fg = "Grey32" },
+
+  Error = { ctermfg = 203, fg = "#fb4934", bold = true },
+  ErrorMsg = { link = "Error" },
+
+  DiagnosticOk = { fg = "#B8BB26" },
+  DiagnosticHint = { fg = "#8EC07C" },
+  DiagnosticInfo = { fg = "#83A598" },
+  DiagnosticWarn = { fg = "#FABD2F" },
+  DiagnosticError = { fg = "#FB4934" },
 
   -- Git
   Added = { ctermfg = 142, fg = "#b8bb26" },
@@ -27,10 +34,10 @@ local colors = {
   Changed = { ctermfg = 208, fg = "#fe8019" },
 
   -- Diff
-  DiffAdd = { ctermfg = 142, ctermbg = 235, fg = "none", bg = "#3e400b" },
-  DiffChange = { ctermfg = 208, ctermbg = 235, fg = "none", bg = "#643209" },
+  DiffAdd = { ctermfg = 142, ctermbg = 235, fg = "none", bg = "#252607" },
+  DiffChange = { ctermfg = 208, ctermbg = 235, fg = "none", bg = "#3c1e05" },
   DiffDelete = { ctermfg = 203, ctermbg = 235, fg = "#fb4934", bg = "#47140e" },
-  DiffText = { ctermfg = 208, ctermbg = 235, fg = "none", bg = "#8c4309" },
+  DiffText = { ctermfg = 208, ctermbg = 235, fg = "none", bg = "#381b04" },
 
   -- Rainbow Delimiter
   RainbowDelimiterBlue = { ctermfg = 108, fg = "#83a598", nocombine = true },
@@ -45,6 +52,7 @@ local colors = {
 -- Don't modify Normal if background is set to light mode.
 if vim.o.background == "light" then
   colors.ColorColumn = nil
+  colors.CursorLine = nil
   colors.FoldColumn = nil
   colors.Folded = nil
   colors.Normal = nil

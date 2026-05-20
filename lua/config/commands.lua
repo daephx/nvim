@@ -94,3 +94,27 @@ vim.api.nvim_create_user_command("Redir", redirect_output, {
   complete = "command",
   nargs = "+",
 })
+
+---@param args vim.api.keyset.create_user_command.command_args
+local toggle_inlay_hints = function(args)
+  local current = vim.lsp.inlay_hint.is_enabled()
+  local arg = (args.args ~= "" and args.args or "toggle"):lower()
+  local state = ({ enable = true, disable = false, toggle = not current })[arg]
+
+  if state == nil then
+    return vim.notify("Invalid argument: " .. arg, vim.log.levels.WARN)
+  end
+
+  if state ~= current then
+    vim.lsp.inlay_hint.enable(state)
+    vim.notify("Inlay hints " .. (state and "enabled" or "disabled"))
+  end
+end
+
+-- User command to enable, disable, or toggle LSP inlay hints
+vim.api.nvim_create_user_command("InlayHints", toggle_inlay_hints, {
+  complete = function()
+    return { "enable", "disable", "toggle" }
+  end,
+  nargs = "?",
+})

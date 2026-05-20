@@ -1,40 +1,4 @@
--- Commands
-
--- Typo commands
-vim.cmd.cnoreabbrev({ "BD", "bd" })
-vim.cmd.cnoreabbrev({ "Bd", "bd" })
-vim.cmd.cnoreabbrev({ "bD", "bd" })
-
-vim.cmd.cnoreabbrev({ "E", "e" })
-
-vim.cmd.cnoreabbrev({ "SO", "so" })
-vim.cmd.cnoreabbrev({ "So", "so" })
-vim.cmd.cnoreabbrev({ "sO", "so" })
-
-vim.cmd.cnoreabbrev({ "Q", "q" })
-vim.cmd.cnoreabbrev({ "QA", "qa" })
-vim.cmd.cnoreabbrev({ "Qa", "qa" })
-vim.cmd.cnoreabbrev({ "qA", "qa" })
-
-vim.cmd.cnoreabbrev({ "SO", "so" })
-vim.cmd.cnoreabbrev({ "So", "so" })
-vim.cmd.cnoreabbrev({ "sO", "so" })
-
-vim.cmd.cnoreabbrev({ "W", "w" })
-vim.cmd.cnoreabbrev({ "WQ", "wq" })
-vim.cmd.cnoreabbrev({ "Wq", "wq" })
-vim.cmd.cnoreabbrev({ "wQ", "wq" })
-
-vim.cmd.cnoreabbrev({ "X", "x" })
-vim.cmd.cnoreabbrev({ "XA", "xa" })
-vim.cmd.cnoreabbrev({ "Xa", "xa" })
-vim.cmd.cnoreabbrev({ "xA", "xa" })
-
-vim.cmd.cnoreabbrev({ "Sort", "sort" })
-vim.cmd.cnoreabbrev({ "Uniq", "uniq" })
-
--- Delete buffer without closing window
-vim.cmd.cnoreabbrev({ "bdd", "bn|bd#" })
+-- Command-line utilities: user commands and abbreviations
 
 ---Load or reload a Lua module in the current Neovim session
 ---@param name string Path to the Lua file
@@ -118,3 +82,58 @@ vim.api.nvim_create_user_command("InlayHints", toggle_inlay_hints, {
   end,
   nargs = "?",
 })
+
+-- Define command-line abbreviations for common case-sensitive typos and shortcuts
+local abbrevs = {
+  -- Delete buffer
+  { "BD", "bd" },
+  { "Bd", "bd" },
+  { "bD", "bd" },
+
+  -- Edit file
+  { "E", "e" },
+
+  -- Source file
+  { "SO", "so" },
+  { "So", "so" },
+  { "sO", "so" },
+
+  -- Quit
+  { "Q", "q" },
+  -- Quit all
+  { "QA", "qa" },
+  { "Qa", "qa" },
+  { "qA", "qa" },
+
+  -- Source file
+  { "SO", "so" },
+  { "So", "so" },
+  { "sO", "so" },
+
+  -- Write file
+  { "W", "w" },
+  -- Write and quit
+  { "WQ", "wq" },
+  { "Wq", "wq" },
+  { "wQ", "wq" },
+
+  -- Exit
+  { "X", "x" },
+  -- Exit all
+  { "XA", "xa" },
+  { "Xa", "xa" },
+  { "xA", "xa" },
+
+  -- Sort lines
+  { "Sort", "sort" },
+  -- Remove duplicate lines
+  { "Uniq", "uniq" },
+
+  -- Delete current buffer without closing window
+  { "bdd", "bn|bd#" },
+}
+
+-- Apply all abbreviations
+for _, abbr in ipairs(abbrevs) do
+  vim.cmd.cnoreabbrev(abbr)
+end

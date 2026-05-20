@@ -35,6 +35,8 @@ return {
       hl.NormalFloat = { link = "Normal" }
       hl.Underlined = { fg = c.blue, underline = true }
       hl.VertSplit = { link = "WinSeparator" }
+      hl.WinBar = { bg = "none" }
+      hl.WinBarNC = { bg = "none" }
       hl.WinSeparator = { fg = "#39394e" }
 
       -- Diff

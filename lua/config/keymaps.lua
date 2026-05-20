@@ -51,9 +51,6 @@ util.register_keymaps(defaults, {
   -- Delete active buffer in window
   { "n", "<c-w>d", "<cmd>bn|bd#<CR>" },
 
-  -- General save document
-  { { "i", "n" }, "<c-s>", "<cmd>write<CR>" },
-
   -- Create new buffers/tabs
   { "n", "<leader>nt", "<cmd>tabnew<CR>", { desc = "New tab" } },
   { "n", "<leader>nf", "<cmd>enew<CR>", { desc = "New file" } },

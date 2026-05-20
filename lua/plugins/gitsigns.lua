@@ -79,7 +79,7 @@ return {
     attach_to_untracked = true,
     signs_staged_enable = true,
     current_line_blame = true,
-    current_line_blame_formatter = "■ <author>, <author_time> - <abbrev_sha>: <summary>",
+    current_line_blame_formatter = " <author>, <author_time> - <abbrev_sha>: <summary>",
     signs = {
       add = { text = "┃" },
       change = { text = "┃" },
